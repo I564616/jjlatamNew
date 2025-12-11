@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="editor.xsd">
+
+	<group qualifier="General" visible="true" initially-opened="true">
+		<label key="cockpit.config.label.General" />
+		<property qualifier="product.name" />
+		<property qualifier="product.catalogversion"  editor="shortListEditor"/>
+		<property qualifier="product.approvalStatus" />
+	</group>
+		
+	<group qualifier="MDDAttr" visible="true" initially-opened="true">
+		<label key="config.general.MDMAttr" />
+		<property qualifier="jnjGTVariantProduct.lwrPackagingLvlUom" />
+		<property qualifier="jnjGTVariantProduct.unit" />
+		<property qualifier="jnjGTVariantProduct.volumeQty" />
+		<property qualifier="jnjGTVariantProduct.volumeUom" />
+		<property qualifier="jnjGTVariantProduct.outerCaseCode" />
+		<property qualifier="jnjGTVariantProduct.ean" />
+		<property qualifier="jnjGTVariantProduct.numerator"/>
+		<property qualifier="jnjGTVariantProduct.innerPackPerCase" />
+		<property qualifier="jnjGTVariantProduct.tiersPerPallet" />
+		<property qualifier="jnjGTVariantProduct.casesPerTier" />
+		<property qualifier="jnjGTVariantProduct.depth" />
+		<property qualifier="jnjGTVariantProduct.width" />
+		<property qualifier="jnjGTVariantProduct.height" />
+		<property qualifier="jnjGTVariantProduct.linearUom" />
+		<property qualifier="jnjGTVariantProduct.weightQty" />
+		<property qualifier="jnjGTVariantProduct.weightUom" />
+	</group>
+	
+	<custom-group 
+		class="de.hybris.platform.cockpit.services.config.impl.ClassAttrEditorSectionConfiguration" 
+		qualifier="classification"
+		initially-opened="false"
+		show-if-empty="false">
+		<label key="config.general.attributes" />
+	</custom-group>
+
+	<group qualifier="Category" visible="true" initially-opened="false">
+		<label key="config.general.categorysystem" />
+		<property qualifier="product.supercategories" editor="listViewReferenceEditor">
+			<parameter>
+				<name>layout</name>
+				<value>wide</value>
+			</parameter>
+		</property>
+		<property qualifier="product.productReferences" editor="browserContextEditor"/>
+	</group>
+	
+	<custom-group 
+		spring-bean="CommentsSection"
+		qualifier="comments"
+		initially-opened="false"
+		visible="true">
+		<label key="config.general.comments" />
+	</custom-group>
+
+	<custom-group 
+		class="de.hybris.platform.cockpit.services.config.impl.UnassignedEditorSectionConfiguration" 
+		qualifier="unassigned"
+		initially-opened="false"
+		visible="false">
+		<label key="cockpit.config.label.Other" />
+	</custom-group>
+	
+	<custom-group 
+		class="de.hybris.platform.cockpit.services.config.impl.LastChangesSectionConfiguration" 
+		qualifier="savedValues"
+		initially-opened="false"
+		visible="false">
+		<label key="config.general.lastchanges" />
+	</custom-group>
+	
+	
+</editor>

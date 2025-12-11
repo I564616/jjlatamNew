@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2000-2015 hybris AG
+ All rights reserved.
+
+ This software is the confidential and proprietary information of hybris
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with hybris.
+
+--><extensioninfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extensioninfo.xsd">
+
+	<extension abstractclassprefix="Generated" classprefix="Jnjb2bglobalStorefront" name="jnjb2bglobalstorefront">
+
+		<requires-extension name="jnjlaresources"/>
+		<requires-extension name="jnjlaglobalreportsaddon"/>
+		<requires-extension name="jnjlaselloutaddon"/>
+		<requires-extension name="jnjlaprofileaddon"/>
+
+		<requires-extension name="jnjlaloginaddon"/>
+		<requires-extension name="jnjlacartandcheckoutaddon"/>
+		<requires-extension name="loginaddon"/>
+		<requires-extension name="cartandcheckoutaddon"/>
+		<requires-extension name="jnjb2bbrowseandsearch"/>
+		<requires-extension name="jnjb2bglobalordertemplate"/>
+		<requires-extension name="jnjglobalprofile"/>
+		<requires-extension name="jnjglobalreports"/>
+		<requires-extension name="jnjglobalresources"/>
+		<requires-extension name="jnjlaordertemplateaddon"/>
+		<requires-extension name="jnjlabrowseandsearchaddon"/>
+		<requires-extension name="jnjlaservicepageaddon"/>
+
+		<requires-extension name="jnjb2bcore"/>
+		<requires-extension name="jnjb2bfacades"/>
+		<requires-extension name="jnjb2bglobalfacades"/>
+		<requires-extension name="commercefacades"/>
+		<requires-extension name="jnjcommon"/>
+
+		<coremodule generated="true" manager="de.hybris.platform.jalo.extension.GenericManager" packageroot="com.jnj.b2b.storefront"/>
+
+		<webmodule jspcompile="false" webroot="/jnjb2bglobalstorefront"/>
+
+	</extension>
+
+</extensioninfo>

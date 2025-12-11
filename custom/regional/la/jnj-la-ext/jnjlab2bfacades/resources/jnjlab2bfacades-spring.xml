@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+		   http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.jnj.la.core"/>
+
+    <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+
+    <!-- <alias name="jnJLatamCartFacade" alias="defaultCartFacade" /> -->
+    <bean name="jnJLatamCartFacade" class="com.jnj.facades.cart.impl.JnjLatamCartFacadeImpl" parent="defaultCartFacade">
+        <property name="cartService" ref="cartService"/>
+        <property name="miniCartConverter" ref="miniCartConverter"/>
+        <property name="cartConverter" ref="cartConverter"/>
+        <property name="productService" ref="productService"/>
+        <property name="cartModificationConverter" ref="cartModificationConverter"/>
+        <property name="cartRestorationConverter" ref="cartRestorationConverter"/>
+        <property name="baseSiteService" ref="baseSiteService"/>
+        <property name="userService" ref="userService"/>
+        <property name="pointOfServiceService" ref="pointOfServiceService"/>
+        <property name="priceDataFactory" ref="priceDataFactory"/>
+        <property name="deliveryService" ref="deliveryService"/>
+        <property name="countryConverter" ref="countryConverter"/>
+        <property name="groupCartModificationListConverter" ref="groupCartModificationListConverter"/>
+    </bean>
+
+    <bean id="jnjlatamCustomOrderFacade" class="com.jnj.facades.order.impl.JnjLatamOrderFacadeImpl">
+        <property name="jnjLatamSalesOrderMapper" ref="jnjlaSalesOrderMapper"/>
+        <property name="orderConverter" ref="orderConverter"/>
+    </bean>
+
+    <!-- <alias name="jnjLatamCheckoutFacade" alias="GTCheckoutFacade" /> -->
+    <bean id="jnjLatamCheckoutFacade" class="com.jnj.facades.order.impl.JnjLatamCheckoutFacadeImpl"
+          parent="GTCheckoutFacade"/>
+
+    <bean id="jnjCategoryFacade" class="com.jnj.facades.category.impl.JnjCategoryFacadeImpl"/>
+    <bean id="jnjHideCategoryCronJob" class="com.jnj.facades.cronjobs.JnjHideCategoryCronJob"
+          autowire="byName" scope="tenant"/>
+    <bean id="jnjContractFacade" class="com.jnj.la.facades.contract.impl.JnjContractFacadeImpl"/>
+	
+	<bean id="jnjRegulatoryExpireDocumentCronJob" class="com.jnj.facades.cronjobs.JnjRegulatoryExpireDocumentCronJob"  parent="abstractJobPerformable">
+        <property name="jnjLaudoFacade" ref="jnjLaudoFacadeImpl"/>
+		<property name="expireDocumentModelService" ref="modelService"/>
+    </bean>
+    
+
+    <alias name="jnjContractDataConverter" alias="jnjContractDataConverter"/>
+    <bean id="jnjContractDataConverter" parent="abstractPopulatingConverter">
+        <lookup-method name="createTarget" bean="jnjContractDataData"/>
+        <property name="populators">
+            <list>
+                <ref bean="jnjContractDataPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <alias name="jnjContractDataPopulator" alias="jnjContractDataPopulator"/>
+    <bean id="jnjContractDataPopulator"
+          class="com.jnj.la.facades.contract.converters.populator.JnjContractDataPopulator">
+        <property name="jnjContractEntryDataConverter" ref="jnjContractEntryDataConverter"/>
+    </bean>
+
+    <bean id="jnjLatamReportsFacade" class="com.jnj.facades.reports.impl.JnjLatamReportsFacadeImpl"
+           scope="tenant" parent = "jnJGTReportsFacade">
+     	<property name="catalogVersionService" ref="catalogVersionService"/>
+     	<property name="categoryService" ref="categoryService"/>
+     	<property name="jnjGetCurrentDefaultB2BUnitUtil" ref="jnjGetDefaultB2BUnitUtil"/>
+     	<property name="jnjGTB2BUnitService" ref="jnjGTB2BUnitService"/>
+     	<property name="jnjLatamCommonFacadeUtil" ref="jnjLatamCommonFacadeUtil"/>
+     	<property name="jnjGTPacHiveConfigurationService" ref="jnjGTPacHiveConfigurationService"/>
+     	<property name="jnjLatamReportService" ref="jnjLatamReportService"/>
+     	<property name="jnjLaOpenOrdersReportTemplateConverter" ref="jnjLaOpenOrdersReportTemplateConverter"/>
+     	<property name="jnjLaOpenOrdersReportResponseConverter" ref="jnjLaOpenOrdersReportResponseConverter"/>     	
+     	
+    </bean>
+
+    <!-- Beans for Contract Entry Converter -->
+    <alias name="jnjContractEntryDataConverter" alias="jnjContractEntryDataConverter"/>
+    <bean id="jnjContractEntryDataConverter" parent="abstractPopulatingConverter">
+        <lookup-method name="createTarget" bean="jnjContractEntryData"/>
+        <property name="populators">
+            <list>
+                <ref bean="jnjContractEntryDataPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <alias name="jnjContractEntryDataPopulator" alias="jnjContractEntryDataPopulator"/>
+    <bean id="jnjContractEntryDataPopulator"
+          class="com.jnj.la.facades.contract.converters.populator.JnjContractEntryDataPopulator">
+    </bean>
+    <bean id="jnjContractEntryData" class="com.jnj.facades.data.JnjContractEntryData"
+          scope="prototype"/>
+    <!-- End Beans for Contract Entry Converter -->
+
+    <bean id="jnjContractData" class="com.jnj.facades.data.JnjContractData"
+          scope="prototype"/>
+    <bean id="jnjLatamInvoiceDocMapper" class="com.jnj.facades.order.impl.JnjLatamInvoiceDocMapperImpl"/>
+    <bean id="jnjLatamInvoiceFacade" class="com.jnj.facades.invoice.impl.JnjLatamInvoiceFacadeImpl"/>
+
+    <!-- Beans for NFE -->
+    <bean id="jnjNfeFacade" class="com.jnj.la.facades.nfe.impl.JnjNfeFacadeImpl"/>
+    <bean id="jnjNfeMapper" class="com.jnj.la.facades.nfe.mapper.JnjNfeMapper"/>
+    <!-- End of Beans for NFE -->
+
+    <bean id="jnjSAPErrorMessageFacade"
+          class="com.jnj.facades.order.impl.JnjLatamSAPErrorMessageFacadeImpl"/>
+
+    <bean id="jnjLatamCustomerFacadeImpl"
+          class="com.jnj.facades.customer.impl.JnjLatamCustomerFacadeImpl"
+          parent="jnjGTCustomerFacade"/>
+
+    <bean id="jnjLaCartData" class="com.jnj.facades.data.JnjLaCartData"
+          scope="prototype"/>
+
+    <bean id="jnjLaCartPopulator"
+          class="com.jnj.facades.order.converters.populator.JnjLaCartPopulator"
+          parent="jnjGTCartPopulator"/>
+
+    <!-- Injecting instance of jnjLaCartData for jnjLaCartPopulator populator -->
+    <alias name="defaultCartConverter" alias="cartConverter"/>
+    <bean id="defaultCartConverter" parent="abstractPopulatingConverter">
+        <lookup-method name="createTarget" bean="jnjLaCartData"/>
+        <property name="populators">
+            <list>
+                <ref bean="jnjLaCartPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="jnjLaOrderEntryData" class="com.jnj.facades.data.JnjLaOrderEntryData" scope="prototype"/>
+
+    <!-- Injecting instance of jnjLaOrderEntryData for orderEntryPopulator populator -->
+    <alias name="defaultOrderEntryConverter" alias="orderEntryConverter"/>
+    <bean id="defaultOrderEntryConverter" parent="abstractPopulatingConverter">
+        <lookup-method name="createTarget" bean="jnjLaOrderEntryData"/>
+        <property name="populators">
+            <list>
+                <ref bean="orderEntryPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="jnjLaProductData" class="com.jnj.facades.data.JnjLaProductData"
+          scope="prototype"/>
+
+    <!-- Injecting instances of jnjLaProductData for populators -->
+    <alias name="defaultProductConverter" alias="productConverter"/>
+    <bean id="defaultProductConverter" parent="abstractPopulatingConverter">
+        <lookup-method name="createTarget" bean="jnjLaProductData"/>
+        <property name="populators">
+            <list>
+                <ref bean="productPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <alias name="jnjGTSearchResultProductConverter" alias="commerceSearchResultProductConverter"/>
+    <bean id="jnjGTSearchResultProductConverter" parent="abstractPopulatingConverter">
+        <lookup-method name="createTarget" bean="jnjLaProductData"/>
+        <property name="populators">
+            <list>
+                <ref bean="jnjGTSearchResultProductPopulator"/>
+                <ref bean="searchResultPickupAvailabilityPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <alias name="invoiceEntryProductConverter" alias="invoiceEntryProductConverter"/>
+    <bean id="invoiceEntryProductConverter" parent="defaultProductConverter">
+        <lookup-method name="createTarget" bean="jnjLaProductData"/>
+    </bean>
+    <!-- END - Injecting instances of jnjLaProductData for populators -->
+
+    <alias name="jnjGTOrderEntryProductPopulator" alias="productPopulator"/>
+    <bean id="jnjGTOrderEntryProductPopulator"
+          class="com.jnj.facades.product.converters.populator.JnjLaOrderEntryProductPopulator"
+          parent="defaultProductUrlPopulator">
+        <property name="productPrimaryImagePopulator" ref="productPrimaryImagePopulator"/>
+        <property name="productPricePopulator" ref="productPricePopulator"/>
+        <property name="productGalleryImagesPopulator" ref="productGalleryImagesPopulator"/>
+    </bean>
+
+    <alias name="jnjLaSubstituteProductReferenceConverter" alias="jnjLatamSubstituteProductReferenceConverter"/>
+    <bean id="jnjLaSubstituteProductReferenceConverter" parent="abstractPopulatingConverter">
+        <property name="targetClass" value="de.hybris.platform.commercefacades.product.data.ProductReferenceData"/>
+        <property name="populators">
+            <list merge="true">
+                <ref bean="jnjLatamSubstituteProductReferencePopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <alias name="jnjLaSubstituteProductReferencePopulator" alias="jnjLatamSubstituteProductReferencePopulator"/>
+    <bean id="jnjLaSubstituteProductReferencePopulator" class="com.jnj.facades.product.converters.populator.JnJLatamSubstituteProductReferencePopulator"
+          parent="defaultReferenceDataProductReferencePopulator"/>
+
+    <alias name="jnjOrderEntryPopulator" alias="orderEntryPopulator"/>
+    <bean id="jnjOrderEntryPopulator"
+          class="com.jnj.facades.order.converters.populator.JnjLaOrderEntryPopulator"
+          parent="defaultOrderEntryPopulator">
+    </bean>
+
+    <alias name="jnjOrderHistoryPopulator" alias="orderHistoryPopulator"/>
+    <bean id="jnjOrderHistoryPopulator"
+          class="com.jnj.facades.order.converters.populator.JnjLaOrderHistoryPopulator"
+          parent="jnjGTOrderHistoryPopulator">
+    </bean>
+
+
+    <alias name="defaultOrderHistoryConverter" alias="orderHistoryConverter"/>
+    <bean id="defaultOrderHistoryConverter" parent="abstractPopulatingConverter">
+        <lookup-method name="createTarget" bean="jnjLaOrderHistoryData"/>
+        <property name="populators">
+            <list>
+                <ref bean="orderHistoryPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="jnjLaOrderHistoryData" class="com.jnj.facades.data.JnjLaOrderHistoryData"
+          scope="prototype"/>
+
+    <!-- Bean for JnjPriceDataFactory -->
+    <alias name="jnjLaPriceDataFactory" alias="priceDataFactory"/>
+    <bean id="jnjLaPriceDataFactory" class="com.jnj.la.facade.util.impl.JnjLaPriceDataFactory" parent="defaultPriceDataFactory">
+        <property name="commonI18NService" ref="commonI18NService"/>
+        <property name="i18NService" ref="i18NService"/>
+        <property name="commerceCommonI18NService" ref="commerceCommonI18NService"/>
+    </bean>
+
+    <!-- Bean for JnjLaorderDataPopulator -->
+    <alias name="defaultOrderConverter" alias="orderConverter"/>
+    <bean id="defaultOrderConverter" parent="abstractPopulatingConverter">
+        <lookup-method name="createTarget" bean="jnjLaOrderData"/>
+        <property name="populators">
+            <list>
+                <ref bean="jnjGTOrderPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <alias name="jnjLaOrderPopulator" alias="jnjGTOrderPopulator"/>
+    <bean id="jnjLaOrderPopulator"
+          class="com.jnj.facades.order.converters.populator.JnjLaOrderDataPopulator"
+          parent="defaultOrderPopulator">
+        <property name="b2bPaymentTypeConverter" ref="paymentTypeDataConverter"/>
+        <property name="jnjGTSurgeryPopulator" ref="jnjGTSurgeryPopulator"/>
+    </bean>
+
+    <bean id="jnjLaOrderData" class="com.jnj.facades.data.JnjLaOrderData" scope="prototype">
+    </bean>
+
+    <!-- Beans for Invoice Entry Data Converter and Populator -->
+    <alias name="jnJLaInvoiceEntryDataConverter" alias="jnJLaInvoiceEntryDataConverter"/>
+    <bean id="jnJLaInvoiceEntryDataConverter" parent="abstractPopulatingConverter">
+        <lookup-method name="createTarget" bean="jnJLaInvoiceEntryData"/>
+        <property name="populators">
+            <list>
+                <ref bean="jnJLaInvoiceEntryDataPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+
+    <alias name="jnJLaInvoiceEntryDataPopulator" alias="jnJLaInvoiceEntryDataPopulator"/>
+    <bean id="jnJLaInvoiceEntryDataPopulator"
+          class=" com.jnj.facades.invoice.converters.populator.JnJLaInvoiceEntryDataPopulator">
+        <property name="jnjLaProductdataConverter" ref="defaultProductConverter"/>
+
+    </bean>
+    <bean id="jnJLaInvoiceEntryData" class="com.jnj.facades.data.JnJLaInvoiceEntryData"
+          scope="prototype"/>
+    <!-- 	<bean parent="modifyPopulatorList">
+            <property name="list" ref="jnJInvoiceEntryDataConverter" />
+            <property name="add" ref="jnJLaInvoiceEntryDataPopulator" />
+        </bean>  -->
+    <alias name="jnjLatamSearchResultProductPopulator" alias="jnjGTSearchResultProductPopulator"/>
+    <bean id="jnjLatamSearchResultProductPopulator" class="com.jnj.facades.converters.populator.JnjLatamSearchResultProductPopulator">
+        <property name="commonI18NService" ref="commonI18NService"/>
+        <property name="imageFormatMapping" ref="imageFormatMapping"/>
+        <property name="priceDataFactory" ref="priceDataFactory"/>
+        <property name="productDataUrlResolver" ref="productDataUrlResolver"/>
+        <property name="productFeatureListPopulator" ref="productFeatureListPopulator"/>
+        <property name="productService" ref="productService"/>
+        <property name="stockConverter" ref="stockConverter"/>
+        <property name="stockLevelStatusConverter" ref="stockLevelStatusConverter"/>
+    </bean>
+
+    <bean id="jnjLatamProductFacadeImpl"
+          class="com.jnj.facades.product.impl.JnjLatamProductFacadeImpl" parent="jnjGTProductFacade"/>
+
+    <!-- End of Beans for Invoice Entry Data Converter and Populator -->
+    <alias name="jnjSellOutReportsFacade" alias="sellOutReportsFacade"/>
+    <bean id="jnjSellOutReportsFacade"
+          class="com.jnj.facades.account.impl.JnjSellOutReportsFacadeImpl"/>
+
+    <alias name="jnjProductBasicPopulator" alias="productBasicPopulator"/>
+    <bean id="jnjProductBasicPopulator" parent="defaultProductBasicPopulator"
+          class="com.jnj.facades.product.converters.populator.JnjLaProductBasicPopulator">
+        <property name="commerceCategoryService" ref="commerceCategoryService"/>
+    </bean>
+
+    <alias name="jnjLatamCustomerReversePopulator" alias="customerReversePopulator"/>
+    <bean id="jnjLatamCustomerReversePopulator" parent="jnjGTCustomerReversePopulator"
+          class="com.jnj.facades.converters.populator.customer.JnjLatamCustomerReversePopulator">
+        <property name="customerNameStrategy" ref="customerNameStrategy"/>
+    </bean>
+
+    <bean id="jnjLaCustomerPopulator" class="com.jnj.facades.converters.populator.customer.JnjLatamCustomerPopulator" parent="jnjGTCustomerPopulator">
+    </bean>
+
+    <bean id="jnjLaCustomerData" class="com.jnj.facades.data.JnjLaCustomerData" scope="prototype">
+    </bean>
+
+    <bean id="jnjLaCustomerConverter" parent="abstractPopulatingConverter">
+        <lookup-method name="createTarget" bean="jnjLaCustomerData"/>
+        <property name="populators">
+            <list>
+                <ref bean="jnjLaCustomerPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="jnjLaOrderTemplateEntryConverter" parent="abstractPopulatingConverter">
+        <lookup-method name="createTarget" bean="jnjLaOrderTemplateEntryData"/>
+        <property name="populators">
+            <list>
+                <ref bean="jnjLaOrderTemplateEntryPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <alias name="jnjLaOrderTemplateEntryPopulator" alias="jnjGTOrderTemplateEntryPopulator"/>
+    <bean id="jnjLaOrderTemplateEntryPopulator"
+          class="com.jnj.facades.order.converters.populator.JnjLaOrderTemplateEntryPopulator">
+    </bean>
+
+    <bean id="jnjLaOrderTemplateEntryData" class="com.jnj.facades.data.JnjLaOrderTemplateEntryData"
+          scope="prototype"/>
+
+    <bean id="jnjLatamOrderTemplateFacadeImpl"
+          class="com.jnj.facades.template.impl.JnjLatamOrderTemplateFacadeImpl"/>
+
+
+    <alias name="defaultLatamProductDataUrlResolver" alias="productDataUrlResolver"/>
+    <bean id="defaultLatamProductDataUrlResolver"
+          class="com.jnj.facades.url.impl.DefaultLatamProductDataUrlResolver">
+        <property name="threadContextService" ref="threadContextService"/>
+        <property name="productService" ref="productService"/>
+        <property name="productModelUrlResolver" ref="productModelUrlResolver"/>
+    </bean>
+
+
+    <alias name="jnjLaInvoiceOrderDataPopulator" alias="jnJInvoiceOrderDataPopulator"/>
+    <bean id="jnjLaInvoiceOrderDataPopulator"
+          class="com.jnj.facades.invoice.converters.populator.JnjLaInvoiceOrderDataPopulator">
+        <property name="priceDataFactory" ref="priceDataFactory"/>
+    </bean>
+
+    <!-- Start : Successful Registration Email -->
+    <bean id="jnjlatamSuccessfulRegistrationEmailContext"
+          class="com.jnj.facades.process.email.context.JnjLatamSuccessfulRegistrationEmailContext"
+          parent="abstractEmailContext" scope="prototype">
+        <property name="customerConverter" ref="customerConverter"/>
+    </bean>
+
+    <alias name="jnjLatamCommonFacadeUtil" alias="JnjCommonFacadeUtil"/>
+    <bean id="jnjLatamCommonFacadeUtil"
+          class="com.jnj.facades.util.impl.JnjLatamCommonFacadeUtilImpl"/>
+
+    <bean id="jnjIndirectPayerFormEmailContext"
+          class="com.jnj.facades.process.email.context.JnjIndirectPayerFormEmailContext"
+          parent="abstractEmailContext" scope="prototype">
+        <property name="customerConverter" ref="customerConverter"/>
+    </bean>
+
+    <bean id="jnjFormEmailContext"
+          class="com.jnj.facades.process.email.context.JnjFormEmailContext"
+          parent="abstractEmailContext" scope="prototype">
+        <property name="customerConverter" ref="customerConverter"/>
+    </bean>
+
+    <bean id="jnjServicesFacade"
+          class="com.jnj.facades.services.impl.JnjServicesFacadeImpl"
+          scope="prototype">
+    </bean>
+
+
+    <bean id="jnjlaShipmentConfirmationEmailContext" class="com.jnj.facades.process.email.context.JnjLaShipmentConfirmationEmailContext"
+          parent="abstractEmailContext"
+          scope="prototype">
+        <property name="customerConverter" ref="customerConverter"/>
+    </bean>
+
+    <bean id="jnjLatamB2BCommerceUserFacadeImpl"
+          class="com.jnj.facades.company.impl.JnjLatamB2BCommerceUserFacadeImpl" parent="jnjGTB2BCommerceUserFacade">
+        <property name="userService" ref="userService"/>
+    </bean>
+
+    <alias name="jnjLaScheduleLinePopulator" alias="jnjScheduleLinePopulator"/>
+    <bean id="jnjLaScheduleLinePopulator" class="com.jnj.facades.order.converters.populator.JnjLaScheduleLinePopulator">
+    </bean>
+
+
+    <!--  laudo changes -->
+
+    <alias name="jnjLaudoDataConverter" alias="jnjLaudoDataConverter"/>
+    <bean id="jnjLaudoDataConverter" parent="abstractPopulatingConverter">
+        <lookup-method name="createTarget" bean="jnjLaudoData"/>
+        <property name="populators">
+            <list>
+                <ref bean="jnjLaudoDataPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <alias name="jnjLaudoDataPopulator" alias="jnjLaudoDataPopulator"/>
+    <bean id="jnjLaudoDataPopulator"
+          class=" com.jnj.facades.laudo.converters.populator.JnjLaudoDataPopulator">
+    </bean>
+
+    <bean id="jnjLaudoData" class="com.jnj.facades.data.JnjLaudoData" scope="prototype"/>
+
+    <bean id="jnjLaudoFacadeImpl" class="com.jnj.facades.laudo.impl.JnjLaudoFacadeImpl">
+      <property name="jnjConfigService" ref="jnjConfigService"/>
+	  <property name="cmsSiteService" ref="cmsSiteService"/>
+    </bean>
+
+    <bean id="jnjCrossReferenceFacade" class="com.jnj.facades.account.impl.JnjCrossReferenceFacadeImpl"/>
+
+    <bean id="jnJLaInvoiceHistoryData" class="com.jnj.facades.data.JnJLaInvoiceHistoryData" scope="prototype"/>
+    <bean id="jnJLaInvoiceHistoryDataPopulator" class="com.jnj.facades.invoice.converters.populator.JnJLaInvoiceHistoryDataPopulator"/>
+    <bean id="jnjLaInvoiceHistoryDataConverter" parent="abstractPopulatingConverter">
+        <lookup-method name="createTarget" bean="jnJLaInvoiceHistoryData"/>
+        <property name="populators">
+            <list>
+                <ref bean="jnJLaInvoiceHistoryDataPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <alias name="jnjLaPoliciesFacadeImpl" alias="jnjPoliciesFacade"/>
+    <bean id="jnjLaPoliciesFacadeImpl" class="com.jnj.facades.policies.impl.JnJLaPoliciesFacadeImpl"/>
+
+    <bean id="jnjUploadedInvoiceDatePopulator" class="com.jnj.facades.converters.populator.JnJUploadedInvoiceDatePopulator" parent="abstractResultPopulator"/>
+
+    <bean id="jnjUploadedInvoiceDateConverter" parent="abstractPopulatingConverter">
+        <property name="targetClass" value="com.jnj.la.core.data.JnJUploadedInvoiceDateData"/>
+        <property name="populators">
+            <list>
+                <ref bean="jnjUploadedInvoiceDatePopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="jnjUploadedInvoiceDateFacade" class="com.jnj.facades.invoice.impl.JnJUploadedInvoiceDateFacadeImpl">
+        <property name="updateInvoiceService" ref="jnjUpdateInvoiceService" />
+        <property name="uploadedInvoiceDateConverter" ref="jnjUploadedInvoiceDateConverter" />
+        <property name="uploadedInvoiceDateDao" ref="jnjUploadedInvoiceDateDao" />
+    </bean>
+
+    <bean id="jnjLAOrderEmailMatrixService" class="com.jnj.facades.services.impl.JnjLAOrderEmailMatrixServiceImpl">
+        <property name="jnjLAEmailMatrixDao" ref="jnjLAEmailMatrixDao" />
+    </bean>
+
+    <bean id="jnjLAEmailOrderStatusService" class="com.jnj.facades.services.impl.JnjLAEmailOrderStatusServiceImpl">
+        <property name="jnjOrderDao" ref="jnjOrderDao" />
+        <property name="eventService" ref="eventService" />
+        <property name="matrixService" ref="jnjLAOrderEmailMatrixService" />
+        <property name="modelService" ref="modelService" />
+        <property name="configurationService" ref="configurationService" />
+    </bean>
+
+    <bean id="abstractJnjLaEmailContext" class="com.jnj.facades.process.email.context.AbstractJnjLaEmailContext"
+          parent="abstractEmailContext" scope="prototype">
+        <property name="mediaService" ref="mediaService" />
+        <property name="jnjConfigService" ref="jnjConfigService" />
+    </bean>
+
+    <bean id="jnjLAOrderStatusNotificationEmailContext"
+          class="com.jnj.facades.process.email.context.JnjLAOrderStatusNotificationEmailContext"
+          parent="abstractJnjLaEmailContext" scope="prototype">
+        <property name="jnjLAEmailOrderConverter" ref="jnjLAEmailOrderConverter" />
+        <property name="jnjLAOrderService" ref="jnjLAOrderService" />
+        <property name="jnjConfigService" ref="jnjConfigService" />
+    </bean>
+
+    <bean id="jnjLAEmailOrderPopulator" class="com.jnj.facades.converters.populator.JnjLAEmailOrderPopulator" parent="abstractResultPopulator">
+        <property name="priceDataFactory" ref="jnjLaPriceDataFactory" />
+        <property name="jnjCommonFacadeUtil" ref="JnjCommonFacadeUtil" />
+        <property name="jnjLatamInvoiceFacade" ref="jnjLatamInvoiceFacade"/>
+        <property name="configurationService" ref="configurationService" />
+        <property name="jnjGTB2BUnitService" ref="jnjGTB2BUnitService" />
+    </bean>
+
+    <bean id="jnjLAEmailOrderConverter" parent="abstractPopulatingConverter">
+        <property name="targetClass" value="com.jnj.la.core.data.order.JnjLAEmailOrderData"/>
+        <property name="populators">
+            <list>
+                <ref bean="jnjLAEmailOrderPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="jnjLaConsolidatedEmailService" class="com.jnj.facades.services.impl.JnJLaConsolidatedEmailServiceImpl" parent="jnjLAEmailOrderStatusService" >
+        <property name="configurationService" ref="configurationService" />
+    </bean>
+
+    <bean id="jnjLaConsolidatedEmailContext"
+          class="com.jnj.facades.process.email.context.JnjLaConsolidatedEmailContext"
+          parent="abstractJnjLaEmailContext" scope="prototype">
+        <property name="jnjLaConsolidatedReportRowDataConverter" ref="jnjLaConsolidatedReportRowDataConverter" />
+        <property name="jnjLaConsolidatedReportService" ref="jnjLaConsolidatedReportService" />
+    </bean>
+
+    <bean id="jnjLaConsolidatedReportRowDataPopulator" class="com.jnj.facades.converters.populator.JnjLaConsolidatedReportRowDataPopulator" parent="abstractResultPopulator">
+        <property name="priceDataFactory" ref="jnjLaPriceDataFactory" />
+        <property name="jnjCommonFacadeUtil" ref="JnjCommonFacadeUtil" />
+        <property name="loadTranslationService" ref="jnjLoadTranslationService" />
+        <property name="invoiceService" ref="jnjInvoiceService" />
+        <property name="configurationService" ref="configurationService" />
+    </bean>
+
+    <bean id="jnjLaConsolidatedReportRowDataConverter" parent="abstractPopulatingConverter">
+        <property name="targetClass" value="com.jnj.la.core.data.order.JnjLAConsolidatedReportRowData"/>
+        <property name="populators">
+            <list>
+                <ref bean="jnjLaConsolidatedReportRowDataPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="jnjLaConsolidatedReportService" class="com.jnj.facades.services.impl.JnjLaConsolidatedReportServiceImpl">
+        <property name="emailService" ref="emailService" />
+        <property name="jnjCommonFacadeUtil" ref="JnjCommonFacadeUtil" />
+    </bean>
+
+    <bean id="jnjLaCronJobCronitorDataPopulator" class="com.jnj.facades.converters.populator.JnjLaCronJobCronitorDataPopulator">
+    </bean>
+
+    <bean id="jnjLaCronJobMonitoringReportsFacade" class="com.jnj.facades.reports.impl.JnjLaCronJobMonitoringReportsFacadeImpl">
+        <property name="jnjLaCronJobCronitorDataPopulator" ref="jnjLaCronJobCronitorDataPopulator" />
+        <property name="jnjLaCronJobReportService" ref="jnjLaCronJobReportService" />
+    </bean>
+
+    <bean id="jnjLaCronJobMonitoringEmailContext" class="com.jnj.facades.process.email.context.JnjLaCronJobMonitoringEmailContext"
+          parent="abstractEmailContext" scope="prototype">
+    </bean>
+
+    <bean id="jnjLaCronJobReportService" class="com.jnj.facades.services.impl.JnjLaCronJobReportServiceImpl">
+        <property name="jnjLaCronJobDao" ref="jnjLaCronJobDao" />
+        <property name="commonI18NService" ref="commonI18NService" />
+        <property name="eventService" ref="eventService" />
+        <property name="baseStoreService" ref="baseStoreService" />
+        <property name="baseSiteService" ref="baseSiteService" />
+        <property name="configurationService" ref="configurationService"/>
+    </bean>
+
+    <bean id="jnjLatamTemporaryPasswordEmailContext"
+          class="com.jnj.facades.process.email.context.JnjLatamTemporaryEmailContext"
+          parent="abstractEmailContext" scope="prototype">
+        <property name="customerConverter" ref="customerConverter" />
+        <property name="configurationService" ref="configurationService"/>
+    </bean>
+
+    <alias name="jnjLaCCP360IntegrationFacade" alias="GTP360IntegrationFacade"/>
+    <bean id="jnjLaCCP360IntegrationFacade" class="com.jnj.facades.pcm.DefaultJnjLaCCP360IntegrationFacade" parent="jnjCCP360IntegrationFacade">
+        <property name="jnjClassAttributeAssignmentService" ref="jnjClassAttributeAssignmentService" />
+        <property name="classificationSystemService" ref="classificationSystemService"/>
+    </bean>
+
+    <bean id="jnjOrderArchivalFacade" class="com.jnj.la.facades.order.impl.DefaultJnjOrderArchivalFacade" >
+        <property name="modelService" ref="modelService" />
+        <property name="jnjOrderArchivalService" ref="jnjOrderArchivalService" />
+    </bean>
+    
+    <bean id="jnjLaActiveUsersReportEmailContext"
+          class="com.jnj.facades.process.email.context.JnjLaActiveUsersReportEmailContext" parent="abstractEmailContext" scope="prototype">
+    </bean>
+    
+    <bean id="jnjLaSAPFailedOrdersReportEmailContext"
+          class="com.jnj.facades.process.email.context.JnjLaSAPFailedOrdersReportEmailContext" parent="abstractEmailContext" scope="prototype">
+    </bean>
+
+    <bean id="jnjLaInvoiceNotificationEmailProcessContext" class="com.jnj.facades.process.email.context.JnjLaInvoiceNotificationEmailProcessContext"
+          parent="abstractEmailContext" scope="prototype">
+        <property name="cmsSiteService" ref="cmsSiteService"/>
+        <property name="emailService" ref="emailService" />
+        <property name="jnjConfigService" ref="jnjConfigService"/>
+        <property name="customerConverter" ref="customerConverter"/>
+    </bean>
+    
+     <bean id="jnjLatamReportService" class="com.jnj.facades.services.impl.JnjLatamReportServiceImpl">        
+    </bean>
+    
+    <alias name="jnjLaOpenOrdersReportTemplateConverter" alias="jnjLaOpenOrdersReportTemplateConverter"/>
+    <bean id="jnjLaOpenOrdersReportTemplateConverter" parent="abstractPopulatingConverter">
+        <property name="targetClass" value="com.jnj.la.core.data.JnjLaOpenOrdersReportTemplateData"/>
+        <property name="populators">
+            <list merge="true">
+                <ref bean="jnjLaOpenOrdersReportTemplatePopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <alias name="jnjLaOpenOrdersReportTemplatePopulator" alias="jnjLaOpenOrdersReportTemplatePopulator"/>
+    <bean id="jnjLaOpenOrdersReportTemplatePopulator" class="com.jnj.facades.reports.converters.populator.JnjLaOpenOrdersReportTemplatePopulator"/>
+    
+    <alias name="jnjLaOpenOrdersReportResponseConverter" alias="jnjLaOpenOrdersReportResponseConverter"/>
+    <bean id="jnjLaOpenOrdersReportResponseConverter" parent="abstractPopulatingConverter">
+        <property name="targetClass" value="com.jnj.facades.data.JnjLaOpenOrdersReportReponseData"/>
+        <property name="populators">
+            <list merge="true">
+                <ref bean="jnjLaOpenOrdersReportResponsePopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <alias name="jnjLaOpenOrdersReportResponsePopulator" alias="jnjLaOpenOrdersReportResponsePopulator"/>
+    <bean id="jnjLaOpenOrdersReportResponsePopulator" class="com.jnj.facades.reports.converters.populator.JnjLaOpenOrdersReportResponsePopulator"/>
+    
+    <bean id="jnjLatamCommonService" class="com.jnj.facades.services.impl.JnjLatamCommonServiceImpl"/>
+
+    <alias name="jnjLatamVtexOrderFacade" alias="jnjLatamVtexOrderFacade"/>
+    <bean id="jnjLatamVtexOrderFacade" class="com.jnj.facades.vtex.order.impl.DefaultJnjLatamVtexOrderFacade">
+        <property name="cartService" ref="cartService"/>
+        <property name="sessionService" ref="sessionService"/>
+        <property name="jnjLatamVtexOrderService" ref="jnjLatamVtexOrderService"/>
+        <property name="jnJLatamCartFacade" ref="jnJLatamCartFacade"/>
+        <property name="jnjAddressService" ref="jnjAddressService"/>
+        <property name="defaultCartConverter" ref="defaultCartConverter"/>
+        <property name="b2bOrderService" ref="b2bOrderService"/>
+        <property name="jnjOrderConverter" ref="orderConverter"/>
+        <property name="jnjLatamCheckoutFacade" ref="jnjLatamCheckoutFacade"/>
+        <property name="userService" ref="userService"/>
+        <property name="modelService" ref="modelService"/>
+        <property name="jnjLAOrderService" ref="jnjLAOrderService"/>
+        <property name="orderHistoryConverter" ref="orderHistoryConverter"/>
+        <property name="jnjConfigService" ref="jnjConfigService"/>
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+    </bean>
+
+    <alias name="jnjLatamCustomOrderFieldsPopulator" alias="jnjLatamCustomOrderFieldsPopulator"/>
+    <bean id="jnjLatamCustomOrderFieldsPopulator" class="com.jnj.facades.vtex.order.populator.JnjLatamCustomOrderFieldsPopulator"/>
+
+    <bean parent="modifyPopulatorList">
+        <property name="list" ref="orderHistoryConverter"/>
+        <property name="add" ref="jnjLatamCustomOrderFieldsPopulator"/>
+    </bean>
+    
+     <bean parent="modifyPopulatorList">
+        <property name="list" ref="defaultCartConverter"/>
+        <property name="add" ref="jnjLatamCartCustomFieldPopulator"/>
+    </bean>
+
+    <alias name="jnjLatamCartCustomFieldPopulator" alias="jnjLatamCartCustomFieldPopulator"/>
+    <bean id="jnjLatamCartCustomFieldPopulator"
+          class="com.jnj.facades.order.converters.populator.JnjLatamCartCustomFieldPopulator"/>
+    
+    <bean parent="modifyPopulatorList">
+        <property name="list" ref="defaultOrderEntryConverter"/>
+        <property name="add" ref="jnjLatamScheduledLinesPopulator"/>
+    </bean>
+    
+     <alias name="jnjLatamScheduledLinesPopulator" alias="jnjLatamScheduledLinesPopulator"/>
+    <bean id="jnjLatamScheduledLinesPopulator"
+          class="com.jnj.facades.order.converters.populator.JnjLatamScheduledLinesPopulator"/>
+
+    <!-- workaround regarding a patch 32 issue and this needs to be removed after fix the issue in the upcoming patch upgrade -->
+    <alias name="defaultSAPOrderGenericPaymentInfoPopulator" alias="sapOrderGenericPaymentInfoPopulator"/>
+    <bean id="defaultSAPOrderGenericPaymentInfoPopulator"
+          class="de.hybris.platform.commercefacades.order.converters.populator.OrderGenericPaymentInfoPopulator" parent="baseOrderPopulator">
+        <constructor-arg name="genericPaymentInfoConverter" ref="sapGenericPaymentInfoConverter"/>
+    </bean>
+</beans>

@@ -1,0 +1,3 @@
+INSERT_UPDATE JnjConfig;id[unique=true]                            ;key                                        ;value                   ;description
+                       ;"order.confirmation.from.email"            ;"order.confirmation.from.email"            ;"no-reply@its.jnj.com"  ;"Service email account from which order confirmation emails are sent"
+                       ;"order.confirmation.from.email.displayname";"order.confirmation.from.email.displayname";"JJ Customer Connect"   ;"Order confirmation service email display name"

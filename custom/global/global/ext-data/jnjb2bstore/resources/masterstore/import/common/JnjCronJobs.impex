@@ -1,0 +1,267 @@
+#Service Layer Jobs For Feed
+INSERT_UPDATE ServicelayerJob;code[unique=true];springId[unique=true];active[default='true']
+;jnjGTUpdateDeliverySalesGtinJob;jnjGTUpdateDeliverySalesGtinJob;
+;jnjGTReadSurgeonDataJob;jnjGTReadSurgeonDataJob;
+;jnjGTProcessSurgeonIntDataJob;jnjGTProcessSurgeonIntDataJob;
+;jnjGTReadOrderStatusInboundJob;jnjGTReadOrderStatusInboundJob;
+;jnjGTProcesOrderStatusInboundJob;jnjGTProcesOrderStatusInboundJob;
+;jnjGTReadShipTrackingDataJob;jnjGTReadShipTrackingDataJob;
+;jnjGTProcessShipTrackingIntDataJob;jnjGTProcessShipTrackingIntDataJob;
+;jnjGTOrderShipEmailNotificationJob;jnjGTOrderShipEmailNotificationJob;
+;jnjGTCutNotificationEmailJob;jnjGTCutNotificationEmailJob;
+;jnjGTBackorderEmailNotificationJob;jnjGTBackorderEmailNotificationJob;
+;jnjGTQuoteOrderDeletionJob;jnjGTQuoteOrderDeletionJob;
+#####################################################################
+########File Purging Cron Job###############
+;jnjFilePurgeCronJob;jnjFilePurgeCronJob;
+
+
+#Cron Jobs For Feed    
+INSERT_UPDATE CronJob;code[unique=true];job(code);singleExecutable;sessionLanguage(isocode);active[default='true']
+;jnjGTCutNotificationEmailJob;jnjGTCutNotificationEmailJob;false;en;
+;jnjGTCustomerAlignment;jnjGTCustomerAlignment;false;en;
+;jnjGTSalesAlignmentRemovalJob;jnjGTSalesAlignmentRemovalJob;false;en;
+##;jnjGTGenerateResetPasswordDetailsJob;jnjGTGenerateResetPasswordDetailsJob;false;en
+;jnjGTCreateOrderCronJob;jnjGTCreateOrderJob;false;en;
+;jnjGTEarlyZipCodeCronJob;jnjGTEarlyZipCodeJob;false;en;
+;JnjGTDisableUserloginJob;JnjGTDisableUserloginJob;false;en;
+;jnjGTAuditTrailCleanupDataJob;jnjGTAuditTrailCleanupDataJob;false;en;
+;jnjGTUpdateDeliverySalesGtinJob;jnjGTUpdateDeliverySalesGtinJob;false;en;
+;jnjGTReadSurgeonDataJob;jnjGTReadSurgeonDataJob;false;en;
+;jnjGTProcessSurgeonIntDataJob;jnjGTProcessSurgeonIntDataJob;false;en;
+;jnjGTReadOrderStatusInboundJob;jnjGTReadOrderStatusInboundJob;false;en;
+;jnjGTProcesOrderStatusInboundJob;jnjGTProcesOrderStatusInboundJob;false;en;
+;jnjGTReadShipTrackingDataJob;jnjGTReadShipTrackingDataJob;false;en;
+;jnjGTProcessShipTrackingIntDataJob;jnjGTProcessShipTrackingIntDataJob;false;en;
+;jnjAmazonRetryAndOrderCatalogUploadCronJob;jnjAmazonRetryAndOrderCatalogUploadCronJob;false;en;
+;jnjAmazonDeleteAmazonExpiredFilesCronJob;jnjAmazonDeleteAmazonExpiredFilesCronJob;false;en;
+;jnjZonzaFetchImageDataCronJob;jnjZonzaFetchImageDataCronJob;false;en;
+;jnjPCMIncompleteProductDetailsAlertCronJob;jnjPCMIncompleteProductDetailsAlertCronJob;false;en;
+;jnjGTCaPcmProdExclCronJob;jnjGTCaPcmProdExclJob;false;en;
+;jnjGTUsPcmProdExclCronJob;jnjGTUsPcmProdExclJob;false;en;
+;jnjPCMNewProductWorkflowEmailCronJob;jnjPCMNewProductWorkflowEmailCronJob;false;en;
+;jnjZonzaConvertImagesCronjob;jnjZonzaConvertImagesCronjob;false;en;
+;jnjPcmProductHTMLAttributesConversionJob;jnjPcmProductHTMLAttributesConversionJob;false;en;
+;jnjGTOrderShipEmailNotificationJob;jnjGTOrderShipEmailNotificationJob;false;en;
+;jnjGTBackorderEmailNotificationJob;jnjGTBackorderEmailNotificationJob;false;en;
+;jnjPCMCompletenessIndicatorPopulationCronJob;jnjPCMCompletenessIndicatorPopulationCronJob;false;en;
+####Cronjob for For Purging non required file##########
+;JnjFilePurgeCronJob;jnjFilePurgeCronJob;false;en;
+####Cronjob for For Registration of New PCM users##########
+;jnjPCMRequestAccountPasswordResetCronJob;jnjPCMRequestAccountPasswordResetCronJob;false;en;
+####Cronjob For hiding the inactive categories on category page##########
+;jnjPCMHideCategoryCronJob;jnjPCMHideCategoryCronJob;false;en;
+;jnjGTMDDExportCatalogJob;jnjGTMDDExportCatalogJob;false;en;
+;jnjGTQuoteOrderDeletionCronJob;jnjGTQuoteOrderDeletionJob;false;en;
+
+############ CRON JOB FOR FEED STG-INT CLEANUP ############
+INSERT_UPDATE JnjInterfaceStageCleanupCronJob;code[unique=true];job(code);active[default='true'];sessionLanguage(isocode);PROCESSED_IGNORED_RETENTION;PROCESSED_LOADING_RETENTION;USE_PREPARED_STATEMENTS
+;jnjGTFeedStageCleanupCronJob;jnjGTFeedStageCleanupJob;true;en;24;168;false
+
+INSERT_UPDATE JnjInterfaceIntermediateCleanupCronJob;code[unique=true];job(code);active[default='true'];sessionLanguage(isocode);RETENTION
+;jnjGTFeedIntermediateCleanupCronJob;jnjGTFeedIntermediateCleanupJob;true;en;168
+
+
+
+
+##################Removing Redundant synchronizeOrdersDataUploadJob########### 
+REMOVE CronJob; code[unique=true];job(code);singleExecutable;sessionLanguage(isocode)
+
+##########################################################################
+
+
+
+
+
+INSERT_UPDATE CronJob;code[unique=true];job(code);singleExecutable;sessionLanguage(isocode);active[default='true']
+
+
+
+INSERT_UPDATE Trigger;cronJob(code)[unique=true];second;minute;hour;day;month;year;relative;active;maxAcceptableDelay
+
+
+#Triggers for CronJobs
+INSERT_UPDATE Trigger;cronJob(code)[unique=true];second;minute;hour;day;month;year;relative;active;maxAcceptableDelay
+
+
+
+
+############ CRON JOBS FOR FEED STG-INT ############
+INSERT_UPDATE ServicelayerJob;code[unique=true];springId;active[default='true']
+;jnjGTCustomerAlignment;jnjGTCustomerAlignment;true
+;jnjGTFeedJob;jnjGTFeedJob;true
+;jnjGTSalesAlignmentRemovalJob;jnjGTSalesAlignmentRemovalJob;true
+;jnjGTGenerateResetPasswordDetailsJob;jnjGTGenerateResetPasswordDetailsJob;true
+;jnjGTCreateOrderJob;jnjGTCreateOrderJob;true
+;jnjGTEarlyZipCodeJob;jnjGTEarlyZipCodeJob;true
+;jnjGTAuditTrailCleanupDataJob;jnjGTAuditTrailCleanupDataJob;true
+;jnjGTCaPcmProdExclJob;jnjGTCaPcmProdExclJob;true
+;jnjGTUsPcmProdExclJob;jnjGTUsPcmProdExclJob;true
+;JnjGTDisableUserloginJob;JnjGTDisableUserloginJob;true
+
+###start CR 119####
+INSERT_UPDATE JnjGTUserResetPwdCronJob;code[unique=true];job(code);singleExecutable;sessionLanguage(isocode);active[default='true'];resetPwdJobAction(code)[default='RESET_PASSWORD_URL']
+;JnjGTGenerateResetJob;jnjGTGenerateResetPasswordDetailsJob;false;en;;
+###End CR 119#####
+
+#INSERT_UPDATE JnjInterfaceCronJob;code[unique=true];job(code);active[default='true'];sessionLanguage(isocode);impexFile;facadeBean;associatedStgTables;recordsLoadingStatus(code)[default='STAGE_TO_INTERMEDIATE']
+#Change header as "recordsLoadingStatus" was not supposed to change every time
+INSERT_UPDATE JnjInterfaceCronJob;code[unique=true];job(code);active[default='true'];sessionLanguage(isocode);impexFile;facadeBean;associatedStgTables
+;tempCronJob;jnjGTFeedJob;true;en;/jnjGTb2binboundservice/import/feed/sample.impex;tempImplementaion;
+;jnjGTB2BUnitCronJob;jnjGTFeedJob;true;en;/jnjGTb2binboundservice/import/feed/b2bUnitFeedImpexCronJob.impex;b2bUnitFacade;STG_CUSTOMER,STG_CUSTOMER_SORG,STG_PARTNER_FUNC,STG_AFFILIATION
+;jnjGTB2BUnitLocalCronJob;jnjGTFeedJob;true;en;/jnjGTb2binboundservice/import/feed/b2bUnitLocalFeedImpexCronJob.impex;b2bUnitLocalFacade;STG_CUSTOMER_LOCAL
+;jnjGTAffiliationCronJob;jnjGTFeedJob;true;en;/jnjGTb2binboundservice/import/feed/affiliationFeedImpexCronJob.impex;affiliationFacade;STG_AFFILIATION
+;jnjGTSalesRepAlignmentCronJob;jnjGTFeedJob;true;en;/jnjGTb2binboundservice/import/feed/salesRepAlignmentFeedImpexCronJob.impex;salesRepFacade;STG_ALGN_ORG_AFFLN_EXTR_FF,STG_ALGN_CUST_AFFLN_EXTR_FF,STG_ALGN_SREP_AFFLN_EXTR_FF,STG_ALGN_PROD_AFFLN_EXTR_FF
+;jnjGTTerritoryCronJob;jnjGTFeedJob;true;en;/jnjGTb2binboundservice/import/feed/territoryFeedImpexCronJob.impex;territoryFacade;STG_TERRITORY
+;jnjGTProductListPriceCronJob;jnjGTFeedJob;true;en;/jnjGTb2binboundservice/import/feed/jnjGTProductListPriceFeed.impex;jnjGTIntProductListPriceFacade;STG_LISTPRICE_LOCLM,STG_LISTPRICE_LOCLC,STG_LISTPRICE_AMT_LOCLM,STG_LISTPRICE_AMT_LOCLC
+;jnjGTProductMasterFeedCronJob;jnjGTFeedJob;true;en;/jnjGTb2binboundservice/import/feed/jnjGTProductMasterFeed.impex;jnjGTIntProductMasterFacade;STG_PRODUCT,STG_PRODUCT_KIT,STG_PRODUCT_REG,STG_PRODUCT_DESC,STG_PRODUCT_SORG,STG_PRODUCT_PLNT,STG_PRODUCT_UNIT,STG_PRODUCT_UNIT_LOCL
+;jnjGTProductLocalFeedCronJob;jnjGTFeedJob;true;en;/jnjGTb2binboundservice/import/feed/jnjGTProductLocalFeed.impex;jnjGTIntProductLocalFacade;STG_PRODUCT_LOCL,STG_PRODUCT_LOCL_PLNT
+;jnjGTCpsiaFeedCronJob;jnjGTFeedJob;true;en;/jnjGTb2binboundservice/import/feed/jnjGTProductCpsiaFeed.impex;jnjGTIntCpsiaFacade;STG_CPSIA
+;jnjGTProductLotMasterFeedCronJob;jnjGTFeedJob;true;en;/jnjGTb2binboundservice/import/feed/jnjGTProductLotMasterFeed.impex;jnjGTIntProductLotMasterFacade;STG_LOT_MASTER
+;jnjGTUserProfileFeedCronJob;jnjGTFeedJob;true;en;/jnjGTb2binboundservice/import/feed/jnjGTUserProfileFeed.impex;jnjGTIntUserProfileFacade;STG_USER,STG_USER_PERMISSIONS,STG_USER_CUSTOMERS,STG_USER_ORGS
+;jnjGTOrderTemplateFeedCronJob;jnjGTFeedJob;true;en;/jnjGTb2binboundservice/import/feed/jnjGTOrderTemplateFeed.impex;jnjGTIntOrderTemplateFacade;STG_ORDER_TEMPLATE,STG_ORDER_LINES
+;jnjGTCreditCardFeedCronJob;jnjGTFeedJob;true;en;/jnjGTb2binboundservice/import/feed/jnjGTCreditCardFeed.impex;jnjGTIntCreditCardFacade;STG_CREDIT_CARD_TOKEN
+;jnjGTProductExclusionCronJob;jnjGTFeedJob;true;en;/jnjGTb2binboundservice/import/feed/productExclusionFeedImpexCronJob.impex;productExclusionFacade;STG_PRODUCT_EXCLUSIONS
+;jnjGTInvoiceFeedCronJob;jnjGTFeedJob;true;en;/jnjGTb2binboundservice/import/feed/jnjGTInvoiceFeed.impex;jnjGTIntInvoiceFacade;STG_INVOICE_HEADER,STG_INVOICE_HEADER_PRICE,STG_INVOICE_LINE,STG_INVOICE_LINE_LOT
+;jnjGTOrderSyncCronJob;jnjGTFeedJob;true;en;/jnjGTb2binboundservice/import/feed/orderSyncFeedImpexCronJob.impex;orderFacade;STG_ORDER_HEADER,STG_ORDER_HEADER_NOTE,STG_ORDER_LINE,STG_ORDER_LINE_HOLD_LOCL,STG_ORDER_LINE_PRICE_LOCL,STG_ORDER_LINE_SCH,STG_ORDER_LINE_TEXT,STG_ORDER_LINE_PART
+;jnjGTShipmentCronJob;jnjGTFeedJob;true;en;/jnjGTb2binboundservice/import/feed/shipmentFeedImpexCronJob.impex;shipmentFacade;STG_SHIP_TRACK_HEADER_LOCL,STG_SHIP_TRACK_LINE_LOCL,STG_SHIP_TRACK_HEADER,STG_SHIP_TRACK_LINE
+;jnjGTShipmentConsumerCronJob;jnjGTFeedJob;true;en;/jnjGTb2binboundservice/import/feed/shipmentFeedImpexCronJob.impex;shipmentFacade;STG_SHIP_TRACK_HEADER_LOCL,STG_SHIP_TRACK_LINE_LOCL,STG_SHIP_TRACK_HEADER,STG_SHIP_TRACK_LINE;INTERMEDIATE_TO_HYBRIS
+;jnjGTProductExclusionStgToIntCronJob;jnjGTFeedJob;true;en;/jnjGTb2binboundservice/import/feed/productExclusionFeedImpexCronJob.impex;productExclusionFacade;STG_PRODUCT_EXCLUSIONS
+;jnjGTProductExclusionIntToHybrisCronJob;jnjGTFeedJob;true;en;/jnjGTb2binboundservice/import/feed/productExclusionFeedImpexCronJob.impex;productExclusionFacade;STG_PRODUCT_EXCLUSIONS;INTERMEDIATE_TO_HYBRIS
+;jnjGTShipmentConsumerCronJob;jnjGTFeedJob;true;en;/jnjGTb2binboundservice/import/feed/shipmentFeedImpexCronJob.impex;shipmentFacade;STG_SHIP_TRACK_HEADER_LOCL,STG_SHIP_TRACK_LINE_LOCL,STG_SHIP_TRACK_HEADER,STG_SHIP_TRACK_LINE;INTERMEDIATE_TO_HYBRIS
+
+############ CRON JOB FOR Full Product Export For PCM############
+INSERT_UPDATE JnjPCMFullCatalogUploadCronJob;code[unique=true];job(code);singleExecutable;sessionLanguage(isocode);active[default='true'];processedCountries(code)[default='ALL']
+;jnjPCMAmazonRetryAndFullUploadCronJob;jnjAmazonRetryAndFullUploadCronJob;false;en;;
+
+#Composite Jobs
+INSERT_UPDATE CompositeCronJob;code[unique=true];job(code);sessionLanguage(isocode);active[default='true'];nodeId
+;jnjGTProductCompositeJob;compositeJobPerformable;en;;0
+;jnjGTConsProductSyncCompositeJob;compositeJobPerformable;en;;0
+;jnjGTFullMddProductSyncCompositeJob;compositeJobPerformable;en;;0
+;jnjGTB2BUnitCompositeJob;compositeJobPerformable;en;;0
+;jnjGTConsOrderLoadCompositeJob;compositeJobPerformable;en;;0
+;jnjGTOrderFeedCompositeJob;compositeJobPerformable;en;;0
+;jnjGTOrderFeedConsCompositeJob;compositeJobPerformable;en;;0
+;jnjGTDiffMddProductSyncCompositeJob;compositeJobPerformable;en;;0
+
+
+#Composite Jobs Entries For Common Data Setup
+INSERT_UPDATE CompositeEntry;code[unique=true];compositeCronJob(code);compositeCronJobPOS[unique=true];executableCronJob(code)[unique=true];triggerableJob(code)[unique=true]
+####Start of Composite Job Entries For JnjInBoundCompositeJob##############################
+;jnjGTProductMasterFeedCronJob;jnjGTProductCompositeJob;0;jnjGTProductMasterFeedCronJob;jnjGTFeedJob;
+;jnjGTProductLocalFeedCronJob;jnjGTProductCompositeJob;1;jnjGTProductLocalFeedCronJob;jnjGTFeedJob
+;jnjGTProductListPriceCronJob;jnjGTProductCompositeJob;2;jnjGTProductListPriceCronJob;jnjGTFeedJob
+;jnjGTProductLotMasterFeedCronJob;jnjGTProductCompositeJob;3;jnjGTProductLotMasterFeedCronJob;jnjGTFeedJob
+
+;jnjGTSyncCONSProductCronJob;jnjGTConsProductSyncCompositeJob;0;SyncCONSproductStaged->CONSproductOnline;jnjGTFeedJob
+;JnjGTConsFullIndexCronJob;jnjGTConsProductSyncCompositeJob;1;JnjGTConsFullIndexCronJob;jnjGTFeedJob
+
+;jnjGTSyncMDDProductCronJob;jnjGTFullMddProductSyncCompositeJob;0;Sync-MDDproductStaged->MDDproductOnline;jnjGTFeedJob
+;JnjGTMddFullIndexCronJob;jnjGTFullMddProductSyncCompositeJob;1;JnjGTMddFullIndexCronJob;jnjGTFeedJob
+
+;jnjGTSyncMDDProductCronJob;jnjGTDiffMddProductSyncCompositeJob;0;Sync-MDDproductStaged->MDDproductOnline;jnjGTFeedJob
+;JnjGTMddUpdateIndexCronJob;jnjGTDiffMddProductSyncCompositeJob;1;JnjGTMddUpdateIndexCronJob;jnjGTFeedJob
+
+;jnjGTB2BUnitCronJob;jnjGTB2BUnitCompositeJob;0;jnjGTB2BUnitCronJob;jnjGTFeedJob
+;jnjGTB2BUnitLocalCronJob;jnjGTB2BUnitCompositeJob;1;jnjGTB2BUnitLocalCronJob;jnjGTFeedJob
+;jnjGTSalesRepAlignmentCronJob;jnjGTB2BUnitCompositeJob;2;jnjGTSalesRepAlignmentCronJob;jnjGTFeedJob
+
+;jnjGTReadOrderStatusInboundJob;jnjGTConsOrderLoadCompositeJob;0;jnjGTReadOrderStatusInboundJob;jnjGTFeedJob
+;jnjGTReadShipTrackingDataJob;jnjGTConsOrderLoadCompositeJob;1;jnjGTReadShipTrackingDataJob;jnjGTFeedJob
+
+;jnjGTOrderSyncCronJob;jnjGTOrderFeedCompositeJob;0;jnjGTOrderSyncCronJob;jnjGTFeedJob
+;jnjGTShipmentCronJob;jnjGTOrderFeedCompositeJob;1;jnjGTShipmentCronJob;jnjGTFeedJob
+
+;jnjGTOrderSyncCronJob;jnjGTOrderFeedConsCompositeJob;0;jnjGTOrderSyncCronJob;jnjGTFeedJob
+;jnjGTShipmentConsumerCronJob;jnjGTOrderFeedConsCompositeJob;1;jnjGTShipmentConsumerCronJob;jnjGTFeedJob
+;jnjGTShipmentCronJob;jnjGTOrderFeedConsCompositeJob;2;jnjGTShipmentCronJob;jnjGTFeedJob
+
+#Triggers for CronJobs
+INSERT_UPDATE Trigger;cronJob(code)[unique=true];second;minute;hour;day;month;year;relative;active;maxAcceptableDelay
+#;jnjGTSalesAlignmentRemovalJob;0;0;0;-1;-1;-1;false;true;-1
+#;jnjGTAuditTrailCleanupDataJob;0;0;0;-1;-1;-1;false;true;-1
+#;jnjGTCustomerAlignment;0;0;0;-1;-1;-1;false;true;-1
+#;jnjGTDisableUserloginJob;0;0;0;-1;-1;-1;false;true;-1
+#;jnjGTQuoteOrderDeletionJob;0;0;0;-1;-1;-1;false;true;-1
+
+
+INSERT_UPDATE Trigger;cronjob(code)[unique=true];cronExpression
+# Run the JnjFilePurgeCronJob at 05:00 on Last(L) Saturday( * 7 i.e. 7th day) of every month(?)
+#;JnjFilePurgeCronJob;0 0 5 ? * 7L
+
+################################################################
+#######SolrIndexerCronJob#######################################
+#################################################################
+INSERT_UPDATE SolrIndexerCronJob;code[unique=true];job(code);facetSearchConfig(GTme)[unique=true];indexerOperation(code);sessionLanguage(isocode);active[default='true']
+;JnjGTPCMCAFullIndexCronJob;solrIndexerJob;jnjGTPCMCAIndex;full;en;
+;JnjGTPCMCAUpdateIndexCronJob;solrIndexerJob;jnjGTPCMCAIndex;update;en;
+;JnjGTPCMCADeleteIndexCronJob;solrIndexerJob;jnjGTPCMCAIndex;delete;en;
+;JnjGTPCMUSFullIndexCronJob;solrIndexerJob;jnjGTPCMUSIndex;full;en;
+;JnjGTPCMUSUpdateIndexCronJob;solrIndexerJob;jnjGTPCMUSIndex;update;en;
+;JnjGTPCMUSDeleteIndexCronJob;solrIndexerJob;jnjGTPCMUSIndex;delete;en;
+;JnjGTMddFullIndexCronJob;solrIndexerJob;jnjGTMddIndex;full;en;
+;JnjGTMddUpdateIndexCronJob;solrIndexerJob;jnjGTMddIndex;update;en;
+;JnjGTMddDeleteIndexCronJob;solrIndexerJob;jnjGTMddIndex;delete;en;
+;JnjGTConsFullIndexCronJob;solrIndexerJob;jnjGTConsIndex;full;en;
+;JnjGTConsUpdateIndexCronJob;solrIndexerJob;jnjGTConsIndex;update;en;
+;JnjGTConsDeleteIndexCronJob;solrIndexerJob;jnjGTConsIndex;delete;en;
+###############################################################
+
+
+
+############# staging feed ############
+INSERT_UPDATE JnjIntegrationCronJob;code[unique=true];job(code);jobCode;cronJobQuery;targetModel;sessionLanguage(isocode);active[default='true']
+;jnjIntegrationJobOrder;jnjGTIntegrationJobPerformable;orderJob;"Select ORDER_NUM,CONTRACT_REF,ORDER_TYPE,PO_NUM,ORDER_NUM as HYBRIS_ORDER_NUM,SOLD_TO_CUST_NUM,SHIP_TO_CUST_NUM,PAY_FROM_CUST_NUM,NET_VAL_ORD_TOT, TO_NVARCHAR(NOW(), 'yyyy-MM-dd') as ORDER_CREATE_DT,FORBIDDEN_SALES,COMPLETE_DELV,SALES_ORG,DIST_CHANNEL,DIVISION,HEA_DATA_CM_DT,DELIVERY_BLOCK,ORDER_CHANNEL,0 as discountsIncludeDeliveryCost,ALT_CHANNEL_ORDER_NUM,SHIP_TO_CUST_NAME,SURGEON_NAME,0 as discountsIncludePaymentCost,0 as net, TO_NVARCHAR(cast(NOW() as date),'yyyy-MM-dd') as creationDate,'dummy@sapuser.com' as dummyuser,CASE WHEN CURRENCY is null then 'EUR' ELSE CURRENCY END as CURRENCY,TO_NVARCHAR(NOW(), 'yyyy-MM-dd') as REQ_DELV_DT ,'A' as status,OVERALL_STATUS,REJECTION_STATUS,CREDIT_STATUS,DELIVERY_STATUS,INVOICE_STATUS,'0' as totalPrice,'0' as totalTax,'0' as totalTaxValuesInternal,'0' as totalFreightFees,'0' as totalHandlingFee,'0' as totalDropShipFee,'0' as totalminimumOrderFee,'0' as totalInsurance,'00000' as code,'unit' as unit,SEQUENCEID AS STG_ORDER_HEADER_SEQ from STG_ORDER_HEADER  where MIGRATIONSTATUS =0";"Order";en;true;
+;jnjIntegrationOrderEntryJob;jnjGTIntegrationJobPerformable;OrderEntryJob;"select ORDER_NUM,ORD_LINE_NUM,ITEM_CATEGORY,HIGH_LVL_ITEM_NUM,ORDERED_MATERIAL_NUM,ORDERED_MATERIAL_NUM as MATERIAL_NUM,SALES_UOM,UNIT_PRICE,ORDERED_UOM,ORDERED_QTY,NET_VALUE,TAX_AMT,FREIGHT_FEES,EXPDITED_FEES,DISCOUNTS_PROMO,GROSS_PRICE,IND_CUST_ACCOUNT,OVERALL_STATUS,DELV_STATUS,RSN_FOR_REJ,INVOICE_STATUS,LOCAL_TAXES,INTL_FREIGHT,INSURANCE,HANDLING_FEE,DROP_SHIP_FEE,MIN_ORDER_FEE,GTS_HOLD,CURRENCY,SRC_SYSTM,BUSINESS_SECTOR,PLANT,MATERIAL_ENTERED,BATCH_NUM,PRODUCT_DIVISION,SUB_TOTAL_1,SUB_TOTAL_2,SUB_TOTAL_3,SUB_TOTAL_4,SUB_TOTAL_5,SUB_TOTAL_6,ROUTE,RETURN_INV_NUM,GTIN,GTIN_ENTERED,LAST_UPDATED_DATE,SEQUENCEID AS STG_ORDER_LINE_SEQ from STG_ORDER_LINE  where MIGRATIONSTATUS =0";"OrderEntry";en;true;
+;jnjIntegrationJobCustomer;jnjGTIntegrationJobPerformable;customerJob;"SELECT CUSTOMER_NUM,CLASS_OF_TRADE_CD,CLASS_OF_TRADE_NAME,LOCATION_NUM,name_1||' '||name_2 as NAME_1NoLocale,name_1||' '||name_2||'|'||'EN' as NAME_1,SOURCE_SYS_ID , SHORT_NAME_1||' '||SHORT_NAME_2 as SHORT_NAME_1, case when SOURCE_SYS_ID like 'M%' then 'MDD' else 'CONSUMER' end as SOURCE_SYSTEM,ACTIVE_IND as ACTIVEIND , case when source_sys_id in ('RPNCLNT120','RQNCLNT120') and soldto_ind=1 then Sequenceid else null end as STG_CUSTOMER_SEQUENCEID from stg_customer CUST WHERE MigrationStatus=0 and ((source_sys_id in ('RPNCLNT120','RQNCLNT120') and soldto_ind=1) or (source_sys_id in ('MP2CLNT100'))) ORDER BY REC_TIMESTAMP
+";"JNJB2BUnit";en;true;
+;jnjIntegrationJobAddress;jnjGTIntegrationJobPerformable;addressJob;"Select * from (select partner.customer_num as JNJADDRESS_ID, partner.customer_num AS CUSTOMER_NUM_FK, ACTIVE_IND,  ADDRESS_LINE_1, ADDRESS_LINE_2, ADDRESS_LINE_3, ADDRESS_LINE_4 , CITY, COALESCE(COUNTRY_NAME,'United States')  as COUNTRY_NAME, COUNTY, EMAIL, FIRST_NAME, GLBL_LOC_NUM, LAST_NAME, MID_NAME, PO_BOX_NUM, PO_BOX_POSTAL_CD, POSTAL_CODE, POSTAL_EXT_CD, REGION_STATE_CD,  REGION_STATE_NAME, MAP(partner_func_cd,'WE','1','0') as shippingAddress, MAP(partner_func_cd,'RE','1','0') as billingAddress, MAP(partner_func_cd,'RG','1','0') as payFromAddress, shipto_ind, BILLTO_IND, PAYER_IND, PARTNER.SEQUENCEID AS STG_PARTNER_FUNC_SEQUENCEID, CUST.SEQUENCEID AS STG_CUSTOMER_SEQUENCEID, partner.rec_timestamp from stg_customer cust join stg_partner_func partner on cust.customer_num=partner.customer_num and cust.REC_TIMESTAMP=partner.REC_TIMESTAMP and cust.soldto_ind=1 and cust.migrationstatus=0 and partner.migrationstatus=0 UNION select customer_num as JNJADDRESS_ID, CUSTOMER_NUM, ACTIVE_IND, ADDRESS_LINE_1, ADDRESS_LINE_2, ADDRESS_LINE_3, ADDRESS_LINE_4 , CITY, COALESCE(COUNTRY_NAME,'United States') as COUNTRY_NAME, COUNTY, EMAIL, FIRST_NAME, GLBL_LOC_NUM, LAST_NAME, MID_NAME, PO_BOX_NUM, PO_BOX_POSTAL_CD, POSTAL_CODE, POSTAL_EXT_CD, REGION_STATE_CD, REGION_STATE_NAME, null as shippingAddress, null as billingAddress, null as payFromAddress, shipto_ind, BILLTO_IND, PAYER_IND, NULL AS STG_PARTNER_FUNC_SEQUENCEID, CUST.SEQUENCEID AS STG_CUSTOMER_SEQUENCEID ,REC_TIMESTAMP from stg_customer CUST where shipto_ind = '1' and migrationstatus=0 UNION Select customer_num as JNJADDRESS_ID, CUSTOMER_NUM, ACTIVE_IND, ADDRESS_LINE_1, ADDRESS_LINE_2, ADDRESS_LINE_3, ADDRESS_LINE_4 , CITY, COALESCE(COUNTRY_NAME,'United States') as COUNTRY_NAME, COUNTY, EMAIL, FIRST_NAME, GLBL_LOC_NUM, LAST_NAME, MID_NAME, PO_BOX_NUM, PO_BOX_POSTAL_CD, POSTAL_CODE, POSTAL_EXT_CD, REGION_STATE_CD, REGION_STATE_NAME, null as shippingAddress, null as billingAddress, null as payFromAddress, shipto_ind, BILLTO_IND, PAYER_IND, null AS STG_PARTNER_FUNC_SEQUENCEID, CUST.SEQUENCEID AS STG_CUSTOMER_SEQUENCEID, REC_TIMESTAMP from stg_customer CUST where BILLTO_IND = '1' and migrationstatus=0 Union Select customer_num as JNJADDRESS_ID, CUSTOMER_NUM, ACTIVE_IND, ADDRESS_LINE_1, ADDRESS_LINE_2, ADDRESS_LINE_3, ADDRESS_LINE_4 , CITY, COALESCE(COUNTRY_NAME,'United States') as COUNTRY_NAME, COUNTY, EMAIL, FIRST_NAME, GLBL_LOC_NUM, LAST_NAME, MID_NAME, PO_BOX_NUM, PO_BOX_POSTAL_CD, POSTAL_CODE, POSTAL_EXT_CD, REGION_STATE_CD, REGION_STATE_NAME, null as shippingAddress, null as billingAddress, null as payFromAddress, shipto_ind, BILLTO_IND, PAYER_IND, NULL AS STG_PARTNER_FUNC_SEQUENCEID, CUST.SEQUENCEID AS STG_CUSTOMER_SEQUENCEID ,REC_TIMESTAMP from stg_customer CUST where PAYER_IND = '1' and migrationstatus=0 ) order by rec_timestamp asc";"Address";en;true;
+;jnjIntegrationJobMDDCustomerSalesOrg;jnjGTIntegrationJobPerformable;mddcustomerSalesOrgJob;"select local.*,cust.class_of_trade_cd as USER_PRICE_GROUP,local.sequenceid as STG_CUSTOMER_LOCAL_SEQUENCEID from stg_customer_local local, stg_customer cust where cust.customer_num=local.customer_num AND local.MIGRATIONSTATUS='0'";"JnjGTSalesOrgCustomer";en;true;
+;jnjIntegrationJobConsumerCustomerSalesOrg;jnjGTIntegrationJobPerformable;consumercustomerSalesOrgJob;"select sorg.*, sorg.sequenceid as STG_CUTOMER_SORG_SEQUENCEID,case when price_list is not null and price_list!='03' then price_list else (case when customer_group is not null then '03'||'|'||customer_group else '03' end) end as USER_PRICE_GROUP from stg_customer_sorg sorg where  exists  (select 1 from stg_customer cust where cust.customer_num= sorg.customer_num ) and migrationstatus=0";"JnjGTSalesOrgCustomer";en;true;
+;jnjIntegrationJobInvoice;jnjGTIntegrationJobPerformable;invoiceJob;"SELECT BUSINESS_SECTOR,SOURCE_SYS_ID,INVOICE_NUM,SALES_ORG,DIST_CHANNEL,DIVISION,BILLING_TYPE,
+CURRENCY,NET_VALUE,BILLING_DT,PAYER_CUST_NUM,SOLD_TO_CUST_NUM,PO_NUM,TAX_AMT,SHIP_TO_CUST_NUM,SHIP_TO_CUST_NUM as SHIP_TO_ADDRESS_CODE,BILL_TO_CUST_NUM,SHIP_TO_NAME1,SHIP_TO_NAME2,SHIP_TO_NAME3,
+SHIP_TO_NAME4,SHIP_TO_STREET1,SHIP_TO_STREET2,SHIP_TO_STREET3,SHIP_TO_CITY,SHIP_TO_STATE,SHIP_TO_POSTAL_CD,SHIP_TO_COUNTRY,SHIP_TO_PO_NUM,
+PAYER_ACCT_GLN,SOLD_TO_ACCT_GLN,BILL_TO_ACCT_GLN,SHIP_TO_GLN from STG_INVOICE_HEADER";"JnjGTInvoice";en;true;
+;jnjIntegrationJobInvoicePrice;jnjGTIntegrationJobPerformable;invoicePriceJob;"SELECT VALUE,CONDITION_TYPE,INVOICE_NUM FROM STG_INVOICE_HEADER_PRICE";"JnjGTInvoicePrice";en;true;
+;jnjIntegrationJobInvoiceLine;jnjGTIntegrationJobPerformable;invoiceLineJob;"SELECT MATERIAL_NUM,LINE_ITEM_NUM,HIGH_LVL_ITEM_NUM,INVOICE_QTY,NET_TOTAL_VALUE,PRODUCT_DIVISION,PLANT,SUB_TOTAL_1,SUB_TOTAL_2,SUB_TOTAL_3,SUB_TOTAL_4,ORDER_NUM,SALES_UOM,DELIVERY_NUM,ORIGINAL_INVOICE_NUM,NET_VALUE_PER_UNIT,INVOICE_NUM,CARRIER_SCAC_CD,GTIN,ORDERED_GTIN,SHIP_DT,TAX_VALUE,SOURCE_SYS_ID FROM STG_INVOICE_LINE";"JnjGTInvoiceEntry";en;true;
+;jnjIntegrationJobInvoiceLineLot;jnjGTIntegrationJobPerformable;invoiceLineLotJob;"SELECT LOT_NUM,LOT_QTY,INVOICE_NUM,LINE_ITEM_NUM,EXPIRY_DATE,VENDOR_BATCH FROM STG_INVOICE_LINE_LOT";"JnjGTInvoiceEntryLot";en;true;
+# Composite Cron Job
+INSERT_UPDATE CompositeCronJob;code[unique=true];job(code);sessionLanguage(isocode)
+;createB2bUnitCompositeCronjob;compositeJobPerformable;en
+;createInvoiceCompositeCronjob;compositeJobPerformable;en
+;mddProductMasterFeedCompositeCronjob;compositeJobPerformable;en
+;mddOrderMasterFeedCompositeCronjob;compositeJobPerformable;en
+# Items to run from the Composite Cron Job
+INSERT_UPDATE CompositeEntry;code[unique=true];executableCronJob(code);triggerableJob(code);compositecronjob(code);compositecronjobpos
+;entry1;jnjIntegrationJobCustomer;jnjGTIntegrationJobPerformable;createB2bUnitCompositeCronjob;0
+;entry2;jnjIntegrationJobAddress;jnjGTIntegrationJobPerformable;createB2bUnitCompositeCronjob;1
+;entry3;jnjIntegrationJobMDDCustomerSalesOrg;jnjGTIntegrationJobPerformable;createB2bUnitCompositeCronjob;2
+;entry4;jnjIntegrationJobInvoice;jnjGTIntegrationJobPerformable;createInvoiceCompositeCronjob;3
+;entry5;jnjIntegrationJobInvoicePrice;jnjGTIntegrationJobPerformable;createInvoiceCompositeCronjob;4
+;entry6;jnjIntegrationJobInvoiceLine;jnjGTIntegrationJobPerformable;createInvoiceCompositeCronjob;5
+;entry7;jnjIntegrationJobInvoiceLineLot;jnjGTIntegrationJobPerformable;createInvoiceCompositeCronjob;6
+;entry8;jnjIntegrationJobOrder;jnjGTIntegrationJobPerformable;mddOrderMasterFeedCompositeCronjob;7
+;entry9;jnjIntegrationOrderEntryJob;jnjGTIntegrationJobPerformable;mddOrderMasterFeedCompositeCronjob;8
+;entry10;jnjIntegrationOrderDelvScheduleJob;jnjGTIntegrationJobPerformable;mddOrderMasterFeedCompositeCronjob;9
+INSERT_UPDATE JnjIntegrationCronJob;code[unique=true];job(code);jobCode;cronJobQuery;targetModel;sessionLanguage(isocode);active[default='true']
+;jnjIntegrationJobProduct;jnjGTIntegrationJobPerformable;productJob;"SELECT prod.MATERIAL_NUM,  prod.PROD_CD,  PROD_MOD_CD,  MATERIAL_STATUS,   MIN_PROD_GRP_CD,   ECATALOG_DESC,   ECATALOG_LONG_DESC,   GHEX_IND,      HAZMAT_CD,   FRANC_MJR_PRD_GRP_CD,   DIVISION,   LEGCY_PROD_CD,   JNJ_PORTAL_IND,   USA_OTC_READY_IND,   MFG_COMP_CD,   DEA_REG_IND,   FIRST_SHIP_EFFECT_DT,   PUBLISH_IND,   MATERIAL_BASE_NUM,   BASE_UNIT_CD,   FRANCHISE_CD,   FRANCHISE_NAME,   CATEGORY_CD,   CATEGORY_NAME,   BRAND_CD,   BRAND_NAME,   SUB_BRAND_CD, SUB_BRAND_NAME, FUNC_NAME_CD, FUNC_NAME_NAME, PROD.SOURCE_SYS_ID, TO_NVARCHAR(NEW_PROD_START_DT,'yyyy-MM-dd') as NEW_PROD_START_DT , TO_NVARCHAR(MATERIAL_STATUS_EFFECT_DT,'yyyy-MM-dd') as MATERIAL_STATUS_EFFECT_DT,  KIT_IND,   DIVISION_NAME,   GPC_CD,   NET_CONTENT,   'JnjGTVariantProduct' as productVariant,   'mddProductCatalog' as catalogId, COALESCE(descp.prod_desc, descp.PROD_DESC||'|'||descp.PROD_DESC_LANG_CD,null)as description,  'APPROVED' as approvalStatus,   'F-'||SALES_ORG_COMP_CD as firstlevelCategorycd,  'D-'||SALES_ORG_DIVISION as secondlevelCategorycd,  REG.Region_cd  from STG_PRODUCT prod join STG_PRODUCT_DESC descp on prod.material_num=descp.material_num and prod.rec_timestamp=descp.rec_timestamp join STG_PRODUCT_REG REG on REG.MATERIAL_NUM=PROD.MATERIAL_NUM and prod.rec_timestamp=reg.rec_timestamp AND prod.BUSINESS_SECTOR  ='MDD_NA_US' and prod.migrationstatus=0";"JNJPRODUCT";en;true;
+;jnjIntegrationJobKitComponent;jnjGTIntegrationJobPerformable;kitComponentJob;"select k.material_num||'|'||k.comp_material_num as primaryKey, k.material_num, comp_material_num, component_qty from stg_product_kit k join stg_product p on k.material_num=p.material_num";"JnJGTProductKit";en;true;
+;jnjIntegrationJobProductUnit;jnjGTIntegrationJobPerformable;productUnitJob;"select k.material_num||'|'||k.packgng_lvl_cd as primaryKey, k.material_num, packgng_lvl_lbl_uom_cd,  packgng_lvl_qty, lwr_packgng_lvl_lbl_uom_cd, lwr_packgng_lvl_qty from stg_product_unit_locl k join stg_product p on k.material_num=p.material_num";"JnJGTVariantProduct";en;true;
+;jnjIntegrationJobProductLevel1Categories;jnjGTIntegrationJobPerformable;productLevel1Categories;"select 'Categories' as rootCategory, 'F-'||SALES_ORG_COMP_CD as firstlevelCategorycd,SALES_ORG_COMP_CD as firstlevelCategoryName, 1 as displayProducts from stg_product_reg";"Category";en;true;
+;jnjIntegrationJobProductLevel2Categories;jnjGTIntegrationJobPerformable;productLevel2Categories;"select 'D-'||SALES_ORG_DIVISION as secondlevelCategorycd,'F-'||SALES_ORG_COMP_CD as rootCategory,SALES_ORG_DIVISION as secondlevelCategoryName, 1 as displayProducts, Material_num from stg_product_reg";"Category";en;true;
+;jnjIntegrationJobProductVariantPrices;jnjGTIntegrationJobPerformable;productVariantPrices;"select distinct amount.list_price_id, unit.material_num||'|'||unit.packgng_lvl_cd as variant ,listPrice.price_type_cd,listPrice.price_book, listPrice.division, amount.list_price_amt,amount.list_price_amt_curr_cd,amount.price_uom_cd, amount.price_uom_cd as Unit from  stg_product_unit_locl unit,stg_listprice_loclm listPrice,stg_listprice_amt_loclm amount where unit.material_num=listPrice.material_num and listPrice.list_price_id= amount.list_price_id and unit.packgng_lvl_lbl_uom_cd=amount.price_uom_cd";"JnjGTPriceRow";en;true;
+;jnjIntegrationJobProductplantDetails;jnjGTIntegrationJobPerformable;productPlantDetails;"select locl.material_num, INFIELD_IND, dchain_spec_status,plnt.batch_mgmt,plnt.plant_cd, PROD_SUB_TYPE,'MDD' as SOURCE_SYS_ID from stg_product_locl locl,stg_product_locl_plnt plnt  where locl.material_num=plnt.material_num and locl.migrationstatus=0 and locl.rec_timestamp=plnt.rec_timestamp ";"JnjProduct";en;true;
+;jnjIntegrationJobProductSalesOrg;jnjGTIntegrationJobPerformable;productSalesOrg;"select material_num||'|'||sales_org||'|'||dist_channel as primaryKey, material_num,sales_org,dist_channel from stg_product_sorg";"JnJGTProductSalesOrg";en;true;
+INSERT_UPDATE JnjIntegrationRSACronJob;code[unique=true];job(code);jobCode;cronJobQuery;targetModel;sessionLanguage(isocode);active[default='true']
+;jnjIntegrationRSAJobProduct;jnjGTIntegrationJobPerformable;productJob;"select * from stg_product where material_num=prod_cd and business_sector='MDD_NA_US'";"JNJPRODUCT";en;true;
+INSERT_UPDATE JnjIntegrationCronJob;code[unique=true];job(code);jobCode;cronJobQuery;targetModel;sessionLanguage(isocode);active[default='true']
+;jnjIntegrationJobTerritoryDivisionForOrgMdd;jnjGTIntegrationJobPerformable;territoryDivisionForOrgMddJob;"select org_id||'|'||SLS_ORG_DIV_CD as U_ID,SOURCE_SYS_ID ,ORG_ID,SLS_ORG_DIV_CD from STG_ALGN_ORG_AFFLN_EXTR_FF";"JnjGTTerritoryDivison";en;true;
+INSERT_UPDATE JnjIntegrationCronJob;code[unique=true];job(code);jobCode;cronJobQuery;targetModel;sessionLanguage(isocode);postProcessingClassName;postProcessingMethodName;keyToCollect;active[default='true']
+;jnjIntegrationOrderDelvScheduleJob;jnjGTIntegrationJobPerformable;OrderDelvScheduleJob;"select ORDER_NUM, ORD_LINE_NUM, SCHEDULE_LINE_NUM, CONFIRMED_QTY, SCHED_DELIVERY_DT,SRC_SYSTM,BUSINESS_SECTOR, SCHED_SHIP_DT, ROUNDED_QUANTITY,SEQUENCEID AS STG_ORDER_LINE_SCH_SEQ from STG_ORDER_LINE_SCH  where MIGRATIONSTATUS =0";"JnjDeliverySchedule";en;jnjDeliveryScheduleUtil;postProcessOrderPrice;ORDER_NUM;true;
+
+
+## Remove Order Line item cron job AAOL-4049 
+
+INSERT JnjOrderLineItemCancelEmailTiggerCronJob;code[unique=ture];job(code);singleExecutable;sessionLanguage(isocode);active[default='true'];lastOrderLineItemCancelTime
+;jnjGTCancelOrderLineItemEmailTiggerJob;jnjGTCancelOrderLineItemEmailTiggerJobPerformable;false;en;;

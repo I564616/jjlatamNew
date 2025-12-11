@@ -1,0 +1,1092 @@
+#
+# Import the Classification Catalogs
+#
+$productCatalog=mstrProductCatalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:'Staged']
+$categories=target(code, $catalogVersion)[unique=true]
+
+$classificationCatalogVersion=1.0
+$classificationCatalog=pcmMedicalClassCatalog
+$classificationCatalogName=PCM Medical Classifications Catalog
+$classCatalogVersion=catalogversion(catalog(id[default=$classificationCatalog]),version[default=$classificationCatalogVersion])[unique=true,default=$classificationCatalog:$classificationCatalogVersion]
+$classSystemVersion=systemVersion(catalog(id[default=$classificationCatalog]),version[default=$classificationCatalogVersion])[unique=true]
+$class=classificationClass(ClassificationClass.code,$classCatalogVersion)[unique=true]
+$supercategories=source(code, $classCatalogVersion)[unique=true]
+$attribute=classificationAttribute(code,$classSystemVersion)[unique=true]
+$lang=en
+
+############################################################# CLASSIFICATION STRUCTURE [START] ##############################################################
+
+# JNJ MDD Classification catalog
+INSERT_UPDATE ClassificationSystem;id[unique=true];name[lang=$lang]
+;$classificationCatalog ;$classificationCatalogName
+
+# JNJ MDD Classifications System Version
+INSERT_UPDATE ClassificationSystemVersion;catalog(id)[unique=true];version[unique=true];active;
+;$classificationCatalog;$classificationCatalogVersion;true
+
+# ImpEx for Importing Category Classifications into JNJ MDD STORE Store (English)
+
+# JNJ MDD Classifications Categories
+
+INSERT_UPDATE ClassificationClass;$classCatalogVersion;code[unique=true];name[lang=$lang]
+                                 ;;DPS_Trauma;DPS_Trauma;
+                                 ;;ETHICON;ETHICON;
+                                 ;;DPS_CMW;DPS_CMW;
+                                 ;;DPS_Knee;DPS_Knee;
+                                 ;;DPS_PowerTools;DPS_PowerTools;
+                                 ;;Mentor;Mentor;
+                                 ;;Cerenovus;Cerenovus;
+                                 ;;BWI;BWI;
+                                 ;;DPS_CMF;DPS_CMF;
+                                 ;;DPS_Hip;DPS_Hip;
+                                 ;;DPS_Mitek;DPS_Mitek;
+                                 ;;DPS_Shoulder;DPS_Shoulder;
+                                 ;;DPS_Spine;DPS_Spine;
+                                 ;;Vet;Vet;
+
+
+# Links ClassificationClasses to Categories
+INSERT_UPDATE CategoryCategoryRelation;$categories;$supercategories;;;;;;
+#;05107973;ETHICON;;;;;;
+#;05507835;DPS_PowerTools;;;;;;
+
+##############################################################CLASSIFICATION STRUCTURE [END]###############################################################
+
+##############################################################CLASSIFICATION ATTRIBUTES [START]#############################################################
+# JNJ MDD Classification Attributes
+INSERT_UPDATE ClassificationAttribute;$classSystemVersion;code[unique=true];name[lang=$lang];name[lang=es];name[lang=pt]
+#Common
+                                     ;;type;Type
+                                     ;;medicalDeviceClassification;EU MDR - Medical Device Classification
+                                     ;;nhseClass;NHS eClass
+                                     ;;descriptionOfEclassCode;Description of the Eclass code
+                                     ;;countryOfOrigin;Country of Origin
+                                     ;;manufacturerDeclaredReusabilityType;Manufacturer Declared Reusability Type
+                                     ;;containLatex;Contain Latex
+                                     ;;materialManufactor;Material Manufactor
+                                     ;;implantTechnology;Implant Technology
+                                     ;;ImplantSubTechnology;Implant Sub-Technology
+                                     ;;instrument;Instrument
+                                     ;;case;Case
+                                     ;;material;Material
+                                     ;;sterile;Sterile
+                                     ;;size;Size
+                                     ;;side;Side
+                                     ;;diameter;Diameter
+                                     ;;couplingType;Coupling Type
+                                     ;;width;Width
+                                     ;;height;Height
+                                     ;;length;Length
+                                     ;;totalLength;Total Length
+                                     ;;usableLength;Usable Length
+                                     ;;outerDiameter;Outer Diameter
+                                     ;;loopDiameter;Loop Diameter
+                                     ;;innerDiameter;Inner Diameter
+                                     ;;lcpClassification;LCP Classification
+                                     ;;screwRecess;Screw Recess
+                                     ;;couplingSystem;Coupling System
+                                     ;;cableType;Cable Type
+                                     ;;headDiameter;Head Diameter
+                                     ;;color;Colour
+                                     ;;threadLength;Thread Length
+                                     ;;systemComponents;System Components
+                                     ;;cuttingToolsCategory;Cutting Tools Category
+                                     ;;smallBoneCuttingToolsCategory;Small Bone Cutting Tools Category
+                                     ;;largeBoneSawBladesCategory;Large Bone Saw Blades Category
+                                     ;;highSpeedCuttingToolsCategory;High Speed Cutting Tools Category
+                                     ;;sawBlades;Saw Blades
+                                     ;;raspsAndBroaches;Rasps and Broaches
+                                     ;;burr;Burr
+                                     ;;drill;Drill
+                                     ;;attachmentCategory;Attachment Category
+                                     ;;radiolucentDriveCategory;Radiolucent Drive Category
+                                     ;;careMaintenance;Care & Maintenance
+                                     ;;batteryType;Battery Type
+                                     ;;powerTechnology;Power Technology
+                                     ;;voltage;Voltage
+                                     ;;headLength;Head Length
+                                     ;;shaftLength;Shaft Length
+                                     ;;cutThickness;Cut Thickness
+                                     ;;cutAngle;Cut Angle
+                                     ;;shortening;Shortening
+                                     ;;marking;Marking
+                                     ;;radius;Radius
+                                     ;;anteriorHeight;Anterior Height
+                                     ;;posteriorHeight;Posterior Height
+                                     ;;angle;Angle
+                                     ;;drillingDepth;Drilling Depth
+                                     ;;direction;Direction
+                                     ;;to;to
+                                     ;;bladeLength;Blade Length
+                                     ;;bladeWidth;Blade Width
+                                     ;;screwDiameter;Screw Diameter
+                                     ;;descriptionType;Description Type
+                                     ;;forProduct;For Product
+                                     ;;position;Position
+                                     ;;cranialCaudalHoleSpacing;Cranial-caudal Hole Spacing
+                                     ;;holePairs;Hole Pairs
+                                     ;;holeNumber;Hole Number
+                                     ;;holeSpacing;Hole Spacing
+                                     ;;setScrewNumber;Set Screw Number
+                                     ;;rodDiameter;Rod Diameter
+
+
+#DPS_TARUMA
+
+#ETHICON
+#ETHICON
+                                     ;;ethiconType;SUTURE_Type
+                                     ;;sutorColor;SUTURE_Suture Color
+                                     ;;structure;SUTURE_Structure
+                                     ;;usp;SUTURE_USP
+                                     ;;suturelength;SUTURE_Length
+                                     ;;eaches;SUTURE_Eaches
+                                     ;;suturesNumber;SUTURE_Sutures Number
+                                     ;;pledgets;SUTURE_Pledgets
+                                     ;;sterilizationMehod;Sterilization Method
+                                     ;;needleType;NEEDLE_Needle Type
+                                     ;;needleName;NEEDLE_Needle Name
+                                     ;;needleDiameter;NEEDLE_Needle Diameter (in mils)
+                                     ;;needleNumber;NEEDLE_Needle Number
+                                     ;;needleColour;NEEDLE_Needle Colour
+                                     ;;needleLength;NEEDLE_Needle Length
+                                     ;;needleCurvature;NEEDLE_Needle Curvature
+                                     ;;needleCoated;NEEDLE_Needle Coated
+                                     ;;needleAttachmentMethod;NEEDLE_Needle Attachement Method
+                                     ;;needleAlloy;NEEDLE_Needle Alloy
+                                     ;;multipass;NEEDLE_Multipass
+                                     ;;countryRelease;NEEDLE_Control Release
+                                     ;;haemoseal;NEEDLE_Haemoseal
+
+#DPS_CMW
+                                     ;;boneCementAntibiotic;BONE CEMENT Antibiotic
+                                     ;;boneCementNonAntibiotic;BONE CEMENT Non-antibiotic
+                                     ;;cementMixingSystems;CEMENT MIXING Systems
+                                     ;;cementAccesories;CEMENT Accesories
+
+#DPS_Knee
+                                     ;;overallAp;A/P & M/L DIMENSIONS_Overall A/P
+                                     ;;sulcasAp;A/P & M/L DIMENSIONS_Sulcus A/P
+                                     ;;overallMl;A/P & M/L DIMENSIONS_Overall M/L
+                                     ;;posteriorThickness;CONDYLE DIMENSIONS_Posterior Thickness
+                                     ;;distalThickness;CONDYLE DIMENSIONS_Distal Thickness
+                                     ;;condyleLength;CONDYLE DIMENSIONS_Condyle Length
+                                     ;;baseThickness;CONDYLE DIMENSIONS_Base Thickness
+                                     ;;stemStemLength;STEM_Stem Length
+                                     ;;stemDiameter;STEM_Stem Diameter
+                                     ;;lugLength;LUGS_Lug Length
+                                     ;;lugDiameter;LUGS_Lug Diameter
+                                     ;;innerBoxWidth;BOX DIMENSIONS_Inner Box Width
+                                     ;;outerBoxWidth;BOX DIMENSIONS_Outer Box Width
+                                     ;;boxVolume;BOX DIMENSIONS_Box Volume
+                                     ;;boxOpeningWidth;BOX DIMENSIONS_Box Opening Width
+                                     ;;boxOpeningLength;BOX DIMENSIONS_Box Opening Length
+                                     ;;boxEntranceHeight;BOX DIMENSIONS_Box Entrance Height
+                                     ;;spineHeight;SPINE DIMENSIONS_Spine Height
+                                     ;;liftoffHeight;SPINE DIMENSIONS_Liftoff Height
+                                     ;;anteriorJumpHeight;JUMP HEIGHT_Anterior Jump Height
+                                     ;;posteriorJumpHeight;JUMP HEIGHT_Posterior Jump Height
+                                     ;;anteriorPegMl;PEG DIMENSIONS_Anterior Peg M/L
+                                     ;;posteriorPegsAp;PEG DIMENSIONS_Posterior Pegs A/P
+                                     ;;posteriorPegsMl;PEG DIMENSIONS_Posterior Pegs M/L
+                                     ;;pegHeight;PEG DIMENSIONS_Peg Height
+                                     ;;pegDiameter;PEG DIMENSIONS_Peg Diameter
+
+#DPS_Power Tools
+
+#Mentor
+                                     ;;volume;Volume
+                                     ;;projection;Projection
+                                     ;;lowerPoleArcAB;Lower Pole Arc A-B
+                                     ;;gelVolume;Gel Volume
+                                     ;;maxSaline;TEMPORARY OVEREXPANSION VOLUMES_Max. Saline
+                                     ;;totalGelSalineTemporary;TEMPORARY OVEREXPANSION VOLUMES_Total Gel-Saline
+                                     ;;totalSaline;Total Saline
+                                     ;;totalGelSaline;Total Gel-Saline
+                                     ;;a;A
+                                     ;;arcLength;Arc Length
+                                     ;;deviceVolume;Device Volume
+                                     ;;nominalProjection;TEMPORARY OVEREXPANSION_Nominal Projection
+                                     ;;maxVolume;TEMPORARY OVEREXPANSION_Max. Volume
+
+#Cerenovus
+                                     ;;nominalDiameter;Nominal Diameter
+                                     ;;distalOuterDiameter;Distal Outer Diameter
+                                     ;;proximalOuterDiameter;Proximal Outer Diameter
+                                     ;;distalInnerDiameter;Distal Inner Diameter
+                                     ;;proximalInnerDiameter;Proximal Inner Diameter
+                                     ;;sphericalLoopDiameter;Spherical Loop Diameter
+                                     ;;basketDiameter;Basket Diameter (at maximum opening)
+                                     ;;minimumSheathGuideBalloonGuideInnerDiameter;Minimum Sheath/Guide/Balloon Guide Inner Diameter
+                                     ;;overallLength;Overall Length
+                                     ;;workingLength;Working Length
+                                     ;;fullLengthofDevice;Full Length of Device
+                                     ;;tipLength;Tip Length
+                                     ;;taperLength;Taper Length
+                                     ;;distalTaperLength;Distal Taper Length
+                                     ;;distalFlexibleLength;Distal Flexible Length
+                                     ;;lengthBetweenMarkers;Length Between Markers
+                                     ;;tipLengthDistaltoBalloon;Tip Length Distal to Balloon
+                                     ;;flexibilityDescription;Flexibility Description
+                                     ;;description;Description
+                                     ;;shape;Shape
+                                     ;;implantShape;Implant Shape
+                                     ;;tipShape;Tip Shape
+                                     ;;tipMarkers;Tip Markers
+                                     ;;recommendedVesselDiameter;Recommended Vessel Diameter
+                                     ;;microcatheterCompatibility;Microcatheter Compatibility
+                                     ;;parentVesselDiameter;Parent Vessel Diameter
+                                     ;;minIndicatedParentVesselDiameter;Min. Indicated Parent Vessel Diameter
+                                     ;;maxIndicatedParentVesselDiameter;Max. Indicated Parent Vessel Diameter
+                                     ;;lengthMaxIndicatedParentVeselDiameter;Length at Max. Indicated Parent Vesel Diameter
+                                     ;;minSheathCompatibility;Min. Sheath Compatibility
+                                     ;;minGuidingCatheterInnerDiameter;Min. Guiding Catheter Inner Diameter
+                                     ;;arcWidth;Arc Width
+                                     ;;markerBands;Marker Bands
+                                     ;;softnessScale;Softness Scale
+                                     ;;outerCageDiameter;Outer Cage Diameter
+                                     ;;outerCageLength;Outer Cage Length
+                                     ;;radiopaqueTipLength;RADIOPAQUE FEATURES_Radiopaque Tip Length
+                                     ;;proximalRadiopaqueCoilLength;RADIOPAQUE FEATURES_Proximal Radiopaque Coil Length
+                                     ;;noRadiopaqueMarkersProximal;RADIOPAQUE FEATURES_No. Radiopaque Markers - Proximal
+                                     ;;noRadiopaqueMarkersDistal;RADIOPAQUE FEATURES_No. Radiopaque Markers - Distal
+
+#BWI
+                                     ;;productType;Product Type
+                                     ;;curveSystem;Curve System
+                                     ;;catheterCouplingType;Catheter Coupling Type
+                                     ;;curveName;Curve Name
+                                     ;;curveType;Curve Type
+                                     ;;curveColour;Curve Colour
+                                     ;;curveSize;Curve Size
+                                     ;;curveAngle;Curve Angle
+                                     ;;needleID;Needle ID
+                                     ;;connectionCatheterType;Connection Catheter Type
+                                     ;;connectionCableType;Connection Cable Type
+                                     ;;generatorType;Generator Type
+                                     ;;catheterNavigationOption;Catheter Navigation Option
+                                     ;;navigationCatheterCategory;Navigation Catheter Category
+                                     ;;navigationCatheterSubcategory;Navigation Catheter Sub-category
+                                     ;;nonNavigationCatheterCategory;Non-Navigation Catheter Category
+                                     ;;nonNavigationCatheterSubcategory;Non-Navigation Catheter Sub-category
+                                     ;;autoID;Auto-ID
+                                     ;;directionType;Direction Type
+                                     ;;sheathFit;Sheath Fit
+                                     ;;tipElectrodeSize;Tip Electrode Size
+                                     ;;numberElectrode;Number of Electrode
+                                     ;;spacing;Spacing
+                                     ;;insertionLength;Insertion Length
+                                     ;;systemCompatibility;System Compatibility
+                                     ;;compressionCoil;Compression Coil
+                                     ;;moduleSystemCompatibility;Module System Compatibility
+                                     ;;cartoSystemSoftwareRequired;CARTO System Software Required
+                                     ;;acunavCatheterOption;ACUNAV Catheter Option
+                                     ;;ultrasoundSoftwareLevel;Ultrasound Software Level
+                                     ;;catheterSystemCompatibility;Catheter System Compatibility
+                                     ;;internalDiameter;Internal Diameter
+                                     ;;poleNumber;Pole Number
+                                     ;;deliverySheathUsableLength;Delivery Sheath Usable Length
+                                     ;;rfGeneratorsPumpSystemsProductType;RF Generators & Pump Systems Product Type
+                                     ;;systemServiceContracts;System Service Contracts
+                                     ;;contractDuration;Contract Duration
+                                     ;;systems;Systems
+                                     ;;includedCARTOSystem;Included in CARTO 3 System
+                                     ;;atCatheter;CONNECTOR SIZE_At Catheter
+                                     ;;atPIU;CONNECTOR SIZE_At PIU
+                                     ;;atCartoSystem;CONNECTOR SIZE_At Carto 3 System
+                                     ;;atGenerator;CONNECTOR SIZE_At Generator
+                                     ;;autoDavable;Auto-davable
+                                     ;;compatibility;Compatibility
+                                     ;;labelColor;Label Color
+                                     ;;handleColor;Handle Color
+
+#DPS_CMF
+                                     ;;totalLengthDrillingDepth;Total Length / Drilling Depth
+                                     ;;thickness;Thickness
+                                     ;;number of Hole;Number of Hole
+                                     ;;hole Dimension;Hole Dimension
+                                     ;;clip Number per Pack;Clip Number per Pack
+                                     ;;lengthening;Lengthening
+                                     ;;maxOffsetSize;Max. Offset Size
+                                     ;;totalLengthUsableLength;Total Length / Usable Length
+                                     ;;positionSize;Position Size
+                                     ;;distractionLength;Distraction Length
+                                     ;;hHeight;H: Height
+                                     ;;oOffset;O: Offset
+                                     ;;centreSpaceHolesSize;Centre Space Holes Size
+                                     ;;centreSpaceSize;Centre Space Size
+                                     ;;plateSize;Plate Size
+                                     ;;granuleSize;Granule Size
+                                     ;;granulesQuantity;Granules Quantity
+                                     ;;gaugeSize;Gauge Size
+                                     ;;stopDepthSize;Stop Depth Size
+                                     ;;packageNumber;Package Number
+
+#DPS_Hip
+                                     ;;stemLengthcrotch;Stem Length (crotch point to distal tip)
+                                     ;;restrictorDepth;Restrictor Depth
+                                     ;;stemLength;Stem Length
+                                     ;;offsetType;Offset Type
+                                     ;;offsetWithHeadSize;Offset with Head Size
+                                     ;;lateralOffsetSize;Lateral Offset Size
+                                     ;;offsetSize;Offset Size
+                                     ;;leralOffset;Lateral Offset w/+0 Femoral Head
+                                     ;;neckLength;Neck Length
+                                     ;;neckShaftAngle;Neck Shaft Angle
+                                     ;;cementedProduct;Cemented Product
+                                     ;;cementlessProduct;Cementless Product
+                                     ;;legLengthAdjustement;Leg Length Adjustement
+                                     ;;legLengthAdjustement with Head;Leg Length Adjustement with Head
+                                     ;;neckLengthAdjustement;Neck Length Adjustement
+                                     ;;neckLengthAdjustement with Head;Neck Length Adjustement with Head
+                                     ;;shellTrialSize;Shell Trial Size
+                                     ;;linerTrialSize;Liner Trial Size
+                                     ;;headSizeLinerInnerDiameter;Head Size / Liner Inner Diameter
+                                     ;;linerOption;Liner Option
+                                     ;;cupTrialSize;Cup Trial Size
+                                     ;;neutralFlexionExtension;Neutral_Flexion / Extension
+                                     ;;neutralAbductionAdduction;Neutral_Abduction / Adduction
+                                     ;;4neutralFlexionExtension;+ 4 Neutral_Flexion / Extension
+                                     ;;4neutralAbductionAdduction;+ 4 Neutral_Abduction / Adduction
+                                     ;;faceFlexionExtension;+ 4 10° Face_Flexion / Extension
+                                     ;;faceAbductionAdduction;+ 4 10° Face_Abduction / Adduction
+                                     ;;lippedFlexionExtension;Lipped_Flexion / Extension
+                                     ;;lippedAbductionAdduction;Lipped_Abduction / Adduction
+                                     ;;od;OD
+                                     ;;domeSize;Dome Size
+                                     ;;45Degree;45 Degree
+                                     ;;shellSize;Shell Size
+                                     ;;insertType;Insert Type
+                                     ;;finalDistalReamerSize;Final Distal Reamer Size
+                                     ;;proximalReamerDiameter;Proximal Reamer Diameter
+                                     ;;distalFluteOuterDiameter;Distal Flute Outer Diameter
+                                     ;;distalStemDiameter;Distal Stem Diameter
+                                     ;;availableSleeves;Available Sleeves
+                                     ;;proximalSleeveSize;Proximal Sleeve Size
+                                     ;;deltaHeadType;Delta Head Type
+                                     ;;deltaHeadSize;Delta Head Size
+
+
+#DPS_Mitek
+                                     ;;maxLoad;Max. Load
+                                     ;;failureMode;Failure Mode
+                                     ;;reusable;Reusable
+                                     ;;imageDefinition;Image Definition
+                                     ;;compatibilitySystem;Compatibility System
+                                     ;;flowMode;Flow Mode
+                                     ;;vaprElectrodesType;VAPR Electrodes Type
+                                     ;;electrodeDiameter;Electrode Diameter
+                                     ;;wrist;Wrist
+                                     ;;elbow;Elbow
+                                     ;;dimensions;Dimensions
+                                     ;;mode;Mode
+                                     ;;defaultAblateCutBasic;DEFAULT_ABLATE / CUT Basic
+                                     ;;defaultAblateCutAdvanced;DEFAULT_ABLATE / CUT Advanced
+                                     ;;defaultDesCoagtBasic;DEFAULT_DES / COAGT Basic
+                                     ;;defaultDesCoagtAdvanced;DEFAULT_DES / COAGT Advanced
+                                     ;;maximumAblateCutBasic;MAXIMUM_ABLATE / CUT Basic
+                                     ;;maximumAblateCutAdvanced;MAXIMUM_ABLATE / CUT Advanced
+                                     ;;maximumDesCoagtBasic;MAXIMUM_DES / COAGT Basic
+                                     ;;maximumDesCoagtAdvanced;MAXIMUM_DES / COAGT Advanced
+                                     ;;tunnelDiameter;Tunnel Diameter
+                                     ;;desiredBackwall;Desired Backwall
+                                     ;;amFemoralAimer;AM Femoral Aimer
+                                     ;;graftSize;Graft Size
+                                     ;;tunnelSize;Tunnel Size
+                                     ;;trialSize;Trial Size
+                                     ;;sheath;Sheath
+                                     ;;absorbableProduct;Absorbable Product
+                                     ;;anchorDiameter;Anchor Diameter
+                                     ;;anchorDepth;Anchor Depth
+                                     ;;achilles;Achilles
+                                     ;;browlift;Browlift
+                                     ;;lateralCanthoplasty;Lateral Canthoplasty
+                                     ;;chinReconstruction;Chin Reconstruction
+                                     ;;facialSlingsMidFaceLift;Facial Slings & Mid Face Lift
+                                     ;;nasalValveSuspension;Nasal Valve Suspension
+                                     ;;lateralAnkleInstability;Lateral Ankle Instability (Modified Brostrom)
+                                     ;;halluxValgusBunionectomy;Hallux Valgus / Bunionectomy
+                                     ;;midfootReconstructions;Midfoot Reconstructions
+                                     ;;repair;Repair
+                                     ;;fDPRepair;FDP Repair
+                                     ;;ulnarCollateralRepair;Ulnar Collateral Repair
+                                     ;;scapholunateRepair;Scapholunate Repair
+                                     ;;malletFinger;Mallet Finger
+                                     ;;swanNeckDeformity;Swan Neck Deformity
+                                     ;;boutonnièreDeformity;Boutonnière Deformity
+                                     ;;bodyDiameter;Body Diameter
+                                     ;;distAcrossBarbs;Dist Across Barbs
+                                     ;;barbsParallel;Barbs Parallel
+                                     ;;barbsPerpendicular;Barbs Perpendicular
+
+#DPS_Shoulder
+                                     ;;underEpiphysis;Under Epiphysis
+                                     ;;epiphysis Option;Epiphysis Option
+                                     ;;glenoidSize;Glenoid Size
+                                     ;;humeralHeadSize;Humeral Head Size
+                                     ;;calcarReamerSize;Calcar Reamer Size
+                                     ;;headSize;Head Size
+                                     ;;headHeight;Head Height
+                                     ;;stepHeight;Step Height
+                                     ;;versionCorrection;Version Correction (approximate)
+                                     ;;totalCorrection;Total Correction
+                                     ;;laserEtch;Humeral Head Height Reading_Laser Etch
+                                     ;;bottomEdge;Humeral Head Height Reading_Bottom Edge
+                                     ;;anteriorReamingAngle;Anterior Reaming Angle
+
+#DPS_Spine
+
+#Vet
+
+# Assign Attribute to Classification Category
+INSERT_UPDATE ClassAttributeAssignment;$class;$attribute;;attributeType(code[default=string]);multiValued[default=false];localized[default=true];
+
+#DPS_TARUMA
+                                      ;DPS_Trauma;type
+                                      ;DPS_Trauma;implantTechnology
+                                      ;DPS_Trauma;ImplantSubTechnology
+                                      ;DPS_Trauma;instrument
+                                      ;DPS_Trauma;case
+                                      ;DPS_Trauma;material
+                                      ;DPS_Trauma;sterile
+                                      ;DPS_Trauma;lcpClassification
+                                      ;DPS_Trauma;screwRecess
+                                      ;DPS_Trauma;size
+                                      ;DPS_Trauma;side
+                                      ;DPS_Trauma;diameter
+                                      ;DPS_Trauma;couplingType
+                                      ;DPS_Trauma;materialManufactor
+                                      ;DPS_Trauma;medicalDeviceClassification
+                                      ;DPS_Trauma;nhseClass
+                                      ;DPS_Trauma;descriptionOfEclassCode
+                                      ;DPS_Trauma;countryOfOrigin
+                                      ;DPS_Trauma;manufacturerDeclaredReusabilityType
+                                      ;DPS_Trauma;containLatex
+
+
+#ETHICON
+                                      ;
+                                      ;ETHICON;sutorColor
+                                      ;ETHICON;structure
+                                      ;ETHICON;usp
+                                      ;ETHICON;suturelength
+                                      ;ETHICON;eaches
+                                      ;ETHICON;suturesNumber
+                                      ;ETHICON;pledgets
+                                      ;ETHICON;sterilizationMehod
+                                      ;ETHICON;needleType
+                                      ;ETHICON;needleName
+                                      ;ETHICON;needleDiameter
+                                      ;ETHICON;needleNumber
+                                      ;ETHICON;needleColour
+                                      ;ETHICON;needleLength
+                                      ;ETHICON;needleCurvature
+                                      ;ETHICON;needleCoated
+                                      ;ETHICON;needleAttachmentMethod
+                                      ;ETHICON;needleAlloy
+                                      ;ETHICON;multipass
+                                      ;ETHICON;countryRelease
+                                      ;ETHICON;haemoseal
+                                      ;ETHICON;materialManufactor
+                                      ;ETHICON;medicalDeviceClassification
+                                      ;ETHICON;nhseClass
+                                      ;ETHICON;descriptionOfEclassCode
+                                      ;ETHICON;countryOfOrigin
+                                      ;ETHICON;manufacturerDeclaredReusabilityType
+                                      ;ETHICON;containLatex
+                                      ;ETHICON;color
+
+#DPS_CMW
+                                      ;DPS_CMW;type
+                                      ;DPS_CMW;boneCementAntibiotic
+                                      ;DPS_CMW;boneCementNonAntibiotic
+                                      ;DPS_CMW;cementMixingSystems
+                                      ;DPS_CMW;cementAccesories
+                                      ;DPS_CMW;materialManufactor
+                                      ;DPS_CMW;medicalDeviceClassification
+                                      ;DPS_CMW;nhseClass
+                                      ;DPS_CMW;descriptionOfEclassCode
+                                      ;DPS_CMW;countryOfOrigin
+                                      ;DPS_CMW;manufacturerDeclaredReusabilityType
+                                      ;DPS_CMW;containLatex
+
+#DPS_Knee
+                                      ;DPS_Knee;type
+                                      ;DPS_Knee;implantTechnology
+                                      ;DPS_Knee;ImplantSubTechnology
+                                      ;DPS_Knee;instrument
+                                      ;DPS_Knee;case
+                                      ;DPS_Knee;overallAp
+                                      ;DPS_Knee;sulcasAp
+                                      ;DPS_Knee;overallMl
+                                      ;DPS_Knee;posteriorThickness
+                                      ;DPS_Knee;distalThickness
+                                      ;DPS_Knee;condyleLength
+                                      ;DPS_Knee;baseThickness
+                                      ;DPS_Knee;stemStemLength
+                                      ;DPS_Knee;stemDiameter
+                                      ;DPS_Knee;lugLength
+                                      ;DPS_Knee;lugDiameter
+                                      ;DPS_Knee;innerBoxWidth
+                                      ;DPS_Knee;outerBoxWidth
+                                      ;DPS_Knee;boxVolume
+                                      ;DPS_Knee;boxOpeningWidth
+                                      ;DPS_Knee;boxOpeningLength
+                                      ;DPS_Knee;boxEntranceHeight
+                                      ;DPS_Knee;spineHeight
+                                      ;DPS_Knee;liftoffHeight
+                                      ;DPS_Knee;anteriorJumpHeight
+                                      ;DPS_Knee;posteriorJumpHeight
+                                      ;DPS_Knee;anteriorPegMl
+                                      ;DPS_Knee;posteriorPegsAp
+                                      ;DPS_Knee;posteriorPegsMl
+                                      ;DPS_Knee;pegHeight
+                                      ;DPS_Knee;pegDiameter
+                                      ;DPS_Knee;material
+                                      ;DPS_Knee;sterile
+                                      ;DPS_Knee;size
+                                      ;DPS_Knee;side
+                                      ;DPS_Knee;diameter
+                                      ;DPS_Knee;materialManufactor
+                                      ;DPS_Knee;medicalDeviceClassification
+                                      ;DPS_Knee;nhseClass
+                                      ;DPS_Knee;descriptionOfEclassCode
+                                      ;DPS_Knee;countryOfOrigin
+                                      ;DPS_Knee;manufacturerDeclaredReusabilityType
+                                      ;DPS_Knee;containLatex
+
+#DPS_Power Tools
+                                      ;DPS_PowerTools;systemComponents
+                                      ;DPS_PowerTools;cuttingToolsCategory
+                                      ;DPS_PowerTools;smallBoneCuttingToolsCategory
+                                      ;DPS_PowerTools;largeBoneSawBladesCategory
+                                      ;DPS_PowerTools;highSpeedCuttingToolsCategory
+                                      ;DPS_PowerTools;sawBlades
+                                      ;DPS_PowerTools;raspsAndBroaches
+                                      ;DPS_PowerTools;burr
+                                      ;DPS_PowerTools;drill
+                                      ;DPS_PowerTools;attachmentCategory
+                                      ;DPS_PowerTools;radiolucentDriveCategory
+                                      ;DPS_PowerTools;careMaintenance
+                                      ;DPS_PowerTools;batteryType
+                                      ;DPS_PowerTools;powerTechnology
+                                      ;DPS_PowerTools;voltage
+                                      ;DPS_PowerTools;material
+                                      ;DPS_PowerTools;sterile
+                                      ;DPS_PowerTools;couplingType
+                                      ;DPS_PowerTools;totalLength
+                                      ;DPS_PowerTools;usableLength
+                                      ;DPS_PowerTools;headLength
+                                      ;DPS_PowerTools;shaftLength
+                                      ;DPS_PowerTools;width
+                                      ;DPS_PowerTools;cutThickness
+                                      ;DPS_PowerTools;cutAngle
+                                      ;DPS_PowerTools;shortening
+                                      ;DPS_PowerTools;size
+                                      ;DPS_PowerTools;diameter
+                                      ;DPS_PowerTools;height
+                                      ;DPS_PowerTools;marking
+                                      ;DPS_PowerTools;radius
+                                      ;DPS_PowerTools;side
+                                      ;DPS_PowerTools;materialManufactor
+                                      ;DPS_PowerTools;medicalDeviceClassification
+                                      ;DPS_PowerTools;nhseClass
+                                      ;DPS_PowerTools;descriptionOfEclassCode
+                                      ;DPS_PowerTools;countryOfOrigin
+                                      ;DPS_PowerTools;manufacturerDeclaredReusabilityType
+                                      ;DPS_PowerTools;containLatex
+
+#Mentor
+                                      ;Mentor;volume
+                                      ;Mentor;width
+                                      ;Mentor;height
+                                      ;Mentor;projection
+                                      ;Mentor;diameter
+                                      ;Mentor;lowerPoleArcAB
+                                      ;Mentor;gelVolume
+                                      ;Mentor;maxSaline
+                                      ;Mentor;totalSaline
+                                      ;Mentor;totalGelSalineTemporary
+                                      ;Mentor;a
+                                      ;Mentor;arcLength
+                                      ;Mentor;deviceVolume
+                                      ;Mentor;length
+                                      ;Mentor;nominalProjection
+                                      ;Mentor;maxVolume
+                                      ;Mentor;totalGelSaline
+                                      ;Mentor;materialManufactor
+                                      ;Mentor;medicalDeviceClassification
+                                      ;Mentor;nhseClass
+                                      ;Mentor;descriptionOfEclassCode
+                                      ;Mentor;countryOfOrigin
+                                      ;Mentor;manufacturerDeclaredReusabilityType
+                                      ;Mentor;containLatex
+
+#Cerenovus
+                                      ;Cerenovus;diameter
+                                      ;Cerenovus;nominalDiameter
+                                      ;Cerenovus;outerDiameter
+                                      ;Cerenovus;distalOuterDiameter
+                                      ;Cerenovus;proximalOuterDiameter
+                                      ;Cerenovus;innerDiameter
+                                      ;Cerenovus;distalInnerDiameter
+                                      ;Cerenovus;proximalInnerDiameter
+                                      ;Cerenovus;loopDiameter
+                                      ;Cerenovus;sphericalLoopDiameter
+                                      ;Cerenovus;basketDiameter
+                                      ;Cerenovus;minimumSheathGuideBalloonGuideInnerDiameter
+                                      ;Cerenovus;length
+                                      ;Cerenovus;totalLength
+                                      ;Cerenovus;overallLength
+                                      ;Cerenovus;workingLength
+                                      ;Cerenovus;fullLengthofDevice
+                                      ;Cerenovus;usableLength
+                                      ;Cerenovus;tipLength
+                                      ;Cerenovus;taperLength
+                                      ;Cerenovus;distalTaperLength
+                                      ;Cerenovus;distalFlexibleLength
+                                      ;Cerenovus;lengthBetweenMarkers
+                                      ;Cerenovus;tipLengthDistaltoBalloon
+                                      ;Cerenovus;flexibilityDescription
+                                      ;Cerenovus;description
+                                      ;Cerenovus;shape
+                                      ;Cerenovus;implantShape
+                                      ;Cerenovus;tipShape
+                                      ;Cerenovus;tipMarkers
+                                      ;Cerenovus;recommendedVesselDiameter
+                                      ;Cerenovus;microcatheterCompatibility
+                                      ;Cerenovus;parentVesselDiameter
+                                      ;Cerenovus;minIndicatedParentVesselDiameter
+                                      ;Cerenovus;maxIndicatedParentVesselDiameter
+                                      ;Cerenovus;lengthMaxIndicatedParentVeselDiameter
+                                      ;Cerenovus;minSheathCompatibility
+                                      ;Cerenovus;minGuidingCatheterInnerDiameter
+                                      ;Cerenovus;arcWidth
+                                      ;Cerenovus;markerBands
+                                      ;Cerenovus;softnessScale
+                                      ;Cerenovus;outerCageDiameter
+                                      ;Cerenovus;outerCageLength
+                                      ;Cerenovus;radiopaqueTipLength
+                                      ;Cerenovus;proximalRadiopaqueCoilLength
+                                      ;Cerenovus;noRadiopaqueMarkersProximal
+                                      ;Cerenovus;noRadiopaqueMarkersDistal
+                                      ;Cerenovus;materialManufactor
+                                      ;Cerenovus;medicalDeviceClassification
+                                      ;Cerenovus;nhseClass
+                                      ;Cerenovus;descriptionOfEclassCode
+                                      ;Cerenovus;countryOfOrigin
+                                      ;Cerenovus;manufacturerDeclaredReusabilityType
+                                      ;Cerenovus;containLatex
+
+#BWI
+                                      ;BWI;productType
+                                      ;BWI;curveSystem
+                                      ;BWI;catheterCouplingType
+                                      ;BWI;curveName
+                                      ;BWI;curveType
+                                      ;BWI;curveColour
+                                      ;BWI;curveSize
+                                      ;BWI;curveAngle
+                                      ;BWI;needleID
+                                      ;BWI;connectionCatheterType
+                                      ;BWI;connectionCableType
+                                      ;BWI;generatorType
+                                      ;BWI;catheterNavigationOption
+                                      ;BWI;navigationCatheterCategory
+                                      ;BWI;navigationCatheterSubcategory
+                                      ;BWI;nonNavigationCatheterCategory
+                                      ;BWI;nonNavigationCatheterSubcategory
+                                      ;BWI;autoID
+                                      ;BWI;directionType
+                                      ;BWI;outerDiameter
+                                      ;BWI;sheathFit
+                                      ;BWI;tipElectrodeSize
+                                      ;BWI;numberElectrode
+                                      ;BWI;spacing
+                                      ;BWI;insertionLength
+                                      ;BWI;systemCompatibility
+                                      ;BWI;diameter
+                                      ;BWI;loopDiameter
+                                      ;BWI;compressionCoil
+                                      ;BWI;moduleSystemCompatibility
+                                      ;BWI;cartoSystemSoftwareRequired
+                                      ;BWI;acunavCatheterOption
+                                      ;BWI;ultrasoundSoftwareLevel
+                                      ;BWI;catheterSystemCompatibility
+                                      ;BWI;internalDiameter
+                                      ;BWI;length
+                                      ;BWI;size
+                                      ;BWI;poleNumber
+                                      ;BWI;deliverySheathUsableLength
+                                      ;BWI;innerDiameter
+                                      ;BWI;usableLength
+                                      ;BWI;rfGeneratorsPumpSystemsProductType
+                                      ;BWI;systemServiceContracts
+                                      ;BWI;contractDuration
+                                      ;BWI;systems
+                                      ;BWI;includedCARTOSystem
+                                      ;BWI;cableType
+                                      ;BWI;atCatheter
+                                      ;BWI;atPIU
+                                      ;BWI;atCartoSystem
+                                      ;BWI;atGenerator
+                                      ;BWI;autoDavable
+                                      ;BWI;sterile
+                                      ;BWI;compatibility
+                                      ;BWI;couplingSystem
+                                      ;BWI;labelColor
+                                      ;BWI;handleColor
+                                      ;BWI;materialManufactor
+                                      ;BWI;medicalDeviceClassification
+                                      ;BWI;nhseClass
+                                      ;BWI;descriptionOfEclassCode
+                                      ;BWI;countryOfOrigin
+                                      ;BWI;manufacturerDeclaredReusabilityType
+                                      ;BWI;containLatex
+
+#DPS_CMF
+                                      ;DPS_CMF;type
+                                      ;DPS_CMF;implantTechnology
+                                      ;DPS_CMF;ImplantSubTechnology
+                                      ;DPS_CMF;instrument
+                                      ;DPS_CMF;case
+                                      ;DPS_CMF;material
+                                      ;DPS_CMF;sterile
+                                      ;DPS_CMF;lcpClassification
+                                      ;DPS_CMF;screwRecess
+                                      ;DPS_CMF;size
+                                      ;DPS_CMF;side
+                                      ;DPS_CMF;diameter
+                                      ;DPS_CMF;couplingType
+                                      ;DPS_CMF;totalLengthDrillingDepth
+                                      ;DPS_CMF;thickness
+                                      ;DPS_CMF;number of Hole
+                                      ;DPS_CMF;hole Dimension
+                                      ;DPS_CMF;clip Number per Pack
+                                      ;DPS_CMF;lengthening
+                                      ;DPS_CMF;maxOffsetSize
+                                      ;DPS_CMF;threadLength
+                                      ;DPS_CMF;totalLengthUsableLength
+                                      ;DPS_CMF;positionSize
+                                      ;DPS_CMF;distractionLength
+                                      ;DPS_CMF;hHeight
+                                      ;DPS_CMF;oOffset
+                                      ;DPS_CMF;centreSpaceHolesSize
+                                      ;DPS_CMF;centreSpaceSize
+                                      ;DPS_CMF;plateSize
+                                      ;DPS_CMF;granuleSize
+                                      ;DPS_CMF;granulesQuantity
+                                      ;DPS_CMF;gaugeSize
+                                      ;DPS_CMF;stopDepthSize
+                                      ;DPS_CMF;couplingSystem
+                                      ;DPS_CMF;packageNumber
+                                      ;DPS_CMF;materialManufactor
+                                      ;DPS_CMF;medicalDeviceClassification
+                                      ;DPS_CMF;nhseClass
+                                      ;DPS_CMF;descriptionOfEclassCode
+                                      ;DPS_CMF;countryOfOrigin
+                                      ;DPS_CMF;manufacturerDeclaredReusabilityType
+                                      ;DPS_CMF;containLatex
+
+#DPS_Hip
+                                      ;DPS_Hip;type
+                                      ;DPS_Hip;implantTechnology
+                                      ;DPS_Hip;ImplantSubTechnology
+                                      ;DPS_Hip;instrument
+                                      ;DPS_Hip;case
+                                      ;DPS_Hip;material
+                                      ;DPS_Hip;sterile
+                                      ;DPS_Hip;lcpClassification
+                                      ;DPS_Hip;screwRecess
+                                      ;DPS_Hip;size
+                                      ;DPS_Hip;side
+                                      ;DPS_Hip;diameter
+                                      ;DPS_Hip;couplingType
+                                      ;DPS_Hip;stemLengthcrotch
+                                      ;DPS_Hip;restrictorDepth
+                                      ;DPS_Hip;stemLength
+                                      ;DPS_Hip;offsetType
+                                      ;DPS_Hip;offsetWithHeadSize
+                                      ;DPS_Hip;lateralOffsetSize
+                                      ;DPS_Hip;offsetSize
+                                      ;DPS_Hip;leralOffset
+                                      ;DPS_Hip;neckLength
+                                      ;DPS_Hip;neckShaftAngle
+                                      ;DPS_Hip;cementedProduct
+                                      ;DPS_Hip;cementlessProduct
+                                      ;DPS_Hip;legLengthAdjustement
+                                      ;DPS_Hip;legLengthAdjustement with Head
+                                      ;DPS_Hip;neckLengthAdjustement
+                                      ;DPS_Hip;neckLengthAdjustement with Head
+                                      ;DPS_Hip;shellTrialSize
+                                      ;DPS_Hip;linerTrialSize
+                                      ;DPS_Hip;headSizeLinerInnerDiameter
+                                      ;DPS_Hip;linerOption
+                                      ;DPS_Hip;cupTrialSize
+                                      ;DPS_Hip;neutralFlexionExtension
+                                      ;DPS_Hip;neutralAbductionAdduction
+                                      ;DPS_Hip;4neutralFlexionExtension
+                                      ;DPS_Hip;4neutralAbductionAdduction
+                                      ;DPS_Hip;faceFlexionExtension
+                                      ;DPS_Hip;faceAbductionAdduction
+                                      ;DPS_Hip;lippedFlexionExtension
+                                      ;DPS_Hip;lippedAbductionAdduction
+                                      ;DPS_Hip;od
+                                      ;DPS_Hip;domeSize
+                                      ;DPS_Hip;45Degree
+                                      ;DPS_Hip;shellSize
+                                      ;DPS_Hip;insertType
+                                      ;DPS_Hip;finalDistalReamerSize
+                                      ;DPS_Hip;proximalReamerDiameter
+                                      ;DPS_Hip;distalFluteOuterDiameter
+                                      ;DPS_Hip;distalStemDiameter
+                                      ;DPS_Hip;availableSleeves
+                                      ;DPS_Hip;proximalSleeveSize
+                                      ;DPS_Hip;deltaHeadType
+                                      ;DPS_Hip;deltaHeadSize
+                                      ;DPS_Hip;headDiameter
+                                      ;DPS_Hip;materialManufactor
+                                      ;DPS_Hip;medicalDeviceClassification
+                                      ;DPS_Hip;nhseClass
+                                      ;DPS_Hip;descriptionOfEclassCode
+                                      ;DPS_Hip;countryOfOrigin
+                                      ;DPS_Hip;manufacturerDeclaredReusabilityType
+                                      ;DPS_Hip;containLatex
+
+#DPS_Mitek
+                                      ;DPS_Mitek;type
+                                      ;DPS_Mitek;implantTechnology
+                                      ;DPS_Mitek;ImplantSubTechnology
+                                      ;DPS_Mitek;instrument
+                                      ;DPS_Mitek;case
+                                      ;DPS_Mitek;material
+                                      ;DPS_Mitek;sterile
+                                      ;DPS_Mitek;lcpClassification
+                                      ;DPS_Mitek;screwRecess
+                                      ;DPS_Mitek;size
+                                      ;DPS_Mitek;side
+                                      ;DPS_Mitek;diameter
+                                      ;DPS_Mitek;couplingType
+                                      ;DPS_Mitek;maxLoad
+                                      ;DPS_Mitek;failureMode
+                                      ;DPS_Mitek;reusable
+                                      ;DPS_Mitek;imageDefinition
+                                      ;DPS_Mitek;compatibilitySystem
+                                      ;DPS_Mitek;cableType
+                                      ;DPS_Mitek;flowMode
+                                      ;DPS_Mitek;vaprElectrodesType
+                                      ;DPS_Mitek;electrodeDiameter
+                                      ;DPS_Mitek;wrist;
+                                      ;DPS_Mitek;elbow
+                                      ;DPS_Mitek;dimensions
+                                      ;DPS_Mitek;mode
+                                      ;DPS_Mitek;defaultAblateCutBasic
+                                      ;DPS_Mitek;defaultAblateCutAdvanced
+                                      ;DPS_Mitek;defaultDesCoagtBasic
+                                      ;DPS_Mitek;defaultDesCoagtAdvanced
+                                      ;DPS_Mitek;maximumAblateCutBasic
+                                      ;DPS_Mitek;maximumAblateCutAdvanced
+                                      ;DPS_Mitek;maximumDesCoagtBasic
+                                      ;DPS_Mitek;maximumDesCoagtAdvanced
+                                      ;DPS_Mitek;tunnelDiameter
+                                      ;DPS_Mitek;desiredBackwall
+                                      ;DPS_Mitek;amFemoralAimer
+                                      ;DPS_Mitek;graftSize
+                                      ;DPS_Mitek;tunnelSize
+                                      ;DPS_Mitek;trialSize
+                                      ;DPS_Mitek;sheath
+                                      ;DPS_Mitek;absorbableProduct
+                                      ;DPS_Mitek;anchorDiameter
+                                      ;DPS_Mitek;anchorDepth
+                                      ;DPS_Mitek;achilles
+                                      ;DPS_Mitek;browlift
+                                      ;DPS_Mitek;lateralCanthoplasty
+                                      ;DPS_Mitek;chinReconstruction
+                                      ;DPS_Mitek;facialSlingsMidFaceLift
+                                      ;DPS_Mitek;nasalValveSuspension
+                                      ;DPS_Mitek;lateralAnkleInstability
+                                      ;DPS_Mitek;halluxValgusBunionectomy
+                                      ;DPS_Mitek;midfootReconstructions
+                                      ;DPS_Mitek;repair
+                                      ;DPS_Mitek;fDPRepair
+                                      ;DPS_Mitek;ulnarCollateralRepair
+                                      ;DPS_Mitek;scapholunateRepair
+                                      ;DPS_Mitek;malletFinger
+                                      ;DPS_Mitek;swanNeckDeformity
+                                      ;DPS_Mitek;boutonnièreDeformity
+                                      ;DPS_Mitek;bodyDiameter
+                                      ;DPS_Mitek;distAcrossBarbs
+                                      ;DPS_Mitek;barbsParallel
+                                      ;DPS_Mitek;barbsPerpendicular
+                                      ;DPS_Mitek;materialManufactor
+                                      ;DPS_Mitek;medicalDeviceClassification
+                                      ;DPS_Mitek;nhseClass
+                                      ;DPS_Mitek;descriptionOfEclassCode
+                                      ;DPS_Mitek;countryOfOrigin
+                                      ;DPS_Mitek;manufacturerDeclaredReusabilityType
+                                      ;DPS_Mitek;containLatex
+
+#DPS_Shoulder
+                                      ;DPS_Shoulder;type
+                                      ;DPS_Shoulder;implantTechnology
+                                      ;DPS_Shoulder;ImplantSubTechnology
+                                      ;DPS_Shoulder;instrument
+                                      ;DPS_Shoulder;case
+                                      ;DPS_Shoulder;material
+                                      ;DPS_Shoulder;sterile
+                                      ;DPS_Shoulder;lcpClassification
+                                      ;DPS_Shoulder;screwRecess
+                                      ;DPS_Shoulder;size
+                                      ;DPS_Shoulder;side
+                                      ;DPS_Shoulder;diameter
+                                      ;DPS_Shoulder;couplingType
+                                      ;DPS_Shoulder;underEpiphysis
+                                      ;DPS_Shoulder;epiphysis Option
+                                      ;DPS_Shoulder;glenoidSize
+                                      ;DPS_Shoulder;humeralHeadSize
+                                      ;DPS_Shoulder;calcarReamerSize
+                                      ;DPS_Shoulder;color
+                                      ;DPS_Shoulder;headSize
+                                      ;DPS_Shoulder;headDiameter
+                                      ;DPS_Shoulder;headHeight
+                                      ;DPS_Shoulder;stepHeight
+                                      ;DPS_Shoulder;versionCorrection
+                                      ;DPS_Shoulder;totalCorrection
+                                      ;DPS_Shoulder;laserEtch
+                                      ;DPS_Shoulder;bottomEdge
+                                      ;DPS_Shoulder;anteriorReamingAngle
+                                      ;DPS_Shoulder;materialManufactor
+                                      ;DPS_Shoulder;medicalDeviceClassification
+                                      ;DPS_Shoulder;nhseClass
+                                      ;DPS_Shoulder;descriptionOfEclassCode
+                                      ;DPS_Shoulder;countryOfOrigin
+                                      ;DPS_Shoulder;manufacturerDeclaredReusabilityType
+                                      ;DPS_Shoulder;containLatex
+
+#DPS_Spine
+                                      ;DPS_Spine;type
+                                      ;DPS_Spine;implantTechnology
+                                      ;DPS_Spine;ImplantSubTechnology
+                                      ;DPS_Spine;instrument
+                                      ;DPS_Spine;case
+                                      ;DPS_Spine;material
+                                      ;DPS_Spine;sterile
+                                      ;DPS_Spine;lcpClassification
+                                      ;DPS_Spine;screwRecess
+                                      ;DPS_Spine;size
+                                      ;DPS_Spine;side
+                                      ;DPS_Spine;diameter
+                                      ;DPS_Spine;couplingType
+                                      ;DPS_Spine;anteriorHeight
+                                      ;DPS_Spine;posteriorHeight
+                                      ;DPS_Spine;height
+                                      ;DPS_Spine;color
+                                      ;DPS_Spine;angle
+                                      ;DPS_Spine;drillingDepth
+                                      ;DPS_Spine;direction
+                                      ;DPS_Spine;width
+                                      ;DPS_Spine;to
+                                      ;DPS_Spine;threadLength
+                                      ;DPS_Spine;bladeLength
+                                      ;DPS_Spine;totalLength
+                                      ;DPS_Spine;bladeWidth
+                                      ;DPS_Spine;screwDiameter
+                                      ;DPS_Spine;descriptionType
+                                      ;DPS_Spine;forProduct
+                                      ;DPS_Spine;position
+                                      ;DPS_Spine;length
+                                      ;DPS_Spine;cranialCaudalHoleSpacing
+                                      ;DPS_Spine;holePairs
+                                      ;DPS_Spine;holeNumber
+                                      ;DPS_Spine;holeSpacing
+                                      ;DPS_Spine;setScrewNumber
+                                      ;DPS_Spine;rodDiameter
+                                      ;DPS_Spine;materialManufactor
+                                      ;DPS_Spine;medicalDeviceClassification
+                                      ;DPS_Spine;nhseClass
+                                      ;DPS_Spine;descriptionOfEclassCode
+                                      ;DPS_Spine;countryOfOrigin
+                                      ;DPS_Spine;manufacturerDeclaredReusabilityType
+                                      ;DPS_Spine;containLatex
+
+#Vet
+                                      ;Vet;type
+                                      ;Vet;implantTechnology
+                                      ;Vet;ImplantSubTechnology
+                                      ;Vet;instrument
+                                      ;Vet;case
+                                      ;Vet;material
+                                      ;Vet;sterile
+                                      ;Vet;lcpClassification
+                                      ;Vet;screwRecess
+                                      ;Vet;size
+                                      ;Vet;side
+                                      ;Vet;diameter
+                                      ;Vet;couplingType
+                                      ;Vet;systemComponents
+                                      ;Vet;cuttingToolsCategory
+                                      ;Vet;smallBoneCuttingToolsCategory
+                                      ;Vet;largeBoneSawBladesCategory
+                                      ;Vet;highSpeedCuttingToolsCategory
+                                      ;Vet;sawBlades
+                                      ;Vet;raspsAndBroaches
+                                      ;Vet;burr
+                                      ;Vet;drill
+                                      ;Vet;attachmentCategory
+                                      ;Vet;radiolucentDriveCategory
+                                      ;Vet;careMaintenance
+                                      ;Vet;batteryType
+                                      ;Vet;powerTechnology
+                                      ;Vet;voltage
+                                      ;Vet;usableLength
+                                      ;Vet;headLength
+                                      ;Vet;shaftLength
+                                      ;Vet;cutThickness
+                                      ;Vet;cutAngle
+                                      ;Vet;shortening
+                                      ;Vet;marking
+                                      ;Vet;radius
+                                      ;Vet;anteriorHeight
+                                      ;Vet;posteriorHeight
+                                      ;Vet;height
+                                      ;Vet;color
+                                      ;Vet;angle
+                                      ;Vet;drillingDepth
+                                      ;Vet;direction
+                                      ;Vet;width
+                                      ;Vet;to
+                                      ;Vet;threadLength
+                                      ;Vet;bladeLength
+                                      ;Vet;totalLength
+                                      ;Vet;bladeWidth
+                                      ;Vet;screwDiameter
+                                      ;Vet;descriptionType
+                                      ;Vet;forProduct
+                                      ;Vet;position
+                                      ;Vet;length
+                                      ;Vet;cranialCaudalHoleSpacing
+                                      ;Vet;holePairs
+                                      ;Vet;holeNumber
+                                      ;Vet;holeSpacing
+                                      ;Vet;setScrewNumber
+                                      ;Vet;rodDiameter
+                                      ;Vet;materialManufactor
+                                      ;Vet;medicalDeviceClassification
+                                      ;Vet;nhseClass
+                                      ;Vet;descriptionOfEclassCode
+                                      ;Vet;countryOfOrigin
+                                      ;Vet;manufacturerDeclaredReusabilityType
+                                      ;Vet;containLatex
+
+
+
+
+
+
+
+
+
+
+
+##############################################################CLASSIFICATION ATTRIBUTES [END]#############################################################

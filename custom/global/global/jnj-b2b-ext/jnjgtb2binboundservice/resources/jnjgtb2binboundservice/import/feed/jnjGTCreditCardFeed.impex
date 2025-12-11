@@ -1,0 +1,8 @@
+
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+
+# Initialization
+insert_update JnjGTIntCreditCard;buisnessSector;cardAddedDate;cardExpiryMonth;cardExpiryYear;cardLasr4Digit;cardNumber;cardSequenceNumber[unique=true];cardSource[unique=true];cardType;shipToAccountNumer[unique=true];sourceId[unique=true];userId[unique=true];indicator;recordStatus(code)[default='LOADING']
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#%
+impex.includeSQLData(""SELECT BUSINESS_SECTOR,ADD_DT,CCARD_EXP_MO_DT,CCARD_EXP_YR_DT,CCARD_LAST4_NO,CCARD_NO,CCARD_SEQ_NO,CCARD_SOURCE,CCARD_TYP_CD,SHPTO_ACCT_NO,SOURCE_SYS_ID,USER_ID,STAT_IND from STG_CREDIT_CARD_TOKEN WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP"");"

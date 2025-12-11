@@ -1,0 +1,178 @@
+#ordercompletePage td.text-left{
+	//padding-top:20px !important;
+	//padding-bottom:20px !important;
+}
+#ordercompletePage  .Tablesubtxt .secondline{
+	margin-bottom:0px;
+}
+.display-row-mob,.display-row{
+	display:table-row;
+}
+.table-cell{
+	display:table-cell;
+}
+.product-img-cell{
+	width:200px;
+}
+/* updated by siva */
+.basecontainer2 {   
+    margin-right: -9px;
+    //padding: 20px 0px 20px 20px;
+    background-color: #fff;
+	margin-top:-8px;	
+}
+
+/* Start - order complete sep 30 */
+#ordercompletePage .order-column-x-50{
+	width:50%;
+	float:left;
+}
+#ordercompletePage .order-column-x-100{
+	width:100%;
+	float:left;
+}
+/* End - order complete sep 30 */
+
+#ordercompletePage .table-padding{
+	//margin-top: 30px;
+	margin-left: 0px;
+    margin-right: 0px;
+	padding: 30px 15px 30px 15px;
+	background: #fff;
+	webkit-box-shadow: 0 0 5px 2px #eee;
+	-moz-box-shadow: 0 0 5px 2px #eee;
+	box-shadow: 0 0 5px 2px #eee;
+}
+#ordercompletePage .shipping{
+	margin-top: 10px;
+	margin-right: 4px;
+}
+#ordercompletePage .subhead{
+	color: rgb(120,120,120);
+	font-size: 12px;
+	letter-spacing: 1px;
+}
+#ordercompletePage .subtext{
+	color: rgb(120,120,120);
+	font-size: 18px;
+	letter-spacing: 0.5px;
+}
+#ordercompletePage .dollars{
+	font-size: 30px;
+}
+#ordercompletePage div.dataTables_wrapper div.dataTables_paginate{
+	float: right;
+	//margin-right: 25px;
+}
+#ordercompletePage div.dataTables_wrapper div.dataTables_info{
+	float: right;
+    margin-right: 25px;
+}
+#ordercompletePage div.dataTables_wrapper div.dataTables_length select{
+	margin-left: 5px;
+}
+#ordercompletePage div.dataTables_wrapper div.dataTables_filter{
+	display: none;
+}
+
+#ordercompletePage table.table-bordered.dataTable tbody th,#ordercompletePage table.table-bordered.dataTable tbody td:first-child,#ordercompletePage table.table-bordered.dataTable tbody th,#ordercompletePage .table>thead:first-child>tr:first-child>th:first-child{
+	//padding-left: 30px;
+}
+#ordercompletePage table.table-bordered.dataTable tbody th, #ordercompletePage  table.table-bordered.dataTable tbody td:nth-child(2), #ordercompletePage  table.table-bordered.dataTable tbody th, #ordercompletePage  .table>thead:first-child>tr:first-child>th:nth-child(2){
+	text-align: left;
+	padding-left: 20px;
+}
+#ordercompletePage table.table-bordered.dataTable tbody th,#ordercompletePage table.table-bordered.dataTable tbody td{
+	//vertical-align: middle;
+    //padding: 20px 0px 20px 0px;
+}
+#ordercompletePage .mainbody-container{
+	background: #fff;
+	webkit-box-shadow: 0 0 5px 2px #eee;
+	-moz-box-shadow: 0 0 5px 2px #eee;
+	box-shadow: 0 0 5px 2px #eee;
+}
+#ordercompletePage .imgprop{
+    width: 50px;
+    height: 65px;
+	vertical-align: middle;
+	/* float:left;*/
+	//display:table-cell; 
+	margin-right: 20px;
+}
+#ordercompletePage .Tablesubtxt{
+	
+	//margin-top: 10px;
+	display:inline-block; 
+	vertical-align: middle;
+	/* float:left; */
+	width:60%;
+	line-height:20px;
+}
+#ordercompletePage .table-cell .Tablesubtxt{
+	width:100% !important;
+}
+#ordercompletePage table.dataTable{
+	border-bottom: 1px solid #f2f2f2;
+}
+#ordercompletePage hr {
+	margin-top: 10px; 
+}
+#ordercompletePage .firstline{
+	margin-bottom: 0px;
+}
+#ordercompletePage .table>thead:first-child>tr:first-child>th:last-child {
+    text-align: right !important;
+}
+#ordercompletePage table tbody td:last-child {
+    text-align: right ;
+}
+#ordercompletePage table.table-bordered.dataTable tbody td:last-child {
+    padding-right: 20px;
+}
+#ordercompletePage	.shipping-txt{
+		margin-top:20px !important;
+	}
+@media screen and (max-width: 767px){
+	#ordercompletePage .calculation{
+		padding-top: 25px;
+	}
+	#ordercompletePage div.dataTables_wrapper div.dataTables_info{
+		float: left;
+		margin-left: 30px;
+		margin-top: 22px;
+	}
+	.product-img-cell{
+		width:100% !important;
+	}
+}
+@media screen and (max-width: 480px){
+	#ordercompletePage .basecontainer2 {
+ 
+    background-color: #fff;
+ 
+    margin:30px 0px 20px 0px;
+}
+	#ordercompletePage .table-padding{
+		padding: 30px 15px 0px 15px;
+	}
+	#ordercompletePage .table-padding .basecontainer{
+		margin-top: 20px;
+		padding: 20px 0px 10px 0px;
+		border-top: 1px solid #f2f2f2;
+	}
+	#ordercompletePage table tbody td:last-child {
+		text-align: left;
+	}
+	/* Start - order complete sep 30 */
+	#ordercompletePage .order-column-x-50{
+		width:100%;
+		float:none;
+	}
+	#ordercompletePage .order-column-x-50:first-child{
+			margin-bottom:20px;
+	}
+	/* End - order complete sep 30 */
+}
+
+}

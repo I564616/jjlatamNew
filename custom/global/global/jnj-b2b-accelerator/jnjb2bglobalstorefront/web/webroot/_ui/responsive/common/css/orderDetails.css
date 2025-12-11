@@ -1,0 +1,277 @@
+.total-price-cell{
+	padding-left:15px !important;
+	padding-right:50px !important;
+	white-space:nowrap !important;
+	width:auto !important;
+	text-align:right !important;
+}
+.quantity-col{
+	width:50px !important;
+}
+/* order details css*/
+
+#lines-section{
+	position: absolute;
+    margin-top: 30px;
+    margin-left: 250px;
+}
+
+
+/* added by lokesh  nov 17 */
+#shipping-detail-panel{
+ //border:1px solid #e5e5e5;
+ padding:15px 0px;
+}
+.shipping-popup-title{
+ margin-bottom:5px;
+}
+
+
+.orderdetailscontainer, .shippingDetailsContainer{
+    background: #fff;
+    padding: 20px 0px 0px 0px;
+	border-bottom: 1px solid #f2f2f2;
+	box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 3px 11px 0 rgba(0, 0, 0, 0.19);
+	webkit-box-shadow: 0 0 5px 2px #eee;
+	-moz-box-shadow: 0 0 5px 2px #eee;
+	box-shadow: 0 0 5px 2px #eee;
+}
+.orderDetailsTable table tbody tr td:nth-child(2) p
+{
+margin-bottom:5px;
+}
+.orderDetailsTable div.row:nth-child(3) {
+    background-color: #fff;
+    width: 100%;
+    margin-left: 0;
+    padding: 20px 15px 10px 15px;
+}
+.orderDetailsTable{
+	webkit-box-shadow: 0 0 5px 2px #eee;
+	-moz-box-shadow: 0 0 5px 2px #eee;
+	box-shadow: 0 0 5px 2px #eee;
+}
+/* AFFG-25524 */
+#ordersTable_wrapper #ordersTable{
+    color: #828282;
+    border-spacing: 0px;
+}
+
+#ordersTable_wrapper #ordersTable tbody{
+   text-align: center;
+}
+#ordersTable_wrapper #ordersTable>tbody>tr:nth-of-type(odd) {
+    text-align: center;
+    background-color: #fff;
+}
+/* END */
+.orderDetailsTable .fontsize10px{
+	font-size: 10px;
+}
+/* Added by siva */
+.orderdetailscontainer input.tertiarybtn.pdfdownloadlinks{
+	-webkit-appearance:none;
+	background:none;
+	border:none;
+	color:#08a;
+}
+.shippingDetailsContainer{
+	margin: 20px 0 0px 0;
+	padding: 20px 0px 20px 0px;
+}
+.fontsize25{
+	font-size: 25px;
+    font-weight: 600;
+}	 
+.fontsize17{
+	font-size: 17px;
+}
+.downloadLinks{
+	margin-top:25px;
+	padding-right:30px;	
+}
+.shippingAddress p{
+	margin-bottom:0;
+	font-size:14px;
+  //  font-weight: bold;	
+}
+.shippingAddressDetails a{
+	font-size: 14px;
+    //font-weight: bold;
+}
+.padding30px{
+	padding:21px 0 25px 15px
+}
+.ordertypedetails {
+    border-bottom: 1px solid #f2f2f2;
+}
+/*Added on NOV-7 for mobile*/
+.orderDetailsAndStatus .padding30px {
+    padding: 21px 0 0px 15px;
+}
+.shippingAddress{
+	border-right: 1px solid #f2f2f2;
+	padding-bottom: 10px;
+}
+.orderDetailsAndStatus .rightbluetext{
+	margin-top: -18px;
+}
+.marginforcartbtn{
+	    margin: 40px 15px 40px 0;
+}
+.breakWord{
+	word-break:break-word;
+}
+/* .orderDetailsTable{
+	    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 3px 11px 0 rgba(0, 0, 0, 0.19);
+} */
+.borderbtm{
+	border-bottom: 1px solid #f2f2f2;
+}
+.orderDetailsTable .table>thead:first-child>tr:first-child>th:first-child {
+   padding-left:30px;
+}
+.orderDetailsTable .table>thead:first-child>tr:first-child>th:nth-child(2){
+    width: 161px !important;
+}
+.shippingAddressDetails h6{
+	font-size:10px;
+	font-weight: bold;
+}
+.orderDetailsAndStatus p{
+	  font-size: 17px;
+    margin-bottom: 30px;
+	font-size: 17px;
+    //font-weight: bold;
+    margin-bottom: 30px;
+}
+.marginbtm20{
+	margin-bottom: 20px;
+}
+.bottom-border{
+	border-bottom: 1px solid #f2f2f2;
+}
+.orderDetailsTable .input-sm {
+    height: 30px;
+    padding: 5px 20px;
+}
+span.pipesymbol {
+    top: -2px;
+    padding-left: 5px;
+    position: relative;
+}
+.paddingtop10px{
+	padding-top: 10px !important;
+}
+.orderDetailsTable table.table-bordered tbody th,.orderDetailsTable  table.table-bordered tbody td:last-child
+, .orderDetailsTable  .table>thead:first-child>tr:first-child>th:last-child{
+    text-align: left ;
+   padding-left: 30px ;
+   width: 50px !important;
+}
+.orderDetailsTable table.table-bordered tbody td:last-child  p:last-child a{
+	text-transform: uppercase;
+	font-size: 13px;
+}
+/* .orderDetailsTable table.dataTable thead .sorting:after,.orderDetailsTable table.dataTable thead .sorting_asc:after,.orderDetailsTable table.dataTable thead .sorting_desc:after,.orderDetailsTable table.dataTable thead .sorting_asc_disabled:after,.orderDetailsTable table.dataTable thead .sorting_desc_disabled:after{
+	left: 60px !important;
+} */
+.headerLinks ul.breadcrumb.pagNav {
+	padding:0px 2px;
+}
+.orderDetailsTable .content {    
+    margin-bottom: 20px !important;
+}
+.orderDetailsTable table.table-bordered tbody td{
+	padding: 20px;
+}
+.orderDetailsTable table.table-bordered tbody td:last-child{
+	    padding-left: 10px ;
+		word-break: break-all;
+		width: 37px !important;
+		
+}
+/* Dont Delete */
+.orderDetailsTable table.table-bordered.dataTable tbody th, .orderDetailsTable table.table-bordered.dataTable tbody td{
+	font-size:12px;
+}
+.orderdetailscontainer table>tbody>tr>td, table>tbody>tr>th, table>tfoot>tr>td, table>tfoot>tr>th, table>thead>tr>td, table>thead>tr>th{
+	border-top:none;
+}
+/*Added on NOV-7 for mobile*/
+.orderdetailscontainer .ordertypedetails .table>thead>tr>th{
+	border:none;
+}
+.orderdetailscontainer table>thead:first-child>tr:first-child>th:last-child, .orderdetailscontainer table>thead:first-child>tr:first-child>th:first-child,.orderdetailscontainer table>thead:first-child>tr:first-child>th:nth-child(2),.orderdetailscontainer table>tbody>tr>td,.orderdetailscontainer table>tbody>tr>th,.orderdetailscontainer table>tfoot>tr>td,.orderdetailscontainer table>tfoot>tr>th,.orderdetailscontainer table>thead>tr>td,.orderdetailscontainer table>thead>tr>th{
+	text-align: left;
+    padding-left: 0;
+    padding-bottom: 0;
+	vertical-align: middle;
+}
+.orderDetailsTable table tbody tr td:nth-child(2) ,.orderDetailsTable table thead tr th:nth-child(2){
+    text-align: left !important;
+    padding-left: 15px;
+	width: 320px;
+}
+.orderDetailsTable div#ordersTable_wrapper .row:first-child .col-sm-6 {    
+    width: 96.2%;
+    background: #fff;
+    padding:20px 0px 10px 15px;
+    margin-left: 15px;
+}
+.orderDetailsTable div#ordersTable_wrapper .row:first-child .col-sm-6:nth-child(2) {
+    display: none;
+}
+.orderDetailsTable table.dataTable{
+	margin-top:0px !important;
+}
+ #orderdetails-hline-holder {
+ display: none;
+}
+.orderdetailscontainer .sub-padding {
+ padding: 20px 0px 20px 20px;
+}
+.orderdetailscontainer .TextPadding {
+ padding: 20px 0px 0px 15px;
+}
+.orderdetailscontainer  .linkspadding {
+ padding-bottom: 20px;
+}
+.orderdetailscontainer #orderdetails-hline {
+ height: 1px;
+ width: 100%;
+ background: #f2f2f2;
+ padding: 0px !important;
+}
+.borderbtm {
+ border-bottom: 1px solid #f2f2f2;
+}
+/*  orders details table ends here */
+/*Added on NOV-7 for mobile*/
+@media only screen and (max-width: 767px){		
+	.orderdetailscontainer .TextPadding {
+	 padding: 0px 0px 0px 15px;
+	}
+	 #orderdetails-hline-holder {
+	 display: block;
+	 margin-bottom: 25px;
+	 margin-left: 0px;
+	}
+	.orderDetailsAndStatus .padding30px {
+		padding: 21px 0 0px 15px !important;
+	}
+	.linkspadding{
+		    padding-bottom: 20px;
+	}
+	.marginbtm20{
+		    margin-bottom: 0px;
+	}
+	.shippingAddress {
+	    border-right: none;
+	    padding-bottom: 10px;
+	}
+	.downloadLinks-mobile{
+		margin-top:0px;
+		padding-right:20px;
+	}
+}

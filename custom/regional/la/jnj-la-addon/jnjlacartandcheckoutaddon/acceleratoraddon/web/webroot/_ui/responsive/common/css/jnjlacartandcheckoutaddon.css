@@ -1,0 +1,325 @@
+/* .errorMessage{
+	color: red;
+} */
+
+totalTableCell {
+    text-align: center !important;
+    padding-left: 8px !important;
+}
+
+#AddItemsCartpage table.table-bordered.dataTable tbody td:last-child.totalTableCell {
+     text-align: center !important;
+     padding-left: 8px !important;
+     padding-right: 8px !important;
+ }
+
+table.table-bordered.dataTable tbody td:last-child.totalTableCell {
+      text-align: center !important;
+      padding-left: 8px !important;
+      padding-right: 8px !important;
+}
+
+table>thead:first-child>tr:first-child>th:last-child.totalTableCell {
+    text-align: center !important;
+    padding-left: 8px !important;
+}
+
+.dateselectordropdown{
+	width:170%;
+}
+
+.Tabsubtxt{
+	margin-left: 1px;
+	margin-top: 10px;
+	line-height: 10px;
+    font-size: 10px;
+    display: inline-block;
+    vertical-align: middle;	
+    width:60%;
+}
+
+.shipmentPdtDetails{
+   padding-left: 6px;
+}
+
+/* ATP popup css */
+ .tooltip {
+    position: absolute;
+    display: inline-block;
+    opacity:1 !important;
+    margin-top:10px;
+    left: 0px;
+} 
+
+.tooltip .tooltiptext {
+    background-color: #ccc;
+    color: #555;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1;
+    left: 40%;
+    margin-left: -60px;
+   
+}
+
+.tooltip-right{
+    margin-right: -60px !important;
+    right: 20% !important;
+    left: 45% !important;
+}
+
+.tooltip-left{
+    right: 45% !important;
+    left: 0% !important;
+}
+
+.tooltip .tooltiptext:after {
+    content: "";
+    position: absolute;
+    top: 0%;
+    left: 40%;
+    margin-top: -22px;
+    border-width: 11px;
+    border-style: solid;
+    border-color: transparent transparent  #ccc transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+} 
+
+@media only screen and (max-width:1024px){
+	#AddItemsCartpage .imgprop1 {    
+		float: left;
+	}
+}
+
+
+#ContractDetailsPage .contract-content-active .active{
+	color:#5cb85c;
+} 
+#ContractDetailsPage .contract-content-active .inactive{
+	color:#b41601;
+}
+
+.breadcrumb > li + li:before {
+  padding: 0 1px;
+  color: #ccc;
+  content: "/";
+}
+
+.Pending,.Processed,.Completed,.Created,.Cancelled,.Analysis,.Picking{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    background-color: #009900;
+    content: "";
+    position: relative;
+    left: -10px;
+}
+.Pending{
+	background-color: #FFA500 !important;
+}
+.Analysis{
+	background-color: #FFA500 !important;
+}
+.Picking{
+	background-color: #FFD700 !important;
+}
+.Processed{
+	background-color: #0a8caa !important;
+}
+.Completed{
+	background-color: #009900 !important;
+}
+.Created{
+	background-color: #12c2e9 !important;
+}
+
+.box-width{
+	width:180px;
+	margin-left:10px;
+}
+.Qbox-width{
+	width:80px;
+	margin-left:10px;
+}
+
+#selectaddresspopup .modal-dialog{
+    overflow-y: initial !important
+}
+#selectaddresspopup .modal-body{
+    height: 250px;
+    overflow-y: auto;
+}
+
+.labtnclsactive{
+	letter-spacing: 1.5px;
+	font-family: jnjbodyfont;
+    font-weight: bold;
+	font-size: 10px;
+    color: #fff;
+    border-radius: 27px;
+    background-color: #0a8caa;
+    text-align: center;
+    padding:10px 15px;
+	text-transform:capitalize;
+}
+
+.indirectCustomer, .indirectPayer {
+	text-align: center;
+}
+
+
+
+.btn-file {
+  display: inline-block;
+  padding: 8px 12px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  cursor: inherit;
+  display: block;
+}
+
+#uploadEdiDiv input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  cursor: inherit;
+  display: block;
+}
+
+.paddingTop12{
+	padding-top: 12px;
+}
+
+#ediFilesAttached{
+	font-size: 12px;
+}
+
+#totalFilesAttached{
+	display: inline;
+	font-size: 12px;
+}
+
+#successMessageContent, #errorMessageContent{
+	text-align: left;
+}
+
+
+/* AFFG-26188 */
+
+.substituteModal .modal-body table tbody td{
+font-size : 13px;
+}
+.substituteModal .modal-body p,
+.substituteModal .modal-body table tbody td p label,
+.substituteModal .modal-body table tbody td p input{
+margin: 0px;
+padding: 0px;
+}
+.substituteModal .modal-body table tbody td p label{
+width:59px;
+}
+.substituteModal .modal-body>p{
+padding-bottom: 10px;
+}
+.substituteModal .modal-body table tbody td label{
+font-weight: 500;
+}
+
+.floatleft{
+float:left;
+}
+.floatright{
+float:right;
+}
+.noWrapLabel{
+    white-space: nowrap;
+	padding-left: 2.25em !important;
+}
+
+.noWrapLabel input{
+	vertical-align: sub;
+}
+.pl-13{
+padding-left: 13px;
+}
+#AddItemsCartpage .substituteModal .table>thead:first-child>tr:first-child>th:first-child{
+padding-left:0px;
+}
+
+.substituteModal .modal-body table tbody td p{
+line-height: 1.2;
+margin-bottom: 5px;
+padding-bottom: 6px;
+font-size:12px;
+display: flex;
+justify-content: space-around;
+height: 27px;
+}
+.substituteModal .modal-body table tbody td p input[type=text] {
+  width: 40%;
+  height: 25px;
+  box-sizing: border-box;
+}
+.label-class {
+    display: flex;
+    align-items: center;
+}
+.substituteModal .modal-footer .subsBtn{
+text-transform: capitalize;
+font-size: 12px;
+padding: 8px 13px !important;
+}
+.redBorder{
+border-color:red;
+}
+.redBorder.focusRed:focus{
+border-color:red !important;
+}
+
+.SubsProdPaddingMargin1{
+	padding: 10px 10px 0px 0px; 
+	margin-left: -17px;
+}
+.SubsProdModelBorder{
+	border-bottom:1px solid #e5e5e5;
+}
+.SubsProdPaddingMargin2{
+	padding:0 10px; 
+	width:120px !important;
+}
+.SubsProdPaddingMargin3{
+	padding-left: 6px !important;
+	}
+.paddingR8{
+margin-right: 8px !important;
+}
+.SubsProdPaddingMargin4{
+	padding:0 10px; 
+	width:90px !important;
+}
+#AddItemsCartpage input[type="radio"] {
+    accent-color: red; /* For modern browsers */
+}

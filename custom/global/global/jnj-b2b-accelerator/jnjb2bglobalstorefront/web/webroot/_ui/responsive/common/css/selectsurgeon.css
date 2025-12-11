@@ -1,0 +1,201 @@
+#selectSurgeonPopup li{
+	list-style:none;
+	width:100%;
+}
+#changeAccountPopup ul{
+	padding:0px;
+}
+#changeAccountPopup{
+    padding: 0px;
+    overflow-y: auto;
+    width: 100%;
+    max-height: 185px;
+}
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-right: none;
+}
+.anchor-selected{
+	background: #0ac !important;
+    color: white;
+    margin-bottom: 5px;
+    padding-top: 5px;
+    padding-bottom: 15px !important;
+}
+.anchor-selected .code,.anchor-selected .usercode{
+	color:#fff !important;
+}
+#selectSurgeonPopup .modalcls{
+	top: 80px;
+}
+#selectSurgeonPopup .modal-body{
+	padding: 15px 25px 15px 25px;
+}
+#selectSurgeonPopup .modal-header{
+	padding: 15px 25px 15px 25px;
+}
+#selectSurgeonPopup .popup{
+	margin: 0 auto;
+	border-radius: 0px;
+	box-shadow: 0 0px 0px; 
+}
+#selectSurgeonPopup .clsBtn{
+	margin-top: 15px !important;
+	font-size: 14px;
+	color: #0a8caa;
+	opacity:1;
+}
+#selectSurgeonPopup .odd-row,#selectSurgeonPopup .odd-row .anchorcls{
+	background: #fff;
+}
+#selectSurgeonPopup .even-row,#selectSurgeonPopup .even-row .anchorcls{
+	background: rgb(251, 251, 251);
+}
+.selectTitle{
+	font-size: 30px;
+}
+#selectSurgeonPopup .searchArea{
+	margin: 0 auto;	
+}  
+#selectSurgeonPopup .searchBox{
+	border-radius: 15px;
+}
+#selectSurgeonPopup .searchBtn{
+	top: -24px;
+    right: 14px;
+	color: #0a8caa;
+}
+#selectSurgeonPopup .code{
+	padding-top: 20px;
+	color: #0a8caa;
+	font-size: 18px;
+	font-weight: bold;
+}
+#selectSurgeonPopup .descTxt{
+	font-size: 14px;
+    padding-left: 25px;
+	padding-bottom: 20px;
+    line-height: 17px;
+}
+#selectSurgeonPopup .anchorcls{
+	border-bottom: white;
+	padding-left: 25px;
+	 margin-bottom: 5px;
+    padding-top: 5px;
+    padding-bottom: 15px !important;
+}
+#selectSurgeonPopup .listclass{
+	line-height: 0px;
+	margin-bottom: 0px;
+/* 	height:200px;
+	overflow-y:auto; */
+}
+#selectSurgeonPopup .ftrcls{
+	padding: 15px 25px;
+}
+/* Start - Select surgeon popup */
+#selectSurgeonPopup .subtitleText{
+	font-size: 16px;
+}
+#selectSurgeonPopup #surgeonRadio{
+	margin-left:0px;
+}
+#selectSurgeonPopup .marginbottom20px{
+	margin-bottom: 20px;
+}
+#selectSurgeonPopup .searchSurgeonInput{
+	width: 40%;
+    display: inline-block;
+    margin-left: 10px;
+}
+#selectSurgeonPopup .cancel{
+	padding-top: 8px;
+}
+#selectSurgeonPopup .usercode{
+	padding-top: 20px;
+	color: #0a8caa;
+	font-size: 14px;
+	font-weight: bold;
+	word-break:break-word;
+	line-height: 25px;
+}
+#selectSurgeonPopup .marginbottom0px{
+	margin-bottom: 0px !important;
+}
+.viewmore-holder{
+	margin-top:10px;
+}
+#selectSurgeonPopup .viewmore{
+	padding-top: 1px;
+	
+}
+#selectSurgeonPopup .viewmorecol{
+	margin: 0px;
+    padding: 10px 15px 5px 25px;
+}
+
+#selectSurgeonPopup .accountListPopUp:nth-child(even) .anchorcls  {
+   background: rgb(251, 251, 251) !important;
+}
+
+.surge-name{width:20%;display:inline-block}
+.surge-inputbox{width:75%;display:inline-block}
+.surge-name-row{padding:0px;margin-top:10px;margin-bottom:10px;}
+#registerErrorSurgeon{
+	margin-left: 21%;
+    margin-top: 5px;
+}
+/* End - Select surgeon popup */
+
+.surgeonName-error{
+	//padding-left:10px;
+}
+.surgeryInfo-error{
+	 color: #B41601;
+	 padding-left:15px;
+	 font-weight:bold;
+}
+.surgeonaccountList .anchorcls, .surgeonaccountList .anchorcls .list-group-item-heading,#selectSurgeonPopup .accountListPopUp:nth-child(even) .anchorcls{
+	
+	cursor:pointer;
+	}
+@media screen and (max-width: 767px) {
+	.surgery-info-row .surgery-info-col:first-child{margin-bottom:10px}
+	#selectSurgeonPopup .selectTitle{font-size:22px} 
+	#selectSurgeonPopup .subtitleText{font-size:14px}
+	#selectSurgeonPopup .clsBtn{margin-bottom:20px !important;margin-top:10px !important;} 
+	.surge-form-elem .input-group{width:100%}
+	
+	#registerErrorSurgeon {
+	    margin-left: 0%;
+	}
+	.surgeonName-error{
+		padding-left:0px;
+	}
+	#selectSurgeonPopup .popup{
+		width: 100%;
+	}
+	#changeAccountPopup ul{
+		padding-left: 2px;
+	}
+	/* Start - Select surgeon popup */
+	#selectSurgeonPopup .mobileViewMore{
+		text-align:center;
+	}
+	#selectSurgeonPopup .mobileViewMore a{
+		display:block;
+	}
+	.surge-name{width:100%;display:block}
+	.surge-inputbox{width:100%;display:block}
+	/* End - Select surgeon popup */
+}
+.globalError{
+	 color: #B41601;
+    font-weight:bold;
+}

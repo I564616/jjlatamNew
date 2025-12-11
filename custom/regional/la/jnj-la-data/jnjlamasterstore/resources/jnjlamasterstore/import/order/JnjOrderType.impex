@@ -1,0 +1,33 @@
+INSERT_UPDATE JnjOrderType; code[unique = true]; description; name[lang = en]; name[lang = pt]; name[lang = es]
+; 9SE1  ; Initial order                       ; Initial order                       ; Pedido Inicial                        ; Orden Inicial
+; ZCT   ; Clinical Trial                      ; Clinical Trial                      ; Estudo Clínico                        ; Orden Clinica
+; ZEX   ; Export Sales Order                  ; Export Sales Order                  ; Exportação                            ; Exportación
+; ZFR   ; No Charge Order                     ; No Charge Order                     ; Pedido Grátis                         ; Sin Cargo
+; ZKA   ; Consignment Pick-up                 ; Consignment Pick-up                 ; Recusa da Consignação                 ; Retiro Consignado
+; ZKB   ; Consignment Fill-up                 ; Consignment Fill-up                 ; Remessa para Consignação              ; Generacion Consignado
+; ZKE   ; Consignment Issue                   ; Consignment Issue                   ; Emissão de Consignação                ; Emisión de la consignación
+; ZKEI  ; Consign Iss. Integrl                ; Consign Iss. Integrl                ; Venda da Consignação                  ; Reposicion Consignado
+; ZKR   ; Consignment Returns                 ; Consignment Returns                 ; Devolução da Consignação              ; Devolucion Consignado
+; ZLZ   ; Sheduling Agreement                 ; Sheduling Agreement                 ; Acordo de Agendamento                 ; Acuerdo
+; ZMIS  ; Misc/Scrap Sales                    ; Misc/Scrap Sales                    ; Venda de Ativo                        ; Miscelaneas
+; ZOCR  ; Credit Memo Request                 ; Credit Memo Request                 ; Nota de Crédito                       ; Nota Credito
+; ZODR  ; Debit Memo Request                  ; Debit Memo Request                  ; Nota de Débito                        ; Nota Dedito
+; ZOR   ; Standard Order                      ; Standard Order                      ; Pedido de Venda Regular               ; Venta Directa
+; ZOR1  ; Repl Order Intra Plt                ; Repl Order Intra Plt                ; Pedido Recorrente                     ; Reposicion
+; ZORD  ; Bill Only Order                     ; Bill Only Order                     ; Pedido de Vendas – SINIEF Onerado     ; Factura
+; ZQT   ; Quotation                           ; Quotation                           ; Cotação                               ; Cotizacion
+; ZRCT  ; Clinical Tr.Returns                 ; Clinical Tr.Returns                 ; Devolução de Estudo Clínico           ; Devolucion O Clinica
+; ZREC  ; JNJ Product Recalls                 ; JNJ Product Recalls                 ; Devolução Recall                      ; Recall
+; ZRED  ; Returns                             ; Returns                             ; Devolução                             ; Devolución
+; ZRER  ; Returns with Ref.                   ; Returns with Ref.                   ; Recusa                                ; Devolución
+; ZRO   ; Rush Order Types                    ; Rush Order Types                    ; Pedido URGENTE de Vendas regular      ; Urgencia
+; ZSER  ; Service                             ; Service                             ; Pedido de Vendas de Serviço           ; Servicio
+; ZSM   ; Samples                             ; Samples                             ; Pedido de Amostra Grátis              ; Muestra
+; ZINS  ; Government Orders                   ; Government Orders                   ; Venda Institucional                   ; Venta Institucional
+; ZSER2 ; Consignment Fill up SINIEF          ; Consignment Fill up SINIEF          ; Remessa de Consignação SINIEF         ; Reemplazo de Consignación SINIEF
+; ZKGW  ; Consignment Issue SINIEF            ; Consignment Issue SINIEF            ; Faturamento de Consignação SINIEF     ; Facturacion de Consignación SINIEF
+; ZOS   ; Fill-up Request - Burdened SINIEF   ; Fill-up Request - Burdened SINIEF   ; Pedido de Remessa – SINIEF Onerado    ; Pedido de Reemplazo – SINIEF Onerado
+; ZSIN  ; Fill-up Request - Discharged SINIEF ; Fill-up Request - Discharged SINIEF ; Pedido de Remessa – SINIEF Desonerado ; Pedido de Reemplazo – SINIEF Desonerado
+; ZIND  ; Sales Request - Discharged SINIEF   ; Sales Request - Discharged SINIEF   ; Pedido de Venda – SINIEF Desonerado   ; Pedido de Venta – SINIEF Desonerado
+; _9SES ; SINIEF Invoice                      ; SINIEF Invoice                      ; SINIEF Fatura                         ; Factura intermedia
+; ZSES  ; SINIEF Debit Note                   ; SINIEF Debit Note                   ; SINIEF Nt Debito                      ; SINIEF Nt Debito

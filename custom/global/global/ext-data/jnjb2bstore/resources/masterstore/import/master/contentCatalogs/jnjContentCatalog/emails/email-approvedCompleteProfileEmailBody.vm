@@ -1,0 +1,213 @@
+
+## messageSource=classpath:/jnjb2bcore/messages/email-approvedInCompleteProfile_$lang.properties
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>A Simple Responsive HTML Email</title>
+        <style type="text/css">
+        body {margin: 0; padding: 0; min-width: 100%!important;}
+        .content {width: 650px;}  
+		.bodyContent{
+			background-color: rgb(249,249,249);
+			height: auto;
+			padding: 40px 25px 10px 25px;
+			color: #828282;
+		}
+		.blueHeading{
+			font-size: 48px;
+			color: #0c8caa;
+			line-height: 65px;
+		}
+		.subHeading{				
+			color: #828282;
+	
+		}
+		.btnHolder{
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+		.footer{
+			margin-top:40px;
+			color: #828282;
+			font-size:8px;
+		}
+        </style>
+    </head>
+    <body  bgcolor="#fff">
+        <table width="100%" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+					<!-- logo -->
+                    <table class="content" align="center" cellpadding="0" cellspacing="0" border="0" style="margin:0px">
+                        <tr>
+                            <td>
+                               ${ctx.cmsSlotContents.TopContentLogo1}
+                            </td>
+                        </tr>
+                    </table>
+					
+					<!-- head content -->
+					<table class="content" align="center" cellpadding="0" cellspacing="0" border="0" style="background-color: rgb(245,245,245);margin:0px;font-family:Georgia;">
+							<tr width="100">
+								<td width="60%" style="padding: 15px 15px 15px 15px;">
+									<table width="100%" cellpadding="0" cellspacing="0" border="0">
+										<tr><td class="blueHeading" style="font-family:Georgia;font-size:48px">A Great Time to Join!</td></tr>
+										<tr><td class="subHeading" style="margin-top: 25px;font-family:Georgia;font-size:19px">Welcome to J&J Customer Connect, your registration has been completed.</td></tr>	
+									</table>
+								</td>
+								<td width="40%" align="center" style="padding: 15px 15px 15px 0px;">
+									${ctx.cmsSlotContents.TopContentLogo3}
+								</td>			
+							</tr>
+					</table>	
+					
+					<!-- tablet & mobile image -->
+					<table class="content" align="center" cellpadding="0" cellspacing="0" border="0">
+						<tr>
+							<td>
+								${ctx.cmsSlotContents.TopContentLogo4}
+							</td>
+						</tr>
+					</table>
+					
+					<!-- Content -->
+					<table class="content" align="center" cellpadding="0" cellspacing="0" border="0" style="color:#828282;font-family:Arial;font-size:16px">
+						<tr>
+							<td style="padding: 20px 40px 20px 40px;">
+								<p>J&J Customer Connect is a global portal for the Johnson & Johnson Family of Companies that lets you place orders, obtain order status, access our product catalog and more.</p>
+<p>You've picked a great time to join, as we're rolling out new capabilities designed to improve your experience through a more intuitive process. Our enhanced site offers you:</p>
+
+							</td>
+						</tr>
+					</table>
+					
+					<!-- Thumb images -->
+					<table class="content" align="center" cellpadding="0" cellspacing="0" border="0" style="color:#828282;text-align:center;font-family:Arial;font-size:16px">
+						<!-- image 1 -->
+						<tr>
+							<td align="left" style="padding: 10px 10px 20px 40px;" width="217">
+								<table  cellpadding="0" cellspacing="0" border="0">
+									<tr>
+										<td colspan="1">${ctx.cmsSlotContents.TopContentLogo5}</td>												
+									</tr>
+									<tr class="imgText">
+										<td>
+											<table  cellpadding="0" cellspacing="0" border="0">
+												<tr><td style="text-align:center;color:#828282;font-family:Arial;font-size:16px">Easier</td></tr>
+												<tr><td style="text-align:center;color:#828282;font-family:Arial;font-size:16px">navigation</td></tr>
+											</table>
+										</td>												
+									</tr>
+								</table>
+							</td>
+							
+							<!-- image 2 -->
+							<td align="center" style="padding: 10px 10px 20px 10px;" width="217">
+								<table  cellpadding="0" cellspacing="0" border="0">
+									<tr>
+										<td colspan="1">${ctx.cmsSlotContents.TopContentLogo6}</td>
+									</tr>
+									<tr class="imgText">
+										<td>
+											<table  cellpadding="0" cellspacing="0" border="0">
+												<tr><td style="text-align:center;color:#828282;font-family:Arial;font-size:16px">Easy-to-find</td></tr>
+												<tr><td style="text-align:center;color:#828282;font-family:Arial;font-size:16px">order details</td></tr>
+											</table>
+										</td>
+									</tr>
+								</table>										
+							</td>
+							
+							<!-- image 3 -->
+							<td align="right" style="padding: 10px 40px 20px 10px;" width="217">
+								<table  cellpadding="0" cellspacing="0" border="0">
+									<tr>
+										<td colspan="1">${ctx.cmsSlotContents.TopContentLogo7}</td>
+									</tr>
+									<tr class="imgText">
+										<td>
+											<table cellpadding="0" cellspacing="0" border="0">
+												<tr><td style="text-align:center;color:#828282;font-family:Arial;font-size:16px">Mobile device</td></tr>
+												<tr><td style="text-align:center;color:#828282;font-family:Arial;font-size:16px">optimization</td></tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>							
+					</table>
+					
+					<!-- Red banner  -->
+					<table class="content" align="center" cellpadding="0" cellspacing="0" border="0" style="background-color: rgb(245,245,245);font-family:Arial">
+		
+						<tr>
+							<td align="left" style="padding: 30px 30px 30px 30px;">
+								<table  cellpadding="0" cellspacing="0" border="0">
+									<tr>
+										<td style="background-color: #901201;padding: 30px 30px 30px 30px;border-bottom:1px solid white;color:#fff;font-family:Arial;font-size:16px" class="whiteText">
+
+												Our goal is to provide you with an easy-to-use portal to place orders and receive the order information you need to achieve your business objectives. Our convenient J&J Customer Connect portal lets you:
+											
+										</td>
+									</tr>
+									<tr>
+										<td style="background-color: #b41601;padding: 30px 30px 15px 15px;">
+											<table class="subBodyContent whiteText" cellpadding="0" cellspacing="0" border="0">
+												<tr>
+													<td>
+														<ul style="color:#fff;font-family:Arial;font-size:16px">
+															<li style="margin-bottom:10px">Enjoy 24/7 ordering & account access</li>	
+															<li style="margin-bottom:10px">Check order status & track shipments</li>
+															<li style="margin-bottom:10px">View purchase history & process returns</li>
+															<li style="margin-bottom:10px">View your order, even if placed through EDI, phone or fax</li>
+															<li style="margin-bottom:10px">Easily access invoices & delivery notes</li>
+															<li style="margin-bottom:10px">Access backorder status by running reports or receiving daily/weekly email updates</li>
+															<li style="margin-bottom:10px">View product availability dates</li>
+															<li>Contact customer support...and more!</li>
+														<ul>
+													</td>
+												</tr>		
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td style="padding-top: 35px;">
+											<table cellpadding="0" cellspacing="0" border="0" style="font-family:Arial;">
+												<tr><td class="subHeading"  style="font-family:Arial;font-size:16px">We are committed to providing you with an exceptional online experience.</td></tr>	
+												<tr><td class="subHeading"  style="font-family:Arial;font-size:16px">We invite you to visit us today at J&J Customer Connect:</td></tr>
+											</table>	
+											<table cellpadding="0" cellspacing="0" border="0" style="font-family:Arial;">
+												<tr>
+													<td style="padding:0px 0px 40px 0px"><a href="#">${ctx.cmsSlotContents.TopContentLogo8}<a></td>
+												</tr>	
+											</table>	
+											<table cellpadding="0" cellspacing="0" border="0" style="font-family:Arial;margin-top:20px;margin-bottom:10px">
+												<tr>
+													<td>  </td>
+												</tr>	
+											</table>
+											<table cellpadding="0" cellspacing="0" border="0" style="font-family:Arial;">										
+												<tr><td class="subHeading" style="margin-bottom:20px;family:Arial;">Be sure to bookmark the site for quick future access!</td></tr>													
+												<tr><td class="subHeading" style="margin-bottom:20px;font-family;Arial:">Thank you for your continued business.</td></tr>
+												<tr><td class="subHeading"style="font-weight:bold;font-family:Arial;">&#8211; Your J&J Customer Connect team</td></tr>
+												<tr><td class="footer" >&#169; Johnson & Johnson Health Care Systems Inc. 2017. All Rights Reserved.</td></tr>											
+											</table>
+										</td>
+									</tr>
+								</table>
+							<td>
+						</tr>
+					</table>
+					<table class="content" align="center" cellpadding="0" cellspacing="0" border="0" style="background-color: red;">		
+						<tr>
+							<td align="left"  height="20">		
+							</td>
+						</tr>
+					</table>		
+                </td>
+            </tr>
+			
+        </table>
+    </body>
+    </html>

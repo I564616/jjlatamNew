@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  WARNING: This is the Spring WEB configuration file. If you want to replace
+  items or managers you have to do this from the extensions core configuration 
+  file (jnjlab2boutboundservice/resources/jnjlab2boutboundservice-spring.xml) 
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+
+	<!--  Configure the class to use for jalo session creation -->
+	<!-- <bean id="jalosession"   class="de.hybris.platform.jalo.JaloSessionFactory">
+		<property name="targetClassName" value="com.jnj.outboundservice.jalo.Jnjlab2boutboundserviceJaloSession"/>
+	</bean>-->
+
+	<!-- Spring managed FilterChain for hybris Filter stack -->
+	<bean id="jnjlab2boutboundservicePlatformFilterChain" class="de.hybris.platform.servicelayer.web.PlatformFilterChain">
+		<constructor-arg>
+			<list>
+				<ref bean="log4jFilter"/>
+				<ref bean="dynamicTenantActivationFilter"/>
+				<ref bean="sessionFilter"/>
+           		<ref bean="jnjlab2boutboundserviceSecureMediaFilter"/>				
+			</list>
+		</constructor-arg>
+	</bean>
+ 
+   <bean id="jnjlab2boutboundserviceSecureMediaFilter" class="de.hybris.platform.servicelayer.web.SecureMediaFilter">
+       <property name="mediaPermissionService" ref="mediaPermissionService"/>
+       <property name="modelService" ref="modelService"/>
+       <property name="userService" ref="userService"/>
+       <property name="mediaService" ref="mediaService"/>
+      <!-- <property name="secureMediaToken" value="securemedias"/>  securemedias is default but you may overwrite it -->
+     </bean>	
+
+	<!-- 
+	 WARNING: 
+	 Do NOT override hybris managers or items within the web module!
+	 Use always the core spring configuration file (jnjlab2boutboundservice-spring.xml) in
+	 the extensions resources/ directory.
+	 -->
+</beans>

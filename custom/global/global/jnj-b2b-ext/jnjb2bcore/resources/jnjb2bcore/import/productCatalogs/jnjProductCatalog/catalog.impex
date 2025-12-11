@@ -1,0 +1,28 @@
+# 
+# Import the JNJ Product
+#
+
+
+$MstrProdCatalog=mstrProductCatalog
+$BRproductCatalog=brProductCatalog
+$MXproductCatalog=mxProductCatalog
+$languages=en,pt,es
+$defaultLanguage=en
+
+# Product catalog
+INSERT_UPDATE Catalog;id[unique=true];name[lang=$defaultLanguage]
+;$MstrProdCatalog;"Master Product Catalog"
+;$BRproductCatalog;"Brazil Product Catalog"
+;$MXproductCatalog;"Mexico Product Catalog"
+
+# Product versions for product catalogs
+INSERT_UPDATE CatalogVersion;catalog(id)[unique=true];version[unique=true];active;languages(isoCode);readPrincipals(uid)
+;$MstrProdCatalog;Staged;false;$languages;employeegroup
+;$BRproductCatalog;Staged;false;$languages;employeegroup
+;$BRproductCatalog;Online;true;$languages;employeegroup
+;$MXproductCatalog;Staged;false;$languages;employeegroup
+;$MXproductCatalog;Online;true;$languages;employeegroup
+
+
+#INSERT PriceRow;minqtd;price;unitFactor;
+#;1;0;1

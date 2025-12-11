@@ -1,0 +1,455 @@
+### Employee
+$passwordEncoding=md5
+$defaultPassword=1234
+$setPassword=@password[translator=de.hybris.platform.impex.jalo.translators.ConvertPlaintextToEncodedUserPasswordTranslator][default='$passwordEncoding:$defaultPassword']
+
+INSERT_UPDATE Employee;UID[unique=true];$setPassword;description;name;groups(uid);sessionLanguage(isocode);sessionCurrency(isocode)
+;productSyncUser;;Product Sync User;;;en;EUR
+
+### Sync Job
+$sourceVersion=sourceVersion(catalog(id),version[default='Staged'])
+$targetVersion=targetVersion(catalog(id),version[default='Staged'])
+$masterProductCatalog=mstrProductCatalog
+$brazilProductCatalog=brProductCatalog
+$mexicoProductCatalog=mxProductCatalog
+$cencaProductCatalog=cencaProductCatalog
+$ecuadorProductCatalog=ecProductCatalog
+$argentinaProductCatalog=arProductCatalog
+$uruguayProductCatalog=uyProductCatalog
+$chileProductCatalog=clProductCatalog
+$colombiaProductCatalog=coProductCatalog
+$peruProductCatalog=peProductCatalog
+$puertoProductCatalog=prProductCatalog
+
+######################################################################################
+##################Service Layer Jobs for Normal CronJobs for SycnJobs#################
+######################################################################################
+INSERT_UPDATE ServicelayerJob;code[unique=true];springId;active[default='true']
+;syncMasterToLocalCatalog;syncMasterToLocalCatalog;true
+;syncBRProdStagedToOnline;brProdStagedToOnline;true
+;syncMXProdStagedToOnline;mxProdStagedToOnline;true
+;syncCENCAProdStagedToOnline;cencaProdStagedToOnline;true
+;syncECProdStagedToOnline;ecProdStagedToOnline;true
+;syncARProdStagedToOnline;arProdStagedToOnline;true
+;syncUYProdStagedToOnline;uyProdStagedToOnline;true
+;syncCLProdStagedToOnline;clProdStagedToOnline;true
+;syncCOProdStagedToOnline;coProdStagedToOnline;true
+;syncPEProdStagedToOnline;peProdStagedToOnline;true
+;syncPRProdStagedToOnline;prProdStagedToOnline;true
+##################################################################
+
+######################################################################################
+##################Normal CronJobs for SycnJobs#######################################
+######################################################################################
+INSERT_UPDATE CronJob;code[unique=true];job(code);active[default='true'];sessionLanguage(isocode)
+;syncMasterToLocalCatalog;syncMasterToLocalCatalog;true;en
+;syncBRProdStgToOnline;syncBRProdStagedToOnline;true;en
+;syncMXProdStgToOnline;syncMXProdStagedToOnline;true;en
+;syncCENCAProdStgToOnline;syncCENCAProdStagedToOnline;true;en
+;syncECProdStgToOnline;syncECProdStagedToOnline;true;en
+;syncARProdStgToOnline;syncARProdStagedToOnline;true;en
+;syncUYProdStgToOnline;syncUYProdStagedToOnline;true;en
+;syncCLProdStgToOnline;syncCLProdStagedToOnline;true;en
+;syncCOProdStgToOnline;syncCOProdStagedToOnline;true;en
+;syncPEProdStgToOnline;syncPEProdStagedToOnline;true;en
+;syncPRProdStgToOnline;syncPRProdStagedToOnline;true;en
+###########################################################################################
+
+#########################################################################
+########## STG --> ONLINE PRODUCT SYCN JOBS #############################
+#########################################################################
+INSERT_UPDATE CatalogVersionSyncJob;code[unique=true];$sourceVersion;$targetVersion;createNewItems;removeMissingItems;rootTypes(code)
+;BrazilStaged->BrazilOnline;$brazilProductCatalog;$brazilProductCatalog:Online;true;true;Category,Product,Keyword,PriceRow,TaxRow,DiscountRow
+;MexicoStaged->MexicoOnline;$mexicoProductCatalog;$mexicoProductCatalog:Online;true;true;Category,Product,Keyword,PriceRow,TaxRow,DiscountRow
+;CencaStaged->CencaOnline;$cencaProductCatalog;$cencaProductCatalog:Online;true;true;Category,Product,Keyword,PriceRow,TaxRow,DiscountRow
+;EcuadorStaged->EcuadorOnline;$ecuadorProductCatalog;$ecuadorProductCatalog:Online;true;true;Category,Product,Keyword,PriceRow,TaxRow,DiscountRow
+;ArgentinaStaged->ArgentinaOnline;$argentinaProductCatalog;$argentinaProductCatalog:Online;true;true;Category,Product,Keyword,PriceRow,TaxRow,DiscountRow
+;UruguayStaged->UruguayOnline;$uruguayProductCatalog;$uruguayProductCatalog:Online;true;true;Category,Product,Keyword,PriceRow,TaxRow,DiscountRow
+;ChileStaged->ChileOnline;$chileProductCatalog;$chileProductCatalog:Online;true;true;Category,Product,Keyword,PriceRow,TaxRow,DiscountRow
+;ColombiaStaged->ColombiaOnline;$colombiaProductCatalog;$colombiaProductCatalog:Online;true;true;Category,Product,Keyword,PriceRow,TaxRow,DiscountRow
+;PeruStaged->PeruOnline;$peruProductCatalog;$peruProductCatalog:Online;true;true;Category,Product,Keyword,PriceRow,TaxRow,DiscountRow
+;PuertoStaged->PuertoOnline;$puertoProductCatalog;$puertoProductCatalog:Online;true;true;Category,Product,Keyword,PriceRow,TaxRow,DiscountRow
+#########################################################################
+
+#########################################################################
+########## MSTR --> STG PRODUCT SYCN JOBS ###############################
+#########################################################################
+INSERT_UPDATE JnjProductCatalogsSyncJob;code;$sourceVersion[unique=true];$targetVersion[unique=true];createNewItems;removeMissingItems;rootTypes(code);country(isocode)
+;MasterStaged->BrazilStaged;$masterProductCatalog;$brazilProductCatalog;true;true;Category,Product,Keyword,PriceRow,TaxRow,DiscountRow;BR
+;MasterStaged->MexicoStaged;$masterProductCatalog;$mexicoProductCatalog;true;true;Category,Product,Keyword,PriceRow,TaxRow,DiscountRow;MX
+;MasterStaged->CencaStaged;$masterProductCatalog;$cencaProductCatalog;true;true;Category,Product,Keyword,PriceRow,TaxRow,DiscountRow;PA
+;MasterStaged->EcuadorStaged;$masterProductCatalog;$ecuadorProductCatalog;true;true;Category,Product,Keyword,PriceRow,TaxRow,DiscountRow;EC
+;MasterStaged->ArgentinaStaged;$masterProductCatalog;$argentinaProductCatalog;true;true;Category,Product,Keyword,PriceRow,TaxRow,DiscountRow;AR
+;MasterStaged->UruguayStaged;$masterProductCatalog;$uruguayProductCatalog;true;true;Category,Product,Keyword,PriceRow,TaxRow,DiscountRow;UY
+;MasterStaged->ChileStaged;$masterProductCatalog;$chileProductCatalog;true;true;Category,Product,Keyword,PriceRow,TaxRow,DiscountRow;CL
+;MasterStaged->ColombiaStaged;$masterProductCatalog;$colombiaProductCatalog;true;true;Category,Product,Keyword,PriceRow,TaxRow,DiscountRow;CO
+;MasterStaged->PeruStaged;$masterProductCatalog;$peruProductCatalog;true;true;Category,Product,Keyword,PriceRow,TaxRow,DiscountRow;PE
+;MasterStaged->PuertoStaged;$masterProductCatalog;$puertoProductCatalog;true;true;Category,Product,Keyword,PriceRow,TaxRow,DiscountRow;PR
+#########################################################################
+
+#########################################################################
+##################### Product Sync CronJobs#############################
+#########################################################################
+INSERT_UPDATE CatalogVersionSyncCronJob;code[unique=true];job(code);sessionLanguage(isocode)
+;Sync-MasterStaged-BrazilStaged;MasterStaged->BrazilStaged;en
+;Sync-MasterStaged-MexicoStaged;MasterStaged->MexicoStaged;en
+;Sync-MasterStaged-CencaStaged;MasterStaged->CencaStaged;en
+;Sync-MasterStaged-EcuadorStaged;MasterStaged->EcuadorStaged;en
+;Sync-MasterStaged-ArgentinaStaged;MasterStaged->ArgentinaStaged;en
+;Sync-MasterStaged-UruguayStaged;MasterStaged->UruguayStaged;en
+;Sync-MasterStaged-ChileStaged;MasterStaged->ChileStaged;en
+;Sync-MasterStaged-ColombiaStaged;MasterStaged->ColombiaStaged;en
+;Sync-MasterStaged-PeruStaged;MasterStaged->PeruStaged;en
+;Sync-MasterStaged-PuertoStaged;MasterStaged->PuertoStaged;en
+;Sync-BrazilStaged->BrazilOnline;BrazilStaged->BrazilOnline;en
+;Sync-MexicoStaged->MexicoOnline;MexicoStaged->MexicoOnline;en
+;Sync-CencaStaged->CencaOnline;CencaStaged->CencaOnline;en
+;Sync-EcuadorStaged->EcuadorOnline;EcuadorStaged->EcuadorOnline;en
+;Sync-ArgentinaStaged->ArgentinaOnline;ArgentinaStaged->ArgentinaOnline;en
+;Sync-UruguayStaged->UruguayOnline;UruguayStaged->UruguayOnline;en
+;Sync-ChileStaged->ChileOnline;ChileStaged->ChileOnline;en
+;Sync-ColombiaStaged->ColombiaOnline;ColombiaStaged->ColombiaOnline;en
+;Sync-PeruStaged->PeruOnline;PeruStaged->PeruOnline;en
+;Sync-PuertoStaged->PuertoOnline;PuertoStaged->PuertoOnline;en
+#########################################################################
+
+######################################################################################
+######## Excluding Attributes which should not be sync from Master to Brazil ########
+######################################################################################
+$catalog-syncjob-name=MasterStaged->BrazilStaged
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+;Product:description;$catalog-syncjob-name;false;false;;false;false
+;JnJProduct:medicalSpecialty;$catalog-syncjob-name;false;false;;false;false
+;Product:picture;$catalog-syncjob-name;false;false;;false;false
+;Product:thumbnail;$catalog-syncjob-name;false;false;;false;false
+;Product:galleryImages;$catalog-syncjob-name;false;false;;false;false
+;Product:data_sheet;$catalog-syncjob-name;false;false;;false;false
+;Category:productPresentForTheCategory;$catalog-syncjob-name;false;false;;false;false
+;Category:b2bUnitAccounts;$catalog-syncjob-name;false;false;;false;false
+;Category:showProductPrice;$catalog-syncjob-name;false;false;;false;false
+######################################################################################
+
+######################################################################################
+######## Excluding Attributes which should not be sync from Master to Mexico ########
+######################################################################################
+$catalog-syncjob-name=MasterStaged->MexicoStaged
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+;Product:description;$catalog-syncjob-name;false;false;;false;false
+;JnJProduct:medicalSpecialty;$catalog-syncjob-name;false;false;;false;false
+;Product:picture;$catalog-syncjob-name;false;false;;false;false
+;Product:thumbnail;$catalog-syncjob-name;false;false;;false;false
+;Product:galleryImages;$catalog-syncjob-name;false;false;;false;false
+;Product:data_sheet;$catalog-syncjob-name;false;false;;false;false
+;Category:productPresentForTheCategory;$catalog-syncjob-name;false;false;;false;false
+;Category:b2bUnitAccounts;$catalog-syncjob-name;false;false;;false;false
+;Category:showProductPrice;$catalog-syncjob-name;false;false;;false;false
+######################################################################################
+
+######################################################################################
+######## Excluding Attributes which should not be sync from Master to Cenca ########
+######################################################################################
+$catalog-syncjob-name=MasterStaged->CencaStaged
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+;Product:description;$catalog-syncjob-name;false;false;;false;false
+;JnJProduct:medicalSpecialty;$catalog-syncjob-name;false;false;;false;false
+;Product:picture;$catalog-syncjob-name;false;false;;false;false
+;Product:thumbnail;$catalog-syncjob-name;false;false;;false;false
+;Product:galleryImages;$catalog-syncjob-name;false;false;;false;false
+;Product:data_sheet;$catalog-syncjob-name;false;false;;false;false
+;Category:productPresentForTheCategory;$catalog-syncjob-name;false;false;;false;false
+;Category:b2bUnitAccounts;$catalog-syncjob-name;false;false;;false;false
+;Category:showProductPrice;$catalog-syncjob-name;false;false;;false;false
+######################################################################################
+
+######################################################################################
+######## Excluding Attributes which should not be sync from Master to Ecuador ########
+######################################################################################
+$catalog-syncjob-name=MasterStaged->EcuadorStaged
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+;Product:description;$catalog-syncjob-name;false;false;;false;false
+;JnJProduct:medicalSpecialty;$catalog-syncjob-name;false;false;;false;false
+;Product:picture;$catalog-syncjob-name;false;false;;false;false
+;Product:thumbnail;$catalog-syncjob-name;false;false;;false;false
+;Product:galleryImages;$catalog-syncjob-name;false;false;;false;false
+;Product:data_sheet;$catalog-syncjob-name;false;false;;false;false
+;Category:productPresentForTheCategory;$catalog-syncjob-name;false;false;;false;false
+;Category:b2bUnitAccounts;$catalog-syncjob-name;false;false;;false;false
+;Category:showProductPrice;$catalog-syncjob-name;false;false;;false;false
+######################################################################################
+
+######################################################################################
+######## Excluding Attributes which should not be sync from Master to Argentina ########
+######################################################################################
+$catalog-syncjob-name=MasterStaged->ArgentinaStaged
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+;Product:description;$catalog-syncjob-name;false;false;;false;false
+;JnJProduct:medicalSpecialty;$catalog-syncjob-name;false;false;;false;false
+;Product:picture;$catalog-syncjob-name;false;false;;false;false
+;Product:thumbnail;$catalog-syncjob-name;false;false;;false;false
+;Product:galleryImages;$catalog-syncjob-name;false;false;;false;false
+;Product:data_sheet;$catalog-syncjob-name;false;false;;false;false
+;Category:productPresentForTheCategory;$catalog-syncjob-name;false;false;;false;false
+;Category:b2bUnitAccounts;$catalog-syncjob-name;false;false;;false;false
+;Category:showProductPrice;$catalog-syncjob-name;false;false;;false;false
+######################################################################################
+
+
+######################################################################################
+######## Excluding Attributes which should not be sync from Master to Uruguay ########
+######################################################################################
+$catalog-syncjob-name=MasterStaged->UruguayStaged
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+;Product:description;$catalog-syncjob-name;false;false;;false;false
+;JnJProduct:medicalSpecialty;$catalog-syncjob-name;false;false;;false;false
+;Product:picture;$catalog-syncjob-name;false;false;;false;false
+;Product:thumbnail;$catalog-syncjob-name;false;false;;false;false
+;Product:galleryImages;$catalog-syncjob-name;false;false;;false;false
+;Product:data_sheet;$catalog-syncjob-name;false;false;;false;false
+;Category:productPresentForTheCategory;$catalog-syncjob-name;false;false;;false;false
+;Category:b2bUnitAccounts;$catalog-syncjob-name;false;false;;false;false
+;Category:showProductPrice;$catalog-syncjob-name;false;false;;false;false
+######################################################################################
+
+######################################################################################
+######## Excluding Attributes which should not be sync from Master to Chile ########
+######################################################################################
+$catalog-syncjob-name=MasterStaged->ChileStaged
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+;Product:description;$catalog-syncjob-name;false;false;;false;false
+;JnJProduct:medicalSpecialty;$catalog-syncjob-name;false;false;;false;false
+;Product:picture;$catalog-syncjob-name;false;false;;false;false
+;Product:thumbnail;$catalog-syncjob-name;false;false;;false;false
+;Product:galleryImages;$catalog-syncjob-name;false;false;;false;false
+;Product:data_sheet;$catalog-syncjob-name;false;false;;false;false
+;Category:productPresentForTheCategory;$catalog-syncjob-name;false;false;;false;false
+;Category:b2bUnitAccounts;$catalog-syncjob-name;false;false;;false;false
+;Category:showProductPrice;$catalog-syncjob-name;false;false;;false;false
+######################################################################################
+
+######################################################################################
+######## Excluding Attributes which should not be sync from Master to Colombia ########
+######################################################################################
+$catalog-syncjob-name=MasterStaged->ColombiaStaged
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+;Product:description;$catalog-syncjob-name;false;false;;false;false
+;JnJProduct:medicalSpecialty;$catalog-syncjob-name;false;false;;false;false
+;Product:picture;$catalog-syncjob-name;false;false;;false;false
+;Product:thumbnail;$catalog-syncjob-name;false;false;;false;false
+;Product:galleryImages;$catalog-syncjob-name;false;false;;false;false
+;Product:data_sheet;$catalog-syncjob-name;false;false;;false;false
+;Category:productPresentForTheCategory;$catalog-syncjob-name;false;false;;false;false
+;Category:b2bUnitAccounts;$catalog-syncjob-name;false;false;;false;false
+;Category:showProductPrice;$catalog-syncjob-name;false;false;;false;false
+######################################################################################
+
+######################################################################################
+######## Excluding Attributes which should not be sync from Master to Peru ########
+######################################################################################
+$catalog-syncjob-name=MasterStaged->PeruStaged
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+;Product:description;$catalog-syncjob-name;false;false;;false;false
+;JnJProduct:medicalSpecialty;$catalog-syncjob-name;false;false;;false;false
+;Product:picture;$catalog-syncjob-name;false;false;;false;false
+;Product:thumbnail;$catalog-syncjob-name;false;false;;false;false
+;Product:galleryImages;$catalog-syncjob-name;false;false;;false;false
+;Product:data_sheet;$catalog-syncjob-name;false;false;;false;false
+;Category:productPresentForTheCategory;$catalog-syncjob-name;false;false;;false;false
+;Category:b2bUnitAccounts;$catalog-syncjob-name;false;false;;false;false
+;Category:showProductPrice;$catalog-syncjob-name;false;false;;false;false
+######################################################################################
+
+######################################################################################
+######## Excluding Attributes which should not be sync from Master to Puerto ########
+######################################################################################
+$catalog-syncjob-name=MasterStaged->PuertoStaged
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+;Product:description;$catalog-syncjob-name;false;false;;false;false
+;JnJProduct:medicalSpecialty;$catalog-syncjob-name;false;false;;false;false
+;Product:picture;$catalog-syncjob-name;false;false;;false;false
+;Product:thumbnail;$catalog-syncjob-name;false;false;;false;false
+;Product:galleryImages;$catalog-syncjob-name;false;false;;false;false
+;Product:data_sheet;$catalog-syncjob-name;false;false;;false;false
+;Category:productPresentForTheCategory;$catalog-syncjob-name;false;false;;false;false
+;Category:b2bUnitAccounts;$catalog-syncjob-name;false;false;;false;false
+;Category:showProductPrice;$catalog-syncjob-name;false;false;;false;false
+######################################################################################
+
+
+######################################################################################
+######## Excluding Attributes which should not be sync from BR STG to BR Online########
+######################################################################################
+$catalog-syncjob-name=BrazilStaged->BrazilOnline
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+;Product:description;$catalog-syncjob-name;false;false;;false;false
+;JnJProduct:medicalSpecialty;$catalog-syncjob-name;false;false;;false;false
+;Product:picture;$catalog-syncjob-name;false;false;;false;false
+;Product:thumbnail;$catalog-syncjob-name;false;false;;false;false
+;Product:galleryImages;$catalog-syncjob-name;false;false;;false;false
+;Product:data_sheet;$catalog-syncjob-name;false;false;;false;false
+;Category:productPresentForTheCategory;$catalog-syncjob-name;false;false;;false;false
+;Category:b2bUnitAccounts;$catalog-syncjob-name;false;false;;false;false
+######################################################################################
+
+######################################################################################
+######## Excluding Attributes which should not be sync from MX STG to MX Online#######
+######################################################################################
+$catalog-syncjob-name=MexicoStaged->MexicoOnline
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+;Product:description;$catalog-syncjob-name;false;false;;false;false
+;JnJProduct:medicalSpecialty;$catalog-syncjob-name;false;false;;false;false
+;Product:picture;$catalog-syncjob-name;false;false;;false;false
+;Product:thumbnail;$catalog-syncjob-name;false;false;;false;false
+;Product:galleryImages;$catalog-syncjob-name;false;false;;false;false
+;Product:data_sheet;$catalog-syncjob-name;false;false;;false;false
+;Category:productPresentForTheCategory;$catalog-syncjob-name;false;false;;false;false
+;Category:b2bUnitAccounts;$catalog-syncjob-name;false;false;;false;false
+######################################################################################
+
+######################################################################################
+######## Excluding Attributes which should not be sync from CENCA STG to CENCA Online#######
+######################################################################################
+$catalog-syncjob-name=CencaStaged->CencaOnline
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+;Product:description;$catalog-syncjob-name;false;false;;false;false
+;JnJProduct:medicalSpecialty;$catalog-syncjob-name;false;false;;false;false
+;Product:picture;$catalog-syncjob-name;false;false;;false;false
+;Product:thumbnail;$catalog-syncjob-name;false;false;;false;false
+;Product:galleryImages;$catalog-syncjob-name;false;false;;false;false
+;Product:data_sheet;$catalog-syncjob-name;false;false;;false;false
+;Category:productPresentForTheCategory;$catalog-syncjob-name;false;false;;false;false
+;Category:b2bUnitAccounts;$catalog-syncjob-name;false;false;;false;false
+######################################################################################
+
+######################################################################################
+######## Excluding Attributes which should not be sync from EC STG to EC Online#######
+######################################################################################
+$catalog-syncjob-name=EcuadorStaged->EcuadorOnline
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+;Product:description;$catalog-syncjob-name;false;false;;false;false
+;JnJProduct:medicalSpecialty;$catalog-syncjob-name;false;false;;false;false
+;Product:picture;$catalog-syncjob-name;false;false;;false;false
+;Product:thumbnail;$catalog-syncjob-name;false;false;;false;false
+;Product:galleryImages;$catalog-syncjob-name;false;false;;false;false
+;Product:data_sheet;$catalog-syncjob-name;false;false;;false;false
+;Category:productPresentForTheCategory;$catalog-syncjob-name;false;false;;false;false
+;Category:b2bUnitAccounts;$catalog-syncjob-name;false;false;;false;false
+######################################################################################
+
+######################################################################################
+######## Excluding Attributes which should not be sync from AR STG to AR Online#######
+######################################################################################
+$catalog-syncjob-name=ArgentinaStaged->ArgentinaOnline
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+;Product:description;$catalog-syncjob-name;false;false;;false;false
+;JnJProduct:medicalSpecialty;$catalog-syncjob-name;false;false;;false;false
+;Product:picture;$catalog-syncjob-name;false;false;;false;false
+;Product:thumbnail;$catalog-syncjob-name;false;false;;false;false
+;Product:galleryImages;$catalog-syncjob-name;false;false;;false;false
+;Product:data_sheet;$catalog-syncjob-name;false;false;;false;false
+;Category:productPresentForTheCategory;$catalog-syncjob-name;false;false;;false;false
+;Category:b2bUnitAccounts;$catalog-syncjob-name;false;false;;false;false
+######################################################################################
+
+######################################################################################
+######## Excluding Attributes which should not be sync from UY STG to UY Online#######
+######################################################################################
+$catalog-syncjob-name=UruguayStaged->UruguayOnline
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+;Product:description;$catalog-syncjob-name;false;false;;false;false
+;JnJProduct:medicalSpecialty;$catalog-syncjob-name;false;false;;false;false
+;Product:picture;$catalog-syncjob-name;false;false;;false;false
+;Product:thumbnail;$catalog-syncjob-name;false;false;;false;false
+;Product:galleryImages;$catalog-syncjob-name;false;false;;false;false
+;Product:data_sheet;$catalog-syncjob-name;false;false;;false;false
+;Category:productPresentForTheCategory;$catalog-syncjob-name;false;false;;false;false
+;Category:b2bUnitAccounts;$catalog-syncjob-name;false;false;;false;false
+######################################################################################
+
+######################################################################################
+######## Excluding Attributes which should not be sync from CL STG to CL Online#######
+######################################################################################
+$catalog-syncjob-name=ChileStaged->ChileOnline
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+;Product:description;$catalog-syncjob-name;false;false;;false;false
+;JnJProduct:medicalSpecialty;$catalog-syncjob-name;false;false;;false;false
+;Product:picture;$catalog-syncjob-name;false;false;;false;false
+;Product:thumbnail;$catalog-syncjob-name;false;false;;false;false
+;Product:galleryImages;$catalog-syncjob-name;false;false;;false;false
+;Product:data_sheet;$catalog-syncjob-name;false;false;;false;false
+;Category:productPresentForTheCategory;$catalog-syncjob-name;false;false;;false;false
+;Category:b2bUnitAccounts;$catalog-syncjob-name;false;false;;false;false
+######################################################################################
+
+######################################################################################
+######## Excluding Attributes which should not be sync from CO STG to CO Online#######
+######################################################################################
+$catalog-syncjob-name=ColombiaStaged->ColombiaOnline
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+;Product:description;$catalog-syncjob-name;false;false;;false;false
+;JnJProduct:medicalSpecialty;$catalog-syncjob-name;false;false;;false;false
+;Product:picture;$catalog-syncjob-name;false;false;;false;false
+;Product:thumbnail;$catalog-syncjob-name;false;false;;false;false
+;Product:galleryImages;$catalog-syncjob-name;false;false;;false;false
+;Product:data_sheet;$catalog-syncjob-name;false;false;;false;false
+;Category:productPresentForTheCategory;$catalog-syncjob-name;false;false;;false;false
+;Category:b2bUnitAccounts;$catalog-syncjob-name;false;false;;false;false
+######################################################################################
+
+######################################################################################
+######## Excluding Attributes which should not be sync from PE STG to PE Online#######
+######################################################################################
+$catalog-syncjob-name=PeruStaged->PeruOnline
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+;Product:description;$catalog-syncjob-name;false;false;;false;false
+;JnJProduct:medicalSpecialty;$catalog-syncjob-name;false;false;;false;false
+;Product:picture;$catalog-syncjob-name;false;false;;false;false
+;Product:thumbnail;$catalog-syncjob-name;false;false;;false;false
+;Product:galleryImages;$catalog-syncjob-name;false;false;;false;false
+;Product:data_sheet;$catalog-syncjob-name;false;false;;false;false
+;Category:productPresentForTheCategory;$catalog-syncjob-name;false;false;;false;false
+;Category:b2bUnitAccounts;$catalog-syncjob-name;false;false;;false;false
+######################################################################################
+
+######################################################################################
+######## Excluding Attributes which should not be sync from PR STG to PR Online#######
+######################################################################################
+$catalog-syncjob-name=PuertoStaged->PuertoOnline
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+;Product:description;$catalog-syncjob-name;false;false;;false;false
+;JnJProduct:medicalSpecialty;$catalog-syncjob-name;false;false;;false;false
+;Product:picture;$catalog-syncjob-name;false;false;;false;false
+;Product:thumbnail;$catalog-syncjob-name;false;false;;false;false
+;Product:galleryImages;$catalog-syncjob-name;false;false;;false;false
+;Product:data_sheet;$catalog-syncjob-name;false;false;;false;false
+;Category:productPresentForTheCategory;$catalog-syncjob-name;false;false;;false;false
+;Category:b2bUnitAccounts;$catalog-syncjob-name;false;false;;false;false
+######################################################################################
+
+######################################################################################
+##################Service Layer Jobs for Normal CronJobs for SycnJobs#################
+######################################################################################
+INSERT_UPDATE ServicelayerJob;code[unique=true];springId;active[default='true']
+;syncMasterToLocalCatalog;syncMasterToLocalCatalog;true
+;syncBRProdStagedToOnline;brProdStagedToOnline;true
+;syncMXProdStagedToOnline;mxProdStagedToOnline;true
+;syncCENCAProdStagedToOnline;cencaProdStagedToOnline;true
+;syncECProdStagedToOnline;ecProdStagedToOnline;true
+;syncCOProdStagedToOnline;coProdStagedToOnline;true
+;syncPEProdStagedToOnline;peProdStagedToOnline;true
+;syncPRProdStagedToOnline;prProdStagedToOnline;true
+##################################################################
+
+
+######################################################################################
+##################Normal CronJobs for SycnJobs#######################################
+######################################################################################
+INSERT_UPDATE CronJob;code[unique=true];job(code);active[default='true'];sessionLanguage(isocode)
+;syncCatalogCron_Job;syncMasterToLocalCatalog;true;en
+;syncBRProdStgToOnline;syncBRProdStagedToOnline;true;en
+;syncMXProdStgToOnline;syncMXProdStagedToOnline;true;en
+;syncCENCAProdStgToOnline;syncCENCAProdStagedToOnline;true;en
+;syncECProdStgToOnline;syncECProdStagedToOnline;true;en
+;syncCOProdStgToOnline;syncCOProdStagedToOnline;true;en
+;syncPEProdStgToOnline;syncPEProdStagedToOnline;true;en
+;syncPRProdStgToOnline;syncPRProdStagedToOnline;true;en
+###########################################################################################

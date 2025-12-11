@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<bean id="jnjGTCutReportPdfView" class="com.jnj.b2b.jnjglobalreports.download.views.JnjGTCutReportPdfView">
+	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	
+	<bean id="jnjGTCutReportExcelView" class="com.jnj.b2b.jnjglobalreports.download.views.JnjGTCutReportExcelView">
+		<property name="i18nService" ref="i18nService"/>
+	 	<property name="messageSource" ref="storefrontMessageSource" />		
+	 </bean>	
+
+
+	<!-- <bean id="canadaProductSearchResultsExcel" class="com.jnj.canada.jnjbrowseandsearch.download.views.JnjCAProducSearchResultExcelView">
+		<property name="jnjCommonFacadeUtil" ref="JnjCommonFacadeUtil"></property>
+	</bean> -->
+	
+	<!-- <bean id="canadaProductSearchResultsPdf" class="com.jnj.canada.jnjbrowseandsearch.download.views.JnjCAProductSearchResultPdfView">
+		<property name="jnjCommonFacadeUtil" ref="JnjCommonFacadeUtil"></property>
+	</bean> -->
+	
+	<bean id="JnjGTOrderHistoryPdfView" class="com.jnj.b2b.jnjglobalordertemplate.download.JnjGTOrderHistoryPdfView">
+		<property name="i18nService" ref="i18nService"/>
+	 	<property name="messageSource" ref="storefrontMessageSource" />
+	 	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	
+	</bean>
+	<bean id="jnjGTOrderHistoryExcelView" class="com.jnj.b2b.jnjglobalordertemplate.download.JnjGTOrderHistoryExcelView">
+	 	<property name="i18nService" ref="i18nService"/>
+	 	<property name="messageSource" ref="storefrontMessageSource" />
+		<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	<bean id="jnjGTOrderDetailPdfView" class="com.jnj.b2b.jnjglobalordertemplate.download.JnjGTOrderDetailPdfView"> 
+	
+		<property name="jnjCommonFacadeUtil" ref="JnjCommonFacadeUtil"/>
+	</bean>
+	<bean id="JnjGTShippingDetailExcelView" class="com.jnj.b2b.jnjglobalordertemplate.download.JnjGTShippingDetailExcelView">
+	</bean>
+	<bean id="JnjGTPriceInquiryPdfView" class="com.jnj.b2b.cartandcheckoutaddon.download.views.JnjGTPriceInquiryPdfView" >
+	<property name="messageService" ref="messageService"/>
+	 <property name="i18nService" ref="i18nService"/>
+	 	<property name="messageSource" ref="storefrontMessageSource" />
+	 	<property name="cmsSiteService" ref="cmsSiteService"/>
+	 	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	 </bean>
+	 
+	  <bean id="JnjGTSampleOrderPdfView" class="com.jnj.b2b.cartandcheckoutaddon.download.views.JnjGTSampleOrderPdfView" >
+	  
+	<property name="messageService" ref="messageService"/>
+	 <property name="i18nService" ref="i18nService"/>
+	 	<property name="messageSource" ref="storefrontMessageSource" />
+	 	<property name="cmsSiteService" ref="cmsSiteService"/>
+	 	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	 </bean>
+	
+	<!-- GTR-1682 Starts-->
+	
+<!-- 	<bean id="jnjNAOrderDetailPdfView" class="com.jnj.b2b.jnjglobalordertemplate.download.JnjNAOrderDetailPdfView"> -->
+	
+<!-- 		<property name="jnjCommonFacadeUtil" ref="JnjCommonFacadeUtil"></property> -->
+<!-- 	</bean> -->
+	
+<!-- 	<bean id="jnjNAOrderDetailExcelView" class="com.jnj.b2b.jnjglobalordertemplate.download.JnjNAOrderDetailExcelView"> -->
+<!-- 	<property name="jnjCommonFacadeUtil" ref="JnjCommonFacadeUtil"></property> -->
+<!-- 	</bean> -->
+	<!-- GTR-1682 Ends-->
+	
+	<bean id="jnjGTOrderDetailExcelView" class="com.jnj.b2b.jnjglobalordertemplate.download.JnjGTOrderDetailExcelView">
+	<property name="jnjCommonFacadeUtil" ref="JnjCommonFacadeUtil"/>
+	<property name="i18nService" ref="i18nService"/>
+	<property name="messageSource" ref="storefrontMessageSource" />
+	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	
+	<bean id="jnjGlobalOrderTemplatePdfView" class="com.jnj.b2b.jnjglobalordertemplate.download.JnjGTOrderTemplatePdfView">
+		<property name="i18nService" ref="i18nService"/>
+		 <property name="messageSource" ref="storefrontMessageSource" />
+		 <property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	
+	<bean id="jnjGlobalOrderTemplateExcelView" class="com.jnj.b2b.jnjglobalordertemplate.download.JnjGTOrderTemplateExcelView">
+		<property name="i18nService" ref="i18nService"/>
+		 <property name="messageSource" ref="storefrontMessageSource" />
+		 <property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	
+	<bean id="jnjGTOrderTemplateDetailPdfView" class="com.jnj.b2b.jnjglobalordertemplate.download.JnjGTOrderTemplateDetailPdfView">
+		<property name="i18nService" ref="i18nService"/>
+		 <property name="messageSource" ref="storefrontMessageSource" /> 
+	</bean>
+	
+	<bean id="jnjGTOrderTemplateDetailExcelView" class="com.jnj.b2b.jnjglobalordertemplate.download.JnjGTOrderTemplateDetailExcelView">
+		<property name="i18nService" ref="i18nService"/>
+		 <property name="messageSource" ref="storefrontMessageSource" /> 
+	</bean>
+	
+	<bean id="jnjGTBackorderReportPdfView" class="com.jnj.b2b.jnjglobalreports.download.views.JnjGTBackorderReportPdfView">
+	<property name="messageSource" ref="storefrontMessageSource" /> 
+	<property name="i18nService" ref="i18nService"/>
+	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	
+	<bean id="jnjGTBackorderReportExcelView" class="com.jnj.b2b.jnjglobalreports.download.views.JnjGTBackorderReportExcelView">
+	<property name="messageSource" ref="storefrontMessageSource" /> 
+	<property name="i18nService" ref="i18nService"/>
+	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	
+	<bean id="jnjGTInventoryReportPdfView" class="com.jnj.b2b.jnjglobalreports.download.views.JnjGTInventoryReportPdfView">
+		<property name="messageSource" ref="storefrontMessageSource" />
+		<property name="i18nService" ref="i18nService"/>
+	</bean>
+	
+	<bean id="jnjGTInventoryReportExcelView" class="com.jnj.b2b.jnjglobalreports.download.views.JnjGTInventoryReportExcelView">
+		<property name="messageSource" ref="storefrontMessageSource" />
+		<property name="i18nService" ref="i18nService"/>
+	
+	</bean>
+	<bean id="jnjGTMultiPurchaseAnalysisReportPdfView" class="com.jnj.b2b.jnjglobalreports.download.views.JnjGTMultiPurchaseAnalysisReportPdfView">
+	<property name="messageService" ref="messageService"/>
+	<property name="i18nService" ref="i18nService"/>
+		 <property name="messageSource" ref="storefrontMessageSource" />
+		 <property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	
+	<bean id="jnjGTMultiPurchaseAnalysisReportExcelView" class="com.jnj.b2b.jnjglobalreports.download.views.JnjGTMultiPurchaseAnalysisReportExcelView">
+	
+	<property name="messageService" ref="messageService"/>
+	<property name="i18nService" ref="i18nService"/>
+	<property name="messageSource" ref="storefrontMessageSource" />
+	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	
+	<bean id="jnjGTInvoiceDetailPdfView" class="com.jnj.b2b.jnjglobalordertemplate.download.JnjGTInvoiceDetailPdfView">
+	</bean>
+	<bean id ="jnjGTInvoiceDetailExcelView" class = "com.jnj.b2b.jnjglobalordertemplate.download.JnjGTInvoiceDetailExcelView">
+	<property name="i18nService" ref="i18nService"/>
+	 <property name="messageSource" ref="storefrontMessageSource" />
+	 <property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	
+	<bean id="productSearchResultsExcel" class="com.jnj.b2b.browseandsearch.download.views.JnjProducSearchResultExcelView">
+		<property name="jnjCommonFacadeUtil" ref="JnjCommonFacadeUtil"></property>
+		<property name="i18nService" ref="i18nService"/>
+	 	<property name="messageSource" ref="storefrontMessageSource" />
+	 	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	<bean id="productSearchResultsPdf" class="com.jnj.b2b.browseandsearch.download.views.JnjProductSearchResultPdfView">
+		<property name="jnjCommonFacadeUtil" ref="JnjCommonFacadeUtil"></property>
+		<property name="i18nService" ref="i18nService"/>
+	 	<property name="messageSource" ref="storefrontMessageSource" />
+	 	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean> 
+	<bean id="JnjGTOrderConfirmationPdfView" class="com.jnj.b2b.cartandcheckoutaddon.download.views.JnjGTOrderConfirmationPdfView">
+		<property name="i18nService" ref="i18nService"/>
+	 	<property name="messageSource" ref="storefrontMessageSource" />
+	 	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	<bean id="JnjGTConsignmentOrderConfirmationPdfView" class="com.jnj.b2b.cartandcheckoutaddon.download.views.JnjGTConsignmentOrderConfirmationPdfView">
+		<property name="i18nService" ref="i18nService"/>
+	 	<property name="messageSource" ref="storefrontMessageSource" />
+	 	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	<bean id="JnjGTStandardOrderConfirmationPdfView" class="com.jnj.b2b.cartandcheckoutaddon.download.views.JnjGTStandardOrderConfirmationPdfView">
+		<property name="i18nService" ref="i18nService"/>
+	 	<property name="messageSource" ref="storefrontMessageSource" />
+	 	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	<bean id="JnjGTOrderConfirmationExcelView" class="com.jnj.b2b.cartandcheckoutaddon.download.views.JnjGTOrderConfirmationExcelView">
+		<property name="i18nService" ref="i18nService"/>
+	 	<property name="messageSource" ref="storefrontMessageSource" />
+	 	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	<bean id="consProductCatalogExcelView" class="com.jnj.b2b.browseandsearch.download.views.JnjConsProductCatalogExcelView"></bean>
+	<bean id="jnjGTSinglePurchaseAnalysisReportPdfView" class="com.jnj.b2b.jnjglobalreports.download.views.JnjGTSinglePurchaseAnalysisReportPdfView">
+		<property name="i18nService" ref="i18nService"/>
+	 	<property name="messageSource" ref="storefrontMessageSource" />
+	 	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	<bean id="jnjGTSinglePurchaseAnalysisReportExcelView" class="com.jnj.b2b.jnjglobalreports.download.views.JnjGTSinglePurchaseAnalysisReportExcelView">
+		<property name="i18nService" ref="i18nService"/>
+	 	<property name="messageSource" ref="storefrontMessageSource" />
+	 	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	<bean id="jnjGTCpsiaCertificatePdfView" class="com.jnj.b2b.jnjglobalresources.download.views.JnjGTCpsiaCertificatePdfView"></bean>
+	<bean id="JnjGTContractPdfView" class="com.jnj.b2b.cartandcheckoutaddon.download.views.JnjGTContractPdfView">
+		<property name="i18nService" ref="i18nService"/>
+	 	<property name="messageSource" ref="storefrontMessageSource" />
+	 	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	<bean id="JnjGTContractExcelView" class="com.jnj.b2b.cartandcheckoutaddon.download.views.JnjGTContractExcelView">
+		<property name="i18nService" ref="i18nService"/>
+	 	<property name="messageSource" ref="storefrontMessageSource" />
+	 	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	<bean id="JnjGTContractDetailPdfView" class="com.jnj.b2b.cartandcheckoutaddon.download.views.JnjGTContractDetailPdfView">
+		<property name="i18nService" ref="i18nService"/>
+	 	<property name="messageSource" ref="storefrontMessageSource" />
+	 	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	<bean id="JnjGTContractDetailExcelView" class="com.jnj.b2b.cartandcheckoutaddon.download.views.JnjGTContractDetailExcelView">
+		<property name="i18nService" ref="i18nService"/>
+	 	<property name="messageSource" ref="storefrontMessageSource" />
+	 	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	<bean id="JnjGTReturnOrderConfirmationPdfView" class="com.jnj.b2b.cartandcheckoutaddon.download.views.JnjGTReturnOrderConfirmationPdfView">
+		<property name="i18nService" ref="i18nService"/>
+	 	<property name="messageSource" ref="storefrontMessageSource" />
+	</bean>
+	<bean id="JnjGTReturnOrderConfirmationExcelView" class="com.jnj.b2b.cartandcheckoutaddon.download.views.JnjGTReturnOrderConfirmationExcelView">
+		<property name="i18nService" ref="i18nService"/>
+	 	<property name="messageSource" ref="storefrontMessageSource" />
+	</bean>
+	<bean id="JnJGTFinancialInvoiceDueReportPdfView" class="com.jnj.b2b.jnjglobalreports.download.views.JnJGTFinancialInvoiceDueReportPdfView">
+	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	<bean id="JnJGTFinancialInvoiceDueReportExcelView" class="com.jnj.b2b.jnjglobalreports.download.views.JnJGTFinancialInvoiceDueReportExcelView">
+		<property name="i18nService" ref="i18nService"/>
+	 	<property name="messageSource" ref="storefrontMessageSource" />
+	 	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	
+		<!-- START AAOL-2421 - OA - FinancialSummary Report -->
+	<bean id="JnJGTFinancialSummaryReportPdfView" class="com.jnj.b2b.jnjglobalreports.download.views.JnJGTFinancialSummaryReportPdfView">
+	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	<bean id="JnJGTFnancialSummaryReportExcelView" class="com.jnj.b2b.jnjglobalreports.download.views.JnJGTFnancialSummaryReportExcelView">
+	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	<!-- END AAOL-2421 - OA - FinancialSummary Report -->
+	
+	<!-- START AAOL-4603 - OA - DeliveryReport -->
+	<bean id="jnjGTOADeliveryListReportPdfView" class="com.jnj.b2b.jnjglobalreports.download.views.JnjGTOADeliveryListReportPdfView">
+	<property name="messageSource" ref="storefrontMessageSource" />
+	<property name="messageService" ref="messageService"/>
+	<property name="i18nService" ref="i18nService"/>
+	</bean>
+	
+	<bean id="jnjGTOADeliveryListReportExcelView" class="com.jnj.b2b.jnjglobalreports.download.views.JnjGTOADeliveryListReportExcelView">	
+	<property name="messageSource" ref="storefrontMessageSource" />
+	<property name="messageService" ref="messageService"/>
+	<property name="i18nService" ref="i18nService"/>
+	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	<!-- END AAOL-4603 -->
+	
+	<!-- AAOL-2410: Start:  Sales Report Page report data -->
+	<bean id="jnjGTSalesReportPdfView" class="com.jnj.b2b.jnjglobalreports.download.views.JnjGTSalesReportPdfView">
+	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	<bean id ="jnjGTSalesReportExcelView" class = "com.jnj.b2b.jnjglobalreports.download.views.JnjGTSalesReportExcelView">
+		<property name="i18nService" ref="i18nService"/>
+	 	<property name="messageSource" ref="storefrontMessageSource" />
+	 	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	<!-- AAOL-2410: End:  Sales Report Page report data -->
+	
+	
+	
+	
+	
+   <!--	<bean id="productSearchResultsPdf" class="com.jnj.canada.jnjbrowseandsearch.download.views.JnjCAProductSearchResultPdfView">
+		<property name="jnjCommonFacadeUtil" ref="JnjCommonFacadeUtil"></property>
+	</bean> -->
+   <!--	<bean id="productSearchResultsExcel" class="com.jnj.canada.jnjbrowseandsearch.download.views.JnjCAProducSearchResultExcelView">
+		<property name="jnjCommonFacadeUtil" ref="JnjCommonFacadeUtil"></property>
+	</bean> -->
+	
+	<bean id="JnJGTFnancialInvoiceReportPdfView" class="com.jnj.b2b.jnjglobalreports.download.views.JnJGTFnancialInvoiceReportPdfView"/>
+	<bean id="JnJGTFnancialInvoiceReportExcelView" class="com.jnj.b2b.jnjglobalreports.download.views.JnJGTFnancialInvoiceReportExcelView">
+		<property name="messageSource" ref="storefrontMessageSource" />
+		<property name="i18nService" ref="i18nService"/>
+		<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	
+
+	
+	
+	
+	<!-- for Contract PDF and XLS for contract list page -->
+	<!-- for Contract PDF and XLS for contract detail page -->
+	<bean id="JnjGTCartEntriesExportToExcelView" class="com.jnj.b2b.cartandcheckoutaddon.download.views.JnjGTCartEntriesExportToExcelView"></bean>
+	
+	
+	<bean id="jnjGTConsIventoryReportExcelView" class="com.jnj.b2b.jnjglobalordertemplate.download.JnjGTConsIventoryReportExcelView">
+		<property name="messageSource" ref="storefrontMessageSource" />
+		<property name="i18nService" ref="i18nService"/>
+		<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	<bean id="jnjGTConsIventoryReportPdfView" class="com.jnj.b2b.jnjglobalordertemplate.download.JnjGTConsIventoryReportPdfView"></bean>
+	
+	<bean id="JnJGTFinancialInvoiceClearingReportPdfView" class="com.jnj.b2b.jnjglobalreports.download.views.JnJGTFinancialInvoiceClearingReportPdfView">
+	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	<bean id="JnJGTFinancialInvoiceClearingReportExcelView" class="com.jnj.b2b.jnjglobalreports.download.views.JnJGTFinancialInvoiceClearingReportExcelView">
+		<property name="messageSource" ref="storefrontMessageSource" />
+		<property name="i18nService" ref="i18nService"/>
+		<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	
+	<!-- START AAOL 5371 for User Management PDF and XLS for user list page -->
+	<bean id="JnJGTUserManagementReportPdfView" class="com.jnj.b2b.jnjglobalresources.download.views.JnJGTUserManagementReportPdfView">
+		<property name="i18nService" ref="i18nService"/>
+	 	<property name="messageSource" ref="storefrontMessageSource" />
+	 	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	<bean id="JnJGTUserManagementReportExcelView" class="com.jnj.b2b.jnjglobalresources.download.views.JnJGTUserManagementReportExcelView">
+		<property name="i18nService" ref="i18nService"/>
+	 	<property name="messageSource" ref="storefrontMessageSource" />
+	 	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	<!-- END AAOL 5371 for User Management PDF and XLS for user list page -->
+	
+	<bean id="JnJGTSerializationResultsPdfView" class="com.jnj.b2b.loginaddon.download.views.JnJGTSerializationResultsPdfView">
+		<property name="i18nService" ref="i18nService"/>
+	 	<property name="messageSource" ref="storefrontMessageSource" />
+	</bean>
+	<bean id="JnJGTSerializationResultsExcelView" class="com.jnj.b2b.loginaddon.download.views.JnJGTSerializationResultsExcelView">
+		<property name="i18nService" ref="i18nService"/>
+	 	<property name="messageSource" ref="storefrontMessageSource" />
+	</bean>
+	
+</beans> 

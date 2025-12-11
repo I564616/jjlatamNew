@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<style>
+	input.span-18 {
+		border-left-width: 1px;
+	    border-right-width: 1px;
+	    padding-left: 5px;
+	    padding-right: 5px;
+		width: 698px;
+	}
+	.last {
+	    margin-right: 0;
+	    padding-right: 0;
+	}
+	.addIndirectCustomerPanel h2.arrowHeader span {
+	    float: right;
+	}
+	.addIndirectCustomerPanel ul {
+	    margin: 10px 0 20px;
+	    padding-bottom: 10px;
+	}
+	.addIndirectCustomerPanel ul li {
+	    clear: both;
+	    margin-top: 10px;
+	    min-height: 58px;
+	}
+	.addIndirectCustomerPanel label {
+	    display: block;
+	}
+	.addIndirectCustomerPanel label span {
+	    color: #B41601;
+	}
+	.addIndirectCustomerPanel input[type="text"], .addIndirectCustomerPanel select {
+	    color: #646464;
+	    padding-left: 2px;
+	    width: 420px;
+	}
+	.addIndirectCustomerPanel select {
+	    color: #646464;
+	    float: none;
+	    margin-bottom: 0;
+	    width: 230px;
+	}
+	.radioPanel label {
+	    display: inline;
+	}
+	.radioPanel input[type="text"] {
+	    display: block;
+	    margin: 4px 0;
+	}
+	.radioPanel input[type="radio"] {
+	    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+	    border: medium none;
+	    margin-bottom: 0;
+	}
+	.addIndirectCustomerPanel input, .addIndirectCustomerPanel select {
+	    padding: 0;
+	}
+	.addIndirectCustomerPanel select {
+	    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+	    border: 1px solid #E5E5E5;
+	    padding-bottom: 0;
+	    padding-right: 0;
+	    padding-top: 0;
+	}
+	.addIndirectCustomerPanel .buttonWrapper > input {
+	    padding: 5px 15px;
+	}
+	h2.arrowHeader {
+	    border-bottom: 1px solid #84C5D4;
+	    color: #0A8CAA;
+	    font-size: 16px;
+	    line-height: 30px;
+	    margin-bottom: 0;
+	}
+	.priceSmall {
+	    color: #B41601;
+	    font-size: 12px;
+	}
+	.instructiontxt {
+	    color: #828282;
+	    font-size: 11px;
+	    margin-bottom: 10px;
+	}
+	body {
+	    line-height: 1.5;
+	}
+	body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section {
+	    border: 0 none;
+	    font-family: inherit;
+	    font-size: 100%;
+	    font-style: inherit;
+	    font-weight: inherit;
+	    margin: 0;
+	    padding: 0;
+	    vertical-align: top;
+	}
+	body {
+	    background: none repeat scroll 0 0 #FFFFFF;
+	    color: #222222;
+	    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+	    font-size: 75%;
+	}
+	ul li {
+	    color: #646464;
+	    font-size: 12px;
+	    list-style-type: none;
+	}
+	td {
+		color: #646464;
+	}
+	td.imageControl div {
+		max-width:120px;
+		width:120px;
+		overflow:hidden;
+	}
+	td.imageControl img {
+		max-width:120px;
+		width:120px;
+	}
+	
+	</style>
+<html style="font-family: Helvetica Neue,Arial,Helvetica,sans-serif;font-size: 75%;">
+<head>
+	<title>Confirmation Email</title>
+	
+</head>
+<body style="line-height: 1.5;font-size: 75%;font-family: Helvetica Neue,Arial,Helvetica,sans-serif;color: #222222;background: none repeat scroll 0 0 #FFFFFF;border: 0 none;font-family: inherit;font-size: 100%;font-style: inherit;font-weight: inherit;margin: 0;padding: 0;vertical-align: baseline;">
+	<table style="background-color:#ffffff" width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+		<tr>
+			<td style="color: #646464;">
+				<table bgcolor="#ffffff" width="800px" border="0" cellspacing="0" cellpadding="0" align="center">
+					<tr bgcolor="#ffffff">
+						<td style="color: #646464;" colspan="2">
+							
+						</td>
+					</tr>
+				</table>
+				<table bgcolor="#ffffff" width="800px" border="0" cellspacing="0" cellpadding="0" align="center">
+					<tr bgcolor="#ffffff">
+						<td style="max-width:780px;width:780px;" width="780"></td>
+						<td style="max-width:120px;width:120px;" width="120"></td>
+					</tr>
+					<tr bgcolor="#ffffff">
+						
+							<td style="color: #646464;max-width:780px;width:780px;" width="780">
+							<br /><br />
+							Caro Cliente,
+							<br /><br />
+							#foreach ($data in ${ctx.shipmentConfirmationEmailData})
+                                #set ($orderHistoryUrl = $ctx.secureBaseUrl+'/order-history/order/'+${data.hybrisOrder})
+							Um ou mais itens do seu pedido número $data.orderNumber foi faturado. Por favor clique no link abaixo para mais detalhes e vá em "Detalhes da Fatura". 
+							<br/>
+							<a href="$orderHistoryUrl">Detalhes do Pedido</a>
+							<br/><br/>
+									<ul>
+											#if($data.unit)
+											<li><strong>número da conta -</strong> $data.unit</li>
+											#end
+											#if($data.orderNumber)
+											<li><strong>Número de Pedido -</strong> $data.orderNumber</li>
+											#end
+											#if($data.customerPO)
+											<li><strong>OC Cliente -</strong> $data.customerPO</li>
+											#end
+											#if($data.shippingAddress)
+											<li><strong>endereço de entrega -</strong> $data.shippingAddress</li>
+											#end
+										</ul>
+										
+
+
+							<br/><br/>
+							<table bgcolor="#ffffff" width="700px" border="0" cellspacing="0" cellpadding="0" align="center" style="border: 1px solid D0D0D0;  border-collapse: collapse;">
+								<!--<th height="30" bgcolor="#E0E0E0" style="border: 1px solid #E0E0E0; border-collapse: collapse;font-weight: bold; text-align: left; padding:5px 0px 0px 10px;">número da conta</th>
+								<th height="30" bgcolor="#E0E0E0" style="border: 1px solid #E0E0E0; border-collapse: collapse;font-weight: bold; text-align: left; padding:5px 0px 0px 10px;">Número de Pedido</th>
+								<th height="30" bgcolor="#E0E0E0" style="border: 1px solid #E0E0E0; border-collapse: collapse;font-weight: bold; text-align: left; padding:5px 0px 0px 10px;">Tipo de Pedido</th>
+								<th height="30" bgcolor="#E0E0E0" style="border: 1px solid #E0E0E0; border-collapse: collapse;font-weight: bold; text-align: left; padding:5px 0px 0px 10px;">Billing Name</th>
+								<th height="30" bgcolor="#E0E0E0" style="border: 1px solid #E0E0E0; border-collapse: collapse;font-weight: bold; text-align: left; padding:5px 0px 0px 10px;">Billing Address</th>
+								<th height="30" bgcolor="#E0E0E0" style="border: 1px solid #E0E0E0; border-collapse: collapse;font-weight: bold; text-align: left; padding:5px 0px 0px 10px;">PO Number</th>
+								<th height="30" bgcolor="#E0E0E0" style="border: 1px solid #E0E0E0; border-collapse: collapse;font-weight: bold; text-align: left; padding:5px 0px 0px 10px;">endereço de entrega</th>
+								<th height="30" bgcolor="#E0E0E0" style="border: 1px solid #E0E0E0; border-collapse: collapse;font-weight: bold; text-align: left; padding:5px 0px 0px 10px;">Order Channel</th>-->
+								<th height="30" bgcolor="#E0E0E0" style="border: 1px solid #E0E0E0; border-collapse: collapse;font-weight: bold; text-align: left; padding:5px 0px 0px 10px;">Nome do produto</th>
+								<th height="30" bgcolor="#E0E0E0" style="border: 1px solid #E0E0E0; border-collapse: collapse;font-weight: bold; text-align: left; padding:5px 0px 0px 10px;">J&J ID</th>
+								<th height="30" bgcolor="#E0E0E0" style="border: 1px solid #E0E0E0; border-collapse: collapse;font-weight: bold; text-align: left; padding:5px 0px 0px 10px;">Quantidade</th>
+								<th height="30" bgcolor="#E0E0E0" style="border: 1px solid #E0E0E0; border-collapse: collapse;font-weight: bold; text-align: left; padding:5px 0px 0px 10px;">Data estimada de entrega</th>
+								#break
+							#end
+								#foreach ($data in ${ctx.shipmentConfirmationEmailData})
+								<tr bgcolor="#ffffff">
+									<!--<td height="30" style="border: 1px solid #D0D0D0; border-collapse: collapse; padding:5px 0px 0px 10px;">$data.unit</td>
+									<td height="30" style="border: 1px solid #D0D0D0; border-collapse: collapse; padding:5px 0px 0px 10px;">$data.orderNumber</td>		
+									<td height="30" style="border: 1px solid #D0D0D0; border-collapse: collapse; padding:5px 0px 0px 10px;">$data.orderType</td>
+									<td height="30" style="border: 1px solid #D0D0D0; border-collapse: collapse; padding:5px 0px 0px 10px;">$data.billingName</td>
+									<td height="30" style="border: 1px solid #D0D0D0; border-collapse: collapse; padding:5px 0px 0px 10px;">$data.billingAddress</td>
+									<td height="30" style="border: 1px solid #D0D0D0; border-collapse: collapse; padding:5px 0px 0px 10px;">$data.customerPO</td>		
+									<td height="30" style="border: 1px solid #D0D0D0; border-collapse: collapse; padding:5px 0px 0px 10px;">$data.shippingAddress</td>	
+									<td height="30" style="border: 1px solid #D0D0D0; border-collapse: collapse; padding:5px 0px 0px 10px;">$data.orderChannel</td>-->
+									<td height="30" style="border: 1px solid #D0D0D0; border-collapse: collapse; padding:5px 0px 0px 10px;">$data.productName</td>		
+									<td height="30" style="border: 1px solid #D0D0D0; border-collapse: collapse; padding:5px 0px 0px 10px;">$data.productCode</td>
+									<td height="30" style="border: 1px solid #D0D0D0; border-collapse: collapse; padding:5px 0px 0px 10px;">$data.quantity</td>
+									<td height="30" style="border: 1px solid #D0D0D0; border-collapse: collapse; padding:5px 0px 0px 10px;">$data.deliveryDate</td>
+								</tr>
+								#end
+							</table>
+								
+							<br /><br />
+							Obrigado,<br/>
+							Equipe eCareShop
+							<br /><br /><br />
+						</td>
+				
+						
+						<td style="color: #646464;max-width:120px;width:120px;overflow:hidden;" width="120" rowspan="3" class="imageControl">
+							
+						</td>
+					</tr>
+					<tr>
+						<td style="color: #646464;max-width:780px;width:780px;">
+							
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

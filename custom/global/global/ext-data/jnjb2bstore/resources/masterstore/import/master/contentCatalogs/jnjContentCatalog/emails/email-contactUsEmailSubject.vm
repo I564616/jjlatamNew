@@ -1,0 +1,2 @@
+## messageSource=classpath:/jnjb2bcore/messages/email-contactUs_$lang.properties
+${ctx.messages.subject1} ${ctx.contactUsEmailMap['name']} ${ctx.messages.subject2} ${ctx.contactUsEmailMap['emailSubject']}

@@ -1,0 +1,24 @@
+# 
+# Create the JNJ Consumer BaseStore
+#
+
+$submitOrderProcessCode=order-process
+
+$CONSEpicSiteUid=consEpicCMSsite
+
+$CONSproductCatalog=consProdCatalog
+
+$CONSContentCatalog=consContCatalog
+
+$CONSStoreUid=consBaseStore
+
+$CONSdefaultCurrency=USD
+
+$languages=en,fr
+$defaultLanguage=en
+$CONSdeliveryCountries=US
+
+
+# Base Store 
+INSERT_UPDATE BaseStore;uid[unique=true];catalogs(id);currencies(isocode);defaultCurrency(isocode);languages(isocode);defaultLanguage(isocode);deliveryCountries(isocode);submitOrderProcessCode
+;$CONSStoreUid;$CONSproductCatalog;$CONSdefaultCurrency;$CONSdefaultCurrency;$languages;$defaultLanguage;$CONSdeliveryCountries;$submitOrderProcessCode

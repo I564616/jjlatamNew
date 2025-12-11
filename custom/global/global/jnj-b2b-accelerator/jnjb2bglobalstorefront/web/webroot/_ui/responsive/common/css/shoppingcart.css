@@ -1,0 +1,331 @@
+@font-face {
+    font-family: jnjheading1font;
+    src: url('../fonts/Freight_Text_Medium.ttf') ;/*changed by Shiva*/
+}
+.third-party-content{display:none}
+#shoppingcartpage .breadcrumb {
+	background-color: rgb(249, 249, 249);
+	padding: 0px 2px;
+	margin-bottom: 15px;
+}
+#shoppingcartpage .content{
+	font-family: jnjheading1font;
+	font-size: 48px;
+}
+#shoppingcartpage .subcontent{
+	margin-top: 30px;
+	margin-left: 0px;
+	font-size: 20px;
+    width: 100%;
+	background-color: #fff;
+	/* box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 0px 1px 0 rgba(0, 0, 0, 0.19);   */
+	-webkit-box-shadow: 0 0 5px 2px #eee;
+    -moz-box-shadow: 0 0 5px 2px #eee;
+    box-shadow: 0 0 5px 2px #eee;
+}
+#shoppingcartpage .continuebtn{
+    text-align: center;
+}
+#shoppingcartpage .continuebtn .btn{
+	margin-top:20px;
+	width:180px;
+}
+#shoppingcartpage .continuebtn .btn:first-child{
+	margin-right:10px;
+}
+
+@media screen and (max-width: 767px){
+	#shoppingcartpage  .continuebtn{
+		width: 100%;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	#shoppingcartpage .continuebtn .btn:first-child{
+		margin-right:0px;
+	}
+	#template-ok-btn{
+		width:auto !important;
+	}
+}
+@media screen and (max-width: 420px){
+	#shoppingcartpage .btnclsactive{
+		width: 100%;
+	}
+}
+.strictHide { display: none!important;}
+/****************************************************/
+/* No charge order page */
+.product-numbers{width: 16%;float: left;line-height: 30px;}
+.price-txt-width{width:75%;padding-right:5px;float:left}
+.price-quantity{width:24%;float:left}
+.margin-top-row-gap{margin-top:20px}
+/* No charge order page */
+.no-charge-reason{padding-right:15px}
+.no-charge-select{width:202px;}
+.dropshipAccntLabel{padding-right:15px}
+.vertical-align-top{vertical-align:top !important}
+.drop-ship-account-list-icon{border:none;background:white;color:#0a8caa;opacity:1}
+#dropship-account-popup .modal-body{padding:0px;}
+#dropship-account-popup  .modal-header{border-bottom:none}
+.account-ul-list{margin-bottom:0px}
+/* End No charge order page */
+
+.distributor-po-holder{margin-top:5px}
+.thirdparty-bill-label{width:42%;}
+
+.orderType-holder{display:inline-block;font-size:14px;font-family:jnjbodyfont;vertical-align:middle;margin-right:10px}
+.orderType-label{display:inline-block;font-weight:bold;padding-right:5px;}
+.orderType-dropdown{display:inline-block;width:150px}
+.address-bottom-row{margin-top:10px}
+.address-txt-label{font-size:14px;}
+.address-txt-box{width:200px;}
+.address-row-container{margin-top:15px}
+.surgeon-info{font-size:14px;margin-top:5px}
+.change-order-link{padding-left:5px}
+.payment2-details{padding-left:35px}
+.txt-label-inline{display:table-cell;font-weight:bold;vertical-align:middle}
+.txt-box-inline{display:table-cell;vertical-align:middle}
+.valignTop{vertical-align:top;padding-top: 10px;}
+.sales-rep-label{width:48%;padding-right: 10px;white-space:nowrap}
+.sales-rep-txt{width:52%}
+.surgeon-name-label{width:40%;padding-right:2%}
+.surgeon-name-txt,.special-instr-txt{width:68%}
+.btn-gap{margin-right:10px}
+.full-width-txt{width:100%  !important}
+#card-type-select{width:200px;display:inline-block;margin-left:5px}
+#upload-deliverd-btn{padding:15px 15px 15px 35px}
+.botton-right-gap{margin-right:10px}
+.special-stock{width:100%;margin-top:15px;width:100%}
+.special-stockrow{margin-bottom:5px;}
+.quanity-cell{padding-left:15px !important;padding-right:15px !important}
+.product-code{    
+	background-color: white;
+    border-bottom: 1px solid #f2f2f2;
+    margin: 0px;
+    padding: 15px;
+}
+.special-instruction-label{
+	width: 40%;
+    padding-right: 10px;
+}
+.request-delivery-label{
+	vertical-align: middle;
+    padding-right: 10px;
+}
+.revisebtn{
+	margin-right:15px;
+	margin-bottom: 10px;
+}
+
+/* Review css */
+ .order-column50 {width: 50%;padding-right:10px;float: left;}
+ .order-column100 {width: 100%;float: left;}
+ .ok-icon{margin-right:5px}
+.btn-right-gap5{margin-right:5px}
+.shipmethod-dropdown-holder{
+	margin-bottom:10px;
+}
+#international-reviewTable .table>thead:first-child>tr:first-child>th:last-child{
+	text-align:center;
+	padding-left:0px;
+} 
+#international-reviewTable table.table-bordered.dataTable tbody td:last-child{
+	text-align:left;
+	padding-right:15px;
+	padding-left: 15px;
+}
+#international-reviewTable .lastrow-text{
+	text-align:center;
+	padding-bottom:10px;
+}
+@media screen and (max-width:1024px){
+	
+}
+@media screen and (max-width:767px){
+	.surgeon-name-label{
+		width:48%;
+	}
+	.surgeon-name-holder {
+		margin-top:10px;
+	}
+	.no-charge-select{width:100% !important}
+	.txt-label-inline,.txt-box-inline {display:block;margin-bottom:10px;width}
+	.special-instr-txt,.request-delivery-textbox,.width100percent{
+		width:100% !important
+	}
+	#international-reviewTable .lastrow-text{
+		text-align:left;
+	}
+	#international-reviewTable .table>thead:first-child>tr:first-child>th:last-child{
+		text-align:center;
+		padding-left:25px;
+	}
+	.revisebtn{
+		margin-right:0px;
+		margin-top:15px;
+	}	
+	.product-numbers{width: 100%;float: left;line-height: 30px;margin-left: 0%;}
+	.price-txt-width{width:100%;float:left;padding-right:0px;}
+	.price-quantity{width:100%;float:left;margin-top:8px;margin-bottom:8px}
+
+}
+
+
+/* End No charge order page */
+/****************************************************/
+
+
+
+/* AAOL-2045 for Backorder validate proposed item list popup start */
+
+
+
+#proposedItemOrder-popup{
+    padding: 0px;
+    width: 100%;
+}
+#proposedItemOrder-popup .modalcls{
+	top: 80px;
+	width: 925px;
+	/* left: 215.5px !important; */ 
+	/* AAOL - 6368 */
+}
+#proposedItemOrder-popup .table>thead:first-child>tr:first-child>th:first-child{
+	padding-left:8px;
+}
+#proposedItemOrder-popup .marginBottom15px{
+	margin-bottom:10px;
+}
+#proposedItemOrder-popup .modal-body{
+	padding: 15px 25px 15px 25px;
+}
+#proposedItemOrder-popup .modal-header{
+	padding: 15px 25px 15px 25px;
+}
+#proposedItemOrder-popup .popup{
+	margin: 0 auto;	
+	border-radius: 0px;
+	box-shadow: 0 0px 0px; 
+}
+#proposedItemOrder-popup .clsBtn{
+	margin-top: 15px !important;
+	font-size: 14px;
+	color: #0a8caa;
+	opacity:1;
+}
+#proposedItemOrder-popup .selectTitle{
+	font-size: 30px;
+}
+#proposedItemOrder-popup .ftrcls{
+	padding: 25px;
+}
+#proposedItemOrder-popup .return-order-cancel{
+	margin-top:8px;
+}
+#proposedItemOrder-popup  #returnOrder-ok-btn{
+	padding: 10px 25px;
+}
+/* AAOL - 6378 */
+.replace-item-radio-btn{
+	padding-left: 20px;
+    margin-bottom: 15px;
+    margin-top: 5px;
+    height: 30px;
+}
+.replace-item-desc{
+    margin-bottom: 10px;
+    line-height: 30px;
+}
+.replace-item-desc:last-child{
+    margin-bottom: 0px !important;
+
+}
+.replace-item-qty{
+	margin-bottom: 5px;
+}
+.replace-item-qty:last-child{
+	margin-bottom: 0px !important;
+}
+.obsolote-table-holder{max-height:300px;overflow-y:auto;}
+#obsolote-popup-error{display:none;}
+#noProduct{
+	display:none;
+}/* AAOL - 6474 */
+/* AAOL - 6378 */
+/* AAOL - 6368 */
+.obsolote-table .group-odd td{
+	background-color:white;
+	border:none;
+}
+.obsolote-table .group-even td{
+	background-color:#f2f2f2;border:none;
+}
+/* AAOL - 6368 */
+@media screen and (max-width: 767px) {
+	#proposedItemOrder-popup .modalcls{
+		width: auto;
+	}
+}
+
+
+
+/* AAOL-2405 for Backorder validate proposed item list popup start */
+
+
+/* AAOL-2406 for Replacement item list popup start */
+
+#replacementItemOrder-popup{
+    padding: 0px;
+    width: 100%;
+}
+#replacementItemOrder-popup .modalcls{
+	top: 80px;
+	width: 925px;
+	left: 215.5px !important;
+}
+#replacementItemOrder-popup .table>thead:first-child>tr:first-child>th:first-child{
+	padding-left:8px;
+}
+#replacementItemOrder-popup .marginBottom15px{
+	margin-bottom:10px;
+}
+#replacementItemOrder-popup .modal-body{
+	padding: 15px 25px 15px 25px;
+}
+#replacementItemOrder-popup .modal-header{
+	padding: 15px 25px 15px 25px;
+}
+#replacementItemOrder-popup .popup{
+	margin: 0 auto;	
+	border-radius: 0px;
+	box-shadow: 0 0px 0px; 
+}
+#replacementItemOrder-popup .clsBtn{
+	margin-top: 15px !important;
+	font-size: 14px;
+	color: #0a8caa;
+	opacity:1;
+}
+#replacementItemOrder-popup .selectTitle{
+	font-size: 30px;
+}
+#replacementItemOrder-popup .ftrcls{
+	padding: 25px;
+}
+#replacementItemOrder-popup .return-order-cancel{
+	margin-top:8px;
+}
+#replacementItemOrder-popup  #returnOrder-ok-btn{
+	padding: 10px 25px;
+}
+@media screen and (max-width: 767px) {
+	#replacementItemOrder-popup .modalcls{
+		width: auto;
+	}
+}
+
+
+
+/* AAOL-2406 for Replacement item list popup end */
+
+

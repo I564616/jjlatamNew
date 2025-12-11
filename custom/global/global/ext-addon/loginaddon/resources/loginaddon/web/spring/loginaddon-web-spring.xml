@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- [y] hybris Platform Copyright (c) 2000-2015 hybris AG All rights reserved. 
+	This software is the confidential and proprietary information of hybris ("Confidential 
+	Information"). You shall not disclose such Confidential Information and shall 
+	use it only in accordance with the terms of the license agreement you entered 
+	into with hybris. -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<!-- Expose /acceleratoraddon/web/webroot/WEB-INF/messages/base.js.properties 
+		resource bundle as javascript variables -->
+	<bean id="defaultLoginaddonJavaScriptMessageResourceAccessor"
+		parent="abstractJavaScriptMessageResourceAccessor">
+		<property name="addOnName" value="loginaddon" />
+	</bean>
+
+	<bean id="defaultLoginaddonBeforeViewJsPropsHandlerAdaptee"
+		parent="abstractBeforeViewJsPropsHandlerAdaptee"
+		class="de.hybris.platform.addonsupport.interceptors.ExportJsPropertiesBeforeViewHandler">
+		<property name="messageSource"
+			ref="defaultLoginaddonJavaScriptMessageResourceAccessor" />
+	</bean>
+
+	<bean id="getLoginaddonBeforeViewHandler" parent="beforeViewHandlerAdapter"> 
+		<property name="adaptee"> <ref bean="defaultLoginaddonBeforeViewJsPropsHandlerAdaptee"/> 
+		</property>
+	</bean>
+
+	<bean id="LoginaddonBeforeViewHandlerListMergeDirective" 
+		depends-on="beforeViewHandlersList" parent="listMergeDirective"> <property 
+		name="add" ref="getLoginaddonBeforeViewHandler"/> </bean>
+
+	<context:component-scan
+		base-package="com.jnj.b2b.loginaddon.controllers.pages,com.jnj.b2b.loginaddon.security"
+		scope-resolver="de.hybris.platform.spring.IgnoreTenantScopeMetadataResolver" />
+
+	<bean name="myLoginPageController"
+		class="com.jnj.b2b.loginaddon.controllers.pages.JnJGTLoginPageController" />
+	<alias alias="loginPageController" name="myLoginPageController" />
+
+	<context:component-scan base-package="com.jnj.b2b.loginaddon.security"
+		scope-resolver="de.hybris.platform.spring.IgnoreTenantScopeMetadataResolver" />
+	<alias name="jnjdefaultLoginAuthenticationSuccessHandler" alias="loginAuthenticationSuccessHandler" />
+	<bean id="jnjdefaultLoginAuthenticationSuccessHandler"
+		class="com.jnj.b2b.loginaddon.security.JnJStorefrontAuthenticationSuccessHandler">
+		<property name="customerFacade" ref="customerFacade" />
+		<property name="defaultTargetUrl" value="/home" />
+		<property name="useReferer" value="true" />
+		<property name="requestCache" ref="httpSessionRequestCache" />
+		<property name="uiExperienceService" ref="uiExperienceService" />
+		<property name="sessionService" ref="sessionService" />
+		<property name="cartFacade" ref="cartFacade" />
+		<property name="forceDefaultTargetForUiExperienceLevel">
+			<map key-type="de.hybris.platform.commerceservices.enums.UiExperienceLevel"
+				value-type="java.lang.Boolean">
+				<entry key="DESKTOP" value="false" />
+				<entry key="MOBILE" value="false" />
+			</map>
+		</property>
+		<property name="bruteForceAttackCounter" ref="bruteForceAttackCounter" />
+	</bean>
+
+	<alias name="jnjloginAuthenticationFailureHandler" alias="loginAuthenticationFailureHandler" />
+	<bean id="jnjloginAuthenticationFailureHandler"
+		class="com.jnj.b2b.loginaddon.security.JnJLoginAuthenticationFailureHandler"><!-- 
+			Changed for NA -->
+		<property name="bruteForceAttackCounter" ref="bruteForceAttackCounter" />
+		<property name="defaultFailureUrl" value="/login?error=true" />
+		<aop:scoped-proxy />
+	</bean>
+
+	<alias name="jnjacceleratorAuthenticationProvider" alias="acceleratorAuthenticationProvider" />
+	<bean id="jnjacceleratorAuthenticationProvider"
+		class="com.jnj.b2b.loginaddon.security.JnjAcceleratorAuthenticationProvider">
+		<property name="userService" ref="userService" />
+		<property name="modelService" ref="modelService" />
+		<property name="preAuthenticationChecks" ref="rejectUserPreAuthenticationChecks" />
+		<property name="userDetailsService" ref="originalUidUserDetailsService" />
+		<aop:scoped-proxy />
+	</bean>
+
+	<alias name="jnjlogoutSuccessHandler" alias="logoutSuccessHandler" />
+	<bean id="jnjlogoutSuccessHandler"
+		  class="com.jnj.b2b.loginaddon.security.JnjStorefrontLogoutSuccessHandler">
+		<property name="defaultTargetUrl" value="/login"/>
+		<property name="alwaysUseDefaultTargetUrl" value="true"/>	
+		<property name="guidCookieStrategy" ref="guidCookieStrategy"/>
+		<property name="useReferer" value="true"/>
+		<property name="restrictedPages">
+			<list>
+				<value>/my-account</value>
+				<value>/checkout</value>
+			</list>
+		</property>
+		<aop:scoped-proxy/>
+	</bean>
+	
+	<bean id="jnjForgotPasswordErrorCounter"
+		class="com.jnj.b2b.loginaddon.utill.JnjForgotPasswordErrorCounter" />
+
+	<!-- Customized JNJ CMS Component Renderer -->
+	<bean id="jnjLinkComponentRenderer" class="com.jnj.b2b.loginaddon.renderer.JnjLinkComponentRenderer">
+		<property name="categoryUrlConverter" ref="categoryUrlConverter" />
+		<property name="productUrlConverter" ref="productUrlConverter" />
+	</bean>
+	
+	<bean name="jnjMiniCartComponentController"
+		class="com.jnj.b2b.loginaddon.controllers.pages.JnJGTMiniCartComponentController" />
+	<alias alias="MiniCartComponentController" name="jnjMiniCartComponentController" />
+
+<bean id="jnjParagraphComponentRenderer" class="com.jnj.b2b.loginaddon.renderer.JnjParagraphComponentRenderer">
+
+</bean>
+
+	<bean name="jnjGTBuildOrderPageController" class="com.jnj.b2b.loginaddon.controllers.pages.JnjGTBuildOrderPageController" />
+<!-- 	<alias alias="buildOrderPageController" name="jnjGTBuildOrderPageController" />  -->
+	
+</beans>

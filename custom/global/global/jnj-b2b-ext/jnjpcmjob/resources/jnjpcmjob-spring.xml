@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company. All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<bean id="jnjProductDetailToPCMCronJob" class="com.jnj.gt.pcm.integration.job.JnjProductDetailToPCMCronJob"
+		autowire="byName" >
+		<property name="jnjCCP360IntegrationFacade" ref="jnjCCP360IntegrationFacade"/>
+	</bean>
+	
+	<bean id="jnjGTProductContentJob" class="com.jnj.gt.pcm.integration.job.JnjGTProductContentCronJob" parent="abstractJobPerformable">
+ 				<property name="jnjGTProductContentFacade" ref="jnjGTProductContentFacade" />
+ 				<property name="configurationService" ref="configurationService"/>
+	</bean>
+	
+	<bean id="jnjGTFetchImageJob" class="com.jnj.gt.pcm.integration.job.JnjGTFetchImageCronJob" parent="abstractJobPerformable">
+ 				<property name="jnjGTFetchImageFacade" ref="jnjGTFetchImageFacade" />
+ 				<property name="configurationService" ref="configurationService"/>
+ 	</bean>
+	
+	<bean id="jnjGTPCMHierarchyUpdateJob" class="com.jnj.gt.pcm.integration.job.JnjGTPCMHierarchyUpdateJob" parent="abstractJobPerformable">
+ 				<property name="jnjGTPCMHierarchyUpdateFacade" ref="jnjGTPCMHierarchyUpdateFacade" />
+ 				<property name="configurationService" ref="configurationService"/>
+ 				<property name="catalogVersionService" ref="catalogVersionService"/>
+ 	</bean>	
+    <bean id="jnjpcmjobSystemSetup" class="com.jnj.gt.pcm.integration.setup.JnjpcmjobSystemSetup">
+        <!-- constructor arg injection example -->
+        <constructor-arg ref="jnjpcmjobService"/>
+    </bean>
+
+    <bean id="jnjpcmjobService" class="com.jnj.gt.pcm.integration.service.impl.DefaultJnjpcmjobService">
+        <!-- setter injection example -->
+        <property name="modelService" ref="modelService"/>
+        <property name="mediaService" ref="mediaService"/>
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+    </bean>
+			
+</beans>

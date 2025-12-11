@@ -1,0 +1,174 @@
+#incorrect-add-err{display:none;margin-top:20px}
+.form-label-style {
+ 	line-height: 35px;
+}
+
+.table-disbaled td,.table-disbaled th,.table-disbaled input{color:rgb(176,176,176)};
+
+/* Start - Dispute header */
+.dispute-jnj-panel-header {
+    padding: 30px 30px 15px 30px;
+	border-bottom:1px solid #f2f2f2;
+}
+.dispute-label-head {
+    font-size: 10px;
+    font-family: jnjlabelfont;
+}
+#dispute-num {
+    font-weight: bold;
+    font-size: 30px;
+}
+.dispute-head-content {
+    font-size: 18px;
+    line-height: 50px;
+}
+.order-number-label{padding-right:10px}
+.order-number-txt{width:70%;}
+.modal-footer-style{padding:15px 20px;}
+#dispute-order .popup{width:390px}
+/* End - Dispute header */
+
+.disputeOrder .canceltxt{
+	padding: 10px 20px 0px 0px;
+}
+.disputeOrder .req-text{
+	font-size: 14px;
+    color: #0a8caa;
+	margin-top: 10px;
+    margin-left: 25px;
+}
+.disputeOrder  .table>thead:first-child>tr:first-child>th:first-child,.disputeOrder .table>thead:first-child>tr:first-child>th:last-child {
+	padding-left:10px;
+}
+.disputeOrder  .table-striped>tbody>tr:nth-of-type(even){
+	background-color: #fff;
+}
+.disputeOrder .table,.disputeOrder .margintop20px{
+	margin-top:20px !important;
+}
+.disputeOrder  .margintop15{
+	margin-top:15px;
+}
+.disputeOrder  .margintop10{
+	margin-top:10px;
+}
+.disputeOrder .manual-checkbox{
+	margin-top:0px;
+	margin-bottom:-5px;
+}
+.disputeOrder .star{
+	font-size: 12px;
+	color:#b41601;
+}
+.disputeOrder .po-inputbox{
+	width:47%;
+}
+.disputeOrder  .dispute-upload-file{
+	margin-bottom:5px;
+}
+
+* Added for NA-Dispute an Item */
+.heading-note{
+	font-family: jnjbodyfont;
+    font-size: 18px !important;
+}
+
+.form-elemnt-inline{width:47%;display:inline-block;}
+.disputeOrder .help-accordian-header{padding:20px 30px !important}
+
+/*  */
+
+/* Start - Dispute an item invoice details */
+.invoice-dispute-mobichkbox{margin-top:0px}
+.dispute-row{margin-bottom:15px;}
+.dispute-row p{margin-bottom:5px;}
+.disputeOrder .dispute-an-item-table{margin-top:0px  !important;margin-bottom:0px;}
+.disputeItemInvoice  .help-accordian-body {
+	padding:  0px !important;
+}
+.invoice-dispute-head-chk{width:35px}
+.dispute-chckbox-cell{width:50px}
+.invoice-dispute-checkbox{margin-top:0px}
+.invoiceDisputeQtyTxtField{width:100px;}
+.invoiceDisputeTxtField{width:150px;}
+.disable-cell{color:rgb(176,176,176) !important}
+.normal-cell{color:#828282  !important}
+/* End - Dispute an item invoice details */
+
+.dispute-jnj-panel-header{
+    padding: 30px 30px 15px 30px !important;
+	border-bottom:1px solid #f2f2f2  !important;
+}
+.dispute-panel{
+ 	padding:15px 25px;
+}
+@media screen and (max-width: 767px){
+	
+	
+/* Start - Dispute an item invoice details */
+
+	.disputeItemInvoice  .help-accordian-body {
+		padding: 0px !important;
+	}
+	.disputeOrder .dispute-an-item-table { 
+	 margin-top: 0px !important; 
+	 margin-bottom: 0px;
+}
+.dispute-chckbox-cell { 
+	 width: 50px  !important; 
+}
+
+.prdctCodemb{
+  padding: 10px 20px 0px 20px;
+	
+}
+.dispute-an-item-table  td,.dispute-an-item-table  th,.dispute-an-item-table  input{color:rgb(176,176,176)}
+.disableClick{
+    pointer-events: none;
+	color:rgb(176,176,176) !important           
+}
+
+
+/* End - Dispute an item invoice details */
+	
+
+	.form-elemnt-inline{width:100%;display:block;}	
+	/* Start dispute an order popup */
+	.order-number-label,.order-number-label{width:42%;white-space:nowrap}
+	//#dispute-order .popup{width:100% }
+	/* End dispute an order popup */
+	
+	.disputeOrder .headingTxt.content {
+		margin-bottom: 0px !important;
+	}
+	.disputeOrder .req-text {
+		margin-left: 0px;
+	}
+	.disputeOrder .boxshadow{
+		margin-top: 35px;
+	}
+	.disputeOrder .po-inputbox{
+		width:100%;
+	}
+	.disputeOrder  .dispute-upload-file{
+		width:100%;
+		margin-bottom:10px;
+	}
+	.disputeOrder .table-po-inputbox{
+		margin: 10px 0px 10px 20px;
+		width: 83%;
+	}
+	.sub-inputs{
+		padding:20px;
+	}
+	.disputeOrder .table>thead>tr>th{
+		display:none;
+	}
+	.dispute-jnj-panel-header .form-label-style{
+		margin-bottom:15px;
+	}
+	.dispute-head-content{
+		line-height:25px;
+		margin-top:5px;
+	}
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<extensioninfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extensioninfo.xsd">
+
+   <extension abstractclassprefix="Generated" classprefix="Jnjlaversioning" managername="JnjlaversioningManager" managersuperclass="de.hybris.platform.jalo.extension.Extension" name="jnjlaversioning" usemaven="false">
+
+      <requires-extension name="b2bacceleratorservices"/>
+      <requires-extension name="jnjlamasterstore"/>
+      <requires-extension name="jnjb2bcore"/>
+
+      <coremodule generated="true" manager="com.jnj.la.versioning.jalo.JnjlaversioningManager" packageroot="com.jnj.la.versioning"/>
+
+      <webmodule jspcompile="false" webroot="/jnjlaversioning"/>
+
+   </extension>
+      
+</extensioninfo>

@@ -1,0 +1,31 @@
+.profileAcknowledgementTopClass{
+	text-align: justify;
+    padding-bottom: 3%;
+    font-size: small;
+}
+
+.profileAcknowledgementBottomClass {
+    padding: 2%;
+    text-align: justify;
+}
+
+#myprofileHeaderMessages{
+	border-bottom: 0px;
+	padding: 0px:	
+}
+
+#invoiceDetailsPage input.tertiarybtn.pdfdownloadlinks{
+	-webkit-appearance:none;
+	background:none;
+	border:none;
+	color:#08a;
+}
+
+#invoicedownloadlinks{
+	padding-right: 3%;
+}
+
+#profilepage h4.panel-title{
+    padding:0px 0px 0px 0px;
+    border-bottom: 0px;
+}

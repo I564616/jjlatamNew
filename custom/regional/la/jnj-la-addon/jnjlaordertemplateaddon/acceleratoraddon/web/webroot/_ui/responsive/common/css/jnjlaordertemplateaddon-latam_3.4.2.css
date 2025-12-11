@@ -1,0 +1,135 @@
+.no-scroll-x {
+    overflow-x: hidden;
+}
+
+.text-center-force {
+    text-align: center !important;
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+}
+
+.PENDING, .BEING_PROCESSED, .COMPLETED, .CREATED, .CANCELLED, .CREDIT_HOLD, .CREDIT_ANALYSIS, .IN_PICKING, .UNDER_ANALYSIS, .BACKORDERED,
+.PARTIALLY_INVOICED, .INVOICED, .PARTIALLY_SHIPPED, .SHIPPED, .PARTIALLY_DELIVERED, .DELIVERED {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    content: "";
+    position: relative;
+    left: -10px;
+    background-color: #009900;
+}
+.PENDING{
+	background-color: #FFA500 !important;
+}
+.CREDIT_HOLD, .CREDIT_ANALYSIS{
+	background-color: #FFA500 !important;
+}
+.IN_PICKING{
+	background-color: #FFD700 !important;
+}
+.BEING_PROCESSED{
+	background-color: #0a8caa !important;
+}
+.COMPLETED{
+	background-color: #009900 !important;
+}
+.CREATED {
+	background-color: #12c2e9 !important;
+}
+
+
+
+.UNDER_ANALYSIS, .BACKORDERED {
+	background-color: #fea503 !important;
+}
+.PARTIALLY_INVOICED, .INVOICED {
+	background-color: #009900 !important;
+}
+.PARTIALLY_SHIPPED, .SHIPPED {
+	background-color: #007702 !important;
+}
+.PARTIALLY_DELIVERED, .DELIVERED {
+	background-color: #005500 !important;
+}
+.CANCELLED {
+	background-color: #900 !important;
+}
+
+
+
+
+/* style for orderHistory SelectAccount popup  */
+#ContractDetailsPage .modalbody{
+	overflow-y: auto;
+    width: 100%;
+    height: 195px;
+}
+#ContractDetailsPage .reset{
+	margin-right:15px;
+	padding: 10px 30px !important;
+}
+
+#invoiceDetailsPage input.tertiarybtn.pdfdownloadlinks{
+	-webkit-appearance:none;
+	background:none;
+	border:none;
+	color:#08a;
+}
+
+#invoicedownloadlinks{
+	padding-right: 3%;
+}
+
+.orderdetailscontainer .downloadLinks{
+	padding-right: 0px;
+}
+
+#Orderhistorypage.lessPadding #datatab-desktop td {
+	padding-left:10px;
+	padding-right:10px;
+}
+
+#templateLanding .downloadlinks {
+    width: auto !important;
+}
+.searchgCnr {
+	position: relative;
+	display: block;
+}
+
+.searchgIcon {
+	position: absolute;
+	right: 10px;
+	top: 9px;
+	cursor: pointer;
+}
+
+@media only screen and (min-width: 480px) {
+	.searchgCnr {
+		margin-top: -10px;
+		margin-left: 10px;
+	}
+}
+
+.searchgCnr input {
+	min-width: 250px;
+}
+
+@media only screen and (max-width: 480px) {
+	.searchgCnr input {
+		min-width: 100%;
+	}
+
+	div#datatab-mobile_paginate {
+		margin-top: 30px;
+	}
+
+	.jnj-panel-for-table div.row:nth-child(3) {
+		padding: 10px 0 0 0 !important;
+		border: none;
+		background: none;
+	}
+}

@@ -1,0 +1,486 @@
+## messageSource=classpath:/jnjb2bcore/messages/email-returnOrder_$lang.properties
+#macro( genHtmlBoldFont $text )
+<font color="#414a4f" size="2" face="Arial, Helvetica, sans-serif"><b>$text</b></font>
+#end
+#macro(genHtmlLinkStartTag $url)
+<a href="$url"><font color="#666666">
+#end
+#macro(genHtmlLinkEndTag)
+</font></a>
+#end
+#macro(genHtmlLink $url $textColor $bodyContent)
+<a href="$url"><font color="$textColor">$bodyContent</font></a>
+#end
+
+<style>
+input.span-18 {
+	border-left-width: 1px;
+    border-right-width: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+	width: 698px;
+}
+.blank_row
+{
+    height: 20px
+    background-color: #FFFFFF;
+}	
+.last {
+    margin-right: 0;
+    padding-right: 0;
+}
+.interfaceNotificationBody h2.arrowHeader span {
+    float: right;
+}
+.interfaceNotificationBody ul {
+    margin: 10px 0 20px;
+    padding-bottom: 10px;
+}
+.interfaceNotificationBody ul li {
+    clear: both;
+    margin-top: 10px;
+}
+.interfaceNotificationBody label {
+    display: block;
+}
+.interfaceNotificationBody label span {
+    color: #B41601;
+}
+.interfaceNotificationBody input[type="text"], .interfaceNotificationBody select {
+    color: #646464;
+    padding-left: 2px;
+    width: 420px;
+}
+.interfaceNotificationBody select {
+    color: #646464;
+    float: none;
+    margin-bottom: 0;
+    width: 230px;
+}
+.radioPanel label {
+    display: inline;
+}
+.radioPanel input[type="text"] {
+    display: block;
+    margin: 4px 0;
+}
+.radioPanel input[type="radio"] {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    margin-bottom: 0;
+}
+.interfaceNotificationBody input, .interfaceNotificationBody select {
+    padding: 0;
+}
+.interfaceNotificationBody select {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid #E5E5E5;
+    padding-bottom: 0;
+    padding-right: 0;
+    padding-top: 0;
+}
+.interfaceNotificationBody .buttonWrapper > input {
+    padding: 5px 15px;
+}
+h2.arrowHeader {
+    border-bottom: 1px solid #84C5D4;
+    color: #0A8CAA;
+    font-size: 16px;
+    line-height: 30px;
+    margin-bottom: 0;
+}
+.priceSmall {
+    color: #B41601;
+    font-size: 12px;
+}
+.instructiontxt {
+    color: #828282;
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+
+body {
+    line-height: 1.5;
+}
+body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section {
+    border: 0 none;
+    font-family: inherit;
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+body {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #222222;
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    font-size: 75%;
+}
+ul li {
+    color: #646464;
+    font-size: 12px;
+    list-style-type: none;
+}
+td {
+	color: #646464;
+}
+
+table.readDashboard
+{
+	background:#EEE;
+	color:#333;
+	font-size:12px;
+	font: 'Arial';
+	text-align:center;
+}
+
+table.readDashboard th
+{
+	background:#CCC;
+	font-weight:bold;
+}
+.inlineClass{display:inline;}
+.inlineClass div{display:inline;}
+</style>
+<html>
+<head>
+	<title>Confirmation Email</title>
+</head>
+<body id="containerBody" style="font-size:10px;">
+	<table style="background-color:#ffffff" width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+		<tr>
+			<td style="vertical-align:top;">
+				<table bgcolor="#ffffff" width="900" border="0" cellspacing="0" cellpadding="0" align="center">
+					<tr>
+							<td style="color: red;" width="600" height="5" colspan="3" style="background-color:red;">
+								<div style="width:11;height:11" >&nbsp;
+							</td>
+					</tr>
+					
+					<tr bgcolor="#ffffff">
+						<td style="color: #646464;" width="11" height="11">
+						  <div style="width:11;height:11" />
+						</td>
+						<td style="color: #646464;" height="11">
+							<table width="800">
+								<tr>
+									<td> ${ctx.cmsSlotContents.TopContentLogo1}</td>
+									<td style="color: #646464;" width="690" height="11">
+										  <div style="width:690;height:11" >&nbsp;<div>
+									</td>
+									<td> ${ctx.cmsSlotContents.TopContentLogo2}</td>
+								</tr>
+							</table>
+						</td>
+		                <td style="color: #646464;" width="1" height="11">
+		                         <div style="width:1;height:11" />
+		                </td>
+		            </tr>
+
+					<tr class="blank_row">	
+						<td colspan="3">&nbsp;</td>
+					</tr>
+						
+					<br>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td>
+							<h2 class="arrowHeader">								
+								
+									${ctx.messages.returnOrder}
+								
+							</h2>
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						
+						<td style="font-family:Helvetica Neue, sans-serif; font-size:12px; color:#828282;">
+							<div class="span-18 last" id="addindirectcustomer" style="display:block">
+								<div class="interfaceNotificationBody ">
+									${ctx.messages.salutationCSR},<br/><br/>
+									${ctx.userFullName}${ctx.messages.orderDisputed}<br/><br/>
+									<b>${ctx.messages.returnReview}</b>		<br/><br/>
+									<u>${ctx.messages.reqDtls}</u><br/><br/>
+									<table bgcolor="#ffffff" width="350" border="0" cellspacing="0" cellpadding="0" align="left"
+											style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+										<tr>
+											<td style="white-space:nowrap; padding:7px">
+												${ctx.messages.requesterName}
+											</td>
+											<td>
+												${ctx.userFullName}
+											</td>
+										</tr>									
+										<tr>
+											<td style="white-space:nowrap; padding:7px">
+												${ctx.messages.accNum}
+											</td>
+											<td>
+												${ctx.orderData.accountNumber}
+											</td>
+										</tr>		
+										<tr>
+											<td style="white-space:nowrap; padding:7px">
+												${ctx.messages.userEmail}
+											</td>
+											<td>
+												${ctx.customerData.email}
+											</td>
+										</tr>
+										#if(${ctx.customerData.contactNumber})
+										<tr>
+											<td style="white-space:nowrap; padding:7px">
+												${ctx.messages.userPhone}
+											</td>
+											<td>
+												${ctx.customerData.contactNumber}
+											</td>
+										</tr>
+										#end
+									</table>
+								
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td style="font-family:Helvetica Neue, sans-serif; font-size:12px; color:#828282;">
+							<div class="span-18 last" id="addindirectcustomer" style="display:block">
+								<div class="interfaceNotificationBody ">
+									<table bgcolor="#ffffff" width="400" border="0" cellspacing="0" cellpadding="0" align="left"
+											style="font-family:Helvetica, sans-serif; font-size:12px; color:#828282;">
+										<tr>					
+											
+											<td style="font-family:Helvetica Neue, sans-serif; font-size:12px; color:#828282;">
+														<p style="margin:5px 0; padding-left: 10px; font-size: 12px; padding-top:5px">
+															<font color="#666666" face="Helvetica Neue, sans-serif">	
+															${ctx.messages.relevInformation}
+															</font>
+														</p>
+													
+									
+											</td>
+											
+										</tr>
+									</table>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td style="font-family:Helvetica Neue, sans-serif; font-size:12px; color:#828282;">
+							<div class="span-18 last" id="addindirectcustomer" style="display:block">
+								<div class="interfaceNotificationBody ">		
+								
+									<table bgcolor="#ffffff" width="450" border="1" bordercolor="#262626" cellspacing="0" cellpadding="0" align="left"
+											style="font-family:Helvetica Neue, sans-serif; font-size:12px; ">
+										<tr>
+											<th style="text-align:center;font-weight:bold;color:#000000; padding:10px">
+												<b>${ctx.messages.jnjOrderNum}</b>
+											</th>
+											<th style="text-align:center;font-weight:bold;color:#000000; padding:10px">
+												<b>${ctx.messages.returnOrderNum}</b>
+											</th>
+											<th style="text-align:center;font-weight:bold;color:#000000; padding:10px">
+												<b>${ctx.messages.poReference}</b>
+											</th>
+											<th style="text-align:center;font-weight:bold;color:#000000; padding:10px">
+												<b>${ctx.messages.item}</b>
+											</th>
+											<th style="text-align:center;font-weight:bold;color:#000000; padding:10px">
+												<b>${ctx.messages.lotNum}</b>
+											</th>
+											<th style="text-align:center;font-weight:bold;color:#000000; padding:10px">
+												<b>${ctx.messages.qtyOrdered}</b>
+											</th>
+											<th style="text-align:center;font-weight:bold;color:#000000; padding:10px">
+												<b>${ctx.messages.qtyReturned}</b>
+											</th>
+											<th style="text-align:center;font-weight:bold;color:#000000; padding:10px">
+												<b>${ctx.messages.uom}</b>
+											</th>
+											<th style="text-align:center;font-weight:bold;color:#000000; padding:10px">
+												<b>${ctx.messages.reasonCode}</b>
+											</th>
+										</tr>
+									#foreach($returnOrderData in ${ctx.returnOrderDataList} )
+										
+										<tr>
+											<td style="text-align:center;color:#828282;padding:10px">
+												${returnOrderData.sapOrderNum}
+											</td>
+											<td style="text-align:center;color:#828282;padding:10px">
+												${returnOrderData.returnOrderNum}
+											</td>
+											
+											<td style="text-align:center;color:#828282;padding:10px">
+												${returnOrderData.poNumber}
+											</td>
+											<td style="text-align:center;color:#828282;padding:10px">
+												${returnOrderData.productId}
+											</td>
+											<td style="text-align:center;color:#828282;padding:10px">
+												${returnOrderData.lotNumber}
+											</td>
+											<td style="text-align:center;color:#828282;padding:10px">
+												${returnOrderData.qtyOrdered}
+											</td>
+											<td style="text-align:center;color:#828282;padding:10px">
+												${returnOrderData.qtyReturned}
+											</td>
+											<td style="text-align:center;color:#828282;padding:10px">
+												${returnOrderData.uom}
+											</td>
+											
+											#if(${returnOrderData.reasonCode} == "R07")
+											<td style="text-align:center;color:#828282;padding:10px">
+												${ctx.messages.R07}
+											</td>
+											#end
+											#if(${returnOrderData.reasonCode} == "R09")
+											<td style="text-align:center;color:#828282;padding:10px">
+												${ctx.messages.R09}
+											</td>
+											#end
+											#if(${returnOrderData.reasonCode} == "R29")
+											<td style="text-align:center;color:#828282;padding:10px">
+												${ctx.messages.R29}
+											</td>
+											#end
+											#if(${returnOrderData.reasonCode} == "R11")
+											<td style="text-align:center;color:#828282;padding:10px">
+												${ctx.messages.R11}
+											</td>
+											#end
+											#if(${returnOrderData.reasonCode} == "R12")
+											<td style="text-align:center;color:#828282;padding:10px">
+												${ctx.messages.R12}
+											</td>
+											#end
+											#if(${returnOrderData.reasonCode} == "Other")
+											<td style="text-align:center;color:#828282;padding:10px">
+												${ctx.messages.other}
+											</td>
+											#end
+										</tr>
+										
+									#end
+									</table>
+								</div>
+							</div>
+						
+						</td>
+					</tr>
+										
+			
+					<tr style="padding-top:15px !important">
+						<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;" colspan="3">
+							<div class="span-18 last" id="addindirectcustomer" style="display:block">
+								<div class="interfaceNotificationBody ">
+
+									<p style="margin:5px 0; padding-left: 10px; font-size: 10px; padding-top:5px">
+										<font color="#666666" face="Arial, Helvetica, sans-serif">	
+											 ${ctx.messages.thankyou}<br />
+											 ${ctx.messages.custService}<br />
+											 ${ctx.messages.signature}<br />
+										</font>
+									</p>
+								</div>
+							</div>
+							
+						</td>
+						
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td>
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td style="color: #646464;" width="900">
+							${ctx.cmsSlotContents.EpicEmailFooter}
+						</td>
+								</tr>
+							</table>
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+				</table>
+			</td>
+			
+		</tr>
+	</table>
+</body>
+</html>

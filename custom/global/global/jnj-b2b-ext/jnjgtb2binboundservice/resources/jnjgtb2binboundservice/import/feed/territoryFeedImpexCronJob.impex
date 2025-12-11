@@ -1,0 +1,7 @@
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+# Initialization
+INSERT_UPDATE JnjGTIntTerritory;billToNumber;buisnessSector;shipToNumber[unique=true,allownull=true];soldToNumber;sourceSystemId[unique=true,allownull=true];territoryCode[unique=true,allownull=true];wwid[unique=true,allownull=true];recordStatus(code)[default='LOADING']
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT  BILL_TO_NUM,BUSINESS_SECTOR,SHIP_TO_NUM,SOLD_TO_NUM,SOURCE_SYS_ID,TERRITORY_CODE,WWID from STG_TERRITORY WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP"");"

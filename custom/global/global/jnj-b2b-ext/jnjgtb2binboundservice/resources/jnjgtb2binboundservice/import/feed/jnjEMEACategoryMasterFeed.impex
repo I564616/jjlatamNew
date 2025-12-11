@@ -1,0 +1,13 @@
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+# Product Initialization
+
+
+INSERT_UPDATE JnjEMEAIntCategory;categoryCode[unique=true];categoryName;categoryType;sourceSysId[unique=true];businessSector;recordStatus(code)[default='LOADING']
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% impex.includeSQLData( ""SELECT CATEGORY_CD, CATEGORY_NAME, CATEGORY_TYPE, SOURCE_SYS_ID, BUSINESS_SECTOR from STG_CATEGORIES WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP"");"
+
+
+# Product Description Initialization
+INSERT_UPDATE JnjEMEAIntCategoryDesc;categoryCode[unique=true];categoryLangCode;categoryName;categoryType;businessSector;sourceSysId[unique=true];
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% impex.includeSQLData( ""SELECT CATEGORY_CD, CATEGORY_LANG_CD, CATEGORY_NAME, CATEGORY_TYPE, BUSINESS_SECTOR, SOURCE_SYS_ID from STG_CATEGORIES_DESC WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP"");"

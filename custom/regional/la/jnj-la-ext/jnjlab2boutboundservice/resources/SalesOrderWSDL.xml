@@ -1,0 +1,463 @@
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapjms="http://www.w3.org/2010/soapjms/" xmlns:tns="http://itsusmpl00082.jnj.com/SG910_BtB_IN0498_SalesOrder_Global_Source_v1.webService:salesOrderWS" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" name="salesOrderWS" targetNamespace="http://itsusmpl00082.jnj.com/SG910_BtB_IN0498_SalesOrder_Global_Source_v1.webService:salesOrderWS">
+<wsdl:types>
+<xsd:schema xmlns:tns="http://itsusmpl00082.jnj.com/SG910_BtB_IN0498_SalesOrder_Global_Source_v1.webService:salesOrderWS" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://itsusmpl00082.jnj.com/SG910_BtB_IN0498_SalesOrder_Global_Source_v1.webService:salesOrderWS">
+<xsd:element name="salesOrderCreationWrapper" type="tns:salesOrderCreationWrapper"/>
+<xsd:element name="salesOrderCreationWrapperResponse" type="tns:salesOrderCreationWrapperResponse"/>
+<xsd:element name="salesOrderPricingWrapper" type="tns:salesOrderPricingWrapper"/>
+<xsd:element name="salesOrderPricingWrapperResponse" type="tns:salesOrderPricingWrapperResponse"/>
+<xsd:element name="salesOrderSimulationWrapper" type="tns:salesOrderSimulationWrapper"/>
+<xsd:element name="salesOrderSimulationWrapperResponse" type="tns:salesOrderSimulationWrapperResponse"/>
+<xsd:complexType name="salesOrderCreationWrapper">
+<xsd:sequence>
+<xsd:element name="salesOrderCreationRequest" nillable="true" type="tns:salesOrderCreationRequest"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="salesOrderCreationRequest">
+<xsd:sequence>
+<xsd:element name="Header" nillable="true" type="tns:BTBControlArea"/>
+<xsd:element name="SalesOrder_In" nillable="true" type="tns:SalesOrder_In"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="BTBControlArea">
+<xsd:sequence>
+<xsd:element name="InterfaceNumber" nillable="true" type="xsd:string"/>
+<xsd:element name="UniqueTransactionID" nillable="true" type="xsd:string"/>
+<xsd:element name="BusinessObjectName" nillable="true" type="xsd:string"/>
+<xsd:element name="TransactionDateTime" nillable="true" type="xsd:string"/>
+<xsd:element name="SourceSystem" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="unbounded" minOccurs="0" name="TargetSystem" nillable="true" type="xsd:string"/>
+<xsd:element name="TotalRecordCount" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="CustomName01" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="CustomName02" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="CustomName03" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="CustomName04" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="CustomName05" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="CustomValue01" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="CustomValue02" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="CustomValue03" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="CustomValue04" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="CustomValue05" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="SalesOrder_In">
+<xsd:sequence>
+<xsd:element name="in_Request_Type" type="xsd:string"/>
+<xsd:element name="in_SalesOrganization" type="xsd:string"/>
+<xsd:element name="in_DistributionChannel" type="xsd:string"/>
+<xsd:element name="in_Division" type="xsd:string"/>
+<xsd:element name="in_OrderType" type="xsd:string"/>
+<xsd:element name="in_SoldToNumber" type="xsd:string"/>
+<xsd:element name="in_ShipToNumber" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_CustomerPortalOrdernumber" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_PONumber" nillable="true" type="xsd:string"/>
+<xsd:element name="in_ComplementaryInfo" nillable="true" type="xsd:string"/>
+<xsd:element name="in_Incoterms" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_OrderChannel" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_OrderReason" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_ContactName" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_ContactPhoneNumber" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_ContactEmail" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_RequestedDeliveryDate" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_CompleteDelivery" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_ForbiddenSales" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_ContractReferenceNumber" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="unbounded" name="in_orderLines" nillable="true" type="tns:in_orderLines"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="in_orderLines">
+<xsd:sequence>
+<xsd:element name="MaterialNumber" type="xsd:string"/>
+<xsd:element name="QuantityRequested" type="xsd:string"/>
+<xsd:element name="SalesUOM" type="xsd:string"/>
+<xsd:element name="LineNumber" type="xsd:string"/>
+<xsd:element minOccurs="0" name="ExpectedDeliveryDate" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="IndirectCustomerAcct" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="IndirectPayerAcct" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="PriceOverrideRate" nillable="true" type="xsd:string"/>
+<xsd:element name="PriceOverrideReason" type="xsd:string"/>
+<xsd:element minOccurs="0" name="ExpectedPriceRate" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="salesOrderCreationWrapperResponse">
+<xsd:sequence>
+<xsd:element name="salesOrderCreationResponse" nillable="true" type="tns:salesOrderCreationResponse"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="salesOrderCreationResponse">
+<xsd:sequence>
+<xsd:element name="SalesOrder_Out" nillable="true" type="tns:SalesOrder_Out"/>
+<xsd:element name="Response" nillable="true" type="tns:Response"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="SalesOrder_Out">
+<xsd:sequence>
+<xsd:element name="out_SalesOrderNumber" type="xsd:string"/>
+<xsd:element maxOccurs="unbounded" name="out_orderLines" nillable="true" type="tns:out_orderLines"/>
+<xsd:element name="out_SalesOrderRejectionStatus" type="xsd:string"/>
+<xsd:element name="out_SalesOrderOverallStatus" type="xsd:string"/>
+<xsd:element name="out_SalesOrderCreditStatus" type="xsd:string"/>
+<xsd:element name="out_SalesOrdertTotalNetValue" type="xsd:string"/>
+<xsd:element maxOccurs="unbounded" name="Message_return" nillable="true" type="tns:Message_return"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="out_orderLines">
+<xsd:sequence>
+<xsd:element name="LineNumber" type="xsd:string"/>
+<xsd:element name="MaterialNumber" type="xsd:string"/>
+<xsd:element name="MaterialQuantity" type="xsd:string"/>
+<xsd:element name="SalesUOM" type="xsd:string"/>
+<xsd:element name="ItemCategory" type="xsd:string"/>
+<xsd:element name="MaterialEntered" type="xsd:string"/>
+<xsd:element name="HigherLevelItemNumber" type="xsd:string"/>
+<xsd:element maxOccurs="unbounded" name="ScheduledLines" nillable="true" type="tns:ScheduledLines"/>
+<xsd:element name="ReasonForRejection" type="xsd:string"/>
+<xsd:element name="LineOverallStatus" type="xsd:string"/>
+<xsd:element name="FreightFees" type="xsd:string"/>
+<xsd:element name="Taxes" type="xsd:string"/>
+<xsd:element name="UnitValue" type="xsd:string"/>
+<xsd:element name="GrossPrice" type="xsd:string"/>
+<xsd:element name="NetValue" type="xsd:string"/>
+<xsd:element name="Discounts" type="xsd:string"/>
+<xsd:element name="ExpeditedFees" type="xsd:string"/>
+<xsd:element name="Insurance" type="xsd:string"/>
+<xsd:element name="InternaitonalFreight" type="xsd:string"/>
+<xsd:element name="HandlingFee" type="xsd:string"/>
+<xsd:element name="DropshipFee" type="xsd:string"/>
+<xsd:element name="MinimumOrderFee" type="xsd:string"/>
+<xsd:element name="TaxesLocal" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="ScheduledLines">
+<xsd:sequence>
+<xsd:element name="LineNumber" type="xsd:string"/>
+<xsd:element name="DeliveryDate" type="xsd:string"/>
+<xsd:element name="RoundedQuantity" type="xsd:string"/>
+<xsd:element name="ConfirmedQuantity" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="Message_return">
+<xsd:sequence>
+<xsd:element name="ID" type="xsd:string"/>
+<xsd:element name="MESSAGE" type="xsd:string"/>
+<xsd:element name="NUMBER" type="xsd:string"/>
+<xsd:element name="TYPE" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="Response">
+<xsd:sequence>
+<xsd:element name="statusCode" nillable="true" type="xsd:string"/>
+<xsd:element name="statusMessage" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="error" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="salesOrderPricingWrapper">
+<xsd:sequence>
+<xsd:element name="salesOrderPricingRequest" nillable="true" type="tns:salesOrderPricingRequest"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="salesOrderPricingRequest">
+<xsd:sequence>
+<xsd:element name="Header" nillable="true" type="tns:BTBControlArea"/>
+<xsd:element name="SalesOrder_In" nillable="true" type="tns:SalesOrder_In2"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="SalesOrder_In2">
+<xsd:sequence>
+<xsd:element name="in_Request_Type" type="xsd:string"/>
+<xsd:element name="in_SalesOrganization" type="xsd:string"/>
+<xsd:element name="in_DistributionChannel" type="xsd:string"/>
+<xsd:element name="in_Division" type="xsd:string"/>
+<xsd:element name="in_OrderType" type="xsd:string"/>
+<xsd:element name="in_SoldToNumber" type="xsd:string"/>
+<xsd:element name="in_ShipToNumber" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_CustomerPortalOrdernumber" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_PONumber" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_OrderChannel" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_OrderReason" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_ContactName" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_ContactPhoneNumber" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_ContactEmail" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_RequestedDeliveryDate" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_CompleteDelivery" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_ForbiddenSales" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_ContractReferenceNumber" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="unbounded" name="in_orderLines" nillable="true" type="tns:in_orderLines2"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="in_orderLines2">
+<xsd:sequence>
+<xsd:element name="MaterialNumber" type="xsd:string"/>
+<xsd:element name="QuantityRequested" type="xsd:string"/>
+<xsd:element name="SalesUOM" type="xsd:string"/>
+<xsd:element name="LineNumber" type="xsd:string"/>
+<xsd:element minOccurs="0" name="ExpectedDeliveryDate" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="IndirectCustomerAcct" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="IndirectPayerAcct" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="PriceOverrideRate" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="PriceOverrideReason" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="ExpectedPriceRate" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="salesOrderPricingWrapperResponse">
+<xsd:sequence>
+<xsd:element name="salesOrderPricingResponse" nillable="true" type="tns:salesOrderPricingResponse"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="salesOrderPricingResponse">
+<xsd:sequence>
+<xsd:element name="SalesOrder_Out" nillable="true" type="tns:SalesOrder_Out2"/>
+<xsd:element name="Response" nillable="true" type="tns:Response2"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="SalesOrder_Out2">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="out_SalesOrderNumber" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="unbounded" name="out_orderLines" nillable="true" type="tns:out_orderLines2"/>
+<xsd:element minOccurs="0" name="out_SalesOrderRejectionStatus" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="out_SalesOrderOverallStatus" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="out_SalesOrderCreditStatus" nillable="true" type="xsd:string"/>
+<xsd:element name="out_SalesOrdertTotalNetValue" type="xsd:string"/>
+<xsd:element maxOccurs="unbounded" name="Message_return" nillable="true" type="tns:Message_return2"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="out_orderLines2">
+<xsd:sequence>
+<xsd:element name="LineNumber" type="xsd:string"/>
+<xsd:element name="MaterialNumber" type="xsd:string"/>
+<xsd:element name="MaterialQuantity" type="xsd:string"/>
+<xsd:element name="SalesUOM" type="xsd:string"/>
+<xsd:element name="ItemCategory" type="xsd:string"/>
+<xsd:element name="MaterialEntered" type="xsd:string"/>
+<xsd:element name="HigherLevelItemNumber" type="xsd:string"/>
+<xsd:element maxOccurs="unbounded" name="ScheduledLines" nillable="true" type="tns:ScheduledLines2"/>
+<xsd:element minOccurs="0" name="ReasonForRejection" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="LineOverallStatus" nillable="true" type="xsd:string"/>
+<xsd:element name="FreightFees" type="xsd:string"/>
+<xsd:element name="Taxes" type="xsd:string"/>
+<xsd:element name="UnitValue" type="xsd:string"/>
+<xsd:element name="GrossPrice" type="xsd:string"/>
+<xsd:element name="NetValue" type="xsd:string"/>
+<xsd:element name="Discounts" type="xsd:string"/>
+<xsd:element name="ExpeditedFees" type="xsd:string"/>
+<xsd:element name="Insurance" type="xsd:string"/>
+<xsd:element name="InternaitonalFreight" type="xsd:string"/>
+<xsd:element name="HandlingFee" type="xsd:string"/>
+<xsd:element name="DropshipFee" type="xsd:string"/>
+<xsd:element name="MinimumOrderFee" type="xsd:string"/>
+<xsd:element name="TaxesLocal" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="ScheduledLines2">
+<xsd:sequence>
+<xsd:element name="LineNumber" type="xsd:string"/>
+<xsd:element minOccurs="0" name="DeliveryDate" nillable="true" type="xsd:string"/>
+<xsd:element name="RoundedQuantity" type="xsd:string"/>
+<xsd:element minOccurs="0" name="ConfirmedQuantity" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="Message_return2">
+<xsd:sequence>
+<xsd:element name="ID" type="xsd:string"/>
+<xsd:element name="MESSAGE" type="xsd:string"/>
+<xsd:element name="NUMBER" type="xsd:string"/>
+<xsd:element name="TYPE" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="Response2">
+<xsd:sequence>
+<xsd:element name="statusCode" nillable="true" type="xsd:string"/>
+<xsd:element name="statusMessage" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="error" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="salesOrderSimulationWrapper">
+<xsd:sequence>
+<xsd:element name="salesOrderSimulationRequest" nillable="true" type="tns:salesOrderSimulationRequest"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="salesOrderSimulationRequest">
+<xsd:sequence>
+<xsd:element name="Header" nillable="true" type="tns:BTBControlArea"/>
+<xsd:element name="SalesOrder_In" nillable="true" type="tns:SalesOrder_In3"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="SalesOrder_In3">
+<xsd:sequence>
+<xsd:element name="in_Request_Type" type="xsd:string"/>
+<xsd:element name="in_SalesOrganization" type="xsd:string"/>
+<xsd:element name="in_DistributionChannel" type="xsd:string"/>
+<xsd:element name="in_Division" type="xsd:string"/>
+<xsd:element name="in_OrderType" type="xsd:string"/>
+<xsd:element name="in_SoldToNumber" type="xsd:string"/>
+<xsd:element name="in_ShipToNumber" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_CustomerPortalOrdernumber" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_PONumber" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_OrderChannel" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_OrderReason" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_ContactName" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_ContactPhoneNumber" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_ContactEmail" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_RequestedDeliveryDate" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_CompleteDelivery" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_ForbiddenSales" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_ContractReferenceNumber" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="in_Incoterms" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="unbounded" name="in_orderLines" nillable="true" type="tns:in_orderLines3"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="in_orderLines3">
+<xsd:sequence>
+<xsd:element name="MaterialNumber" type="xsd:string"/>
+<xsd:element name="QuantityRequested" type="xsd:string"/>
+<xsd:element name="SalesUOM" type="xsd:string"/>
+<xsd:element name="LineNumber" type="xsd:string"/>
+<xsd:element minOccurs="0" name="ExpectedDeliveryDate" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="IndirectCustomerAcct" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="IndirectPayerAcct" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="PriceOverrideRate" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="PriceOverrideReason" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="ExpectedPriceRate" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="salesOrderSimulationWrapperResponse">
+<xsd:sequence>
+<xsd:element name="salesOrderSimulationResponse" nillable="true" type="tns:salesOrderSimulationResponse"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="salesOrderSimulationResponse">
+<xsd:sequence>
+<xsd:element name="SalesOrder_Out" nillable="true" type="tns:SalesOrder_Out3"/>
+<xsd:element name="Response" nillable="true" type="tns:Response3"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="SalesOrder_Out3">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="out_SalesOrderNumber" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="unbounded" name="out_orderLines" nillable="true" type="tns:out_orderLines3"/>
+<xsd:element minOccurs="0" name="out_SalesOrderRejectionStatus" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="out_SalesOrderOverallStatus" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="out_SalesOrderCreditStatus" nillable="true" type="xsd:string"/>
+<xsd:element name="out_SalesOrdertTotalNetValue" type="xsd:string"/>
+<xsd:element maxOccurs="unbounded" name="Message_return" nillable="true" type="tns:Message_return3"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="out_orderLines3">
+<xsd:sequence>
+<xsd:element name="LineNumber" type="xsd:string"/>
+<xsd:element name="MaterialNumber" type="xsd:string"/>
+<xsd:element name="MaterialQuantity" type="xsd:string"/>
+<xsd:element name="SalesUOM" type="xsd:string"/>
+<xsd:element name="ItemCategory" type="xsd:string"/>
+<xsd:element name="MaterialEntered" type="xsd:string"/>
+<xsd:element name="HigherLevelItemNumber" type="xsd:string"/>
+<xsd:element maxOccurs="unbounded" name="ScheduledLines" nillable="true" type="tns:ScheduledLines3"/>
+<xsd:element minOccurs="0" name="ReasonForRejection" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="LineOverallStatus" nillable="true" type="xsd:string"/>
+<xsd:element name="FreightFees" type="xsd:string"/>
+<xsd:element name="Taxes" type="xsd:string"/>
+<xsd:element name="UnitValue" type="xsd:string"/>
+<xsd:element name="GrossPrice" type="xsd:string"/>
+<xsd:element name="NetValue" type="xsd:string"/>
+<xsd:element name="Discounts" type="xsd:string"/>
+<xsd:element name="ExpeditedFees" type="xsd:string"/>
+<xsd:element name="Insurance" type="xsd:string"/>
+<xsd:element name="InternaitonalFreight" type="xsd:string"/>
+<xsd:element name="HandlingFee" type="xsd:string"/>
+<xsd:element name="DropshipFee" type="xsd:string"/>
+<xsd:element name="MinimumOrderFee" type="xsd:string"/>
+<xsd:element name="TaxesLocal" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="ScheduledLines3">
+<xsd:sequence>
+<xsd:element name="LineNumber" type="xsd:string"/>
+<xsd:element name="DeliveryDate" type="xsd:string"/>
+<xsd:element name="RoundedQuantity" type="xsd:string"/>
+<xsd:element name="ConfirmedQuantity" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="Message_return3">
+<xsd:sequence>
+<xsd:element name="ID" type="xsd:string"/>
+<xsd:element name="MESSAGE" type="xsd:string"/>
+<xsd:element name="NUMBER" type="xsd:string"/>
+<xsd:element name="TYPE" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="Response3">
+<xsd:sequence>
+<xsd:element name="statusCode" nillable="true" type="xsd:string"/>
+<xsd:element name="statusMessage" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="error" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:schema>
+</wsdl:types>
+<wsdl:message name="salesOrderWS_PortType_salesOrderPricingWrapperResponse">
+<wsdl:part name="parameters" element="tns:salesOrderPricingWrapperResponse"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="salesOrderWS_PortType_salesOrderSimulationWrapper">
+<wsdl:part name="parameters" element="tns:salesOrderSimulationWrapper"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="salesOrderWS_PortType_salesOrderCreationWrapperResponse">
+<wsdl:part name="parameters" element="tns:salesOrderCreationWrapperResponse"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="salesOrderWS_PortType_salesOrderCreationWrapper">
+<wsdl:part name="parameters" element="tns:salesOrderCreationWrapper"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="salesOrderWS_PortType_salesOrderSimulationWrapperResponse">
+<wsdl:part name="parameters" element="tns:salesOrderSimulationWrapperResponse"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="salesOrderWS_PortType_salesOrderPricingWrapper">
+<wsdl:part name="parameters" element="tns:salesOrderPricingWrapper"></wsdl:part>
+</wsdl:message>
+<wsdl:portType name="salesOrderWS_PortType">
+<wsdl:operation name="salesOrderPricingWrapper">
+<wsdl:input message="tns:salesOrderWS_PortType_salesOrderPricingWrapper"></wsdl:input>
+<wsdl:output message="tns:salesOrderWS_PortType_salesOrderPricingWrapperResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="salesOrderCreationWrapper">
+<wsdl:input message="tns:salesOrderWS_PortType_salesOrderCreationWrapper"></wsdl:input>
+<wsdl:output message="tns:salesOrderWS_PortType_salesOrderCreationWrapperResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="salesOrderSimulationWrapper">
+<wsdl:input message="tns:salesOrderWS_PortType_salesOrderSimulationWrapper"></wsdl:input>
+<wsdl:output message="tns:salesOrderWS_PortType_salesOrderSimulationWrapperResponse"></wsdl:output>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="SG910_BtB_IN0498_SalesOrder_Global_Source_v1_webService_salesOrderWS_Binder" type="tns:salesOrderWS_PortType">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="salesOrderPricingWrapper">
+<soap:operation soapAction="SG910_BtB_IN0498_SalesOrder_Global_Source_v1_webService_salesOrderWS_Binder_salesOrderPricingWrapper" style="document"/>
+<wsdl:input>
+<soap:body parts="parameters" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body parts="parameters" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="salesOrderCreationWrapper">
+<soap:operation soapAction="SG910_BtB_IN0498_SalesOrder_Global_Source_v1_webService_salesOrderWS_Binder_salesOrderCreationWrapper" style="document"/>
+<wsdl:input>
+<soap:body parts="parameters" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body parts="parameters" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="salesOrderSimulationWrapper">
+<soap:operation soapAction="SG910_BtB_IN0498_SalesOrder_Global_Source_v1_webService_salesOrderWS_Binder_salesOrderSimulationWrapper" style="document"/>
+<wsdl:input>
+<soap:body parts="parameters" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body parts="parameters" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="SG910_BtB_IN0498_SalesOrder_Global_Source_v1.webService.salesOrderWS">
+<wsdl:port name="SG910_BtB_IN0498_SalesOrder_Global_Source_v1_webService_salesOrderWS_Port" binding="tns:SG910_BtB_IN0498_SalesOrder_Global_Source_v1_webService_salesOrderWS_Binder">
+<soap:address location="http://itsusral00434.jnj.com:5500/ws/SG910_BtB_IN0498_SalesOrder_Global_Source_v1.webService.salesOrderWS/SG910_BtB_IN0498_SalesOrder_Global_Source_v1_webService_salesOrderWS_Port"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

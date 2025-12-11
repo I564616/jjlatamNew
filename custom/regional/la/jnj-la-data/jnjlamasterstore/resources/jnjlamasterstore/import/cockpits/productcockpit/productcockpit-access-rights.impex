@@ -1,0 +1,183 @@
+###################################################
+# Import Access Rights for Add Product Media Group
+################################################### 
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+UserGroup;addProductMediaGroup;;;;;;;;
+
+# Access Rights for addProductMediaGroup
+;;;;Product.galleryImages;;+;+;+;;
+;;;;Media;;+;+;+;;
+;;;;MediaContainer;;+;+;+;;
+;;;;MediaFormat;;+;+;+;;
+;;;;MediaFolder;;+;+;+;;
+$END_USERRIGHTS;;;;;
+##################################################
+
+##################################################
+# Import Access Rights for Approve PDP Group
+##################################################
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+UserGroup;approvePDPGroup;;;;;;;;
+
+# Access Rights for approvePDPGroup;;;;;;;;;
+;;;;Product.approvalStatus;;+;+;+;;
+$END_USERRIGHTS;;;;;
+##################################################
+
+##################################################
+# Import Access Rights for Approve Products Group
+################################################## 
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+UserGroup;approveProductsGroup;;;;;;;;
+
+# Access Rights for approveProductsGroup;;;;;;;;;
+;;;;Product.approvalStatus;;+;+;+;;
+$END_USERRIGHTS;;;;;
+##################################################
+
+##################################################
+# Import Access Rights for Change Product Assignment Group
+################################################## 
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+UserGroup;changeProductAssignmentGroup;;;;;;;;
+
+# Access Rights for changeProductAssignmentGroup;;;;;;;;;
+;;;;Category;;+;;;;
+$END_USERRIGHTS;;;;;
+###################################################
+
+##################################################
+# Import Access Rights for Create Categories Group
+################################################## 
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+UserGroup;createCategoriesGroup;;;;;;;;
+
+# Access Rights for createCategoriesGroup;;;;;;;;;
+;;;;Category;;+;+;;;
+$END_USERRIGHTS;;;;;
+################################################
+
+##################################################
+# Import Access Rights for Manage Products Data Group
+################################################## 
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+UserGroup;manageProductsDataGroup;;;;;;;;
+
+# Access Rights for manageProductsDataGroup;;;;;;;;;
+;;;;Product;;+;;;;
+;;;;Product.name;;+;;;;
+;;;;Product.description;;+;;;;
+;;;;Tax;;+;;;;
+;;;;TaxRow;;+;;;;
+;;;;PriceRow;;+;;;;
+$END_USERRIGHTS;;;;;
+###############################################
+
+##################################################
+# Import Access Rights for Product Data Translation Group
+################################################## 
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+UserGroup;productDataTranslationGroup;;;;;;;;
+
+# Access Rights for productDataTranslationGroup;;;;;;;;;
+;;;;Product;;+;;;;
+;;;;Product.name;;+;;;;
+;;;;Product.description;;+;;;;
+;;;;Tax;;+;;;;
+;;;;TaxRow;;+;;;;
+;;;;PriceRow;;+;;;;
+$END_USERRIGHTS;;;;;
+#############################################
+
+##################################################
+# Import Access Rights for Read Product Data Group
+################################################## 
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+UserGroup;readProductDataGroup;;;;;;;;
+
+# Access Rights for readProductDataGroup;;;;;;;;;
+;;;;ItemSyncTimestamp;+;;;;;
+;;;;SyncItemJob;+;;;;;
+;;;;Type;+;;;;;
+;;;;Product;+;;;;;
+;;;;Category;+;;;;;
+;;;;Catalog;+;;;;;
+;;;;CatalogVersion;+;;;;;
+;;;;Media;+;;;;;
+;;;;MediaContainer;+;;;;;
+;;;;MediaFormat;+;;;;;
+;;;;MediaFolder;+;;;;;
+;;;;Tax;+;;;;;
+;;;;TaxRow;+;;;;;
+;;;;PriceRow;+;;;;;
+;;;;ProductOrderLimit;+;;;;;
+$END_USERRIGHTS;;;;;
+############################################
+
+##################################################
+# Import Access Rights for Revoke Approve Products Group
+################################################## 
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+UserGroup;revokeApproveProductsGroup;;;;;;;;
+
+# Access Rights for revokeApproveProductsGroup;;;;;;;;;
+;;;;Product.approvalStatus;;-;-;-;;
+$END_USERRIGHTS;;;;;
+###########################################
+
+##################################################
+# Import Access Rights for Synchronize Stage To Online Group
+################################################## 
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+UserGroup;synchronizeStageToOnlineGroup;;;;;;;;
+
+# Access Rights for synchronizeStageToOnlineGroup;;;;;;;;;
+;;;;SyncItemJob;+;+;;;;
+$END_USERRIGHTS;;;;;
+#########################################
+
+##################################################
+# Import Access Rights for Workflows Group
+################################################## 
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+UserGroup;workflowsGroup;;;;;;;;
+# Access Rights for workflowsGroup
+;;;;WorkflowTemplate;+;-;-;-;;
+;;;;Workflow;+;+;-;-;;
+;;;;AbstractWorkflowAction;+;-;-;-;;
+;;;;WorkflowActionTemplate;+;-;-;-;;
+;;;;WorkflowAction;+;-;-;-;;
+;;;;WorkflowItemAttachment;+;+;-;-;;
+;;;;WorkflowActionStatus;+;+;-;-;;
+;;;;WorkflowActionComment;+;+;+;+;;
+;;;;WorkflowDecision;+;+;-;-;;
+;;;;WorkflowActionLinkRelation;+;-;-;-;;
+;;;;InboxView;+;+;+;+;;
+$END_USERRIGHTS;;;;;
+###########################################
+
+##################################################
+# Import Access Rights for RevokeAddProductMediaGroup
+##################################################
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+UserGroup;revokeAddProductMediaGroup;;;;;;;;
+# Access Rights for revokeAddProductMediaGroup
+;;;;Product.galleryImages;;-;-;-;;
+;;;;Media;;-;-;-;;
+;;;;MediaContainer;;-;-;-;;
+;;;;MediaFormat;;-;-;-;;
+;;;;MediaFolder;;-;-;-;;
+$END_USERRIGHTS;;;;;
+###########################################

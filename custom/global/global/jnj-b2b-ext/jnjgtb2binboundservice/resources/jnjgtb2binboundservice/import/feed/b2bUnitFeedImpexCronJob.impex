@@ -1,0 +1,20 @@
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+# Initialization
+INSERT_UPDATE JnjGTIntB2BUnit;sourceSysId[unique=true];uid[unique=true];addressLine1;addressLine2;addressLine3;addressLine4;billToAddress;countryName;countyName;custName1;custName2;custStatusCde;email;firstName;globalLocNo;isoCode;lastName;middleName;payFromAddress;poBoxNumber;poBoxPostalCode;postalCode;postalExtCode;region;salesRepLocNo;shipToAddress;shortCustName1;shortCustName2;soldToAddress;stateName;town;tradeCode;tradeName;recordStatus(code)[default='LOADING']
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% impex.includeSQLData(""SELECT SOURCE_SYS_ID,CUSTOMER_NUM,ADDRESS_LINE_1,ADDRESS_LINE_2,ADDRESS_LINE_3,ADDRESS_LINE_4,BILLTO_IND,COUNTRY_NAME,COUNTY,NAME_1,NAME_2,ACTIVE_IND,EMAIL,FIRST_NAME,GLBL_LOC_NUM,COUNTRY_CD,LAST_NAME,MID_NAME,PAYER_IND,PO_BOX_NUM,PO_BOX_POSTAL_CD,POSTAL_CODE,POSTAL_EXT_CD,REGION_STATE_CD,LOCATION_NUM,SHIPTO_IND,SHORT_NAME_1,SHORT_NAME_2,SOLDTO_IND,REGION_STATE_NAME,CITY,CLASS_OF_TRADE_CD,CLASS_OF_TRADE_NAME FROM STG_CUSTOMER  WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP"");"
+
+# Initialization
+INSERT_UPDATE JnjGTIntSalesOrg;customerGroup;customerNumber[unique=true];distChannel[unique=true];division[unique=true];priceList;salesOrg[unique=true];sourceSysId[unique=true]
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% impex.includeSQLData(""SELECT CUSTOMER_GROUP,CUSTOMER_NUM,DIST_CHANNEL,DIVISION,PRICE_LIST,SALES_ORG,SOURCE_SYS_ID from STG_CUSTOMER_SORG WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP"");"
+
+# Initialization
+INSERT_UPDATE JnjGTIntPartnerFunc;customerNumber[unique=true];partCustNo[unique=true];partFuncCode[unique=true];partFuncName;sourceSysId[unique=true]
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% impex.includeSQLData(""SELECT CUSTOMER_NUM,PARTNER_CUSTOMER_NUM,PARTNER_FUNC_CD,PARTNER_FUNC_NAME,SOURCE_SYS_ID from STG_PARTNER_FUNC WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP"");"
+
+# Initialization
+INSERT_UPDATE JnjGTIntAffiliation;childCustNo[unique=true];delIndicator;parentCustNo[unique=true];partnerTypeCode[unique=true];partnerTypeName;sourceSysId[unique=true];recordStatus(code)[default='LOADING']
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% impex.includeSQLData(""SELECT CHILD_CUSTOMER_NUM,DEL_IND,PARENT_CUSTOMER_NUM,PARTNER_SUB_TYPE_CD,PARTNER_TYPE_NAME,SOURCE_SYS_ID from STG_AFFILIATION WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP"");"

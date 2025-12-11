@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright (c) 2020 SAP SE or an SAP affiliate company. All rights reserved.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+    
+    <bean id="jnjLatamOrderRequestValidator" class="com.jnj.la.b2b.occ.validator.JnjLatamOrderRequestValidator">
+		<property name="b2BCommerceUnitService" ref="b2bCommerceUnitService"/>
+		<property name="userService" ref="userService"/>
+		<property name="jnjLatamOrderEntriesRequestValidator" ref="jnjLatamOrderEntriesRequestValidator"/>
+		<property name="configurationService" ref="configurationService"/>
+	</bean> 
+	
+	<bean id="jnjLatamCreateOrderRequestValidator" class="com.jnj.la.b2b.occ.validator.JnjLatamCreateOrderRequestValidator">
+		<property name="b2BCommerceUnitService" ref="b2bCommerceUnitService"/>
+		<property name="userService" ref="userService"/>
+		<property name="jnjLatamOrderEntriesRequestValidator" ref="jnjLatamOrderEntriesRequestValidator"/>
+		<property name="configurationService" ref="configurationService"/>
+	</bean>
+	
+	<bean id="jnjLatamOrderEntriesRequestValidator" class="com.jnj.la.b2b.occ.validator.JnjLatamOrderEntriesRequestValidator">
+		<property name="jnjLaProductService" ref="jnjLaProductService"/>
+	</bean> 
+	
+	<bean id="jnjLatamOrderHelper" class="com.jnj.la.b2b.occ.helper.JnjLatamOrderHelper">
+		<property name="userService" ref="userService"/>
+	</bean>
+
+	<alias name="jnjLatamB2BContextInformationLoader" alias="jnjLatamB2BContextInformationLoader"/>
+	<bean id="jnjLatamB2BContextInformationLoader" class="com.jnj.la.b2b.occ.context.impl.DefaultJnjLatamB2BContextInformationLoader" >
+		<property name="baseSiteService" ref="baseSiteService"/>
+		<property name="sessionService" ref="sessionService"/>
+	</bean>
+
+	<alias name="jnjLatamOrderStatusRequestValidator" alias="jnjLatamOrderStatusRequestValidator"/>
+	<bean id="jnjLatamOrderStatusRequestValidator" class="com.jnj.la.b2b.occ.validator.JnjLatamOrderStatusRequestValidator" />
+
+</beans>

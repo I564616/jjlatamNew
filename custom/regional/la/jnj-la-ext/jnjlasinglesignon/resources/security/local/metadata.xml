@@ -1,0 +1,72 @@
+<md:EntityDescriptor entityID="https://fedlogin.jnj.com" ID="g7r1YVie-iqysV037OuX9rIpUDO" xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata">
+    <md:IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+        <md:KeyDescriptor use="signing">
+            <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                <ds:X509Data>
+                    <ds:X509Certificate>
+                        MIIC+jCCAeKgAwIBAgIGAWhjKUVTMA0GCSqGSIb3DQEBCwUAMD0xCzAJBgNVBAYTAlVTMQwwCgYD
+						VQQKEwNJQU0xIDAeBgNVBAMTF1BpbmdPbmVQcm9kLlNTTy5KTkouQ09NMCAXDTE5MDExODIyNTEx
+						NVoYDzIwNTAwMTAxMjI1MTE1WjA9MQswCQYDVQQGEwJVUzEMMAoGA1UEChMDSUFNMSAwHgYDVQQD
+						ExdQaW5nT25lUHJvZC5TU08uSk5KLkNPTTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEB
+						AKbidMQ2Yh6iZ5is1wTm8K9ve1IXHJxBM2UeLsLW2uTywTZs//vtsFUkeW+Yy2fZAImRfnMOtCUX
+						tekpSIGuGesjQTEu9RSkKOZX0/rkloVXNw06vj6LUvXGMPFesmlOuiamCwekhkzOSOQM7bLj2UW4
+						RgnoG3ghqYMQhqk5u9Y4E6t18y8g7fiKrPhlumtUIqXx6FfbtwOGmoAFfSO7RK1wMJIh+k++E7k7
+						5uma3l3wE5LSvwpraK0+amQu9/FKhV7pg2TtkyHWm/oNBz+ewnx/7SMVrMNtncHQ+PgIPz54vf4e
+						KpEUe74Rir17/eT0YEoXo7daeANLbvCp6VtbL3ECAwEAATANBgkqhkiG9w0BAQsFAAOCAQEAHFf+
+						uzxglvN/ZwZhGwb7nlBGNbFsYkes4TAxtKGLRf8fowGpV15MZEH/dKHhynw5Le7lzmwmppaUDyFc
+						orPX4ixKKhm9bEgVS3JNkttaAbqCWWvQTZrZhZ/6Ga//ytDGTRW8rDBEfNShMojSALIwEjSWXj+t
+						CpWn62K+xlONvE4/EosOHHD2LEOKy9xowS44vXJr0r9Frp8wC/Tm0ag4dKT7ldHLF2D1DjBVq4a5
+						7HKs7tWLk+GwRTtp2ZotbhZwNjf6eA9H9BWnBR10F8pXcB5K6UsmfAQXGebK8rT6JrKPK7omG/PR
+						SJc8ll47yn8J7JF+VPAit0YlKRm0amj1YA==
+                    </ds:X509Certificate>
+                </ds:X509Data>
+            </ds:KeyInfo>
+        </md:KeyDescriptor>
+        <md:KeyDescriptor use="encryption">
+            <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                <ds:X509Data>
+                    <ds:X509Certificate>
+                        MIIHDjCCBfagAwIBAgIQEpJsI2AmredfElxaTAJ/ozANBgkqhkiG9w0BAQsFADBEMQswCQYDVQQG
+                        EwJVUzEWMBQGA1UEChMNR2VvVHJ1c3QgSW5jLjEdMBsGA1UEAxMUR2VvVHJ1c3QgU1NMIENBIC0g
+                        RzMwHhcNMTcwNTA0MDAwMDAwWhcNMjAwNTAzMjM1OTU5WjCBhzELMAkGA1UEBhMCVVMxETAPBgNV
+                        BAgMCENvbG9yYWRvMQ8wDQYDVQQHDAZEZW52ZXIxIjAgBgNVBAoMGVBpbmcgSWRlbnRpdHkgQ29y
+                        cG9yYXRpb24xMDAuBgNVBAMMJ2VuY3J5cHRpb24uc3NvLmNvbm5lY3QucGluZ2lkZW50aXR5LmNv
+                        bTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALK/2kEpg4LzA841l780NCJuhpzPycRk
+                        O0VZ/jNXWht+WcZ7oOU4dqQGprrcA/LOaZemIrIQdSKYrRUi8k16zZPZN4xoYP2V2Lf5BObt5DjF
+                        6tIa8cEtNvq4VynpJnQxmucym9YbP12P4DlIZsYBSoNwmMPAM1fZy4dTGWJM/ROC+umjnHfv9LMP
+                        IhBAPndvyzctDyILgnRgzxEyoq07qq4zjxeujtMU4DsfPoV9WWPC2p3J2qohqQlFv7bnSafX0ZAR
+                        uZLDlXUWS3GNpt53tckZ/tLKILJaU+cKVnrICypp8P+oFNq/m03Ybn5CyaPgtyYYDAcg25zh6nE7
+                        wkIRaCMCAwEAAaOCA7YwggOyMDIGA1UdEQQrMCmCJ2VuY3J5cHRpb24uc3NvLmNvbm5lY3QucGlu
+                        Z2lkZW50aXR5LmNvbTAJBgNVHRMEAjAAMA4GA1UdDwEB/wQEAwIFoDArBgNVHR8EJDAiMCCgHqAc
+                        hhpodHRwOi8vZ24uc3ltY2IuY29tL2duLmNybDCBnQYDVR0gBIGVMIGSMIGPBgZngQwBAgIwgYQw
+                        PwYIKwYBBQUHAgEWM2h0dHBzOi8vd3d3Lmdlb3RydXN0LmNvbS9yZXNvdXJjZXMvcmVwb3NpdG9y
+                        eS9sZWdhbDBBBggrBgEFBQcCAjA1DDNodHRwczovL3d3dy5nZW90cnVzdC5jb20vcmVzb3VyY2Vz
+                        L3JlcG9zaXRvcnkvbGVnYWwwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMB8GA1UdIwQY
+                        MBaAFNJv95b0hT9yPDB9I9qFeJujfFp8MFcGCCsGAQUFBwEBBEswSTAfBggrBgEFBQcwAYYTaHR0
+                        cDovL2duLnN5bWNkLmNvbTAmBggrBgEFBQcwAoYaaHR0cDovL2duLnN5bWNiLmNvbS9nbi5jcnQw
+                        ggH5BgorBgEEAdZ5AgQCBIIB6QSCAeUB4wB3AN3rHSt6DU+mIIuBrYFocH4ujp0B1VyIjT0RxM22
+                        7L7MAAABW9V1iVkAAAQDAEgwRgIhANYieJD2jWTce3mOTAuQjeupkGhw7D+3TW+2LTiCalDeAiEA
+                        l5kqwl/CEulqkEtoke/7+bfzI1cic8VCggQ+oBAX4cQAdwCkuQmQtBhYFIe7E6LMZ3AKPDWYBPkb
+                        37jjd80OyA3cEAAAAVvVdYl+AAAEAwBIMEYCIQD4CZEHNtZTV+oYooTDRFQzORkB28sjXq1+6MeQ
+                        e84IPgIhAJryBMsslOVmy/wMOppi55Xjl7ATJI61zOFA+i2Cc+1mAHcA7ku9t3XOYLrhQmkfq+Ge
+                        ZqMPfl+wctiDAMR7iXqo/csAAAFb1XWJrAAABAMASDBGAiEAlygOWIHPDp2B6MsHxJkGpoQOltsz
+                        5YiCITEfc/CNacoCIQDQ5OaHkOEslv1PXtYwvaY6R0TvX9pbR1byWAuPvp+T4wB2ALx44d/F9jxo
+                        RkkzTaEPoV8JeWkgCcCBtPP2kX8+2bilAAABW9V1ikwAAAQDAEcwRQIgafxMeq/hz12hh/oLcqKo
+                        Kn41w9KpXEPaqHZtNVzvgEYCIQDfddcDz2eqYuR9p9yZ7U3B1vw6TTX2NGw6JwYuavmLADANBgkq
+                        hkiG9w0BAQsFAAOCAQEAoY52HfZ8q5H165TbVqu67lLZodG0zpq67UWPptyMjLUorCtOr07GY0ye
+                        aro3ER+MGc/b1z/URi3aQUEYB8Z1Axloeamj7eiDLgylOzZ/AZYLWaBO+XWFJNmFKid0qOTZiSfm
+                        mcjC7xsvljKdgj0TUG37yduqYszexeCmow8qPJteuxoVtZPHBPlqMrx5wfkMh3iAPhtQw9+/rwjY
+                        dlf+IPZPSj5Y/30L7AS4+ci+WNIOSKmYmwTQu8M5MizRbh1ojZvhRFcvpixqKbHwIecpOYi1e/ZT
+                        V+R4TsInmjnXKJC85weGFCc4VDMS8RcpwGBRmz1EvjV8MITX9AJ8ghBcXg==
+                    </ds:X509Certificate>
+                </ds:X509Data>
+            </ds:KeyInfo>
+        </md:KeyDescriptor>
+        <md:SingleLogoutService Location="https://sso.connect.pingidentity.com/sso/SLO.saml2" Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"/>
+        <md:SingleLogoutService Location="https://sso.connect.pingidentity.com/sso/SLO.saml2" Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"/>
+        <md:SingleSignOnService Location="https://sso.connect.pingidentity.com/sso/idp/SSO.saml2?idpid=7683a5eb-2d18-467e-bd53-e11ee3491eb2" Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"/>
+        <md:SingleSignOnService Location="https://sso.connect.pingidentity.com/sso/idp/SSO.saml2?idpid=7683a5eb-2d18-467e-bd53-e11ee3491eb2" Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"/>
+        <saml:Attribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" Name="PingOne.AuthenticatingAuthority" xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"/>
+        <saml:Attribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" Name="PingOne.idpid" xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"/>
+    </md:IDPSSODescriptor>
+</md:EntityDescriptor>

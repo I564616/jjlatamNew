@@ -1,0 +1,43 @@
+### Employee
+$passwordEncoding=md5
+$defaultPassword=1234
+$setPassword=@password[translator=de.hybris.platform.impex.jalo.translators.ConvertPlaintextToEncodedUserPasswordTranslator][default='$passwordEncoding:$defaultPassword']
+
+INSERT_UPDATE Employee;UID[unique=true];$setPassword;description;name;groups(uid);sessionLanguage(isocode);sessionCurrency(isocode)
+;syncUser;;Content Sync User;Content Sync User;;en;EUR
+
+### Sync Job
+$sourceVersion=sourceVersion(catalog(id),version[default='Staged'])[unique=true];
+$targetVersion=targetVersion(catalog(id),version[default='Staged'])[unique=true];
+
+$MDDContentCatalog=mddDEContCatalog
+
+$MstrContentCatalog=mstrContCatalog
+
+INSERT_UPDATE CatalogVersionSyncJob;code;$sourceVersion;$targetVersion;createNewItems;removeMissingItems;rootTypes(code);
+;MasterContentStaged->MDDDEContentCatalog;$MstrContentCatalog;$MDDContentCatalog;true;false;CMSItem,CMSRelation,Media,MediaContainer,BTGItem;syncUser;
+;MDDDEContentStaged->MDDDEContentOnline;$MDDContentCatalog;$MDDContentCatalog:Online;true;true;CMSItem,CMSRelation,Media,MediaContainer,BTGItem;syncUser;
+
+### Sync Cron Job
+INSERT_UPDATE CatalogVersionSyncCronJob;code[unique=true];job(code);sessionLanguage(isocode)
+;Sync-MasterContentStaged->MDDDEContentCatalog;MasterContentStaged->MDDDEContentCatalog;en
+;Sync-MDDDEContentStaged->MDDDEContentOnline;MDDDEContentStaged->MDDDEContentOnline;en
+
+
+
+#INSERT_UPDATE ServicelayerJob;code[unique=true];springId;active[default='true']
+#;syncMasterContentToLocalCatalog;syncMasterContentToLocalCatalog;true
+
+#INSERT_UPDATE CronJob;code[unique=true];job(code);active[default='true']
+#;syncContentCatalogCron_Job;syncMasterContentToLocalCatalog;true
+
+######## Excluding Attributes which should not be sync from Master ########   
+$catalog-syncjob-name=MasterContentStaged->MDDDEContentCatalog
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+;JnjParagraphComponent:componentVersion;$catalog-syncjob-name;false;false;;false;false 
+
+
+$catalog-syncjob-name=MDDDEContentStaged->MDDDEContentOnline
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+;JnjParagraphComponent:componentVersion;$catalog-syncjob-name;false;false;;false;false 
+

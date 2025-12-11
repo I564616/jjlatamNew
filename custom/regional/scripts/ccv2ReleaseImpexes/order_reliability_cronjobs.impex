@@ -1,0 +1,24 @@
+######################### Latam Retry ERP Order Creation Cronjob #######################
+INSERT_UPDATE ServicelayerJob; code[unique = true]                       ; springId[unique = true]                   ; active[default = 'true']
+                             ; jnjLaCreateERPOrderJob        ; jnjLaCreateERPOrderJob        ;
+
+INSERT_UPDATE CronJob; code[unique=true]              ; job(code)                      ; singleExecutable ; sessionLanguage(isocode) ; active[default='true']
+                     ; jnjLaCreateERPOrderCronJob ; jnjLaCreateERPOrderJob     ; false            ; en                      
+
+INSERT_UPDATE Trigger; cronjob(code)[unique = true]         ; cronExpression
+# Must run every 6 hours
+                     ; jnjLaCreateERPOrderCronJob                  ; 0 0 6 1/1 * ? *
+################################################################################
+
+################### SAP Failed Orders Report Cron Job ##########################
+INSERT_UPDATE ServicelayerJob; code[unique = true]                       ; springId[unique = true] ; active[default = 'true']
+                             ; jnjLaSAPFailedOrdersReportJob        ; jnjLaSAPFailedOrdersReportJob ;
+							 
+INSERT_UPDATE CronJob; code[unique=true]              ; job(code)  ;  singleExecutable ; sessionLanguage(isocode) ; active[default='true']
+                     ; jnjLaSAPERPFailedOrdersReportCronJob ; jnjLaSAPFailedOrdersReportJob ;  false   ; en   ;
+                     
+INSERT_UPDATE Trigger; cronjob(code)[unique = true]         ; cronExpression
+# Runs once in a day
+                     ; jnjLaSAPERPFailedOrdersReportCronJob    ; 0 0 0 * * ? *                
+
+################################################################################

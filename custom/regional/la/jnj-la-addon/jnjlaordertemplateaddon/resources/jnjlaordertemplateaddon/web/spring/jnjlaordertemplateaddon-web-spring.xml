@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+
+
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+
+    <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+
+    <!-- Expose /acceleratoraddon/web/webroot/WEB-INF/messages/base.js.properties  resource bundle as javascript variables -->
+    <bean id="defaultJnjlaordertemplateaddonJavaScriptMessageResourceAccessor" parent="abstractJavaScriptMessageResourceAccessor">
+        <property name="addOnName" value="jnjlaordertemplateaddon"/>
+    </bean>
+
+    <bean id="defaultJnjlaordertemplateaddonBeforeViewJsPropsHandlerAdaptee" parent="abstractBeforeViewJsPropsHandlerAdaptee"
+          class="de.hybris.platform.addonsupport.interceptors.ExportJsPropertiesBeforeViewHandler">
+        <property name="messageSource" ref="defaultJnjlaordertemplateaddonJavaScriptMessageResourceAccessor"/>
+    </bean>
+
+    <bean id="getJnjlaordertemplateaddonBeforeViewHandler" parent="beforeViewHandlerAdapter">
+        <property name="adaptee">
+            <ref bean="defaultJnjlaordertemplateaddonBeforeViewJsPropsHandlerAdaptee"/>
+        </property>
+    </bean>
+    <bean id="JnjlaordertemplateaddonBeforeViewHandlerListMergeDirective" depends-on="beforeViewHandlersList" parent="listMergeDirective">
+        <property name="add" ref="getJnjlaordertemplateaddonBeforeViewHandler"/>
+    </bean>
+
+    <bean id="latamOrderHistoryPageController" class="com.jnj.b2b.jnjlaordertemplate.controllers.pages.JnjLatamOrderHistoryPageController">
+     	<property name="jnjLatamCommonService" ref="jnjLatamCommonService"/>
+    </bean>
+    <alias alias="JnjGTOrderHistoryPageController" name="latamOrderHistoryPageController"/>
+
+    <bean id="latamOrderTemplatePageController" class="com.jnj.b2b.jnjlaordertemplate.controllers.pages.JnjLatamOrderTemplatePageController"/>
+    <alias alias="JnjGTOrderTemplatePageController" name="latamOrderTemplatePageController"/>
+
+    <bean id="latamInvoiceHistoryPageController" class="com.jnj.b2b.jnjlaordertemplate.controllers.pages.JnjLatamInvoiceHistoryPageController"/>
+
+    <bean id="latamInvoiceControllerUtil" class="com.jnj.b2b.jnjlaordertemplate.controllers.utils.JnjLatamInvoiceControllerUtil"/>
+
+    <bean id="jnjLatamInvoiceHistoryPdfView" class="com.jnj.b2b.jnjlaordertemplate.download.JnjLatamInvoiceHistoryPdfView" scope="request">
+        <property name="JnjCommonFacadeUtil" ref="JnjCommonFacadeUtil"/>
+        <property name="commonI18NService" ref="commonI18NService"/>
+        <property name="invoiceUtil" ref="latamInvoiceControllerUtil"/>
+    </bean>
+
+    <bean id="jnjLatamInvoiceHistoryExcelView" class="com.jnj.b2b.jnjlaordertemplate.download.JnjLatamInvoiceHistoryExcelView" scope="request">
+        <property name="JnjCommonFacadeUtil" ref="JnjCommonFacadeUtil"/>
+        <property name="commonI18NService" ref="commonI18NService"/>
+        <property name="invoiceUtil" ref="latamInvoiceControllerUtil"/>
+    </bean>
+
+    <bean id="jnjLatamOrderTemplatePdfView" class="com.jnj.b2b.jnjlaordertemplate.download.JnJLatamOrderTemplatePdfView">
+        <property name="jnjCommonFacadeUtil" ref="JnjCommonFacadeUtil"/>
+    </bean>
+
+    <bean id="jnjLatamOrderTemplateExcelView" class="com.jnj.b2b.jnjlaordertemplate.download.JnJLatamOrderTemplateExcelView">
+        <property name="jnjCommonFacadeUtil" ref="JnjCommonFacadeUtil"/>
+    </bean>
+
+    <bean id="jnjLatamOrderTemplateDetailPdfView" class="com.jnj.b2b.jnjlaordertemplate.download.JnJLatamOrderTemplateDetailPdfView">
+        <property name="jnjCommonFacadeUtil" ref="JnjCommonFacadeUtil"/>
+    </bean>
+
+    <bean id="jnjLatamOrderTemplateDetailExcelView" class="com.jnj.b2b.jnjlaordertemplate.download.JnJLatamOrderTemplateDetailExcelView">
+        <property name="jnjCommonFacadeUtil" ref="JnjCommonFacadeUtil"/>
+    </bean>
+
+    <bean id="jnjLAOrderHistoryPdfView" class="com.jnj.b2b.jnjlaordertemplate.download.JnjLAOrderHistoryPdfView">
+        <property name="jnjCommonFacadeUtil" ref="JnjCommonFacadeUtil"/>
+        <property name="jnjlatamCustomOrderFacade" ref="jnjlatamCustomOrderFacade"/>
+    </bean>
+
+    <bean id="jnjLAOrderHistoryExcelView" class="com.jnj.b2b.jnjlaordertemplate.download.JnjLAOrderHistoryExcelView">
+        <property name="jnjLatamCommonFacadeUtil" ref="JnjCommonFacadeUtil"/>
+        <property name="jnjlatamCustomOrderFacade" ref="jnjlatamCustomOrderFacade"/>
+        <property name="jnjLatamInvoiceFacade" ref="jnjLatamInvoiceFacade"/>
+        <property name="commonI18NService" ref="commonI18NService"/>
+
+    </bean>
+
+    <bean id="jnjLatamOrderDetailPdfView" class="com.jnj.b2b.jnjlaordertemplate.download.JnjLatamOrderDetailPdfView">
+        <property name="jnjCommonFacadeUtil" ref="JnjCommonFacadeUtil"/>
+        <property name="commonI18NService" ref="commonI18NService"/>
+        <property name="sessionService" ref="sessionService"/>
+    </bean>
+
+    <bean id="jnjLatamOrderDetailExcelView" class="com.jnj.b2b.jnjlaordertemplate.download.JnjLatamOrderDetailExcelView">
+        <property name="jnjLatamCommonFacadeUtil" ref="JnjCommonFacadeUtil"/>
+        <property name="jnjlatamCustomOrderFacade" ref="jnjlatamCustomOrderFacade"/>
+        <property name="jnjLatamInvoiceFacade" ref="jnjLatamInvoiceFacade"/>
+    </bean>
+
+    <bean id="JnjLatamContractPdfView" class="com.jnj.la.b2b.cartandcheckoutaddon.download.views.JnjLatamContractPdfView">
+        <property name="jnjCommonFacadeUtil" ref="JnjCommonFacadeUtil"/>
+    </bean>
+
+    <bean id="JnjLatamContractExcelView" class="com.jnj.la.b2b.cartandcheckoutaddon.download.views.JnjLatamContractExcelView">
+        <property name="jnjCommonFacadeUtil" ref="JnjCommonFacadeUtil"/>
+    </bean>
+
+    <bean id="JnjLatamContractDetailPdfView" class="com.jnj.la.b2b.cartandcheckoutaddon.download.views.JnjLatamContractDetailPdfView">
+        <property name="jnjCommonFacadeUtil" ref="JnjCommonFacadeUtil"/>
+    </bean>
+
+    <bean id="JnjLatamContractDetailExcelView"
+          class="com.jnj.la.b2b.cartandcheckoutaddon.download.views.JnjLatamContractDetailExcelView">
+        <property name="jnjCommonFacadeUtil" ref="JnjCommonFacadeUtil"/>
+    </bean>
+
+    <bean id="jnJUploadOrderPdfView"
+          class="com.jnj.la.b2b.jnjlaselloutaddon.downloads.JnjUploadOrderPdfView">
+        <property name="JnjCommonFacadeUtil" ref="JnjCommonFacadeUtil"/>
+    </bean>
+
+    <bean id="latamproductSearchResultsExcel"
+          class="com.jnj.la.browseandsearch.download.views.JnjLatamProducSearchResultExcelView">
+        <property name="jnjCommonFacadeUtil" ref="JnjCommonFacadeUtil"/>
+    </bean>
+
+    <bean id="latamproductSearchResultsPdf"
+          class="com.jnj.la.browseandsearch.download.views.JnjLatamProductSearchResultPdfView">
+        <property name="jnjCommonFacadeUtil" ref="JnjCommonFacadeUtil"/>
+    </bean>
+
+    <bean id="crossReferencePdfView"
+          class="com.jnj.la.b2b.jnjlaservicepageaddon.downloads.JnjCrossReferencePdfView">
+        <property name="JnjCommonFacadeUtil" ref="JnjCommonFacadeUtil"/>
+    </bean>
+
+    <bean id="crossReferenceExcelView"
+          class="com.jnj.la.b2b.jnjlaservicepageaddon.downloads.JnjCrossReferenceExcelView">
+        <property name="JnjCommonFacadeUtil" ref="JnjCommonFacadeUtil"/>
+    </bean>
+</beans>

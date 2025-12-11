@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Informe de Pedidos en Abierto - ${ctx.data.customer}</title>
+    </head>
+    <body style="font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif; font-size: 75%; color: #646464;">
+        <div>
+            <h2 style="border-bottom: 1px solid #84C5D4; color: #84C5D4; line-height: 30px; margin-bottom: 0;">Informe de Pedidos em Abierto - ${ctx.data.customer}</h2>
+        </div>
+        <div style="padding-top: 10;">
+            <p>Estimado(a) Cliente,</p>
+            <p>
+                Enviamos en este email el estado actual de sus órdenes abiertas.
+                Usted puede ver el status de sus pedidos haciendo clic <a href='${ctx.orderHistoryUrl}'>aquí</a>.
+                <br/>
+                <b>Los precios publicados son líquidos y por lo tanto no están compuestos por impuestos o tasas.</b>
+            </p>
+        </div>
+        <div style="padding-top: 10;">
+            <span>Gracias,</span>
+            <p><strong>Equipo J&amp;J Customer Connect</strong></p>
+            <span>Tiene alguna pregunta? Llámenos en 0800-707-5420 (op #6)</span>
+        </div>
+        <div style="padding-top: 10">
+            <img src="${ctx.siteLogoURL}" width="250" border="0" />
+        </div>
+    </body>
+</html>

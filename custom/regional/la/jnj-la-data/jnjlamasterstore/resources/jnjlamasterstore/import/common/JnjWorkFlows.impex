@@ -1,0 +1,67 @@
+#####################################################
+############## WorkflowTemplate #####################
+#####################################################
+INSERT_UPDATE WorkflowTemplate;activationScript;active;alternativeDataSourceID;changeRecordingEnabled;code[unique=true,forceWrite=true];description[lang=en];emailAddress;emailNotificationTemplate(code);errorMode(code,itemtype(code));logLevelDatabase(code,itemtype(code));logLevelFile(code,itemtype(code));logToDatabase;logToFile;name[lang=en];owner(uid)[allownull=true];priority;removeOnExit;requestAbort;requestAbortStep;retry[allownull=true];sendEmail;sessionContextValues;sessionCurrency(isocode);sessionLanguage(isocode);sessionUser(uid);singleExecutable
+;;true;;true;JnjProductWorkFlowTemplate;Jnj Product WorkFlow Template;admin@jnj.com;;IGNORE:ErrorMode;WARNING:JobLogLevel;INFO:JobLogLevel;false;true;Jnj Product WorkFlow Template;productwriter;4;false;false;false;true;true;;;;;false
+#####################################################
+
+
+#####################################################
+############## WorkflowActionTemplate ###############
+#####################################################
+INSERT_UPDATE WorkflowActionTemplate;actionType(code,itemtype(code))[allownull=true];code[unique=true,forceWrite=true];description[lang=en];emailAddress;name[lang=en];owner(uid)[allownull=true];principalAssigned(uid)[allownull=true];qualifier;rendererTemplate(code);sendEmail[allownull=true];workflow(code)[allownull=true];workflowPOS
+;normal:WorkflowActionType;Add Media;Add Media;productmanager@jnj.com;Add Media;admin;productmanager;;;true;JnjProductWorkFlowTemplate;6
+;normal:WorkflowActionType;Add Other Product Attributes;Add Other Product Attributes;productmanager@jnj.com;Add Other Product Attributes;admin;productmanager;;;true;JnjProductWorkFlowTemplate;5
+;normal:WorkflowActionType;Approve Buyer Changes;"Approve ProductWriter Changes: Review data or translation,Provide essential data for product,Translate product data";productmanager@jnj.com;Approve ProductWriter Changes;admin;productmanager;;;true;JnjProductWorkFlowTemplate;3
+;normal:WorkflowActionType;Approve Product Manager Changes and Synchronize;"Approve Product Manager Changes and Synchronize: Check product category assignment,Add other product attributes,Add media";publisher@jnj.com;Approve Product Manager Changes;admin;publisher;;;true;JnjProductWorkFlowTemplate;7
+;normal:WorkflowActionType;Check Product Category Assignment;Check Product Category Assignment;productmanager@jnj.com;Check Product Category Assignment;admin;productmanager;;;true;JnjProductWorkFlowTemplate;4
+;normal:WorkflowActionType;Provide Essential Data For Product ;"Provide essential data for product";productwriter@jnj.com;Provide Essential Data For Product;admin;productwriter;;;true;JnjProductWorkFlowTemplate;1
+;end:WorkflowActionType;Publish Products;Publish Products;publisher@jnj.com;Publish Products;admin;publisher;;;true;JnjProductWorkFlowTemplate;9
+;start:WorkflowActionType;Review Data Or Translation;Review data or translation;productwriter@jnj.com;Review data or translation;admin;productwriter;;;true;JnjProductWorkFlowTemplate;0
+#;normal:WorkflowActionType;Synchronize Stage To Online;"Synchronize Stage To Online";publisher@jnj.com;Synchronize Stage To Online;admin;publisher;;;true;JnjProductWorkFlowTemplate;8
+;normal:WorkflowActionType;Translate Product Data;"Translate product data";productwriter@jnj.com;Translate Product Data;admin;productwriter;;;true;JnjProductWorkFlowTemplate;2
+#####################################################
+
+
+#####################################################
+########### AutomatedWorkflowActionTemplate#########
+#####################################################
+INSERT_UPDATE AutomatedWorkflowActionTemplate;code[unique=true];name[lang=en];description[lang=en];principalAssigned(uid);workflow(code)[unique=true];sendEmail;emailAddress;rendererTemplate(code);actionType(code);jobHandler
+;Synchronize Stage To Online;Synchronize Stage To Online;Synchronize Stage To Online;publisher;JnjProductWorkFlowTemplate;true;publisher@jnj.com;;normal;jnjProductWorkflowSyncActionJob
+#####################################################
+
+#####################################################
+############## WorkflowDecisionTemplate #############
+#####################################################
+INSERT_UPDATE WorkflowDecisionTemplate;actionTemplate(code);code[unique=true,forceWrite=true];description[lang=en];name[lang=en];qualifier
+;Approve Product Manager Changes and Synchronize;Product Manager Changes Approved;;Product Manager Changes Approved;
+;Approve Buyer Changes;Buyer Changes Approved;;Buyer Changes Approved;
+;Provide Essential Data For Product;Essential Data Provided;;Essential Data Provided;
+;Add Media;Media Added;;Media Added;
+;Add Other Product Attributes;Other Product Attributes Added;;Other Product Attributes Added;
+;Translate Product Data;Product Data Translated;;Product Data Translated;
+;Publish Products;Products Published;;Products Published;
+;Approve Buyer Changes;Buyer Changes Rejected;;Buyer Changes Rejected;
+;Approve Product Manager Changes and Synchronize;Product Manager Changes Rejected;;Product Manager Changes Rejected;
+;Review Data Or Translation;Reviewed Data Or Translation;;Reviewed Data Or Translation;
+;Synchronize Stage To Online;Synchronization Done;;Synchronization Done;
+;Check Product Category Assignment;ValidProductCategoryAssignment;;ValidProductCategoryAssignment;
+#####################################################
+
+#####################################################
+############## WorkflowDecisionTemplate #############
+#####################################################
+INSERT_UPDATE WorkflowActionTemplateLinkTemplateRelation;andConnectionTemplate[allownull=true];language(isocode)[unique=true];ownerName[lang=en];qualifier;sequenceNumber;source(code)[unique=true,allownull=true];target(code)[unique=true,allownull=true]
+;;;Review data or translation;WorkflowActionTemplateLinkTemplateRelation;0;Reviewed Data Or Translation;Provide Essential Data For Product 
+;;;Provide Essential Data For Product;WorkflowActionTemplateLinkTemplateRelation;0;Essential Data Provided;Translate Product Data
+;;;Translate Product Data;WorkflowActionTemplateLinkTemplateRelation;0;Product Data Translated;Approve Buyer Changes
+;;;Approve ProductWriter Changes;WorkflowActionTemplateLinkTemplateRelation;0;Buyer Changes Rejected;Review Data Or Translation
+;;;Check Product Category Assignment;WorkflowActionTemplateLinkTemplateRelation;0;ValidProductCategoryAssignment;Add Other Product Attributes
+;;;Add Other Product Attributes;WorkflowActionTemplateLinkTemplateRelation;0;Other Product Attributes Added;Add Media
+;;;Add Media;WorkflowActionTemplateLinkTemplateRelation;0;Media Added;Approve Product Manager Changes and Synchronize
+;;;Approve Product Manager Changes;WorkflowActionTemplateLinkTemplateRelation;0;Product Manager Changes Approved;Synchronize Stage To Online
+;;;Approve Product Manager Changes;WorkflowActionTemplateLinkTemplateRelation;0;Product Manager Changes Rejected;Approve Buyer Changes
+;;;Approve ProductWriter Changes;WorkflowActionTemplateLinkTemplateRelation;0;Buyer Changes Approved;Check Product Category Assignment
+;;;Synchronize Stage To Online;WorkflowActionTemplateLinkTemplateRelation;0;Synchronization Done;Publish Products
+#####################################################
+

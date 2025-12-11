@@ -1,0 +1,407 @@
+<style>
+input.span-18 {
+	border-left-width: 1px;
+    border-right-width: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+	width: 698px;
+}
+.last {
+    margin-right: 0;
+    padding-right: 0;
+}
+ul li {
+    clear: both;
+    margin-top: 10px;
+    min-height: 58px;
+}
+label {
+    display: block;
+}
+h2.arrowHeader {
+    border-bottom: 1px solid #84C5D4;
+    color: #0A8CAA;
+    font-size: 16px;
+    line-height: 30px;
+    margin-bottom: 0;
+}
+.priceSmall {
+    color: #B41601;
+    font-size: 12px;
+}
+.instructiontxt {
+    color: #828282;
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+body {
+    line-height: 1.5;
+}
+body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section {
+    border: 0 none;
+    font-family: inherit;
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+body {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #222222;
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    font-size: 75%;
+}
+ul li {
+    color: #646464;
+    font-size: 12px;
+    list-style-type: none;
+}
+.serviceFormPanel h2.arrowHeader span {
+    float: right;
+}
+.serviceFormPanel ul {
+    margin: 10px 0 20px;
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+.serviceFormPanel ul li {
+    clear: both;
+    margin-top: 10px;
+    min-height: 58px;
+}
+.serviceFormPanel label {
+    display: block;
+}
+.serviceFormPanel label span {
+    color: #B41601;
+}
+.serviceFormPanel input[type="text"], .serviceFormPanel select {
+    color: #646464;
+    padding-left: 2px;
+    width: 420px;
+}
+.serviceFormPanel select {
+    color: #BBBABA;
+    float: none;
+    width: 230px;
+}
+.OCDCustomerInfo ul, .OCDEquipmentInfo ul {
+    margin-bottom: 0;
+}
+.serviceFormPanel input, .serviceFormPanel select {
+    padding: 0;
+}
+.serviceFormPanel select {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid #E5E5E5;
+    padding-bottom: 0;
+    padding-right: 0;
+    padding-top: 0;
+}
+.serviceFormPanel input.date {
+    font-size: 12px;
+    width: 99px;
+}
+.serviceFormPanel .buttonWrapper > input {
+    padding: 5px 15px;
+}
+.OCDCustomerInfo h4, .OCDEquipmentInfo h4 {
+    border-bottom: 1px solid #84C5D4;
+    color: #0A8CAA;
+    line-height: 25px;
+    width: 100%;
+}
+textarea {
+    border: 1px solid #E5E5E5;
+    color: #646464;
+    height: 80px;
+    overflow: auto;
+    width: 412px;
+}
+td {
+	color: #646464;
+}
+</style>
+<html>
+<head>
+	<title>Confirmation Email</title>
+</head>
+<body>
+	<table style="background-color:#ffffff" width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+		<tr>
+			<td align="center">
+				<table bgcolor="#ffffff" width="600" border="0" cellspacing="0" cellpadding="0" align="center">
+					<tr bgcolor="#ffffff">
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr bgcolor="#ffffff">
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td>
+							<img src="${ctx.jnjCustomerFormMap['siteLogoPath']}" width="333" height="84" border="0" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr bgcolor="#ffffff">
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<!-- INSERT HERE -->
+						<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+							<div class="size3of5 cell">
+								<label><b>Register added by: </b></label>
+								<label class="required">
+									${ctx.jnjCustomerFormMap['fromEmail']}
+								</label>
+								<label class="required">
+									(${ctx.jnjCustomerFormMap['contactLastName']} , ${ctx.jnjCustomerFormMap['contactFirstName']} )
+								</label>
+							</div>
+							<div style="display:block" id="serviceform" class="span-18 last">
+								<!-- My Profile VIEW START -->
+								<div class="serviceFormPanel ">
+									<table width="100%" cellspacing="0" cellpadding="0">
+										<tr>
+											<td align="left">
+												<h2 class="arrowHeader">Service Form (OCD)</h2>
+											</td>
+										</tr>
+									</table>
+									<div class="OCDCustomerInfo">
+										<ul>
+											<li>
+												<div class="size3of5 cell">
+													<label for="contactFirstName"><b>User First Name:</b></label>
+													<label class="required" id="contactFirstName">
+														${ctx.jnjCustomerFormMap['contactFirstName']}
+													</label>
+												</div>
+											</li>
+											<li>
+												<div class="size3of5 cell">
+													<label for="contactLastName"><b>User Last Name:</b></label>
+													<label class="required" id="contactLastName">
+														${ctx.jnjCustomerFormMap['contactLastName']}
+													</label>
+												</div>
+											</li>
+											<li>
+												<div class="size3of5 cell">
+													<label for="loggedInUserPhone"><b>User Phone:</b></label>
+													<label class="required" id="loggedInUserPhone">
+														${ctx.jnjCustomerFormMap['loggedInUserPhone']}
+													</label>
+												</div>
+											</li>
+										</ul>
+										<h4>Customer Information</h4>
+										<ul>
+											<li>
+												<div class="size3of5 cell">
+													<label for="customerName"><b>Customer Name:</b></label>
+													<label class="required" id="customerName">
+														${ctx.jnjCustomerFormMap['customerName']}
+													</label>
+												</div>
+											</li>
+											<li>
+												<div class="size3of5 cell">
+													<label for="customerCity"><b>Customer City:</b></label>
+													<label class="required" id="customerCity">
+														${ctx.jnjCustomerFormMap['customerCity']}
+													</label>
+												</div>
+											</li>
+											<li>
+												<div class="size3of5 cell">
+													<label for="customerState"><b>Customer State:</b></label>
+													<label class="required" id="customerState">
+														${ctx.jnjCustomerFormMap['customerState']}
+													</label>
+												</div>
+											</li>
+											<li>
+												<div class="size3of5 cell">
+													<label for="customerProvince"><b>Customer Province:</b></label>
+													<label class="required" id="customerProvince">
+														${ctx.jnjCustomerFormMap['customerProvince']}
+													</label>
+												</div>
+											</li>
+											<li>
+												<div class="size3of5 cell">
+													<label for="phone"><b>Phone<span>*</span>:</b></label>
+													<label class="required" id="phone">
+														${ctx.jnjCustomerFormMap['phone']}
+													</label>
+												</div>
+											</li>
+											<li>
+												<div class="size3of5 cell">
+													<label for="email"><b>Email<span>*</span>:</b></label>
+													<label class="required" id="email">
+														${ctx.jnjCustomerFormMap['email']}
+													</label>
+												</div>
+											</li>
+											<li>
+												<div class="size3of5 cell">
+													<label for="addcntct"><b>Additional Contact:</b></label>
+													<label class="required" id="addcntct">
+														${ctx.jnjCustomerFormMap['additionalContact']}
+													</label>
+												</div>
+											</li>
+										</ul>
+									</div>
+									<div class="OCDEquipmentInfo">
+										<h4>Equipment Information</h4>
+										<ul>
+											<li>
+												<div class="size3of5 cell">
+													<label for="model"><b>Model<span>*</span>:</b></label>
+													<label class="required" id="model">
+														${ctx.jnjCustomerFormMap['model']}
+													</label>
+												</div>
+						
+											</li>
+											<li>
+												<div class="size3of5 cell">
+													<label for="sno"><b>Serial Number<span>*</span>:</b></label>
+													<label class="required" id="sno">
+														${ctx.jnjCustomerFormMap['serialNumber']}
+													</label>
+												</div>
+											</li>
+											<li>
+												<div class="size1of6 cell">
+													<label for="eventdate"><b>Event Date<span>*</span>:</b></label>
+													<label class="required" id="eventdate">
+														${ctx.jnjCustomerFormMap['eventDate']}
+													</label>
+												</div>
+											</li>
+											<li>
+												<div class="size3of5 cell">
+													<label for="errcode"><b>Error Code<span>*</span>:</b></label>
+													<label class="required" id="errcode">
+														${ctx.jnjCustomerFormMap['errorCode']}
+													</label>
+												</div>
+											</li>
+											<li>
+												<div class="size3of5 cell">
+													<label for="eventdesc"><b>Event Description<span>*</span>:</b></label>
+													<label class="required" id="eventdesc">
+														${ctx.jnjCustomerFormMap['eventDescription']}
+													</label>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,10 @@
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+# LOT MASTER Details Initialization
+INSERT_UPDATE JnjGTIntProductLotMaster ; productSkuCode[unique=true] ; lotNumber[unique=true] ; companyCode ; expirationDate[dateformat=yyyy-MM-dd] ; vendorBatch ; srcSysId ; division ; recordStatus(code)[default='LOADING']
+
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT MATERIAL_NUM, LOT_NUM, COMP_CD, EXPIRY_DT, VENDOR_BATCH, SOURCE_SYS_ID, DIVISION FROM STG_LOT_MASTER WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP""
+);		 
+"

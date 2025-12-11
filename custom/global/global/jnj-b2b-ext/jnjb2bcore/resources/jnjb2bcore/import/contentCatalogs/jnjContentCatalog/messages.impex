@@ -1,0 +1,1089 @@
+$catalogVersion=catalogVersion(catalog(id[default=mstrContentCatalog]),version[default=Staged])[default=mstrContentCatalog:Staged][unique=true]
+
+insert_update MessageItem;messageCategory(code)[allownull=true];uid[unique=true];$catalogVersion;messageText[lang=en];messageText[lang=pt];messageText[lang=es];
+;Label;checkOut.orderConfirmation.orderConfirmation;;Order Confirmation;Confirmação do pedido;Confirmación del pedido
+;Label;checkOut.orderConfirmation.review;;Review;Revisar;Revisar
+;Label;checkOut.orderConfirmation.order;;Order;Pedido;Pedido
+;Label;checkOut.orderConfirmation.validate;;Validate;Validar;Validar
+;Label;checkOut.orderConfirmation.checkOut;;Checkout;Finalizar compra;Finalizar compra
+;Label;checkOut.orderConfirmation.confirmation;;Confirmation;Confirmação;Confirmación
+;Label;checkOut.orderConfirmation.thankYouMessage;;Thank you for submitting your order.;Obrigado por enviar seu pedido.;Gracias por enviar su pedido.
+;Label;checkOut.orderConfirmation.orderPlacedMessage;;Your order is being processed. Please check order status in 2 hours for updates.;Seu pedido está sendo processado. Por favor, verifique novamente em 2 horas.;Estamos procesando su pedido. Por favor consulte nuevamente en las proximas 2 horas
+;Label;checkOut.orderConfirmation.yourOrderNumber;;Your Order Number:;Número de pedido:;Número de pedido:
+;Label;checkOut.orderConfirmation.orderDetails;;Order detail;Detalhes do pedido;Detalles del pedido
+;Label;checkOut.orderConfirmation.orderDetail;;Order detail;Detalhes do pedido;Detalles del pedido
+;Label;checkOut.orderConfirmation.orderDetailMsg1;;Please check your;Verifique o;Revise el
+;Label;checkOut.orderConfirmation.orderDetailMsg2;; order status; status do seu pedido; estado de su pedido
+;Label;checkOut.orderConfirmation.orderDetailMsg3;; for updates;para ver se houve alguma atualização; para saber si hubo alguna actualización
+;Label;checkOut.orderConfirmation.orderSplitMsg1;;Your order has been split into ;Seu pedido foi dividido em ;Su orden ha sido dividida en 
+;Label;checkOut.orderConfirmation.orderSplitMsg2;; orders based on precedence; pedidos com base em prioridade;pedidos segun su procedencia
+;Label;checkOut.orderConfirmation.orderId;;Order ID;ID do pedido;ID del pedido
+;Label;checkOut.orderConfirmation.salesUOMError;;Ordered quantity does not match Delivery Units;A quantidade pedida não corresponde às unidades de fornecimento;La cantidad pedida no corresponde a las unidades de entrega
+;Label;text.sellout.upload.error;;Sorry, an error occurred and your file could not be added. Please try again or choose another file.;Desculpe, houve um erro e seu arquivo não pôde ser adicionado. Por favor, tente novamente ou escolha outro arquivo.;Disculpe, hubo un problema y su archivo no pudo ser adjuntado. Por favor, intente nuevamente
+;Label;checkOut.orderConfirmation.invalidIndirectCustError;;Indirect Customer entered is not valid;Indirect Customer entered is not valid;Indirect Customer entered is not valid
+;Label;checkOut.orderConfirmation.entrySalesUOMError;;Entered quantity not in Sales Units;A quantidade inserida não está em unidades de venda;La cantidad ingresada no está en unidades de venta
+;Label;checkOut.orderConfirmation.invalidIndirectCustomerError;;Please enter a valid indirect customer;Insira um cliente indireto válido;Ingrese un cliente indirecto válido
+;Label;checkOut.orderConfirmation.customerName;;Customer Name;Nome do cliente;Nombre de cliente
+;Label;checkOut.orderConfirmation.contractNumber;;Contract Number;Número de contrato;Número de contrato
+;Label;checkOut.orderConfirmation.addressOne;;Address 1;Endereço 1;Dirección 1
+;Label;checkOut.orderConfirmation.address;;Address;Endereço;Domicilio
+;Label;checkOut.orderConfirmation.notes;;Notes:;Notas:;Notas:
+;Label;checkOut.orderConfirmation.notesMessageOne;;You have chosen to complete this order when all products are available.;Você escolheu finalizar este pedido quando todos os produtos estiverem disponíveis.;Ha seleccionado recibir este pedido cuando todos los productos se encuentren disponibles
+;Label;checkOut.orderConfirmation.notesMessageTwo;;Products have been marked "not for sale";Os produtos foram marcados como "não destinados à venda";Los productos han sido marcados como "Prohibida su venta"
+;Label;checkOut.orderConfirmation.notesMessageThree;;Thank you for your order. Your order is being processed. Please check order status in 2 hours for updates.;Agradecemos o seu pedido. Seu pedido está sendo processado. Por favor, verifique novamente em 2 horas.;Gracias por su pedido. Estamos procesando su pedido. Por favor, revíselo nuevamente dentro de 2 horas.
+;Label;checkOut.orderConfirmation.cartId;;Cart ID: ;ID do carrinho:;ID del carrito:
+;Label;checkOut.orderConfirmation.expectedDeliveryDate;;Expected Delivery Date;Data prevista de entrega;Fecha estimada de entrega
+;Label;checkOut.orderConfirmation.indirectCustomer;;Indirect Customer;Cliente indireto;Cliente indirecto
+;Label;checkOut.orderConfirmation.quantity;;Quantity;Quantidade;Cantidad
+;Label;checkOut.orderConfirmation.itemPrice;;Item Price;Valor do item;Precio del artículo
+;Label;checkOut.orderConfirmation.total;;Total;Total;Total
+;Label;checkOut.orderConfirmation.loadMoreOrders;;Load more orders;Carregar mais pedidos;Cargar más pedidos
+;Label;checkOut.orderConfirmation.productsOnCurrentPage;;products from ;produtos de;productos desde
+;Label;checkOut.orderConfirmation.subTotal;;Subtotal:;Subtotal:   ;Subtotal:   
+;Label;checkOut.orderConfirmation.tax;;Tax:;Imposto:;Impuesto:
+;Label;checkOut.orderConfirmation.totalOrder;;Total Order:  ;Pedido total:;Pedido total:
+;Label;checkOut.orderConfirmation.downloadExcel;;Download Excel;Baixar Excel;Descargar Excel
+;Label;checkOut.orderConfirmation.downloadPdf;;Download PDF;Baixar PDF;Descargar PDF
+;Label;checkOut.orderConfirmation.saveOrderTemplate;;Save Order as Template;Salvar pedido como modelo;Guardar pedido como modelo
+;Label;checkOut.orderConfirmation.hideOrderDetails;;Hide order details;Ocultar detalhes do pedido;Ocultar detalles del pedido
+;Label;checkOut.orderConfirmation.showOrderDetails;;Show order details;Exibir detalhes do pedido;Mostrar detalles del pedido
+;Label;checkOut.orderConfirmation.continueShopping;;Continue Shopping;Continuar comprando;Seguir comprando
+;Label;checkOut.orderConfirmation.addIndirectCustomer;;Indirect Customer;Cliente indireto;Cliente indirecto
+;Label;checkOut.orderConfirmation.empenhoDocMissing;;You must attach a PO (Empenho) document to place your order.;É necessário anexar um documento de Empenho para fazer seu pedido.;Debe adjuntar un documento de pedido de compra (Empenho) para hacer su pedido.
+;Label;cart.review.addIndirectCustomer;;Add Indirect Customer;Adicionar cliente indireto;Agregar cliente indirecto
+;Label;cart.review.insertAnIndirectCustomeCode;;Insert an indirect customer code for the entire order;Insira um código de cliente indireto para todo o pedido;Ingrese un código de cliente indirecto para todo el pedido
+;Label;cart.review.loadMoreOrders;;Load more orders;Carregar mais pedidos;Cargar más pedidos
+;Label;cart.review.totalOrder;;Total Order:;Pedido total:;Pedido total:
+;Label;cart.review.orderReview;;Order Review;Revisão do pedido;Revisión del pedido
+;Label;cart.review.validateOrder;;Validate Order;Validar pedido;Validar pedido
+;Label;cart.review.checkout;;Checkout;Finalizar compra;Finalizar compra
+;Label;cart.review.changeContract;;Change contract;Alterar contrato;Cambiar de Contrato
+;Label;cart.review.createOrderFromContract;;Create order from contract;Criar pedido a partir do contrato;Crear pedido a partir del contrato
+;Label;cart.review.selectedContract;;You are creating an order for the contract:;Você está criando um pedido para o contrato:;Usted está creando un pedido para el contrato:
+;Label;cart.review.review;;Review;Revisar;Revisar
+;Label;cart.review.validate;;Validate;Validar;Validar
+;Label;cart.review.order;;Order;Pedido;Pedido
+;Label;cart.review.confirmation;;Confirmation;Confirmação;Confirmación
+;Label;cart.review.checkout;;Checkout;Finalizar compra;Finalizar compra
+;Label;cart.review.orderConfirmation;;Order Confirmation;Confirmação do pedido;Confirmación del pedido
+;Label;cart.review.orderSuccessfullyValidated;;Your order was successfully validated;Seu pedido foi validado corretamente;Su pedido ha sido validado correctamente
+;Label;cart.review.orderSuccessfullyNotValidated;;Connection to the processor could not be established and your order could not be validated. You can place this order by clicking the checkout button and filling in the required information.;Não foi possível estabelecer conexão com o processador e seu pedido não foi validado. Você pode fazer este pedido clicando no botão de pagamento e preenchendo as informações requeridas.;No se ha podido establecer conexión con el procesador y su pedido no ha sido validado. Usted puede hacer este pedido haciendo clic en el botón de pago y rellenando la información solicitada.
+;Label;cart.review.submitItemByCode;;Submit items by code;Enviar itens por código;Enviar artículos por código
+;Label;cart.review.commaSeparated;;(comma separated only);(separado por vírgulas somente);(separado por comas solamente)
+;Label;cart.review.selectDeliveryAdd;;Select Delivery Address;Selecionar endereço de entrega;Seleccionar dirección de entrega
+;Label;cart.review.sapCustomizedMessage;;Order cannot be validated Due To Hard Stop Error;O pedido não foi validado devido a erro de limite de tempo;El pedido no ha sido validado debido a error de límite de tiempo
+;Label;mini.cart.label.item;;Item;Item;Artículo
+;Label;cart.review.estimatedDeliveryDate;;Estimated delivery date;Data estimada de entrega;Fecha estimada de entrega
+;Label;cart.review.deliveryDate;;Delivery Date:;Data de entrega:;Fecha de entrega:
+;Label;cart.review.quantity;;Quantity:;Quantidade:;Cantidad:
+;Label;cart.review.item.available;;This product is available;Este produto está disponível;Este producto está disponible
+;Label;cart.review.item.partialyAvailable;;This product may have different delivery dates;Este produto pode ter datas de entrega diferentes;Este producto puede tener fechas de entrega diferentes
+;Label;cart.review.item.notAvailable;;This product is arriving soon;Este produto chegará em breve;Producto proximamente disponible
+;Label;cart.review.item.moreDetail;;more details;mais detalhes;más detalles
+;Label;cart.review.item.tobeconfirm;;To be confirmed - Quantity;A ser confirmada - Quantidade;Por confirmar - Cantidad
+;Label;cart.review.addToCartButton;;Add to Cart;Adicionar ao carrinho;Agregar al carrito
+;Label;cart.review.saveTemplateButton;;Save Order as Template;Salvar pedido como modelo;Guardar pedido como modelo
+;Label;cart.review.validateOrderButton;;Validate Order;Validar pedido;Validar pedido
+;Label;cart.review.orderCheckoutButton;;Checkout;Finalizar compra;Finalizar compra
+;Label;cart.review.productCodes;;Product Code;Código do produto;Código del producto
+;Label;cart.review.areInvalid;;are Invalid;são inválidos;son inválidos
+;Label;cart.review.isInvalid;;is Invalid;é inválido;es inválido
+;Label;cart.review.maxQtyExceeded;;One or more products cannot be added to the cart as it has already reached its maximum quantity;Um ou mais produtos não pode(m) ser adicionado(s) ao carrinho pois este já atingiu sua quantidade máxima;Uno o más productos no puede(n) agregarse al carrito porque ya alcanzó su cantidad máxima
+;Label;cart.review.indirectCustCode;;Indirect Customer Code;Indirect Customer Code;Indirect Customer Code
+;Label;cart.popup.button.indirectCustCode;;SELECT TO ALL;SELECT TO ALL;SELECT TO ALL
+;Label;cart.addIndirectCustomerToEveryLine;;Add this Indirect Customer Code to every line of your cart.;Adicione este código de cliente indireto a todas as linhas do seu carrinho.;Agregue este código de cliente indirecto a todas las líneas de su carrito.
+;Label;cart.changeEachLineManually;;Keep in mind you can also change each line manually.;Você também pode modificar cada linha manualmente.;Usted también puede cambiar cada línea manualmente.
+;Label;cart.getPrice;;Get Price;Obter preço;Obtener precio
+;Label;cart.addProductOutOfContract;;Add Product Out of Contract;Adicionar produto fora do contrato;Agregar producto fuera del contrato
+;Label;cart.selectedProductNotBelong;;The selected product does not correspond to the contract under which you are placing the order;O produto selecionado não corresponde ao contrato para o qual você está fazendo o pedido;El producto seleccionado no corresponde al contrato bajo el cual usted está haciendo el pedido
+;Label;cart.insertThisProductToYourCart;;If you add this product to your cart you will lose all benefits linked to this contract and will place a regular order instead.;Ao adicionar este produto ao carrinho, você abrirá mão dos benefícios vinculados ao contrato e fará um pedido regular.;Al agregar este producto al carrito, usted perderá los beneficios vinculados al contrato y hará un pedido regular.
+;Label;cart.doYouAccept;;Do you want to continue?;Deseja prosseguir?;¿Desea continuar?
+;Label;cart.getPrice.errorMessage;;Error obtaining price, please try again;Erro na obtenção do preço, tente novamente;Error al obtener el precio, intente otra vez
+;Label;cart.validateOrder.title;;Validation process to get price and product eligibility;Validation process to get price and product eligibility;Validation process to get price and product eligibility
+;Label;checkOut.placeOrder;;Place Order;Fazer pedido;Realizar pedido
+;Label;checkOut.replenishSchedule;;Replenishment schedule;Cronograma de reabastecimento;Programa de reabastecimiento
+;Label;checkOut.replenish.replenishSchedule;;Replenishment schedule;Cronograma de reabastecimento;Programa de reabastecimiento
+;Label;checkOut.replenish.text;;If you choose to schedule your order, you will be able to select the periodicity.;Se você escolher agendar seu pedido, poderá selecionar a periodicidade.;Si decide programar su pedido, podrá seleccionar la periodicidad.
+;Label;checkOut.replenish.autoReplenish;;Start auto-replenishment;Iniciar auto-reabastecimento;Iniciar auto-reabastecimiento
+;Label;checkOut.replenish.activateDaily;;Activate Daily;Ativar diariamente;Activar diariamente
+;Label;checkOut.replenish.replenishEvery;;Replenish every;Reabastecer a cada;Reabastecer cada
+;Label;checkOut.replenish.days;;days;dias;días
+;Label;checkOut.replenish.activateWeekly;;Activate Weekly;Ativar semanalmente;Activar semanalmente
+;Label;checkOut.replenish.every;;every;a cada;cada
+;Label;checkOut.replenish.sendEvery;;Send every;Enviar a cada;Enviar cada
+;Label;checkOut.replenish.week;;week;semana;semana
+;Label;checkOut.replenish.activateMonthly;;Activate Monthly;Ativar mensalmente;Activar mensualmente
+;Label;checkOut.replenish.sendOnThe;;Send on the;Enviar em;Enviar el
+;Label;checkOut.replenish.dayMonth;;day/month;dia/mês;día/mes
+;Label;checkOut.replenish.cancelReplenish;;Cancel Replenishment Schedule;Cancelar agendamento de reabastecimento;Cancelar programa de reabastecimiento
+;Label;checkOut.addExpectedDeliveryDate;;Add Expected delivery Date;Adicionar data prevista de entrega;Añadir fecha de entrega prevista
+;Label;checkOut.yourShoppingCart;;Your Shopping Cart;Seu carrinho de compras;Su carrito de compras
+;Label;checkOut.expectedShippingDate;;Expected Shipping Date;Data estimada de envio;Fecha de envío estimada
+;Label;checkOut.attachDocument;;Attach a document;Anexar documento;Adjuntar documento
+;Label;checkOut.attachPO;;You need to attach a PO (Empenho) document in order to proceed to checkout and place your order.;Você deve anexar um PO (Empenho) para finalizar a compra e fazer seu pedido.;Debe adjuntar la Orden de Compra para completar su pedido
+;Label;checkOut.browseFile;;Browse file;Ver arquivo;Buscar archivo
+;Label;checkOut.fieldIsOptional;;This field is optional. In case you don't fill it, a sequential number will be provided.;Campo opcional. Em caso de não preenchimento, será inserido um número sequencial.;Campo opcional. En el caso de que no se rellene, se ingresará un número secuencial.
+;Label;checkOut.productMarkNotForSale;;Products must be marked "not for sale";Os produtos devem ser marcados como "não destinados à venda";Los productos deben ser marcados como "no destinados a la venta"
+;Label;checkOut.salesForbidden;;Sales Forbidden;Venda proibida;Venta prohibida
+;Label;checkOut.requestComplete;;Request Complete Order;Solicitar pedido completo;Solicitar pedido completo
+;Label;checkOut.receiveOrderIfAllProductsAvailable;;I want to receive this order only if all products are available for delivery.;Desejo receber este pedido somente se todos os produtos estiverem disponíveis para entrega.;Deseo recibir este pedido solamente cuando todos los productos estén disponibles para entrega.
+;Label;checkOut.backToShoppingCart;;Back to Shopping Cart;Voltar ao Carrinho de compras;Volver al Carrito de compras
+;Label;checkOut.expectedPrice;;Expected Price;Preço esperado;Precio esperado
+;Label;checkOut.changePrice;;Change Price;Alterar preço;Modificar precio
+;Label;checkOut.insertExpectedShippingDate;;Insert an expected shipping date for the entire order;Insira uma data prevista de envio para todo o pedido;Ingrese una fecha de envío prevista para todo el pedido
+;Label;checkOut.addDeliveryDateToOrder;;Add this expected delivery date to your order.;Adicione esta data prevista de entrega ao pedido.;Añadirle esta fecha de entrega prevista al pedido.
+;Label;checkOut.requestAnalysedByJohnsonAndJohnson;;This request will be analyzed by Johnson & Johnson.;Esta solicitação será analisada pela Johnson & Johnson.;Esta solicitud será analizada por Johnson & Johnson.
+;Label;checkOut.cancel;;CANCEL;CANCELAR;CANCELAR
+;Label;checkOut.fieldIsMandatory;;This field is mandatory;Este campo é obrigatório;Este campo es obligatorio
+;Label;checkOut.newValue;;Please type the new value:;Por favor, insira o novo valor:;Por favor, ingrese el nuevo valor:
+;Label;checkOut.originalPrice;;Original Price;Preço original;Precio original
+;Label;checkOut.changeTo;;Change to;Mudar para;Cambiar para
+;Label;checkOut.priceChangeRequestForApproval;;The price change you are requesting is subject to approval.;A modificação de preço que você solicitou está sujeita a aprovação.;El cambio de precio que usted ha solicitado está sujeto a aprobación.
+;Label;checkOut.selectedProduct;;Selected product;Produto selecionado;Producto seleccionado
+;Label;checkOut.loadModeProducts;;Load more products;Carregar mais produtos;Cargar más productos
+;Label;checkOut.selectReason;;select a reason;selecione um motivo;seleccione un motivo
+;Label;checkOut.price.errorMessage;;Error - please fill in the fields in red.;Erro - por favor, preencha os campos em vermelho.;Error - por favor, rellene los campos marcados en colorado.
+;Label;checkOut.price.confirm;;CONFIRM;CONFIRMAR;CONFIRMAR
+;Label;text.crossref.header;;Cross Reference Table;Tabela de referência cruzada;Tabla de referencia cruzada
+;Label;text.product.name;;Product Name;Nome do produto;Nombre del producto
+;Label;text.searchby;;Search by:;Procurar por:;Buscar por:
+;Label;text.download;;Download:;Baixar:;Descargar:
+;Label;text.your.id;;Your ID;Seu ID;Su ID
+;Label;text.jnj.id;;J & J ID;ID J&J;ID J&J
+;Label;text.load.more;;Load More;Carregar mais;Cargar más
+;Label;text.sellout.sortBy;;Sort by:;Ordenar por:;Ordenar por:
+;Label;text.sellout.noRecords;;No data found for the given search criteria;Não há resultados para os critérios de busca utilizados;No hay resultados para los criterios de búsqueda utilizados
+;Label;text.sellout.header;;Sellout Report;Relatório de liquidação;Informe de venta total
+;Label;text.sellout.newest.to.oldest;;Newest to Oldest;Mais recente para mais antigo;Fecha descendente
+;Label;text.sellout.oldest.to.newest;;Oldest to Newest;Mais antigo para mais recente;Fecha ascendente
+;Label;text.sellout.upload;;Upload Sellout Report;Fazer upload do relatório de liquidação;Adjuntar informe de Ventas
+;Label;text.sellout.document;;Document;Documento;Documento
+;Label;text.sellout.user;;User;Usuário;Usuario
+;Label;text.sellout.customer;;Customer;Cliente;Cliente
+;Label;text.sellout.company;;Company;Empresa;Empresa
+;Label;text.sellout.date;;Date;Data;Fecha
+;Label;text.sellout.loadmore;;Load more files;Carregar mais arquivos;Cargar más archivos
+;Label;text.sellout.upload.file;;UPLOAD FILE;FAZER UPLOAD DO ARQUIVO;SUBIR EL ARCHIVO
+;Label;text.sellout.browse.file;;Browse file;Ver arquivo;Buscar archivo
+;Label;text.sellout.pharma;;Pharma;Farma;Farma
+;Label;text.sellout.medical;;Medical;Medical;Medical
+;Label;text.sellout.button.excel;;Excel;Excel;Excel
+;Label;text.sellout.button.pdf;;PDF;PDF;PDF
+;Label;text.sellout.popup.company;;Company:;Empresa:;Compañía:
+;Label;text.sellout.upload.header;;Upload Sellout Report;Fazer upload do relatório de liquidação;Adjuntar informe de Ventas
+;Label;header.welcome;;Hi;Olá;Bienvenido
+;Label;header.link.login;;Login;Login;Ingresar
+;Label;header.link.logout;;Logout;Sair;Finalizar sesión
+;Label;header.account.id;;Customer Account #;# Conta Cliente;# Cuenta Cliente
+;Label;header.account.name;;Client;Cliente;Cliente
+;Label;header.link.changeAccount;;Change Account;Alterar conta;Cambiar de Cuenta
+;Label;catalog.view.all;;View all;Ver todos;Ver todos
+;Label;change.account.select;;Select an Account;Selecione uma conta;Seleccione una cuenta
+;Label;change.account.search;;Search for an account;Procurar conta;Buscar cuenta
+;Label;mini.cart.lines;;line(s);linha(s);línea(s)
+;Label;product.final.price.msg;;Final price can be checked on the Order Review Page.;O preço final pode ser verificado na página de revisão do pedido.;Se puede verificar el precio final en la página de revisión del pedido.
+;Label;product.add.zero.qty.msg;;The quantity for one or more products is zero or blank. Such product(s) will be added with quantity = 1.;A quantidade para um ou mais produtos é zero ou está em branco. Ao adicioná-lo(s), a quantidade será 1.;La cantidad para uno o más productos es cero o está vacía. Al agregarlo(s), la cantidad será 1.
+;Label;search.result;;Search Results;Resultados da busca;Resultados de la búsqueda
+;Label;search.result.text;;Search results for search by;Resultados da busca para Procurar por;Resultados de la búsqueda para Buscar por
+;Label;search.result.approximate;;Approximately;Aproximadamente;Aproximadamente
+;Label;search.results;;results;resultados;resultados
+;Label;search.result.showing;;Showing;Exibindo;Mostrando
+;Label;search.result.sort;;Sort By;Ordenar por;Ordenar por
+;Label;search.result.selectAll;;Select All;Selecionar todos;Seleccionar todos
+;Label;search.result.filterBy;;Filter by;Filtrar por;Filtrar por
+;Label;product.multiple;;multiple of;múltiplo de;múltiplo de
+;Label;selected.add.cart;;ADD SELECTED TO CART;ADICIONAR SELEÇÃO AO CARRINHO;AÑADIR SELECCIÓN AL CARRITO
+;Label;product.jnj.id;;J&J ID;ID J&J;ID J&J
+;Label;product.uom;;Unit of Measurement;Unidade de medida;Unidad de medida
+;Label;sales.unit.prefix;;Order in;Ordenar em;Ordenar en
+;Label;delivery.unit.prefix;;shipped in;enviado em;enviado el
+;Label;results.load;;Load More;Carregar mais;Cargar más
+;Label;results.productsFrom;;products from;produtos de;productos desde
+;Label;download.label;;Download;Fazer download;Descargar
+;Label;download.pdf;;PDF;PDF;PDF
+;Label;download.excel;;Excel;Excel;Excel
+;Label;product.ean;;EAN;EAN;EAN
+;Label;product.specification.sales.unit;;Sales unit of measurement;Unidade de medida de venda;Unidad de medida de venta
+;Label;product.specification.delivery.unit;;Delivery unit of measurement;Unidade de medida de entrega;Unidad de medida de entrega
+;Label;product.specification.ship.weight;;Ship Weight;Peso do envio;Peso del envío
+;Label;product.specification.volume;;Volume;Volume;Volumen
+;Label;product.specification.stocking;;Storage Type;Tipo de armazenamento;Tipo de almacenamiento
+;Label;product.specification.medical.speciality;;Medical Specialty;Especialidade médica;Especialidad médica
+;Label;product.specification.country.origin;;Country of origin;País de origem;País de origen
+;Label;not.available;;-;-;-
+;Label;product.specification.sales.unit.desc;;Sell Quantity represents the minimum quantity required for placing orders;A Quantidade para Venda representa a quantidade mínima requerida para fazer um pedido;La Cantidad para Venta representa la cantidad mínima necesaria para hacer un pedido
+;Label;product.specification.delivery.unit.desc;;Ship Quantity represents the minimum quantity required for shipping orders. Items that are shipped must be purchased in multiples of the Ship Quantity.;A Quantidade para Envio representa a quantidade mínima requerida para enviar pedidos. Os itens devem ser comprados em múltiplos da Quantidade para Envio.;La Cantidad para Envío representa la cantidad mínima necesaria para enviar pedidos. Los artículos deben comprarse en múltiples de la Cantidad para Envío.
+;Label;label.myaccount.invoicedetail.section.header;;Order Detail - Invoice;Detalhes do pedido - Fatura;Detalles del pedido - Factura
+;Label;label.myaccount.invoicedetail.back.nav;;back to order detail;voltar para detalhes do pedido;volver a detalles del pedido
+;Label;label.myaccount.invoicedetail.check.for.invoice.heading.one;;Check the invoices for Order number:;Verificar faturas para o Pedido número:;Verificar facturas para el Pedido número:
+;Label;label.myaccount.invoicedetail.check.for.invoice.heading.two;;Client -;Cliente -;Cliente -
+;Label;label.myaccount.invoicedetail.check.for.invoice.heading.three;; | J&J -; | J&J -; | J&J -
+;Label;label.myaccount.invoicedetail.invoice;;Invoice ;Fatura;Factura
+;Label;label.myaccount.invoicedetail.quanity;;Quantity;Quantidade;Cantidad
+;Label;label.myaccount.invoicedetail.item.price;;Item Price;Valor do item;Precio del artículo
+;Label;label.myaccount.invoicedetail.total;;Total;Total;Total
+;Label;label.myaccount.invoicedetail.net.price;;Total Net Price: ;Preço líquido total:;Precio neto total:
+;Label;label.myaccount.invoicedetail.email.text;;This report will be sent to the following email address: ;Este relatório será enviado para o seguinte endereço de e-mail:;Este informe se enviará a la siguiente dirección de correo electrónico:
+;Label;label.myaccount.invoicedetail.email;;m.s.magalhaes@company.com;m.s.magalhaes@company.com;m.s.magalhaes@company.com
+;Label;label.myaccount.invoicedetail.button.text;;Download;Fazer download;Descargar
+;Label;label.myaccount.invoicedetail.myAccount;;My Account;Minha conta;Mi cuenta
+;Label;label.myaccount.invoicedetail.errorForPDFOrXMLDownload;;Error while getting XML/PDF Data. Please try again later;Erro na obtenção de dados XML/PDF. Por favor, tente novamente mais tarde;Error al obtener datos XML/PDF. Por favor, intente otra vez más tarde
+;Label;label.myaccount.invoicedetail.number;;Number:;Número:;Número:
+;Label;label.myaccount.invoicedetail.detail;;Invoice Detail;Detalhes da fatura;Detalles de la factura
+;Label;order.history.orderHistory;;Order History;Histórico de pedidos;Historial de pedidos
+;Label;order.history.placedOn;;Placed On;Feito em;Realizado el
+;Label;order.history.searchby;;Search by;Procurar por;Buscar por
+;Label;order.history.orderNumber;;Order Number;Número do pedido;Numero de Orden
+;Label;order.history.productNumber;;Product SKU;SKU do produto;SKU del producto
+;Label;order.history.contractNumber;;Contract Number;Número de contrato;Número de contrato
+;Label;order.history.invoiceNumber;;Invoice Number;Número da fatura;Número de la factura
+;Label;order.history.indirectCustomer;;Indirect Customer;Cliente indireto;Cliente indirecto
+;Label;order.history.excel;;Excel;Excel;Excel
+;Label;order.history.pdf;;PDF;PDF;PDF
+;Label;order.history.sortBy;;Sort by:;Ordenar por:;Ordenar por:
+;Label;order.history.orderNumberDecreasing;;Order Number - decreasing;Número do pedido - decrescente;Numero de Pedido- decreciente
+;Label;order.history.orderNumberIncreasing;;Order Number - increasing;Número do pedido - crescente;Numero de Pedido- creciente
+;Label;order.history.dateDecreasing;;Date - newest to oldest;Data - mais recente para mais antigo;Fecha - descendente
+;Label;order.history.dateIncreasing;;Date - oldest to newest;Data - mais antigo para mais recente;Fecha - ascendente
+;Label;order.history.priceIncreasing;;Price - low to high;Menor preço;Precio: Menor a mayor
+;Label;order.history.priceDecreasing;;Price - high to low;Maior preço;Precio: Mayor a menor
+;Label;order.history.from;;From:;De:;De:
+;Label;order.history.to;;To:;Para:;Para:
+;Label;order.history.status;;Status:;Status:;Estado:
+;Label;order.history.status.active;;Active:;Active:;Active:
+;Label;order.history.status.cancelled;;Cancelled:;Cancelled:;Cancelled:
+;Label;order.history.allStatus;;All Statuses;Todos os status;Todos los estados
+;Label;order.history.clientNumber;;Client Number;Número do cliente;Número de cliente
+;Label;order.history.jnJOrderNumber;;J&J Number:;Número J&J:;Número J&J:
+;Label;order.history.jnJOrderHistoryNumber;;J&J Order Number;Número de pedido J&J;Número de pedido J&J
+;Label;order.history.contrctNumber;;Contract #;Número de contrato;Número de contrato
+;Label;order.history.date;;Date;Data;Fecha
+;Label;order.history.totalOrder;;Total Order;Pedido total;Total Orden
+;Label;order.history.orderStatus;;Order Status;Status do pedido;Estado del pedido
+;Label;order.history.orderDetail;;Order detail;Detalhes do pedido;Detalles del pedido
+;Label;order.history.clientOrderNumber;;Client Order Number:;Número do pedido do cliente:;Número del pedido del cliente:
+;Label;order.history.overAllStatus;;Overall Status:;Status geral:;Estado general:
+;Label;order.history.orderDetailsContractNumber;;Contract Number:;Número de contrato:;Número de contrato:
+;Label;order.history.orderType;;Order Type:;Tipo de pedido:;Tipo de pedido:
+;Label;order.history.deliveryStatus;;Delivery Status:;Status de entrega:;Estado de entrega:
+;Label;order.history.customerName;;Customer Name:;Nome do cliente:;Nombre del cliente:
+;Label;order.history.payerName;;Payer Name:;Nome do pagador:;Nombre del pagador:
+;Label;order.history.deliveryDetail;;Delivery Detail:;Detalhes da entrega:;Detalles de la entrega:
+;Label;order.history.invoice;;Invoice:;Fatura:;Factura:
+;Label;order.history.notes;;Notes:;Notas:;Notas:
+;Label;order.history.downLoadExcel;;Download Excel;Baixar Excel;Descargar Excel
+;Label;order.history.downLoadPDF;;Download PDF;Baixar PDF;Descargar PDF
+;Label;order.history.addProductToCart;;Add products to cart;Adicionar produtos ao carrinho;Agregar productos al carrito
+;Label;order.history.items;;Items;Itens;Artículos
+;Label;order.history.estimatedShippingDate;;Estimated Shipping Date;Data estimada de envio;Fecha de envío estimada
+;Label;order.history.quantity;;Quantity;Quantidade;Cantidad
+;Label;order.history.itemPrice;;Item Price;Valor do item;Precio del artículo
+;Label;order.history.total;;Total;Total;Total
+;Label;order.history.orderDetailsStatus;;Status;Status;Estado
+;Label;order.history.loadModeOrders;;Load more orders;Carregar mais pedidos;Cargar más pedidos
+;Label;order.history.productLimit;; products from ;produtos de;productos desde
+;Label;order.history.notes1;;You have chosen to complete this order when all products are available.;Você escolheu finalizar este pedido quando todos os produtos estiverem disponíveis.;Ha seleccionado recibir este pedido cuando todos los productos se encuentren disponibles
+;Label;order.history.notes2;;The products have been marked as "sales forbidden".;Os produtos foram marcados como "venda proibida";Los productos han sido marcados como "venta prohibida"
+;Label;order.history.notes3;;Due to an internal error we weren’t able to process this order. Please contact customer service to place this order;Devido a um erro interno, não foi possível processar o pedido. Entre em contato com o setor de Atendimento ao cliente para fazer o pedido;Debido a un error interno, no se ha podido procesar este pedido. Póngase en contacto con Atención al cliente para hacer el pedido
+;Label;order.history.noOrders;;No data found for the given search criteria;Não há resultados para os critérios de busca utilizados;No hay resultados para los criterios de búsqueda utilizados
+;Label;order.history.searchResult;;Search results for search by";Resultados da busca para Procurar por;Resultados de la búsqueda para Buscar por
+;Label;order.history.orderLimit;; orders from;pedidos de;pedidos desde
+;Label;order.history.loadModeProducts;;Load more products;Carregar mais produtos;Cargar más productos
+;Label;order.history.totalNetPrice;;Total Net Price:;Preço líquido total:;Precio neto total:
+;Label;order.history.shippingCosts;;Shipping Costs:;Custos de envio:;Costos de envío:
+;Label;order.history.taxes;;Taxes:;Imposto:;Impuesto:
+;Label;order.history.promotions;;Discounts/Promotions:;Descontos/Promoções:;Descuentos/Promociones:
+;Label;order.history.totalGrossPrice;;Total Gross Price:;Preço bruto total:;Precio bruto total:
+;Label;order.history.invoiceNotFound;;Invoice Not Found;Fatura não encontrada;Factura no encontrada
+;Label;order.history.fileNotFound;;File Not Found;Arquivo não encontrado;Archivo no encontrado
+;Label;order.history.errorDuringFileCreation;;Error while creating file;Erro na criação do arquivo;Error al crear el archivo
+;Label;order.history.notExpectedCountry;;Not the expected country;País diferente do esperado;País diferente del esperado
+;Label;order.history.documentNotFound;;Document Not Found;Documento não encontrado;Documento no encontrado
+;Label;order.history.totalFees;;Total Fees:;Total de taxas:;Total de tasas:
+;Label;order.history.freightFees;;Freight Fees:;Taxas de frete:;Tasas de flete:
+;Label;order.history.expeditedFees;;Expedited Fees:;Taxas de urgência:;Tasas de urgencia:
+;Label;order.history.handlingFees;;Handling Fees:;Taxas de manipulação:;Tasas de manejo:
+;Label;order.history.dropShipFees;;Drop-ship Fees:;Taxas de drop shipping:;Tasas de drop shipping:
+;Label;order.history.minimumOrderFees;;Minimum Order Fees:;Taxas de pedido mínimo:;Tasas de pedido mínimo:
+;Label;order.history.totalInsuarance;;Total Insurance: ;Seguro total:;Seguro total:
+;Label;order.history.gtsErrorMessage;;This line is on hold and is not currently scheduled to ship – please call customer service;Esta linha está em suspenso e não está agendada para envio - por favor, entre em contato com o setor de Atendimento ao cliente;Esta línea está suspendida y no está programada para envío - por favor, póngase en contacto con Atención al cliente
+;Label;order.home.uploadingOrderFile;;Uploading your order file:;Fazer upload do seu arquivo de pedido:;Subir su archivo de pedido:
+;Label;order.home.uploadYourOwnFile;;You can upload your own order file to create an order;Você pode fazer upload do seu próprio arquivo de pedido para criar um pedido;Usted puede subir su propio archivo de pedido para crear un pedido
+;Label;order.home.successMessage;;File sent successfully. Your order is now being processed, please check order status for updates.;Arquivo enviado. Seu pedido está sendo processado, verifique o status do pedido para ver se houve alguma atualização.;Archivo enviado. Estamos procesando su pedido, verifique el estado del pedido para saber si hubo alguna actualización.
+;Label;order.home.errorMessage;;Sorry, an error occurred and your file could not be added. Please try again.;Desculpe, houve um erro e seu arquivo não pôde ser adicionado. Por favor, tente novamente.;Perdón, hubo un error y su archivo no se ha adjuntado. Por favor, intente nuevamente.
+;Label;order.home.errorMessageForMaterialNumber;;The material number <MATERIAL> does not match the registered one. Please check it and try again.;O número de material <MATERIAL> não corresponde ao cadastrado. Por favor, verifique o problema e tente novamente.;El número de material <MATERIAL> no corresponde al registrado. Por favor, verifique el problema e intente otra vez.
+;Label;order.home.errorMessageForEanNumber;;The EAN number <MATERIAL> does not match the registered one. Please check it and try again.;O número EAN <MATERIAL> não corresponde ao cadastrado. Por favor, verifique o problema e tente novamente.;El número EAN <MATERIAL> no corresponde al registrado. Por favor, verifique el problema e intente otra vez.
+;Label;order.home.errorMessageForUom;;The unit of measurement <MATERIAL> does not match the registered one. Please check it and try again.;A unidade de medida <MATERIAL> não corresponde à cadastrada. Por favor, verifique o problema e tente novamente.;La unidad de medida <MATERIAL> no corresponde a la registrada. Por favor, verifique el problema e intente otra vez.
+;Label;order.home.errorMessageForShipTo;;The ship to information <MATERIAL> provided does not match the registered one. Please check it and try again.;A informação para envio <MATERIAL> fornecida não corresponde à cadastrada. Por favor, verifique o problema e tente novamente.;La información para envío <MATERIAL> ingresada no corresponde a la registrada. Por favor, verifique el problema e intente otra vez.
+;Label;order.home.errorMessageForQuantity;;Quantity <MATERIAL> does not match required multiplicity. Please check it and try again.;A quantidade <MATERIAL> não corresponde à multiplicidade requerida. Por favor, verifique o problema e tente novamente.;La cantidad <MATERIAL> no corresponde a la multiplicidad necesaria. Por favor, verifique el problema e intente otra vez.
+;Label;order.home.fileFormatInvalid;;File Format is not valid.;Formato de arquivo inválido;Formato de archivo inválido
+;Label;order.home.browseFile;;Browse file;Ver arquivo;Buscar archivo
+;Label;order.home.errorDetails;;ERROR DETAILS;DETALHES DO ERRO;DETALLES DEL ERROR
+;Label;order.home.errorDetailsOnPopUp;;Error Details:;Detalhes do erro:;Detalles del error:
+;Label;order.home.generalErrorMessage;;File is not being processed;O arquivo não está sendo processado;El archivo no se está procesando
+;Label;home.product.image;;Product Image;Imagem do produto;Imagen del producto
+;Label;order.home.emptyKey;;EMPTY;VAZIO;VACÍO
+;Label;text.register.header;;Create your account;Crie sua conta;Creacion de su cuenta
+;Label;text.register.notice;;You are requesting access to the Johnson & Johnson B2B portal. Your information will go through approval and you will soon receive an email confirming your registration.;Você está solicitando acesso ao portal B2B da Johnson & Johnson. Suas informações passarão por aprovação e você receberá um e-mail para confirmar seu cadastro.;Usted está solicitando acceso al portal B2B de Johnson & Johnson. Su información deberá ser aprobada y usted recibirá un correo electrónico para confirmar su registro.
+;Label;text.register.company.info;;Company Information;Informações da empresa;Informacion de la empresa
+;Label;text.register.required;;(*) - Required fields;(*) - Campos obrigatórios;(*) - Campos obligatorios
+;Label;text.register.custcode;;Customer Code;Código do cliente;Codigo de cliente
+;Label;text.register.popup.header;;Lorem Lorem;Lorem Lorem;Lorem Lorem
+;Label;text.register.popup.data;;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt quam sit amet congue dapibus.;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt quam sit amet congue dapibus.;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt quam sit amet congue dapibus.
+;Label;text.register.custcode.popup.data;;The customer code is the eight digits code that identifies you as a Johnson & Johnson customer. If you do not know your customer code, contact your account manager or customer service to request it.;O código do cliente é o número de oito dígitos que identifica clientes da Johnson & Johnson. Se você não sabe seu código de cliente, entre em contato com o gerente da sua conta ou com o setor de Atendimento ao cliente.;El código del cliente es el número de ocho dígitos que identifica a los clientes de Johnson & Johnson. Si no sabe su código de cliente, póngase en contacto con el gerente de su cuenta o con Atención al cliente.
+;Label;text.register.custname.popup.data;;Legal name of the company that purchases Johnson & Johnson products.;Nome legal da empresa que compra produtos da Johnson & Johnson.;Nombre legal de la empresa que compra productos de Johnson & Johnson.
+;Label;text.register.accmanager.popup.data;;Johnson & Johnson customer contact.;Contato do cliente da Johnson & Johnson;Contacto del cliente de Johnson & Johnson
+;Label;text.register.accmanager;;Account Manager;Gerente da conta;Gerente de cuenta
+;Label;text.register.custname;;Customer Name;Nome do cliente;Nombre de cliente
+;Label;text.register.star;;*;*;*
+;Label;text.register.colon;;:;:;:
+;Label;text.register.country.region;;Country or region;País ou região;País o región
+;Label;text.register.select.country.region;;Select country or region;Selecione país ou região;Seleccione país o región
+;Label;text.register.brazil;;Brazil;Brasil;Brasil
+;Label;text.register.mexico;;Mexico;México;México
+;Label;text.register.usa;;USA;Estados Unidos;Estados Unidos
+;Label;text.register.others;;Others;Outros;Otros
+;Label;text.register.zipcode;;ZIP Code;Código postal;Código postal
+;Label;text.register.address;;Address;Endereço;Domicilio
+;Label;text.register.city;;City;Cidade;Ciudad
+;Label;text.register.state;;State;Estado;Estado
+;Label;text.register.select.state;;Please select a state;Selecione um estado;Seleccione un estado
+;Label;text.register.email;;Your current email address;Seu endereço de e-mail;Su dirección de correo electrónico
+;Label;text.register.reemail;;Re-enter email address;Digite novamente seu endereço de e-mail;Ingrese nuevamente su dirección de correo electrónico
+;Label;text.register.firstname;;First Name;Primeiro nome;Nombre
+;Label;text.register.lastname;;Last Name;Sobrenome;Apellido
+;Label;text.register.phoneno;;Phone Number;Número de telefone;Número de teléfono
+;Label;text.register.mobileno;;Mobile Number;Número de celular;Numero de telefono movil
+;Label;text.register.countrycode;;Country Code;Código de país;Código de país
+;Label;text.register.password;;Choose a password:;Escolha uma senha:;Elija una contraseña:
+;Label;text.register.password.tips;;Password tips;Dicas para a senha;consejos para seleccionar contraseña
+;Label;text.register.password.strength;;Password Strength;Segurança da senha;Seguridad de la contraseña
+;Label;text.register.password.strength.msg;;The password must be at least 8 characters long, with a combination of upper and lower case letters, numbers and symbols, and must be different from your five previous passwords.;A senha deve conter 8 caracteres ou mais, com uma combinação de letras maiúsculas e minúsculas, números e símbolos, e deve ser diferente das últimas cinco senhas.;La contraseña debe contener 8 caracteres o más, con una combinación de letras mayúsculas y minúsculas, números y símbolos, y debe ser diferente de las cinco últimas contraseñas.
+;Label;text.register.repassword;;Re-enter password:;Digite a senha novamente:;Ingrese su contraseña nuevamente:
+;Label;text.register.secret.questions;;Secret Questions;Perguntas secretas;Preguntas secretas
+;Label;text.register.secret.questions.header;;Define at least three secret questions:;Defina pelo menos três perguntas secretas:;Debe definir por lo menos tres preguntas secretas:
+;Label;text.register.ques1;;Secret question 1;Pergunta secreta 1;Pregunta secreta 1
+;Label;text.register.ques2;;Secret question 2;Pergunta secreta 2;Pregunta secreta 2
+;Label;text.register.ques3;;Secret question 3;Pergunta secreta 3;Pregunta secreta 3
+;Label;text.register.ques4;;Secret question 4;Pergunta secreta 4;Pregunta secreta 4
+;Label;text.register.ques5;;Secret question 5;Pergunta secreta 5;Pregunta secreta 5
+;Label;text.register.ques6;;Secret question 6;Pergunta secreta 6;Pregunta secreta 6
+;Label;text.register.ans1;;Secret answer 1;Resposta secreta 1;Respuesta secreta 1
+;Label;text.register.ans2;;Secret answer 2;Resposta secreta 2;Respuesta secreta 2
+;Label;text.register.ans3;;Secret answer 3;Resposta secreta 3;Respuesta secreta 3
+;Label;text.register.ans4;;Secret answer 4;Resposta secreta 4;Respuesta secreta 4
+;Label;text.register.ans5;;Secret answer 5;Resposta secreta 5;Respuesta secreta 5
+;Label;text.register.ans6;;Secret answer 6;Resposta secreta 6;Respuesta secreta 6
+;Label;text.register.validation;;Validation Code;Código de validação;Código de validación
+;Label;text.register.email.notification;;I would like to receive email notifications from the portal.;Gostaria de receber notificações por e-mail do portal.;Me gustaría recibir notificaciones del portal por correo electrónico.
+;Label;text.register.policy.part1;;I have read and agree to the;Li e concordo com a;He leído y acepto la
+;Label;text.register.privacy.policy;;Privacy Policy;Política de Privacidade;Política de Privacidad
+;Label;text.register.and;;and;e;y
+;Label;text.register.legal;;Legal Notice;Aviso Legal;Aviso Legal
+;Label;text.register.global.error;;Please correct any problems before proceeding.;Por favor, corrija eventuais erros antes de continuar.;Por favor, corrija los errores antes de continuar.
+;Label;text.register.footer1;;You are about to enter a Private Web Site that is restricted to authorized use by Johnson & Johnson Medical Devices and Diagnostics for Latin America and their authorized agents for business purposes only. The actual or attempted unauthorized access, use or modification of the web site and its contents is strictly prohibited by the Company. Unauthorized users and/or unauthorized use are subject to criminal and/or civil penalties in accordance with applicable domestic and foreign laws. The use of this web site may be monitored and recorded for administrative and security reasons. If such monitoring and/or recording reveals possible evidence of criminal activity, the Company may provide the monitored evidence of such activity to law enforcement officials. Access to this application from an untrusted workstation, including, but not limited to, cyber cafes and public kiosks, is prohibited.;Você está entrando em um site privado restrito ao uso autorizado pela Johnson & Johnson Medical Devices and Diagnostics para a América Latina e seus agentes autorizados apenas para fins de negócios. O acesso, uso ou modificação do site e seu conteúdo, ou tentativa, sem autorização, é esritamente proibido pela companhia. Usuários não autorizados e/ou o uso não autorizado estão sujeitos a penalidades criminais e/ou civis de acordo com leis nacionais e estrangeiras aplicáveis. O uso deste site poderá ser monitorado e gravado por razões administrativas e de segurança. Se o monitoramento e/ou gravação revelarem evidência possível de atividade criminosa, a companhia poderá entregá-los a autoridades policiais. É proibido acessar este aplicativo em estações de trabalho não confiáveis, incluindo, entre outras, cyber cafés e locais públicos.;Está ingresando a un sitio privado restringido al uso autorizado por Johnson & Johnson Medical Devices and Diagnostics para Latinoamérica y sus agentes autorizados para negocios solamente. El acceso, uso o modificación del sitio y su contenido, o intento, sin autorización, están esrictamente prohibidos por la compañia. Usuarios no autorizados y/o el uso no autorizado están sujetos a penas criminales y/o civiles de acuerdo con leyes nacionales e internacionales aplicables. El uso de este sitio podrá ser monitoreado y grabado por razones administrativas y de seguridad. Si el monitoreo y/o grabación revelaran evidencia posible de actividad criminal, la compañía podrá entregarlos a oficiales de la policía. Está prohibido el acceso a esta aplicación desde estaciones de trabajo no confiables, incluyendo, entre otras, cyber cafés y lugares públicos.
+;Label;text.register.footer2;;N/A;N/A;N/A
+;Label;text.register.footer3;;Please read our;Por favor, leia a;Por favor, lea la
+;Label;text.register.footer4;;The use of the information on this website is subject to the terms of our;O uso das informações neste site está sujeito aos termos da nossa;La utilización de la información en este sitio está sujeta a los términos de nuestra
+;Label;text.register.last.updated;;Last Update: March 2012;Última atualização: Março, 2012;Última actualización: Marzo, 2012
+;Label;text.register.user.info;;User Information;Informações do usuário;Información de usuario
+;Label;text.register.success.msg;;Thank you for completing your account creation request form;Obrigado por preencher o formulário de solicitação de criação de conta;Gracias por rellenar el formulario de solicitud de creación de cuenta
+;Label;text.register.analyze.msg;;Your information will be analyzed by Johnson & Johnson and we will contact you within 5 working days.;Suas informações serão analisadas pela Johnson & Johnson e entraremos em contato em 5 dias úteis.;Su información será analizada por Johnson & Johnson y lo contactaremos dentro de 5 días hábiles.
+;Label;text.register.feedback.msg;;If you do;Se você não;Si usted no
+;Label;text.register.feedback.msg.part1;;not receive;receber;recibiera
+;Label;text.register.feedback.msg.part2;;our feedback email, please check your <u>spam settings</u> and add the email address;nosso retorno, verifique suas <u>configurações de spam</u> e adicione o endereço de e-mail;nuestra respuesta, verifique sus <u>configuraciones de spam</u> y agregue la dirección de correo electrónico
+;Label;text.register.support.emailid;;support@jnj.com;support@jnj.com;support@jnj.com
+;Label;text.register.feedback.msg2;;as a trusted sender.;à sua lista de remetentes confiáveis.;a su lista de remitentes de confianza.
+;Label;text.register.return.to.login;;Return to login;Voltar para Login;Volver a Inicio de sesión
+;Label;text.register.header.notice1;;Dear User,;Prezado usuário,;Estimado usuario,
+;Label;text.register.header.notice2;;To complete your registration please fill out the following fields.;Para finalizar sua inscrição, preencha os campos a seguir.;Para completar su registro, debe rellenar los campos a continuación.
+;Label;text.register.header.notice3;;Your User ID will be your corporate e-mail:;Seu ID de usuário será seu e-mail corporativo:;Su ID de usuario será su correo electrónico corporativo:
+;Label;text.register.header.notice4;;myemail@mycompany.com;myemail@mycompany.com;myemail@mycompany.com
+;Label;text.register.nocountry.error;;Please select a country or region;Selecione um país ou região;Seleccione un país o región
+;Label;text.register.invalid.email;;This email address is not valid. Please try again.;Este e-mail é inválido. Tente novamente.;Este correo es inválido. Intente nuevamente.
+;Label;text.register.email.match.error;;The email you have entered does not match any email in our records. Please try again.;O e-mail que você inseriu não corresponde a nenhum e-mail em nossos registros. Por favor, tente novamente.;El correo electrónico ingresado no corresponde a ningún correo electrónico registrado. Por favor, intente nuevamente.
+;Label;text.register.enter.password;;Enter a password;Insira uma senha;Ingrese una contraseña
+;Label;text.register.password.not.matched;;Passwords don't match!;As senhas não coincidem;Las contraseñas no coinciden
+;Label;text.register.invalid.code;;Invalid validation code;Código de validação inválido;Código de validación inválido
+;Label;text.register.accept.policy;;Please check you have accepted our Policy;Você deve concordar com a nossa Política;Debe estar de acuerdo con la Política
+;Label;text.register.complete.registration;;Complete registration;Finalizar inscrição;Finalizar registro
+;Label;text.myaccount;;My Account;Minha conta;Mi cuenta
+;Label;form.required;;Fields marked with a * are mandatory;Os campos marcados com um * são obrigatórios;Los campos marcados con * son obligatorios
+;Label;text.account.profile.updatePasswordForm;;Update Password;Atualizar senha;Actualizar contraseña
+;Label;text.account.profile.saveUpdates;;Save Updates;Salvar atualizações;Guardar cambios
+;Label;text.account.profile.back;;Back;Voltar;Volver
+;Label;text.account.profile.changePassword;;Edit password;Editar senha;Editar contraseña
+;Label;text.account.profile.editSecretQuestion;; Edit my secret questions;Editar perguntas secretas;Editar preguntas secretas
+;Label;text.account.profile.instructionSecretQuestion;; Please use this form to update your secret questions. At least 3 questions are required.;Utilize este formulário para atualizar suas perguntas secretas. São necessárias pelo menos 3 perguntas.;Utilice este formulario para actualizar sus preguntas secretas. Debe incluir por lo menos 3 preguntas.
+;Label;text.account.profile.updatePersonalDetails;;Update personal details;Atualizar dados pessoais;Actualizar datos personales
+;Label;text.account.profile;;My Profile;Meu perfil;Mi perfil
+;Label;text.account.profile.updatePassword;;Please use this form to update your account password;Utilize este formulário para atualizar a senha da conta;Utilice este formulario para actualizar la contraseña de la cuenta
+;Label;text.account.edit.profile;;Edit my profile;Editar meu perfil;Editar mi perfil
+;Label;secretQuestion1;;What is your pet's name?;Qual o nome do seu animal de estimação?;¿Cómo se llama su mascota?
+;Label;secretQuestion2;;What is the name of the hospital where you were born?;Em que hospital você nasceu?;¿En qué hospital nació?
+;Label;secretQuestion3;;What is your favorite movie?;Qual é o seu filme favorito?;¿Cuál es su película favorita?
+;Label;secretQuestion4;;What was your favorite place to visit as a child?;Qual era o seu lugar favorito para visitar quando criança?;¿Cuál era su lugar favorito para visitar cuando era niño(a)?
+;Label;secretQuestion5;;Who is your favorite actor, musician, or artist?;Quem é seu/sua ator/atriz, músico(a) ou artista favorito(a)?;¿Quién es su actor/actriz, músico(a) o artista favorito(a)?
+;Label;secretQuestion6;;What was the first car you owned?;Qual foi seu primeiro carro?;¿Cuál fue la marca de su primer automovil?
+;Label;secretQuestion7;;What is your favorite restaurant?;Qual é o seu restaurante favorito?;¿Cuál es su restaurante favorito?
+;Label;secretQuestion8;;What was your team mascot?;Qual é o mascote do seu time?;¿Cuál es la mascota de su equipo?
+;Label;secretQuestion9;;Where were you at the turn of the new millennium?;Onde você estava na virada do milênio?;¿Dónde estaba en el comienzo del nuevo milenio?
+;Label;secretQuestion10;;Who is your favorite fictional character?;Qual é o seu personagem de ficção favorito?;¿Cuál es su personaje de ficción favorito?
+;Label;secretQuestion11;;Who is your favorite person from History?;Qual é seu personagem histórico favorito?;¿Cuál es su personaje histórico favorito?
+;Label;secretQuestion12;;What is the name of the street where you lived when you were ten years old?;Qual o nome da rua onde você morava aos dez anos de idade?;Nombre de la calle en que vivia cuando tenia diez años
+;Label;secretQuestion13;;In what city did you meet your spouse/significant other?;Em que cidade você conheceu seu(sua) cônjuge/companheiro(a)?;¿En qué ciudad conoció a su esposo(a)/pareja?
+;Label;secretQuestion14;;What is the name of your favorite childhood friend?;Qual é o nome do seu melhor amigo de infância?;¿Cómo se llama su mejor amigo de la infancia?
+;Label;secretQuestion15;;What is your oldest sibling's birthday month and year? (e.g. January 1900);Qual é o mês e ano de nascimento do seu irmão/irmã mais velho(a)? (ex.: Janeiro 1900);¿En qué mes y año cumple años su hermano/hermana mayor? (ej.: Enero 1900)
+;Label;secretQuestion16;;What is the middle name of your youngest child?;Qual é o nome do meio do seu filho mais novo?;¿Cuál es el nombre de su hijo menor?
+;Label;secretQuestion17;;What is your youngest sibling's middle name?;Qual é o nome do meio do seu irmão/irmã mais novo(a)?;¿Cuál es el nombre de su hermano/ hermana menor?
+;Label;secretQuestion18;;What was your childhood phone number including city or area code? (e.g. 000-000-0000);Qual era seu telefone na infância, incluindo código de área? (ex.: 00-000-0000);¿Cuál era su número de teléfono cuando era niño, incluyendo código de área? (ej.: 000-000-0000)
+;Label;secretQuestion19;;What was the name of your first stuffed animal?;Qual era o nome do seu primeiro bicho de pelúcia?;¿Cómo se llamaba su primer animal de peluche?
+;Label;secretQuestion20;;In what city or town did your mother and father meet?;Em que cidade seus pais se conheceram?;¿En qué ciudad se conocieron sus padres?
+;Label;secretQuestion21;;What is the first name of the boy or girl that you first kissed?;Qual é o primeiro nome da primeira pessoa que você beijou?;¿Cuál es el primer nombre de la primera persona que besó?
+;Label;secretQuestion22;;What was the last name of your teacher when you were eight?;Qual é o sobrenome do seu professor(a) quando você tinha oito anos?;¿Cuál era el apellido de su profesor(a) cuando tenía ocho años?
+;Label;secretQuestion23;;What is the street number of the house you lived in when you were five?;Qual era o número da sua casa quando você tinha cinco anos?;¿Cuál era su domicilio cuando tenia ocho años?
+;Label;secretQuestion24;;In what city or town does your nearest sibling live?;Em que cidade seu irmão/irmã mais próximo(a) mora?;¿En qué ciudad vive su hermano/hermana más cercano(a)?
+;Label;secretQuestion25;;What was the name of the first school you attended?;Qual era o nome da primeira escola que você frequentou?;¿Cómo se llamaba la primera escuela donde estudió?
+;Label;secretQuestion26;;What is your maternal grandmother's maiden name?;Qual o sobrenome de solteira da sua avó materna?;¿Cuál es el apellido de soltera de su abuela materna?
+;Label;secretQuestion27;;In what city or town was your first job?;Em que cidade você teve seu primeiro emprego?;¿En qué ciudad tuvo su primer trabajo?
+;Label;error.secret.question.required;;Please try again, select one secret question!;Tente novamente, selecione uma pergunta secreta!;Intente nuevamente, seleccione una pregunta secreta
+;Label;error.secret.answer.required;;Please type your secret answer.;Digite sua resposta secreta.;Ingrese su respuesta secreta.
+;Label;profile.secret.question0;;Secret Question1;Pergunta secreta 1;Pregunta secreta 1
+;Label;profile.secret.question1;;Secret question 2;Pergunta secreta 2;Pregunta secreta 2
+;Label;profile.secret.question2;;Secret Question 3;Pergunta secreta 3;Pregunta secreta 3
+;Label;profile.secret.question3;;Secret Question 4;Pergunta secreta 4;Pregunta secreta 4
+;Label;profile.secret.question4;;Secret Question 5;Pergunta secreta 5;Pregunta secreta 5
+;Label;profile.secret.question5;;Secret Question 6;Pergunta secreta 6;Pregunta secreta 6
+;Label;profile.secret.answer0;;Secret answer 1;Resposta secreta 1;Respuesta secreta 1
+;Label;profile.secret.answer1;;Secret Answer 2;Resposta secreta 2;Respuesta secreta 2
+;Label;profile.secret.answer2;;Secret Answer 3;Resposta secreta 3;Respuesta secreta 3
+;Label;profile.secret.answer3;;Secret Answer 4;Resposta secreta 4;Respuesta secreta 4
+;Label;profile.secret.answer4;;Secret Answer 5;Resposta secreta 5;Respuesta secreta 5
+;Label;profile.secret.answer5;;Secret Answer 6;Resposta secreta 6;Respuesta secreta 6
+;Label;profile.firstName;;First Name;Primeiro nome;Nombre
+;Label;profile.firstName.invalid;;This field is mandatory;Este campo é obrigatório;Este campo es obligatorio
+;Label;profile.lastName;;Last Name;Sobrenome;Apellido
+;Label;profile.lastName.invalid;;This field is mandatory;Este campo é obrigatório;Este campo es obligatorio
+;Label;profile.email;;Email;E-mail;Correo electrónico
+;Label;profile.phone;;Phone Number;Número de telefone;Número de teléfono
+;Label;profile.phone.required;;This field is mandatory;Este campo é obrigatório;Este campo es obligatorio
+;Label;profile.phone.invalid;;This field is mandatory;Este campo é obrigatório;Este campo es obligatorio
+;Label;profile.mobile;;Mobile Number;Número de celular;Numero de telefono movil
+;Label;profile.mobile.required;;This field is mandatory;Este campo é obrigatório;Este campo es obligatorio
+;Label;profile.role;;Role;Função;Función
+;Label;profile.portalLang;;Language;Idioma;Idioma
+;Label;profile.emailNotification;;This portal is allowed to send me email notification;O portal está autorizado a me enviar notificações por e-mail;El portal está autorizado a enviarme notificaciones por correo electrónico
+;Label;profile.newPassword;;Choose a password;Escolha uma senha;Elija una contraseña
+;Label;profile.checkNewPassword;;Re-enter password;Insira a senha novamente;Ingrese la contraseña nuevamente
+;Label;profile.password.tips;;Password tips;Dicas para a senha;consejos para seleccionar contraseña
+;Label;profile.password.strength;;password strength;força da senha;seguridad de la contraseña
+;Label;profile.password.tips.text;;The password should be 8 characters or longer with a combination of uppercase and lowercase , letters , number and symbols and should be different from last 5 passwords;A senha deve conter 8 caracteres ou mais, com uma combinação de letras maiúsculas e minúsculas, números e símbolos, e deve ser diferente das últimas cinco senhas.;La contraseña debe contener 8 caracteres o más, con una combinación de letras mayúsculas y minúsculas, números y símbolos, y debe ser diferente de las cinco últimas contraseñas.
+;Label;profile.password.incorrect;;The passwords you have entered do not match. Please try again.;As senhas inseridas não coincidem. Por favor, tente novamente.;Las contraseñas ingresadas no coinciden. Por favor, intente nuevamente.
+;Label;text.account.profile.updateProfileForm;;Save Updates;Salvar atualizações;Guardar cambios
+;Label;text.account.profile.instructionEditProfile;;Please use this form to update your personal details.;Utilize este formulário para atualizar seus dados pessoais.;Utilice este formulario para actualizar sus datos personales.
+;Label;profile.password.error;;Unable to update the password. The value provided for the new password does not meet the length, complexity, or history requirements of the Portal.;Não foi possível atualizar a senha. O valor inserido para a nova senha não cumpre com os requisitos de tamanho, complexidade ou histórico do Portal.;No ha sido posible actualizar la contraseña. La contraseña ingresada no cumple los requisitos de tamaño, complejidad o historial del Portal.
+;Label;profile.currentPassword.invalid;;Password is incorrect. Please try again.;A senha está incorreta. Tente novamente.;La contraseña está incorrecta. Intente nuevamente.
+;Label;contract.myContracts;;Contracts;Meus contratos;Mis contratos
+;Label;contract.contractNumber;;Contract Number;Número de contrato;Número de contrato
+;Label;contract.sortBy;;Sort By;Ordenar por;Ordenar por
+;Label;contract.showing;;Showing;Exibindo;Mostrando
+;Label;contract.searchBy;;Search by;Procurar por;Buscar por
+;Label;contract.filterBy;;Filter by;Filtrar por;Filtrar por
+;Label;contract.tenderNumber;;Tender Number;Número de proposta;Número de oferta
+;Label;contract.indirectCustomer;;Indirect Customer;Cliente indireto;Cliente indirecto
+;Label;contract.sortyByContractNumberDecreasing;;Contract Number - decreasing;Número de contrato - decrescente;Número de contrato - decreciente
+;Label;contract.sortyByContractNumberIncreasing;;Contract Number - increasing;Número de contrato - crescente;Número de contrato - creciente
+;Label;contract.sortyByDateNewestToOldest;;Date - newest to oldest;Data - mais recente para mais antigo;Fecha - descendente
+;Label;contract.sortyByDateOldestToNewest;;Date - oldest to newest;Data - mais antigo para mais recente;Fecha - ascendente
+;Label;contract.allContracts;;All contract types;Todos os tipos de contrato;Todos los tipos de contrato
+;Label;contract.bid;;BID;BID;Licitacion
+;Label;contract.Z19;;BID;BID;Licitacion
+;Label;contract.commercial;;Commercial Agreement;Acordo comercial;Acuerdo comercial
+;Label;contract.Z20;;Commercial Agreement;Acordo comercial;Acuerdo comercial
+;Label;contract.expirationDate;;Expiration Date;Data de validade;Fecha de vencimiento
+;Label;contract.creationDate;;Creation Date;Data de criação;Fecha de creación
+;Label;contract.contractType;;Contract Type;Tipo de contrato;Tipo de contrato
+;Label;contract.noRecordsMessage;;No data found for the given search criteria;Não há resultados para os critérios de busca utilizados;No hay resultados para los criterios de búsqueda utilizados
+;Label;contract.loadMore;;Load More;Carregar mais;Cargar más
+;Label;contract.ten;;10;10;10
+;Label;contract.twentyFive;;25;25;25
+;Label;contract.fifty;;50;50;50
+;Label;contract.hundred;;100;100;100
+;Label;contract.items;;Items;Itens;Artículos
+;Label;contract.itemPrice;;Item Price;Valor do item;Precio del artículo
+;Label;contract.unitOfMeasure;;Contract Unit of Measurement;Unidade de medida do contrato;Unidad de medida del contrato
+;Label;contract.contractQty;;Contract Qty;Quantidade do contrato;Cantidad del contrato
+;Label;contract.consumed;;Consumed;Consumida;Consumida
+;Label;contract.balance;;Balance;Saldo;Saldo
+;Label;contract.contractDetail;;Contract Detail;Detalhe do contrato;Detalle del Contrato
+;Label;contract.totalValue;;Total Value;Valor total;Valor total
+;Label;contract.consumedValue;;Consumed Value;Valor consumido;Valor consumido
+;Label;contract.contractBalance;;Contract Balance;Saldo do contrato;Saldo del contrato
+;Label;contract.sortyByIndirectCustomerIncreasing;;Indirect Customer - increasing;Cliente indireto - crescente;Cliente indirecto - creciente
+;Label;contract.sortyByIndirectCustomerDecreasing;;Indirect Customer - decreasing;Cliente indireto - decrescente;Cliente indirecto - decreciente
+;Label;contract.popup.regularOrder;;Regular Order(No Contract);Regular Order(No Contract);Regular Order(No Contract)
+;Label;contract.popup.contractPopUpMessage1;;You already have products in your shopping cart.;You already have products in your shopping cart.;You already have products in your shopping cart.
+;Label;contract.popup.contractPopUpMessage2;;If you select a new contract, the content of this shopping cart will be replaced by products that are part of this new contract.;If you select a new contract, the content of this shopping cart will be replaced by products that are part of this new contract.;If you select a new contract, the content of this shopping cart will be replaced by products that are part of this new contract.
+;Label;contract.popup.contractPopUpMessage3;;Do you confirm the selection of the contract:;Do you confirm the selection of the contract:;Do you confirm the selection of the contract:
+;Label;contract.button.search;;Search;Buscar;Buscar
+;Label;label.myAccount.replenishOrder.heading;;My Account;Minha conta;Mi cuenta
+;Label;label.myAccount.replenishOrder.replenishOrders;;Replenishment Orders;Pedidos de reabastecimento;Pedidos de reabastecimiento
+;Label;label.myAccount.replenishOrder.searchBy;;Search by:;Procurar por:;Buscar por:
+;Label;label.myAccount.replenishOrder.searchBy.option1;;Replenishment #;Número de reabastecimento;Reabastecimiento #
+;Label;label.myAccount.replenishOrder.searchBy.option2;;SKU;SKU;SKU
+;Label;label.myAccount.replenishOrder.sort.orderNo.increasing;;Order Number - decreasing;Número do pedido - decrescente;Numero de Pedido- decreciente
+;Label;label.myAccount.replenishOrder.sort.orderNo.decreasing;;Order Number - increasing;Número do pedido - crescente;Numero de Pedido- creciente
+;Label;label.myAccount.replenishOrder.sort.orderNo.date1;;Date - newest to oldest;Data - mais recente para mais antigo;Fecha - descendente
+;Label;label.myAccount.replenishOrder.sort.orderNo.date2;;Date - oldest to newest;Data - mais antigo para mais recente;Fecha - ascendente
+;Label;label.myAccount.replenishOrder.sort.orderNo.price1;;Price - low to high;Menor preço;Precio: Menor a mayor
+;Label;label.myAccount.replenishOrder.sort.orderNo.price2;;Price - high to low;Maior preço;Precio: Mayor a menor
+;Label;label.myAccount.replenishOrder.sort.status1;;All Statuses;Todos os status;Todos los estados
+;Label;label.myAccount.replenishOrder.sort.status2;;Canceled;Cancelado;Anulado
+;Label;label.myAccount.replenishOrder.sort.status3;;Active;Ativo;Activo
+;Label;label.myAccount.replenishOrder.button.pdf;;PDF;PDF;PDF
+;Label;label.myAccount.replenishOrder.button.excel;;Excel;Excel;Excel
+;Label;label.myAccount.replenishOrder.showing1;;Showing:;Exibindo:;Mostrando:
+;Label;label.myAccount.replenishOrder.showing2;;10;10;10
+;Label;label.myAccount.replenishOrder.showing3;;25;25;25
+;Label;label.myAccount.replenishOrder.showing4;;50;50;50
+;Label;label.myAccount.replenishOrder.showing5;;100;100;100
+;Label;label.myAccount.replenishOrder.replenishNo;;Replenishment Number;Número de reabastecimento;Número de reabastecimiento
+;Label;label.myAccount.replenishOrder.startDate;;Start Date;Data de início;Fecha de inicio
+;Label;label.myAccount.replenishOrder.schedule;;Schedule;Agendar;Programar
+;Label;label.myAccount.replenishOrder.nextOrderDate;;Next Order Date;Próxima data do pedido;Próxima fecha de pedido
+;Label;label.myAccount.replenishOrder.totalOrder;;Total Order;Pedido total;Total Orden
+;Label;label.myAccount.replenishOrder.cancelReplenishment;;Cancel Replenishment;Cancelar reabastecimento;Anular reabastecimiento
+;Label;label.myAccount.replenishOrderDetails.heading;;Replenishment Order Detail;Detalhe do pedido de reabastecimento;Detalle del Pedido programado
+;Label;label.myAccount.replenishOrderDetails.orderNo;;Order number:;Número do pedido:;Numero de Orden
+;Label;label.myAccount.replenishOrderDetails.overallStatus;;Overall Status:;Status geral:;Estado general:
+;Label;label.myAccount.replenishOrderDetails.overallStatus.active;;Active;Ativo;Activo
+;Label;label.myAccount.replenishOrderDetails.overallStatus.cancelled;;Canceled;Cancelado;Anulado
+;Label;label.myAccount.replenishOrderDetails.deliveryStatus;;Delivery Status:;Status de entrega:;Estado de entrega:
+;Label;label.myAccount.replenishOrderDetails.client;;Client:;Cliente:;Cliente:
+;Label;label.myAccount.replenishOrderDetails.placedOn;;Placed on:;Feito em:;Hecho el:
+;Label;label.myAccount.replenishOrderDetails.trackNo;;Tracking number:;Número de rastreamento:;Número de seguimiento:
+;Label;label.myAccount.replenishOrderDetails.notaFiscal;;Nota Fiscal:;Nota Fiscal:;Nota Fiscal:
+;Label;label.myAccount.replenishOrderDetails.downloadNfe;;Download invoice;Baixar nota fiscal;Descargar factura
+;Label;label.myAccount.replenishOrderDetails.replenishSchedule;;Replenishment Schedule:;Agenda de reabastecimento:;Programa de reabastecimiento:
+;Label;label.myAccount.replenishOrderDetails.deliveryDetail;;Delivery Detail:;Detalhes da entrega:;Detalles de la entrega:
+;Label;label.myAccount.replenishOrderDetails.cancelReplenishment;;Cancel Replenishment;Cancelar reabastecimento;Anular reabastecimiento
+;Label;label.myAccount.replenishOrderDetails.estimatedDeliveryDate;;Estimated delivery date:;Data estimada de entrega:;Fecha de entrega estimada:
+;Label;label.myAccount.replenishOrderDetails.productColumn1;;Items;Itens;Artículos
+;Label;label.myAccount.replenishOrderDetails.productColumn2;;Quantity;Quantidade;Cantidad
+;Label;label.myAccount.replenishOrderDetails.productColumn3;;Date;Data;Fecha
+;Label;label.myAccount.replenishOrderDetails.productColumn4;;Unit Price;Valor unitário;Precio unitario
+;Label;label.myAccount.replenishOrderDetails.productColumn5;;Total Price;Valor total;Importe total
+;Label;label.myAccount.replenishOrderDetails.productColumn6;;Status;Status;Estado
+;Label;label.myAccount.replenishOrderDetails.loadMore;;Load more products;Carregar mais produtos;Cargar más productos
+;Label;label.myAccount.replenishOrderDetails.address;;Address:;Endereço:;Dirección:
+;Label;label.myAccount.replenishOrderDetails.loadMoreNoOfProducts;;products from;produtos de;productos desde
+;Label;label.myAccount.replenishOrderDetails.totalNetPrice;;Total Net Price:;Preço líquido total:;Precio neto total:
+;Label;label.myAccount.replenishOrderDetails.shippingCost;;Shipping Costs:;Custos de envio:;Costos de envío:
+;Label;label.myAccount.replenishOrderDetails.taxes;;Taxes:;Imposto:;Impuesto:
+;Label;label.myAccount.replenishOrderDetails.totalGrossPrice;;Total Gross Price:;Preço bruto total:;Precio bruto total:
+;Label;label.myAccount.cancelReplenishment.header;;Confirm Removal of Replenishment Schedule;Confirmar exclusão do cronograma de reabastecimento;Confirmar eliminación del programa de reabastecimiento
+;Label;label.myAccount.cancelReplenishment.text;;End Scheduled Order Now. Are you sure you want to stop automatic replanishment of this order?;Cancelar pedidos agendados. Deseja realmente cancelar o reabastecimento automáticco deste pedido?;Anular pedidos programados. ¿Seguro que desea anular el reabastecimiento automáticco de este pedido?
+;Label;label.myAccount.cancelReplenishment.button.yes;;Yes;Sim;Sí
+;Label;label.myAccount.cancelReplenishment.button.no;;No;Não;No
+;Label;label.myAccount.replenishOrder.sortBy;;Sort By;Ordenar por;Ordenar por
+;Label;label.myAccount.replenishOrder.sortBy;;Sort By;Ordenar por;Ordenar por
+;Label;label.myAccount.replenishOrder.status;;Status;Status;Estado
+;Label;label.myAccount.replenishOrder.noRecords;;No data found for the given search criteria;Não há resultados para os critérios de busca utilizados;No hay resultados para los criterios de búsqueda utilizados
+;Label;password.forgotPassword.definePassword;;Define your password:;Defina sua senha:;Elija su contraseña
+;Label;password.forgotPassword.enterEmail;;To start the password recovery process, please enter your user email:;Para iniciar o processo de recuperação de senha, insira seu e-mail de usuário:;Para empezar el proceso de recuperación de contraseña, ingrese su correo electrónico de usuario:
+;Label;password.forgotPassword.userEmail;;User Email:;E-mail de usuário:;Correo electrónico de usuario:
+;Label;password.forgotPassword.respondToSecretQuestions;;Answer your secret questions correctly;Responda às perguntas secretas corretamente;Responda las preguntas secretas
+;Label;password.forgotPassword.star;;*;*;*
+;Label;password.forgotPassword.colon;;:;:;:
+;Label;password.forgotPassword.pleaseSelectQuestion;;Please select a question;Por favor, selecione uma pergunta;Por favor, seleccione una pregunta
+;Label;password.forgotPassword.emptyQuestionAndAnswer;;Please select your secret question and answer properly;Please select your secret question and answer properly;Please select your secret question and answer properly
+;Label;password.forgotPassword.redefinePassword;;Redefine your password;Redefina sua senha;Redefina su contraseña
+;Label;password.forgotPassword.retypePassword;;Retype your password;Digite sua senha novamente;Escriba su contraseña nuevamente
+;Label;password.forgotPassword.redefineSuccess;;Your password has been defined successfully;Sua senha foi definida corretamente;Su contraseña ha sido definida correctamente
+;Label;password.forgotPassword.close;;Close;Fechar;Cerrar
+;Label;password.forgotPassword.next;;Next;Próximo;Siguiente
+;Label;password.forgotPassword.redefine;;Redefine password;Redefina a senha;Redefina su contraseña
+;Label;password.forgotPassword.emailError;;The email address you entered does not match any email addresses in our records. Please try again!;O endereço de e-mail que você inseriu não corresponde a nenhum endereço de e-mail em nossos registros. Tente novamente.;El correo electrónico que ingresado no corresponde a ningún correo electrónico en nuestros registros. Intente nuevamente.
+;Label;password.forgotPassword.questionsError;;Select correctly your secret question;Selecione corretamente sua pergunta secreta;Seleccione correctamente su pregunta secreta
+;Label;password.forgotPassword.answersError;;You have entered an incorrect answer;A resposta digitada está incorreta;La respuesta ingresada es incorrecta
+;Label;password.forgotPassword.passwordError1;;Enter a password;Insira uma senha;Ingrese una contraseña
+;Label;password.forgotPassword.passwordError2;;The passwords you have entered do not match. Please try again.;As senhas inseridas não coincidem. Por favor, tente novamente.;Las contraseñas ingresadas no coinciden. Por favor, intente nuevamente.
+;Label;password.forgotPassword.passwordError3;;Password does not meet complexity requirements.;A senha não cumpre os requerimentos de complexidade.;La contraseña no cumple los requisitos de complejidad.
+;Label;password.forgotPassword.blockedError;;You have exceeded the maximum number of attempts to answer your secret question. Please try again in 15 minutes.;Você ultrapassou o número máximo de tentativas para responder à pergunta secreta. Aguarde 15 minutos e tente novamente.;Usted ha excedido el número máximo de intentos para contestar la pregunta secreta. Espere 15 minutos e intente otra vez.
+;Label;password.forgotPassword.answerSuccess;;All your answers are correct!;Todas as respostas estão corretas!;Todas las respuestas están correctas
+;Label;login.page.user.label;;User login:;Login de usuário:;Usuario:
+;Label;login.page.password.label;;Password:;Senha:;Contraseña:
+;Label;login.page.forgot.password.label;;Forgot your password?;Esqueceu sua senha?;¿Ha olvidado su contraseña?
+;Label;login.page.save.username.label;;Save my username;Salvar meu nome de usuário;Recordar mi usuario
+;Label;login.page.button.label;;Login;Login;Ingresar
+;Label;login.page.language.label;;Language:;Idioma:;Idioma:
+;Label;login.page.new.user.label;;New User?;Novo usuário?;¿Nuevo usuario?
+;Label;login.page.signup.label;;Sign Up;Inscreva-se;Regístrese
+;Label;login.error.account.disbaled;;Your account is now blocked;Sua conta está bloqueada;Su cuenta está bloqueada
+;Label;login.warn.account.disabled;;Your account will be blocked after the next failed login attempt.;Sua conta será bloqueada após a próxima tentativa de acesso incorreta.;Su cuenta será bloqueada en el próximo intento de acceso incorrecto
+;Label;login.error.account.not.found.title;;Username or Password is incorrect. Please try again.;Nome de usuário ou senha incorreto. Tente novamente.;Nombre de usuario o contraseña incorrecto. Intente nuevamente.
+;Label;login.error.invalid.country;;You are trying to reach the website for another region. Please check it and try again.;Você está tentando acessar o site para outra região. Por favor, verifique o problema e tente novamente.;Usted está intentando acceder al sitio para otra región. Por favor, verifique el problema e intente nuevamente.
+;Label;login.error.new.user.account.disbaled;;Your account is still being created;Sua conta ainda está sendo criada;Su cuenta todavía está en proceso de creación
+;Label;account.page.title;;My Account;Minha conta;Mi cuenta
+;Label;account.page.myprofile;;My Profile;Meu perfil;Mi perfil
+;Label;account.page.updatepersonalinfo;;Update personal information;Atualizar informações pessoais;Actualizar informacion personal
+;Label;account.page.changepassword;;Change password;Alterar senha;Modificar contraseña
+;Label;account.page.updatesecretques;;Update secret questions;Atualizar perguntas secretas;Actualizar preguntas secretas
+;Label;account.page.vieworderhistory;;View order history;Ver histórico de pedidos;Ver historial de pedidos
+;Label;account.page.templateorders;;Order Template;Modelo de pedido;Modelo de pedido
+;Label;account.page.replenishorders;;Replenishment Scheduled Orders;Pedidos de reabastecimento agendados;Pedidos de reabastecimiento programados
+;Label;account.page.mycontracts;;My Contracts;Meus contratos;Mis contratos
+;Label;account.page.viewcontracts;;View My Contracts;Ver Meus contratos;Ver Mis contratos
+;Label;account.page.reports;;Reports;Relatórios;Reportes
+;Label;account.page.reports.upload;;Upload Reports;Fazer upload de relatórios;Subir informes
+;Label;account.page.downloadreports;;Download reports;Baixar relatórios;Descargar reportes
+;Label;account.page.crosreftable;;Cross Reference Table;Tabela de referência cruzada;Tabla de referencia cruzada
+;Label;account.page.viewcrosreftable;;View your cross reference table;Ver sua tabela de referência cruzada;Ver su tabla de referencia cruzada
+;Label;account.page.addbook;;Address Book;Catálogo de endereços;Libreta de direcciones
+;Label;account.page.viewaddbook;;View your address book;Visualizar seu catálogo de endereços;Ver su libreta de direcciones
+;Label;account.page.usermanagement;;User Management;Administração do usuário;Administracion de usuarios
+;Label;account.page.adduser;;Add User;Adicionar usuário;Agregar usuario
+;Label;account.page.edituser;;Edit User;Editar usuário;Editar usuario
+;Label;account.page.orderhistory;;Order History;Histórico de pedidos;Historial de pedidos
+;Label;text.account.orderDetail;;Order detail;Detalhes do pedido;Detalles del pedido
+;Label;addressbook.page.title;;Address Book;Catálogo de endereços;Libreta de direcciones
+;Label;addressbook.page.show;;Showing;Exibindo;Mostrando
+;Label;addressbook.address;;Address;Endereço;Domicilio
+;Label;addressbook.address.name;;Address name;Nome do endereço;Nombre de la dirección
+;Label;addressbook.address.street;;Address street;Rua;Calle
+;Label;addressbook.address.city;;City;Cidade;Ciudad
+;Label;addressbook.address.state;;State;Estado;Estado
+;Label;addressbook.address.country;;Country;País;País
+;Label;addressbook.address.zipcode;;ZIP Code;Código postal;Código postal
+;Label;template.templateOrders;;Order Template;Modelo de pedido;Modelo de pedido
+;Label;template.successDeleteMessage;;Your order have been deleted successfully!;Seu pedido foi excluído corretamente;Su pedido ha sido suprimido correctamente
+;Label;template.templateNumber;;Template Number;Número de modelo;Número de modelo
+;Label;template.sku;;SKU;SKU;SKU
+;Label;template.download;;Download;Fazer download;Descargar
+;Label;template.pdf;;PDF;PDF;PDF
+;Label;template.excel;;Excel;Excel;Excel
+;Label;template.sortBy;;Sort By;Ordenar por;Ordenar por
+;Label;template.sortByTemplateNoInc;;Template Number - increasing;Número de modelo - crescente;Nro de Plantilla- creciente
+;Label;template.sortByTemplateNoDesc;;Template Number - decreasing;Número de modelo - decrescente;Nro de Plantilla- decreciente
+;Label;template.sortByTemplateDateNew;;Date - newest to oldest;Data - mais recente para mais antigo;Fecha - descendente
+;Label;template.sortByTemplateDateOld;;Date - oldest to newest;Data - mais antigo para mais recente;Fecha - ascendente
+;Label;template.showing;;Showing;Exibindo;Mostrando
+;Label;template.templateItem;;Total Items;Total de itens;Total de artículos
+;Label;template.templateQuantity;;Total Quantity;Quantidade total;Cantidad total
+;Label;template.noTemplateMessage;;No data found for the given search criteria;Não há resultados para os critérios de busca utilizados;No hay resultados para los criterios de búsqueda utilizados
+;Label;template.delete;;Delete;Excluir;Eliminar
+;Label;template.templateOrderDetail;;Template Order Detail;Detalhe do modelo de pedido;Detalle de modelo de pedido
+;Label;template.addToCart;;Add products to cart;Adicionar produtos ao carrinho;Agregar productos al carrito
+;Label;template.loadMoreProducts;;Load more products;Carregar mais produtos;Cargar más productos
+;Label;template.products;;products;produtos;productos
+;Label;template.items;;Items;Itens;Artículos
+;Label;template.templateQuantity;;Quantity;Quantidade;Cantidad
+;Label;template.itemPrice;;Item Price;Valor do item;Precio del artículo
+;Label;template.total;;Total;Total;Total
+;Label;template.totalOrder;;Total Order;Pedido total;Total Orden
+;Label;template.removalOfTemplate.heading;;Confirm Removal of Template Order;Confirmar exclusão do modelo de pedido;Confirmar la eliminación del modelo de pedido
+;Label;template.removalOfTemplate.alertMsg;;Are you sure you want to delete this order?;Deseja realmente excluir este pedido?;¿Esta seguro que desea eliminar este pedido?
+;Label;user.delete;;Delete User;Excluir usuário;Eliminar usuario
+;Label;user.sort;;Sort by:;Ordenar por:;Ordenar por:
+;Label;user.sort.name;;Name;Nome;Nombre
+;Label;user.delete.msg1;;Doing this will exclude the user;Esta ação excluirá o usuário;Esta acción eliminará al usuario
+;Label;user.delete.msg2;;from your users and he will not be able to log in and place order in the future. Do you want to proceed?;da sua lista de usuários, e ele não poderá acessar e fazer pedidos no futuro. Deseja continuar?;de su lista de usuarios, y ya no podrá acceder y hacer pedidos en el futuro. ¿Desea continuar?
+;Label;user.disable;;Disable User;Desabilitar usuário;Deshabilitar usuario
+;Label;user.disable.msg1;;Doing this will prevent the user;Esta ação não permitirá que o usuário;Esta acción no permitirá que el usuario
+;Label;user.disable.msg2;;from logging and placing order. Do you want to proceed?;se conecte e faça um pedido. Deseja continuar?;inicie sesión y haga un pedido. ¿Desea continuar?
+;Label;user.firstName;;First Name;Primeiro nome;Nombre
+;Label;user.lastName;;Last Name;Sobrenome;Apellido
+;Label;user.email;;Email;E-mail;Correo electrónico
+;Label;user.firstName.invalid;;This field cannot be left blank;Este campo deve ser preenchido;Este campo debe completarse
+;Label;user.lastName.invalid;;This field cannot be left blank;Este campo deve ser preenchido;Este campo debe completarse
+;Label;user.email.invalid;;This field cannot be left blank;Este campo deve ser preenchido;Este campo debe completarse
+;Label;user.role;;User Profile;Perfil do usuário;Perfil de usuario
+;Label;profile.langString;;Language;Idioma;Idioma
+;Label;user.create.emailSubject;;Create user;Criar usuário;Crear usuario
+;Label;profile.mobileNumber;;Create user;Criar usuário;Crear usuario
+;Label;profile.phoneNumber;;Create user;Criar usuário;Crear usuario
+;Label;profile.currentPassword;;Current password;Senha atual;Contraseña actual
+;Label;user.disable.button;;Disable User;Desabilitar usuário;Deshabilitar usuario
+;Label;user.enable.button;;Enable user;Habilitar usuário;Habilitar usuario
+;Label;user.add.top.label;;Please use this form to create a new user. All fields are required.;Utilize este formulário para criar um novo usuário. Todos os campos são obrigatórios.;Utilice este formulario para crear un nuevo usuario. Todos los campos son obligatorios.
+;Label;user.edit.top.label;;Please use this form to edit an user.;Utilize este formulário para editar um usuário.;Utilice este formulario para editar un usuario.
+;Label;user.add.arrow.header;;Add User;Adicionar usuário;Agregar usuario
+;Label;user.edit.arrow.header;;Edit User;Editar usuário;Editar usuario
+;Label;user.loadmore;;Load more users;Carregar mais usuários;Cargar más usuarios
+;Label;user.email.exists;;This email address already exists;Esse endereço de e-mail já existe;La dirección de correo electrónico ya existe
+;Label;misc.services.province;;Province;Estado;Provincia
+;Label;misc.services.header;;Services;Serviços;Servicios
+;Label;misc.services.addIndirectCustomer;;Add Indirect Customer;Adicionar cliente indireto;Agregar cliente indirecto
+;Label;misc.services.consignmentIssue;;Consignment Issue;Retirada de artigos em consignação;Reposicion de Consignacion
+;Label;misc.services.integralServices;;Integral Services;Serviços integrais;Servicios integrales
+;Label;misc.services.serviceForm;;Service Form (OCD);Formulário de serviço (OCD);Formulario de servicio (OCD)
+;Label;misc.services.downloadPharmaPriceList;;Download Pharma Price List;Baixar lista de preços da Farma;Descargar lista de precios de Farma
+;Label;misc.services.download;;Download;Fazer download;Descargar
+;Label;misc.services.pharmaPriceList;;Pharma Price List;Lista de preços da Farma;Lista de precios de Farma
+;Label;misc.services.pharmaPriceList.error.text;;Sorry, the Pharma Price List is not available to download. Please try again later.;Sorry, the Pharma Price List is not available to download. Please try again later.;Sorry, the Pharma Price List is not available to download. Please try again later.
+
+;Label;misc.services.serviceForm;;Service Form (OCD);Formulário de serviço (OCD);Formulario de servicio (OCD)
+;Label;misc.services.synthes;;Orthopedics;Ortopedia;Ortopedia
+;Label;misc.services.requiredFileds;;(*) - Required fields;(*) - Campos obrigatórios;(*) - Campos obligatorios
+;Label;misc.services.addIndirectCustomerDesc;;Please use this form to request the addition of a new indirect customer.;Utilize este formulário para solicitar a adição de um novo cliente indireto.;Utilice este formulario para solicitar la adición de un nuevo cliente indirecto.
+;Label;misc.services.success;;Your request has been sent successfully.;Sua solicitação foi enviada corretamente.;Su solicitud ha sido enviada correctamente.
+;Label;misc.services.failure;;Your request could not be sent. Please try again.;Your request could not be sent. Please try again.;Your request could not be sent. Please try again.
+;Label;misc.services.star;;*;*;*
+;Label;misc.services.colon;;:;:;:
+;Label;misc.services.customerName;;Customer Name;Nome do cliente;Nombre de cliente
+;Label;misc.services.noBlankError;;This field cannot be left blank;Este campo deve ser preenchido;Este campo debe completarse
+;Label;misc.services.cnpj;;CNPJ;CNPJ;CNPJ
+;Label;misc.services.cpf;;CPF;CPF;CPF
+;Label;misc.services.taxId;;Tax ID;ID de imposto;ID de impuesto
+;Label;misc.services.physicianOrPatient;;Please indicate Physician or Patient;Indique Médico ou Paciente;Indique Médico o Paciente
+;Label;misc.services.typeOfCustomer;;Type of customer;Tipo de cliente;Tipo de cliente
+;Label;misc.services.selectOne;;Select one;Selecione um;Seleccione uno
+;Label;misc.services.type;;type;tipo;tipo
+;Label;misc.services.publicHospital;;Public Hospital;Hospital Público;Hospital Público
+;Label;misc.services.hospital;;Hospital;Hospital;Hospital
+;Label;misc.services.laboratory;;Laboratory;Laboratório;Laboratorio
+;Label;misc.services.public;;Public;Público;Público
+;Label;misc.services.private;;Private;Particular;Privado
+;Label;misc.services.slash;;/;/;/
+;Label;misc.services.state;;State;Estado;Estado
+;Label;misc.services.city;;City;Cidade;Ciudad
+;Label;misc.services.address;;Address;Endereço;Domicilio
+;Label;misc.services.townOrNeighborhood;;Town / Neighborhood;Cidade / Bairro;Ciudad / Barrio
+;Label;misc.services.zip;;ZIP Code;Código postal;Código postal
+;Label;misc.services.back;;Back;Voltar;Volver
+;Label;misc.services.send;;Send;Enviar;Enviar
+;Label;misc.services.consignmentIssueDesc;;Please use this form to send your Consignment Issue.;Utiliza este formulário para enviar sua Retirada de artigos em consignação.;Utilice este formulario para enviar su informe de consumo de consignación.
+;Label;misc.services.consignmentIssueSuccess;;Your consigment issue was sent successfully.;Sua retirada de artigos em consignação foi enviada corretamente.;La toma de artículos en consignación se ha enviado correctamente.
+;Label;misc.services.contactEmail;;Contact Email;E-mail de contato;Correo electrónico de contacto
+;Label;misc.services.contactPhone;;Contact Phone;Telefone de contato;Teléfono de contacto
+;Label;misc.services.contactName;;Contact Name;Nome do contato;Nombre del contacto
+;Label;misc.services.soldTo;;Sold To;Vendido para;Vendido a
+;Label;misc.services.specialStockPartner;;Special Stock Partner;Parceiro de administração de estoque especial;Responsable de stock especial
+;Label;misc.services.orderReason;;Order Reason;Motivo do pedido;Motivo de pedido
+;Label;misc.services.date;;Date;Data;Fecha
+;Label;misc.services.poNumber;;PO Number;Número da PO;Numero de Orden de Compra
+;Label;misc.services.replenishmentOrFillUpDoc;;Replenishment / Fill Up Billing Document;Documento de faturamento de Reabastecimento/Reposição;Documento de facturación de Reabastecimiento/Reposición
+;Label;misc.services.replenishmentOrFillUpNFE;;Replenishment / Fill Up NFe:;NFe de Reabastecimento/Reposição;NFe de Reabastecimiento/Reposición
+;Label;misc.services.patient;;Patient:;Paciente:;Paciente:
+;Label;misc.services.doctor;;Doctor:;Médico:;Médico:
+;Label;misc.services.item;;Item;Item;Artículo
+;Label;misc.services.qty;;Qty;Qtde;Cantidad
+;Label;misc.services.uom;;UoM;UoM;Unidad de Medida
+;Label;misc.services.batchNumber;;Batch Number;Número de lote;Número de lote
+;Label;misc.services.folio;;Folio;Fólio;Folio
+;Label;misc.services.price;;Price;Preço;Precio
+;Label;misc.services.currency;;Currency;Moeda;Moneda
+;Label;misc.services.enter;;Enter;Inserir;Ingresar
+;Label;misc.services.addMoreLines;;[+] Add More Lines;[+] Adicionar mais linhas;[+] Añadir más líneas
+;Label;misc.services.removeLines;;[-] Remove Lines;[-] Remover linhas;[-] Suprimir líneas
+;Label;misc.services.consignmentRegisterError;;You must inform at least one item and fill in all information related to it in order to proceed.;Você deve informar pelo menos um item e preencher todas as informações relacionadas para poder prosseguir.;Usted debe informar por lo menos un artículo y rellenar toda la información relacionada para poder proceder.
+;Label;misc.services.selectDate;;Select a date;Selecione uma data;Seleccione una fecha
+;Label;misc.services.pleaseSelectDate;;Please select a date;Selecione uma data;Seleccione una fecha
+;Label;misc.services.procedureReport;;Procedure Report;Relatório de procedimento;Informe de procedimiento
+;Label;misc.services.integralServicesDesc;;Please use this form to send the Integral Services Procedure Report.;Utilize este formulário para enviar o Relatório de procedimento de serviços integrais.;Utilice este formulario para enviar el Informe de procedimiento de servicios integrales.
+;Label;misc.services.integralServicesSuccess;;Your integral services procedure report was sent successfully.;Seu relatório de procedimento de serviços integrais foi enviado corretamente;Su informe de procedimiento de servicios integrales se ha enviado correctamente
+;Label;misc.services.shipTo;;Ship To;Enviar para;Enviar a
+;Label;misc.services.period;;Period;Período;Período
+;Label;misc.services.to;;To;Até;Hasta
+;Label;misc.services.code;;Code;Código;Código
+;Label;misc.services.procedureCode;;Procedure Code;Código de procedimento;Código de procedimiento
+;Label;misc.services.jnj;;J&J;J&J;J&J
+;Label;misc.services.procedureDesc;;Procedure Description;Descrição do procedimento;Descripción del procedimiento
+;Label;misc.services.procedureType;;Procedure Type;Tipo de procedimento;Tipo de procedimiento
+;Label;misc.services.addGroup;;[+] Add One More Group;[+] Adicionar outro grupo;[+] Añadir otro grupo
+;Label;misc.services.removeGroup;;[-] Remove Group;[-] Remover grupo;[-] Suprimir grupo
+;Label;misc.services.serviceFormDesc;;Please use this form to request service for OCD.;Utilize este formulário para solicitar serviço para OCD.;Utilice este formulario para solicitar servicio para OCD.
+;Label;misc.services.serviceFormSuccess;;Your Service Form (OCD) was sent successfully.;Seu formulário de serviço (OCD) foi enviado corretamente.;Su formulario de Servicio Tecnico ha sido enviado
+;Label;misc.services.customerInformation;;Customer Information;Informações do cliente;Información del cliente
+;Label;misc.services.phone;;Phone;Telefone;Teléfono
+;Label;misc.services.email;;Email;E-mail;Correo electrónico
+;Label;misc.services.additionalContact;;Additional Contact:;Contato adicional:;Contacto adicional:
+;Label;misc.services.equipmentInformation;;Equipment Information;Informações do equipamento;Información del equipo
+;Label;misc.services.model;;Model;Modelo;Modelo
+;Label;misc.services.serialNumber;;Serial Number;Número de série;Número de serie
+;Label;misc.services.eventDate;;Event Date;Data do evento;Fecha del evento
+;Label;misc.services.errorCode;;Error Code;Código de erro;Código de error
+;Label;misc.services.eventDescription;;Event Description;Descrição do evento;Descripción del evento
+;Label;misc.services.synthesDesc;;Please use this form to request Synthes surgery.;Utilize este formulário para solicitar cirurgia Synthes.;Utilice este formulario para solicitar cirugía Synthes.
+;Label;misc.services.synthesSuccess;;Your Synthes Form has been sent successfully.;Seu formulário Synthes foi enviado corretamente.;Su formulario de cirugia ortopedica ha sido enviado
+;Label;misc.services.receiverInfo;;Receiver Information;Informações do receptor;Información del receptor
+;Label;misc.services.receiverInfoDesc;;(Please indicate who will receive the Synthes form);(Indique quem receberá o formulário Synthes);(Indique quién recibirá el formulario Synthes)
+;Label;misc.services.name;;Name;Nome;Nombre
+;Label;misc.services.surgeryInfo;;Surgery Information;Informações sobre a cirurgia;Información sobre la cirugía
+;Label;misc.services.surgeryDate;;Surgery Date;Data da cirurgia;Fecha de la cirugía
+;Label;misc.services.surgeryHour;;Surgery Time;Horário da cirurgia;Horario de la cirugía
+;Label;misc.services.physicianName;;Physician Name:;Nome do médico;Nombre del médico
+;Label;misc.services.id;;ID;ID;ID
+;Label;misc.services.requestedBy;;Requested By;Solicitado por;Solicitado por
+;Label;misc.services.reserveDate;;Reserve Date:;Data de reserva;Fecha de reserva
+;Label;misc.services.reserveHour;;Reserve Time:;Horário de reserva;Horario de reserva
+;Label;misc.services.customerSalesOrder;;Customer Sales Order;Pedido de vendas do cliente;Pedido de ventas del cliente
+;Label;misc.services.surgeryClassification;;Surgery Classification;Classificação da cirurgia;Clasificación de la cirugía
+;Label;misc.services.surgeryEqpClassification;;Surgery Equipment Classification:;Classificação do equipamento da cirurgia:;Clasificación del equipo de la cirugía:
+;Label;misc.services.material;;Material;Material;Material
+;Label;misc.services.description;;Description;Descrição;Descripción
+;Label;misc.services.reference;;Reference;Referência;Referencia
+;Label;misc.services.expectedDeliveryDate;;Expected Delivery Date;Data prevista de entrega;Fecha estimada de entrega
+;Label;misc.services.expectedDeliveryHour;;Expected delivery time;Horário previsto de entrega;Horario de entrega previsto
+;Label;misc.services.notesObservations;;Notes and Remarks:;Anotações e observações:;Notas y observaciones:
+;Label;misc.services.insertHourError;;Please insert hour;Insira o horário;Ingrese el horario
+;Label;misc.services.billTo;;Bill To;Faturar para;Facturar a
+;Label;misc.services.invalidEmailError;;Please enter a valid email address.;Insira um endereço de e-mail válido.;Ingrese una dirección de correo electrónico válida.
+;Label;misc.services.invalidNumberError;;Please enter a valid number.;Insira um número válido.;Ingrese un número válido.
+;Label;misc.services.customerPhone;;Customer Phone;Telefone do cliente;Teléfono del cliente
+;Label;misc.services.customer;;Customer;Cliente;Cliente
+;Label;misc.services.country;;Country;País;País
+;Label;help.help.header;;Help;Help;Help
+;Label;help.faq.header;;FAQ;Perguntas frequentes;Preguntas frecuentes
+;Label;help.faq.new.portal;;New Portal;Novo Portal;Nuevo Portal
+;Label;help.faq.place.order;;Place Order;Fazer pedido;Realizar pedido
+;Label;help.faq.order.status;;Order Status;Status do pedido;Estado del pedido
+;Label;help.faq.bids;;BIDs;BIDs;Licitaciones
+;Label;help.faq.contact.us;;Contact Us;Entre em contato conosco;Contáctenos
+;Label;help.faq.call.us;;Call Us;Entre em contato por telefone;Contáctenos por teléfono
+;Label;help.faq.subject.field;;Subject:;Assunto:;Asunto:
+;Label;help.faq.subject.selection;;Select a subject;Selecione um assunto;Seleccione un asunto
+;Label;help.faq.error.msg;;Please fill in the fields indicated in red;Preencha os campos indicados em vermelho;Rellene los campos indicados en colorado
+;Label;help.faq.place.order;;Place Order;Fazer pedido;Realizar pedido
+;Label;help.faq.tracking.order;;Tracking Order;Rastreamento do pedido;Seguimiento del pedido
+;Label;help.faq.bid.opportunity;;BID Opportunity;Oportunidade BID;Opertunidad de Licitacion
+;Label;help.faq.bid.order;;BID Order;Pedido BID;Pedido de Licitacion
+;Label;help.faq.bid.update;;BID Update;Atualização BID;Actualizacion de Licitacion
+;Label;help.faq.account.management;;Account Management;Gerenciamento da conta;Administración de la cuenta
+;Label;help.faq.other.questions;;Other questions;Outras perguntas;Otras preguntas
+;Label;help.faq.order.number;;Order number:;Número do pedido:;Numero de Orden
+;Label;help.faq.message;;Message:;Mensagem:;Mensaje:
+;Label;help.faq.success.message;;Your message has been sent successfully.;Sua mensagem foi enviada corretamente.;Su mensaje ha sido enviado correctamente.
+;Label;help.faq.thanks.message;;Thanks for contacting us.;Agradecemos seu contato.;Gracias por su mensaje.
+;Label;help.faq.send.message.again;;Send another message;Enviar outra mensagem;Enviar otro mensaje
+;Label;help.faq.need.assistance;;Need immediate Customer Support?;Precisa de ajuda?;¿Necesita ayuda?
+;Label;help.faq.medical;;Medical:;Medical:;Medical:
+;Label;help.faq.pharma;;Pharma:;Farma:;Farma:
+;Label;common.label.yes;;Yes;Sim;Sí
+;Label;common.label.no;;No;Não;No
+;Label;popup.close;;Close;Fechar;Cerrar
+;Label;home.sap;;SAP Number;Número SAP;Número SAP
+;Label;home.lastPurchased;;Last purchased order;Último pedido comprado;Ultimo pedido realizado
+;Label;home.createOrderBy;;Create your order by;Criar pedido por;Crear pedido por
+;Label;home.multipleOf;;multiple of;múltiplos de;múltiples de
+;Label;home.loadMoreProduct;;Load more products;Carregar mais produtos;Cargar más productos
+;Label;home.order;;Order;Pedido;Pedido
+;Label;home.scheduledOrder;;Scheduled Orders;Pedidos agendados;Pedidos programados
+;Label;home.viewOrders;;View all orders;Ver todos os pedidos;Ver todos los pedidos
+;Label;home.inProgress;;In Progress;Em andamento;En curso
+;Label;home.viewScheduleOrders;;View all scheduled orders;Ver todos os pedidos agendados;Ver todos los pedidos programados
+;Label;home.quickSearchAddToCart;;Quick search and adding to cart;Para buscar rapidamente e adicionar ao carrinho;Para buscar rápidamente y añadir al carrito
+;Label;home.useTabButtonForQuickSearch;;You can use the TAB button to insert items more quickly;Você pode usar o botão TAB para inserir itens com mais rapidez;Usted puede usar el botón TAB para agregar artículos con mayor rapidez
+;Label;home.addProductFromCart;;Adding products from a contract;Para adicionar produtos de um contrato;Para añadir productos de un contrato
+;Label;home.ContractNumber;;Contract Number;Número de contrato;Número de contrato
+;Label;home.tender;;Tender;Proposta;Oferta
+;Label;home.viewAllContract;;View all contract;Visualizar todo o contrato;Visualizar todo el contrato
+;Label;home.placeOrderFromSaveTemplate;;Place an order from a saved template;Fazer um pedido a partir de um modelo salvo;Realizar un pedido a partir de un modelo guardado
+;Label;home.orderNumber;;Order Number;Número do pedido;Numero de Orden
+;Label;home.items;;Items;Itens;Artículos
+;Label;home.viewAllSavedOrder;;View all saved orders;Ver todos os pedidos salvos;Ver todos los pedidos guardados
+;Label;home.loadingAjax;;LOADING;CARREGANDO;CARGANDO
+;Label;error.page.need.help.label;;Need help?;Precisa de ajuda?;¿Necesita ayuda?
+;Label;error.page.header;;Contact Us;Entre em contato conosco;Contáctenos
+;Label;error.page.not.displayed.label;;The page cannot be displayed;A página não pode ser exibida;No se puede mostrar la página
+;Label;error.page.sorry.label;;Sorry,;Desculpe,;Perdón,
+;Label;error.page.internal.server.error;;Oops, We are sorry this is an Internal Server Error and the page cannot be displayed;Devido a um erro interno de servidor, a página não pode ser exibida;Debido a un error interno de servidor, no se puede mostrar la página
+;Label;error.page.try.again;;If you are trying to place an order, please check if it was saved in;Se você está tentando fazer um pedido, verifique se ele foi salvo no;Si está intentando hacer un pedido, verifique si está guardado en el
+;Label;error.page.order.history;;Order History before you try again.;Histórico de pedidos antes de tentar novamente.;Historial de pedidos antes de intentar nuevamente.
+;Label;error.page.prefer.label;;You can also try:;Você também pode tentar:;Usted también puede intentar:
+;Label;error.page.back.label;;Back;Voltar;Volver
+;Label;error.page.not.found;;Page not found;Página não encontrada;Página no encontrada
+;Label;error.page.url.error.label;;but the page you are looking for has not been found. Try checking the URL for errors.;a página que você está procurando não foi encontrada. Verifique se há erros na URL.;la página que está buscando no ha sido encontrada. Verifique si hay errores en la URL.
+;Label;error.page.home.label;;Home;Home;Inicio
+;Label;cart.review.addProductOutOfContract;;Add Product Out of Contract;Adicionar produto fora do contrato;Añadir producto fuera del contrato
+;Label;cart.review.addDeliveryDateToOrder;;Add this expected delivery date to your order;Adicionar essa data prevista de entrega ao pedido;Agréguele esta fecha de entrega prevista al pedido.
+;Label;cart.review.selectedProductNotBelong;;The selected product does not correspond to the contract under which you are placing the order;O produto selecionado não corresponde ao contrato para o qual você está fazendo o pedido;El producto seleccionado no corresponde al contrato bajo el cual usted está haciendo el pedido
+;Label;cart.review.insertThisProductToYourCart;;If you add this product to your cart you will lose all benefits linked to this contract and will place a regular order instead.;Ao adicionar este produto ao carrinho, você abrirá mão dos benefícios ligados ao contrato e fará um pedido regular.;Al agregar este producto al carrito, usted perderá los beneficios vinculados al contrato y hará un pedido regular.
+;Label;cart.review.doYouAccept;;Do you want to continue?;Deseja continuar?;¿Desea continuar?
+
+;Label;checkOut.requestComplete.note;;If you select this option, this product will only be delivered when all products are available;Se você selecionar essa opção, este produto será entregue apenas quando todos os produtos estiverem disponíveis.;Al seleccionar esta opción, este producto se entregará solamente cuando todos los productos estén disponibles.
+;Label;checkOut.salesForbidden.note;;If you select this option, the products will be marked as Sales forbidden;Se você selecionar essa opção, os produtos serão marcados como "venda proibida".;Al seleccionar esta opción, los productos serán marcados como "venta prohibida".
+;Label;password.forgotPassword.invalid.password.msg1;;Your new password must be different from your five previous passwords.;Sua nova senha deve ser diferente das últimas cinco senhas.;Su nueva contraseña debe ser diferente de las cinco últimas contraseñas.
+;Label;password.forgotPassword.invalid.password.msg2;;The password could not be updated. Please try again.;Não foi possível atualizar a senha. Tente novamente.;No ha sido posible actualizar la contraseña. Intente nuevamente.
+;Label;password.forgotPassword.invalid.password.msg3;;Password cannot be changed twice on the same day. Please try again tomorrow.;Não é possível modificar a senha duas vezes no mesmo dia. Tente novamente amanhã.;No se puede cambiar la contraseña dos veces el mismo día. Intente nuevamente mañana.
+;Label;password.forgotPassword.invalid.password.msg4;;Password should not match any password entered within the last 365 days. Please try again.;A senha não pode coincidir com outra utilizada nos últimos 365 dias. Tente novamente.;La contraseña no puede coincidir con cualquiera que se haya usado los últimos 365 días. Intente nuevamente.
+;Label;help.faq.receive.response;;You will receive a response to your comment as soon as possible.;Você receberá uma resposta para seu comentário o mais rápido possível.;Usted recibirá una respuesta a su comentario cuanto antes.
+;Label;sellout.success.label;;Your file has been sent successfully.;Seu arquivo foi enviado corretamente.;Su archivo ha sido enviado correctamente.
+;Label;sellout.size.error.label;;The file size exceeds the limit allowed and cannot be uploaded.;Não é possível fazer upload do arquivo porque ele ultrapassa o limite de tamanho permitido.;No se puede subir el archivo porque sobrepasa el límite de tamaño permitido.
+;Label;news.loadMore.from;;From;De;desde
+;Label;news.page.heading;;New releases;Novos lançamentos;Nuevos lanzamientos
+;Label;news.detailsPpage.relatedNews;;You might also like;Você também pode gostar de;También le puede gustar
+;Label;news.page.noNews;;No news found.;Não foram encontradas novidades.;No se han encontrado novedades.
+;Label;checkout.changePrice.R01;;PUBLIC BIDS;LICITAÇÕES PÚBLICAS;LICITACIONES PÚBLICAS
+;Label;checkout.changePrice.R02;;PRODUCT VALIDITY TERM REDUCED;PRAZO DE VIGÊNCIA DO PRODUTO REDUZIDO;PLAZO DE VIGENCIA DEL PRODUCTO REDUCIDO
+;Label;checkout.changePrice.R03;;SALES COVERAGE TO DIRECT CUSTOMER;COBERTURA DE VENDAS AO CLIENTE DIRETO;COBERTURA DE VENTAS AL CLIENTE DIRECTO
+;Label;checkout.changePrice.R04;;COMMERCIAL AGREEMENTS;ACORDOS COMERCIAIS;ACUERDOS COMERCIALES
+;Label;checkout.changePrice.R05;;EQUIPMENT AND INSTRUMENT SALES;VENDAS DE EQUIPAMENTOS E INSTRUMENTOS;VENTAS DE EQUIPOS E INSTRUMENTOS
+;Label;checkout.changePrice.R06;;ERROR IN PRICE UPLOAD;ERRO AO FAZER UPLOAD DO PREÇO;ERROR AL CARGAR EL PRECIO
+;Label;checkout.changePrice.R07;;BACKORDER REPLACEMENT;SUBSTITUIÇÃO DE PEDIDO PENDENTE;REEMPLAZO DE PEDIDO PENDIENTE
+;Label;checkout.changePrice.R08;;INVALID UNIT OF MEASUREMENT;UNIDADE DE MEDIDA INVÁLIDA;UNIDAD DE MEDIDA INVÁLIDA
+;Label;checkout.changePrice.R09;;EXPECTED PRICE FROM PREVIOUS AGREEMENT;PREÇO ESPERADO DE ACORDO PRÉVIO;PRECIO ESPERADO DE ACUERDO PREVIO
+;Label;checkout.changePrice.R10;;COMMERCIAL AGREEMENTS - TABLE SUS;ACORDOS COMERCIAIS - TABELA SUS;ACUERDOS COMERCIALES - TABLA SUS
+;Label;order.status.BEING_PROCESSED.value;;Being processed;Processando;Procesando
+;Label;order.status.CANCELLING.value;;Cancelling;Cancelando;Anulando
+;Label;order.status.CHECKED_VALID.value;;Valid;Válido;Válido
+;Label;order.status.CREATED.value;;Created;Criado;Creado
+;Label;order.status.OPEN.value;;Open;Abrir;Abrir
+;Label;order.status.CHECKED_INVALID.value;;Invalid;Inválido;Inválido
+;Label;order.status.IN_PICKING.value;;In Picking;Em processo de separação;En proceso de selección
+;Label;order.status.ON_VALIDATION.value;;Validation process;Em processo de validação;En proceso de validación
+;Label;order.status.PENDING_APPROVAL.value;;Pending Approval;Aguardando aprovação;Esperando aprobación
+;Label;order.status.SUSPENDED.value;;Suspended;Suspenso;Suspendido
+;Label;order.status.COMPLETED.value;;Completed;Finalizado;Finalizado
+;Label;order.status.CREDIT_BLOCK.value;;Credit Blocked;Crédito bloqueado;Crédito bloqueado
+;Label;order.status.PAYMENT_AUTHORIZED.value;;Payment Authorized;Pagamento autorizado;Pago autorizado
+;Label;order.status.PENDING_APPROVAL_FROM_MERCHANT.value;;Pending Approval From Merchant;Aguardando aprovação do comerciante;Esperando aprobación del comerciante
+;Label;order.status.CANCELLED.value;;Canceled;Cancelado;Anulado
+;Label;order.status.IN_PROCESS.value;;In Process;Em andamento;En curso
+;Label;order.status.PAYMENT_NOT_AUTHORIZED.value;;Payment Not Authorized;Pagamento não autorizado;Pago no autorizado
+;Label;order.status.PENDING_QUOTE.value;;Pending Quote;Aguardando orçamento;Esperando cotización
+;Label;order.status.APPROVED_QUOTE.value;;Approved Quote;Orçamento aprovado;Cotización aprobada
+;Label;order.status.PAYMENT_AMOUNT_RESERVED.value;;Payment Amount Reserved;Quantia do pagamento reservada;Cantidad del pago reservada
+;Label;order.status.PAYMENT_AMOUNT_NOT_RESERVED.value;;Payment Amount not Reserved;Quantia do pagamento não reservada;Cantidad del pago no reservada
+;Label;order.status.REJECTED_QUOTE.value;;Rejected Quote;Orçamento rejeitado;Cotización rechazada
+;Label;order.status.APPROVED.value;;Approved;Aprovado;Aprobado
+;Label;order.status.PAYMENT_CAPTURED.value;;Payment Captured;Pagamento capturado;Pago capturado
+;Label;order.status.PAYMENT_NOT_CAPTURED.value;;Payment not Captured;Pagamento não capturado;Pago no capturado
+;Label;order.status.REJECTED.value;;Rejected;Rejeitado;Rechazado
+;Label;order.status.APPROVED_BY_MERCHANT.value;;Approved by Merchant;Aprovado pelo comerciante;Aprobado por el comerciante
+;Label;order.status.FRAUD_CHECKED.value;;Fraud Checked;Fraude comprovada;Fraude comprobado
+;Label;order.status.ORDER_SPLIT.value;;Order Split;Divisão do pedido;División del pedido
+;Label;order.status.REJECTED_BY_MERCHANT.value;;Rejected by Merchant;Rejeitado pelo comerciante;Rechazado por el comerciante
+;Label;order.status.ASSIGNED_TO_ADMIN.value;;Assigned to Admin;Atribuído ao Admin;Asignado al Admin
+;Label;order.status.PROCESSING_ERROR.value;;Processing Error;Erro de processamento;Error de procesamiento
+;Label;order.status.B2B_PROCESSING_ERROR.value;;Processing Error;Erro de processamento;Error de procesamiento
+;Label;order.status.WAIT_FRAUD_MANUAL_CHECK.value;;Awaiting Fraud Manual Check;Aguardando verificação manual de fraude;Esperando verificación manual de fraude
+;Label;order.status.INVALID.value;;Invalid;Inválido;Inválido
+;Label;order.status.BEING_PROCESSED.class;;being_processed;being_processed;being_processed
+;Label;order.status.CANCELLING.class;;cancelling;cancelling;cancelling
+;Label;order.status.CHECKED_VALID.class;;checked_valid;checked_valid;checked_valid
+;Label;order.status.CREATED.class;;Created;Criado;Creado
+;Label;order.status.OPEN.class;;Open;Abrir;Abrir
+;Label;order.status.CHECKED_INVALID.class;;checked_invalid;checked_invalid;checked_invalid
+;Label;order.status.IN_PICKING.class;;in_picking;in_picking;in_picking
+;Label;order.status.ON_VALIDATION.class;;on_validation;on_validation;on_validation
+;Label;order.status.PENDING_APPROVAL.class;;pending_approval;pending_approval;pending_approval
+;Label;order.status.SUSPENDED.class;;suspended;suspended;suspended
+;Label;order.status.COMPLETED.class;;Completed;Finalizado;Finalizado
+;Label;order.status.CREDIT_BLOCK.class;;credit_block;credit_block;credit_block
+;Label;order.status.PAYMENT_AUTHORIZED.class;;payment_authorized;payment_authorized;payment_authorized
+;Label;order.status.PENDING_APPROVAL_FROM_MERCHANT.class;;pending_approval_from_merchant;pending_approval_from_merchant;pending_approval_from_merchant
+;Label;order.status.CANCELLED.class;;Canceled;Cancelado;Anulado
+;Label;order.status.IN_PROCESS.class;;in_process;in_process;in_process
+;Label;order.status.PAYMENT_NOT_AUTHORIZED.class;;payment_not_authorized;payment_not_authorized;payment_not_authorized
+;Label;order.status.PENDING_QUOTE.class;;pending_quote;pending_quote;pending_quote
+;Label;order.status.APPROVED_QUOTE.class;;approved_quote;approved_quote;approved_quote
+;Label;order.status.PAYMENT_AMOUNT_RESERVED.class;;payment_amount_reserved;payment_amount_reserved;payment_amount_reserved
+;Label;order.status.PAYMENT_AMOUNT_NOT_RESERVED.class;;payment_amount_not_reserved;payment_amount_not_reserved;payment_amount_not_reserved
+;Label;order.status.REJECTED_QUOTE.class;;rejected_quote;rejected_quote;rejected_quote
+;Label;order.status.APPROVED.class;;approved;approved;approved
+;Label;order.status.PAYMENT_CAPTURED.class;;payment_captured;payment_captured;payment_captured
+;Label;order.status.PAYMENT_NOT_CAPTURED.class;;payment_not_captured;payment_not_captured;payment_not_captured
+;Label;order.status.REJECTED.class;;rejected;rejected;rejected
+;Label;order.status.APPROVED_BY_MERCHANT.class;;approved_by_merchant;approved_by_merchant;approved_by_merchant
+;Label;order.status.FRAUD_CHECKED.class;;fraud_checked;fraud_checked;fraud_checked
+;Label;order.status.ORDER_SPLIT.class;;order_split;order_split;order_split
+;Label;order.status.REJECTED_BY_MERCHANT.class;;rejected_by_merchant;rejected_by_merchant;rejected_by_merchant
+;Label;order.status.ASSIGNED_TO_ADMIN.class;;assigned_to_admin;assigned_to_admin;assigned_to_admin
+;Label;order.status.PROCESSING_ERROR.class;;processing_error;processing_error;processing_error
+;Label;order.status.B2B_PROCESSING_ERROR.class;;processing_error;processing_error;processing_error
+;Label;order.status.WAIT_FRAUD_MANUAL_CHECK.class;;wait_fraud_manual_check;wait_fraud_manual_check;wait_fraud_manual_check
+;Label;order.status.INVALID.class;;checked_invalid;checked_invalid;checked_invalid
+
+#Laudo
+;Label;misc.services.fileUploadError;;Sorry, an error occured and your file could not be added. Please try again.;Sorry, an error occured and your file could not be added. Please try again.;Sorry, an error occured and your file could not be added. Please try again.
+;Label;misc.services.errorDetails;;Error Details;Error Details;Error Details
+;Label;misc.services.errorTitle;;Uploading your order file;Uploading your order file;Uploading your order file
+;Label;misc.services.manageLaudo;;Manage Laudo;Manage Laudo;Manage Laudo
+;Label;misc.services.colon;;:;:;:
+;Label;misc.services.fromDate;;From;From;From
+;Label;misc.services.csvSuccess;;Following file was processed successfully:;Following file was processed successfully:;Following file was processed successfully:
+;Label;misc.services.csvPartialSuccess;;Following file was processed partially:;Following file was processed partially:;Following file was processed partially:
+;Label;misc.services.zipSuccess;;Following files were processed successfully:;Following files were processed successfully:;Following files were processed successfully:
+;Label;misc.services.zipPartialSuccess;;Following files were processed partially:;Following files were processed partially:;Following files were processed partially:
+;Label;misc.services.singleFile;;SINGLE FILE;SINGLE FILE;SINGLE FILE
+;Label;misc.services.multiFile;;MULTIPLE FILES;MULTIPLE FILES;MULTIPLE FILES
+;Label;misc.services.downloadLaudo;;Download Laudo;Download Laudo;Download Laudo
+;Label;misc.services.uploadLaudos;;UPLOAD LAUDOS;UPLOAD LAUDOS;UPLOAD LAUDOS
+;Label;misc.services.productId;;Product Id;Product Id;Product Id
+;Label;misc.services.toDate;;To;To;To
+;Label;misc.services.addLaudoUploadSuccess;;Following file was uploaded successfully:;Following file was uploaded successfully:;Following file was uploaded successfully:
+;Label;misc.services.pdfFormatError;;The file you selected is not a valid PDF format. Please select the correct file and try again.;The file you selected is not a valid PDF format. Please select the correct file and try again.;The file you selected is not a valid PDF format. Please select the correct file and try again.
+;Label;misc.services.csvFormatError;;The file you selected is not a valid CSV format. Please select the correct file and try again.;The file you selected is not a valid CSV format. Please select the correct file and try again.;The file you selected is not a valid CSV format. Please select the correct file and try again.
+;Label;misc.services.zipFormatError;;The file you selected is not a valid Zip format. Please select the correct file and try again.;The file you selected is not a valid Zip format. Please select the correct file and try again.;The file you selected is not a valid Zip format. Please select the correct file and try again.
+;Label;misc.services.fileSizeError;;Sorry, you’re trying to upload more than 5 MB. Please reduce the file size or the number of files and try again.;Sorry, you’re trying to upload more than 5 MB. Please reduce the file size or the number of files and try again.;Sorry, you’re trying to upload more than 5 MB. Please reduce the file size or the number of files and try again.
+;Label;misc.services.selectADate;;select a date;select a date;select a date
+;Label;misc.services.expirationDate;;Expiration Date;Expiration Date;Expiration Date
+;Label;misc.services.sortBy;;Sort By;Sort By;Sort By
+;Label;misc.services.search;;SEARCH;SEARCH;SEARCH
+;Label;misc.services.addFiles;;ADD FILES;ADD FILES;ADD FILES
+;Label;misc.services.removeSelected;;REMOVE SELECTED;REMOVE SELECTED;REMOVE SELECTED
+;Label;misc.services.jnjId;;J&J ID;J&J ID;J&J ID
+;Label;misc.services.loteNumber;;Lote Number;Lote Number;Lote Number
+;Label;misc.services.fileName;;File Name;File Name;File Name
+;Label;misc.services.remove;;Remove;Remove;Remove
+;Label;misc.services.downloadPDF;;DOWNLOAD PDF;DOWNLOAD PDF;DOWNLOAD PDF
+;Label;misc.services.selectCSVFile;;Select CSV File;Select CSV File;Select CSV File
+;Label;misc.services.selectZipFile;;Select Laudos Zip File;Select Laudos Zip File;Select Laudos Zip File
+;Label;misc.services.browseFile;;BROWSE FILE;BROWSE FILE;BROWSE FILE
+;Label;misc.services.pdf;;PDF;PDF;PDF
+;Label;misc.services.save;;SAVE;SAVE;SAVE
+;Label;misc.services.uploadFile;;UPLOAD FILE;UPLOAD FILE;UPLOAD FILE
+;Label;misc.services.uploadLaudo;;Upload Laudo;Upload Laudo;Upload Laudo
+;Label;misc.services.addLaudo;;Add Laudo;Add Laudo;Add Laudo
+;Label;misc.services.attachFile;;Attach File;Attach File;Attach File
+;Label;misc.services.dateNewToOld;;Expiration date - Newest to Oldest;Expiration date - Newest to Oldest;Expiration date - Newest to Oldest
+;Label;misc.services.dateOldToNew;;Expiration date - Oldest to Newest;Expiration date - Oldest to Newest;Expiration date - Oldest to Newest
+;Label;misc.services.downloadLaudo;;Download Laudo;Download Laudo;Download Laudo
+;Label;misc.services.emptyFieldsError;;In order to proceed, please fill up all the mandatory fields indicated in red.;In order to proceed, please fill up all the mandatory fields indicated in red.;In order to proceed, please fill up all the mandatory fields indicated in red.
+;Label;laudo.services.file.process.sucess;;File prcocessed Sucessfully.;File prcocessed Sucessfully.;File prcocessed Sucessfully.
+;Label;laudo.services.file.process.partial;;File prcocessed Partially.;File prcocessed Partially.;File prcocessed Partially.
+;Label;laudo.services.file.process.failure;;Exception occured while Processing File.;Exception occured while Processing File.;Exception occured while Processing File.
+;Label;services.laudo.loadMore.entires;;Entries;Entries;Entries
+;Label;services.laudo.download.mandatoryError;;Mandatory fields can’t be blank.;Mandatory fields can’t be blank.;Mandatory fields can’t be blank.
+;Label;services.laudo.download.noSelectionError;;Please select at least one file.;Please select at least one file.;Please select at least one file.
+;Label;services.laudo.download.beforeSearchInfoMessage;;Please enter J&J ID and Lote Number.;Please enter J&J ID and Lote Number.;Please enter J&J ID and Lote Number.
+;Label;services.laudo.download.singleDeleteSuccess;;File removed successfully.;File removed successfully.;File removed successfully.
+;Label;services.laudo.download.singleDeleteFailure;;File could not be deleted. Please try again.;File could not be deleted. Please try again.;File could not be deleted. Please try again.
+;Label;services.laudo.download.multiDeleteSuccess;;Files removed successfully.;Files removed successfully.;Files removed successfully.
+;Label;services.laudo.download.multiDeletePartialSuccess;;Files removed partially.;Files removed partially.;Files removed partially.
+;Label;services.laudo.download.multiDeleteFailure;;Files could not be deleted. Please try again.;Files could not be deleted. Please try again.;Files could not be deleted. Please try again.
+;Label;services.laudo.download.emptySearchResults;;No data found for the given search criteria.;No data found for the given search criteria.;No data found for the given search criteria.
+
+#EMAIL
+;Label;user.password.expirationPeriod;;90 days;90 days;90 days
+;Label;user.email.newUser.dearuser;;Dear user, ;Dear user,;Dear user,
+;Label;user.email.newUser.msg1;;Welcome to ;Welcome to ;Welcome to 
+;Label;user.email.newUser.msg2;; Portal. Your access have been granted by ; Portal. Your access have been granted by ; Portal. Your access have been granted by 
+;Label;user.email.newUser.msg3;;. Please take a moment to finish your registration accessing;. Please take a moment to finish your registration accessing;. Please take a moment to finish your registration accessing 
+;Label;user.email.newUser.msg4;;. As this will be your first access we’re providing you a temporary password: ;. As this will be your first access we’re providing you a temporary password: ;. As this will be your first access we’re providing you a temporary password: 
+;Label;user.email.newUser.msg5;;. You’ll need to change it. It’s valid for ;. You’ll need to change it. It’s valid for ;. You’ll need to change it. It’s valid for 
+;Label;user.email.newUser.msg6;;. Please find below your profile information:;. Please find below your profile information:;. Please find below your profile information:
+
+
+
+#EMAIL EXPIRY
+;Label;email.password.expiry.subject;;Action Required to Retain Access;Action Required to Retain Access;Action Required to Retain Access
+;Label;email.password.expiry.msg1;;For security reasons, your ;For security reasons, your ;For security reasons, your 
+;Label;email.password.expiry.msg2;;password expires every;password expires every;password expires every
+;Label;email.password.expiry.msg3;; days. You are receiving this reminder because it your password will expire in; days. You are receiving this reminder because it your password will expire in; days. You are receiving this reminder because it your password will expire in
+;Label;email.password.expiry.msg4;; The password should be 8 characters or longer with a combination of uppercase and lowercase, letters, number and symbols and should be different from last 5 passwords. To change your password please access the password section in your account.; The password should be 8 characters or longer with a combination of uppercase and lowercase, letters, number and symbols and should be different from last 5 passwords. To change your password please access the password section in your account.; The password should be 8 characters or longer with a combination of uppercase and lowercase, letters, number and symbols and should be different from last 5 passwords. To change your password please access the password section in your account.
+;Label;email.password.expiry.15;; days.; days.; days.
+;Label;email.password.expiry.10;; days.; days.; days.
+;Label;email.password.expiry.5;; days.; days.; days.
+;Label;email.password.expiry.1;; day.; day.; day.
+;Label;user.email.password.expire.interval;;15,10,5,1;15,10,5,1;15,10,5,1
+
+
+#MyBId
+;Label;myBid.breadCrumb;;My Bids;My Bids;My Bids
+
+#Message For Invalid PO Number
+;Label;cart.controller.poorder.restriction;;You have entered an invalid PO Number character.;You have entered an invalid PO Number character.;You have entered an invalid PO Number character.
+;Label;cart.controller.poorder.restriction1;;You may use any of the following characters:;You may use any of the following characters:;You may use any of the following characters:
+;Label;cart.controller.poorder.restriction2;;Upper-case and lower-case letters [A-Z, a-z] Numbers [0-9], and Symbols [/] [.] [-]. Single-spaces are also permitted.;Upper-case and lower-case letters [A-Z, a-z] Numbers [0-9], and Symbols [/] [.] [-]. Single-spaces are also permitted.;Upper-case and lower-case letters [A-Z, a-z] Numbers [0-9], and Symbols [/] [.] [-]. Single-spaces are also permitted.

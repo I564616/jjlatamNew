@@ -1,0 +1,28 @@
+INSERT_UPDATE UserPriceGroup;code[unique=true];name[lang=en]
+;BrazilAC;Acre Brazil Price Group
+;BrazilAL;Alagoas Brazil Price Group
+;BrazilAP;Amapá Brazil Price Group
+;BrazilAM;Amazonas Brazil Price Group
+;BrazilBA;Bahia Brazil Price Group
+;BrazilCE;Ceará Brazil Price Group
+;BrazilDF;Distrito Federal Brazil Price Group
+;BrazilES;Espírito Santo Brazil Price Group
+;BrazilGO;Goiás Brazil Price Group
+;BrazilMA;Maranhão Brazil Price Group
+;BrazilMT;Mato Grosso Brazil Price Group
+;BrazilMS;Mato Grosso do Sul Brazil Price Group
+;BrazilMG;Minas Gerais Brazil Price Group
+;BrazilPA;Pará Brazil Price Group
+;BrazilPB;Paraiba Brazil Price Group
+;BrazilPE;Pernambuco Brazil Price Group
+;BrazilPR;Paraná Brazil Price Group
+;BrazilPI;Piauí Brazil Price Group
+;BrazilRN;Rio Grande do Norte Brazil Price Group
+;BrazilRS;Rio Grande do Sul Brazil Price Group
+;BrazilRJ;Rio de Janeiro Brazil Price Group
+;BrazilRO;Rondônia Brazil Price Group
+;BrazilRR;Roraima Brazil Price Group
+;BrazilSC;Santa Catarina Brazil Price Group
+;BrazilSP;São Paulo Brazil Price Group
+;BrazilSE;Sergipe Brazil Price Group
+;BrazilTO;Tocantins Brazil Price Group

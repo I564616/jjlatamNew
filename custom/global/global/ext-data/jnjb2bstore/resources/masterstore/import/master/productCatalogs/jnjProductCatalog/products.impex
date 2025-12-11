@@ -1,0 +1,29 @@
+#UTF-8: 
+# ImpEx for Importing Products into jnj Store
+
+# Macros / Replacement Parameter definitions
+$productCatalog=mddProdCatalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$supercategories=supercategories(code, $catalogVersion)
+$baseProduct=baseProduct(code,$catalogVersion)
+$approved=approvalstatus(code)[default='approved']
+
+# Language
+$lang=en
+
+# Insert Products
+INSERT_UPDATE JnJProduct;code[unique=true];name;$supercategories;ean;unit(code)[default=pieces];deliveryUnitOfMeasure(code)[default=pieces];baseUnitOfMeasure(code)[default=pieces];$catalogVersion;countries(isocode);$approved;NumeratorSUOM[default=1];NumeratorDUOM[default=1];disContinue[default=false];coldChainProduct[default=true];sector[default='MDD']
+#;637227;JNJPROD11;000110100100000000;JNJPROD1;;;;;DE;;;;;false
+#;693923;JNJPROD22;000110100100000000;JNJPROD2;;;;;DE,FR;;
+#;111690;JNJPROD33;000110100100000000;JNJPROD3;;;;;DE;;
+#;111695;JNJPROD44;000110100100000000;JNJPROD4;;;;;DE,FR;;
+#;101696;JNJPROD55;000110100100000000;JNJPROD5;;;;;DE;;;;;false;Pharma
+
+
+
+INSERT_UPDATE JnjSalesOrgAndSplProdMap;salesOrg[unique=true];handleColdChain
+#;FR01;true
+#;FR02;false
+#;DE01;false
+#;DE02;false
+#;DE03;false

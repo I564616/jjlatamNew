@@ -1,0 +1,8 @@
+$contentCatalog=mstrContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$contentCatalog]),version[default='Staged'])
+$jarLatamResourceCms=jar:com.jnj.la.masterstore.setup.JnjlamasterstoreSystemSetup&/jnjlamasterstore/import/contentCatalogs/jnjContentCatalog
+
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];mime;realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];altText
+;;instructionsTemplatesMedia;application/excel;instructionsTemplate.xls;$jarLatamResourceCms/media/template/instructionsTemplate.xls;instructionsTemplate
+INSERT_UPDATE JnjLinkComponent;$contentCV[unique=true];uid[unique=true];name;url;&componentRef;target(code)[default='sameWindow'];linkName[lang=en];shiftRight[default='false'];details(code,$contentCV);linkName[lang=es];linkName[lang=pt]
+;;instructionsTemplatesLink;Instructions Templates Link;;Instructions & Templates;;Instructions & Templates;;instructionsTemplatesMedia;Instrucciones y Modelo;InstruÃ§Ãµes e Modelos

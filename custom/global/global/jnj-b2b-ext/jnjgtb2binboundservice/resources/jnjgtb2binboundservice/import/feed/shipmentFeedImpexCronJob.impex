@@ -1,0 +1,18 @@
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+# Initialization
+INSERT_UPDATE JnjGTIntShipTrckHdr;sourceSysId[unique=true];sapOrderNum;deliveryNum;carrierScacCde;bolNum;correlationId[unique=true];recordStatus(code)[default='LOADING']
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT SOURCE_SYS_ID,ORDER_NUM,DELIVERY_NUM,CARRIER_SCAC_CD,BOL_NUM,CORRELATION_ID FROM STG_SHIP_TRACK_HEADER_LOCL WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP""
+);
+"
+
+# Initialization
+INSERT_UPDATE JnjGTIntShipTrckLine;sourceSysId[unique=true];sapOrderLineNum[unique=true];correlationId[unique=true];trackingNum[unique=true]
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT SOURCE_SYS_ID,ORDER_LINE_NUM,CORRELATION_ID,TRACKING_NUM from STG_SHIP_TRACK_LINE_LOCL WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP""
+);
+"

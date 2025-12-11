@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Open Orders Report - ${ctx.data.customer}</title>
+    </head>
+    <body style="font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif; font-size: 75%; color: #646464;">
+        <div>
+            <h2 style="border-bottom: 1px solid #84C5D4; color: #84C5D4; line-height: 30px; margin-bottom: 0;">Open Orders Report - ${ctx.data.customer}</h2>
+        </div>
+        <div style="padding-top: 10;">
+            <p>Dear Customer,</p>
+            <p>
+                We send in this email the current status of your open orders. You can see the status of your orders
+                clicking <a href='${ctx.orderHistoryUrl}'>here</a>.
+                If you have chosen to receive invoice notifications, you will receive an email
+                as your orders are billed. <br/>
+                <b>The published prices are net and therefore the taxes and fees are not considered.</b>
+            </p>
+        </div>
+        <div style="padding-top: 10;">
+            <span>Regards,</span>
+            <p><strong>J&amp;J Customer Connect Team</strong></p>
+            <span>Any question? Call us 0800-707-5420 (op #6)</span>
+        </div>
+        <div style="padding-top: 10">
+            <img src="${ctx.siteLogoURL}" width="250" border="0" />
+        </div>
+    </body>
+</html>

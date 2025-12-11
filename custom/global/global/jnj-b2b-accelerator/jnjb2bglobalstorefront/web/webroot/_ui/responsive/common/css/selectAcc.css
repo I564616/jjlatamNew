@@ -1,0 +1,74 @@
+.modalcls{
+	top: 80px;
+}
+.popup{
+	margin: 0 auto;
+	left: 140px;
+	border-radius: 0px;
+	box-shadow: 0 0px 0px; 
+	width: 60%
+}
+.searchArea{
+	margin: 0 auto;	
+}  
+.searchBox{
+	border-radius: 15px;
+}
+.searchBtn{
+	float: right;
+	top: -24px;
+    right: 14px;
+	color: #0a8caa;
+}
+.btnclsactive{
+	font-size: 8px;
+	color: #fff;
+    border-radius: 20px;	
+	background-color: #0a8caa;
+}
+.btnclsactive.focus,
+.btnclsactive:focus {
+    color: #fff;
+    background-color: #0a8caa;
+    border-color: #8c8c8c
+}
+.btnclsactive:hover {
+    color: #fff;
+    background-color: #087891;
+    border-color: #adadad
+}
+.disabled{
+	color: #fff;
+    background-color: #d3d3d3;
+}
+.clsBtn{
+	margin-top: 10px !important;
+	font-size: 10px;
+	color: #0a8caa;
+	opacity:1;
+}
+.code{
+	padding-top: 20px;
+	color: #0a8caa !important;
+	font-size: 14px;
+}
+.descTxt{
+	font-size: 10px;
+	color: #828282;
+    padding-left: 15px;
+	padding-bottom: 20px;
+    line-height: 17px;
+}
+.anchorcls{
+	border-bottom: white;
+}
+.listclass{
+	line-height: 0px;
+	margin-bottom: 0px;
+}
+.ftrcls{
+	padding: 25px;
+}
+.selectTitle{
+	color: #828282;
+}

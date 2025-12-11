@@ -1,0 +1,196 @@
+############### IMPORTANT #############################################################################################
+############### This is to remove the existing Obsolete Solr Configuration for solr.impex.#############################
+############### We user solr_BR and solr_MX instead ###################################################################
+#######################################################################################################################  
+
+
+# Impex ImportProcessor that injects all config properties as impex definitions.
+# All defined configuration properties are added as impex macro definitions with the prefix of "config-".
+# For example the config key mail.smtp.server can be accessed via the macro <tt>$config-mail.smtp.server
+# In order to use this import processor and to load the configuration properties the following must be added to the top of the impex file:
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+
+
+# Impex ImportProcessor that injects all config properties as impex definitions.
+# All defined configuration properties are added as impex macro definitions with the prefix of "config-".
+# For example the config key mail.smtp.server can be accessed via the macro <tt>$config-mail.smtp.server
+# In order to use this import processor and to load the configuration properties the following must be added to the top of the impex file:
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+
+
+# Import the Solr configuration for the brCMSite store
+#
+$brproductCatalog=brProductCatalog
+$mxproductCatalog=mxProductCatalog
+$catalogVersions=catalogVersions(catalog(id),version);
+$serverConfigName=jnjSolrServerConfig
+$indexConfigName=jnjSolrIndexConfig
+$searchConfigName=jnjPageSize
+$facetSearchConfigName=jnjIndex
+$facetSearchConfigDescription=jnj Solr Index
+$searchIndexNamePrefix=jnj
+$solrIndexedType=jnjProductType
+$indexBrBaseSite=brCMSite
+$indexMxBaseSite=mxCMSite
+$indexLanguages=en,pt,es
+$indexCurrencies=BRL,MXN
+
+
+#
+# Setup the Solr server, indexer, and search configs
+#
+
+REMOVE SolrServerConfig;name[unique=true] 
+;$serverConfigName
+
+# Create the solr server configuration
+REMOVE SolrServerConfig;name[unique=true];mode(code);embeddedMaster;aliveCheckInterval;connectionTimeout;readTimeout
+;$serverConfigName;$config-solr.mode;$config-solr.embeddedMaster;1000;1000;1000
+
+# Create the solr indexer configuration
+REMOVE SolrIndexConfig;name[unique=true];batchSize;numberOfThreads;indexMode(code);
+;$indexConfigName;100;1;DIRECT;
+
+#% final String configValue = Config.getParameter("solr.replication");
+#% if: configValue.equals("true"); 
+REMOVE SolrEndpointUrl;master[allownull=true][unique=true];solrServerConfig(name)[unique=true];url[allownull=true]
+;true;$serverConfigName;$config-solr.master.config.url
+;false;$serverConfigName;$config-solr.slave.config.url
+#% endif:
+
+#% if: configValue.equals("false");
+REMOVE SolrEndpointUrl;master[allownull=true][unique=true];solrServerConfig(name)[unique=true];url[allownull=true]
+;true;$serverConfigName;$config-solr.config.url
+#% endif:
+
+# Create the faceted search configuration
+REMOVE SolrSearchConfig;description[unique=true];pageSize
+;$searchConfigName;20
+
+#
+# Setup the indexed types, their properties, and the update queries
+#
+
+# Declare the indexed type Product
+REMOVE SolrIndexedType;identifier[unique=true];type(code);variant;sorts(&sortRefID)
+;$solrIndexedType;Product;false;sortRef1,sortRef2,sortRef3
+
+REMOVE SolrFacetSearchConfig;name[unique=true];description;indexNamePrefix;languages(isocode);currencies(isocode);solrServerConfig(name);solrSearchConfig(description);solrIndexConfig(name);solrIndexedTypes(identifier);enabledLanguageFallbackMechanism;$catalogVersions
+;$facetSearchConfigName;$facetSearchConfigDescription;$searchIndexNamePrefix;$indexLanguages;$indexCurrencies;$serverConfigName;$searchConfigName;$indexConfigName;$solrIndexedType;true;$brproductCatalog:Online,$mxproductCatalog:Online
+
+UPDATE BaseSite;uid[unique=true];solrFacetSearchConfiguration(name)
+;$indexBrBaseSite;$facetSearchConfigName
+;$indexMxBaseSite;$facetSearchConfigName
+
+
+
+# Non-facet properties
+REMOVE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];type(code);sortableType(code);currency[default=false];localized[default=false];multiValue[default=false];useForSpellchecking[default=false];useForAutocomplete[default=false];fieldValueProvider;valueProviderParameter
+;$solrIndexedType; itemtype;string;;;;;;;
+;$solrIndexedType; disContinue;boolean;;;;;;;
+;$solrIndexedType; code;text;;;;;true;true;springELValueProvider;code
+;$solrIndexedType; name;text;sortabletext;;true;;true;true;springELValueProvider;getName(#lang)
+;$solrIndexedType; description;text;;;true;;;;;
+;$solrIndexedType; ean;text;;;;;true;true;;
+;$solrIndexedType; keywords;text;;;true;;true;true;productKeywordsValueProvider;
+;$solrIndexedType; url;string ;;;true;;;;productUrlValueProvider;
+;$solrIndexedType; priceValue             ;double ;            ;true;    ;    ;    ;    ;volumeAwareProductPriceValueProvider
+;$solrIndexedType; volumePrices           ;boolean;            ;true;    ;    ;    ;    ;productVolumePricesProvider;
+;$solrIndexedType; unitOfMeasure;string;;;true;;;;jnjLaUnitOfMeasureValueProvider
+;$solrIndexedType; showPrice;boolean;            ;;    ;    ;    ;    ;jnjProductShowPriceProvider;
+
+#;$solrIndexedType; img-515Wx515H;string ;            ;    ;    ;    ;    ;    ;image515ValueProvider;
+#;$solrIndexedType; img-300Wx300H;string ;            ;    ;    ;    ;    ;    ;image300ValueProvider;
+;$solrIndexedType; img-96Wx96H ;string ;            ;    ;    ;    ;    ;    ;image96ValueProvider;
+#;$solrIndexedType; img-65Wx65H;string ;            ;    ;    ;    ;    ;    ;image65ValueProvider;
+#;$solrIndexedType; img-30Wx30H;string ;            ;    ;    ;    ;    ;    ;image30ValueProvider;
+
+# Category facets
+REMOVE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];type(code);multiValue[default=true];facet[default=true];facetType(code);facetSort(code);priority;categoryField[default=true];fieldValueProvider;facetDisplayNameProvider;topValuesProvider
+;$solrIndexedType; allCategories ;string;;;Refine;Alpha;-9999;;categoryCodeValueProvider;
+;$solrIndexedType; categoryPath  ;string;;;Refine;Alpha;-9999;;categoryPathValueProvider;
+;$solrIndexedType; plpCategory;string;;;MultiSelectOr;Alpha; 6000;;jnjPlpCategoryCodeValueProvider;categoryFacetDisplayNameProvider;
+;$solrIndexedType; searchCategory;string;;;MultiSelectOr;Alpha; 6000;;jnjSeachCategoryCodeValueProvider;categoryFacetDisplayNameProvider;
+
+#Typeahead config for Product Code (SKU), Product Name, Product Description, EAN, Medical Specialty and Key Words
+
+
+# Create the queries that will be used to extract data for Solr
+REMOVE SolrIndexerQuery;solrIndexedType(identifier)[unique=true];identifier[unique=true];type(code);injectCurrentDate[default=true];injectCurrentTime[default=true];injectLastIndexTime[default=true];query;user(uid)
+REMOVE SolrIndexerQuery;solrIndexedType(identifier)[unique=true];identifier[unique=true];type(code);injectCurrentDate[default=true];injectCurrentTime[default=true];injectLastIndexTime[default=true];query;user(uid)
+;$solrIndexedType;$searchIndexNamePrefix-fullQuery;full;;;false;"
+SELECT {product:pk} FROM {JnJProduct  as product 
+JOIN ArticleApprovalStatus AS approval on {approval:pk}={product:approvalStatus} JOIN CategoryProductRelation as cat_rel ON {cat_rel:target} = {product:pk} 
+JOIN Category as cat ON {cat_rel:source}={cat:pk}
+}
+		WHERE  {approval:code} = 'approved'
+		AND
+		{product:ecommerceFlag} = 1
+		AND 
+		( {product:offlineDate} IS NULL OR {product:offlineDate} >= ?currentDate )
+		AND
+		({product:onlineDate} IS NULL OR {product:onlineDate} <=?currentDate)
+		AND
+		({cat:code} != 'DefaultCategory' AND {cat:catalogVersion} IN
+				({{select {cv:Pk} from {CatalogVersion as cv} where {cv:version}='Online'}})
+		)
+";anonymous
+
+;$solrIndexedType;$searchIndexNamePrefix-updateQuery;update;;;;"
+SELECT {product:pk} FROM {JnJProduct  as product 
+JOIN ArticleApprovalStatus AS approval on {approval:pk}={product:approvalStatus} JOIN CategoryProductRelation as cat_rel ON {cat_rel:target} = {product:pk}
+JOIN Category as cat ON {cat_rel:source}={cat:pk}
+} 
+	where 
+	{product:modifiedtime} >= ?lastIndexTime or {product:creationtime} >= ?lastIndexTime
+	AND
+	{approval:code} = 'approved'
+	AND
+	{product:ecommerceFlag} = 1
+	AND 
+	( {product:offlineDate} IS NULL OR {product:offlineDate} >= ?currentDate )
+	AND
+	({product:onlineDate} IS NULL OR {product:onlineDate} <=?currentDate)
+	AND
+		({cat:code} != 'DefaultCategory' AND {cat:catalogVersion} IN
+				({{select {cv:Pk} from {CatalogVersion as cv} where {cv:version}='Online'}})
+		)
+";anonymous
+
+;$solrIndexedType;$searchIndexNamePrefix-deleteQuery;delete;;;;"
+   SELECT {product:pk} FROM {JnJProduct  as product 
+JOIN ArticleApprovalStatus AS approval on {approval:pk}={product:approvalStatus} JOIN CategoryProductRelation as cat_rel ON {cat_rel:target} = {product:pk}
+JOIN Category as cat ON {cat_rel:source}={cat:pk}
+} 
+    WHERE {approval:code} = 'unapproved'
+    OR
+    {approval:code} = 'check'
+    OR
+	{product:ecommerceFlag} = 0
+    OR
+    ( {product:offlineDate} < ?currentDate)
+    OR
+    ({product:onlineDate} > ?currentDate)
+    OR
+    		({cat:code} = 'DefaultCategory' AND {cat:catalogVersion} IN
+				({{select {cv:Pk} from {CatalogVersion as cv} where {cv:version}='Online'}})
+		)
+";admin
+
+
+
+
+# Define the available sorts
+REMOVE SolrSort;&sortRefID;indexedType(identifier)[unique=true];code[unique=true]
+;sortRef1;$solrIndexedType;relevance
+;sortRef2;$solrIndexedType;name-asc
+;sortRef3;$solrIndexedType;name-desc
+
+
+
+# Define the sort fields
+REMOVE SolrSortField;sort(indexedType(identifier),code)[unique=true];fieldName[unique=true];ascending[unique=true]
+;$solrIndexedType:name-asc;name;true
+;$solrIndexedType:name-desc;name;false
+;$solrIndexedType:relevance;score;false
+

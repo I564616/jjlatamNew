@@ -1,0 +1,125 @@
+#templateLanding  #global-search-txt-holder {
+   // width: 400px;
+    //position: relative;
+	padding-left:20px;
+}
+.template-panel-style{
+	 border: 1px solid #f2f2f2;
+    background-color: #fff;
+    margin: 0px 0px 0px 0px;
+    padding: 15px 0px 15px 15px;
+    box-shadow: 0px 1px 8px #ccc, 0px 0px 0px #ccc;
+}
+#template-searchby label{width:25%}
+#template-searchby .bootstrap-select{width:71%}
+#downloadlink{margin-top:8px}
+/* added by siva */
+#templateLanding .searchglyph {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    z-index: 9999;
+    display: block;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    color: #0a8caa;
+    background: none !important;
+    border: none !important;
+}
+#templateLanding #global-search-txt {
+    border-radius: 20px;
+    font-size: 14px;
+}
+#templateLanding  .downloadlinks{
+    text-align: right;
+    padding: 8px 0px 0 0;
+    margin-top:0px;
+}
+#templateLanding  .validateprice {
+    margin-top: 15px;
+}
+#templateLanding table>tbody>tr>td {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    vertical-align: top !important;
+}
+#templateLanding .subcontent3{
+	    margin: 40px 0px 30px 0px;
+}
+ #templateLanding .jnj-panel {
+    border: 1px solid #f2f2f2;
+    background-color: #fff;
+    //box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 0px 1px 0 rgba(0, 0, 0, 0.19);
+    margin: 0px 0px 0px 0px;
+    padding: 15px 0px 15px 0px;
+	box-shadow: 0px 1px 8px #ccc, 0px 0px 0px #ccc;
+}
+#templateLanding .jnj-panel-for-table {
+    background-color: #fff;
+    box-shadow:0px 3px 8px #ccc, 0px 0px 0px #ccc;
+}
+
+/* added by siva */
+#templateLanding  #datatab-tablet th:first-child, #templateLanding  #datatab-tablet th:last-child {  
+    padding-left: 30px !important;
+}
+#templateLanding #datatab-mobile td{
+    padding-left: 35px !important;
+    text-align: left;
+}
+#templateLanding #global-search-txt-holder .bootstrap-select {
+    width: 220px;
+}
+#template-searchbox-icon #searchText{
+	border-radius:15px;
+	padding-right:40px;
+	}
+@media screen and (max-width: 480px) {
+	#templateLanding  #global-search-txt-holder {
+		width: 100%;
+		//position: relative;
+		padding:15px 15px 0 10px !important;
+	}
+	
+	#templateLanding .downloadlinks {	 
+	    padding: 15px 0px 13px 0 !important;	  
+	}	
+	#templateLanding #global-search-txt-holder .bootstrap-select {
+    	width: 250px !important;
+	}
+}
+
+@media screen and (max-width:767px){
+	#template-searchbox-icon{margin-top:10px;margin-bottom:5px}
+	#templateLanding .table>thead:first-child>tr:first-child>th:last-child,#templateLanding #datatab-mobile td  {
+    text-align: left !important;
+    padding-left: 20px !important;
+}
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px){
+	
+	#templateLanding #global-search-txt-holder .bootstrap-select {
+   	 width: 210px !important;
+	}
+	#templateLanding .downloadlinks {	  
+	    width: 150px;
+	}
+
+}
+@media screen and (max-width: 380px){
+	#templateLanding #global-search-txt-holder .bootstrap-select {
+	    width: 220px !important;
+	}
+}
+/* siva : to align the last td */
+#templateLanding table>tbody>tr>td:last-child {
+    text-align: center;
+    padding-left: 0;
+}
+#templateLanding .table>thead:first-child>tr:first-child>th:last-child {
+    text-align: center;
+    padding-left: 10px;
+}

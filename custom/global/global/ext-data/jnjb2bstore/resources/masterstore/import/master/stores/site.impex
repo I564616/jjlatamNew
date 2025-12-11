@@ -1,0 +1,59 @@
+#
+# Import the CMS Site configuration for the JNJ EPIC MDD-DE Store
+#
+$productCatalog=mddProdCatalog
+$contentCatalog=mddDEContCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$defaultLanguage=en
+$storeUid=mdd-deBaseStore
+$siteUid=mdd-deCMSsite
+
+# Import config properties into impex macros
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+
+# Load the storefront context root config param
+$storefrontContextRoot=$config-b2bStorefrontContextRoot
+
+#% final String configValue = Config.getParameter("deployment.env");
+#% if: configValue.equals("local"); 
+
+INSERT_UPDATE CMSSite;uid[unique=true];name[lang=en];theme(code);channel(code);stores(uid);contentCatalogs(id);defaultCatalog(id);defaultLanguage(isoCode);urlPatterns;active;previewURL;urlEncodingAttributes;languages(isoCode)
+;$siteUid;EPIC MDD JNJ;jnj-gt;B2B;$storeUid;$contentCatalog;$productCatalog;$defaultLanguage;(?i)^https?://b2blocal-mdd-epic\.jnj\.[^/]+(|/.*|\?.*)$;true;$storefrontContextRoot/?site=$siteUid;language,storefront;en
+
+#% endif:
+
+#% if: configValue.equals("dev"); 
+INSERT_UPDATE CMSSite;uid[unique=true];name[lang=en];theme(code);channel(code);stores(uid);contentCatalogs(id);defaultCatalog(id);defaultLanguage(isoCode);urlPatterns;active;previewURL;urlEncodingAttributes;languages(isoCode)
+;$siteUid;EPIC MDD JNJ;jnj-gt;B2B;$storeUid;$contentCatalog;$productCatalog;$defaultLanguage;(?i)^https?://b2bdev-mdd-epic\.jnj\.[^/]+(|/.*|\?.*)$,(?i)^https?://dev\.epic\.[^/]+(|/.*|\?.*)$,(?i)^https?://epic-dev\.jnj\.[^/]+(|/.*|\?.*)$;true;$storefrontContextRoot/?site=$siteUid;language,storefront;en
+
+
+#% endif:
+
+#% if: configValue.equals("dev2"); 
+INSERT_UPDATE CMSSite;uid[unique=true];name[lang=en];theme(code);channel(code);stores(uid);contentCatalogs(id);defaultCatalog(id);defaultLanguage(isoCode);urlPatterns;active;previewURL;urlEncodingAttributes;languages(isoCode)
+;$siteUid;EPIC MDD JNJ;jnj-gt;B2B;$storeUid;$contentCatalog;$productCatalog;$defaultLanguage;(?i)^https?://b2bdev2-mdd-epic\.jnj\.[^/]+(|/.*|\?.*)$,(?i)^https?://dev2\.epic\.[^/]+(|/.*|\?.*)$,(?i)^https?://epic-dev2\.jnj\.[^/]+(|/.*|\?.*)$;true;$storefrontContextRoot/?site=$siteUid;language,storefront;en
+
+
+#% endif:
+
+#% if: configValue.equals("stg");
+
+INSERT_UPDATE CMSSite;uid[unique=true];name[lang=en];theme(code);channel(code);stores(uid);contentCatalogs(id);defaultCatalog(id);defaultLanguage(isoCode);urlPatterns;active;previewURL;urlEncodingAttributes;languages(isoCode)
+;$siteUid;EPIC MDD JNJ;jnj-gt;B2B;$storeUid;$contentCatalog;$productCatalog;$defaultLanguage;(?i)^https?://b2bstg-mdd-epic\.jnj\.[^/]+(|/.*|\?.*)$,(?i)^https?://stage\.epic\.[^/]+(|/.*|\?.*)$,(?i)^https?://epic-stage\.jnj\.[^/]+(|/.*|\?.*)$,(?i)^https?://order360-stage\.jnjgateway\.com.*$;true;$storefrontContextRoot/?site=$siteUid;language,storefront;en
+
+#% endif:
+
+#% if: configValue.equals("prod");
+
+INSERT_UPDATE CMSSite;uid[unique=true];name[lang=en];theme(code);channel(code);stores(uid);contentCatalogs(id);defaultCatalog(id);defaultLanguage(isoCode);urlPatterns;active;previewURL;urlEncodingAttributes;languages(isoCode)
+;$siteUid;EPIC MDD JNJ;jnj-gt;B2B;$storeUid;$contentCatalog;$productCatalog;$defaultLanguage;(?i)^https?://b2bprod-mdd-epic\.jnj\.[^/]+(|/.*|\?.*)$,(?i)^https?://prod\.epic\.[^/]+(|/.*|\?.*)$,(?i)^https?://epic-prod\.jnj\.[^/]+(|/.*|\?.*)$,(?i)^https?://order360\.jnjgateway\.com.*$;true;$storefrontContextRoot/?site=$siteUid;language,storefront;en
+
+#% endif:
+
+
+# Cart Cleanup CronJobs
+INSERT_UPDATE CartRemovalCronJob;code[unique=true];job(code)[default=cartRemovalJob];sites(uid)[default=$siteUid];sessionLanguage(isoCode)[default=en]
+;$siteUid-CartRemovalJob
+
+INSERT_UPDATE Trigger;cronJob(code)[unique=true];second;minute;hour;day;month;year;relative;active;maxAcceptableDelay
+;$siteUid-CartRemovalJob;0;5;4;-1;-1;-1;false;true;-1

@@ -1,0 +1,114 @@
+insert_update UserGroup;description;locname[lang=en];uid[unique=true,allow null=true];
+;This is used for viewing catalog;View Catalog;viewCatalogGroup
+;This is used for requesting quote;Request Quote;requestQuoteGroup
+;This is used for searching order;Search Order;searchOrderGroup
+;This is used for placing order;Place Order;placeOrderGroup
+;This is used for editing users;Edit User;editUserGroup
+;This is used for creating user;Create User;createUserGroup
+;This is used for resetting other user's password;Reset Password;resetPasswordGroup
+;This is used for viewing other user security question;View Security Q/A;viewSecurityQAGroup
+;This is used for placing No Charge Order Entry Only order; JnjGTInternalNoChargeUser
+
+insert_update UserGroup;description;locname[lang=en];uid[unique=true,allow null=true];groups(uid)[mode=append];
+;This is used for View Only Buyer;View Only;viewOnlyBuyerGroup;viewCatalogGroup,requestQuoteGroup,searchOrderGroup
+;This is used for View & Place Order Buyer;View & Place Orders;placeOrderBuyerGroup;viewCatalogGroup,requestQuoteGroup,placeOrderGroup,searchOrderGroup
+;This is used for View Only Sales Rep;View Only Sales Rep;viewOnlySalesRepGroup;viewCatalogGroup,requestQuoteGroup,searchOrderGroup
+;This is used for View & Place Order Sales Rep;View & Place Orders Sales Rep;placeOrderSalesGroup;viewCatalogGroup,requestQuoteGroup,placeOrderGroup,searchOrderGroup
+;This is used for Admin;Admin Group;jnjEMEAAdminGroup;viewCatalogGroup,requestQuoteGroup,searchOrderGroup,editUserGroup,createUserGroup,resetPasswordGroup,viewSecurityQAGroup,placeOrderGroup,JnjGTInternalNoChargeUser
+
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+UserGroup;b2bcustomergroup;;;;;;;;
+;;;;B2BCustomer;+;+;+;-;-
+$END_USERRIGHTS;;;;;
+
+
+update SearchRestriction;code[unique=true];active
+;employee_restriction;false
+
+
+# JnJ Product manager group for Product Cockpit
+INSERT_UPDATE UserGroup;UID[unique=true];groups(uid)[mode=append]
+;jnjEMEAproductmanagergroup;cockpitgroup,employeegroup
+
+# Jnj Class Of Trade Group for broad cast message.
+INSERT_UPDATE ClassOfTradeGroup;uid[unique=true];locName[lang=en]
+;Trade;Trade
+;Consumer_Affiliate;Consumer Affiliate
+;House;House
+;Hospital;Hospital
+;Government;Government
+;CSC;CSC
+;Distributor;Distributor
+;Sales_Rep_Account;Sales Rep Account
+;International_Affiliate;International Affiliate
+
+insert_update UserGroup;description;locname[lang=en];uid[unique=true,allow null=true];
+;This is used for viewing catalog;View Catalog;viewCatalogGroup
+;This is used for requesting quote;Request Quote;requestQuoteGroup
+;This is used for searching order;Search Order;searchOrderGroup
+;This is used for placing order;Place Order;placeOrderGroup
+;This is used for editing users;Edit User;editUserGroup
+;This is used for creating user;Create User;createUserGroup
+;This is used for resetting other user's password;Reset Password;resetPasswordGroup
+;This is used for viewing other user security question;View Security Q/A;viewSecurityQAGroup
+;This is used for displaying My Bid;BID;bidGroup
+;This is used for managing products;Product Catalog;productsGroup 
+;This is used for managing users;Administrator;useradminGroup
+;This is used for managing orders;Place Order;selfOrderGroup
+;This is used for managing orders on behalf;Other Order Group;otherOrderGroup
+;This is used for informing the expected group;Expected Price;expectedPriceGroup
+;This is used accessing the business units for order status, details and reports;Reports;reportsGroup
+;This is used accessing the business units for contract balance;Contract Balance;contractBalanceGroup
+;This is used accessing ConsignmentForm;Consignment;consingmentGroup
+;This is used accessing Synthes Form;Synthes;synthesGroup
+;This is used accessing indirect Customer Form;Insert Indirect Customer;indirectCustomerFormGroup
+;This is used accessing OCD Form;OCD;ocdGroup
+;This is used placing an order on behalf for indirect customer;Indirect Customer;indirectCustomerGroup
+;This is used for price Change;Price Change;priceChangeGroup;
+;This is used for Laudo download;Laudo User Group;laudoUserGroup;
+#;This is used for placing No Charge order;Place no charge Order;noChargeOrderEmployeeGroup
+;This is used for placing No Charge order;Place no charge Order;JnjGTInternalNoChargeUser
+
+insert_update UserGroup;description;locname[lang=en];uid[unique=true,allow null=true];groups(uid)[mode=append];
+;This is used for View Only Buyer;View Only;viewOnlyBuyerGroup;viewCatalogGroup,requestQuoteGroup,searchOrderGroup
+;This is used for View & Place Order Buyer;View & Place Orders;placeOrderBuyerGroup;viewCatalogGroup,requestQuoteGroup,placeOrderGroup,searchOrderGroup
+;This is used for View Only Sales Rep;View Only Sales Rep;viewOnlySalesRepGroup;viewCatalogGroup,requestQuoteGroup,searchOrderGroup
+;This is used for View & Place Order Sales Rep;View & Place Orders Sales Rep;placeOrderSalesGroup;viewCatalogGroup,requestQuoteGroup,placeOrderGroup,searchOrderGroup
+;This is used for Admin;Admin Group;jnjGTAdminGroup;viewCatalogGroup,requestQuoteGroup,searchOrderGroup,editUserGroup,createUserGroup,resetPasswordGroup,viewSecurityQAGroup,placeOrderGroup,JnjGTInternalNoChargeUser
+#;This is used for Admin;Admin Group;jnjNaAdminGroup;viewCatalogGroup,requestQuoteGroup,searchOrderGroup,editUserGroup,createUserGroup,resetPasswordGroup,viewSecurityQAGroup,placeOrderGroup
+#;This is used for CSR;CSR Group;jnjNaCsrGroup;viewCatalogGroup,requestQuoteGroup,placeOrderGroup,searchOrderGroup,editUserGroup,createUserGroup,resetPasswordGroup,viewSecurityQAGroup
+;This is used for CSR;CSR Group;jnjGTCsrGroup;viewCatalogGroup,requestQuoteGroup,placeOrderGroup,searchOrderGroup,editUserGroup,createUserGroup,resetPasswordGroup,viewSecurityQAGroup	
+
+
+
+# JnJ Product manager group for Product Cockpit
+INSERT_UPDATE UserGroup;UID[unique=true];groups(uid)[mode=append]
+#;jnjNAproductmanagergroup;cockpitgroup,employeegroup
+;jnjGTproductmanagergroup;cockpitgroup,employeegroup
+
+# Jnj Class Of Trade Group for broad cast message.
+INSERT_UPDATE ClassOfTradeGroup;uid[unique=true];locName[lang=en]
+;Trade;Trade
+;Consumer_Affiliate;Consumer Affiliate
+;House;House
+;Hospital;Hospital
+;Government;Government
+;CSC;CSC
+;Distributor;Distributor
+;Sales_Rep_Account;Sales Rep Account
+;International_Affiliate;International Affiliate
+
+INSERT_UPDATE Address;owner(Principal.uid);&addrID             ;active;billingAddress[allownull=true];contactAddress[allownull=true];country(isocode);countyName;department;district;email           ;firstname;lastname ;phone1    ;phone2   ;postalcode;shippingAddress[allownull=true];sourceSysId;streetname   ;streetnumber[unique=true];title(code);town;unloadingAddress[allownull=true];url;visibleInAddressBook
+					 ;admin               ;address01           ;true  ;true                          ;false                         ;DE              ;Germany   ;IT        ;Zurich  ;test@test.com   ;David    ;Tester   ;0000000000;000000000;4702      ;false                          ;MDD        ;Wall Street  ;999                      ;mr         ;Zurich;false;;true              
+					 ;admin               ;address02           ;true  ;false                         ;true                          ;DE              ;Germany   ;IT        ;Zurich  ;test@test.com   ;David    ;Tester   ;0000000000;000000000;4702      ;false                          ;MDD        ;Wall Street  ;998                      ;mr         ;Zurich;false;;true              
+					 ;admin               ;address03           ;true  ;false                         ;false                         ;DE              ;Germany   ;IT        ;Zurich  ;test@test.com   ;David    ;Tester   ;0000000000;000000000;4702      ;true                           ;MDD        ;Wall Street  ;997                      ;mr         ;Zurich;false;;true              
+					 ;admin               ;address04           ;true  ;false                         ;false                         ;DE              ;Germany   ;IT        ;Zurich  ;test@test.com   ;David    ;Tester   ;0000000000;000000000;4702      ;false                          ;MDD        ;Wall Street  ;996                      ;mr         ;Zurich;true;;true              
+						 
+						 
+INSERT_UPDATE JnJB2BUnit;active[allownull=true];billingAddress(&addrID);contactAddress(&addrID);name;shippingAddress(&addrID);uid[unique=true,allownull=true];groups(uid)[mode=append]
+						;true                     ;address01            ;address02             ;GT Dummy Unit 1;address03   ;00080888;JnjGlobalUnit                                 
+						;true                     ;address01            ;address02             ;GT Dummy Unit 2;address03   ;00080889;JnjGlobalUnit                                 
+
+
+

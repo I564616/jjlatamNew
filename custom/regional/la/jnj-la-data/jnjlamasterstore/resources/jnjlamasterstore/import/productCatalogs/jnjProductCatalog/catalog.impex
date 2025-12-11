@@ -1,0 +1,66 @@
+# 
+# Import the JNJ Product
+#
+
+
+$MstrProdCatalog=mstrProductCatalog
+$BRproductCatalog=brProductCatalog
+$MXproductCatalog=mxProductCatalog
+$CENCAproductCatalog=cencaProductCatalog
+$ECproductCatalog=ecProductCatalog
+$ARproductCatalog=arProductCatalog
+$CLproductCatalog=clProductCatalog
+$UYproductCatalog=uyProductCatalog
+$COproductCatalog=coProductCatalog
+$PEproductCatalog=peProductCatalog
+$PRproductCatalog=prProductCatalog
+
+$languages=en,pt,es
+$defaultLanguage=en
+
+$classificationCatalogVersion=1.0
+$classificationCatalog=pcmMedicalClassCatalog
+$classificationCatalogName=PCM Medical Classifications Catalog
+$classCatalogVersion=catalogversion(catalog(id[default=$classificationCatalog]),version[default=$classificationCatalogVersion])[unique=true,default=$classificationCatalog:$classificationCatalogVersion]
+
+# Product catalog
+INSERT_UPDATE Catalog;id[unique=true];name[lang=$defaultLanguage]
+;$MstrProdCatalog;"Master Product Catalog"
+;$BRproductCatalog;"Brazil Product Catalog"
+;$MXproductCatalog;"Mexico Product Catalog"
+;$CENCAproductCatalog;"Cenca Product Catalog"
+;$ECproductCatalog;"Ecuador Product Catalog"
+;$ARproductCatalog;"Argentina Product Catalog"
+;$CLproductCatalog;"Chile Product Catalog"
+;$UYproductCatalog;"Uruguay Product Catalog"
+;$COproductCatalog;"Colombia Product Catalog"
+;$PEproductCatalog;"Peru Product Catalog"
+;$PRproductCatalog;"Puerto Rico Product Catalog"
+
+# Product versions for product catalogs
+INSERT_UPDATE CatalogVersion;catalog(id)[unique=true];version[unique=true];active;languages(isoCode);readPrincipals(uid)
+;$MstrProdCatalog;Staged;false;$languages;employeegroup
+;$BRproductCatalog;Staged;false;$languages;employeegroup
+;$BRproductCatalog;Online;true;$languages;employeegroup
+;$MXproductCatalog;Staged;false;$languages;employeegroup
+;$MXproductCatalog;Online;true;$languages;employeegroup
+;$CENCAproductCatalog;Staged;false;$languages;employeegroup
+;$CENCAproductCatalog;Online;true;$languages;employeegroup
+;$ECproductCatalog;Staged;false;$languages;employeegroup
+;$ECproductCatalog;Online;true;$languages;employeegroup
+;$ARproductCatalog;Online;true;$languages;employeegroup
+;$ARproductCatalog;Staged;false;$languages;employeegroup
+;$CLproductCatalog;Online;true;$languages;employeegroup
+;$CLproductCatalog;Staged;false;$languages;employeegroup
+;$UYproductCatalog;Online;true;$languages;employeegroup
+;$UYproductCatalog;Staged;false;$languages;employeegroup
+;$COproductCatalog;Staged;false;$languages;employeegroup
+;$COproductCatalog;Online;true;$languages;employeegroup
+;$PEproductCatalog;Staged;false;$languages;employeegroup
+;$PEproductCatalog;Online;true;$languages;employeegroup
+;$PRproductCatalog;Staged;false;$languages;employeegroup
+;$PRproductCatalog;Online;true;$languages;employeegroup
+
+#INSERT PriceRow;minqtd;price;unitFactor;
+#;1;0;1
+

@@ -1,0 +1,21 @@
+### Employee
+$passwordEncoding=md5
+$defaultPassword=1234
+$setPassword=@password[translator=de.hybris.platform.impex.jalo.translators.ConvertPlaintextToEncodedUserPasswordTranslator][default='$passwordEncoding:$defaultPassword']
+
+INSERT_UPDATE Employee;UID[unique=true];$setPassword;description;name;groups(uid);sessionLanguage(isocode);sessionCurrency(isocode)
+;productSyncUser;;Product Sync User;Product Sync User;;en;EUR
+
+### Sync Job
+$sourceVersion=sourceVersion(catalog(id),version[default='Staged'])[unique=true];
+$targetVersion=targetVersion(catalog(id),version[default='Online'])[unique=true];
+
+$MDDProductCatalog=mddProdCatalog
+
+
+INSERT_UPDATE CatalogVersionSyncJob;code;$sourceVersion;$targetVersion;createNewItems;removeMissingItems;rootTypes(code);
+;MDDproductStaged->MDDproductOnline;$MDDProductCatalog:Staged;$MDDProductCatalog:Online;true;true;Category,Product,Media,Keyword,PriceRow,TaxRow,DiscountRow,MediaContainer;syncUser;
+
+### Sync Cron Job
+INSERT_UPDATE CatalogVersionSyncCronJob;code[unique=true];job(code);sessionLanguage(isocode)
+;Sync-MDDproductStaged->MDDproductOnline;MDDproductStaged->MDDproductOnline;en

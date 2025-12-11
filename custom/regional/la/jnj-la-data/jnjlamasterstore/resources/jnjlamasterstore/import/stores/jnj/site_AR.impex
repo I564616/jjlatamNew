@@ -1,0 +1,65 @@
+#
+# Import the CMS Site configuration for the JNJ EPIC MDD-DE Store
+#
+$productCatalog=arProductCatalog
+$contentCatalog=arContentCatalog
+
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$languages=en,es,pt
+$defaultLanguage=es
+$defaultCountry=AR
+$storeUid=arBaseStore
+$siteUid=arCMSite
+
+# Import config properties into impex macros
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+
+# Load the storefront context root config param
+$storefrontContextRoot=$config-b2bStorefrontContextRoot
+
+#% final String configValue = Config.getParameter("deployment.env");
+
+#% if: configValue.equals("local"); 
+
+INSERT_UPDATE CMSSite;uid[unique=true];name[lang=en];theme(code);channel(code);stores(uid);contentCatalogs(id);defaultCatalog(id);defaultLanguage(isoCode);defaultCountry(isoCode);urlPatterns;active;previewURL;urlEncodingAttributes;languages(isoCode);jnjWebSiteType(code)
+;$siteUid;J&J CUSTOMER CONNECT;jnj;B2B;$storeUid;$contentCatalog;$productCatalog;$defaultLanguage;$defaultCountry;(?i)^https?://ar-local\.jjcustomerconnect\.[^/]+(|/.*|\?.*)$;true;$storefrontContextRoot/?site=$siteUid;language;$languages;MDD
+
+#% endif:
+
+#% if: configValue.equals("dev"); 
+INSERT_UPDATE CMSSite;uid[unique=true];name[lang=en];theme(code);channel(code);stores(uid);contentCatalogs(id);defaultCatalog(id);defaultLanguage(isoCode);defaultCountry(isoCode);urlPatterns;active;previewURL;urlEncodingAttributes;languages(isoCode);jnjWebSiteType(code)
+;$siteUid;J&J CUSTOMER CONNECT;jnj;B2B;$storeUid;$contentCatalog;$productCatalog;$defaultLanguage;$defaultCountry;(?i)^https?://ar-dev\.jjcustomerconnect\.[^/]+(|/.*|\?.*)$;true;$storefrontContextRoot/?site=$siteUid;language;$languages;MDD
+
+#% endif:
+
+#% if: configValue.equals("dev2");
+INSERT_UPDATE CMSSite;uid[unique=true];name[lang=en];theme(code);channel(code);stores(uid);contentCatalogs(id);defaultCatalog(id);defaultLanguage(isoCode);defaultCountry(isoCode);urlPatterns;active;previewURL;urlEncodingAttributes;languages(isoCode);jnjWebSiteType(code)
+;$siteUid;J&J CUSTOMER CONNECT;jnj;B2B;$storeUid;$contentCatalog;$productCatalog;$defaultLanguage;$defaultCountry;(?i)^https?://ar-dev2\.jjcustomerconnect\.[^/]+(|/.*|\?.*)$;true;$storefrontContextRoot/?site=$siteUid;language;$languages;MDD
+
+#% endif:
+
+#% if: configValue.equals("qa");
+INSERT_UPDATE CMSSite;uid[unique=true];name[lang=en];theme(code);channel(code);stores(uid);contentCatalogs(id);defaultCatalog(id);defaultLanguage(isoCode);defaultCountry(isoCode);urlPatterns;active;previewURL;urlEncodingAttributes;languages(isoCode);jnjWebSiteType(code)
+;$siteUid;J&J CUSTOMER CONNECT;jnj;B2B;$storeUid;$contentCatalog;$productCatalog;$defaultLanguage;$defaultCountry;(?i)^https?://ar-qa\.jjcustomerconnect\.[^/]+(|/.*|\?.*)$;true;$storefrontContextRoot/?site=$siteUid;language;$languages;MDD
+
+#% endif:
+
+#% if: configValue.equals("stg");
+INSERT_UPDATE CMSSite;uid[unique=true];name[lang=en];theme(code);channel(code);stores(uid);contentCatalogs(id);defaultCatalog(id);defaultLanguage();defaultCountry(isoCode);urlPatterns;active;previewURL;urlEncodingAttributes;languages(isoCode);jnjWebSiteType(code)
+;$siteUid;J&J CUSTOMER CONNECT;jnj;B2B;$storeUid;$contentCatalog;$productCatalog;$defaultLanguage;$defaultCountry;(?i)^https?://ar-stg\.jjcustomerconnect\.[^/]+(|/.*|\?.*)$;true;$storefrontContextRoot/?site=$siteUid;language;$languages;MDD
+
+#% endif:
+
+#% if: configValue.equals("prod");
+INSERT_UPDATE CMSSite;uid[unique=true];name[lang=en];theme(code);channel(code);stores(uid);contentCatalogs(id);defaultCatalog(id);defaultLanguage(isoCode);defaultCountry(isoCode);urlPatterns;active;previewURL;urlEncodingAttributes;languages(isoCode);jnjWebSiteType(code)
+;$siteUid;J&J CUSTOMER CONNECT;jnj;B2B;$storeUid;$contentCatalog;$productCatalog;$defaultLanguage;$defaultCountry;(?i)^https?://ar-prod\.jjcustomerconnect\.[^/]+(|/.*|\?.*)$;true;$storefrontContextRoot/?site=$siteUid;language;$languages;MDD
+
+#% endif:
+
+
+# Cart Cleanup CronJobs
+INSERT_UPDATE CartRemovalCronJob;code[unique=true];job(code)[default=cartRemovalJob];sites(uid)[default=$siteUid];sessionLanguage(isoCode)[default=en]
+;$siteUid-CartRemovalJob
+
+INSERT_UPDATE Trigger;cronJob(code)[unique=true];second;minute;hour;day;month;year;relative;active;maxAcceptableDelay
+;$siteUid-CartRemovalJob;0;5;4;-1;-1;-1;false;true;-1

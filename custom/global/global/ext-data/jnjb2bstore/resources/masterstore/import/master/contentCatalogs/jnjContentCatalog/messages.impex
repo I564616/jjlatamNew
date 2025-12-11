@@ -1,0 +1,1979 @@
+$catalogVersion=catalogVersion(catalog(id[default=mstrContCatalog]),version[default=Staged])[default=mstrContCatalog:Staged][unique=true]
+
+insert_update MessageItem;messageCategory(code)[allownull=true];uid[unique=true];$catalogVersion;messageText[lang=en];messageText[lang=fr];messageText[lang=es];messageText[lang=de];
+#Forgot Password
+;Label;password.forgotPassword.resetPassword;;Reset your password;Reset your password;Reset your password
+;Label;password.forgotPassword.passwordExpired;;Password Expired;Password Expired;Password Expired
+;Label;password.expired.text;;Your current password has expired. Please define a new password below.;Your current password has expired. Please define a new password below.;Your current password has expired. Please define a new password below.
+;Label;password.forgotPassword.emailHeader;;To start the password recovery process, please enter your email address:;To start the password recovery process, please enter your email address:;To start the password recovery process, please enter your email address:
+;Label;password.forgotPassword.email;;Email:;Email:;Email:
+;Label;password.forgotPassword.email.error;;Please enter a valid email address.;Please enter a valid email address.;Please enter a valid email address.
+;Label;password.forgotPassword.secretquestionsError;;The answer you submitted for one or more of your security questions is incorrect. Please try again.;The answer you submitted for one or more of your security questions is incorrect. Please try again.;The answer you submitted for one or more of your security questions is incorrect. Please try again.
+;Label;password.forgotPassword.blockedError;;Your profile has been disabled. Please contact customer service.;Your profile has been disabled. Please contact customer service.;Your profile has been disabled. Please contact customer service.
+;Label;password.forgotPassword.emailMismatchError;;The email address you entered is invalid. Please try again.;The email address you entered is invalid. Please try again.;The email address you entered is invalid. Please try again.
+;Label;password.forgotPassword.next;;NEXT;NEXT;NEXT
+;Label;password.forgotPassword.emptyEmailText;;myemail@mysite.com;myemail@mysite.com;myemail@mysite.com
+;Label;password.forgotPassword.secretQuestionsHeader;;Please select 3 of your security questions to answer below. You have 3 attempts to answer correctly before your account is locked. ;Please select 3 of your security questions to answer below. You have 3 attempts to answer correctly before your account is locked. ;Please select 3 of your security questions to answer below. You have 3 attempts to answer correctly before your account is locked. 
+;Label;password.forgotPassword.emptyQuestionAndAnswer;;Please fill out your secret question and answer before proceeding.;Please fill out your secret question and answer before proceeding.;Please fill out your secret question and answer before proceeding.
+;Label;password.forgotPassword.star;;*;*;*
+;Label;password.forgotPassword.colon;;:;:;:
+;Label;password.forgotPassword.selectAQuestion;;Please select a question;Please select a question;Please select a question
+;Label;password.forgotPassword.question1;;Secret Question 1;Secret Question 1;Secret Question 1
+;Label;password.forgotPassword.question2;;Secret Question 2;Secret Question 2;Secret Question 2
+;Label;password.forgotPassword.question3;;Secret Question 3;Secret Question 3;Secret Question 3
+;Label;password.forgotPassword.correctAnswers;;Your answers are correct.;Your answers are correct.;Your answers are correct.
+;Label;password.forgotPassword.newPassword;;New Password;New Password;New Password
+;Label;password.forgotPassword.retypePassword;;Retype New Password;Retype New Password;Retype New Password
+;Label;password.forgotPassword.enterPassword;;Please complete all required fields.;Please complete all required fields.;Please complete all required fields.
+;Label;password.forgotPassword.passwordMismatchError;;Passwords entered do not match. Please try again.;Passwords entered do not match. Please try again.;Passwords entered do not match. Please try again.
+;Label;password.forgotPassword.passwordStrength;;Password Strength;Password Strength;Password Strength
+;Label;password.forgotPassword.strengthDesc;;Your password must contain a minimum of 8 characters, and feature two of the following four character types:;Your password must contain a minimum of 8 characters, and feature two of the following four character types:;Your password must contain a minimum of 8 characters, and feature two of the following four character types:
+;Label;password.forgotPassword.resetPassword;;Reset your password:;Reset your password:;Reset your password:
+;Label;password.forgotPassword.uppercase;;Uppercase letters (A – Z);Uppercase letters (A – Z);Uppercase letters (A – Z)
+;Label;password.forgotPassword.lowercase;;Lowercase letters (a – z);Lowercase letters (a – z);Lowercase letters (a – z)
+;Label;password.forgotPassword.numeral;;Numerals (0 – 9);Numerals (0 – 9);Numerals (0 – 9)
+;Label;password.forgotPassword.symbol;;Non-alphabetic characters (such as ! , # , $ , %);Non-alphabetic characters (such as ! , # , $ , %);Non-alphabetic characters (such as ! , # , $ , %)
+;Label;password.forgotPassword.passwordChangeSuccess;;Your password has been changed successfully.;Your password has been changed successfully.;Your password has been changed successfully.
+;Label;password.forgotPassword.close;;CLOSE;CLOSE;CLOSE
+;Label;password.forgotPassword.questionsError;;Please select a question.;Please select a question.;Please select a question.
+;Label;password.forgotPassword.answersError;;Please enter a valid answer.;Please enter a valid answer;Please enter a valid answer
+;Label;profile.password.error;;The password you have entered has been recently used. Please specify a new one.;The password you have entered has been recently used. Please specify a new one.;The password you have entered has been recently used. Please specify a new one.
+;Label;text.register.password.strength.msg;;The password must be at least 8 characters long;The password must be at least 8 characters long;The password must be at least 8 characters long
+;Label;password.expiry.errormessage.invalidtoken;;This link has expired, please contact us for assistance.;This link has expired, please contact us for assistance.;This link has expired, please contact us for assistance.
+
+
+
+#Login
+;Label;login.header;;Login;Login;Login
+;Label;login.attempts.exceeded;;You have exceeded 5 incorrect login attempts and your profile has been disabled. Please contact customer service.;You have exceeded 5 incorrect login attempts and your profile has been disabled. Please contact customer service.;You have exceeded 5 incorrect login attempts and your profile has been disabled. Please contact customer service.
+;Label;login.user.login;;Email;Email;Email
+;Label;login.user.password;;Password;Password;Password
+;Label;login.user.password.placeholder;;type your login;type your login;type your login
+;Label;login.user.forgot;;Forgot your password?;Forgot your password?;Forgot your password?
+;Label;login.user.save;;Remember me;Remember me;Remember me
+;Label;login.password.expiry.unauthorized;;You are not authorized to view this page;You are not authorized to view this page;You are not authorized to view this page
+;Label;login.user.new;;New User?;New User?;New User?
+;Label;login.user.profile.create;;Create a Profile;Create a Profile;Create a Profile
+;Label;login.user.profile.signup;;Sign Up;Sign Up;Sign Up
+;Label;login.survey.title;;Your Opinion Matters;Your Opinion Matters;Your Opinion Matters
+;Label;login.survey.message;;We'd like your opinion. Please fill out a brief survey - it will take five minutes.;We'd like your opinion. Please fill out a brief survey - it will take five minutes.;We'd like your opinion. Please fill out a brief survey - it will take five minutes.
+;Label;login.survey.later;;Remind Me Later;Remind Me Later;Remind Me Later
+;Label;login.survey.no;;No;No;No
+;Label;login.error.non.epic.user;;You are not authorized to log on to this site;You are not authorized to log on to this site;You are not authorized to log on to this site
+
+;Label;login.error.account.disbaled;;Your profile has been disabled. Please contact customer service.;Your profile has been disabled. Please contact customer service.;Your profile has been disabled. Please contact customer service.
+;Label;login.error.account.inprocess;;You do not have a valid account associated to your user profile yet. Please contact customer service.;You do not have a valid account associated to your user profile yet. Please contact customer service.;You do not have a valid account associated to your user profile yet. Please contact customer service.
+;Label;login.warn.account.disabled;;Your account will be blocked after the next failed login attempt.;Your account will be blocked after the next failed login attempt.;Your account will be blocked after the next failed login attempt.
+;Label;login.error.account.not.found.title;;You have entered an incorrect username or password. Please try again. Your profile will be disabled after 5 incorrect attempts.;You have entered an incorrect username or password. Please try again. Your profile will be disabled after 5 incorrect attempts.;You have entered an incorrect username or password. Please try again. Your profile will be disabled after 5 incorrect attempts.
+;Label;home.loadingAjax;;LOADING;LOADING;LOADING
+;Label;home.upload.file.success;;File(s) uploaded successfully. Items listed have been added to your cart.;File(s) uploaded successfully. Items listed have been added to your cart.;File(s) uploaded successfully. Items listed have been added to your cart.
+;Label;home.upload.file.error;;Your file contained one or more errors and could not be uploaded. Please try again.;Your file contained one or more errors and could not be uploaded. Please try again.;Your file contained one or more errors and could not be uploaded. Please try again.
+;Label;home.upload.file.empty;;Please complete all mandatory fields in the file. ;Please complete all mandatory fields in the file. ;Please complete all mandatory fields in the file. 
+;Label;home.upload.file.title;;Upload a formatted Excel file to add its contents to the Cart.;Upload a formatted Excel file to add its contents to the Cart.;Upload a formatted Excel file to add its contents to the Cart.
+
+#Resource Page
+;Label;resource.home.text;;Home;Home;Home
+;Label;resource.RESOURCE.text;;Resources;Resources;Resources
+;Label;resource.usefullinks.text;;Useful Links;Useful Links;Useful Links
+;Label;resource.trainingresources.text;;Training Resources;Training Resources;Training Resources
+;Label;resource.policiesandfees.text;;Policies and Fees;Policies and Fees;Policies and Fees
+;Label;resource.cpsia.text;;CPSIA;CPSIA;CPSIA
+;Label;resource.termsofsale.text;;Terms of Sale;Terms of Sale;Terms of Sale
+;Label;resource.link.usefulinks;;Useful Links;Useful Links;Useful Links
+;Label;resource.link.policiesandfees;;Policies & Fees;Policies & Fees;Policies & Fees
+
+
+#Divisions
+;Label;AS;;ASP;ASP;ASP
+;Label;C4;;BWI;BWI;BWI
+;Label;C1;;Cordis Cardio;Cordis Cardio;Cordis Cardio
+;Label;C2;;Cordis Endo;Cordis Endo;Cordis Endo
+;Label;CO;;Codman Neuro;Codman Neuro;Codman Neuro
+;Label;DM;;DePuy Synthes Mitek;DePuy Synthes Mitek;DePuy Synthes Mitek
+;Label;JT;;DePuy Synthes Ortho;DePuy Synthes Ortho;DePuy Synthes Ortho
+;Label;DS;;DePuy Synthes Spine;DePuy Synthes Spine;DePuy Synthes Spine
+;Label;BA;;EES Gastric Band;EES Gastric Band;EES Gastric Band
+;Label;CS;;EES Sedation;EES Sedation;EES Sedation
+;Label;ED;;EES Endoscopy;EES Endoscopy;EES Endoscopy
+;Label;HS;;EES Harmonic;EES Harmonic;EES Harmonic
+;Label;IN;;EES IN Scope;EES IN Scope;EES IN Scope
+;Label;ME;;EES Mechanical;EES Mechanical;EES Mechanical
+;Label;EH;;ETH Hemo;ETH Hemo;ETH Hemo
+;Label;EJ;;ETH Drains/Mesh;ETH Drains/Mesh;ETH Drains/Mesh
+;Label;ET;;ETH Suture;ETH Suture;ETH Suture
+;Label;EW;;ETH Gyn/Uro;ETH Gyn/Uro;ETH Gyn/Uro
+;Label;WC;;ETH Adv WC;ETH Adv WC;ETH Adv WC
+;Label;HC;;JJHCS;JJHCS;JJHCS
+;Label;CD;;OCD;OCD;OCD
+;Label;VX;;Veridex;Veridex;Veridex
+;Label;Consumer;;Consumer Sector;Consumer Sector;Consumer Sector
+;Label;corporate;;Corporate;Corporate;Corporate
+;Label;Pharmaceutical Sector;;Pharmaceutical Sector;Pharmaceutical Sector;Pharmaceutical Sector
+
+#Territories
+;Label;T1;;Territory1;Territory1;Territory1
+;Label;T2;;Territory2;Territory2;Territory2
+;Label;T3;;Territory3;Territory3;Territory3
+;Label;T4;;Territory4;Territory4;Territory4
+;Label;T5;;Territory5;Territory5;Territory5
+
+#BusinessType
+;Label;businessType1;;Clinic;Clinic;Clinic
+;Label;businessType2;;Distributor;Distributor;Distributor
+;Label;businessType3;;Doctor;Doctor;Doctor
+;Label;businessType4;;Government;Government;Government
+;Label;businessType5;;Hospital;Hospital;Hospital
+;Label;businessType6;;Retailer;Retailer;Retailer
+;Label;businessType7;;Surgery Center;Surgery Center;Surgery Center
+
+
+#EstimatedAmount
+;Label;estimatedAmount1;;Under $2500;Under $2500;Under $2500
+;Label;estimatedAmount2;;$2500 - $9999;$2500 - $9999;$2500 - $9999
+;Label;estimatedAmount3;;$10000 - $19999;$10000 - $19999;$10000 - $19999
+;Label;estimatedAmount4;;$20000 - $49999;$20000 - $49999;$20000 - $49999
+;Label;estimatedAmount5;;$50000 - $100000;$50000 - $100000;$50000 - $100000
+;Label;estimatedAmount6;;Above $100000;Above $100000;Above $100000
+
+#Products to be purchased
+;Label;PP1;;Advanced Sterilization Products, a division of Ethicon, Inc.;Advanced Sterilization Products, a division of Ethicon, Inc.;Advanced Sterilization Products, a division of Ethicon, Inc.
+;Label;PP2;;Codman & Shurtleff, Inc.;Codman & Shurtleff, Inc.;Codman & Shurtleff, Inc.
+;Label;PP3;;DePuy Synthes Mitek Sports Medicine;DePuy Synthes Mitek Sports Medicine;DePuy Synthes Mitek Sports Medicine
+;Label;PP4;;ETHICON, Inc.;ETHICON, Inc.;ETHICON, Inc.
+;Label;PP5;;Ortho-Clinical Diagnostics, Inc.;Ortho-Clinical Diagnostics, Inc.;Ortho-Clinical Diagnostics, Inc.
+;Label;PP6;;Veridex, LLC;Veridex, LLC;Veridex, LLC
+;Label;PP7;;Biosense Webster, Inc.;Biosense Webster, Inc.;Biosense Webster, Inc.
+;Label;PP8;;Cordis Corporation;Cordis Corporation;Cordis Corporation
+;Label;PP9;;DePuy Synthes Spine;DePuy Synthes Spine;DePuy Synthes Spine
+;Label;PP10;;Ethicon Endo-Surgery, Inc.;Ethicon Endo-Surgery, Inc.;Ethicon Endo-Surgery, Inc.
+;Label;PP11;;J&J Consumer Products;J&J Consumer Products;J&J Consumer Products
+;Label;PP12;;JJHCS;JJHCS;JJHCS
+
+#Departments
+;Label;department1;;Finance;Finance;Finance
+;Label;department2;;Customer Service;Customer Service;Customer Service
+;Label;department3;;IT;IT;IT
+;Label;department4;;Purchasing;Purchasing;Purchasing
+;Label;department5;;Sales;Sales;Sales
+;Label;department6;;Other;Other;Other
+
+#Email Preferences
+#;Label;emailPreference1;;There is breaking news or updates on the website;There is breaking news or updates on the website;There is breaking news or updates on the website
+#;Label;emailPreference2;;New information regarding organizational changes to the Johnson & Johnson Family of Companies;New information regarding organizational changes to the Johnson & Johnson Family of Companies;New information regarding organizational changes to the Johnson & Johnson Family of Companies
+#;Label;emailPreference3;;An order I placed online is successfully validated;An order I placed online is successfully validated;An order I placed online is successfully validated
+#;Label;emailPreference4;;An order I placed ships;An order I placed ships;An order I placed ships
+#;Label;emailPreference5;;An order for any of my accounts ships
+#;Label;emailPreference6;;Any lines on an order I placed gets cut;Any lines on an order I placed gets cut;Any lines on an order I placed gets cut
+#;Label;emailPreference7;;Any item on an order for any of my accounts in my profile gets cut (Consumer Products Only);Any item on an order for any of my accounts in my profile gets cut (Consumer Products Only);Any item on an order for any of my accounts in my profile gets cut (Consumer Products Only)
+#;Label;emailPreference8;;An estimated out of stock availability date is available for any out of stock line;An estimated out of stock availability date is available for any out of stock line;An estimated out of stock availability date is available for any out of stock line 
+#;Label;emailPreference9;;Update me on out of stock estimated availability date every week;Update me on out of stock estimated availability date every week;Update me on out of stock estimated availability date every week
+
+#;Label;emailPreference10;;An estimated backorder availability date is available for any backordered lines (Medical Devices Only);An estimated backorder availability date is available for any backordered lines (Medical Devices Only);An estimated backorder availability date is available for any backordered lines (Medical Devices Only)
+#;Label;emailPreference11;;Order Confirmations - For all orders placed by any of the accounts in my profile;Order Confirmations - For all orders placed by any of the accounts in my profile;Order Confirmations - For all orders placed by any of the accounts in my profile
+#;Label;emailPreference12;;Product Availability - I'd like to receive a report of all open or backordered lines for my accounts (Medical Devices Only);Product Availability - I'd like to receive a report of all open or backordered lines for my accounts (Medical Devices Only);Product Availability - I'd like to receive a report of all open or backordered lines for my accounts (Medical Devices Only)
+#;Label;emailPreference13;;Shipped Order Summary - I'd like to receive a report of all orders that have shipped for my accounts;Shipped Order Summary - I'd like to receive a report of all orders that have shipped for my accounts;Shipped Order Summary - I'd like to receive a report of all orders that have shipped for my accounts
+#;Label;emailPreference14;;I want to receive an email when any order line for my accounts is cancelled;I want to receive an email when any order line for my accounts is cancelled;I want to receive an email when any order line for my accounts is cancelled
+#;Label;emailPreference15;;I want to receive an email when a delivery note is loaded for any of my order;I want to receive an email when a delivery note is loaded for any of my order;I want to receive an email when a delivery note is loaded for any of my order
+#;Label;emailPreference16;; I want to receive an email when an invoice is loaded for any of my order; I want to receive an email when an invoice is loaded for any of my order; I want to receive an email when an invoice is loaded for any of my order 
+
+;Label;emailPreference1;;New information regarding organizational changes to the Johnson & Johnson Family of Companies;New information regarding organizational changes to the Johnson & Johnson Family of Companies;New information regarding organizational changes to the Johnson & Johnson Family of Companies
+;Label;emailPreference2;;There is breaking news or updates on the website;There is breaking news or updates on the website;There is breaking news or updates on the website
+;Label;emailPreference3;;An order for any of my accounts ships
+;Label;emailPreference4;;An order I placed ships;An order I placed ships;An order I placed ships
+;Label;emailPreference5;;Order Confirmations - For all orders placed by any of the accounts in my profile;Order Confirmations - For all orders placed by any of the accounts in my profile;Order Confirmations - For all orders placed by any of the accounts in my profile
+;Label;emailPreference6;;Shipped Order Summary - I'd like to receive a communication of all orders that have shipped for my accounts;Shipped Order Summary - I'd like to receive a communication of all orders that have shipped for my accounts;Shipped Order Summary - I'd like to receive a communication of all orders that have shipped for my accounts
+;Label;emailPreference7;;Any lines on an order I placed gets cut(Consumer Products Only);Any lines on an order I placed gets cut(Consumer Products Only);Any lines on an order I placed gets cut (Consumer Products Only)
+;Label;emailPreference8;;An order I placed online is successfully validated;An order I placed online is successfully validated;An order I placed online is successfully validated
+;Label;emailPreference9;;Product Availability - I'd like to receive a communication of all open or backordered lines for my accounts (Medical Devices Only);Product Availability - I'd like to receive a communication of all open or backordered lines for my accounts (Medical Devices Only);Product Availability - I'd like to receive a communication of all open or backordered lines for my accounts (Medical Devices Only)
+;Label;emailPreference10;;An estimated out of stock availability date is available for any out of stock line;An estimated out of stock availability date is available for any out of stock line;An estimated out of stock availability date is available for any out of stock line 
+;Label;emailPreference11;; I want to receive a communication when an invoice is loaded for any of my order; I want to receive a communication when an invoice is loaded for any of my order; I want to receive a communication when an invoice is loaded for any of my order 
+;Label;emailPreference12;;I want to receive a communication when a delivery note is loaded for any of my order;I want to receive a communication when a delivery note is loaded for any of my order;I want to receive a communication when a delivery note is loaded for any of my order
+;Label;emailPreference13;;I want to receive a communication when any order line for my accounts is cancelled;I want to receive a communication when any order line for my accounts is cancelled;I want to receive a communication when any order line for my accounts is cancelled
+;Label;emailPreference14;;Update me on out of stock estimated availability date every week;Update me on out of stock estimated availability date every week;Update me on out of stock estimated availability date every week
+;Label;emailPreference15;;I want to receive a confirmation communication when a new order has been placed on my account(s);I want to receive a confirmation communication when a new order has been placed on my account(s);I want to receive a confirmation communication when a new order has been placed on my account(s)
+;Label;emailPreference16;;Please send me an order confirmation every time an order is placed on any of my account(s);Please send me an order confirmation every time an order is placed on any of my account(s);Please send me an order confirmation every time an order is placed on any of my account(s)
+#5506
+;Label;emailPreference17;;I want to receive a communication when an order placed on my account has a credit hold;I want to receive a communication when an order placed on my account has a credit hold;I want to receive a communication when an order placed on my account has a credit hold
+;Label;emailPreference18;;I want to receive a communication when an order placed on my account has a off credit hold;I want to receive a communication when an order placed on my account has a off credit hold;I want to receive a communication when an order placed on my account has a off credit hold
+
+#Registration Process :
+;Label;text.register.colon;;:;:;:
+;Label;register.stepOne.create;;Create your Profile;Create your Profile;Create your Profile
+;Label;register.required.fields;;(*) - Required fields;(*) - Required fields;(*) - Required fields
+;Label;register.personal.information;;Personal Information;Personal Information;Personal Information
+;Label;register.security.questions;;Security Questions;Security Questions;Security Questions
+;Label;register.stepOne.createAccountNotice;;"This site allows you to purchase our products, track your orders and obtain product information.<br />We will use the information you provide to: process and ship your order (including disclosing your name and address to fulfillment houses and delivery services such as UPS® and FedEx®), contact you about the status of your order, create an account for later use so that you do not need to re-enter the information for each subsequent order, and, as otherwise indicated by our website's <a href=""javascript:;"" title=""Privacy Policy"" class=""privacypolicypopup_hn"">Privacy Policy</a>.<br />By completing this registration process, you consent to providing combinations of anonymous and personally identifiable information whenever you use the site as a registered visitor and agree that the information you provide will be governed by our website's <a href=""javascript:;"" title=""Privacy Policy"" class=""privacypolicypopup_hn"">Privacy Policy</a>. You may change or delete your registration information at any time by using the User ID and password that are set up during the registration process.<br />To use this site and access your facility's information herein, you must have appropriate authorization from your facility, which must have an account with Johnson & Johnson Health Care Systems, Inc. (JJHCS) or Johnson & Johnson Sales & Logistics Company, LLC (SLC). By submitting your registration, you represent that you are fully authorized to register and use this Site on behalf of your employer. You also consent to the transfer of your information to countries outside of your country of residence, including the United States, which may provide for different data protection rules than in your country.<br />To utilize this site, please ensure that you provide all required information when completing the form. Additionally, failure to provide the optional information requested in the form could limit our ability to customize your site experience - but should not prevent you from using most of our site features.<br />By submitting your information in the form provided below, you agree that such information will be governed by our"
+;Label;register.stepOne.privacyPolicy;;Privacy Policy;Privacy Policy;Privacy Policy
+;Label;register.stepOne.chooseProductsType;;What type of products does your company purchase?;What type of products does your company purchase?;What type of products does your company purchase?
+;Label;register.stepOne.mdd;;Medical Devices & Diagnostics;Medical Devices & Diagnostics;Medical Devices & Diagnostics
+;Label;register.stepOne.consumer;;Consumer Products;Consumer Products;Consumer Products
+;Label;register.stepOne.chooseProfile;;What type of profile do you need to create?;What type of profile do you need to create?;What type of profile do you need to create?
+;Label;register.stepOne.custAccount;;Create a profile to access an existing customer account;Create a profile to access an existing customer account;Create a profile to access an existing customer account
+;Label;register.stepOne.addAccountDesc;;Add my profile to the following Account Number or GLN(s):;Add my profile to the following Account Number or GLN(s):;Add my profile to the following Account Number or GLN(s):
+;Label;register.stepOne.required.star;;*;*;*
+;Label;register.stepOne.required.account;;Please enter Account Number!;Please enter Account Number!;Please enter Account Number!
+;Label;register.stepOne.accountMessage;;(If you don't know your MD&D account number, please call customer service.);(If you don't know your MD&D account number, please call customer service.);(If you don't know your MD&D account number, please call customer service.)
+;Label;register.stepOne.unknownAccountMsg;;My company has a J&J Consumer Products account, but I don't know the number.;My company has a J&J Consumer Products account, but I don't know the number.;My company has a J&J Consumer Products account, but I don't know the number.
+;Label;register.stepOne.newCustomer;;I am not currently a customer, but I would like to apply to become one;I am not currently a customer, but I would like to apply to become one;I am not currently a customer, but I would like to apply to become one
+;Label;register.stepOne.jnjEmployee;;I am a Johnson & Johnson Operating Companies' employee, sales representative or broker;I am a Johnson & Johnson Operating Companies' employee, sales representative or broker;I am a Johnson & Johnson Operating Companies' employee, sales representative or broker
+;Label;register.stepOne.wwid;;WWID:;WWID:;WWID:
+;Label;register.stepOne.division;;Division:;Division:;Division:
+;Label;register.stepOne.required.wwid;;Please enter WWID!;Please enter WWID!;Please enter WWID!
+;Label;register.stepOne.required.division;;Please enter Division!;Please enter Division!;Please enter Division!
+;Label;register.stepOne.account.gln;;Account# / GLN:;Account# / GLN:;Account# / GLN:
+;Label;register.submit.button.text;;Submit for Approval;Submit for Approval;Submit for Approval
+;Label;register.cancel.button.text;;Cancel Registration;Cancel Registration;Cancel Registration
+;Label;register.next.button.text;;Next;Next;Next
+;Label;register.back.button.text;;Back;Back;Back
+;Label;register.required.fields.text;;(*) - Required fields;(*) - Required fields;(*) - Required fields
+;Label;register.stepOne.invalid.account.error;;The account number(s) or GLN(s) you entered could not be found. Please enter a valid account number or GLN.;The account number(s) or GLN(s) you entered could not be found. Please enter a valid account number or GLN.;The account number(s) or GLN(s) you entered could not be found. Please enter a valid account number or GLN.
+
+;Label;register.stepTwo.header;;Company Information;Company Information;Company Information
+;Label;register.stepTwo.accountName;;Company Name (max 50 characters):;Company Name (max 50 characters):;Company Name (max 50 characters):
+;Label;register.stepTwo.required.account;;Please enter Account Name!;Please enter Account Name!;Please enter Account Name!
+;Label;register.stepTwo.gln;;Global Location Number:;Global Location Number:;Global Location Number:
+;Label;register.stepTwo.businessType;;Type of Business:;Type of Business:;Type of Business:
+;Label;register.stepTwo.required.businessType;;Please enter type of Business!;Please enter type of Business!;Please enter type of Business!
+;Label;register.stepTwo.subsidiary;;Subsidiary of:;Subsidiary of:;Subsidiary of:
+;Label;register.stepTwo.billToHeader;;Bill-To Location;Bill-To Location;Bill-To Location
+;Label;register.stepTwo.country;;Country:;Country:;Country:
+;Label;register.stepTwo.required.country;;Please enter Country!;Please enter Country!;Please enter Country!
+;Label;register.stepTwo.billAddressOne;;Bill-To Address 1:;Bill-To Address 1:;Bill-To Address 1:
+;Label;register.stepTwo.required.billAddressOne;;Please enter Address1!;Please enter Address1!;Please enter Address1!
+;Label;register.stepTwo.billAddressTwo;;Bill-To Address 2:;Bill-To Address 2:;Bill-To Address 2:
+;Label;register.stepTwo.required.billAddressTwo;;Please enter Address2;Please enter Address2;Please enter Address2
+;Label;register.stepTwo.city;;City:;City:;City:
+;Label;register.stepTwo.required.city;;Please enter city!;Please enter city!;Please enter city!
+;Label;register.stepTwo.state;;State:;State:;State:
+;Label;register.stepTwo.required.state;;Please enter State!;Please enter State!;Please enter State!
+;Label;register.stepTwo.postalcode;;Postal Code:;Postal Code:;Postal Code:
+;Label;register.stepTwo.zipcode;;Zip Code:;Zip Code:;Zip Code:
+;Label;register.stepTwo.required.postalcode;;Please enter Postal Code!;Please enter Postal Code!;Please enter Postal Code!
+;Label;register.stepTwo.required.zipcode;;Please enter Zip Code!;Please enter Zip Code!;Please enter Zip Code!
+;Label;register.stepTwo.same.as.billto;;Same as Bill-To Location;Same as Bill-To Location;Same as Bill-To Location
+;Label;register.stepTwo.shipToHeader;;Ship-To Location;Ship-To Location;Ship-To Location
+;Label;register.stepTwo.shipAddressOne;;Ship-To Address 1:;Ship-To Address 1:;Ship-To Address 1:
+;Label;register.stepTwo.shipAddressTwo;;Ship-To Address 2:;Ship-To Address 2:;Ship-To Address 2:
+;Label;register.stepTwo.taxtext;;Is the account subject to sales and use tax in the ship-to state?:;Is the account subject to sales and use tax in the ship-to state?:;Is the account subject to sales and use tax in the ship-to state?:
+;Label;register.stepTwo.required.taxtext;;Please select Yes or No!;Please select Yes or No!;Please select Yes or No!
+;Label;register.stepTwo.yes;;Yes;Yes;Yes
+;Label;register.stepTwo.no;;No;No;No
+;Label;register.stepTwo.notice.text;;Please mail exempt or resale certificate to JJHCS Tax Department, 425 Hoes Lane, Piscataway, NJ 08855;Please mail exempt or resale certificate to JJHCS Tax Department, 425 Hoes Lane, Piscataway, NJ 08855;Please mail exempt or resale certificate to JJHCS Tax Department, 425 Hoes Lane, Piscataway, NJ 08855
+;Label;register.stepTwo.opening.order;;Estimated Amount for Initial Opening Order:;Estimated Amount for Initial Opening Order:;Estimated Amount for Initial Opening Order:
+;Label;register.stepTwo.required.opening.order;;Please Enter Initial opening order!;Please Enter Initial opening order!;Please Enter Initial opening order!
+;Label;register.stepTwo.opening.note;;Note: Consumer Products accounts require a minimum of $10,000 per order and $500,000 per year;Note: Consumer Products accounts require a minimum of $10,000 per order and $500,000 per year;Note: Consumer Products accounts require a minimum of $10,000 per order and $500,000 per year
+;Label;register.stepTwo.estimatedamount;;Estimated Amount Per Year:;Estimated Amount Per Year:;Estimated Amount Per Year:
+;Label;register.stepTwo.required.estimatedamount;;Please enter estimated amount per year!;Please enter estimated amount per year!;Please enter estimated amount per year!
+;Label;register.stepTwo.products;;Products to be Purchased:;Products to be Purchased:;Products to be Purchased:
+;Label;register.stepTwo.required.products;;Please check atleast one Product!;Please check atleast one Product!;Please check atleast one Product!
+;Label;register.stepTwo.required.address;;dd;Please enter Address:;Please enter Address:
+
+;Label;register.stepThree.header;;Your Information;Your Information;Your Information
+;Label;register.stepThree.permission;;Permission Level Requested:;Permission Level Requested:;Permission Level Requested:
+;Label;register.stepThree.required.permission;;Please select Permission Level Request!;Please select Permission Level Request!;Please select Permission Level Request!
+;Label;register.stepThree.view.order;;View Only;View Only;View Only
+;Label;register.stepThree.place.order;;Place Orders;Place Orders;Place Orders
+;Label;register.stepThree.user.role.note;;Note: Only request the 'Place Orders' permission if you are an authorized buyer.;Note: Only request the 'Place Orders' permission if you are an authorized buyer.;Note: Only request the 'Place Orders' permission if you are an authorized buyer.
+;Label;register.stepThree.first.name;;First Name:;First Name:;First Name:
+;Label;register.stepThree.required.first.name;;Please enter First Name!;Please enter First Name!;Please enter First Name!
+;Label;register.stepThree.last.name;;Last Name:;Last Name:;Last Name:
+;Label;register.stepThree.required.last.name;;Please enter Last Name!;Please enter Last Name!;Please enter Last Name!
+;Label;register.stepThree.org.name;;Organization Name:;Organization Name:;Organization Name:
+;Label;register.stepThree.required.org.name;;Please enter Organization Name!;Please enter Organization Name!;Please enter Organization Name!
+;Label;register.stepThree.department;;Department:;Department:;Department:
+;Label;register.stepThree.required.department;;Please enter Department!;Please enter Department!;Please enter Department!
+;Label;register.stepThree.email;;Business Email Address:;Business Email Address:;Business Email Address:
+;Label;register.stepThree.email.msg;;(This will be your User ID):;(This will be your User ID):;(This will be your User ID):
+;Label;register.stepThree.required.email;;Please enter Business Email Address!;Please enter Business Email Address!;Please enter Business Email Address!
+;Label;register.stepThree.reenter.email;;Re-enter Business Email Address:;Re-enter Business Email Address:;Re-enter Business Email Address:
+;Label;register.stepThree.required.reenter.email;;Please re-enter Email Address!;Please re-enter Email Address!;Please re-enter Email Address!
+;Label;register.stepThree.super.name;;Supervisor Name:;Supervisor Name:;Supervisor Name:
+;Label;register.stepThree.required.super.name;;Please enter Supervisor Name!;Please enter Supervisor Name!;Please enter Supervisor Name!
+;Label;register.stepThree.super.phone;;Supervisor Phone:;Supervisor Phone:;Supervisor Phone:
+;Label;register.stepThree.required.super.phone;;Please enter Supervisor Phone!;Please enter Supervisor Phone!;Please enter Supervisor Phone!
+;Label;register.stepThree.super.email;;Supervisor Email:;Supervisor Email:;Supervisor Email:
+;Label;register.stepThree.required.super.email;;Please enter Supervisor Email!;Please enter Supervisor Email!;Please enter Supervisor Email!
+;Label;register.stepThree.phone;;Your Phone Number:;Your Phone Number:;Your Phone Number:
+;Label;register.stepThree.required.phone;;Please enter Phone Number!;Please enter Phone Number!;Please enter Phone Number!
+;Label;register.stepThree.mobile;;Your Mobile Number:;Your Mobile Number:;Your Mobile Number:
+;Label;register.stepThree.required.mobile;;Please enter Mobile Number!;Please enter Mobile Number!;Please enter Mobile Number!
+;Label;register.stepThree.fax;;Your Fax Number:;Your Fax Number:;Your Fax Number:
+;Label;register.stepThree.required.fax;;Please enter Fax Number!;Please enter Fax Number!;Please enter Fax Number!
+;Label;register.stepThree.personalAddressOne;;Personal Address1:;Personal Address1:;Personal Address1:
+;Label;register.stepThree.personalAddressTwo;;Personal Address2:;Personal Address2:;Personal Address2:
+;Label;register.stepThree.zip;;Zip code:;Zip code:;Zip code:
+;Label;register.stepThree.required.zip;;Please enter Zip Code!;Please enter Zip Code!;Please enter Zip Code!
+
+
+;Label;register.stepFour.header;;Email Preferences;Email Preferences;Email Preferences
+;Label;register.stepFour.body.text;;Indicate your email preferences by selecting the applicable items below. The preferences apply to all your accounts within your user profile and can be updated at any time.;Indicate your email preferences by selecting the applicable items below. The preferences apply to all your accounts within your user profile and can be updated at any time.;Indicate your email preferences by selecting the applicable items below. The preferences apply to all your accounts within your user profile and can be updated at any time.
+;Label;register.stepFour.body.text.contd;;The preferences apply to all the accounts on your account list.;The preferences apply to all the accounts on your account list.;The preferences apply to all the accounts on your account list.
+;Label;register.stepFour.text;;Send me an email when:;Send me an email when:;Send me an email when:
+
+;Label;register.stepFive.header;;Create a Password;Create a Password;Create a Password
+;Label;register.stepFive.password;;Choose a Password:;Choose a Password:;Choose a Password:
+;Label;register.stepFive.required.password;;Enter a password;Enter a password;Enter a password
+;Label;register.stepFive.reenter.password;;Re-enter Password:;Re-enter Password:;Re-enter Password:
+;Label;register.stepFive.requiredreenter.password;;Passwords entered do not match. Please try again.;Passwords entered do not match. Please try again.;Passwords entered do not match. Please try again.
+;Label;register.stepFive.pass.strength;;Password Strength:;Password Strength:;Password Strength:
+;Label;register.stepFive.strong.pass.text;;Your password must contain a minimum of 8 characters, and feature two of the following four character types:;Your password must contain a minimum of 8 characters, and feature two of the following four character types:;Your password must contain a minimum of 8 characters, and feature two of the following four character types:
+;Label;register.stepFive.uppercase;;Uppercase letters (A – Z);Uppercase letters (A – Z);Uppercase letters (A – Z)
+;Label;register.stepFive.lowercase;;Lowercase letters (a – z);Lowercase letters (a – z);Lowercase letters (a – z)
+;Label;register.stepFive.numeral;;Numerals (0 – 9);Numerals (0 – 9);Numerals (0 – 9)
+;Label;register.stepFive.symbol;;Non-alphabetic characters (such as ! , # , $ , %);Non-alphabetic characters (such as ! , # , $ , %);Non-alphabetic characters (such as ! , # , $ , %)
+
+;Label;register.stepFive.required.ques;;Please select question!;Please select question!;Please select question!
+;Label;register.stepFive.required.ans;;Please write your secret answer.;Please write your secret answer.;Please write your secret answer.
+
+;Label;register.stepFive.secques1;;Secret Question 1:;Secret Question 1:;Secret Question 1:
+;Label;register.stepFive.secques2;;Secret Question 2:;Secret Question 2:;Secret Question 2:
+;Label;register.stepFive.secques3;;Secret Question 3:;Secret Question 3:;Secret Question 3:
+;Label;register.stepFive.secques4;;Secret Question 4:;Secret Question 4:;Secret Question 4:
+;Label;register.stepFive.secques5;;Secret Question 5:;Secret Question 5:;Secret Question 5:
+;Label;register.stepFive.secques6;;Secret Question 6:;Secret Question 6:;Secret Question 6:
+;Label;register.stepFive.secans1;;Secret Answer 1:;Secret Answer 1:;Secret Answer 1:
+;Label;register.stepFive.secans2;;Secret Answer 2:;Secret Answer 2:;Secret Answer 2:
+;Label;register.stepFive.secans3;;Secret Answer 3:;Secret Answer 3:;Secret Answer 3:
+;Label;register.stepFive.secans4;;Secret Answer 4:;Secret Answer 4:;Secret Answer 4:
+;Label;register.stepFive.secans5;;Secret Answer 5:;Secret Answer 5:;Secret Answer 5:
+;Label;register.stepFive.secans6;;Secret Answer 6:;Secret Answer 6:;Secret Answer 6:
+
+;Label;register.stepFive.policy;;The Portal is allowed to send me email notifications;The Portal is allowed to send me email notifications;The Portal is allowed to send me email notifications
+;Label;register.stepFive.agree;;I have read and agree with the;I have read and agree with the;I have read and agree with the
+;Label;register.stepFive.validate;;Validation Code;Validation Code;Validation Code
+;Label;register.stepFive.invalid.code;;Invalid Validation Code!;Invalid Validation Code!;Invalid Validation Code!
+;Label;text.register.captcha.instruction;;Please enter the validation code below.;Please enter the validation code below.;Please enter the validation code below.
+
+#secret questions
+;Label;sQ1;;What is your pet's name?;Qual o nome do seu animal de estimação?;¿Cómo se llama su mascota?
+;Label;sQ2;;What is the name of the hospital where you were born?;Em que hospital você nasceu?;¿En qué hospital nació?
+;Label;sQ3;;What is your favorite movie?;Qual é o seu filme favorito?;¿Cuál es su película favorita?
+;Label;sQ4;;What was your favorite place to visit as a child?;Qual era o seu lugar favorito para visitar quando criança?;¿Cuál era su lugar favorito para visitar cuando era niño(a)?
+;Label;sQ5;;Who is your favorite actor, musician, or artist?;Quem é seu/sua ator/atriz, músico(a) ou artista favorito(a)?;¿Quién es su actor/actriz, músico(a) o artista favorito(a)?
+;Label;sQ6;;What was the first car you owned?;Qual foi seu primeiro carro?;¿Cuál fue la marca de su primer automovil?
+;Label;sQ7;;What is your favorite restaurant?;Qual é o seu restaurante favorito?;¿Cuál es su restaurante favorito?
+;Label;sQ8;;What was your team mascot?;Qual é o mascote do seu time?;¿Cuál es la mascota de su equipo?
+;Label;sQ9;;Where were you at the turn of the new millennium?;Onde você estava na virada do milênio?;¿Dónde estaba en el comienzo del nuevo milenio?
+;Label;sQ10;;Who is your favorite fictional character?;Qual é o seu personagem de ficção favorito?;¿Cuál es su personaje de ficción favorito?
+;Label;sQ11;;Who is your favorite person from History?;Qual é seu personagem histórico favorito?;¿Cuál es su personaje histórico favorito?
+;Label;sQ12;;What is the name of the street where you lived when you were ten years old?;Qual o nome da rua onde você morava aos dez anos de idade?;Nombre de la calle en que vivia cuando tenia diez años
+;Label;sQ13;;In what city did you meet your spouse/significant other?;Em que cidade você conheceu seu(sua) cônjuge/companheiro(a)?;¿En qué ciudad conoció a su esposo(a)/pareja?
+;Label;sQ14;;What is the name of your favorite childhood friend?;Qual é o nome do seu melhor amigo de infância?;¿Cómo se llama su mejor amigo de la infancia?
+;Label;sQ15;;What is your oldest sibling's birthday month and year? (e.g. January 1900);Qual é o mês e ano de nascimento do seu irmão/irmã mais velho(a)? (ex.: Janeiro 1900);¿En qué mes y año cumple años su hermano/hermana mayor? (ej.: Enero 1900)
+;Label;sQ16;;What is the middle name of your youngest child?;Qual é o nome do meio do seu filho mais novo?;¿Cuál es el nombre de su hijo menor?
+;Label;sQ17;;What is your youngest sibling's middle name?;Qual é o nome do meio do seu irmão/irmã mais novo(a)?;¿Cuál es el nombre de su hermano/ hermana menor?
+;Label;sQ18;;What was your childhood phone number including city or area code? (e.g. 000-000-0000);Qual era seu telefone na infância, incluindo código de área? (ex.: 00-000-0000);¿Cuál era su número de teléfono cuando era niño, incluyendo código de área? (ej.: 000-000-0000)
+;Label;sQ19;;What was the name of your first stuffed animal?;Qual era o nome do seu primeiro bicho de pelúcia?;¿Cómo se llamaba su primer animal de peluche?
+;Label;sQ20;;In what city or town did your mother and father meet?;Em que cidade seus pais se conheceram?;¿En qué ciudad se conocieron sus padres?
+;Label;sQ21;;What is the first name of the boy or girl that you first kissed?;Qual é o primeiro nome da primeira pessoa que você beijou?;¿Cuál es el primer nombre de la primera persona que besó?
+;Label;sQ22;;What was the last name of your teacher when you were eight?;Qual é o sobrenome do seu professor(a) quando você tinha oito anos?;¿Cuál era el apellido de su profesor(a) cuando tenía ocho años?
+;Label;sQ23;;What is the street number of the house you lived in when you were five?;Qual era o número da sua casa quando você tinha cinco anos?;¿Cuál era su domicilio cuando tenia ocho años?
+;Label;sQ24;;In what city or town does your nearest sibling live?;Em que cidade seu irmão/irmã mais próximo(a) mora?;¿En qué ciudad vive su hermano/hermana más cercano(a)?
+;Label;sQ25;;What was the name of the first school you attended?;Qual era o nome da primeira escola que você frequentou?;¿Cómo se llamaba la primera escuela donde estudió?
+;Label;sQ26;;What is your maternal grandmother's maiden name?;Qual o sobrenome de solteira da sua avó materna?;¿Cuál es el apellido de soltera de su abuela materna?
+;Label;sQ27;;In what city or town was your first job?;Em que cidade você teve seu primeiro emprego?;¿En qué ciudad tuvo su primer trabajo?
+;Label;error.secret.question.required;;Please try again, select one secret question!;Tente novamente, selecione uma pergunta secreta!;Intente nuevamente, seleccione una pregunta secreta
+;Label;error.secret.answer.required;;Please type your secret answer.;Digite sua resposta secreta.;Ingrese su respuesta secreta.
+;Label;profile.secret.question0;;Security Question1;Pergunta secreta 1;Pregunta secreta 1
+;Label;profile.secret.question1;;Security question 2;Pergunta secreta 2;Pregunta secreta 2
+;Label;profile.secret.question2;;Security Question 3;Pergunta secreta 3;Pregunta secreta 3
+;Label;profile.secret.question3;;Security Question 4;Pergunta secreta 4;Pregunta secreta 4
+;Label;profile.secret.question4;;Security Question 5;Pergunta secreta 5;Pregunta secreta 5
+;Label;profile.secret.question5;;Security Question 6;Pergunta secreta 6;Pregunta secreta 6
+;Label;profile.secret.answer0;;Security answer 1;Resposta secreta 1;Respuesta secreta 1
+;Label;profile.secret.answer1;;Security Answer 2;Resposta secreta 2;Respuesta secreta 2
+;Label;profile.secret.answer2;;Security Answer 3;Resposta secreta 3;Respuesta secreta 3
+;Label;profile.secret.answer3;;Security Answer 4;Resposta secreta 4;Respuesta secreta 4
+;Label;profile.secret.answer4;;Security Answer 5;Resposta secreta 5;Respuesta secreta 5
+;Label;profile.secret.answer5;;Security Answer 6;Resposta secreta 6;Respuesta secreta 6
+;Label;text.register.email.notification;;I would like to receive email notifications from the portal.;Gostaria de receber notificações por e-mail do portal.;Me gustaría recibir notificaciones del portal por correo electrónico.
+;Label;text.register.accept.policy;;Please check you have accepted our Policy;Você deve concordar com a nossa Política;Debe estar de acuerdo con la Política
+;Label;text.register.password.not.matched;;Passwords don't match!;As senhas não coincidem;Las contraseñas no coinciden
+;Label;text.register.invalid.code;;Invalid validation code;Código de validação inválido;Código de validación inválido
+;Label;text.register.validation;;Validation Code;Código de validação;Código de validación
+;Label;text.register.policy.part1;;I have read and agree to the;Li e concordo com a;He leído y acepto la
+;Label;text.register.privacy.policy;;Privacy Policy;Política de Privacidade;Política de Privacidad
+;Label;text.register.terms.conditions;;Terms And Conditions;Terms And Conditions;Terms And Conditions
+;Label;text.register.and;;and;e;y
+;Label;text.register.user.exist.error;;The email address you entered is already in use. Please enter a different email address.;The email address you entered is already in use. Please enter a different email address.;The email address you entered is already in use. Please enter a different email address.
+
+#Account Change
+;Label;account.change.title;;Select an Account;Select an Account;Select an Account
+;Label;account.change.searchText;;Search for an account;Search for an account;Search for an account
+
+#Header
+;Label;header.information.welcome;;Welcome;Welcome;Welcome
+;Label;header.information.profile.link;;My Profile;My Profile;My Profile
+;Label;header.information.signout;;Sign Out;Sign Out;Sign Out
+;Label;header.information.account.number;;Account No:;Account No:;Account No:
+;Label;header.information.cart.number;;Account Number:;Account Number:;Account Number:
+;Label;header.information.cart.empty;;Empty;Empty;Empty
+;Label;header.information.cart.cart;;Cart:
+;Label;header.information.cart.name;;Acct Name:;Acct Name:;Acct Name:
+;Label;header.information.account.name;;Account Name:;Account Name:;Account Name:
+;Label;header.information.account.gln;;GLN;GLN;GLN
+;Label;header.information.account.change.link;;Change Current Account;Change Current Account;Change Current Account
+;Label;header.information.help.link;;Help?;Help?;help?
+;Label;header.information.search.text;;What are you looking for?;What are you looking for?;What are you looking for?
+;Label;category.catalog;;Catalog
+;Label;category.excel;;EXCEL
+;Label;product.add.zero.qty.msg;;The quantity of one or more items has been automatically set to the required minimum.;;
+;Label;product.detail.basic.productCode;;Product Code:
+;Label;product.detail.basic.gtin;;GTIN:
+;Label;product.detail.basic.oldProductCode;;Old Product Code:
+;Label;product.detail.basic.upc;;UPC:
+;Label;product.detail.addToCart.itemPrice;;Item Price:
+;Label;product.detail.addToCart.quantity;;Quantity:
+;Label;product.detail.addToCart.EA;;EA
+#;Label;product.detail.addToCart.price;;Price
+;Label;product.detail.addToCart.addToCart;;ADD TO CART
+;Label;product.detail.addToCart.unit;;unit
+;Label;product.detail.specification.specification;;Specification
+;Label;product.detail.specification.franchise;;Franchise:
+;Label;product.detail.specification.status;;Status:
+;Label;product.detail.specification.downloads;;Downloads:
+;Label;product.detail.specification.productBrochure;;Product brochure (PDF)
+;Label;product.detail.specification.productFamilyBrochure;;Product family brochure (PDF)
+;Label;product.detail.mddSpecification.division;;Division:
+;Label;product.detail.mddSpecification.kitComponentName;;Kit Component Name:
+;Label;product.detail.mddSpecification.kitComponentDescription;;Kit Component Description:
+;Label;product.detail.mddSpecification.kitComponetUnit;;Kit Component Unit:
+;Label;product.detail.mddSpecification.eachGtin;;Each GTIN:
+;Label;product.detail.mddSpecification.caseGtin;;Case GTIN:
+;Label;product.detail.mddSpecification.unitOfMeasure;;Unit of measure:
+;Label;product.detail.mddSpecification.deliveryUnitOfMeasure;;Delivery unit of measure:
+;Label;product.detail.mddSpecification.depth;;Depth:
+;Label;product.detail.mddSpecification.height;;Height:
+;Label;product.detail.mddSpecification.width;;Width:
+;Label;product.detail.mddSpecification.volume;;Volume:
+;Label;product.detail.mddSpecification.weight;;Weight:
+;Label;product.detail.consSpecification.brand;;Brand:
+;Label;product.detail.consSpecification.shippingInformation;;Shipping Information
+;Label;product.detail.consSpecification.caseInformation;;Case Information
+;Label;product.detail.consSpecification.otherInformation;;Other Information
+;Label;product.detail.consSpecification.eachesInformation;;Eaches Information
+;Label;product.detail.consSpecification.shippingUnitOfMeasure;;Shipping Unit of Measure
+;Label;product.detail.consSpecification.eachesPerCase;;Eaches per Case
+;Label;product.detail.consSpecification.innerPacksPerCase;;Inner Packs per Case
+;Label;product.detail.consSpecification.eachesPerInnerPacks;;Eaches per Inner Packs
+;Label;product.detail.consSpecification.shipEffectiveDate;;Ship Effective Date
+;Label;product.detail.consSpecification.tiersPerPallet;;Tiers per Pallet
+;Label;product.detail.consSpecification.casesPerPallet;;Cases per Pallet
+;Label;product.detail.consSpecification.caseGtin;;Case GTIN
+;Label;product.detail.consSpecification.caseDepth;;Case Depth
+;Label;product.detail.consSpecification.caseHeight;;Case Height
+;Label;product.detail.consSpecification.caseWidth;;Case Width
+;Label;product.detail.consSpecification.caseVolume;;Case Volume
+;Label;product.detail.consSpecification.caseWeight;;Case Weight
+;Label;product.detail.consSpecification.casesPrice;;Case Price
+;Label;product.detail.consSpecification.eachesPerPallet;;Eaches per Pallet
+;Label;product.detail.consSpecification.eachesGtin;;Eaches GTIN
+;Label;product.detail.consSpecification.eachesDepth;;Eaches Depth
+;Label;product.detail.consSpecification.eachesHeight;;Eaches Height
+;Label;product.detail.consSpecification.eachesWidth;;Eaches Width
+;Label;product.detail.consSpecification.eachesVolume;;Eaches Volume
+;Label;product.detail.consSpecification.eachesWeight;;Eaches Weight
+;Label;product.detail.consSpecification.eachesPrice;;Eaches Price
+;Label;product.detail.consSpecification.countryOfOrigin;;Country of Origin
+;Label;product.detail.consSpecification.countryOfAssembly;;Country of Assembly
+;Label;product.detail.consSpecification.countryOfOrigin.disclaimer;;Country of Origin is subject to change
+;Label;product.detail.consSpecification.countryOfAssembly.disclaimer;;Country of Assembly is subject to change
+
+# Search REsult Page Labels
+;Label;product.search.result.text;;Search results for;;
+;Label;product.search.result.approximate;;Approximately;;
+;Label;product.search.results;;results;;
+;Label;product.search.result;;Result:;;
+;Label;product.search.sort;;Sort by;;
+;Label;product.search.show;;Show in groups of:;;
+;Label;product.search.download.pdf;;PDF;PDF;PDF
+;Label;product.search.download.excel;;Excel;Excel;Excel
+;Label;product.search.selectAll;;Select All;;
+;Label;product.search.addTocart;;ADD SELECTED TO CART;;
+;Label;product.search.download;;Download;;
+;Label;product.search.uom;;Unit of Measure:;;
+;Label;product.search.filer;;Filter by;;
+;Label;product.search.getPrice;;Get Price;;
+;Label;product.search.policyRestriction;;This product cannot be ordered due to a policy restriction;;
+
+#My Profile
+;Label;profile.changePassword.header;;Change Password;Change Password;Change Password
+;Label;profile.changePassword.myprofile;;My Profile;My Profile;My Profile
+;Label;profile.changePassword.currentpassword;;Current Password;Current Password;Current Password
+;Label;profile.changePassword.newpassword;;New Password;New Password;New Password
+;Label;profile.changePassword.renter-newpassword;;Re-enter new password;Re-enter new password;Re-enter new password
+;Label;profile.changePassword.passwordstrength;;Password Strength;Password Strength;Password Strength
+;Label;profile.changePassword.errormessage;;ErrorMessage;ErrorMessage;ErrorMessage
+;Label;profile.changePassword.uppercaseletter;;Uppercase letters (A – Z);Uppercase letters (A – Z);Uppercase letters (A – Z)
+;Label;profile.changePassword.lowercaseletter;;Lowercase letters (a – z);Lowercase letters (a – z)r;Lowercase letters (a – z)
+;Label;profile.changePassword.numeral;;Numerals (0 – 9);Numerals (0 – 9);Numerals (0 – 9)
+;Label;profile.changePassword.symbol;;Non-alphabetic characters (such as ! , # , $ , %);Non-alphabetic characters (such as ! , # , $ , %);Non-alphabetic characters (such as ! , # , $ , %)
+;Label;profile.changePassword.useform;;Use this form to update the password for your user profile;Use this form to update the password for your user profile;Use this form to update the password for your user profile
+;Label;profile.changePassword.successMessage;;Sucessfuly saved;Sucessfuly saved;Sucessfuly saved
+;Label;profile.changePassword.errormessage.oldPasswords;;The password you have entered has been recently used. Please specify a new one.;The password you have entered has been recently used. Please specify a new one.;The password you have entered has been recently used. Please specify a new one.
+;Label;profile.changePassword.errormessage.wrongPassword;;The password you entered is incorrect. Please enter your current password.;The password you entered is incorrect. Please enter your current password.;The password you entered is incorrect. Please enter your current password.
+;Label;profile.changePassword.errormessage.passwordMismatch;;The passwords you have entered do not match. Please try again.; The passwords you have entered do not match. Please try again.;The passwords you have entered do not match. Please try again.
+;Label;profile.changePassword.failureMessage;;Failed to Save; Failed to Save;Failed to Save
+;Label;role.viewOnlyBuyerGroup;;View Only Buyer Group;View Only Buyer Group;View Only Buyer Group
+;Label;role.placeOrderBuyerGroup;;Place Order Buyer Group;Place Order Buyer Group;Place Order Buyer Group
+;Label;role.viewOnlySalesRepGroup;;View Only Sales Rep Group;View Only Sales Rep Group;View Only Sales Rep Group
+;Label;role.placeOrderSalesGroup;;Place Order Sales Group;Place Order Sales Group;Place Order Sales Group
+;Label;role.adminGroup;;Admin Group;Admin Group;Admin Group
+;Label;role.CSRGroup;;CSR Group;CSR GroupCSR Group
+
+#AAOL-5190 REGRESSION FIX FOR ASPAC
+;Label;role.jnjGTAdminGroup;;Admin Group;Admin Group;Admin Group
+;Label;role.financialReportGroup;;Financial Report Group;Financial Report Group;
+
+;Label;profile.changeSecurityQuestion.changesSaved;;Your changes have been saved;Your changes have been saved;Your changes have been saved
+;Label;profile.changeSecurityQuestion.updateQuestions;;Use this form to update your security questions. Atleast 3 are required.;Use this form to update your security questions. Atleast 3 are required;Use this form to update your security questions. Atleast 3 are required.
+;Label;Myprofile.myprofile.text;;My Profile;My Profile;My Profile
+;Label;Myprofile.addaccount.text;;Add Account;Add Account;Add Account
+;Label;Myprofile.emailprefernces.text;;Email Preferences;Email Preferences;Email Preferences
+;Label;Myprofile.personalinformation.text;;Personal Information;Personal Information;Personal Information
+;Label;Myprofile.securityquestions.text;;Security Question;Security Question;Security Question
+;Label;Myprofile.changepassword.text;;Change Password;Change Password;Change Password
+;Label;profile.changepassword.datamsg;;Passwords entered do not match. Please try again.;Passwords entered do not match. Please try again.;Passwords entered do not match. Please try again.
+;Label;profile.changepassword.strongpswrd;;Your password must be 8 characters or longer and have two of the following four complexity classes:;Your password must be 8 characters or longer and have two of the following four complexity classes:;Your password must be 8 characters or longer and have two of the following four complexity classes:
+;Label;profile.changepassword.password;;Enter a password;Enter a password;Enter a password
+;Label;profile.changepassword.savepassword;;Save Changes;Save Changes;Save Changes
+;Label;profile.addAccount.submitRequest;;Submit Request;Submit Request;Submit Request
+;Label;profile.changeSecurityQuestion.text;;Change Security Questions;Change Security Questions;Change Security Questions
+;Label;profile.changeSecurityQuestion.securityCheck;;Security Check;Security Check;Security Check
+;Label;profile.changeSecurityQuestion.enterpassword;;Please enter your password;Please enter your password;Please enter your password
+;Label;profile.addAccount.newUser;;I want to create a new account number.;I want to create a new account number.;I want to create a new account number.
+;Label;profile.addAccount.products;;Consumer Products;Consumer Products;Consumer Products
+;Label;profile.addAccount.userAccess;;I want to have access to another account number.;I want to have access to another account number.;I want to have access to another account number.
+;Label;profile.emailPrefrences.text;;Email Preferences;Email Preferences;Email Preferences
+;Label;profile.emailPrefrences.preferences;;Indicate your email preferences by selecting the applicable items below. The preferences apply to all your accounts within your user profile and can be updated at any time.;Indicate your email preferences by selecting the applicable items below. The preferences apply to all your accounts within your user profile and can be updated at any time.;Email Preferences;Indicate your email preferences by selecting the applicable items below. The preferences apply to all your accounts within your user profile and can be updated at any time.;Email Preferences
+;Label;profile.emailPrefrences.sendEmail;;Send me an email when;Send me an email when;Send me an email when
+;Label;profile.myprofile.account;;Enter the existing account number(s) to be added below.;Enter the existing account number(s) to be added below.;Enter the existing account number(s) to be added below.
+;Label;profile.myprofile.instruction;;(Separate multiple items with commas.);(Separate multiple items with commas.);(Separate multiple items with commas.)
+;Label;profile.myprofile.error;;Please enter Name or Account!;Please enter Name or Account!;Please enter Name or Account!
+;Label;profile.myprofile.info;;Account Information will be added.;Account Information will be added.;Account Information will be added.
+;Label;profile.myprofile.errorAccount;;The account number(s) or GLN(s) you entered could not be found. Please enter a valid account number or GLN.;The account number(s) or GLN(s) you entered could not be found. Please enter a valid account number or GLN.;The account number(s) or GLN(s) you entered could not be found. Please enter a valid account number or GLN.
+;Label;profile.myprofile.email;;Email;Email;Email
+;Label;profile.myprofile.address;;Address;Address;Address
+;Label;profile.myprofile.city;;City;City;City
+;Label;profile.myprofile.cityError;;Please enter City;Please enter City;Please enter City
+;Label;profile.myprofile.state;;State/Territory;State/Territory;State/Territory
+;Label;profile.myprofile.stateError;;Please select one State/Territory;Please select one State/Territory;Please select one State/Territory
+;Label;profile.myprofile.selectState;;Select State;Select State;Select State
+;Label;profile.myprofile.phoneNumber;;Phone Number;Phone Number;Phone Number
+;Label;profile.myprofile.mobileNumber;;Mobile Number;Mobile Number;Mobile Number
+;Label;profile.myprofile.faxNumber;;Fax Number;Fax Number;Fax Number
+;Label;profile.myprofile.supervisorPhone;;Supervisor Phone;Supervisor Phone;Supervisor Phone
+;Label;profile.myprofile.requiredsupervisorPhone;;Please enter Supervisor Phone!;Please enter Supervisor Phone!;Please enter Supervisor Phone!
+;Label;profile.myprofile.department;;Department;Department;Department
+;Label;profile.myprofile.role;;Role;Role;Role
+;Label;profile.changeSecurityQuestion.passwordRequired;;Password required!;Password required!;Password required!
+;Label;profile.changeSecurityQuestion.passwordnotvalid;;The password you entered is incorrect. Please enter your current password.;The password you entered is incorrect. Please enter your current password.;The password you entered is incorrect. Please enter your current password.
+;Label;profile.myprofile.select;;Select one;Select one;Select one
+;Label;profile.myprofile.wwid;;Wwid:;Wwid:;Wwid:
+;Label;profile.myprofile.question1;;Which type of products do you purchase?;Which type of products do you purchase?;Which type of products do you purchase?
+;Label;profile.myprofile.productpurchased;;Please enter product to be purchased!;Please enter product to be purchased!;Please enter product to be purchased!
+#PLP
+;Label;download.label;;Download;Fazer download;Descargar
+;Label;category.result.no.product;;No product present in the selected category;No product present in the selected category;No product present in the selected category
+;Label;category.result.coming.soon;;Coming Soon;Coming Soon;Coming Soon
+;Label;category.result.new;;New;New;New
+;Label;category.result.discontinued;;Discontinued;Discontinued;Discontinued
+
+#AA0L - 4150
+;Label;category.result.obsolete;;Obsolete;Obsolete;Obsolete
+######################## Cart And Checkout  ################ 
+;Label;cart.addToCart.productCodeInvalid;;Entered product code(s) {param1} is/are invalid. Please enter a valid product code.;Entered product code(s) {param1} is/are invalid. Please enter a valid product code.;Entered product code(s) {param1} is/are invalid. Please enter a valid product code.
+;Label;cart.addToCart.productNotSaleable;;Your selection {param1} is not available for purchase online.;Your selection {param1} is not available for purchase online.;Your selection {param1} is not available for purchase online.
+;Label;cart.addToCart.productDivisionMismatch;;Product code(s) {param1} cannot be added to your cart due to your profile configuration.;Product code(s) {param1} cannot be added to your cart due to your profile configuration.;Product code(s) {param1} cannot be added to your cart due to your profile configuration.
+;Label;cart.review.orderSuccessfullyValidated;;Your order was successfully validated;Your order was successfully validated;Your order was successfully validated
+;Label;cart.review.orderSuccessfullyNotValidated;;Connection to the processor could not be established and your order could not be validated. You can place this order by clicking the checkout button and filling the required information.;Connection to the processor could not be established and your order could not be validated. You can place this order by clicking the checkout button and filling the required information.;Connection to the processor could not be established and your order could not be validated. You can place this order by clicking the checkout button and filling the required information.
+;Label;cart.review.orderLineLevelError;;This product cannot be ordered due to a policy restriction.;This product cannot be ordered due to a policy restriction.;This product cannot be ordered due to a policy restriction.
+;Label;cart.review.credit.message;;Enter your credit card details, and click OK.;Enter your credit card details, and click OK.;Enter your credit card details, and click OK.
+;Label;cart.error.global.message;;Please complete all required fields.
+;Label;cart.paymetric.issuerNumberSizeErrorMessage;;Issuers Number must be two digits or less;Issuers Number must be two digits or less;Issuers Number must be two digits or less
+;Label;cart.paymetric.cvvRequiredErrorMessage;;The CVV value is required;The CVV value is required;The CVV value is required
+;Label;cart.paymetric.cvvSizeErrorMessage;;The CVV value must be three or four digits;The CVV value must be three or four digits;The CVV value must be three or four digits
+;Label;cart.paymetric.ccNumberRequiredMessage;;The Credit Card Number is required;The Credit Card Number is required;The Credit Card Number is required
+;Label;cart.paymetric.ccNumberLuhnErrorMessage;;The Credit Card Number is not a valid card number;The Credit Card Number is not a valid card number;The Credit Card Number is not a valid card number
+;Label;cart.paymetric.ccNumberCardTypeErrorMessage;;Card number does not match the type selected;Card number does not match the type selected;Card number does not match the type selected
+;Label;cart.paymetric.expirationDateErrorMessage;;The expiration date is not valid;The expiration date is not valid;The expiration date is not valid
+;Label;cart.review.quote.quoteRequestNotValidated;;Your quote request cannot be completed at this time. Please try again later or contact customer service for assistance.
+;Label;cart.review.return.returnConnectionIssue;;Your return request cannot be completed at this time. Please try again later or contact customer service for assistance.
+##Error Messages for corresponding Product Status####
+;Label;cart.product.notApplicable;;Your selection {param1} is not available for purchase online.;Your selection {param1} is not available for purchase online.;Your selection {param1} is not available for purchase online.
+;Label;cart.product.obsolete;;Your selection {param1} is no longer available.;Your selection {param1} is no longer available.;Your selection {param1} is no longer available.
+;Label;cart.product.discontinued;;Your selection {param1} is not available for purchase online.;Your selection {param1} is not available for purchase online.;Your selection {param1} is not available for purchase online.
+
+;Label;cart.common.purchaseOrder;;Purchase order#:;Purchase order#:;Purchase order#:
+;Label;cart.common.creditCardExpiration;;Credit Card & Expiration:;Credit Card & Expiration:;Credit Card & Expiration:
+;Label;cart.common.ShipToAdd;;Ship-To Address:;Ship-To Address:;Ship-To Address:
+;Label;cart.common.ShipToAcc;;Ship-To Account#:;Ship-To Account#:;Ship-To Account#:
+;Label;cart.common.BillingAdd;;Billing Name and Address:;Billing Name and Address:;Billing Name and Address:
+;Label;cart.common.soldToAddress;;Sold-To Address:;Sold-To Address:;Sold-To Address:
+;Label;cart.common.changeShipTo;;Change Ship-To;Change Ship-To;Change Ship-To
+;Label;cart.common.enterOneTimeShipToAddress;;Enter One-Time Ship-To Address;Enter One-Time Ship-To Address;Enter One-Time Ship-To Address
+;Label;cart.common.removeOneTimeShipToAddress;;Remove One-Time Ship-To Address;Remove One-Time Ship-To Address;Remove One-Time Ship-To Address
+;Label;cart.common.paymentMethod;;Payment method:;Payment method:;Payment method:
+;Label;cart.common.disributorPO;;Distributor Purchase Order #:;Distributor Purchase Order #:;Distributor Purchase Order #:
+;Label;cart.common.surgeonName;;Surgeon Name:;Surgeon Name:;Surgeon Name:
+;Label;cart.common.surgeonName.select;;Select Surgeon
+;Label;cart.common.surgeonName.enter;;Please enter Surgeon Name!
+;Label;cart.common.surgeryInfo.enter;;Please enter Surgery Info!
+;Label;find.surgeon.text;;Search for a Surgeon;Search for a Surgeon;Search for a Surgeon
+;Label;surgeon.selection.error;;Surgeon name cannot be blank. Please select a surgeon name from the list provided.
+;Label;cart.common.attention;;Attention: ;Attention:;Attention:
+;Label;cart.common.spineSales;;Spine Sales Rep UCN:;Spine Sales Rep UCN:;Spine Sales Rep UCN:
+;Label;cart.common.dropShipAcc;;Drop Ship Account:;Drop Ship Account:;Drop Ship Account: 
+;Label;cart.common.purchaseOrder;;Purchase order:;Purchase order:;Purchase order:
+;Label;cart.common.totalWeight;;Total Weight:;Total Weight:;Total Weight:
+;Label;cart.common.totalVolume;;Total Volume:;Total Volume:;Total Volume:
+;Label;cart.common.reasonCode;;Reason Code:;Reason Code:;Reason Code:
+;Label;cart.common.requestedDeliveryDate;;Requested Delivery Date:;Requested Delivery Date:;Requested Delivery Date:
+;Label;cart.common.ok;;OK;OK;OK
+;Label;cart.common.no.data;;No Result Found
+;Label;cart.common.yes;;Yes;Yes;Yes
+;Label;cart.common.cancel;;Cancel;Cancel;Cancel
+;Label;cart.common.continue;;Continue;Continue;Continue
+;Label;cart.common.no;;No;No;No
+;Label;cart.common.paymentType;;Payment Type:;Payment Type:;Payment Type:
+;Label;cart.common.changeOrderType;;Change Order Type;Change Order Type;Change Order Type
+;Label;cart.common.purchaseOrder.enter;;Please enter Purchase Order!
+;Label;cart.common.attenline.enter;;Please enter Attention Line!
+;Label;cart.common.dropShipAcc.enter;;Please enter Drop Ship Account
+;Label;cart.common.code.enter;;Enter Code
+;Label;cart.common.reasonCode.enter;;Please select a reason code!
+;Label;cart.common.spinSalesRepUCN;;Spine sales Rep UCN:
+;Label;cart.common.spinSalesRepUCN.enter;;Please select UCN!
+;Label;cart.common.addToCart;;Add To Cart;Add To Cart;Add To Cart
+;Label;cart.common.invalid.lot;;Please enter valid Lot;Please enter valid Lot;Please enter valid Lot
+;Label;cart.common.uploadFile;;Upload File...;Upload File...;Upload File...
+;Label;cart.common.loadMore;;Load More;Load More;Load More
+;Label;cart.common.viewMore;;View More;View More;View More
+;Label;cart.return.addToCart;;Add To List;Add To List;Add To List
+;Label;uploadReturnOrder.file.success;;"<div class='success'><p>File uploaded successfully. Items listed have been added to your Download Cart.</p></div>";"<div class='success'><p>File uploaded successfully. Items listed have been added to your Download Cart.</p></div>";"<div class='success'><p>File uploaded successfully. Items listed have been added to your Download Cart.</p></div>"
+;Label;uploadReturnOrder.file.error.occcured;;"<div class='error'><p>We've detected invalid codes which have been omitted from your submission. See <a id='returnOrderUploadError' href='javascript:;' style='display: inline;'>Error Details</a></p></div>";"<div class='error'><p>We've detected invalid codes which have been omitted from your submission. See <a id='returnOrderUploadError' href='javascript:;' style='display: inline;'>Error Details</a></p></div>";"<div class='error'><p>We've detected invalid codes which have been omitted from your submission. See <a id='returnOrderUploadError' href='javascript:;' style='display: inline;'>Error Details</a></p></div>"
+;Label;uploadReturnOrder.file.isEmpty;;"<div class='error'><p>Your file does not contain any products. Please select a valid file and try again.</p></div>";"<div class='error'><p>Your file does not contain any products. Please select a valid file and try again.</p></div>";"<div class='error'><p>Your file does not contain any products. Please select a valid file and try again.</p></div>"
+
+#;Label;cart.common.continueShopping;;Continue Shopping (Home);Continue Shopping (Home);Continue Shopping (Home)
+#;Label;cart.common.reviseOrder;;Revise Order;Revise Order;Revised Order
+#;Label;cart.common.saveTemplate;;Save as Template;Save as Template;Save as Template
+;Label;cart.common.placeOrder;;Place Order;Place Order;Place Order
+;Label;cart.common.qty;;Quantity;Quantity;Quantity
+;Label;cart.common.validNumber;;Please, insert a valid number.
+;Label;cart.error.quantity;;Quantity is mandatory.
+
+;Label;cart.common.itemPrice;;Item price;Item price;Item price
+;Label;cart.common.total;;Total;Total;Total
+;Label;cart.common.subTotal;;Sub Total;Sub Total;Sub Total
+;Label;cart.common.orderTotal;;Order Total;Order Total;Order Total
+;Label;cart.common.orderType;;Order Type:;Order Type:;Order Type:
+;Label;cart.common.productCode.enter;;Please enter a valid product code and quantity.
+;Label;cart.common.productCode.invalid;;The entered product code(s) <Product ID number(s)> is/are invalid. Please enter a valid product code.
+;Label;cart.common.thirdparty.billing;;Third party billing
+;Label;cart.common.excluded.customer.error;;Your order cannot be completed at this time. Please try again later or contact customer service for assistance.;Your order cannot be completed at this time. Please try again later or contact customer service for assistance.;Your order cannot be completed at this time. Please try again later or contact customer service for assistance.
+;Label;cart.common.excluded.product.error;;{0} has/have been removed from your cart due to policy restrictions. Please click Checkout to proceed.;{0} has/have been removed from your cart due to policy restrictions. Please click Checkout to proceed.;{0} has/have been removed from your cart due to policy restrictions. Please click Checkout to proceed.
+
+;Label;cart.pricing.availability.heading;;Pricing And Availability;Pricing And Availability;Pricing And Availability
+;Label;cart.pricing.submitNow.desc;;Your order details will be confirmed via email when available.;
+;Label;cart.pricing.continueProcessing.desc;;Continue to wait for your confirmed pricing and availability.;
+;Label;cart.pricing.tryAgain.desc;;Cancel your order and try again later.;
+;Label;cart.pricing.availability.message;;Your time is important to us. Unfortunately, we are experiencing longer than usual processing times.;
+
+;Label;cart.common.extended.time;;Continue Processing;Continue Processing;Continue Processing
+;Label;cart.common.submit.now;;Submit Now;Submit Now;Submit Now
+;Label;cart.common.try.later;;Try Later;Try Later;Try Later 
+
+;Label;cart.price.quote.excluded.product.error;;Product(s) <Product> was/were removed due to policy restrictions. Please contact customer support services if you need more information.;Product(s) <Product> was/were removed due to policy restrictions. Please contact customer support services if you need more information.;Product(s) <Product> was/were removed due to policy restrictions. Please contact customer support services if you need more information.
+;Label;cart.submit.return.excluded.product.error;;Product(s) <Product> is/are not returnable. Please contact customer support services if you need more information.;Product(s) <Product> is/are not returnable. Please contact customer support services if you need more information.;Product(s) <Product> is/are not returnable. Please contact customer support services if you need more information.
+;Label;cart.submit.return.sapOrderNumber.success;;Your Returns Good Authorization has been generated and been assigned RGA# <SAP Order Number/RGA Number>. Please refer to this number for future correspondence.;Your Returns Good Authorization has been generated and been assigned RGA# <SAP Order Number/RGA Number>. Please refer to this number for future correspondence.;Your Returns Good Authorization has been generated and been assigned RGA# <SAP Order Number/RGA Number>. Please refer to this number for future correspondence.
+;Label;cart.submit.return.hdrLevel.error;;This return cannot be completed online. Please contact customer service for further assistance at 1-866-565-4283.;This return cannot be completed online. Please contact customer service for further assistance at 1-866-565-4283.;This return cannot be completed online. Please contact customer service for further assistance at 1-866-565-4283.
+;Label;cart.consumer.product.effectivity.error.code;;Item {0} is not available until after your requested delivery date and has been removed from your order.;Item {0} is not available until after your requested delivery date and has been removed from your order.;Item {0} is not available until after your requested delivery date and has been removed from your order.
+;Label;cart.consumer.product.exclusion.block.error.code;;Item {0} is not available for this account and has been removed from your order.;Item {0} is not available for this account and has been removed from your order.;Item {0} is not available for this account and has been removed from your order.
+;Label;cart.consumer.product.dea.block.error.code;;Item {0} requires special documentation and has been removed from your order. Please contact your J&J representative.;Item {0} requires special documentation and has been removed from your order. Please contact your J&J representative.;Item {0} requires special documentation and has been removed from your order. Please contact your J&J representative.
+;Label;cart.consumer.product.multiple.block.error.code;;There is an issue with item {0} and it has been removed from your order. Please contact your J&J representative for more information.;There is an issue with item {0} and it has been removed from your order. Please contact your J&J representative for more information.;There is an issue with item {0} and it has been removed from your order. Please contact your J&J representative for more information.
+
+;Label;cart.changeOrder.type.required;;Please select one order type;Please select one order type;Please select one order type
+
+;Label;cart.product.obsolete.errorMesg;;This item is obsolete.Please click on "Add To Cart" to see the list of replacement items. If no replacement item is available please contact customer service for further information
+
+### Confirmation page ####
+;Label;cart.confirmation.orderNumber;;Order Number:;Order Number:;Order Number:
+;Label;header.information.cart.ZRE;;Returns;Returns;Returns
+;Label;header.information.cart.ZQT;;Quote;Quote;Quote
+;Label;header.information.cart.ZHOR;;Cart;Cart;Cart
+;Label;header.information.cart.ZTOR;;Cart;Cart;Cart
+;Label;header.information.cart.ZOR;;Cart;Cart;Cart
+;Label;header.information.cart.ZEX;;Cart;Cart;Cart
+;Label;header.information.cart.ZIO2;;Cart;Cart;Cart
+;Label;header.information.cart.ZDEL;;Cart;Cart;Cart
+;Label;header.information.cart.ZNC;;Cart;Cart;Cart
+;Label;header.information.cart.ZKB;;Cart;Cart;Cart
+;Label;header.information.cart.;;Cart;Cart;Cart
+;Label;cart.error.DistPO;;Please enter Distributed Purchase Order!
+;Label;cart.error.dropShip;;The Drop Ship account number you entered is invalid. Please enter a valid account number.
+;Label;cart.error.distributedPurchase;;Please enter Distributed Purchase Order!
+;Label;cart.error.surgeon;;Surgeon details could not be updated due to network issue. Please try again later.
+;Label;cart.error.reasonCode;;Please contact customer service to accommodate your return.
+
+;Label;header.information.cart.;;Cart;Cart;Cart
+;Label;cart.common.name;;Name:;Name:;Name:
+;Label;cart.common.address1;;Address 1:;Address 1:;Address 1:
+;Label;cart.common.address2;;Address 2:;Address 2:;Address 2:
+;Label;cart.common.city;;City:;City:;City:
+;Label;cart.common.state;;State/Territory:;State/Territory:;State/Territory:
+;Label;cart.common.postalCode;;ZIP Code:;ZIP Code:;ZIP Code:
+;Label;cart.common.shoppingCartCheckout;;Shopping Cart: Checkout
+;Label;cart.common.orderType.ZOR;;Standard Order;Standard Order;Standard Order
+;Label;cart.common.orderType.ZORD;;Bill Only Order;Bill Only Order;Bill Only Order
+;Label;cart.common.orderType.ZEX;;International Order;International Order;International Order
+;Label;cart.common.orderType.ZDEL;;Delivered Order;Delivered Order;Delivered Order
+;Label;cart.common.orderType.ZHOR;;House Order;House Order;House Order
+;Label;cart.common.orderType.ZTOR;;Trade Order;Trade Order;Trade Order
+;Label;cart.common.orderType.ZNC;;No Charge Order;No Charge Order;No Charge Order
+;Label;cart.common.orderType.ZLZ;;Standing Order;Standing Order;Standing Order
+;Label;cart.common.orderType.ZQT;;Quote Order;Quote Order;Quote Order
+;Label;cart.common.orderType.ZRE;;Return;Return;Return
+;Label;cart.common.orderType.STANDALONEREPLENISHMENT;;Standalone Replenishment Order;Standalone Replenishment Order;Standalone Replenishment Order
+;Label;cart.common.orderType.ZKB;;Replenishment Order;Replenishment Order;Replenishment Order
+;Label;cart.common.orderType.ZIO2;;Affiliate Order;Affiliate Order;Affiliate Order
+;Label;cart.common.submit;;Submit
+;Label;cart.common.more.info;;More Info;More Info;More Info
+;Label;cart.common.orderType.KA;;Consignment Return;Consignment Return;Consignment Return
+;Label;cart.common.orderType.KE;;Consignment Charge;Consignment Charge;Consignment Charge
+;Label;cart.common.orderType.KB;;Consignment Fill-Up;Consignment Fill-Up;Consignment Fill-Up
+
+;Label;cart.review.connection.error;;Connection issue;Connection issue;Connection issue
+;Label;cart.review.details;;Enter Credit Card Details;Enter Credit Card Details;Enter Credit Card Details
+;Label;cart.review.cartType;;Credit Card Type:;Credit Card Type:;Credit Card Type:
+;Label;cart.review.select;;select;select;select
+;Label;cart.review.cartName;;American Express;American Express;American Express
+;Label;cart.review.cartType;;Master Card;Master Card;Master Card
+;Label;cart.review.cartVisa;;VISA;VISA;VISA
+;Label;cart.review.cartNumber;;Credit Card Number:;Credit Card Number:;Credit Card Number:
+;Label;cart.review.expDate;;Exp Date(mm-yy):;Exp Date(mm-yy):;Exp Date(mm-yy):
+;Label;cart.review.cvv;;CVV:;CVV:;CVV:
+;Label;cart.review.cardRemember;;Remember this card for future order;Remember this card for future order;Remember this card for future order
+;Label;cart.review.close;;CLOSE;CLOSE;CLOSE
+;Label;cart.review.cancel;;Cancel;Cancel;Cancel
+;Label;cart.review.select.shippingAddress;;Select Shipping Address;Select Shipping Address;Select Shipping Address
+;Label;cart.review.validateOrder;;Validate Order;Validate Order;Validate Order
+;Label;cart.review.createOrder;;Create Order;Create Order;Create Order
+;Label;cart.review.poNumber;;PO Number has been used for a previous order. Do you still want to continue with this number.;PO Number has been used for a previous order. Do you still want to continue with this number.;PO Number has been used for a previous order. Do you still want to continue with this number.
+;Label;cart.review.shoppingCart;;Shopping Cart;Shopping Cart;Shopping Cart
+;Label;cart.review.quickAddToCart.SSPMsg;;Please confirm that the Special Stock Partner is accurate;Please confirm that the Special Stock Partner is accurate;Please confirm that the Special Stock Partner is accurate
+;Label;cart.review.skipValidation.alert;;The pricing of your order cannot be confirmed at this time.  You can proceed with checkout and we will send you an email once your order has been successfully placed with confirmed pricing, or you can cancel checkout and try placing your order at a later time.<br /><br />Would you like to continue?;The pricing of your order cannot be confirmed at this time.  You can proceed with checkout and we will send you an email once your order has been successfully placed with confirmed pricing, or you can cancel checkout and try placing your order at a later time.<br /><br />Would you like to continue?;The pricing of your order cannot be confirmed at this time.  You can proceed with checkout and we will send you an email once your order has been successfully placed with confirmed pricing, or you can cancel checkout and try placing your order at a later time.<br /><br />Would you like to continue?
+
+;Label;cart.review.progressBar.cart;;Cart;Cart;Cart
+;Label;cart.review.progressBar.buildOrder;;Build Order;Build Order;Build Order
+;Label;cart.review.progressBar.validate;;Validate;Validate;Validate
+;Label;cart.review.progressBar.pricingAvlbility;;Pricing, Availability;Pricing, Availability;Pricing, Availability
+;Label;cart.review.progressBar.checkOut;;Checkout;Checkout;Checkout
+;Label;cart.review.progressBar.finalizeOrder;;Finalize Order;Finalize Order;Finalize Order
+;Label;cart.review.progressBar.order;;Confirmation;Confirmation;Confirmation
+;Label;cart.review.progressBar.confirmation;;Order Placed;Order Placed;Order Placed
+
+;Label;cart.review.orderInfo.selectCard;;Select Card:;Select Card:;Select Card:
+;Label;cart.review.orderInfo.select;;==== Select ====;==== Select ====;==== Select ====
+;Label;cart.review.orderInfo.selectReason;;Select Reason Code;Select Reason Code;Select Reason Code
+;Label;cart.review.orderInfo.addEditCard;;Add/Edit Credit Card;Add/Edit Credit Card;Add/Edit Credit Card
+;Label;cart.review.orderInfo.purchaseOrder;;Purchase Order;Purchase Order;Purchase Order
+;Label;cart.review.orderInfo.creditOrder;;Credit Card;Credit Card;Credit Card
+;Label;cart.review.orderInfo.expiration;;Expiration:;Expiration:;Expiration:
+;Label;cart.review.orderInfo.exp;;Exp; Exp; Exp
+;Label;cart.review.orderInfo.uploadDelOrder;;Upload Delivered Order form;Upload Delivered Order form;Upload Delivered Order form
+;Label;cart.confirmation.orderStatus;;Order Status:;Order Status:;Order Status:
+
+;Label;cart.review.cartPageAction.continue;;Continue Shopping;Continue Shopping;Continue Shopping
+;Label;cart.review.cartPageAction.saveTemplate;;Save as Template;Save as Template;Save as Template
+
+;Label;cart.review.entry.number;;#;#;#
+;Label;cart.review.entry.lineItems;;Line Items;Line Items;Line Items
+;Label;cart.review.entry.quantity;;Quantity;Quantity;Quantity
+;Label;cart.review.entry.wtg;;Wgt/Vol;Wgt/Vol;Wgt/Vol
+;Label;cart.review.entry.itemPrice;;Item price;Item price;Item price
+;Label;cart.review.entry.total;;Total;Total;Total
+;Label;cart.review.entry.lotComment;;Lot/Comment;Lot/Comment;Lot/Comment
+;Label;cart.review.entry.lotNumber;;Lot#;Lot#;Lot#
+;Label;cart.review.entry.specialSP;;Special Stock Partner #;Special Stock Partner #;Special Stock Partner #
+;Label;cart.review.entry.priceOverride;;Price Override;Price Override;Price Override
+;Label;cart.review.entry.approver;;Approver:;Approver:;Approver:
+;Label;cart.review.entry.priceOverrideRC;;Price Override Reason Code:;Price Override Reason Code:;Price Override Reason Code:
+
+;Label;cart.review.productDesc.jnJID;;J&J ID#:;J&J ID#:;J&J ID#:
+;Label;cart.review.productDesc.gtnNumber;;GTIN#:;GTIN#:;GTIN#:
+;Label;cart.review.productDesc.status;;Status:;Status:;Status:
+;Label;cart.review.productDesc.upc;;UPC #:;UPC #:;UPC #:
+;Label;cart.review.productDesc.contractNumber;;Contract #:;Contract #:;Contract #:
+;Label;cart.review.productDesc.removeItem;;Remove Item;Remove Item;Remove Item
+;Label;basket.page.message.minQtyAdded;;Product added with minimum quantity;Product added with minimum quantity;Product added with minimum quantity
+;Label;basket.page.message.qtyAdjusted;;Qunatity has been adjusted as per delivery unit;Qunatity has been adjusted as per delivery unit;Qunatity has been adjusted as per delivery unit
+;Label;basket.page.message.remove;;Product successfully removed from cart;Product successfully removed from cart;Product successfully removed from cart
+;Label;basket.page.message.update;;Product quantity updated successfully;Product quantity updated successfully;Product quantity updated successfully
+;Label;basket.page.message.priceOverride;;Price updated successfully;Price updated successfully;Price updated successfully
+;Label;basket.page.message.errorInPrOveride;;Overriding price can't be overriden;Overriding price can't be overriden;Overriding price can't be overriden
+;Label;hetrogenousDivisons;;This order type cannot include products from more than one J&J division. Please create a separate order for each division.;This order type cannot include products from more than one J&J division. Please create a separate order for each division.;This order type cannot include products from more than one J&J division. Please create a separate order for each division.
+;Label;success;;Item Added to Basket;Item Added to Basket;Item Added to Basket
+
+
+;Label;cart.review.saveTemplate.saveAsTemplate;;Save as Template;Save as Template;Save as Template
+;Label;cart.review.saveTemplate.templateName;;Template Name:;Template Name:;Template Name:
+;Label;cart.review.saveTemplate.shareWithAccount;;Share with Account Users;Share with Account Users;Share with Account Users
+;Label;cart.review.saveTemplate.cancel;;CANCEL;CANCEL;CANCEL
+
+;Label;cart.validate.submitCart;;Shopping Cart: Validate;Shopping Cart: Validate;Shopping Cart: Validate
+#;Label;cart.validate.continueShop;;Continue Shopping;Continue Shopping;Continue Shopping
+;Label;cart.validate.revisedOrder;;Revise Order;Revise Order;Revise Order
+#;Label;cart.validate.saveAsTemplate;;Save as Template;Save as Template;Save as Template
+;Label;cart.validate.checkOut;;Checkout;Checkout;Checkout
+;Label;cart.validate.patnerNumber;;Special Stock Partner #:;Special Stock Partner #:;Special Stock Partner #:
+;Label;cart.validate.lineItem;;[x] line Items;[x] line Items;[x] line Items
+;Label;cart.validate.product;;Product;Product;Product
+;Label;cart.validate.weight;;Weight;Weight;Weight
+;Label;cart.validate.volume;;Volume;Volume;Volume
+;Label;cart.validate.quantity;;Quantity;Quantity;Quantity
+;Label;cart.validate.itemPrice;;Item Price;Item Price;Item Price
+;Label;cart.validate.total;;Total;Total;Total
+;Label;cart.validate.shippingMethod;;Shipping Method;Shipping Method;Shipping Method
+#;Label;cart.validate.logComment;;Log/Comment:;Log/Comment:;Log/Comment:
+;Label;cart.validate.selected;;selected;selected;selected
+;Label;cart.validate.lotComment;;Lot/Comment:;Lot/Comment:;Lot/Comment:
+
+;Label;cart.validate.cartTotal.subTotal;;Sub Total:;Sub Total:;Sub Total:
+;Label;cart.validate.cartTotal.orderTotal;;Order Total:;Order Total:;Order Total:
+;Label;cart.validate.cartTotal.dropShipFee;;Drop-Ship Fee:;Drop-Ship Fee:;Drop-Ship Fee:
+;Label;cart.validate.cartTotal.minimumOrderFee;;Minimum Order Fee:;Minimum Order Fee:;Minimum Order Fee:
+;Label;cart.validate.cartTotal.manualFee;;Manual Fee:;Manual Fee:;Manual Fee:
+;Label;cart.validate.cartTotal.expeditedFee;;Expedited Fee:;Expedited Fee:;Expedited Fee:
+;Label;cart.validate.cartTotal.adjRate;;Adj.Rate Allowance:;Adj.Rate Allowance:;Adj.Rate Allowance:
+;Label;cart.validate.cartTotal.fees;;Fees:;Fees:;Fees:
+;Label;cart.validate.cartTotal.freightCost;;Freight Cost:;Freight Cost:;Freight Cost:
+;Label;cart.validate.cartTotal.hsaPromotion;;HSA Promotion:;HSA Promotion:;HSA Promotion:
+;Label;cart.validate.cartTotal.tax;;Tax:;Tax:;Tax:
+#;Label;cart.validate.cartTotal.orderTotal;;Order Total:;Order Total:;Order Total:
+;Label;cart.validate.cartTotal.totals;;Order Total:;Order Total:;Total:
+;Label;cart.validate.cartTotal.editFreightCost;;Edit Freight Cost:;Edit Freight Cost:;Edit Freight Cost:
+
+;Label;cart.checkout.orderinfo;;Your requested expedited delivery option was received after our cut-off time (see below) for today's orders.
+;Label;cart.checkout.batchMode.alert;;The pricing of your order cannot be confirmed at this time.  You can proceed with checkout and we will send you an email once your order has been successfully placed with confirmed pricing, or you can cancel checkout and try placing your order at a later time.<br /><br />Would you like to continue?;The pricing of your order cannot be confirmed at this time.  You can proceed with checkout and we will send you an email once your order has been successfully placed with confirmed pricing, or you can cancel checkout and try placing your order at a later time.<br /><br />Would you like to continue?;The pricing of your order cannot be confirmed at this time.  You can proceed with checkout and we will send you an email once your order has been successfully placed with confirmed pricing, or you can cancel checkout and try placing your order at a later time.<br /><br />Would you like to continue?
+	
+;Label;cart.confirmation.shoppingCart;;Shopping Cart: Confirmation;Shopping Cart: Confirmation;Shopping Cart: Confirmation
+;Label;cart.confirmation.thanksMessage;;Thank you for your order.;Thank you for your order.;Thank you for your order.
+;Label;cart.confirmation.processMessage;;You will receive a confirmation e-mail with the details of your order shortly.;You will receive a confirmation e-mail with the details of your order shortly.;You will receive a confirmation e-mail with the details of your order shortly.
+;Label;cart.confirmation.changeAddress;;Change Address
+;Label;cart.confirmation.surgeryInfo;;Enter Surgery info
+;Label;cart.consumer.valid.date;;Please select valid date!
+
+;Label;cart.confirmation.download;;Download;Download;Download
+;Label;cart.confirmation.excel;;EXCEL;EXCEL;EXCEL
+;Label;cart.confirmation.pdf;;PDF;PDF;PDF
+#;Label;cart.confirmation.saveAsTemplate;;Save as Template;Save as Template;Save as Template
+;Label;cart.confirmation.done;;Done;Done;Done
+;Label;cart.confirmation.createReplenishmentOrder;;Create Replenishment Order;Create Replenishment Order;Create Replenishment Order
+	
+;Label;cart.confirmation.estimatedShipDate;;Estimated Ship Date:;Estimated Ship Date:;Estimated Ship Date:
+;Label;cart.confirmation.estimatedDeliveryDate;;Estimated Delivery Date:;Estimated Delivery Date:;Estimated Delivery Date:
+;Label;cart.confirmation.materialAvailabilityDate;;Estimated Availability Date:;Estimated Availability Date:;Estimated Availability Date:
+;Label;cart.confirmation.availability;;Availability:;Availability:;Availability:
+;Label;cart.confirmation.surgeryInfoLink;;Surgery Info;Surgery Info;Surgery Info
+;Label;cart.confirmation.deliveredOrderFromDoc;;Delivered Order form.doc;Delivered Order form.doc;Delivered Order form.doc
+
+;Label;cart.priceQuote.heading;;Price Quote;Price Quote;Price Quote
+;Label;cart.priceQuote.status;;Status;Status;Status
+;Label;cart.priceQuote.resultPage.heading;;Quote: Price & Availability;Quote: Price & Availability;Quote: Price & Availability
+;Label;cart.priceQuote.resultPage.noteLine1;;Please review your product availability and pricing information.;Please review your product availability and pricing information.;Please review your product availability and pricing information.
+;Label;cart.priceQuote.resultPage.noteLine2;;Note that this price quote is valid for today only {0} and is subject to change at time of sale based on applicable pricing programs and/or promotions.;Note that this price quote is valid for today only {0} and is subject to change at time of sale based on applicable pricing programs and/or promotions.;Note that this price quote is valid for today only {0} and is subject to change at time of sale based on applicable pricing programs and/or promotions.
+;Label;cart.priceQuote.resultPage.priceQuoteNumber;;Price Quote Number:;Price Quote Number:;Price Quote Number: 
+;Label;cart.priceQuote.resultPage.savePriceQuoteAsTemplate;;Save Price Quote as Template;Save Price Quote as Template;Save Price Quote as Template
+;Label;cart.priceQuote.resultPage.quoteResultPageAction.done;;Done;Done;Done
+;Label;cart.priceQuote.resultPage.quoteResultPageAction.addAllToCart;;Add All to Cart;Add All to Cart;Add All to Cart
+;Label;cart.priceQuote.getPriceQuote;;Get Price Quote;Get Price Quote;Get Price Quote
+;Label;cart.common.addToQuote;;Add To Quote;Add To Quote;Add To Quote
+
+;Label;cart.return.heading;;Return;Return;Return
+;Label;cart.return.returnInfo.reasonCode;;Reason code:;Reason code:;Reason code:
+;Label;cart.return.returnInfo.selectReasonCode;;Select reason code;Select reason code;Select reason code
+;Label;R07;;Distributor Overstock;Distributor Overstock;Distributor Overstock
+;Label;R09;;Customer Request;Customer Request;Customer Request
+;Label;R29;;Customer Overshipment;Customer Overshipment;Customer Overshipment
+;Label;R11;;Outer Packaging Damage;Outer Packaging Damage;Outer Packaging Damage
+;Label;R12;;Inner Packaging Damage;Inner Packaging Damage;Inner Packaging Damage
+;Label;other;;Other;Other;Other
+;Label;cart.return.returnInfo.customerReferencePO;;Customer Reference PO#:;Customer Reference PO#:;Customer Reference PO#:
+;Label;cart.return.returnInfo.star;;*;*;*
+;Label;cart.return.returnAction.submitReturns;;Submit Return;Submit Return;Submit Return
+;Label;cart.return.addToList.instructions;;Instructions & Templates;Instructions & Templates;Instructions & Templates
+;Label;cart.return.addToList.uploadImageFiles;;(Upload Image files);(Upload Image files);(Upload Image files)
+;Label;cart.return.entries.lotNumber;;Lot Number;Lot Number;Lot Number
+;Label;cart.return.entries.poNumber;;PO Number;PO Number;PO Number
+;Label;cart.return.entries.invoiceNumber;;Invoice Number;Invoice Number;Invoice Number
+;Label;cart.return.viewMore;;View More;View More;View More
+;Label;cart.returnConfirmation.heading;;Return Confirmation Page;Return Confirmation Page;Return Confirmation Page
+;Label;cart.return.customerRefPO;;Please enter Customer Ref PO#!
+;Label;cart.return.lotNumberNotFound;;Please enter a valid lot number.
+;Label;cart.return.lotNumber.enter;;Please Enter Lot Number
+;Label;cart.return.reasonCode.invoice;;Please Enter Invoice for Selected Reason Code
+;Label;cart.return.invoiceNumber.enter;;The invoice number you entered is invalid. Please enter a valid invoice number. 
+;Label;cart.return.lotNumberAndinvoiceNumber.notFound;;The lot number entered does not match the invoice. Please enter the correct lot number.
+;Label;cart.return.invalid.qty;;Entered quantity exceeds the invoice quantity;Entered quantity exceeds the invoice quantity;Entered quantity exceeds the invoice quantity 
+;Label;cart.return.orderRejected;;Error while validating with SAP;Error while validating with SAP;Error while validating with SAP
+;Label;cart.return.orderAccepted;;Return order accepted. You can now ship the material.;Return order accepted. You can now ship the material.;Return order accepted. You can now ship the material.
+
+;Label;cart.noCharge.orderInfo.noChargeReasonCode;;No-Charge Reason Code #:;No-Charge Reason Code #:;No-Charge Reason Code #:
+;Label;cart.noCharge.orderInfo.dropShipAccount;;Drop-Ship Account:;Drop-Ship Account:;Drop-Ship Account:
+;Label;cart.noCharge.orderInfo.cordisHouseAccount;;Cordis House Account #:;Cordis House Account #:;Cordis House Account #:
+;Label;cart.noCharge.orderInfo.cordisHouseAccount.enter;;The Cordis House account number you entered could not be found. Please enter a valid account number. 
+;Label;cart.required.cartHeader.disPONumber;;Please enter Distributed PO Number!;Please enter Distributed PO Number!;Please enter Distributed PO Number!
+
+;Label;cart.deliver.fileUpload.header;;Upload Delivered Order;Upload Delivered Order;Upload Delivered Order
+;Label;cart.deliver.fileUpload.error;;The file that you are trying to upload is not a PDF / Image.
+;Label;cart.deliver.fileUpload.uploadPdfAndImageFiles;;(Upload PDF and Image files);(Upload PDF and Image files);(Upload PDF and Image files)
+;Label;cart.deliver.shipToAcc;;Ship to Account:;Ship to Account:;Ship to Account:
+;Label;cart.deliver.spineSalesRep;;Spine sales Rep UCN:;Spine sales Rep UCN:;Spine sales Rep UCN:
+;Label;cart.deliver.surgonName;;Surgeon Name:;Surgeon Name:;Surgeon Name:
+;Label;cart.deliver.surgeryInfo;;Surgery info;Surgery info;Surgery info
+;Label;cart.deliver.deliverOrderForm;;Delivered Order Form;Delivered Order Form;Delivered Order Form
+;Label;cart.delivered.freight.cost;;Freight Charges;Freight Charges;Freight Charges
+;Label;cart.delivered.freight.edit.Freight;;Edit Freight Charges;Edit Freight Charges;Edit Freight Charges
+
+#No Charge Drop-down values
+;Label;samples;;Samples;Samples;Samples
+;Label;replacement;;Replacement;Replacement;Replacement
+;Label;inventoryReplacement;;Inventory Replacement;Inventory Replacement;Inventory Replacement
+;Label;N01;;Competitive Buyout;;;Competitive Buyout;Competitive Buyout
+;Label;N02;;Internal Samples Marketing;;;Internal Samples Marketing;Internal Samples Marketing
+;Label;N03;;Goodwill;Goodwill;Goodwill
+;Label;N04;;Replacement;Replacement;Replacement
+;Label;N05;;Quality Replacement;Quality Replacement;Quality Replacement
+;Label;N06;;Samples;Samples;Samples
+;Label;N07;;Expiration;Expiration;Expiration
+;Label;N08;;Corp. Contributions;Corp. Contributions;Corp. Contributions
+;Label;N09;;Recalls;Recalls;Recalls
+;Label;N10;;Clinical Trials;Clinical Trials;Clinical Trials
+;Label;N11;;Internal Samples Research;Internal Samples Research;Internal Samples Research
+;Label;N12;;Evaluation;Evaluation;Evaluation
+;Label;N13;;No Charge-Inventory Transfer;No Charge-Inventory Transfer;No Charge-Inventory Transfer
+;Label;B16;;Adj. Sample(House);Adj. Sample(House);Adj. Sample(House)
+
+######################## Cart And Checkout  ################
+
+
+####################Reports#####################
+#Common Lables
+;Label;reports.report.header;;Reports;Reports;Reports
+;Label;reports.reset.label;;Reset;Reset;Reset
+;Label;reports.account.label;;Account:;Account:;Account:
+;Label;reports.search.label;;Search;Search;Search
+;Label;reports.download.label;;Download:;Download:;Download:
+;Label;reports.excel.label;;EXCEL;EXCEL;EXCEL
+;Label;reports.pdf.label;;PDF;PDF;PDF
+;Label;reports.date.start.error;;Please enter Start Date!;Please enter Start Date!;Please enter Start Date!
+;Label;reports.date.end.error;;Please enter End Date!;Please enter End Date!;Please enter End Date!
+;Label;reports.account.selection.header;;Select Account(s) for Report;Select Account(s) for Report;Select Account(s) for Report
+;Label;reports.account.selection.info;;Select one or more accounts for the report.;Select one or more accounts for the report.;Select one or more accounts for the report.
+;Label;reports.account.selection.selected;;Accounts selected;Accounts selected;Accounts selected
+;Label;reports.account.selection.all;;Select All Available;Select All Available;Select All Available
+;Label;reports.account.selection.cancel;;CANCEL;CANCEL;CANCEL
+;Label;reports.account.selection.ok;;OK;OK;OK
+;Label;reports.table.total;;Total:;Total:;Total:
+;Label;reports.table.no.data;;No data found for the given search criteria.;No data found for the given search criteria.;No data found for the given search criteria.
+
+#Cut Report lables
+
+;Label;cutReport.label;;Cut Report;Cut Report;Cut Report
+;Label;cutReport.change.label;;Change;Change;Change
+;Label;cutReport.poNumber.label;;PO#:;PO#:;PO#:
+;Label;cutReport.startDate.label;;P.O. Start Date:;P.O. Start Date:;P.O. Start Date:
+;Label;cutReport.endDate.label;;P.O. End Date:;P.O. End Date:;P.O. End Date:
+;Label;cutReport.productCode.label;;Product Code/UPC:;Product Code/UPC:;Product Code/UPC:
+;Label;cutReport.ship.label;;Ship-To:;Ship-To:;Ship-To:
+;Label;cutReport.sort.label;;Sort by;Sort by;Sort by:
+
+;Label;cutReport.header.column1.label;;View Details;View Details;View Details
+;Label;cutReport.header.column2.label;;Account Number;Account Number;Account Number
+;Label;cutReport.header.column3.label;;PO Number;PO Number;PO Number
+;Label;cutReport.header.column4.label;;Order Number;Order Number;Order Number
+;Label;cutReport.header.column5.label;;Order Date;Order Date;Order Date
+;Label;cutReport.header.column6.label;;Operating Company;Operating Company;Operating Company
+;Label;cutReport.header.column7.label;;Ship-To Name;Ship-To Name;Ship-To Name
+;Label;cutReport.order.line.label;;Order Line;Order Line;Order Line
+;Label;cutReport.cut.reason.label;;Cut Reason;Cut Reason;Cut Reason
+;Label;cutReport.cut.quantity.label;;Cut Quantity;Cut Quantity;Cut Quantity
+;Label;cutReport.order.quan.label;;Order Quantity;Order Quantity;Order Quantity
+;Label;cutReport.unit.label;;Unit;Unit;Unit
+;Label;cutReport.product.code.label;;Product Code;Product Code;Product Code
+;Label;cutReport.customer.code.label;;Customer Code;Customer Code;Customer Code
+;Label;cutReport.product.name.label;;Product Name;Product Name;Product Name
+;Label;cutReport.item.price.label;;Item Price;Item Price;Item Price
+;Label;cutReport.extended.price.label;;Extended Price;Extended Price;Extended Price
+
+#Backorder Report Labels
+;Label;reports.backorder.header;;Backorder Report;Backorder Report;Backorder Report
+;Label;reports.backorder.account.change;;Change;Change;Change
+;Label;reports.backorder.date.start;;Start Date:;Start Date:;Start Date:
+;Label;reports.backorder.date.end;;End Date:;End Date:;End Date:
+;Label;reports.backorder.multiple;;Multiple;Multiple;Multiple
+;Label;reports.backorder.selected;;selected;selected;selected
+;Label;reports.backorder.all;;All available accounts;All available accounts;All available accounts
+;Label;reports.backorder.table.accountNumber;;Account Number;Account Number;Account Number
+;Label;reports.backorder.table.productName;;Product Name;Product Name;Product Name
+;Label;reports.backorder.table.productCode;;Product Code/GTIN;Product Code/GTIN;Product Code/GTIN
+;Label;reports.backorder.table.operatingCompany;;Operating Company;Operating Company;Operating Company
+;Label;reports.backorder.table.customerPO;;Customer PO;Customer PO;Customer PO
+;Label;reports.backorder.table.orderNumber;;Order Number;Order Number;Order Number
+;Label;reports.backorder.table.orderDate;;Order Date;Order Date;Order Date
+;Label;reports.backorder.table.estimatedAvailability;;Estimated Availability;Estimated Availability;Estimated Availability
+;Label;reports.backorder.table.qty;;Qty;Qty;Qty
+;Label;reports.backorder.table.unit;;Unit;Unit;Unit
+;Label;reports.backorder.table.itemPrice;;Item Price;Item Price;Item Price
+;Label;reports.backorder.table.extendedPrice;;Extended Price;Extended Price;Extended Price
+
+#Inventory Report Labels
+;Label;reports.inventory.header;;Inventory Report;Inventory Report;Inventory Report
+;Label;reports.inventory.rep.ucn;;Rep UCN#:;Rep UCN#:;Rep UCN#:
+;Label;reports.inventory.change;;Change;Change;Change
+;Label;reports.inventory.rep.ucn.desc;;(Enter UCNs separated by commas or click 'Change' to add additional accounts to your search.);(Enter UCNs separated by commas or click 'Change' to add additional accounts to your search.);(Enter UCNs separated by commas or click 'Change' to add additional accounts to your search.)
+;Label;reports.inventory.product.code;;Product Code:;Product Code:;Product Code:
+;Label;reports.inventory.product.lot.number;;Lot Number:;Lot Number:;Lot Number:
+;Label;reports.inventory.zero.stocks;;Display Zero Stocks;Display Zero Stocks;Display Zero Stocks
+;Label;reports.inventory.rep.ucn.error;;Please enter UCN#!;Please enter UCN#!;Please enter UCN#!
+;Label;reports.inventory.table.ucn.number;;UCN Number;UCN Number;UCN Number
+;Label;reports.inventory.table.product.code;;Product Code;Product Code;Product Code
+;Label;reports.inventory.table.desc;;Description;Description;Description
+;Label;reports.inventory.table.lot.number;;Lot Number;Lot Number;Lot Number
+;Label;reports.inventory.table.unrestricted;;Unrestricted;Unrestricted;Unrestricted
+;Label;reports.inventory.table.restricted;;Restricted;Restricted;Restricted
+;Label;reports.inventory.table.quality.stock;;Quality Stock;Quality Stock;Quality Stock
+;Label;reports.inventory.table.total.quantity;;Total Quantity;Total Quantity;Total Quantity
+;Label;reports.inventory.table.unit;;Unit;Unit;Unit
+
+#AAOL-4603: OA Delivery List Report Labels
+;Label;reports.oa.delivery.list.header;;Delivery List Report;Delivery List Report;Delivery List Report
+
+#Purchase Analysis Report Labes
+;Label;reports.purchase.analysis.header;;Purchase Analysis Report;Purchase Analysis Report;Purchase Analysis Report
+;Label;reports.purchase.analysis.single;;Single-Product Report;Single-Product Report;Single-Product Report
+;Label;reports.purchase.analysis.multi;;Multi-Product Report;Multi-Product Report;Multi-Product Report
+;Label;reports.purchase.analysis.change;;Change;Change;Change
+;Label;reports.purchase.analysis.instructions;;Generate reports on your top products by quantity, frequency or dollar value. You can drill down to perform detailed analysis of activity over time or constrain the results to a single product.
+;Label;reports.purchase.analysis.territory;;Territory:;Territory:;Territory:
+;Label;reports.purchase.analysis.all.available;;All Available;All Available;All Available
+;Label;reports.purchase.analysis.product.code.error;;Please enter Product Code!;Please enter Product Code!;Please enter Product Code!
+;Label;reports.purchase.analysis.period.breakdown;;Period Breakdown:;Period Breakdown:;Period Breakdown:
+;Label;reports.purchase.analysis.week;;Week;Week;Week
+;Label;reports.purchase.analysis.month;;Month;Month;Month
+;Label;reports.purchase.analysis.order.form;;Ordered Form:;Ordered Form:;Ordered Form:
+;Label;reports.purchase.analysis.order.from.select;;Select ordered from;Select ordered from;Select ordered from
+;Label;reports.purchase.analysis.operating.company;;Operating Company / Brand:;Operating Company / Brand:;Operating Company / Brand:
+;Label;reports.purchase.analysis.all;;All;All;All
+;Label;reports.purchase.analysis.franchise;;Franchise/Div Code:;Franchise/Div Code:;Franchise/Div Code:
+;Label;reports.purchase.analysis.ordered.from;;Ordered From:;Ordered From:;Ordered From:
+;Label;reports.purchase.analysis.products.display;;Products to Display:;Products to Display:;Products to Display:
+;Label;reports.purchase.analysis.analysis.variable;;Analysis Variable:;Analysis Variable:;Analysis Variable:
+;Label;reports.purchase.analysis.dollar.amount;;Dollar Amount;Dollar Amount;Dollar Amount
+;Label;reports.purchase.analysis.unit.quantity;;Unit Quantity;Unit Quantity;Unit Quantity
+;Label;reports.purchase.analysis.oder.frequency;;Order Frequency;Order Frequency;Order Frequency
+;Label;reports.purchase.analysis.account.number;;Account Number;Account Number;Account Number
+;Label;reports.purchase.analysis.product.name;;Product Name;Product Name;Product Name
+;Label;reports.purchase.analysis.product.code;;Product Code GTIN/UPC;Product Code GTIN/UPC;Product Code GTIN/UPC
+;Label;reports.purchase.analysis.amount;;Amount;Amount;Amount
+;Label;reports.purchase.analysis.spending;;% Spending;% Spending;% Spending
+;Label;reports.purchase.analysis.qty;;Unit Quantity;Unit Quantity;Unit Quantity
+;Label;reports.purchase.analysis.frequency;;Order Frequency;Order Frequency;Order Frequency
+;Label;reports.purchase.analysis.total.all;;Total Spending via all channels:;Total Spending via all channels:;Total Spending via all channels:
+;Label;reports.purchase.analysis.period;;Period;Period;Period
+;Label;reports.purchase.analysis.amount;;Amount;Amount;Amount
+;Label;reports.purchase.analysis.electronic;;Electronic;Electronic;Electronic
+;Label;reports.purchase.analysis.other;;Other;Other;Other
+;Label;reports.purchase.analysis.quantity;;Quantity;Quantity;Quantity
+;Label;reports.purchase.analysis.unit;;Unit;Unit;Unit
+;Label;reports.purchase.analysis.freq;;Frequency;Frequency;Frequency
+;Label;reports.purchase.analysis.show;;Show;Show;Show
+;Label;reports.purchase.analysis.product.invalid;;Product code is invalid;Product code is invalid;Product code is invalid
+
+#Purchase analysis reports show order entries labels
+;Label;reports.purchase.analysis.popup.header;;Ordered Product Report;Ordered Product Report;Ordered Product Report 
+;Label;reports.purchase.analysis.popup.period;;Period:;Period:;Period:
+;Label;reports.purchase.analysis.popup.product;;Product:;Product:;Product:
+;Label;reports.purchase.analysis.popup.gtin;;GTIN:;GTIN:;GTIN:
+;Label;reports.purchase.analysis.popup.account;;Account:;Account:;Account:
+;Label;reports.purchase.analysis.popup.orderNumber;;Order Number;Order Number;Order Number
+;Label;reports.purchase.analysis.popup.orderDate;;Order Date;Order Date;Order Date
+;Label;reports.purchase.analysis.popup.status;;Status;Status;Status
+;Label;reports.purchase.analysis.popup.amount;;Amount;Amount;Amount
+;Label;reports.purchase.analysis.popup.quantity;;Quantity;Quantity;Quantity
+;Label;reports.purchase.analysis.popup.unit;;Unit;Unit;Unit
+;Label;reports.purchase.analysis.popup.orderDetails;;Order Details;Order Details;Order Details
+;Label;reports.purchase.analysis.popup.cancel;;Close;Close;Close
+
+#For User Reports
+;Label;sort1;;Order Date ;Order Date ;Order Date
+;Label;sort2;;PO Number;PO Number;PO Number
+;Label;sort3;;Order ID;Order ID;Order ID
+;Label;sort4;;Ship-To Name;Ship-To Name;Ship-To Name
+;Label;sort5;;Cut Reason;Cut Reason;Cut Reason
+
+
+#Site Order Management (For Order Detail Page & Invoice Detail Page)
+
+;Label;invoiceDetailPage.heading;;Invoice Details
+;Label;invoiceDetailPage.ghxENote;;To retrieve PDF copies of your billing documents (Invoices, Statements, and Prompt Payment Terms), login to the
+;Label;invoiceDetailPage.ghxENotePortal;;portal
+;Label;invoiceDetailPage.ghxEinvoicing;;Global Healthcare Exchange (GHX) eInvoicing
+;Label;invoiceDetailPage.invoiceNumber;;Invoice #:
+;Label;invoiceDetailPage.billingDate;;Billing Date
+;Label;invoiceDetailPage.carrierName;;Carrier Name:
+;Label;invoiceDetailPage.packingList;;Packing List:
+;Label;invoiceDetailPage.download;;Download:
+;Label;invoiceDetailPage.download.excel;;EXCEL
+;Label;invoiceDetailPage.download.pdf;;PDF
+;Label;invoiceDetailPage.invoiceTotal;;Invoice Total:
+;Label;invoiceDetailPage.otherCharges;;Other Charges:
+;Label;invoiceDetailPage.adjustedRateAllowance;;Adj Rate Allowance:
+;Label;invoiceDetailPage.invoiceNetAmount;;Invoice Net Amount:
+;Label;invoiceDetailPage.orderedQuantity;;Ordered Quantity
+;Label;invoiceDetailPage.invoicedQuantity;;Invoiced Quantity
+;Label;orderDetailPage.heading;;Order Details
+;Label;InvoiceDetailPage.heading;;Invoice Details
+;Label;orderDetailPage.orderData.orderType;;Order type:
+;Label;orderDetailPage.orderData.orderNumber;;| Order Number:
+;Label;orderDetailPage.orderData.accountNumber;;| Account Number:
+;Label;orderDetailPage.orderData.gln;;| Global Location Number:
+;Label;orderDetailPage.orderData.purchaseOrder;;Purchase Order:
+;Label;orderDetailPage.orderData.dropShipAccount;;Drop-Ship Account:
+;Label;orderDetailPage.orderData.paymentMethod;;Payment method:
+;Label;orderDetailPage.orderData.orderDate;;Order Date:
+;Label;orderDetailPage.orderData.status;;Status:
+;Label;orderDetailPage.orderData.orderBy;;Order By:
+;Label;orderDetailPage.orderData.reasonCode;;Reason Code
+;Label;orderDetailPage.orderData.creditCardDetails;;Credit Card & Expiration
+;Label;orderDetailPage.orderData.dealerPO;;Dealer PO Number
+;Label;orderDetailPage.orderData.cordisHouseAccount;;Cordis House Account #
+;Label;orderDetailPage.orderData.reqDeliveryDate;;Requested Delivery Date
+;Label;orderDetailPage.orderData.expectedDeliveryDate;;Expected Delivery Date
+;Label;orderDetailPage.orderData.actualShipDate;;Actual Ship Date
+;Label;orderDetailPage.orderData.actualDeliveryDate;;Actual Delivery Date
+;Label;orderDetailPage.orderData.shipmentLocation;;Shipment Location
+;Label;orderDetailPage.orderData.salesTerritory;;Sales Territory
+;Label;orderDetailPage.orderData.viewInvoiceDetails;;View Invoice Details
+;Label;orderDetailPage.orderData.viewShipmentDetails;;View Shipment Information
+;Label;orderDetailPage.orderData.packingList;;Packing List
+;Label;orderDetailPage.orderData.shipToAddress;;Ship-To Address:
+;Label;orderDetailPage.orderData.billOfLading;;Bill of Lading:
+;Label;orderDetailPage.orderData.attention;;Attention:
+;Label;orderDetailPage.orderData.carrier;;Carrier:
+;Label;orderDetailPage.orderData.tracking;;Tracking:
+;Label;orderDetailPage.orderData.billingNameAndAddress;;Billing Name and Address:
+;Label;orderDetailPage.orderData.disputeThisOrder;;Dispute this Order
+;Label;orderDetailPage.orderData.showInGroupsOf;;Show in groups of:
+;Label;orderDetailPage.orderData.product;;Product
+;Label;orderDetailPage.orderData.quantity;;Quantity
+;Label;orderDetailPage.orderData.itemPrice;;Item Price
+;Label;orderDetailPage.orderData.Total;;Total
+;Label;orderDetailPage.orderData.Shipping;;Shipping
+;Label;orderDetailPage.orderData.estDeliv;;Est. Deliv.
+;Label;orderDetailPage.orderData.status;;Status
+;Label;orderDetailPage.orderData.jnjID;;J&J ID#: 
+;Label;orderDetailPage.orderData.gtin;;GTIN#:
+;Label;orderDetailPage.orderData.contract;;Contract#:
+;Label;orderDetailPage.orderData.disputeThisItem;;Dispute this item
+;Label;orderDetailPage.orderData.trackingHash;;Tracking#
+;Label;orderDetailPage.orderData.subTotal;;Sub-Total: 
+;Label;orderDetailPage.orderData.hsaPromotion;;HSA Promotion: 
+;Label;orderDetailPage.orderData.taxes;;Taxes: 
+;Label;orderDetailPage.orderData.shippingFees;;Shipping Fees: 
+;Label;orderDetailPage.orderData.freightHandlingFee;;Freight & Handling Fee: 
+;Label;orderDetailPage.orderData.orderTotal;;Order Total: 
+;Label;orderDetailPage.orderData.lines;;Lines:
+;Label;orderDetailPage.orderData.ten;;10
+;Label;orderDetailPage.orderData.twentyFive;;25
+;Label;orderDetailPage.orderData.fifty;;50
+;Label;orderDetailPage.orderData.hash;;#
+;Label;orderDetailPage.orderData.zero;;-00
+;Label;orderDetailPage.orderData.note;;MD&D: At this time, this order is currently on a credit review, which may impact the delivery of the product.  Please contact our Customer Credit Management Department at 1-800-554-7899 for additional assistance with this situation.
+;Label;orderDetailPage.orderData.notAvailable;;Not Available
+;Label;invoiceDetailPage.payment.method.text;;Purchase Order
+;Label;invoiceDetailPage.download.copy;;To download your original invoice(s), go to the <a href='https://www.ghx-einvoicing.com/einv/?JJHCS'>GHX E-Invoicing</a> website.
+;Label;orderDetailPage.total.fee;;Fee:
+;Label;orderDetailPage.expedited.fee;;Expedited Fee:
+;Label;orderDetailPage.dropship.fee;;Drop Ship Fees:
+;Label;orderDetailPage.minOrderqty.fee;;Minimum Order Quantity Fee:
+;Label;orderDetailPage.manual.fee;;Manual Fee:
+;Label;orderDetailPage.no.results;;No Results Found
+;Label;invoiceDetailPage.proof.delivery.link;;Proof of Delivery
+;Label;orderDetailPage.orderData.rgaLink;;Download RGA;Download RGA;Download RGA
+;Label;orderDetailPage.orderData.codLink;;Download COD;Download COD;Download COD
+;Label;orderDetailPage.fees.and.promotions;;Fees and Promotions:
+
+#For HELP
+;Label;help.page.label;;Help
+;Label;help.page.general.tab;;General
+;Label;help.page.ordering.tab;;Ordering
+;Label;help.page.reports.tab;;Reports
+;Label;help.page.contactus.head;;All customers can send us a message using the form below.
+;Label;help.page.contactus.label;;Contact Us
+;Label;help.page.contactus.from;;From
+;Label;help.page.contactus.email;;Email
+;Label;help.page.contactus.subject;;Subject
+;Label;help.page.contactus.ordernumber;;Order Number
+;Label;help.page.contactus.message;;Message
+;Label;help.page.contactus.sendbutton;;Send Message
+;Label;help.page.contactus.success.successmessage;;Your message was sent successfully.
+;Label;help.page.contactus.success.anothermessage;;Send another message
+;Label;help.page.contactus.success.thankyoumessage;;Thanks for contacting us.
+;Label;help.page.contactus.success.responsemessage;;You will receive a response as soon as possible<br> about your comment.
+;Label;help.page.callus.label;;Call Us
+;Label;help.page.issue.selectanyone;;Select a Subject...
+;Label;help.page.issue.order;;Order issue
+;Label;help.page.issue.website;;Website issue
+;Label;help.page.issue.product;;Product Inquiries
+;Label;help.page.issue.others;;Other Inquiries
+;Label;help.page.issue.account.userprofile;;Profile / Account issue
+;Label;help.page.issue.account;;Account issue
+;Label;help.page.issue.userprofile;;User Profile issue
+;Label;help.page.issue.mddcontract;;MD&D Contract issue
+;Label;help.page.issue.ortho;;DePuy Orthopaedics Inc. issue
+;Label;help.page.issue.trauma;;DePuy Trauma and Extremities issue
+;Label;help.page.subject.error;;Please select a Subject
+;Label;help.page.message.error;;Please enter a Message
+;Label;help.page.order.error;;Please enter Order Number
+;Label;help.page.contactus.statement;;By submitting your information in this form, you agree that such information will be governed by our <a class='privacypolicypopup_hn' title='Privacy Policy' href='javascript:void(0)'>Privacy Policy</a>. Because email sent to and from this site may not be secure, you should not include sensitive information in your request.;By submitting your information in the form provided below, you agree that such information will be governed by our <a class='privacypolicypopup_hn' title='Privacy Policy' href='javascript:void(0)'>Privacy Policy</a>. Because email sent to and from this site may not be secure, you should not include sensitive information in your request.;By submitting your information in this form, you agree that such information will be governed by our <a class='privacypolicypopup_hn' title='Privacy Policy' href='javascript:void(0)'>Privacy Policy</a>. Because email sent to and from this site may not be secure, you should not include sensitive information in your request.
+
+########Site Order Management############
+
+#orderHistoryPage
+;Label;orderHistoryPage.heading;;Order History
+;Label;orderHistoryPage.reset;;Reset
+;Label;orderHistoryPage.search;;Search
+;Label;orderHistoryPage.viewOrderHistory;;View Order History for:
+;Label;orderHistoryPage.multipleAccounts;;Multiple Accounts
+;Label;orderHistoryPage.change;;Change
+;Label;orderHistoryPage.from;;From:
+;Label;orderHistoryPage.to;;To:
+;Label;orderHistoryPage.orderType;;Order Type:
+;Label;orderHistoryPage.all;;All
+;Label;orderHistoryPage.select;;Select
+;Label;orderHistoryPage.standard;;Standard
+;Label;orderHistoryPage.delivered;;Delivered 
+;Label;orderHistoryPage.noCharge;;No Charge
+;Label;orderHistoryPage.replenishment;;Replenishment
+;Label;orderHistoryPage.international;;International
+;Label;orderHistoryPage.standing;;Standing
+;Label;orderHistoryPage.return;;Return
+;Label;orderHistoryPage.quote;;Quote
+;Label;orderHistoryPage.orderStatus;;Order Status:
+;Label;orderHistoryPage.pending;;Pending
+;Label;orderHistoryPage.shipped;;Shipped
+;Label;orderHistoryPage.cancelled;;Cancelled
+;Label;orderHistoryPage.partiallyShipped;;Partially Shipped
+;Label;orderHistoryPage.incomplete;;Incomplete
+;Label;orderHistoryPage.orderAccepted;;Order Accepted
+;Label;orderHistoryPage.backOrdered;;Back Ordered
+;Label;orderHistoryPage.invoiced;;Invoiced
+;Label;orderHistoryPage.notYetShipped;;Not Yet Shipped
+;Label;orderHistoryPage.delivered;;Delivered
+;Label;orderHistoryPage.searchBy;;Search by:
+;Label;orderHistoryPage.channelColon;;Channel:
+;Label;orderHistoryPage.portal;;Portal
+;Label;orderHistoryPage.phone;;Phone
+;Label;orderHistoryPage.fax;;Fax
+;Label;orderHistoryPage.edi;;EDI
+;Label;orderHistoryPage.other;;Other
+;Label;orderHistoryPage.lineStatus;;Line Status:
+;Label;orderHistoryPage.created;;Created
+;Label;orderHistoryPage.Backordered;;Backordered
+;Label;orderHistoryPage.open;;Open
+;Label;orderHistoryPage.result;;Results:
+;Label;orderHistoryPage.orders;;Orders
+;Label;orderHistoryPage.showInGroupsOf;;Show in groups of:
+;Label;orderHistoryPage.ten;;10
+;Label;orderHistoryPage.twentyFive;;25
+;Label;orderHistoryPage.fifty;;50
+;Label;orderHistoryPage.stipTo;;Ship-To 
+;Label;orderHistoryPage.orderNumber;;Order Number
+;Label;orderHistoryPage.poNomber;;P.O. Number
+;Label;orderHistoryPage.orderType;;Order Type
+;Label;orderHistoryPage.stipTo;;Ship-To 
+;Label;orderHistoryPage.orderDate;;Order Date 
+;Label;orderHistoryPage.channel;;Channel 
+;Label;orderHistoryPage.status;;Status 
+;Label;orderHistoryPage.total;;Total
+;Label;orderHistoryPage.updateSurgeon;;Update Surgeon 
+;Label;orderHistoryPage.updatedPO;;Updated P.O.#
+;Label;orderHistoryPage.noResultsFound;;No Results Found.
+;Label;disputeOrderPage.heading;;Dispute Order
+;Label;disputeItemPage.heading;;Dispute Item
+#orderHistorySelectAccPopUp
+;Label;orderHistorySelectAccPopUp.selectAccOrderHistory;;Select Account(s) for Order History
+;Label;orderHistorySelectAccPopUp.selectOneOrMoreAccOrderHistory;;Select one or more accounts for Order History
+;Label;orderHistorySelectAccPopUp.AccountsSelected;;Accounts selected:
+;Label;orderHistorySelectAccPopUp.selectAllAvailable;;Select All Available
+;Label;orderHistorySelectAccPopUp.cancel;;CANCEL
+
+
+#orderHistoryUpdatePopUp
+;Label;orderHistoryUpdatePopUp.updatePurchaseOrderNumber;;Update Purchase Order Number
+;Label;orderHistoryUpdatePopUp.deliveredOrders;;Delivered Orders - DePuy Spine
+;Label;orderHistoryUpdatePopUp.purchaseOrderNumber;;Purchase Order Number
+;Label;orderHistoryUpdatePopUp.enterPONumber;;Enter P.O. Number:
+;Label;orderHistoryUpdatePopUp.star;;*
+;Label;orderHistoryUpdatePopUp.cancel;;CANCEL
+
+
+
+#orderHistoryUpdateSurgeonpPopup
+;Label;orderHistoryUpdateSurgeonpPopup.surgeonName;;Surgeon Name
+;Label;orderHistoryUpdateSurgeonpPopup.surgeonNameColon;;Surgeon Name:
+;Label;orderHistoryUpdateSurgeonpPopup.star;;*
+;Label;orderHistoryUpdateSurgeonpPopup.search;;Search:
+;Label;orderHistoryUpdateSurgeonpPopup.cancel;;CANCEL
+########Site Order Management############
+
+
+# For User Management
+
+;Label;b2busergroup.viewOnlyBuyerGroup.name;;View Only;View Only;View Only
+;Label;b2busergroup.placeOrderBuyerGroup.name;;View & Place Orders;View & Place Orders;View & Place Orders
+;Label;b2busergroup.viewOnlySalesRepGroup.name;;View Only Sales Rep;View Only Sales Rep;View Only Sales Rep
+;Label;b2busergroup.placeOrderSalesGroup.name;;View & Place Orders Sales Rep;View & Place Orders Sales Rep;View & Place Orders Sales Rep
+;Label;b2busergroup.jnjGTAdminGroup.name;;Admin Group;Admin Group;Admin Group
+;Label;b2busergroup.jnjGTCsrGroup.name;;CSR Group;CSR Group;CSR Group
+#;Label;b2busergroup.jnjNaAdminGroup.name;;Admin Group;Admin Group;Admin Group
+#;Label;b2busergroup.jnjNaCsrGroup.name;;CSR Group;CSR Group;CSR Group
+;Label;b2busergroup.b2busergroup.name;;B2BUsergroup;B2BUsergroup;B2BUsergroup
+;Label;b2busergroup.contractBalanceGroup.name;;Contract Balance;Contract Balance;Contract Balance
+#AAOL-5669
+;Label;b2busergroup.jnjGTSerializationGroup.name;;Serialization Group;Serialization Group;Serialization Group
+
+
+;Label;b2buserstatus.ACTIVE.name;;Active;Active;Active
+;Label;b2buserstatus.DISABLED.name;;Disabled;Disabled;Disabled
+;Label;b2buserstatus.PENDING_ACCOUNT_SETUP.name;;Pending Account Setup
+;Label;b2buserstatus.PENDING_SUPERVISOR_RESPONSE.name;;Pending supervisor Response;Pending supervisor Response;Pending supervisor Response
+;Label;b2buserstatus.PENDING_PROFILE_SETUP.name;;Pending Profile Setup;Pending Profile Setup;Pending Profile Setup
+;Label;b2buserstatus.REJECTED.name;;Rejected;Rejected;Rejected
+;Label;userSearch.heading;;User Management: Profile Search;User Management: Profile Search;User Management: Profile Search
+;Label;userSearch.createNewProfile;;Create New Profile;Create New Profile;Create New Profile
+;Label;userSearch.sector;;Sector:;Sector:;Sector:
+;Label;userSearch.sector.all;;All;All;All
+;Label;userSearch.sector.consumer;;Consumer;Consumer;Consumer
+;Label;userSearch.sector.medical;;Medical;Medical;Medical
+;Label;userSearch.lastName;;Last Name:;Last Name:;Last Name:
+;Label;userSearch.firstName;;First Name:;First Name:;First Name:
+;Label;userSearch.accountNumber;;Acct#:;Acct#:;Acct#:
+;Label;userSearch.accountName;;Acct Name:;Acct Name:;Acct Name:
+;Label;userSearch.status;;Status:;Status:;Status:
+;Label;userSearch.role;;Role:;Role:;Role:
+;Label;userSearch.role.viewOnly;;View Only;View Only;View Only
+;Label;userSearch.role.viewPlaceOrder;;View & Place Orders;View & Place Orders;View & Place Orders
+;Label;userSearch.role.viewOnlySalesRep;;View Only Sales Rep;View Only Sales Rep;View Only Sales Rep
+;Label;userSearch.role.viewPlaceOrderSalesRep;;View & Place Orders Sales Rep;View & Place Orders Sales Rep;View & Place Orders Sales Rep
+;Label;userSearch.role.admin;;Admin;Admin;Admin
+;Label;userSearch.status.all;;All;All;All
+;Label;userSearch.status.active;;Active;Active;Active
+;Label;userSearch.status.disabled;;Disabled;Disabled;Disabled
+;Label;userSearch.status.pendingAccountSetUp;;Pending Account Setup;Pending Account Setup;Pending Account Setup
+;Label;userSearch.status.pendingSupervisorResponse;;Pending Supervisor Response;Pending Supervisor Response;Pending Supervisor Response
+;Label;userSearch.status.pendingProfileSetUp;;Pending Profile Setup;Pending Profile Setup;Pending Profile Setup
+;Label;userSearch.status.rejected;;Rejected;Rejected;Rejected
+;Label;userSearch.phone;;Phone:;Phone:;Phone:
+;Label;userSearch.email;;Email:;Email:;Email:
+;Label;userSearch.reset;;Reset;Reset;Reset
+;Label;userSearch.search;;Search;Search;Search
+;Label;userSearch.result;;Result:;Result:;Result:
+;Label;userSearch.users;;Users;Users;Users
+;Label;userSearch.showInGroupsOf;;Show in groups of:;Show in groups of:;Show in groups of:
+;Label;userSearch.showInGroupsOfTen;;10;10;10
+;Label;userSearch.showInGroupsOfTwentyFive;;25;25;25
+;Label;userSearch.showInGroupsOfFifty;;50;50;50
+;Label;userSearch.sortByName;;Name;Name;Name
+;Label;userSearch.sortByRole;;Role;Role;Role
+;Label;userSearch.sortByStatus;;Status;Status;Status
+;Label;userSearch.header.profileName;;Profile Name;Profile Name;Profile Name
+;Label;userSearch.header.role;;Role;Role;Role
+;Label;userSearch.header.email;;Email;Email;Email
+;Label;userSearch.header.status;;Status;Status;Status
+;Label;userSearch.breadCrumb;;User Management;User Management;User Management;User Management
+;Label;createNewProfile.breadCrumb;;Create New User;Create New User;Create New User;Create New User
+;Label;editProfile.breadCrumb;;Edit User;Edit User;Edit User;Edit User
+;Label;editUser.passwordExpireSuccessMessage;;Old password is now expired. User can reset password using the message sent to their email address;Old password is now expired. User can reset password using the message sent to their email address;Old password is now expired. User can reset password using the message sent to their email address
+;Label;editUser.passwordExpireFailureMessage;;Due to some internal issues Passwaord  was not expire;Due to some internal issues Passwaord  was not expire;Due to some internal issues Passwaord  was not expire
+
+########Site Order Management############
+#surgeryInfoPopup
+;Label;surgeryInfoPopup.surgeryinfo.X;;Not Provided
+
+;Label;surgeryInfoPopup.surgeryinfo.surgerySpeciality;;Surgery Specialty:
+;Label;surgeryInfoPopup.surgerySpeciality.N;;Neuro
+;Label;surgeryInfoPopup.surgerySpeciality.O;;Ortho
+;Label;surgeryInfoPopup.surgerySpeciality.U;;Unknown
+;Label;surgeryInfoPopup.surgerySpeciality.X;;Not Provided
+
+;Label;surgeryInfoPopup.surgeryinfo.orthobiologics;;Orthobiologics:
+;Label;surgeryInfoPopup.orthobiologics.1;;HEALOS
+;Label;surgeryInfoPopup.orthobiologics.2;;Cellect
+;Label;surgeryInfoPopup.orthobiologics.3;;IC Graft Chamber
+;Label;surgeryInfoPopup.orthobiologics.4;;Symphony
+;Label;surgeryInfoPopup.orthobiologics.5;;Optium
+;Label;surgeryInfoPopup.orthobiologics.6;;Conduit
+;Label;surgeryInfoPopup.orthobiologics.7;;BMP/other
+;Label;surgeryInfoPopup.orthobiologics.8;;None
+;Label;surgeryInfoPopup.orthobiologics.X;;Not Provided
+
+;Label;surgeryInfoPopup.surgeryinfo.surgicalApproach;;Surgical Approach:
+;Label;surgeryInfoPopup.surgicalApproach.A;;Anterior
+;Label;surgeryInfoPopup.surgicalApproach.C;;Anterior - Posterior
+;Label;surgeryInfoPopup.surgicalApproach.L;;Lateral
+;Label;surgeryInfoPopup.surgicalApproach.P;;Posterior
+;Label;surgeryInfoPopup.surgicalApproach.X;;Not Provided
+
+;Label;surgeryInfoPopup.surgeryinfo.interbody;;Interbody:
+;Label;surgeryInfoPopup.interbody.0;;None
+;Label;surgeryInfoPopup.interbody.1;;DePuy Spine
+;Label;surgeryInfoPopup.interbody.2;;Allograft
+;Label;surgeryInfoPopup.interbody.3;;Autograft
+;Label;surgeryInfoPopup.interbody.4;;Medtronic
+;Label;surgeryInfoPopup.interbody.5;;Stryker
+;Label;surgeryInfoPopup.interbody.6;;Synthes
+;Label;surgeryInfoPopup.interbody.7;;Other
+;Label;surgeryInfoPopup.interbody.X;;Not Provided
+
+;Label;surgeryInfoPopup.surgeryinfo.interbodyFusion;;# of Levels Interbody Fusion:
+;Label;surgeryInfoPopup.interbodyFusion.0;;0 level
+;Label;surgeryInfoPopup.interbodyFusion.1;;1 level
+;Label;surgeryInfoPopup.interbodyFusion.2;;2 levels
+;Label;surgeryInfoPopup.interbodyFusion.3;;3 or more levels
+;Label;surgeryInfoPopup.interbodyFusion.X;;Not Provided
+;Label;surgeryInfoPopup.interbodyFusion.Medtronic;;Medtronic
+;Label;surgeryInfoPopup.interbodyFusion.Stryker;;Stryker
+;Label;surgeryInfoPopup.interbodyFusion.None;;None
+
+;Label;surgeryInfoPopup.enterCaseDate.date;;Enter Case Date:
+
+;Label;surgeryInfoPopup.surgeryinfo.levelsInstrumented;;# of Levels Instrumented:
+;Label;surgeryInfoPopup.levelsInstrumented.0;;0 level
+;Label;surgeryInfoPopup.levelsInstrumented.1;;1 level
+;Label;surgeryInfoPopup.levelsInstrumented.2;;2 levels
+;Label;surgeryInfoPopup.levelsInstrumented.3;;3 or more levels
+;Label;surgeryInfoPopup.levelsInstrumented.X;;Not Provided
+
+;Label;surgeryInfoPopup.surgeryinfo.pathology;;Pathology:
+;Label;surgeryInfoPopup.pathology.1;;Degen - Arthroplasty
+;Label;surgeryInfoPopup.pathology.2;;Degen - Fusion
+;Label;surgeryInfoPopup.pathology.3;;Deformity
+;Label;surgeryInfoPopup.pathology.4;;Trauma
+;Label;surgeryInfoPopup.pathology.5;;Tumor
+;Label;surgeryInfoPopup.pathology.6;;Revision
+;Label;surgeryInfoPopup.pathology.X;;Not Provided
+
+;Label;surgeryInfoPopup.surgeryinfo.zone;;Zone:
+;Label;surgeryInfoPopup.zone.1;;O-C
+;Label;surgeryInfoPopup.zone.2;;C
+;Label;surgeryInfoPopup.zone.3;;C-T
+;Label;surgeryInfoPopup.zone.4;;O-C-T
+;Label;surgeryInfoPopup.zone.5;;T
+;Label;surgeryInfoPopup.zone.6;;T-L (W/PELVIC FIX)
+;Label;surgeryInfoPopup.zone.7;;T-L (W/NO PELVIC FIX)
+;Label;surgeryInfoPopup.zone.8;;L-L/S
+;Label;surgeryInfoPopup.zone.X;;Not Provided
+
+;Label;surgeryInfoPopup.surgeryinfo.caseNumber;;File/Case Number: 
+
+;Label;surgeryInfoPopup.surgeryinfo.procedureType;;Procedure Type:
+;Label;surgeryInfoPopup.procedureType.X;;Not Provided
+
+
+;Label;surgeryInfoPopup.surgeryinfo.cas;;CAS:
+;Label;surgeryInfoPopup.cas.X;;Not Provided
+
+
+
+#for Purchase Analysis Reports
+;Label;orderedFrom1;;Phone;Phone;Phone
+;Label;orderedFrom2;;Fax;Fax;Fax
+;Label;orderedFrom3;;Email;Email;Email
+;Label;orderedFrom4;;EDI;EDI;EDI
+;Label;orderedFrom5;;Web;Web;Web
+;Label;orderedFrom6;;VMI;VMI;VMI
+;Label;orderedFrom7;;Other;Other;Other
+;Label;orderedFrom8;;All Electronic;All Electronic;All Electronic
+
+;Label;consOrderedFrom1;;EDI;EDI;EDI
+;Label;consOrderedFrom2;;Web;Web;Web
+;Label;consOrderedFrom3;;VMI;VMI;VMI
+;Label;consOrderedFrom4;;Other;Other;Other
+;Label;consOrderedFrom5;;All Electronic;All Electronic;All Electronic
+
+;Label;productDropDown1;;Top 5;Top 5;Top 5
+;Label;productDropDown2;;Top 10;Top 10;Top 10
+;Label;productDropDown3;;Top 20;Top 20;Top 20
+
+;Label;analysisVariable1;;Dollar Amount;Dollar Amount;Dollar Amount
+;Label;analysisVariable2;;Unit Quantity;Unit Quantity;Unit Quantity
+;Label;analysisVariable3;;Order Frequency;Order Frequency;Order Frequency
+
+
+#User Management : Create New/Edit Profile
+;Label;user.label.resources;;Resources;Resources;Resources
+;Label;user.label.createNewProfile;;Create New Profile;Create New Profile;Create New Profile
+;Label;user.label.editUserProfile;;Edit User Profile;Edit User Profile;Edit User Profile
+;Label;user.label.sectors;;Sector;Sector;Sector
+;Label;user.account.selection.info;;Add Accounts to User;Add Accounts to User;Add Accounts to User
+;Label;user.link.backToUserSearch;;Back to User Search;Back to User Search;Back to User Search
+;Label;user.form.sector.mdd;;MedicalDevices & Diagnostics;MedicalDevices & Diagnostics;MedicalDevices & Diagnostics
+;Label;user.form.sector.consumer;;Consumer Products;Consumer Products;Consumer Products
+;Label;user.form.accounts;;Account(s):;Account(s):;Account(s):
+;Label;user.form.button.addAccounts;;Add Account;Add Account;Add Account
+;Label;user.form.button.addToNotes;;Add To Notes;Add To Notes;Add To Notes
+;Label;user.form.button.modifyAccounts;;Modify Account;Modify Account;Modify Account
+;Label;user.form.button.save;;Save Changes;Save Changes;Save Changes
+;Label;user.form.label.personalInformation;;Personal Information;Personal Information;Personal Information
+;Label;user.form.label.noChargeFlag;;No charge flag: ;No charge flag: ;No charge flag:
+;Label;user.form.label.firstname;;First Name:;First Name:;First Name:
+;Label;user.form.label.lastname;;Last Name:;Last Name:;Last Name:
+;Label;user.form.label.emailLogin;;Email/Login:;Email/Login:;Email/Login:
+;Label;user.form.label.country;;Country:;Country:;Country:
+;Label;user.form.label.address1;;Address1:;Address1:;Address1:
+;Label;user.form.label.address2;;Address2:;Address2:;Address2:
+;Label;user.form.label.city;;City:;City:;City:
+;Label;user.form.label.state;;State:;State:;State:
+;Label;user.form.label.PhoneNumber;;Phone Number:;Phone Number:;Phone Number:
+;Label;user.form.label.postCode;;Postal Code:;Postal Code:;Postal Code:
+;Label;user.form.label.mobileNumber;;Mobile Number:;Mobile Number:;Mobile Number:
+;Label;user.form.label.faxNumber;;Fax Number:;Fax Number:;Fax Number:
+;Label;user.form.label.orgName;;Organization Name:;Organization Name:;Organization Name:
+;Label;user.form.label.department;;Department:;Department:;Department:
+;Label;user.form.label.rolePermission;;Role/Permissions:;Role/Permissions:;Role/Permissions:
+;Label;user.form.label.role;;Role:;Role:;Role:
+;Label;user.form.label.status;;Status:;Status:;Status: 
+;Label;user.form.label.passwordChanged;;Password Changed:;Password Changed:;Password Changed: 
+;Label;user.form.label.passwordExpires;;Password Expires:;Password Expires:;Password Expires: 
+;Label;user.form.link.resetPassword;;Reset Password:;Reset Password:;Reset Password: 
+;Label;user.form.label.supervisionName;;Supervisor Name:;Supervisor Name:;Supervisor Name:
+;Label;user.form.label.supervisionPhone;;Supervisor Phone:;Supervisor Phone:;Supervisor Phone:
+;Label;user.form.label.supervisionEmail;;Supervisor Email:;Supervisor Email:;Supervisor Email:
+;Label;user.form.label.requiredFields;;Required fields;Required fields;Required fields
+;Label;createProfile.message;;The profile you create will be saved with "Pending Profile Setup" status until it is approved.;The profile you create will be saved with "Pending Profile Setup" status until it is approved.;The profile you create will be saved with "Pending Profile Setup" status until it is approved.
+;Label;user.form.label.wwid;;WWID:;WWID:;WWID:
+;Label;user.form.label.divisionCode;;Division	Code:;Division	Code:;Division	Code:
+;Label;user.form.label.frenchDiv;;Franchise Division:;Franchise Division:;Franchise Division:
+;Label;user.form.label.territories;;Territory:;Territory:;Territory:
+;Label;user.form.label.csrNote;;CSR Notes: ;CSR Notes: ;CSR Notes: 
+;Label;user.form.label.seqQues;;Security Questions;Security Questions;Security Questions
+;Label;user.form.label.jnjEmployee;;J&J Employee:;J&J Employee:;J&J Employee:
+
+;Label;user.form.label.access.name;;Access:;Access:;Access:
+;Label;user.form.label.access.notSalesRep;;User is not a Sales Reperesentativ/Broker;User is not a Sales Reperesentativ/Broker;User is not a Sales Reperesentativ/Broker
+;Label;user.form.label.access.wwid;;Grant Access Based on WWID;Grant Access Based on WWID;Grant Access Based on WWID
+;Label;user.form.label.access.territories;;Grant Access to a specific territories;Grant Access to a specific territories;Grant Access to a specific territories
+;Label;user.form.label.csrNotes.extext;;At Marcelo's request, canceled two accounts - 15273495 $amp; 1728374.;At Marcelo's request, canceled two accounts - 15273495 $amp; 1728374.;At Marcelo's request, canceled two accounts - 15273495 $amp; 1728374.
+
+;Label;usermanagement.required.sector;;Please select sector!;Please select sector!;Please select sector!
+;Label;usermanagement.required.firstname;;Please enter First Name!;Please enter First Name!;Please enter First Name!
+;Label;usermanagement.required.lastname;;Please enter Last Name!;Please enter Last Name!;Please enter Last Name!
+;Label;usermanagement.required.emailLogin;;Please enter email!;Please enter email!;Please enter Email/Login!
+;Label;usermanagement.required.country;;Please select country!;Please select country!;Please select country!
+;Label;usermanagement.required.address1;;Please enter address Line!;Please enter address Line!;Please enter address Line!
+;Label;usermanagement.required.address2;;Please enter address Line!;Please enter address Line!;Please enter address Line!
+;Label;usermanagement.required.city;;Please enter city;Please enter city;Please enter city
+;Label;usermanagement.required.state;;Please select state!;Please select state!;Please select state!
+;Label;usermanagement.required.postalCode;;Please enter postal code!;Please enter postal code!;Please enter postal code!
+;Label;usermanagement.required.phone;;Please enter a valid Phone Number!;Please enter a valid Phone Number!;Please enter a valid Phone Number!
+;Label;usermanagement.required.mobile;;Please enter a valid Mobile Number!;Please enter a valid mobile Number!;Please enter a valid mobile Number!
+;Label;usermanagement.required.fax;;Please enter a valid Fax Number!;Please enter a valid Fax Number!;Please enter a valid Fax Number!
+;Label;usermanagement.required.supname;;Please enter supervisor Name!;Please enter supervisor Name!;Please enter supervisor Name!
+;Label;usermanagement.required.orgName;;Please enter Organization Name!;Please enter Organization Name!;Please enter Organization Name!
+;Label;usermanagement.required.department;;Please select department!;Please select department!;Please select department!
+;Label;usermanagement.required.supphone;;Please enter supervisor Number!;Please enter supervisor Number!;Please enter supervisor Number!
+;Label;usermanagement.required.supemail;;Please enter supervisor Email!;Please enter supervisor Email!;Please enter supervisor Email!
+;Label;usermanagement.alreadyExists.emailLogin;;The email address you entered is already in use. Please enter a different email address.;The email address you entered is already in use. Please enter a different email address.;The email address you entered is already in use. Please enter a different email address.
+;Label;usermanagement.select;;Select;Select;Select
+;Label;pagination.show;;Show;Show;Show
+;Label;pagination.more;;More;More; More
+
+
+#Price override approvers
+;Label;ZA;;ABM;ABM;ABM
+;Label;ZB;;ABD;ABD;ABD
+;Label;ZC;;Dir Sales Ops;Dir Sales Ops;Dir Sales Ops
+;Label;ZD;;Other;Other;Other
+;Label;ZE;;Ops Svcs;Ops Svcs;Ops Svcs
+;Label;M1;;Approver M1;Approver M1;Approver M1
+
+#Price override reason codes
+;Label;04;;Product Substitution;Product Substitution;Product Substitution
+;Label;19;;Pending Contract/Amendment;Pending Contract/Amendment;Pending Contract/Amendment
+;Label;20;;Rep Misquotes;Rep Misquotes;Rep Misquotes
+;Label;21;;One Time Only;One Time Only;One Time Only
+;Label;22;;Set Sales;Set Sales;Set Sales
+;Label;15;;Service and Parts;Service and Parts;Service and Parts
+;Label;02;;Price Override Reason 02;Price Override Reason 02;Price Override Reason 02
+
+#Dispute Order Inquiry Pop up
+;Label;dispute.order.select.appropriate;;Select the appropriate reason(s) for the dispute.;;
+;Label;dispute.order.overshipped.header;;Over-Shipment (received an unordered product);;
+;Label;dispute.order.overshipped.account;;Account Number:;;
+;Label;dispute.order.overshipped.po;;PO Number:;;
+;Label;dispute.order.overshipped.product;;Product Code;;
+;Label;dispute.order.overshipped.lot;;Lot Number(s);;
+;Label;dispute.order.overshipped.lot.separate;;comma-separated;;
+;Label;dispute.order.overshipped.qty;;Quantity;;
+;Label;dispute.order.overshipped.qty.received;;Received;;
+;Label;dispute.order.overshipped.qty.errormessage;;Please enter quantity.;;
+;Label;dispute.order.overshipped.product.errormessage;;Please enter at-least one product details.;;
+;Label;dispute.order.overshipped.note;;Note: If you have received unordered shipment of more than 5 products, please call Customer Service.;;
+;Label;dispute.order.overshipped.keepproduct.question;;Would you like to keep the product(s) shipped?;;
+;Label;dispute.order.overshipped.newpo;;Please enter a new PO Number:;;
+;Label;dispute.order.overshipped.newpo.errormessage.question;;Please enter new PO Number.;;
+;Label;dispute.order.dispute.fee.header;;Dispute a Fee (check all that apply);;
+;Label;dispute.order.dispute.option1;;Manual;;
+;Label;dispute.order.dispute.option2;;Minimum;;
+;Label;dispute.order.dispute.option3;;Expedited;;
+;Label;dispute.order.dispute.option4;;Shipping & Handling / Freight;;
+;Label;dispute.order.dispute.fee.erromeessage;;Please select at least one reason.;;
+;Label;dispute.order.incorrect.po.header;;Incorrect PO Number;;
+;Label;dispute.order.incorrect.po.number;;PO # on Shipment:;;
+;Label;dispute.order.incorrect.po.correct;;Correct PO Number:;;
+;Label;dispute.order.incorrect.po.errormessage;;Please enter correct PO Number.;;
+;Label;dispute.order.incorrect.address.header;;Incorrect Address;;
+;Label;dispute.order.incorrect.address.shipped.header;;Adress as Shipped:;;
+;Label;dispute.order.incorrect.address.shipped.line1;;Address 1:;;
+;Label;dispute.order.incorrect.address.shipped.line2;;Address 2:;;
+;Label;dispute.order.incorrect.address.shipped.city;;City:;;
+;Label;dispute.order.incorrect.address.shipped.state;;State:;;
+;Label;dispute.order.incorrect.address.shipped.zip;;Zip Code;;
+;Label;dispute.order.incorrect.address.header;;Incorrect Address;;
+;Label;dispute.order.incorrect.address.correct.header;;Correct Address:;;
+;Label;dispute.order.incorrect.address.correct.country;;Country:;;
+;Label;dispute.order.incorrect.address.correct.line1;;Address 1:;;
+;Label;dispute.order.incorrect.address.correct.line2;;Address 2:;;
+;Label;dispute.order.incorrect.address.correct.city;;City:;;
+;Label;dispute.order.incorrect.address.correct.state;;State::;;
+;Label;dispute.order.incorrect.address.correct.zip;;Zip Code:;;
+;Label;dispute.order.incorrect.address.country.select-option;;Select country or region:;;
+;Label;dispute.order.incorrect.address.state.select-option;;Select state;;
+;Label;dispute.order.incorrect.address.correct.country.errormessage;;Please select country.:;;
+;Label;dispute.order.incorrect.address.correct.line1.errormessage;;Please enter line 1.;;
+;Label;dispute.order.incorrect.address.correct.city.errormessage;;Please enter city.;;
+;Label;dispute.order.incorrect.address.correct.state.errormessage;;Select State;;
+;Label;dispute.order.incorrect.address.correct.zip.errormessage;;Please enter zip code.;;
+;Label;dispute.order.tax.header;;Dispute Tax;;
+;Label;dispute.order.tax.attach;;Attach a copy of the Tax Exempt Certificate:;;
+;Label;dispute.order.tax.errormessage;;Please attach a copy of Tax Exempt Certificate.:;;
+;Label;dispute.order.required.fields;;(*) - Required fields;;
+;Label;dispute.order.cancel;;Cancel;;
+;Label;dispute.order.submit;;Submit Inquiry;;
+
+#Template Order Page
+;Label;template.page.label;;Templates
+;Label;templatedetail.page.label;;Template Detail
+;Label;templateEdit.page.label;;Edit Template
+;Label;templateCreate.page.label;;Create New Template
+;Label;SearchTemplateName;;Template Name
+;Label;SearchCode;;Product Code/GTIN/UPC
+;Label;SortTemplateNameAsc;;Template Name
+;Label;SortTemplateNameDesc;;Template Name
+;Label;SortTemplateNumberAsc;;Template Number
+;Label;SortTemplateNumberDesc;;Template Number
+;Label;SortCreationDateAsc;;Creation Date
+;Label;SortCreationDateDesc;;Creation Date
+;Label;SortAuthorAsc;;Author
+;Label;SortAuthorDesc;;Author
+;Label;SortLinesAsc;;Lines
+;Label;SortLinesDesc;;Lines
+;Label;SortShareStatusAsc;;Share Status
+;Label;SortShareStatusDesc;;Share Status
+;Label;template.search.button;;SEARCH
+;Label;template.pdf.button;;PDF
+;Label;template.excel.button;;EXCEL
+;Label;template.searchby;;Search By
+;Label;template.total;;Total
+;Label;template.templates;;Templates
+;Label;template.showingroupof;;Show in group of
+;Label;template.sortby;;Sort by
+;Label;template.download;;Download
+;Label;template.selecttemp.text;;Select a template name to view its details.
+;Label;template.table.header1;;Template Name
+;Label;template.table.header2;;Template Number
+;Label;template.table.header3;;Author
+;Label;template.table.header4;;Created
+;Label;template.table.header5;;Share Status
+;Label;template.table.header6;;Lines
+;Label;template.show;;Show
+;Label;template.more;;More
+;Label;template.showing;;Showing
+;Label;template.outof;;out of
+
+#Template Order Detail Page 
+;Label;template.removalOfTemplate.heading;;Confirm Removal of Template Order;Confirmar exclusão do modelo de pedido;Confirmar la eliminación del modelo de pedido
+;Label;template.removalOfTemplate.alertMsg;;Are you sure you want to delete this order?;Deseja realmente excluir este pedido?;¿Esta seguro que desea eliminar este pedido?
+;Label;common.label.yes;;Yes;Sim;Sí
+;Label;common.label.no;;No;Não;No
+;Label;template.detail.volume;; Volume:;Volume:;Volume:
+;Label;template.detail.weight;; Weight:;Weight:;Weight:
+;Label;template.detail.share.with.users;;Share with Account Users
+;Label;template.detail.template.name;;Template Name:
+;Label;template.detail.template.no;;Template No:
+;Label;template.detail.lines;;Lines:
+
+
+
+#Home Page
+;Label;home.addtoCart.errorMessage;;Product is not valid;Product is not valid;Product is not valid
+;Label;home.addtoCart.quantity.errorMessage;;Product cannnot be added with the given quantity;Product cannnot be added with the given quantity;Product cannnot be added with the given quantity
+;Label;home.addtoCart.quantity.notadded.errorMessage;;Product cannnot be added;Product cannnot be added;Product cannnot be added
+;Label;homePage.broadCast.notice;;Notice:;Notice:;Notice:
+;Label;homePage.broadCast.success;;Information:;Information:;Information:
+;Label;homePage.header.startReturn;;Start Return;Start Return;Start Return
+;Label;homePage.header.requestPriceQuote;;Request Price Quote;Request Price Quote;Request Price Quote
+;Label;homePage.header.newOrder;;Start New Order;Start New Order;Start New Order
+;Label;homePage.header.addProductsToOrder;;Add Products to an Order or Quote;Add Products to an Order or Quote;Add Products to an Order or Quote
+;Label;homePage.quckCart.heading;;Enter Products & Quantity;Enter Products & Quantity;Enter Products & Quantity
+;Label;homePage.quckCart.productCode;;Product Code;Product Code;Product Code
+;Label;homePage.quckCart.quantity;;Quantity;Quantity;Quantity
+;Label;homePage.errorDetails;;Error Details;Error Details;Error Details
+;Label;homePage.productCodeReq;;Please enter a valid product code and quantity.;Please enter a valid product code and quantity.;Please enter a valid product code and quantity.
+;Label;homePage.multipleaddtoCart.code;;Enter codes between commas;Enter codes between commas;Enter codes between commas
+;Label;homePage.multipleaddtoCart.productcode;;Enter Product Codes;Enter Product Codes;Enter Product Codes
+;Label;homePage.orderTemplate.addcontents;;Select a template to add its contents to the Cart;Select a template to add its contents to the Cart;Select a template to add its contents to the Cart
+;Label;homePage.orderTemplate.viewdetails;;View All Templates;View All Templates;View All Templates
+;Label;homePage.orderTemplate.viewdetails.empty;;No Templates to view;No Templates to view;No Templates to view
+;Label;homePage.uploadFile.createorder;;You can upload your own order file to create an order;You can upload your own order file to create an order;You can upload your own order file to create an order
+;Label;homePage.uploadFile.sucess;;File sent successfully and your order is now being processed. for updates check ;File sent successfully and your order is now being processed. for updates check ;File sent successfully and your order is now being processed. for updates check 
+;Label;homePage.uploadFile.error;;Sorry, occurred an error and your file cannot be added. Please try again;Sorry, occurred an error and your file cannot be added. Please try again;Sorry, occurred an error and your file cannot be added. Please try again
+;Label;homePage.uploadFile.orderstatus;;order status;order status;order status
+;Label;homePage.uploadFile.browsefile;;Browse File;Browse File;Browse File
+;Label;homePage.orderHistory;;Order History - Most Recent;Order History - Most Recent;Order History - Most Recent
+;Label;homePage.orderHistory.vieworders;;View All Orders;View All Orders;View All Orders
+;Label;homePage.newOrder.keepItems;;Keep items in cart;Keep items in cart;Keep items in cart
+;Label;homePage.newQuote.keepItems;;Keep items and add them to Quote Request;Keep items and add them to Quote Request;Keep items and add them to Quote Request
+;Label;homePage.newReturn.shoppingcart;;Your shopping cart already contains items. What do you want to do with them?;Your shopping cart already contains items. What do you want to do with them?;Your shopping cart already contains items. What do you want to do with them?
+;Label;homePage.newReturn.additems;;Keep items and add them to the Return order;Keep items and add them to the Return order;Keep items and add them to the Return order
+;Label;homePage.newReturn.deleteitems.;;Delete items in cart;Delete items in cart;Delete items in cart
+;Label;homePage.newReturn.cancel;;CANCEL;CANCEL;CANCEL
+;Label;homePage.newReturn.ok;;OK;OK;OK
+;Label;homePage.newReturn.items;;Items in Cart;Items in Cart;Items in Cart
+;Label;homePage.newQuote;;New Quote;New Quote;New Quote
+;Label;homePage.newReturn.deleteitems;;Delete items in cart;Delete items in cart;Delete items in cart
+;Label;homePage.uploadFile.browsefile;;Browse;Browse;Browse
+;Label;homePage.broadCast.alert;;Alert:;Alert:;Alert:
+;Label;homePage.instruction.view.cart;;View Cart;View Cart;View Cart
+;Label;homePage.errordetails.addfailed;;One or more product codes entered are invalid or ineligible for purchase.;One or more product codes entered are invalid or ineligible for purchase.;One or more product codes entered are invalid or ineligible for purchase.
+;Label;homePage.uploadFile.successMessage;;Products succesfully added to the cart!;Products succesfully added to the cart!;Products succesfully added to the cart!
+
+#Tablet Signature
+;Label;tablet.signature.header;;Purchase Approval & Delivery Acknowledgment;Purchase Approval & Delivery Acknowledgment;Purchase Approval & Delivery Acknowledgment
+;Label;tablet.signature.agreement;;I have read and agree to the;I have read and agree to the;I have read and agree to the
+;Label;tablet.signature.terms;;Terms of Acceptance;Terms of Acceptance;Terms of Acceptance
+;Label;tablet.signature.first.name;;First Name:;First Name:;First Name:
+;Label;tablet.signature.last.name;;Last Name:;Last Name:;Last Name:
+;Label;tablet.signature.signature;;Signature;Signature;Signature
+;Label;tablet.signature.submit;;Submit;Submit;Submit
+;Label;tablet.signature.cancel;;Cancel;Cancel;Cancel
+;Label;tablet.signature.clear;;Clear Signature;Clear Signature;Clear Signature
+;Label;tablet.signature.signature.error;;Please enter your signature!;Please enter your signature!;Please enter your signature!
+;Label;tablet.signature.terms.error;;Please agree to the terms of Acceptance!;Please agree to the terms of Acceptance!;Please agree to the terms of Acceptance!
+;Label;tablet.signature.first.name.error;;Please enter your first name!;Please enter your first name!;Please enter your first name!
+;Label;tablet.signature.last.name.error;;Please enter your last name!;Please enter your last name!;Please enter your last name!
+;Label;user.form.label.jnjEmployee;;J&J Employee:;J&J Employee:;J&J Employee:
+
+;Label;user.form.label.access.name;;Access:;Access:;Access:
+;Label;user.form.label.access.notSalesRep;;User is not a Sales Reperesentativ/Broker;User is not a Sales Reperesentativ/Broker;User is not a Sales Reperesentativ/Broker
+;Label;user.form.label.access.wwid;;Grant Access Based on WWID;Grant Access Based on WWID;Grant Access Based on WWID
+;Label;user.form.label.access.territories;;Grant Access to a specific territories;Grant Access to a specific territories;Grant Access to a specific territories
+;Label;user.form.label.csrNotes.extext;;At Marcelo's request, canceled two accounts - 15273495 $amp; 1728374.;At Marcelo's request, canceled two accounts - 15273495 $amp; 1728374.;At Marcelo's request, canceled two accounts - 15273495 $amp; 1728374.
+
+;Label;usermanagement.required.sector;;Please select sector!;Please select sector!;Please select sector!
+;Label;usermanagement.required.firstname;;Please enter First Name!;Please enter First Name!;Please enter First Name!
+;Label;usermanagement.required.lastname;;Please enter Last Name!;Please enter Last Name!;Please enter Last Name!
+;Label;usermanagement.required.emailLogin;;Please enter email!;Please enter email!;Please enter Email/Login!
+;Label;usermanagement.required.country;;Please select country!;Please select country!;Please select country!
+;Label;usermanagement.required.address1;;Please enter address Line!;Please enter address Line!;Please enter address Line!
+;Label;usermanagement.required.address2;;Please enter address Line!;Please enter address Line!;Please enter address Line!
+;Label;usermanagement.required.city;;Please enter city;Please enter city;Please enter city
+;Label;usermanagement.required.state;;Please select state!;Please select state!;Please select state!
+;Label;usermanagement.required.postalCode;;Please enter postal code!;Please enter postal code!;Please enter postal code!
+;Label;usermanagement.required.phone;;Please enter a valid Phone Number!;Please enter a valid Phone Number!;Please enter a valid Phone Number!
+;Label;usermanagement.required.mobile;;Please enter a valid Mobile Number!;Please enter a valid mobile Number!;Please enter a valid mobile Number!
+;Label;usermanagement.required.fax;;Please enter a valid Fax Number!;Please enter a valid Fax Number!;Please enter a valid Fax Number!
+;Label;usermanagement.required.supname;;Please enter supervisor Name!;Please enter supervisor Name!;Please enter supervisor Name!
+;Label;usermanagement.required.orgName;;Please enter Organization Name!;Please enter Organization Name!;Please enter Organization Name!
+;Label;usermanagement.required.department;;Please select department!;Please select department!;Please select department!
+;Label;usermanagement.required.supphone;;Please enter supervisor Number!;Please enter supervisor Number!;Please enter supervisor Number!
+;Label;usermanagement.required.supemail;;Please enter supervisor Email!;Please enter supervisor Email!;Please enter supervisor Email!
+;Label;usermanagement.alreadyExists.emailLogin;;The email address you entered is already in use. Please enter a different email address.;The email address you entered is already in use. Please enter a different email address.;The email address you entered is already in use. Please enter a different email address.
+;Label;usermanagement.select;;Select;Select;Select
+;Label;createUser.account.selection.info;;Select one or more accounts for the user profile.;Select one or more accounts for the user profile.;Select one or more accounts for the user profile.
+;Label;createUser.account.selection.header;;Modify Account(s) for Profile;Modify Account(s) for Profile;Modify Account(s) for Profile
+;Label;usermanagement.required.role;;Please select at least one Role!;Please select at least one Role!;Please select at least one Role!
+
+#Reason Codes
+;Label;H01;;Packaging Development;Packaging Development;Packaging Development
+;Label;H02;;MRD Testing;MRD Testing;MRD Testing
+;Label;H03;;Consumer Promo/Mktg Sample;Consumer Promo/Mktg Sampleo;Consumer Promo/Mktg Sample
+;Label;H04;;Consumer Professional;Consumer Professional;Consumer Professional
+;Label;H05;;Trade In-Store Sampling;Trade In-Store Sampling;Trade In-Store Sampling
+;Label;H06;;Media/PR Publicity;Media/PR Publicity;Media/PR Publicity
+;Label;H07;;Worldwide;Worldwide;Worldwide
+;Label;H08;;Facilities;Facilities;Facilities
+;Label;H09;;Admin Functions;Admin Functions;Admin Functions
+;Label;H10;;Sell Aids-SLC Sales Employees;Sell Aids-SLC Sales Employees;Sell Aids-SLC Sales Employees
+;Label;H11;;Charitable Donations;Charitable Donations;Charitable Donations
+;Label;H12;;All Other;All Other;All Other
+;Label;H13;;Direct To Customer;Direct To Customer;Direct To Customer
+;Label;H14;;Divestiture;Divestiture;Divestiture
+;Label;H15;;Regulatory Agency;Regulatory Agency;Regulatory Agency
+;Label;H16;;Retention Samples;Retention Samples;Retention Samples
+;Label;H17;;QA Samples;QA Samples;QA Samples
+
+#Batch Checkout Confirmation
+;Label;batch.checkout.error.text;;Your order will be automatically submitted with the host system connection is restored.;Your order will be automatically submitted with the host system connection is restored.;Your order will be automatically submitted with the host system connection is restored.
+;Label;batch.checkout.order.number;;Order Number:;Order Number:;Order Number:
+;Label;batch.checkout.message;;You will receive a confirmation email and an updated order number once the order has been confirmed.;You will receive a confirmation email and an updated order number once the order has been confirmed.;You will receive a confirmation email and an updated order number once the order has been confirmed.
+
+#CPSIA
+;Label;resources.cpsia.header;;CPSIA: Consumer Product Safety Improvement Act;CPSIA: Consumer Product Safety Improvement Act;CPSIA: Consumer Product Safety Improvement Act
+;Label;resources.cpsia.header.txt;;The Consumer Product Safety Commission (CPSC) enacted legislation in 2008 requiring manufacturers with products meeting certain criteria to provide Certificates of Conformance – The Consumer Product Safety Improvement Act (CPSIA).  This list contains certificates for any applicable J&J Consumer product, which can be downloaded in PDF format;The Consumer Product Safety Commission (CPSC) enacted legislation in 2008 requiring manufacturers with products meeting certain criteria to provide Certificates of Conformance – The Consumer Product Safety Improvement Act (CPSIA).  This list contains certificates for any applicable J&J Consumer product, which can be downloaded in PDF format;The Consumer Product Safety Commission (CPSC) enacted legislation in 2008 requiring manufacturers with products meeting certain criteria to provide Certificates of Conformance – The Consumer Product Safety Improvement Act (CPSIA).  This list contains certificates for any applicable J&J Consumer product, which can be downloaded in PDF format
+;Label;resources.cpsia.header.desc;;Please enter all or part of the UPC code, Outercase Code, Product Code, or Product Description.;Please enter all or part of the UPC code, Outercase Code, Product Code, or Product Description.;Please enter all or part of the UPC code, Outercase Code, Product Code, or Product Description.
+;Label;resources.cpsia.header.product.code;;Product Code;Product Code;Product Code
+;Label;resources.cpsia.header.product.upc;;UPC;UPC;UPC
+;Label;resources.cpsia.header.product.outercase;;Outercase;Outercase;Outercase
+;Label;resources.cpsia.header.product.desc;;Description;Description;Description
+;Label;resources.cpsia.header.product.lot;;Lot No.;Lot No.;Lot No.
+;Label;resources.cpsia.header.product.date;;Date certificate last revised;Date certificate last revised;Date certificate last revised
+
+#Change address div
+;Label;change.address.zip;;Zip code;Zip code;Zip code
+;Label;change.address.state;;State;State;State
+;Label;change.address.select;;Select;Select;Select
+;Label;change.address.shipTo;;Ship To Name;Ship To Name;Ship To Name
+
+;Label;profile.personal.zip.error;;Please enter Zip Code;Please enter Zip Code;Please enter Zip Code
+
+;Label;product.search.download.priceDisclaimer.pricing;;Pricing is subject to change;Pricing is subject to change;Pricing is subject to change
+;Label;product.search.download.priceDisclaimer.nopricing;;Please note: For all product catalog downloads containing more than 200 products, product pricing will not be available.;Please note: For all product catalog downloads containing more than 200 products, product pricing will not be available.;Please note: For all product catalog downloads containing more than 200 products, product pricing will not be available.
+
+#Order Details
+;Label;order.details.cmodrga.error.message;;We apologize for the inconvenience as we are unable to retrieve the document you requested.;We apologize for the inconvenience as we are unable to retrieve the document you requested.;We apologize for the inconvenience as we are unable to retrieve the document you requested.
+
+
+#No Product Found
+;Label;product.detail.notfound;;No Product Found;No Product Found;No Product Found
+
+#Order Channels
+;Label;order.channel.E001;;EDI
+;Label;order.channel.E002;;Web
+;Label;order.channel.E003;;Other
+;Label;order.channel.E004;;Other
+;Label;order.channel.E005;;Fax
+;Label;order.channel.E006;;EDI
+;Label;order.channel.E007;;VMI
+;Label;order.channel.E008;;Other
+;Label;order.channel.E009;;EDI
+;Label;order.channel.E010;;EDI
+;Label;order.channel.E011;;VMI
+;Label;order.channel.M001;;Phone
+;Label;order.channel.M002;;Fax
+;Label;order.channel.M003;;E-mail
+;Label;order.channel.M004;;Other
+;Label;order.channel.M005;;Fax
+;Label;order.channel.M006;;E-mail
+;Label;order.channel.M007;;Other
+;Label;order.channel.M008;;Other
+;Label;order.channel.other;;Other
+
+
+
+;Label;product.details.popup.header;;Product Details
+
+#For OCD Product
+;Label;ocd.product.alert.message;;Please be advised that your shopping cart contains Ortho-Clinical Diagnostics (OCD) products as well as products from other Johnson & Johnson companies. This order may experience a slight delay due to special manual order processing involved with OCD products.
+;Label;ocd.cart.true;;The order will be placed on hold for manual review.
+
+#For Update All quantities
+;Label;basket.page.message.cartRemove.multipleEntries;;Number of entries removed : ;Number of entries removed : ;Number of entries removed :
+;Label;basket.page.message.cartUpdate.multipleEntries;;Number of entries Updated : ;Number of entries Updated : Number of entries Updated :
+
+
+#Contract Label
+;Label;contract.myContracts;;Contracts;Meus contratos;Mis Contratos
+;Label;contract.button.search;;Search;Buscar;Buscar
+;Label;contract.detail.lasttimeupdated;;Last time updated;Última atualização;Última actualización
+;Label;contract.detail.button.addtocart;;Add Product to Cart;Adicionar Produto ao Carrinho;Agregar Producto al Carrito
+;Label;contract.contractNumber;;Contract Number;Nro de Contrato;Número de Contrato
+;Label;contract.sortBy;;Sort By;Ordenar por:;Ordenar por:
+;Label;contract.showing;;Show;Mostrando;Mostrando
+;Label;contract.searchBy;;Search by;Buscar por;Buscar por
+;Label;contract.filterBy;;Filter by;Filtrar por;Filtrar por
+;Label;contract.tenderNumber;;Tender Number;# Ref Licitação;Nro de Oportunidad
+;Label;contract.indirectCustomer;;Indirect Customer;Cliente indireto;Cliente indirecto
+;Label;contract.indirectCustomerName;;Indirect Customer Name;Nome;Nombre
+;Label;contract.status;;Status;Status geral;Estado General
+;Label;contract.status.active;;Active;Ativo;Activo
+;Label;contract.status.inactive;;Inactive;Inativo;Inactivo
+;Label;contract.sortyByContractNumberDecreasing;;Contract Number. - decreasing;Nro de Contrato - decrescente;Nro. de Contrato - decreciente
+;Label;contract.sortyByContractNumberIncreasing;;Contract Number. - increasing;Nro de Contrato - crescente;Nro. de Contrato - creciente
+;Label;contract.sortyByDateNewestToOldest;;ExpireDate - newest to oldest;Data - mais recente para mais antigo;Fecha - descendente
+;Label;contract.sortyByDateOldestToNewest;;ExpireDate - oldest to newest;Data - mais antigo para mais recente;Fecha - ascendente
+;Label;contract.allContracts;;All contract types;Todos os tipos de contrato;Todos los tipos de contrato
+;Label;contract.bid;;BID;Licitação;Licitación
+;Label;contract.Z19;;BID;Licitação;Licitación
+;Label;contract.commercial;;Commercial Agreement;Acordo comercial;Acuerdo comercial
+;Label;contract.Z20;;Commercial Agreement;Acordo comercial;Acuerdo comercial
+;Label;contract.Z26;;Commercial Agreement;Acordo comercial;Acuerdo comercial
+;Label;contract.expirationDate;;Expiration Date;Data de validade;Fecha de Vencimiento
+;Label;contract.creationDate;;Creation Date;Data de criação;Fecha de Creación
+;Label;contract.contractType;;Contract Type;Tipo de Contrato;Tipo de contrato
+;Label;contract.noRecordsMessage;;No data found for the given search criteria;Não há resultados para os critérios de busca utilizados;No encontramos resultados para los criterios de búsqueda utilizados
+;Label;contract.loadMore;;Show more;Ver mais;Ver más
+;Label;contract.ten;;10;10;10
+;Label;contract.twentyFive;;25;25;25
+;Label;contract.fifty;;50;50;50
+;Label;contract.hundred;;100;100;100
+;Label;contract.items;;Items;Itens;Artículos
+;Label;contract.itemPrice;;Unit Price;Preço Unitário;Precio Unitario
+;Label;contract.unitOfMeasure;;Contract Unit of Measurement;Unidade de medida do contrato;Unidad de Medida del Contrato
+;Label;contract.contractQty;;Contract Qty;Quantidade do contrato;Cantidad del Contrato
+;Label;contract.consumed;;Consumed;Consumida;Consumida
+;Label;contract.balance;;Balance;Saldo;Saldo
+;Label;contract.contractDetail;;Contract Detail;Detalhe do contrato;Detalle del Contrato
+;Label;contract.totalValue;;Total Contract Value;Valor Total do Contrato;Valor Total del Contrato
+;Label;contract.consumedValue;;Consumed Value;Valor Consumido;Valor consumido
+;Label;contract.contractBalance;;Contract Balance;Saldo do contrato;Saldo del Contrato
+;Label;contract.sortyByIndirectCustomerIncreasing;;Indirect Customer - increasing;Cliente indireto - crescente;Cliente Indirecto- creciente
+;Label;contract.sortyByIndirectCustomerDecreasing;;Indirect Customer - decreasing;Cliente indireto - decrescente;Cliente Indirecto-decreciente
+;Label;contract.popup.regularOrder;;Regular Order(No Contract);Pedido Regular(Sem Contrato);Pedido Regular (fuera de Contrato)
+;Label;contract.popup.contractPopUpMessage1;;You already have products in your shopping cart.;Já existem produtos em seu carrinho de compras.;Su carrito de compras posee actualmente productos.
+;Label;contract.popup.contractPopUpMessage2;;If you select a new contract, the content of your shopping cart will be replaced.;Se um novo contrato for selecionado o conteúdo do carrinho será substituído.;Si selecciona un nuevo contrato, el contenido del carrito será reemplazado por los productos del nuevo contrato.
+;Label;contract.popup.contractPopUpMessage3;;Do you want to confirm the selection of the contract:;Deseja confirmar a seleção do contrato:;Confirme la selección del contrato:
+;Label;text.download;;Download;;
+;Label;contract.excel.label;;XLS;XLS;XLS
+;Label;contract.pdf.label;;PDF;PDF;PDF
+;Label;search.result.selectAll;;Select All;Select All;Select All
+;Label;product.jnj.id;;J&J ID;Código J&J;Código J&J
+;Label;dropshipment.error.not.found;;The order could not be validated. Please try again later or contact customer service for assistance.;The order could not be validated. Please try again later or contact customer service for assistance.;The order could not be validated. Please try again later or contact customer service for assistance.
+;Label;user.form.label.language;;Language:;Language:;Language:
+;Label;disputeItemPage.heading;;Dispute Item
+;Label;disputeOrderPage.heading;;Dispute Order
+;Label;shopping.cart;;Shopping Cart;Panier
+;Label;payment.continue;;Payment;Paiement
+;Label;shipping.continue;;Shipping;LIVRAISON
+;Label;order.review;;Order Review;Examen de commande
+;Label;invoicestatus;;Invoiced;FacturÃ©;Invoiced
+
+#Breadcrumb keys added
+;Label;disputeItemPage.heading;;Dispute Item
+;Label;disputeOrderPage.heading;;Dispute Order
+;Label;shopping.cart;;Shopping Cart;Panier
+;Label;payment.continue;;Payment;Paiement
+;Label;shipping.continue;;Shipping;LIVRAISON
+;Label;order.review;;Order Review;Examen de commande
+;Label;invoicestatus;;Invoiced;FacturÃ©;Invoiced
+
+#
+#temporary Passwrod content based on languages
+;;email.temporaryPassword.EmailBody;;Dear {param1},<br /><br />  We are pleased to confirm that you will soon have access to J&J Customer Connect after providing us a few pieces of key information. We value your business with us and hope you find the portal to be a useful tool. The Password you will use to log in to J&J Customer Connect<sup>TM</sup> is {param2} <br /><br /><br />Thank You,<br /> Customer Service<br /> J&J Customer Connect<br /><br />;Dear {param1},<br /><br />  We are pleased to confirm that you will soon have access to J&J Customer Connect after providing us a few pieces of key information. We value your business with us and hope you find the portal to be a useful tool. The Password you will use to log in to J&J Customer Connect<sup>TM</sup> is {param2} <br /><br /><br />Thank You,<br /> Customer Service<br /> J&J Customer Connect<br /><br />;Dear {param1},<br /><br />  We are pleased to confirm that you will soon have access to J&J Customer Connect after providing us a few pieces of key information. We value your business with us and hope you find the portal to be a useful tool. The Password you will use to log in to J&J Customer Connect<sup>TM</sup> is {param2} <br /><br /><br />Thank You,<br /> Customer Service<br /> J&J Customer Connect<br /><br />;Dear {param1},<br /><br />  We are pleased to confirm that you will soon have access to J&J Customer Connect after providing us a few pieces of key information. We value your business with us and hope you find the portal to be a useful tool. The Password you will use to log in to J&J Customer Connect<sup>TM</sup> is {param2} <br /><br /><br />Thank You,<br /> Customer Service<br /> J&J Customer Connect<br /><br />
+#Added for Serialization
+;Label;role.jnjGTSerializationGroup;;Serialization Group;Serialization Group;Serialization Group
+#Added for No Charge User Group
+;Label;role.JnjGTInternalNoChargeUser;;No Charge User Group;No Charge User Group;No Charge User Group
+

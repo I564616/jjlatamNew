@@ -1,0 +1,113 @@
+#loginContainer{
+    background-color:#fff;
+	background:url('../images/Johnson-and-Johnson.jpg') no-repeat;
+	background-size:100% 100%;
+	width:100%;
+	height:768px;
+   display: table;
+}
+.main{
+	margin: 0 auto;
+    width: 42%;	
+	display: table-cell;
+    vertical-align: middle;
+}
+.displayinlineblk{
+	display:inline-block;	
+}
+.formContent{
+	padding: 25px 25px;	
+	padding: 55px 45px 90px 44px;
+    background: #fff; 
+}
+.loginTxt{
+	font-size: 18px;
+	margin-top: 6px;
+}
+.formContent h2{
+   font-size: 22px;
+		}
+.redBgcolor p{
+	font-size:10px;	
+}
+.submitBtn{
+	border-radius: 20px;    
+    font-size: 13px;
+    padding: 7px 16px;
+    border: 1px solid #0c8caa;
+    background: #0c8caa;
+    color: #fff;
+}
+.redBgcolor {
+    background-color: #b41601;
+	color:#fff;
+}
+.rememberMe{
+	font-size: 12px;
+   margin:10px 22px 30px 70px;
+}
+.rememberMe input[type="checkbox"] {
+    width: 14px;
+    top: -3px;
+}
+.videoIcon{
+	padding-top: 30px;
+}
+.privacyLinks.pull-right {
+    font-size: 10px;    
+}
+.signUp{
+	border-radius: 20px;
+    color: #0c8caa;
+    font-size: 13px;
+    padding: 7px 16px;
+    border: 1px solid #ccc;
+	margin-top: 3px;
+}
+.newLink {   
+	 margin: 12px 10px 0 0;
+    font-size: 12px;
+}
+.login-margintop10{
+margin-top:10px;
+}
+@media screen and (max-width: 992px) {
+	.main{		
+		width: 52%;	
+	}
+	.rememberMe{		
+		margin:13px 22px 34px 60px;
+	}
+}
+@media screen and (max-width: 767px) {
+	.redBgcolor {
+		background-color: #b41601;
+		color:#fff;
+		position:absolute;
+		bottom:0px;
+		max-width:100%;
+	}	
+	.main{		
+		width: 100%;
+		padding-top: 0;		
+	}
+	#loginContainer {		
+		padding: 0px;
+		background:none;
+		height: auto;
+		width: 100%;		
+	}
+	.rememberMe{
+		font-size:12px;
+		margin: 7px 12px 50px 0;
+		float: none !important;
+	}	
+	.formContent{
+		padding: 55px 45px 29px 44px;
+	}
+	#loginContainer,.main{
+		display:block;
+		height:auto !important;
+	}
+	
+}

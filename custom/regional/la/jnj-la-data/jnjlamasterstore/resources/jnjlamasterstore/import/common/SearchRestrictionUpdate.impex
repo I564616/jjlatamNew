@@ -1,0 +1,13 @@
+INSERT_UPDATE SearchRestriction;code[unique=true];active;
+# Employee related restriction
+;employee_restriction;false
+# Order related restriction
+;b2border_restriction;false
+# Product related restriction
+;frontend_jnjProduct;false
+# User group related restriction
+;b2busergroup_restriction;false
+#Category related restrictions
+;Frontend_Category;true
+;Frontend_RestrictedCategory;true
+;Customer_Eligiblitty_Restriction;true

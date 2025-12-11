@@ -1,0 +1,165 @@
+
+@media screen and (max-width: 480px){
+	.continue-btn{margin-left:0px}
+/* Start - Added by lokesh - sep 28 */
+	#AddItemsCartpage  .btnclsnormal,#AddItemsCartpage  .btnclsactive,#AddItemsCartpage  .checkout-clear-cart  {
+			width:100%;
+			margin-top:5px;
+	}
+	.validatebtn .btnclsactive,.validatebtn .btnclsnormal,.bottomrightbuttons{
+		width:100%;margin-bottom:10px;
+		margin-top:5px;
+	}
+	.float-left-to-none{
+		float:none !important;
+		margin-bottom:10px;
+	}
+	.float-right-to-none{
+		float:none !important;
+	}
+	
+	.float-left-to-none .btnclsnormal,.float-left-to-none .btnclsactive,.float-right-to-none .btnclsnormal,.float-right-to-none .btnclsactive{width:100%}
+	.empty-btn{display:block}
+	.report-label{
+		line-height:18px;
+	}
+	
+	
+	.margin-row-gap-mobi{margin-top:10px}
+	.modal-dialog{width:350px !important}
+	#datatab-mobile .no-preview-img{width:60px !important;height:auto}
+	#AddItemsCartpage #datatab-mobile .table-cell{vertical-align:top !important}
+	.for-landscape-mobile{width:100% !important}
+}	
+@media screen and (max-width: 767px){
+	.label-middle{line-height:18px}
+	.cart-error-msg{white-space:normal !important}
+	.for-landscape-mobile{width:50%;}
+	#signup-title {
+	    margin-top: 0px;
+	}
+	#AddItemsCartpage .validateprice {
+	    margin-top: 0px;
+	}
+	.bootstrap-select .btn-default, .bootstrap-select .btn-default:active, .bootstrap-select .btn-default:focus, .bootstrap-select .open>.dropdown-toggle.btn-default {
+	    background-position: 97% 9px !important;
+	}
+	.mobi-row-gap{margin-bottom:20px}	
+	.floating-global-btns .btn{
+		width:100%;margin-bottom:10px
+	}
+	.floating-global-btns .canceltxt{margin-bottom:10px;display:block} 
+	
+	.form-mobile-row-gap{
+	 margin-bottom:20px;
+	}
+	.dataTables_length{
+			display:none;		
+		}
+	.breadcrumb .content,.breadcrumb + .content{
+		font-size: 30px;
+		margin-bottom: 20px !important;
+	}
+	.breadcrumb +.row.content, .breadcrumb +.row .content, .headingTxt.content {
+		font-size: 30px;
+		margin-bottom: 20px !important;
+	}
+	.jnj-popup-container .modal-title,.jnj-popup  .modal-title,.popup .modal-title{
+	    font-size: 24px
+	}	
+/* 	.validatebtn .btnclsactive,.validatebtn .btnclsnormal,.bottomrightbuttons{
+		width:100%;margin-bottom:10px;
+		margin-top:5px;
+	} */
+	
+	.total-summary-table{
+		width: 100%;
+	}
+	/* .bottomrightbuttons{
+		width:100%;margin-top:10px;
+		margin-bottom:10px;
+	} */
+
+	.mobile-imgTxt-view{
+		display: table-cell;
+		vertical-align: middle;
+		float: none;	
+		font-size: 12px;
+	}
+	.mobile-img-view{text-align:center;}
+	.mobile-txt-view{text-align:left;}
+	
+	/* added by lokesh oct 18 */
+	#jnj-main-header .shadow-header{	
+		height: 125px;	
+	}
+	
+	/* Start modified by lokesh &sumali oct10 for mobile */
+	.selectmethod .dropdown-menu li{
+	   padding:0px !important;
+	}
+	/* End modified by lokesh &sumali oct10 for mobile */
+	.date-picker-holder{
+		margin-bottom:10px;
+	}
+	.pushmenu { 
+	  width: 250px !important;
+	  top: 0;
+	  z-index: 100;
+	  position: fixed;
+	  float:left;
+	}
+	
+	.pushmenu-left { left: -250px !important; }
+
+	.pushmenu-left.pushmenu-open { left: 0 !important; }
+	.pushmenu-push-toright { left: 250px !important; }
+	#jnj-usr-details-menu #usr-name {
+		font-size:17px !important; 
+		font-weight:700 !important; 
+	}
+	#jnj-main-header #logo,#jnj-logo-holder img{
+		height:40px !important; 
+	}
+	.jnj-popup .popup{
+		width:100% !important;
+	}
+	#jnj-main-header #hamburg-btn{
+		margin-top: 16px !important;
+		margin-left: 14px;
+	}
+	#jnj-main-header #global-search-mobile,#cart-btn-holder{
+		margin-top: 16px !important;
+	}
+
+	#jnj-main-header .shadow-header{	
+		padding:0px 20px;
+	}
+	.table>thead>tr>th{
+		border-right: 1px solid rgb(230,230,230);
+	}
+	/* Start - Added by lokesh - sep 28 */
+	/* #AddItemsCartpage  .btnclsnormal,#AddItemsCartpage  .btnclsactive,#AddItemsCartpage  .checkout-clear-cart  {
+			width:100%;
+			margin-top:5px;
+	} */
+	
+	/* End - Added by lokesh - sep 28 */
+	
+	.total-summary-table {
+		float:none !important;
+	}
+	div#datatab-mobile_info{
+		float: left;
+		padding: 19px 0px 1px 20px;
+	}
+	/* added by shiva for dropshipment*/
+	.dropshipment-label-value{
+		width:100%;
+	}
+	
+	.mobile-auto-btn{width:auto !important}
+	.modal-dialog{width:600px}
+	
+}
+

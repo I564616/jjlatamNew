@@ -1,0 +1,31 @@
+#
+# Import the JNJ Product Catalog
+#
+# Localization en
+#
+$MstrProductCatalog=mstrProductCatalog
+$BRproductCatalog=brProductCatalog
+$MXproductCatalog=mxProductCatalog
+$CENCAproductCatalog=cencaProductCatalog
+$ECproductCatalog=ecProductCatalog
+$ARproductCatalog=arProductCatalog
+$CLproductCatalog=clProductCatalog
+$URproductCatalog=uyProductCatalog
+$COproductCatalog=coProductCatalog
+$PEproductCatalog=peProductCatalog
+$PRproductCatalog=prProductCatalog
+
+$languages=en
+
+UPDATE Catalog;id[unique=true];name[lang=$languages];
+;$MstrProductCatalog;"Master Product Catalog";
+;$BRproductCatalog;"Brazil Product Catalog"; 
+;$MXproductCatalog;"Mexico Product Catalog";
+;$CENCAproductCatalog;"Cenca Product Catalog";
+;$ECproductCatalog;"Ecuador Product Catalog";
+;$ARproductCatalog;"Argentina Product Catalog";
+;$CLproductCatalog;"Chile Product Catalog";
+;$URproductCatalog;"Uruguay Product Catalog";
+;$COproductCatalog;"Colombia Product Catalog";
+;$PEproductCatalog;"Peru Product Catalog";
+;$PRproductCatalog;"Puerto Rico Product Catalog";

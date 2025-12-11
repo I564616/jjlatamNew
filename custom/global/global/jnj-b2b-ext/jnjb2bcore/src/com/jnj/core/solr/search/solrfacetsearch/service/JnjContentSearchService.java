@@ -1,0 +1,32 @@
+/*
+ * This code contains copyright information which is the proprietary property
+ * of JNJ Companies Ltd. No part of this code may be reproduced, stored or
+ * transmitted in any form without the prior written permission of JNJ Companies Ltd.
+ * Copyright (C) JNJ Companies Ltd 2013
+ * All rights reserved.
+ */
+package com.jnj.core.solr.search.solrfacetsearch.service;
+
+import de.hybris.platform.commerceservices.search.facetdata.FacetSearchPageData;
+import de.hybris.platform.commerceservices.search.pagedata.PageableData;
+
+import com.jnj.facades.data.JnjContentData;
+
+
+/**
+ * 
+ * 
+ * * Content search service interface. Used to retrieve contents of type {@link JnjContentData} (or subclasses of).
+ * 
+ * @param <ITEM>
+ *           The type of the content result items
+ * @author Accenture
+ * @version 1.0
+ */
+
+
+public abstract interface JnjContentSearchService<STATE, ITEM, RESULT extends FacetSearchPageData<STATE, ITEM>>
+{
+
+	public abstract RESULT searchAgain(STATE paramSTATE, PageableData paramPageableData);
+}

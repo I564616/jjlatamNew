@@ -1,0 +1,2 @@
+## messageSource=classpath:/jnjb2bcore/messages/email-orderApprovalRejection_$lang.properties
+${ctx.messages.orderStatusSubject}

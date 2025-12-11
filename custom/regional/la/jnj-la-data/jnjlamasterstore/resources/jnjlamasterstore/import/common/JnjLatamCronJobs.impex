@@ -1,0 +1,272 @@
+INSERT_UPDATE ServicelayerJob; code[unique = true]                       ; springId[unique = true]                   ; active[default = 'true']
+                             ; jnjRegulatoryExpireDocumentCronJob        ; jnjRegulatoryExpireDocumentCronJob        ;
+                             ; jnjLoadTranslationJob                     ; jnjLoadTranslationJob                     ;
+                             ; jnjLoadContractsJob                       ; jnjLoadContractsJob                       ;
+                             ; jnjCheckContractCronJob                   ; jnjCheckContractCronJob                   ;
+                             ; jnjLoadInvoicesJob                        ; jnjLoadInvoicesJob                        ;
+                             ; jnjUpsertCustomerCronJob                  ; jnjUpsertCustomerCronJob                  ;
+                             ; jnjLaUpsertProductCronJob                 ; jnjLaUpsertProductCronJob                 ;
+                             ; jnjSalesOrgCustomerJob                    ; jnjSalesOrgCustomerJob                    ;
+                             ; jnjCategorySetShowPriceJob                ; jnjCategorySetShowPriceJob                ;
+                             ; jnjUserLoginCronJob                       ; jnjUserLoginCronJob                       ;
+                             ; jnjPasswordExpiryEmailJob                 ; jnjPasswordExpiryEmailCronJob             ;
+                             ; jnjLoadDropShipmentJob                    ; jnjLoadDropShipmentJob                    ;
+                             ; jnjCategoryShowPlannedDateJob             ; jnjCategoryShowPlannedDateJob             ;
+                             ; jnjLaSubmitEdiOrderFilesJob               ; jnjLaSubmitEdiOrderFilesJob               ;
+                             ; jnjGenerateEncryptionKeysCronJob          ; jnjGenerateEncryptionKeysCronJob          ;
+                             ; jnjSynchronizeOrdersDataUploadJob         ; jnjSynchronizeOrdersDataUploadJob         ;
+                             ; jnjB2bAcceleratorCartToOrderJob           ; jnjB2bAcceleratorCartToOrderJob           ;
+                             ; jnjHideCategoryCronJob                    ; jnjHideCategoryCronJob                    ;
+                             ; jnjCheckContractCronJob                   ; jnjCheckContractCronJob                   ;
+                             ; jnjFilePurgeCronJob                       ; jnjFilePurgeCronJob                       ;
+                             ; jnjGenerateEncryptionKeysCronJob          ; jnjGenerateEncryptionKeysCronJob          ;
+                             ; jnjEncrypFilesCronJob                     ; jnjEncrypFilesCronJob                     ;
+                             ; jnjInterfaceOperationEmailNotificationJob ; jnjInterfaceOperationEmailNotificationJob ;
+                             ; jnjLaUpdateOrderStatusJob                 ; jnjLaUpdateOrderStatusJob                 ;
+                             ; jnjLaUpdateOrderHeaderStatusJob           ; jnjLaUpdateOrderHeaderStatusJob           ;
+                             ; jnjLaUpdateDeliveryDateJob                ; jnjLaUpdateDeliveryDateJob                ;
+                             ; jnjLaUpdateCarrierStatusJob               ; jnjLaUpdateCarrierStatusJob               ;
+                             ; jnjLaImmediateEmailOrderStatusJob         ; jnjLaImmediateEmailOrderStatusJob         ;
+                             ; jnjLADailyEmailOrderStatusJob             ; jnjLADailyEmailOrderStatusJob             ;
+                             ; jnjLaConsolidatedEmailOrderStatusJob      ; jnjLaConsolidatedEmailOrderStatusJob      ;
+                             ; jnjLaCronJobMonitoringReportEmailJob      ; jnjLaCronJobMonitoringReportEmailJob      ;
+
+INSERT_UPDATE JnjIntegrationRSACronJob; code[unique = true]                       ; job(code)                                 ; singleExecutable; sessionLanguage(isocode); active[default = 'true']; nodeID[default = '0']; targetModel                         ; jobCode
+                                      ; jnjLaUpsertProductCronJob                 ; jnjLaUpsertProductCronJob                 ; false           ; en                      ; true                    ;                      ; JnjLaProduct                        ; jnjLaUpsertProductCronJob
+                                      ; jnjLoadTranslationJob                     ; jnjLoadTranslationJob                     ; false           ; en                      ; true                    ;                      ; Catalog                             ; jnjLoadTranslationJob
+                                      ; jnjLoadContractsJob                       ; jnjLoadContractsJob                       ; false           ; en                      ; true                    ;                      ; JnjContract                         ; jnjLoadContractsJob
+                                      ; jnjLoadInvoicesJob                        ; jnjLoadInvoicesJob                        ; false           ; en                      ; true                    ; 1                    ; JnJInvoice                          ; jnjLoadInvoicesJob
+                                      ; jnjUpsertCustomerCronJob                  ; jnjUpsertCustomerCronJob                  ; false           ; en                      ; true                    ;                      ; JnJLaCustomer                       ; jnjUpsertCustomerCronJob
+                                      ; jnjSalesOrgCustomerJob                    ; jnjSalesOrgCustomerJob                    ; false           ; en                      ; true                    ;                      ; JnjSalesOrgCust                     ; jnjSalesOrgCustomerJob
+                                      ; jnjCustomerEligibilityCronJob             ; customerEligibilityDataUploadJob          ; false           ; en                      ; true                    ;                      ; JnJLaCustomer                       ; jnjCustomerEligibilityCronJob
+                                      ; jnjCategorySetShowPriceJob                ; jnjCategorySetShowPriceJob                ; false           ; en                      ; true                    ;                      ; Category                            ; jnjCategorySetShowPriceJob
+                                      ; jnjUserLoginCronJob                       ; jnjUserLoginCronJob                       ; false           ; en                      ; true                    ;                      ; JnJB2bCustomer                      ; jnjUserLoginCronJob
+                                      ; jnjLoadDropShipmentJob                    ; jnjLoadDropShipmentJob                    ; false           ; en                      ; true                    ;                      ; JnjDropshipment                     ; JnjLoadDropShipmentJob
+                                      ; jnjSynchronizeOrdersDataUploadJob         ; jnjSynchronizeOrdersDataUploadJob         ; false           ; en                      ; true                    ; 1                    ; JnjOrder                            ; jnjSynchronizeOrdersDataUploadJob
+                                      ; jnjCategoryShowPlannedDateJob             ; jnjCategoryShowPlannedDateJob             ; false           ; en                      ; true                    ;                      ; JnjCategoryShowPlannedDateAttribute ; jnjCategoryShowPlannedDateJob
+                                      ; jnjPasswordExpiryEmailCronJob             ; jnjPasswordExpiryEmailJob                 ; false           ; en                      ; true                    ;                      ; JnjCustomerPasswordExpiryAttribute  ; jnjPasswordExpiryEmailCronJob
+                                      ; JnjCheckContractCronJob                   ; jnjCheckContractCronJob                   ; false           ; en                      ; true                    ;                      ; JnjContract                         ; JnjCheckContractCronJob
+                                      ; JnjFilePurgeCronJob                       ; jnjFilePurgeCronJob                       ; false           ; en                      ; false                   ;                      ; FilePurgingForSAPFolders            ; JnjFilePurgeCronJob
+                                      ; JnjGenerateEncryptionKeysCronJob          ; jnjGenerateEncryptionKeysCronJob          ; false           ; en                      ; true                    ;                      ; JnjEncryption                       ; JnjGenerateEncryptionKeysCronJob
+                                      ; JnjInterfaceOperationEmailNotificationJob ; jnjInterfaceOperationEmailNotificationJob ; false           ; en                      ; true                    ;                      ; JnjCustomerEmailNotification        ; JnjInterfaceOperationEmailNotificationJob
+                                      ; jnjLaSubmitEdiOrderFilesJob               ; jnjLaSubmitEdiOrderFilesJob               ; false           ; en                      ; true                    ;                      ; JnjEDIOrderFiles                    ; jnjLaSubmitEdiOrderFilesJob
+                                      ; jnjLaUpdateOrderStatusJob                 ; jnjLaUpdateOrderStatusJob                 ; false           ; en                      ; true                    ;                      ; JnjOrder                            ; jnjLaUpdateOrderStatusJob
+                                      ; jnjLaUpdateOrderHeaderStatusJob           ; jnjLaUpdateOrderHeaderStatusJob           ; false           ; en                      ; true                    ;                      ; JnjOrder                            ; jnjLaUpdateOrderHeaderStatusJob
+                                      ; jnjLaUpdateDeliveryDateJob                ; jnjLaUpdateDeliveryDateJob                ; false           ; en                      ; true                    ;                      ; JnJInvoice                          ; jnjLaUpdateDeliveryDateJob
+                                      ; jnjLaUpdateCarrierStatusJob               ; jnjLaUpdateCarrierStatusJob               ; false           ; en                      ; true                    ;                      ; JnJUploadedInvoiceDate              ; jnjLaUpdateCarrierStatusJob
+                                      ; jnjLaImmediateEmailOrderStatusJob         ; jnjLaImmediateEmailOrderStatusJob         ; false           ; en                      ; true                    ;                      ; AbstractOrderEntry                  ; jnjLaImmediateEmailOrderStatusJob
+                                      ; jnjLAARDailyEmailOrderStatusJob           ; jnjLADailyEmailOrderStatusJob             ; false           ; en                      ; true                    ;                      ; AbstractOrderEntry                  ; jnjLADailyEmailOrderStatusJob
+                                      ; jnjLABRDailyEmailOrderStatusJob           ; jnjLADailyEmailOrderStatusJob             ; false           ; en                      ; true                    ;                      ; AbstractOrderEntry                  ; jnjLADailyEmailOrderStatusJob
+                                      ; jnjLACENCADailyEmailOrderStatusJob        ; jnjLADailyEmailOrderStatusJob             ; false           ; en                      ; true                    ;                      ; AbstractOrderEntry                  ; jnjLADailyEmailOrderStatusJob
+                                      ; jnjLACLDailyEmailOrderStatusJob           ; jnjLADailyEmailOrderStatusJob             ; false           ; en                      ; true                    ;                      ; AbstractOrderEntry                  ; jnjLADailyEmailOrderStatusJob
+                                      ; jnjLACODailyEmailOrderStatusJob           ; jnjLADailyEmailOrderStatusJob             ; false           ; en                      ; true                    ;                      ; AbstractOrderEntry                  ; jnjLADailyEmailOrderStatusJob
+                                      ; jnjLAECDailyEmailOrderStatusJob           ; jnjLADailyEmailOrderStatusJob             ; false           ; en                      ; true                    ;                      ; AbstractOrderEntry                  ; jnjLADailyEmailOrderStatusJob
+                                      ; jnjLAMXDailyEmailOrderStatusJob           ; jnjLADailyEmailOrderStatusJob             ; false           ; en                      ; true                    ;                      ; AbstractOrderEntry                  ; jnjLADailyEmailOrderStatusJob
+                                      ; jnjLAPEDailyEmailOrderStatusJob           ; jnjLADailyEmailOrderStatusJob             ; false           ; en                      ; true                    ;                      ; AbstractOrderEntry                  ; jnjLADailyEmailOrderStatusJob
+                                      ; jnjLAPRDailyEmailOrderStatusJob           ; jnjLADailyEmailOrderStatusJob             ; false           ; en                      ; true                    ;                      ; AbstractOrderEntry                  ; jnjLADailyEmailOrderStatusJob
+                                      ; jnjLAUYDailyEmailOrderStatusJob           ; jnjLADailyEmailOrderStatusJob             ; false           ; en                      ; true                    ;                      ; AbstractOrderEntry                  ; jnjLADailyEmailOrderStatusJob
+                                      ; jnjLaARConsolidatedEmailOrderStatusJob    ; jnjLaConsolidatedEmailOrderStatusJob      ; false           ; en                      ; true                    ;                      ; AbstractOrderEntry                  ; jnjLaConsolidatedEmailOrderStatusJob
+                                      ; jnjLaBRConsolidatedEmailOrderStatusJob    ; jnjLaConsolidatedEmailOrderStatusJob      ; false           ; en                      ; true                    ;                      ; AbstractOrderEntry                  ; jnjLaConsolidatedEmailOrderStatusJob
+                                      ; jnjLaCENCAConsolidatedEmailOrderStatusJob ; jnjLaConsolidatedEmailOrderStatusJob      ; false           ; en                      ; true                    ;                      ; AbstractOrderEntry                  ; jnjLaConsolidatedEmailOrderStatusJob
+                                      ; jnjLaCOConsolidatedEmailOrderStatusJob    ; jnjLaConsolidatedEmailOrderStatusJob      ; false           ; en                      ; true                    ;                      ; AbstractOrderEntry                  ; jnjLaConsolidatedEmailOrderStatusJob
+                                      ; jnjLaCLConsolidatedEmailOrderStatusJob    ; jnjLaConsolidatedEmailOrderStatusJob      ; false           ; en                      ; true                    ;                      ; AbstractOrderEntry                  ; jnjLaConsolidatedEmailOrderStatusJob
+                                      ; jnjLaECConsolidatedEmailOrderStatusJob    ; jnjLaConsolidatedEmailOrderStatusJob      ; false           ; en                      ; true                    ;                      ; AbstractOrderEntry                  ; jnjLaConsolidatedEmailOrderStatusJob
+                                      ; jnjLaMXConsolidatedEmailOrderStatusJob    ; jnjLaConsolidatedEmailOrderStatusJob      ; false           ; en                      ; true                    ;                      ; AbstractOrderEntry                  ; jnjLaConsolidatedEmailOrderStatusJob
+                                      ; jnjLaPEConsolidatedEmailOrderStatusJob    ; jnjLaConsolidatedEmailOrderStatusJob      ; false           ; en                      ; true                    ;                      ; AbstractOrderEntry                  ; jnjLaConsolidatedEmailOrderStatusJob
+                                      ; jnjLaPRConsolidatedEmailOrderStatusJob    ; jnjLaConsolidatedEmailOrderStatusJob      ; false           ; en                      ; true                    ;                      ; AbstractOrderEntry                  ; jnjLaConsolidatedEmailOrderStatusJob
+                                      ; jnjLaUYConsolidatedEmailOrderStatusJob    ; jnjLaConsolidatedEmailOrderStatusJob      ; false           ; en                      ; true                    ;                      ; AbstractOrderEntry                  ; jnjLaConsolidatedEmailOrderStatusJob
+
+
+INSERT_UPDATE JnjCronJob; code[unique = true]                    ; job(code)                                 ; singleExecutable; sessionLanguage(isocode)    ; active[default = 'true']
+                        ; jnjHideCategoryCronJob                 ; jnjHideCategoryCronJob                    ; false           ; en                          ;
+                        ; jnjLaCronJobMonitoringReportEmailJob   ; jnjLaCronJobMonitoringReportEmailJob      ; false           ; en                          ;
+
+REMOVE CompositeCronJob; code[unique = true]                  ; job(code);
+                       ; JnjUpsertProductCompositeJob         ;
+                       ; JnjProductSyncCompositeJob           ;
+                       ; JnjSynchronizeOrderWriteCompositeJob ;
+                       ; JnjUpsertCustomerCompositeJob        ;
+                       ; JnjLaUpdateDeliveryDateCompositeJob  ;
+
+INSERT_UPDATE CompositeCronJob; code[unique = true]                  ; job(code)               ; sessionLanguage(isocode); active[default = 'true']
+                              ; JnjUpsertProductCompositeJob         ; compositeJobPerformable ; en                      ;
+                              ; JnjSynchronizeOrderWriteCompositeJob ; compositeJobPerformable ; en                      ;
+                              ; JnjUpsertCustomerCompositeJob        ; compositeJobPerformable ; en                      ;
+                              ; JnjLaUpdateDeliveryDateCompositeJob  ; compositeJobPerformable ; en                      ;
+
+INSERT_UPDATE CompositeEntry; code[unique = true]                      ; compositeCronJob(code)               ; compositeCronJobPOS[unique = true]; executableCronJob(code)[unique = true]; triggerableJob(code)[unique = true]
+                            ; UpsertProductJob                         ; JnjUpsertProductCompositeJob         ; 0                                 ; jnjLaUpsertProductCronJob             ; jnjLaUpsertProductCronJob
+                            ; SyncJob-MstrStaged->BrMxSatged           ; JnjUpsertProductCompositeJob         ; 1                                 ; syncCatalogCron_Job                   ; syncMasterToLocalCatalog
+                            ; SyncJob-BrazilStaged->BrazilOnline       ; JnjUpsertProductCompositeJob         ; 2                                 ; syncBRProdStgToOnline                 ; syncBRProdStagedToOnline
+                            ; SyncJob-MexicoStaged->MexicoOnline       ; JnjUpsertProductCompositeJob         ; 3                                 ; syncMXProdStgToOnline                 ; syncMXProdStagedToOnline
+                            ; SyncJob-CencaStaged->CencaOnline         ; JnjUpsertProductCompositeJob         ; 4                                 ; syncCENCAProdStgToOnline              ; syncCENCAProdStagedToOnline
+                            ; SyncJob-EcuadorStaged->EcuadorOnline     ; JnjUpsertProductCompositeJob         ; 5                                 ; syncECProdStgToOnline                 ; syncECProdStagedToOnline
+                            ; SyncJob-ArgentinaStaged->ArgentinaOnline ; JnjUpsertProductCompositeJob         ; 6                                 ; syncARProdStgToOnline                 ; syncARProdStagedToOnline
+                            ; SyncJob-UruguayStaged->UruguayOnline     ; JnjUpsertProductCompositeJob         ; 7                                 ; syncUYProdStgToOnline                 ; syncUYProdStagedToOnline
+                            ; SyncJob-ChileStaged->ChileOnline         ; JnjUpsertProductCompositeJob         ; 8                                 ; syncCLProdStgToOnline                 ; syncCLProdStagedToOnline
+                            ; SyncJob-ColombiaStaged->ColombiaOnline   ; JnjUpsertProductCompositeJob         ; 9                                 ; syncCOProdStgToOnline                 ; syncCOProdStagedToOnline
+                            ; SyncJob-PeruStaged->PeruOnline           ; JnjUpsertProductCompositeJob         ; 10                                ; syncPEProdStgToOnline                 ; syncPEProdStagedToOnline
+                            ; SyncJob-PuertoStaged->PuertoOnline       ; JnjUpsertProductCompositeJob         ; 11                                ; syncPRProdStgToOnline                 ; syncPRProdStagedToOnline
+                            ; HideCategoryJob                          ; JnjUpsertProductCompositeJob         ; 12                                ; jnjHideCategoryCronJob                ; jnjHideCategoryCronJob
+
+                            ; jnjUpsertCustomerCronJob                 ; JnjUpsertCustomerCompositeJob        ; 0                                 ; jnjUpsertCustomerCronJob              ; jnjUpsertCustomerCronJob
+                            ; jnjSalesOrgCustomerJob                   ; JnjUpsertCustomerCompositeJob        ; 1                                 ; jnjSalesOrgCustomerJob                ; jnjSalesOrgCustomerJob
+
+                            ; jnjSynchronizeOrdersDataUploadJob        ; JnjSynchronizeOrderWriteCompositeJob ; 0                                 ; jnjSynchronizeOrdersDataUploadJob     ; jnjSynchronizeOrdersDataUploadJob
+                            ; jnjLoadInvoicesJob                       ; JnjSynchronizeOrderWriteCompositeJob ; 1                                 ; jnjLoadInvoicesJob                    ; jnjLoadInvoicesJob
+                            ; jnjLaUpdateDeliveryDateJob               ; JnjSynchronizeOrderWriteCompositeJob ; 2                                 ; jnjLaUpdateDeliveryDateJob            ; jnjLaUpdateDeliveryDateJob
+                            ; jnjLaUpdateCarrierStatusJob              ; JnjSynchronizeOrderWriteCompositeJob ; 3                                 ; jnjLaUpdateCarrierStatusJob           ; jnjLaUpdateCarrierStatusJob
+                            ; jnjLaUpdateOrderStatusJob                ; JnjSynchronizeOrderWriteCompositeJob ; 4                                 ; jnjLaUpdateOrderStatusJob             ; jnjLaUpdateOrderStatusJob
+                            ; jnjLaUpdateOrderHeaderStatusJob          ; JnjSynchronizeOrderWriteCompositeJob ; 5                                 ; jnjLaUpdateOrderHeaderStatusJob       ; jnjLaUpdateOrderHeaderStatusJob
+                            ; jnjLaImmediateEmailOrderStatusJob        ; JnjSynchronizeOrderWriteCompositeJob ; 6                                 ; jnjLaImmediateEmailOrderStatusJob     ; jnjLaImmediateEmailOrderStatusJob
+
+                            ; jnjLaUpdateDeliveryDateJob-extra         ; JnjLaUpdateDeliveryDateCompositeJob  ; 0                                 ; jnjLaUpdateDeliveryDateJob            ; jnjLaUpdateDeliveryDateJob
+                            ; jnjLaUpdateCarrierStatusJob-extra        ; JnjLaUpdateDeliveryDateCompositeJob  ; 1                                 ; jnjLaUpdateCarrierStatusJob           ; jnjLaUpdateCarrierStatusJob
+                            ; jnjLaUpdateOrderStatusJob-extra          ; JnjLaUpdateDeliveryDateCompositeJob  ; 2                                 ; jnjLaUpdateOrderStatusJob             ; jnjLaUpdateOrderStatusJob
+                            ; jnjLaUpdateOrderHeaderStatusJob-extra    ; JnjLaUpdateDeliveryDateCompositeJob  ; 3                                 ; jnjLaUpdateOrderHeaderStatusJob       ; jnjLaUpdateOrderHeaderStatusJob
+                            ; jnjLaImmediateEmailOrderStatusJob-extra  ; JnjLaUpdateDeliveryDateCompositeJob  ; 4                                 ; jnjLaImmediateEmailOrderStatusJob     ; jnjLaImmediateEmailOrderStatusJob
+
+
+INSERT_UPDATE Trigger; cronJob(code)[unique = true]              ; second; minute; hour; day; month; year; relative; active; maxAcceptableDelay
+                     ; JnjUpsertProductCompositeJob              ; 0     ; 0     ; 3   ; -1 ; -1   ; -1  ; false   ; true  ; -1
+                     ; jnjCustomerEligibilityCronJob             ; 0     ; 0     ; 6   ; -1 ; -1   ; -1  ; false   ; true  ; -1
+                     ; jnjLoadTranslationJob                     ; 0     ; 0     ; 6   ; -1 ; -1   ; -1  ; false   ; true  ; -1
+                     ; jnjUserLoginCronJob                       ; 0     ; 0     ; 8   ; -1 ; -1   ; -1  ; false   ; true  ; -1
+                     ; JnjCheckContractCronJob                   ; 0     ; 0     ; 8   ; -1 ; -1   ; -1  ; false   ; true  ; -1
+                     ; jnjPasswordExpiryEmailCronJob             ; 0     ; 0     ; 5   ; -1 ; -1   ; -1  ; false   ; true  ; -1
+                     ; jnjCategoryShowPlannedDateJob             ; 0     ; 0     ; 9   ; -1 ; -1   ; -1  ; false   ; true  ; -1
+                     ; jnjCategorySetShowPriceJob                ; 0     ; 0     ; 9   ; -1 ; -1   ; -1  ; false   ; true  ; -1
+                     ; JnjInterfaceOperationEmailNotificationJob ; 0     ; 0     ; 0   ; 7  ; -1   ; -1  ; false   ; true  ; -1
+
+INSERT_UPDATE Trigger; cronjob(code)[unique = true]         ; cronExpression
+# Must run every 30 minutes
+                     ; jnjLoadContractsJob                  ; 0 0/30 * * * ? *
+# Must run every 60 minutes
+                     ; jnjLoadDropShipmentJob               ; 0 0/60 * * * ? *
+# Must run every 15 minutes
+                     ; JnjSynchronizeOrderWriteCompositeJob ; 0 0/15 * * * ?
+# Must run every 5 minutes
+                     ; jnjLaSubmitEdiOrderFilesJob          ; 0 0/5 * * * ?
+                     ; JnjFilePurgeCronJob                  ; 0 0 5 ? * 7L
+# Triggers for Daily Email by Country Store
+                     ; jnjLAARDailyEmailOrderStatusJob      ; 0  0 21 * * ? *
+                     ; jnjLABRDailyEmailOrderStatusJob      ; 0  5 21 * * ? *
+                     ; jnjLACENCADailyEmailOrderStatusJob   ; 0 10 21 * * ? *
+                     ; jnjLACLDailyEmailOrderStatusJob      ; 0 15 21 * * ? *
+                     ; jnjLACODailyEmailOrderStatusJob      ; 0 20 21 * * ? *
+                     ; jnjLAECDailyEmailOrderStatusJob      ; 0 25 21 * * ? *
+                     ; jnjLAMXDailyEmailOrderStatusJob      ; 0 30 21 * * ? *
+                     ; jnjLAPEDailyEmailOrderStatusJob      ; 0 35 21 * * ? *
+                     ; jnjLAPRDailyEmailOrderStatusJob      ; 0 40 21 * * ? *
+                     ; jnjLAUYDailyEmailOrderStatusJob      ; 0 45 21 * * ? *
+# Triggers for Consolidated Email by Country Store
+                     ; jnjLaARConsolidatedEmailOrderStatusJob      ; 0  0 20 * * ? *
+                     ; jnjLaBRConsolidatedEmailOrderStatusJob      ; 0  5 20 * * ? *
+                     ; jnjLaCENCAConsolidatedEmailOrderStatusJob   ; 0 10 20 * * ? *
+                     ; jnjLaCLConsolidatedEmailOrderStatusJob      ; 0 15 20 * * ? *
+                     ; jnjLaCOConsolidatedEmailOrderStatusJob      ; 0 20 20 * * ? *
+                     ; jnjLaECConsolidatedEmailOrderStatusJob      ; 0 25 20 * * ? *
+                     ; jnjLaMXConsolidatedEmailOrderStatusJob      ; 0 30 20 * * ? *
+                     ; jnjLaPEConsolidatedEmailOrderStatusJob      ; 0 35 20 * * ? *
+                     ; jnjLaPRConsolidatedEmailOrderStatusJob      ; 0 40 20 * * ? *
+                     ; jnjLaUYConsolidatedEmailOrderStatusJob      ; 0 45 20 * * ? *
+                     ; jnjBRRegulatoryExpireDocumentCronJob        ; 0 5 0 ? * * *
+                     ; jnjARRegulatoryExpireDocumentCronJob        ; 0 5 0 ? * * *
+                     ; jnjECRegulatoryExpireDocumentCronJob        ; 0 5 0 ? * * *
+                     ; jnjCORegulatoryExpireDocumentCronJob        ; 0 5 0 ? * * *  
+                     ; jnjMXRegulatoryExpireDocumentCronJob        ; 0 5 0 ? * * *
+                     ; jnjCERegulatoryExpireDocumentCronJob        ; 0 5 0 ? * * * 
+                     ; jnjCLRegulatoryExpireDocumentCronJob        ; 0 5 0 ? * * *
+                     ; jnjPERegulatoryExpireDocumentCronJob        ; 0 5 0 ? * * * 
+                     ; jnjUYRegulatoryExpireDocumentCronJob        ; 0 5 0 ? * * *
+                     ; jnjPRRegulatoryExpireDocumentCronJob        ; 0 5 0 ? * * *
+#Trigger for Daily Customer Job
+                     ; JnjUpsertCustomerCompositeJob               ; 0 50 4 ? * * *
+INSERT_UPDATE JnjLaudoDeleteCronJob;code[unique = true]                   ; job(code)                          ;sessionLanguage(isocode);active[default = 'true'];countryCode
+                                   ;jnjBRRegulatoryExpireDocumentCronJob  ;jnjRegulatoryExpireDocumentCronJob  ;en                      ;                        ;BR
+                                   ;jnjARRegulatoryExpireDocumentCronJob  ;jnjRegulatoryExpireDocumentCronJob  ;en                      ;                        ;AR
+                                   ;jnjECRegulatoryExpireDocumentCronJob  ;jnjRegulatoryExpireDocumentCronJob  ;en                      ;                        ;EC
+                                   ;jnjCORegulatoryExpireDocumentCronJob  ;jnjRegulatoryExpireDocumentCronJob  ;en                      ;                        ;CO
+                                   ;jnjMXRegulatoryExpireDocumentCronJob  ;jnjRegulatoryExpireDocumentCronJob  ;en                      ;                        ;MX
+                                   ;jnjCERegulatoryExpireDocumentCronJob  ;jnjRegulatoryExpireDocumentCronJob  ;en                      ;                        ;CE
+                                   ;jnjCLRegulatoryExpireDocumentCronJob  ;jnjRegulatoryExpireDocumentCronJob  ;en                      ;                        ;CL
+                                   ;jnjPERegulatoryExpireDocumentCronJob  ;jnjRegulatoryExpireDocumentCronJob  ;en                      ;                        ;PE
+                                   ;jnjUYRegulatoryExpireDocumentCronJob  ;jnjRegulatoryExpireDocumentCronJob  ;en                      ;                        ;UY
+                                   ;jnjPRRegulatoryExpireDocumentCronJob  ;jnjRegulatoryExpireDocumentCronJob  ;en                      ;                        ;PR
+
+######################### LATAM JJCC to P360 Integration #######################
+$catalogVersion=catalogVersion(catalog(id[default=mstrProductCatalog]),version[default=Staged])[default=mstrProductCatalog:Staged][unique=true]
+
+INSERT_UPDATE ServicelayerJob; code[unique=true]             ; springId[unique=true]         ; active[default='true']
+                             ; jnjLAProductDetailToPCMJob    ; jnjProductDetailToPCMCronJob  ;
+                             ; jnjLAProductContentJob        ; jnjGTProductContentJob        ;
+                             ; jnjLAFetchImageJob            ; jnjGTFetchImageJob            ;
+                             ; jnjLAPCMHierarchyUpdateJob    ; jnjGTPCMHierarchyUpdateJob    ;
+
+## P360 Push job
+INSERT_UPDATE CronJob; code[unique=true]              ; job(code)                      ; singleExecutable ; sessionLanguage(isocode) ; active[default='true']
+                     ; jnjLAProductDetailToPCMCronJob ; jnjLAProductDetailToPCMJob     ; false            ; en                       ;
+
+## Regional MDD Pull Jobs
+INSERT_UPDATE JnjGTPCMIntegrationCronJob; code[unique=true]                        ; job(code)                 ; active[default='true'] ; isRegionJob[default='true'] ; sessionLanguage(isocode) ; sector[default='MEDICALDEVICES'] ;countryCode[default='LATAM'];$catalogVersion
+                                        ; jnjLAProductContentMDDRegionCronJob      ; jnjLAProductContentJob    ;                        ;                             ; en                       ;                                  ;
+                                        ; jnjLAFetchImageMDDRegionCronJob          ; jnjLAFetchImageJob        ;                        ;                             ; en                       ;                                  ;
+                                        ; jnjLAPCMHierarchyUpdateMDDRegionCronJob  ; jnjLAPCMHierarchyUpdateJob;                        ;                             ; en                       ;                                  ;
+
+## Regional PHR Pull Jobs
+INSERT_UPDATE JnjGTPCMIntegrationCronJob; code[unique=true]                        ; job(code)                 ; active[default='true'] ; isRegionJob[default='true'] ; sessionLanguage(isocode) ; sector[default='PHARMACEUTICAL'] ;countryCode[default='LATAM'];$catalogVersion
+                                        ; jnjLAProductContentPHRRegionCronJob      ; jnjLAProductContentJob    ;                        ;                             ; en                       ;                                  ;
+                                        ; jnjLAFetchImagePHRRegionCronJob          ; jnjLAFetchImageJob        ;                        ;                             ; en                       ;                                  ;
+                                        ; jnjLAPCMHierarchyUpdatePHRRegionCronJob  ; jnjLAPCMHierarchyUpdateJob;                        ;                             ; en                       ;                                  ;
+
+################################################################################
+
+
+######################### Latam Order Archival Cronjob #######################
+INSERT_UPDATE ServicelayerJob;code[unique=true];springId;active[default='true']
+                             ;jnjOrderArchivaljob;jnjOrderArchivalCronjob
+
+
+INSERT_UPDATE JnjOrderArchivalJobConfig; countryCode[unique=true][path-delimiter=!]; businessSectorConfig ; active[default='false']
+                                       ; BR ; PHR:24|MDD:24 ; true
+                                       ; AR ; PHR:24|MDD:24 ; true
+                                       ; MX ; PHR:24|MDD:24 ; true
+                                       ; CENCA ; PHR:24|MDD:24 ; true
+                                       ; CL ; PHR:24|MDD:24 ; true
+                                       ; CO ; PHR:24|MDD:24 ; true
+                                       ; EC ; PHR:24|MDD:24 ; true
+                                       ; PE ; PHR:24|MDD:24 ; true
+                                       ; PR ; PHR:24|MDD:24 ; true
+                                       ; UY ; PHR:24|MDD:24 ; true
+
+INSERT_UPDATE JnjLaOrderArchivalCronJob ; code[unique=true]       ; job(code)           ; sessionLanguage(isocode) ; active[default='true'] ; countryConfigList(countryCode)[ignorenull=true]
+                                        ; jnjOrderArchivalCronjob ; jnjOrderArchivaljob ; en                       ;                        ; BR,AR,MX,CENCA,CL,CO,EC,PR,PR,UY
+
+INSERT_UPDATE Trigger;cronjob(code)[unique=true];cronExpression;active;
+                     ;jnjOrderArchivalCronjob;0 0 0 1/1 * ? *;false
+################################################################################
+
+######################### Latam Retry ERP Order Creation Cronjob #######################
+INSERT_UPDATE ServicelayerJob; code[unique = true]                       ; springId[unique = true]                   ; active[default = 'true']
+                             ; jnjLaCreateERPOrderJob        ; jnjLaCreateERPOrderJob        ;
+
+INSERT_UPDATE ExportERPOrderCronjob; code[unique=true]              ; job(code)                      ; singleExecutable ; sessionLanguage(isocode) ; active[default='true']
+                     ; jnjLaCreateERPOrderCronJob ; jnjLaCreateERPOrderJob     ; false            ; en                      
+
+INSERT_UPDATE Trigger; cronjob(code)[unique = true]         ; cronExpression
+# Must run every 6 hours
+                     ; jnjLaCreateERPOrderCronJob                  ; 0 0 6 1/1 * ? *
+################################################################################
+
+################### SAP Failed Orders Report Cron Job ##########################
+INSERT_UPDATE ServicelayerJob; code[unique = true]                       ; springId[unique = true] ; active[default = 'true']
+                             ; jnjLaSAPFailedOrdersReportJob        ; jnjLaSAPFailedOrdersReportJob ;
+							 
+INSERT_UPDATE CronJob; code[unique=true]              ; job(code)  ;  singleExecutable ; sessionLanguage(isocode) ; active[default='true']
+                     ; jnjLaSAPERPFailedOrdersReportCronJob ; jnjLaSAPFailedOrdersReportJob ;  false   ; en   ;
+                     
+INSERT_UPDATE Trigger; cronjob(code)[unique = true]         ; cronExpression
+# Runs once in a day
+                     ; jnjLaSAPERPFailedOrdersReportCronJob    ; 0 0 0 * * ? *                
+
+################################################################################

@@ -1,0 +1,29 @@
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+# Initialization
+INSERT_UPDATE JnjGTIntSalesAlignmentOrg;salesOrgDivCd[unique=true];orgId[unique=true];delIndicator;lastUpdatedDate[dateformat=yyyy-MM-dd];parntOrgId;parntOrgTypeCd;orgTypeCd;orgEffectiveDate[dateformat=yyyy-MM-dd];orgEndDate[dateformat=yyyy-MM-dd];buisnessSector;sourceSystemId;recordStatus(code)[default='LOADING']
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT SLS_ORG_DIV_CD,ORG_ID,DEL_IND,LAST_UPDATE_DT,PARNT_ORG_ID,PARNT_ORG_TYP_CD,ORG_TYP_CD,ORG_EFFTV_DT,ORG_END_DT,BUSINESS_SECTOR,SOURCE_SYS_ID from STG_ALGN_ORG_AFFLN_EXTR_FF WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP"");"
+
+# Initialization
+INSERT_UPDATE JnjGTIntSalesAlignmentCust;salesOrgDivCd[unique=true,allownull=true];uniCustomerNumber[unique=true,allownull=true];orgId[unique=true,allownull=true];alnAfflnEffectiveDate[dateformat=yyyy-MM-dd];alnAfflnEndDate[dateformat=yyyy-MM-dd];delIndiactor;lastUpdatedDate[dateformat=yyyy-MM-dd];buisnessSector;sourceSystemId;recordStatus(code)[default='LOADING']
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT SLS_ORG_DIV_CD,CUSTOMER_NUM,ORG_ID,ALGN_AFFLN_EFFTV_DT,ALGN_AFFLN_END_DT,DEL_IND,LAST_UPDATE_DT,BUSINESS_SECTOR,SOURCE_SYS_ID from STG_ALGN_CUST_AFFLN_EXTR_FF WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP"");"
+
+# Initialization
+INSERT_UPDATE JnjGTIntSalesAlignmentUser;salesOrgDivCd[unique=true];uniCustomerNumber[unique=true];orgId[unique=true];alnAfflnEffectiveDate[dateformat=yyyy-MM-dd];alnAfflnEndDate[dateformat=yyyy-MM-dd];delIndiactor;lastUpdatedDate[dateformat=yyyy-MM-dd];orgTypeCd;primRepInd;wwid[unique=true,allownull=true];buisnessSector;sourceSystemId;recordStatus(code)[default='LOADING']
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT SLS_ORG_DIV_CD,CUSTOMER_NUM,ORG_ID,ALGN_AFFLN_EFFTV_DT,ALGN_AFFLN_END_DT,DEL_IND,LAST_UPDATE_DT,ORG_TYP_CD,PRIM_REP_IND,WWID,BUSINESS_SECTOR,SOURCE_SYS_ID from STG_ALGN_SREP_AFFLN_EXTR_FF WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP"");"
+
+
+# Initialization
+INSERT_UPDATE JnjGTIntSalesAlignmentProduct;salesOrgDivCd[unique=true];orgId[unique=true];alnAfflnEffectiveDate[dateformat=yyyy-MM-dd];alnAfflnEndDate[dateformat=yyyy-MM-dd];delIndiactor;lastUpdatedDate[dateformat=yyyy-MM-dd];franMajorProdGrpCd[unique=true];buisnessSector;sourceSysId[unique=true];recordStatus(code)[default='LOADING']
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT SLS_ORG_DIV_CD,ORG_ID,ALGN_AFFLN_EFFTV_DT,ALGN_AFFLN_END_DT,DEL_IND,LAST_UPDATE_DT,FRAN_MJR_PROD_GRP_CD,BUSINESS_SECTOR,SOURCE_SYS_ID from STG_ALGN_PROD_AFFLN_EXTR_FF WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP"");"

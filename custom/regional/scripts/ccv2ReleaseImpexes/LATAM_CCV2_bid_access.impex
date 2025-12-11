@@ -1,0 +1,2 @@
+insert_update usergroup;uid[unique=true,allow null=true];members(uid)[mode=replace];
+;bidGroup;;

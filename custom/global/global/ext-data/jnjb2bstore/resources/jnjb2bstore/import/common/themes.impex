@@ -1,0 +1,13 @@
+#
+# Import Themes
+# Import the themes supported by the store front
+#
+
+INSERT_UPDATE SiteTheme;code[unique=true]
+;jnj
+
+# Language
+$lang=en
+# SiteTheme
+UPDATE SiteTheme;code[unique=true];name[lang=$lang]
+;jnj;"JnJ"

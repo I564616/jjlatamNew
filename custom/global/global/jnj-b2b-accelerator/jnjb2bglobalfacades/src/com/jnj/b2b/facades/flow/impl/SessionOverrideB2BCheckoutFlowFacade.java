@@ -1,0 +1,98 @@
+/*
+ * [y] hybris Platform
+ *
+ * Copyright (c) 2000-2015 hybris AG
+ * All rights reserved.
+ *
+ * This software is the confidential and proprietary information of hybris
+ * ("Confidential Information"). You shall not disclose such Confidential
+ * Information and shall use it only in accordance with the terms of the
+ * license agreement you entered into with hybris.
+ *
+ *  
+ */
+package com.jnj.b2b.facades.flow.impl;
+
+import de.hybris.platform.acceleratorservices.enums.CheckoutFlowEnum;
+import de.hybris.platform.acceleratorservices.enums.CheckoutPciOptionEnum;
+import de.hybris.platform.core.Registry;
+import de.hybris.platform.servicelayer.session.SessionService;
+
+import org.apache.log4j.Logger;
+
+
+/**
+ * Specialised version of the DefaultB2BCheckoutFlowFacade that allows the checkout flow and pci strategy to be
+ * overridden in the session. This is primarily used for demonstration purposes and you may not need to use this
+ * sub-class in your environment.
+ */
+public class SessionOverrideB2BCheckoutFlowFacade extends DefaultB2BCheckoutFlowFacade
+{
+	private static final Logger LOG = Logger.getLogger(SessionOverrideB2BCheckoutFlowFacade.class);
+
+	public static final String B2B_SESSION_KEY_CHECKOUT_FLOW = "B2BSessionOverrideCheckoutFlow-CheckoutFlow";
+	public static final String B2B_SESSION_KEY_SUBSCRIPTION_PCI_OPTION = "B2BSessionOverrideCheckoutFlow-SubscriptionPciOption";
+
+
+	private SessionService sessionService;
+
+	protected SessionService getSessionService()
+	{
+		return sessionService;
+	}
+
+	public void setSessionService(final SessionService sessionService)
+	{
+		this.sessionService = sessionService;
+	}
+
+	@Override
+	public CheckoutFlowEnum getCheckoutFlow()
+	{
+		final CheckoutFlowEnum sessionOverride = getSessionService().getAttribute(B2B_SESSION_KEY_CHECKOUT_FLOW);
+		if (sessionOverride != null)
+		{
+			LOG.info("B2B Session Override CheckoutFlow [" + sessionOverride + "]");
+			return sessionOverride;
+		}
+
+		// Fallback to default
+		return super.getCheckoutFlow();
+	}
+
+	@Override
+	public CheckoutPciOptionEnum getSubscriptionPciOption()
+	{
+		final CheckoutPciOptionEnum sessionOverride = getSessionService().getAttribute(B2B_SESSION_KEY_SUBSCRIPTION_PCI_OPTION);
+		if (sessionOverride != null)
+		{
+			LOG.info("B2B Session Override SubscriptionPciOption [" + sessionOverride + "]");
+			return sessionOverride;
+		}
+
+		// Fallback to default
+		return super.getSubscriptionPciOption();
+	}
+
+	public static void resetSessionOverrides()
+	{
+		final SessionService sessionService = getStaticSessionService();
+		sessionService.removeAttribute(B2B_SESSION_KEY_CHECKOUT_FLOW);
+		sessionService.removeAttribute(B2B_SESSION_KEY_SUBSCRIPTION_PCI_OPTION);
+	}
+
+	public static void setSessionOverrideCheckoutFlow(final CheckoutFlowEnum checkoutFlow)
+	{
+		getStaticSessionService().setAttribute(B2B_SESSION_KEY_CHECKOUT_FLOW, checkoutFlow);
+	}
+
+	public static void setSessionOverrideSubscriptionPciOption(final CheckoutPciOptionEnum checkoutPciOption)
+	{
+		getStaticSessionService().setAttribute(B2B_SESSION_KEY_SUBSCRIPTION_PCI_OPTION, checkoutPciOption);
+	}
+
+	protected static SessionService getStaticSessionService()
+	{
+		return Registry.getApplicationContext().getBean("sessionService", SessionService.class);
+	}
+}

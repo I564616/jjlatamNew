@@ -1,0 +1,23 @@
+
+
+# 
+# Import the JNJ Product
+#
+
+
+$CONSproductCatalog=consProdCatalog
+
+
+$languages=en
+$languagesUS=en,es
+$defaultLanguage=en
+
+# Product catalog
+INSERT_UPDATE Catalog;id[unique=true]
+;$CONSproductCatalog
+
+# Product versions for product catalogs
+INSERT_UPDATE CatalogVersion;catalog(id)[unique=true];version[unique=true];active;languages(isoCode);readPrincipals(uid)
+;$CONSproductCatalog;Staged;false;$languages;
+;$CONSproductCatalog;Online;true;$languages;
+

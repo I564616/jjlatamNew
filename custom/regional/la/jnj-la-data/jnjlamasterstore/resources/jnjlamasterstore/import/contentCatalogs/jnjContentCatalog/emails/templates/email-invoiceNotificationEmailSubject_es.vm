@@ -1,0 +1,1 @@
+J&J Customer Connect: Envío y confirmación de factura - PO #${ctx.invoicedata.customerPO}, Ordenar #${ctx.invoicedata.sapOrderNumber}

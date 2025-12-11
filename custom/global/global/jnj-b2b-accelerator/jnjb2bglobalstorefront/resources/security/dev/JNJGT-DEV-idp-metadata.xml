@@ -1,0 +1,45 @@
+<md:EntityDescriptor entityID="https://fedlogin.jnj.com" ID="g7r1YVie-iqysV037OuX9rIpUDO" xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata">
+    <md:IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+        <md:KeyDescriptor use="signing">
+            <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                <ds:X509Data>
+                    <ds:X509Certificate>
+                        MIIF7jCCBNagAwIBAgIQeKTpWr9191YYEneaRBjjDjANBgkqhkiG9w0BAQsFADCBljELMAkGA1UE
+                        BhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEaMBgG
+                        A1UEChMRQ09NT0RPIENBIExpbWl0ZWQxPDA6BgNVBAMTM0NPTU9ETyBSU0EgT3JnYW5pemF0aW9u
+                        IFZhbGlkYXRpb24gU2VjdXJlIFNlcnZlciBDQTAeFw0xNzAxMTYwMDAwMDBaFw0yMDAxMTYyMzU5
+                        NTlaMIHKMQswCQYDVQQGEwJVUzEOMAwGA1UEERMFMDg4NjkxEzARBgNVBAgTCk5ldyBKZXJzZXkx
+                        EDAOBgNVBAcTB1Jhcml0YW4xHDAaBgNVBAkTEzEwMDMgVVMgUm91dGUgMjAyIE4xDzANBgNVBAkT
+                        BklUIEdUUzEfMB0GA1UEChMWSVRHVFMgQ29yZSBFbmdpbmVlcmluZzERMA8GA1UECxMIRWxpdGVT
+                        U0wxITAfBgNVBAMTGHBpbmdvbmUtZmVkbG9naW4uam5qLmNvbTCCASIwDQYJKoZIhvcNAQEBBQAD
+                        ggEPADCCAQoCggEBAKwRlAXWANT8v76SScbjxiiHL2KN5enf4KiBO73AsSJwfrOzrJMH9K2xLco6
+                        bGGW8K7hvOlW9FErgIghJJaQAS2Ck/GDwv6hf2s5nJuP6yFHId4CCjl4HAgVtPmdQyTfgWhtaDSj
+                        c42rJ2KRyE118EixncnGnbmLo7HOyT1P/3RC1LV2vP5NSkAJRTSfsDCA9Nmbw6fqOowTs3jq03IZ
+                        K/xQVsPjS27++G9AI2LPAzYeTlpKIxUqzIiXdHyhFIgSrGwzLxWpf2I8Lh9dPHnpkQiwpXJtl6NI
+                        sFk7Tl9k21w0xPSjS9GeY6x1zFymr7Xy4zAhEv60lbcI/uCIpvaTa6ECAwEAAaOCAgAwggH8MB8G
+                        A1UdIwQYMBaAFJrzK9rPrU+2L7sqSEgqErcbQsEkMB0GA1UdDgQWBBRtmExFr7g6z0c9P9Bryy4i
+                        OJlWWDAOBgNVHQ8BAf8EBAMCBaAwDAYDVR0TAQH/BAIwADAdBgNVHSUEFjAUBggrBgEFBQcDAQYI
+                        KwYBBQUHAwIwUAYDVR0gBEkwRzA7BgwrBgEEAbIxAQIBAwQwKzApBggrBgEFBQcCARYdaHR0cHM6
+                        Ly9zZWN1cmUuY29tb2RvLmNvbS9DUFMwCAYGZ4EMAQICMFoGA1UdHwRTMFEwT6BNoEuGSWh0dHA6
+                        Ly9jcmwuY29tb2RvY2EuY29tL0NPTU9ET1JTQU9yZ2FuaXphdGlvblZhbGlkYXRpb25TZWN1cmVT
+                        ZXJ2ZXJDQS5jcmwwgYsGCCsGAQUFBwEBBH8wfTBVBggrBgEFBQcwAoZJaHR0cDovL2NydC5jb21v
+                        ZG9jYS5jb20vQ09NT0RPUlNBT3JnYW5pemF0aW9uVmFsaWRhdGlvblNlY3VyZVNlcnZlckNBLmNy
+                        dDAkBggrBgEFBQcwAYYYaHR0cDovL29jc3AuY29tb2RvY2EuY29tMEEGA1UdEQQ6MDiCGHBpbmdv
+                        bmUtZmVkbG9naW4uam5qLmNvbYIcd3d3LnBpbmdvbmUtZmVkbG9naW4uam5qLmNvbTANBgkqhkiG
+                        9w0BAQsFAAOCAQEAtYLDZeHrFpbhWvKMQMRympN8muub0NEmanPScpm+gCauU12EvAfQe085+hZn
+                        p8bILJxqRTLh6sn48AonJ0wxbpFTnHlQJpZQ5HmtvNbJBb/FKzkK23O4/pOPjE9+HTJzBstOoWtu
+                        TykJedDuWc86VUDrcjz9EXPajwJsqkcxdUmZJI9DLMRgMlSyHAb8eNAlblMWnZyN1RcVf0w2zsAd
+                        yF3K5+YJ8c/J4QHIyjYWlVF611OSPaDbgnajBQavIoIyMqmLqKdVKQwO6dcsMu2VVJdw9KHkfNB3
+                        5HxwETPHFD6d95IwxZW4bbkXwAx6Ddvp285Gg+7zHcuNozO0RfZzVw==
+                    </ds:X509Certificate>
+                </ds:X509Data>
+            </ds:KeyInfo>
+        </md:KeyDescriptor>
+        <md:SingleLogoutService Location="https://sso.connect.pingidentity.com/sso/SLO.saml2" Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"/>
+        <md:SingleLogoutService Location="https://sso.connect.pingidentity.com/sso/SLO.saml2" Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"/>
+        <md:SingleSignOnService Location="https://sso.connect.pingidentity.com/sso/idp/SSO.saml2?idpid=4bdb216e-53db-42e9-8ff7-bc788a687360" Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"/>
+        <md:SingleSignOnService Location="https://sso.connect.pingidentity.com/sso/idp/SSO.saml2?idpid=4bdb216e-53db-42e9-8ff7-bc788a687360" Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"/>
+        <saml:Attribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" Name="PingOne.AuthenticatingAuthority" xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"/>
+        <saml:Attribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" Name="PingOne.idpid" xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"/>
+    </md:IDPSSODescriptor>
+</md:EntityDescriptor>

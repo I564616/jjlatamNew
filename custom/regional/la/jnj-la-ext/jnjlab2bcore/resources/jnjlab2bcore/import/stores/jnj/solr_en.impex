@@ -1,0 +1,201 @@
+#################################################################################################################################
+# Import the Solr configuration for the BR store
+#
+# Localization en
+#################################################################################################################################
+$lang=en
+
+
+$indexedTypeBR=jnjBRProductType
+
+
+UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true,default=$indexedTypeBR];name[unique=true];displayName[lang=$lang]
+
+ ;;code;Code;
+ ;;description;Description;
+
+
+
+# Define the available sorts
+UPDATE SolrSort;indexedType(identifier)[unique=true,default=$indexedTypeBR];code[unique=true];name[lang=en];name[lang=pt];name[lang=es]
+ ;;relevance;Relevance;relevância;pertinencia
+ ;;name-asc;Alphabetical Order (A - Z);Por ordem alfabética (A - Z);Orden alfabético (A - Z)
+ ;;name-desc;Alphabetical Order (Z - A);Por ordem alfabética (Z - A);Orden alfabético (Z - A)
+
+#################################################################################################################################
+# Import the Solr configuration for the MX store
+#
+# Localization en
+#################################################################################################################################
+
+$indexedTypeMX=jnjMXProductType
+
+
+UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true,default=$indexedTypeMX];name[unique=true];displayName[lang=$lang]
+
+ ;;code;Code;
+ ;;description;Description;
+
+
+
+# Define the available sorts
+UPDATE SolrSort;indexedType(identifier)[unique=true,default=$indexedTypeMX];code[unique=true];name[lang=en];name[lang=pt];name[lang=es]
+;;relevance;Relevance;relevância;pertinencia
+;;name-asc;Alphabetical Order (A - Z);Por ordem alfabética (A - Z);Orden alfabético (A - Z)
+;;name-desc;Alphabetical Order (Z - A);Por ordem alfabética (Z - A);Orden alfabético (Z - A)
+
+#################################################################################################################################
+# Import the Solr configuration for the PA store
+#
+# Localization en
+#################################################################################################################################
+
+$indexedTypePA=jnjPAProductType
+
+
+UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true,default=$indexedTypePA];name[unique=true];displayName[lang=$lang]
+
+ ;;code;Code;
+ ;;description;Description;
+
+
+
+# Define the available sorts
+UPDATE SolrSort;indexedType(identifier)[unique=true,default=$indexedTypePA];code[unique=true];name[lang=en];name[lang=pt];name[lang=es]
+ ;;relevance;Relevance;relevância;pertinencia
+ ;;name-asc;Alphabetical Order (A - Z);Por ordem alfabética (A - Z);Orden alfabético (A - Z)
+ ;;name-desc;Alphabetical Order (Z - A);Por ordem alfabética (Z - A);Orden alfabético (Z - A)
+ 
+################################################################################################################################# 
+# Import the Solr configuration for the EC store
+#
+# Localization en
+#################################################################################################################################
+
+$indexedTypeEC=jnjECProductType
+
+
+UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true,default=$indexedTypeEC];name[unique=true];displayName[lang=$lang]
+
+ ;;code;Code;
+ ;;description;Description;
+
+
+
+# Define the available sorts
+UPDATE SolrSort;indexedType(identifier)[unique=true,default=$indexedTypeEC];code[unique=true];name[lang=en];name[lang=pt];name[lang=es]
+ ;;relevance;Relevance;relevância;pertinencia
+ ;;name-asc;Alphabetical Order (A - Z);Por ordem alfabética (A - Z);Orden alfabético (A - Z)
+ ;;name-desc;Alphabetical Order (Z - A);Por ordem alfabética (Z - A);Orden alfabético (Z - A)
+ 
+ 
+#################################################################################################################################
+# Import the Solr configuration for the AR store
+#
+# Localization en
+#################################################################################################################################
+
+$indexedTypeAR=jnjARProductType
+
+
+UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true,default=$indexedTypeAR];name[unique=true];displayName[lang=$lang]
+
+ ;;code;Code;
+ ;;description;Description;
+
+
+
+# Define the available sorts
+UPDATE SolrSort;indexedType(identifier)[unique=true,default=$indexedTypeAR];code[unique=true];name[lang=en];name[lang=pt];name[lang=es]
+ ;;relevance;Relevance;relevância;pertinencia
+ ;;name-asc;Alphabetical Order (A - Z);Por ordem alfabética (A - Z);Orden alfabético (A - Z)
+ ;;name-desc;Alphabetical Order (Z - A);Por ordem alfabética (Z - A);Orden alfabético (Z - A)
+ 
+ #################################################################################################################################
+# Import the Solr configuration for the UY store
+#
+# Localization en
+#################################################################################################################################
+
+$indexedTypeUY=jnjUYProductType
+
+
+UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true,default=$indexedTypeUY];name[unique=true];displayName[lang=$lang]
+
+ ;;code;Code;
+ ;;description;Description;
+
+
+
+# Define the available sorts
+UPDATE SolrSort;indexedType(identifier)[unique=true,default=$indexedTypeUY];code[unique=true];name[lang=en];name[lang=pt];name[lang=es]
+ ;;relevance;Relevance;relevância;pertinencia
+ ;;name-asc;Alphabetical Order (A - Z);Por ordem alfabética (A - Z);Orden alfabético (A - Z)
+ ;;name-desc;Alphabetical Order (Z - A);Por ordem alfabética (Z - A);Orden alfabético (Z - A)
+
+ #################################################################################################################################
+# Import the Solr configuration for the CL store
+#
+# Localization en
+#################################################################################################################################
+
+$indexedTypeCL=jnjCLProductType
+
+
+UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true,default=$indexedTypeCL];name[unique=true];displayName[lang=$lang]
+
+ ;;code;Code;
+ ;;description;Description;
+
+
+
+# Define the available sorts
+UPDATE SolrSort;indexedType(identifier)[unique=true,default=$indexedTypeCL];code[unique=true];name[lang=en];name[lang=pt];name[lang=es]
+ ;;relevance;Relevance;relevância;pertinencia
+ ;;name-asc;Alphabetical Order (A - Z);Por ordem alfabética (A - Z);Orden alfabético (A - Z)
+ ;;name-desc;Alphabetical Order (Z - A);Por ordem alfabética (Z - A);Orden alfabético (Z - A)
+
+#################################################################################################################################
+# Import the Solr configuration for the CO store
+#
+# Localization en
+#################################################################################################################################
+
+$indexedTypeCO=jnjCOProductType
+
+
+UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true,default=$indexedTypeCO];name[unique=true];displayName[lang=$lang]
+
+;;code;Code;
+;;description;Description;
+
+
+
+# Define the available sorts
+UPDATE SolrSort;indexedType(identifier)[unique=true,default=$indexedTypeCO];code[unique=true];name[lang=en];name[lang=pt];name[lang=es]
+;;relevance;Relevance;relevância;pertinencia
+;;name-asc;Alphabetical Order (A - Z);Por ordem alfabética (A - Z);Orden alfabético (A - Z)
+;;name-desc;Alphabetical Order (Z - A);Por ordem alfabética (Z - A);Orden alfabético (Z - A)
+
+
+#################################################################################################################################
+# Import the Solr configuration for the PE store
+#
+# Localization en
+#################################################################################################################################
+
+$indexedTypePE=jnjPEProductType
+
+
+UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true,default=$indexedTypePE];name[unique=true];displayName[lang=$lang]
+
+;;code;Code;
+;;description;Description;
+
+
+
+# Define the available sorts
+UPDATE SolrSort;indexedType(identifier)[unique=true,default=$indexedTypePE];code[unique=true];name[lang=en];name[lang=pt];name[lang=es]
+;;relevance;Relevance;relevância;pertinencia
+;;name-asc;Alphabetical Order (A - Z);Por ordem alfabética (A - Z);Orden alfabético (A - Z)
+;;name-desc;Alphabetical Order (Z - A);Por ordem alfabética (Z - A);Orden alfabético (Z - A)

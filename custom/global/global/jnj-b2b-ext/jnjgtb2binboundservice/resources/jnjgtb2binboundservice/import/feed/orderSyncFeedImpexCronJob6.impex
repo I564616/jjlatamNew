@@ -1,0 +1,7 @@
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+# Initialization
+INSERT_UPDATE JnjGTIntOrderSchLine;confirmedQty;deliveryDate;deliveryLineBlock;lineStatus;sapOrderLineNumber[unique=true];sapOrderNumber[unique=true];schLineNumber[unique=true];schedShipDate;sourceSystemId[unique=true];recordTimeStamp[dateformat='yyyy-MM-dd hh:mm:ss']
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT t.CONFIRMED_QTY, t.SCHED_DELIVERY_DT, t.DELIVERY_LINE_BLOCK, t.LINE_STATUS, t.ORD_LINE_NUM, t.ORDER_NUM, t.SCHEDULE_LINE_NUM, t.SCHED_SHIP_DT, t.SOURCE_SYS_ID, t.REC_TIMESTAMP from STG_ORDER_LINE_SCH t, STG_ORDER_CJ cj WHERE t.order_num = cj.order_num and t.REC_TIMESTAMP = cj.REC_TIMESTAMP and t.BUSINESS_SECTOR = cj.BUSINESS_SECTOR"");"

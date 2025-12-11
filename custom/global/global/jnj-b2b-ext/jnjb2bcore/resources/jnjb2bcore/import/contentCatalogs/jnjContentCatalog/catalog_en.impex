@@ -1,0 +1,16 @@
+#
+# Import the JNJ Content Catalog
+#
+# Localization en
+#
+
+
+$MstrContentCatalog=mstrContentCatalog
+$BRContentCatalog=brContentCatalog
+$MXContentCatalog=mxContentCatalog
+$lang=en
+
+UPDATE ContentCatalog;id[unique=true];name[lang=$lang];
+ ;$MstrContentCatalog;"Master Content Catalog";
+ ;$BRContentCatalog;"Brazil Content Catalog"; 
+ ;$MXContentCatalog;"Maxico Content Catalog";

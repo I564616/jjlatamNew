@@ -1,0 +1,205 @@
+#tables{
+	box-shadow:0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 3px 11px 0 rgba(0, 0, 0, 0.19);
+}
+.panel-group .panel {
+      border-radius: 0px;
+}
+.panel-heading {
+      padding: 15px 25px;
+}
+.panel-heading a {
+    text-decoration:none;
+}
+.orderstatuspage  .orderStatus{
+    background: #fff;
+    font-size: 30px;
+    padding: 20px;
+    margin-top: 15px;
+	
+}
+/* swiper css starts here*/
+
+.swiper-container {
+	width: 100%;
+	height: 220px;
+	//border: 1px solid red;
+}
+.swiper-slide {
+	text-align: center;
+	font-size: 18px;
+	background: #fff;
+
+	/* Center slide text vertically */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+} 
+.deliveryStatus, .pendingStatus,.delayedStatus {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    background-color: #009900;
+    content: "";
+    position: relative;
+    left: -10px;
+}
+.pendingStatus{
+	background-color: #e6b800 !important;
+}
+.delayedStatus{
+	background-color: #901201 !important;
+} 
+.orderstatuspage div.dataTables_wrapper div.dataTables_filter, .orderstatuspage  #ordersTable_length, .orderstatuspage  div#ordersTable_wrapper .row:nth-child(3)
+{
+	display:none;	
+}
+.buildanordertext{
+	margin: 0px 12px auto;
+    width: 83%;	
+}
+.orderstatuspage table.dataTable{
+	margin-top: 0px !important;	
+}
+.orderstatuspage .shomoreandviewall{
+ 	margin-top:25px;	
+}
+.orderstatuspage .showmore{
+ 	  margin-top: 13px;
+}
+.orderstatuspage .shomoreandviewall {
+    //border: 1px solid #ccc;
+    padding: 20px 10px;
+    margin-top: -6px;
+    border-top: none;   
+	box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 3px 11px 0 rgba(0, 0, 0, 0.19);
+}
+.whitebg{
+	 background: #fff;	
+} 
+.orderstatuspage .placeOrder, .orderstatuspage .manageorder{
+	margin-top:20px;
+	padding: 0px;
+	box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 3px 11px 0 rgba(0, 0, 0, 0.19);
+}
+.orderstatuspage .borderforplaceorder{
+	    border-right: 1px solid #f2f2f2;
+    border-left: 1px solid #f2f2f2;
+}
+.orderstatuspage .borderforplaceorder1{
+	border-right: 1px solid #f2f2f2;	
+}
+ .orderstatuspage .placeOrder  div:first-child, .orderstatuspage .manageorder  div:first-child{
+	font-size: 25px;
+    padding: 15px 10px;
+   // border-bottom: 1px solid #ccc;
+	
+} 
+.orderstatuspage .placeorderrightborder{
+	border-right:10px solid #f2f2f2;
+}
+.orderstatuspage .disputeorder{
+	padding: 0px 9px;	
+}
+.orderstatuspage .manageorder{
+    padding: 0;
+}
+.swiper-container {
+    width: 100%;
+    height: 220px;
+    display: none;
+}
+.orderStatus span {
+    font-size: 17px;
+    color: #0a8caa;
+}
+@media (min-width: 768px){
+	.orderstatuspage .buildanordertext{
+		margin: 0px 24px auto;
+		width: 71%;
+	}
+	
+	
+}
+@media (max-width: 992px){
+	.orderstatuspage .placeorderrightborder{
+		border-right: none;
+	}
+	.orderstatuspage .placeordermobalign{
+		display: table-cell;
+		vertical-align: middle;
+		//float: none;
+		//text-align: left;
+	}   
+	.orderstatuspage .centered{
+		text-align: center;
+		padding: 14px;
+		display: table;
+	}
+	.orderstatuspage .padding10px{
+		padding:10px;
+		display: table-cell;
+		margin: 0 auto;
+		//width: 100%;
+	}
+	.floatnone{
+		float:none;
+		padding: 0;
+		text-align:left;
+	}
+}
+@media screen and (max-width: 767px) {
+	.orderstatuspage .showmore, .orderstatuspage table.dataTable {
+		display:none;	
+	}	
+	.orderstatuspage .padding10px{
+		padding:10px;
+		display: table-cell;
+		margin: 0 auto;
+		width: 100%;
+	}
+	.orderstatuspage .placeordermobalign{
+		display: table-cell;
+		vertical-align: middle;
+		float: none;
+		text-align: left;
+	}   
+	.orderstatuspage .centered{
+		text-align: center;
+		padding: 0px;
+		display: table;
+	}
+	.orderstatuspage .buildanordertext{
+		margin: 0;
+		width: 66%;;
+	}
+	.orderstatuspage .borderforplaceorder, .orderstatuspage .borderforplaceorder1, .orderstatuspage .placeorderrightborder{
+		border-right: none;
+		border-left: none	
+	}
+	.floatnone{
+		padding:10px;
+	}
+	.swiper-container {
+    width: 100%;
+    height: 220px;
+    display: block;
+	}
+	
+	.home_Contract_Link{
+	color:#0c8caa;
+	cursor: pointer;
+	
+}
+}

@@ -1,0 +1,32 @@
+#if(${ctx.invoiceBaseUrl} !='')
+#set ( $linkUrlContactUs = $ctx.invoiceBaseUrl + $ctx.footerLinkComponentList[0].url)
+#set ( $linkUrlNotification = $ctx.invoiceBaseUrl + $ctx.footerLinkComponentList[1].url)
+#else
+#set ($linkUrlContactUsEncode = '/jnjb2bglobalstorefront/en/mdd-deCMSsite')
+#set ( $linkUrlContactUs = $ctx.urlResolutionService.getWebsiteUrlForSite($ctx.site,"$linkUrlContactUsEncode",true,$ctx.footerLinkComponentList[0].url))
+#set ( $linkUrlNotification = $ctx.urlResolutionService.getWebsiteUrlForSite($ctx.site,"$linkUrlContactUsEncode",true,$ctx.footerLinkComponentList[1].url))
+#end
+<table width="100%">
+	<tr>
+		<p>
+			<center>
+				Should you require assistance, please send a message through <a href="$linkUrlContactUs">$ctx.footerLinkComponentList[0].linkName</a>
+			</center>
+		</p>
+
+	</tr>
+	<tr>	
+		<td style="border-top: 3px solid #0A8CAA;">
+			<p>
+				<center><a href="$linkUrlNotification">$ctx.footerLinkComponentList[1].linkName</a></center>
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<center>
+				${ctx.content}
+			</center>
+		</td>
+	</tr>
+</table>

@@ -1,0 +1,84 @@
+#help-page .help-accordian.panel{
+	margin-bottom:0px;
+}
+
+#help-page .boxshadow{
+	background-color:white;
+	//margin-bottom:20px;
+}
+#help-page .help-accordian-header{
+	padding: 10px 30px; /* updated by siva */
+    border-bottom: 1px solid #f2f2f2;
+}
+#help-page .help-accordian-body{
+	padding: 25px 50px;
+	background-color:rgb(251,251,251);
+	 border-bottom: 1px solid #f2f2f2;
+}
+#help-page .help-accordian-icon{
+	font-size: 12px;
+    top: -2px;
+	padding-right:5px;
+}
+#help-page .help-accordian-header .content{
+	display:inline-block;
+}
+#help-page .help-links{
+	margin-bottom:15px;	
+}
+#help-page label {
+    font-size: 14px;
+}
+#help-page .ref_no {    
+    font-size: 24px !important;
+    color: #0a8caa !important;
+    //font-weight: bold;
+	padding-left:0px;
+}
+
+#help-page #breadcrumbs-one li:nth-child(2) a:first-child {
+    background: #fff;
+}
+#help-page .breadcrumb {
+    padding-left: 0px;
+} 
+
+#help-page .basecontainer {
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 20px 40px 20px 20px;
+    background-color: #fff;
+}
+#help-page .help-contact-us-header{
+	padding:20px 30px;
+	border-bottom:1px solid #f2f2f2;
+	font-size:28px;
+}
+#help-page .help-contact-us-body{
+	padding:20px 30px;
+}
+#help-page .help-contact-us-form-elem{
+	margin-bottom:20px;
+}
+#help-page #help-contact-submit-btn{
+	width:120px;
+}
+@media screen and (max-width: 767px){
+	#help-page .help-accordian-icon{
+		display:table-cell;
+	}
+	#help-page .help-accordian-header .content{
+		display:table-cell;
+	}
+	#help-page .help-accordian-header .toggle-link{
+		display:table-row;
+	}
+
+}
+#help-page .modal-footer {
+        border-top: none;
+        //width: 120%;
+}
+.contactUsSubmitBtn-holder{
+	margin-top:10px;
+}

@@ -1,0 +1,17 @@
+<%@ tag body-content="empty" trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="template" tagdir="/WEB-INF/tags/responsive/template" %>
+<%@ taglib prefix="product" tagdir="/WEB-INF/tags/responsive/product" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
+<%@ taglib prefix="cms" uri="http://hybris.com/tld/cmstags" %>
+<%@ taglib prefix="ycommerce" uri="http://hybris.com/tld/ycommercetags" %>
+<%@ taglib prefix="label" uri="/WEB-INF/tld/message.tld"%>
+
+
+ <span>
+	 <span class="link-txt boldtext"><spring:message code="product.search.download"/></span>
+	 <input type="submit" class="tertiarybtn pdfdownloadlinks" value="<spring:message code="reports.excel.label" />" name="downloadType" /> | <input type="submit" class="tertiarybtn marginRight pdfdownloadlinks" value="<spring:message code="reports.pdf.label" />" name="downloadType"  />
+											
+ </span> 

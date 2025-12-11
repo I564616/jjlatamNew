@@ -1,0 +1,36 @@
+#Tue, 29 Nov 2016 14:34:22 +0100
+# -----------------------------------------------------------------------
+# [y] hybris Platform 
+# 
+# Copyright (c) 2000-2016 hybris AG
+# All rights reserved.
+#  
+# This software is the confidential and proprietary information of hybris 
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with hybris.
+#
+#  
+# -----------------------------------------------------------------------
+
+# you can put key/value pairs here.
+# Use Config.getParameter(..) to retrieve the values during runtime.
+
+jnjlaordertemplateaddon.key=value
+
+# Specifies the location of the spring context file added automatically to the global platform application context.
+jnjlaordertemplateaddon.application-context=jnjlaordertemplateaddon-spring.xml
+
+yacceleratorstorefront.additionalWebSpringConfigs.jnjlaordertemplateaddon=classpath\:/jnjlaordertemplateaddon/web/spring/jnjlaordertemplateaddon-web-spring.xml
+
+
+
+jnjlaordertemplateaddon.javascript.paths.responsive=/responsive/common/js/jnjlaordertemplateaddon-3.0.0.js;/responsive/common/js/acc.laCreateTemplate-3.0.0.js;/responsive/common/js/acc.laAddToCartOrderTemplate.js;/responsive/common/js/acc.laOrderHistory.js
+jnjlaordertemplateaddon.css.paths.responsive=/responsive/common/css/jnjlaordertemplateaddon-latam_3.4.2.css
+
+yb2bacceleratorstorefront.wro4jconfigscan.jnjlaordertemplateaddon=true
+
+jnjb2bglobalstorefront.additionalWebSpringConfigs.jnjlaordertemplateaddon=classpath:/jnjlaordertemplateaddon/web/spring/jnjlaordertemplateaddon-web-spring.xml
+
+order.delivery.defaultdate=01/01/0001
+order.delivery.schedule.date=12/12/2016

@@ -1,0 +1,1728 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<items xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="items.xsd">
+
+    <collectiontypes>
+        <collectiontype elementtype="JnjProductSalesOrg" code="JnjProductSalesOrgList" type="list"/>
+        <collectiontype elementtype="java.lang.String" code="errorMessageList" type="list"/>
+        <collectiontype elementtype="JnJLaUserAccountPreference" code="JnJUserAccountPreferenceList" type="list"/>
+        <collectiontype elementtype="AbstractOrderEntry" code="OrderEntryList" type="list"/>
+        <collectiontype elementtype="JnJB2bCustomer" code="JnJB2bCustomerList" type="list"/>
+        <collectiontype elementtype="java.lang.String" code="cronJobMonitoringEmailDataList" autocreate="true" type="list" />
+        <collectiontype elementtype="JnjOrderArchivalJobConfig" code="JnjOrderArchivalJobConfigList" type="list"/>
+        <collectiontype elementtype="Order" code="sapFailedOrdersList" autocreate="true" generate="false" type="list"/>
+        <collectiontype elementtype="java.lang.String" code="invoiceEmailDataList"
+                        autocreate="true" type="list" />
+        <collectiontype elementtype="JnjOrderTypesEnum" code="OrderTypesList" autocreate="true" type="list"/>
+        <collectiontype elementtype="java.lang.String" code="MonthDates" type="list"/>
+        <collectiontype elementtype="java.lang.String" code="jnjOrderCodes" type="list"/>
+        <collectiontype elementtype="java.lang.String" code="accountIdList" type="list"/>
+    </collectiontypes>
+
+
+    <enumtypes>
+        <enumtype code="OrderStatus" autocreate="false" generate="false">
+            <value code="PARTIALLY_DELIVERED"/>
+            <value code="UNDER_ANALYSIS"/>
+            <value code="ERP_EXPORT_ERROR" />
+        </enumtype>
+
+        <enumtype code="ErrorMessageType" dynamic="true">
+            <value code="S"/>
+            <value code="E"/>
+            <value code="W"/>
+        </enumtype>
+
+        <enumtype code="Scope" dynamic="true">
+            <value code="Header"/>
+            <value code="Ignore"/>
+            <value code="Line"/>
+            <value code="Default"/>
+        </enumtype>
+
+        <enumtype code="JnjTargetCatalogs" dynamic="true">
+            <value code="BR"/>
+            <value code="MX"/>
+            <value code="CENCA"/>
+            <value code="EC"/>
+            <value code="AR"/>
+            <value code="UY"/>
+            <value code="CL"/>
+            <value code="CO"/>
+            <value code="PE"/>
+            <value code="PR"/>
+            <value code="ALLCATALOGS"/>
+        </enumtype>
+
+        <enumtype code="JnjOrderTypesEnum" dynamic="true" autocreate="false"
+                  generate="false">
+            <value code="ZSER2"/>
+            <value code="ZKGW"/>
+            <value code="ZOS"/>
+            <value code="ZSIN"/>
+            <value code="ZIND"/>
+            <value code="_9SES"/>
+            <value code="ZSES"/>
+            <value code="ZFR"/>
+            <value code="ZSE2"/>
+            <value code="ZSR2"/>
+            <value code="ZSM"/>
+            <value code="ZRO"/>
+            <value code="ZINS"/>
+        </enumtype>
+
+        <enumtype code="ContractDocumentTypeEnum" dynamic="true" autocreate="false" generate="false">
+            <value code="ZCI" />
+        </enumtype>
+
+        <enumtype code="JnJEmailPeriodicity" dynamic="true">
+            <value code="DAILY"/>
+            <value code="CONSOLIDATED"/>
+            <value code="IMMEDIATE"/>
+            <value code="NONE"/>
+        </enumtype>
+
+        <enumtype code="JnJOrderColumnStatus" dynamic="true">
+            <value code="A"/>
+            <value code="B"/>
+            <value code="C"/>
+            <value code="D"/>
+        </enumtype>
+
+        <enumtype code="OrderEntryStatus" autocreate="false" generate="false" dynamic="true">
+            <value code="PARTIALLY_INVOICED"/>
+            <value code="PARTIALLY_DELIVERED"/>
+            <value code="PARTIALLY_SHIPPED"/>
+            <value code="DELIVERED"/>
+            <value code="UNDER_ANALYSIS"/>
+        </enumtype>
+
+        <enumtype code="JnJUploadedFileStatus" dynamic="true">
+            <value code="PENDING"/>
+            <value code="RUNNING"/>
+            <value code="SUCCESS"/>
+            <value code="ERROR"/>
+        </enumtype>
+
+        <enumtype code="JnJFileError" dynamic="true">
+            <value code="NOT_FOUND"/>
+            <value code="WRONG_FORMAT"/>
+            <value code="UNABLE_TO_READ"/>
+            <value code="PARTIALLY_PROCESSED"/>
+        </enumtype>
+        
+         <enumtype code="ProductReferenceTypeEnum" autocreate="false" generate="false">
+            <value code="SUBSTITUTE_PRODUCTS"/>
+        </enumtype>
+
+        <enumtype code="JnJEmailFrequency" dynamic="true">
+            <value code="DAILY"/>
+            <value code="WEEKLY"/>
+            <value code="MONTHLY"/>
+        </enumtype>
+        <enumtype code="JnJDayOfTheWeek" dynamic="true">
+            <value code="SUNDAY"/>
+            <value code="MONDAY"/>
+            <value code="TUESDAY"/>
+            <value code="WEDNESDAY"/>
+            <value code="THURSDAY"/>
+            <value code="FRIDAY"/>
+            <value code="SATURDAY"/>
+        </enumtype>
+    </enumtypes>
+    <maptypes>
+        <maptype code="JnjLAResetPasswordEmailMap" argumenttype="java.lang.String" returntype="java.lang.String"	autocreate="true" generate="false" />
+    </maptypes>
+    <relations>
+        <relation code="CronJobErrorRecordsRelation" localized="false">
+            <sourceElement qualifier="cronJob" type="CronJob" cardinality="one">
+                <description>assigned CronJob</description>
+                <modifiers read="true" write="false" initial="true" optional="true" search="true"/>
+            </sourceElement>
+            <targetElement qualifier="errorRecords" type="EmailAttachment" cardinality="many" collectiontype="list">
+                <description>list of email attachments</description>
+                <modifiers read="true" write="false" initial="false" search="true" partof="true"/>
+            </targetElement>
+        </relation>
+
+        <relation code="JnJInvoice_OrderRelation" localized="false">
+            <sourceElement type="Order" qualifier="order" cardinality="one">
+                <modifiers read="true" write="true" optional="true"/>
+            </sourceElement>
+            <targetElement type="JnJInvoiceOrder" qualifier="jnjlaInvoices" cardinality="many">
+                <modifiers read="true" write="true" optional="true"/>
+            </targetElement>
+        </relation>
+
+        <relation code="JnjLaConsolidatedEmailProcess_OrderRelation" localized="false">
+            <sourceElement type="JnjLaConsolidatedEmailProcess" qualifier="emailProcess" cardinality="one">
+                <modifiers read="true" write="true" optional="true"/>
+            </sourceElement>
+            <targetElement type="Order" qualifier="reportOrders" cardinality="many">
+                <modifiers read="true" write="true" optional="true"/>
+            </targetElement>
+        </relation>
+
+	<relation code="JnJB2bUnitToContractRel" localized="false"
+		generate="true" autocreate="true">
+		<deployment table="JnJB2bToUnitContractRel"
+			typecode="11999" />
+		<sourceElement type="B2bUnit" qualifier="accounts"
+			cardinality="many" collectiontype="set">
+		</sourceElement>
+		<targetElement type="JnjContract" qualifier="jnjContracts"
+			cardinality="many" collectiontype="set" ordered="false">
+		</targetElement>
+	</relation>
+	
+ 
+    </relations>
+
+    <itemtypes>
+
+        <itemtype code="JnjLAOrderPermutationMatrix">
+            <description>Order Header Permutation Matrix: specify the status of an order, according to the value of its order lines</description>
+            <deployment table="JNJ_LA_ORDER_PERM_MATRIX" typecode="15024"/>
+            <attributes>
+                <attribute qualifier="hasCreated" type="java.lang.Boolean">
+                    <persistence type="property" />
+                    <modifiers optional="false" initial="true" read="true" write="true" unique="true" />
+                     <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="hasUnderAnalysis" type="java.lang.Boolean">
+                    <persistence type="property" />
+                    <modifiers optional="false" initial="true" read="true" write="true" unique="true" />
+                     <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="hasBeingProcessed" type="java.lang.Boolean">
+                    <persistence type="property" />
+                    <modifiers optional="false" initial="true" read="true" write="true" unique="true" />
+                     <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="hasInPicking" type="java.lang.Boolean">
+                    <persistence type="property" />
+                    <modifiers optional="false" initial="true" read="true" write="true" unique="true" />
+                     <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="hasPartiallyInvoiced" type="java.lang.Boolean">
+                    <persistence type="property" />
+                    <modifiers optional="false" initial="true" read="true" write="true" unique="true" />
+                     <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="hasInvoiced" type="java.lang.Boolean">
+                    <persistence type="property" />
+                    <modifiers optional="false" initial="true" read="true" write="true" unique="true" />
+                     <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="hasPartiallyShipped" type="java.lang.Boolean">
+                    <persistence type="property" />
+                    <modifiers optional="false" initial="true" read="true" write="true" unique="true" />
+                     <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="hasShipped" type="java.lang.Boolean">
+                    <persistence type="property" />
+                    <modifiers optional="false" initial="true" read="true" write="true" unique="true" />
+                     <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="hasPartiallyDelivered" type="java.lang.Boolean">
+                    <persistence type="property" />
+                    <modifiers optional="false" initial="true" read="true" write="true" unique="true" />
+                     <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="hasDelivered" type="java.lang.Boolean">
+                    <persistence type="property" />
+                    <modifiers optional="false" initial="true" read="true" write="true" unique="true" />
+                     <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="hasBackordered" type="java.lang.Boolean">
+                    <persistence type="property" />
+                    <modifiers optional="false" initial="true" read="true" write="true" unique="true" />
+                     <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="hasCancelled" type="java.lang.Boolean">
+                    <persistence type="property" />
+                    <modifiers optional="false" initial="true" read="true" write="true" unique="true" />
+                     <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="status" type="OrderStatus">
+                    <persistence type="property" />
+                    <modifiers optional="false" initial="true" read="true" write="true" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjOrderType">
+            <description>This model holds the Values for JnJ Order Type</description>
+            <deployment table="Jnj_Order_Type" typecode="15001"/>
+            <attributes>
+                <attribute qualifier="code" type="java.lang.String">
+                    <persistence type="property"/>
+                    <modifiers optional="false" read="true" write="true"
+                               unique="true"/>
+                </attribute>
+                <attribute qualifier="description" type="java.lang.String">
+                    <persistence type="property"/>
+                    <modifiers optional="true" read="true" write="true"/>
+                </attribute>
+                <attribute qualifier="name" type="localized:java.lang.String">
+                    <modifiers optional="true" read="true" write="true"/>
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnJLaB2BUnit" extends="JnJB2BUnit">
+            <description>creating a new JnJLaB2BUnit which will extends JnJB2BUnit</description>
+            <deployment table="JNJ_LA_B2BUnit" typecode="15002"/>
+            <attributes>
+                <attribute qualifier="type" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="salesOrg" type="jnjSalesOrgCustomerList">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="cnpj" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="bothIndicator" type="java.lang.String">
+                    <persistence type="property"/>
+                    <defaultvalue>String.valueOf("N")</defaultvalue>
+                </attribute>
+                <attribute qualifier="partialDelivFlag" type="java.lang.Boolean">
+                    <persistence type="property"/>
+                    <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="stdOrderFileUpload" type="java.lang.Boolean">
+                    <persistence type="property"/>
+                    <modifiers optional="true" read="true" write="true" />
+                    <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                </attribute> 
+                <attribute qualifier="eligibleForSubstitutes" type="java.lang.Boolean">
+                    <persistence type="property"/>
+                    <modifiers optional="true" read="true" write="true" />
+                    <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="industryCode1" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="customerFreightType" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjContractEntry" autocreate="false" generate="false">
+            <attributes>
+                <attribute type="java.lang.String" qualifier="eCCContractNum">
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjIndirectPayer">
+            <description>Jnj Indirect Payer contains the country model and indirect payer data.
+            </description>
+            <deployment table="JnjIndirectPayer" typecode="15003"/>
+            <attributes>
+                <attribute qualifier="country" type="Country">
+                    <modifiers unique="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="indirectPayer" type="java.lang.String">
+                    <modifiers unique="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="indirectPayerName" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+
+        <itemtype code="JnjOrderChannel">
+            <description>This model holds the Values for JnJ Order Channel</description>
+            <deployment table="Jnj_Order_Channel" typecode="15004"/>
+            <attributes>
+                <attribute qualifier="code" type="java.lang.String">
+                    <persistence type="property"/>
+                    <modifiers optional="false" read="true" write="true"
+                               unique="true"/>
+                </attribute>
+                <attribute qualifier="description" type="java.lang.String">
+                    <persistence type="property"/>
+                    <modifiers optional="true" read="true" write="true"/>
+                </attribute>
+                <attribute qualifier="name" type="localized:java.lang.String">
+                    <modifiers optional="true" read="true" write="true"/>
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+		<itemtype code="AbstractOrder" autocreate="false" generate="false"
+			abstract="true">
+			<attributes>
+				<attribute type="java.lang.String" qualifier="indirectCustomer">
+					<persistence type="property" />
+				</attribute>
+				<attribute type="java.lang.String" qualifier="indirectPayer">
+					<persistence type="property" />
+				</attribute>
+				<attribute type="java.lang.Double" qualifier="totalFee">
+					<persistence type="property" />
+					<defaultvalue>Double.valueOf(0)</defaultvalue>
+				</attribute>
+				<attribute qualifier="orderChannel" type="JnjOrderChannel">
+					<persistence type="property" />
+				</attribute>
+				<attribute qualifier="jnjOrderType" type="JnjOrderType">
+					<persistence type="property" />
+				</attribute>
+				<attribute qualifier="holdCreditCardFlag" type="java.lang.Boolean">
+					<persistence type="property" />
+					 <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+				</attribute>
+				<attribute type="java.lang.String" qualifier="freeItem">
+					<persistence type="property" />
+				</attribute>
+				<attribute type="java.lang.String" qualifier="freeItemsQuanity">
+					<persistence type="property" />
+				</attribute>
+				<attribute type="java.lang.String" qualifier="freeItemsAvailabilityStatus">
+					<persistence type="property" />
+				</attribute>
+				<attribute type="java.lang.String" qualifier="freeItemUnit">
+					<persistence type="property" />
+				</attribute>
+				<attribute type="jnjDeliveryScheduleList" qualifier="freeGoodScheduleLines">
+					<persistence type="property" />
+				</attribute>
+				<attribute qualifier="isContractCart" type="java.lang.Boolean">
+					<persistence type="property" />
+					<modifiers optional="false" />
+					<defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+				</attribute>
+				<attribute type="java.lang.Integer" qualifier="retryAttempts">
+					<persistence type="property" />
+				</attribute>
+				<attribute type="StringList" qualifier="empenhoFilesFullPath">
+					<persistence type="property" />
+				</attribute>
+				<attribute type="java.lang.String" qualifier="externalOrderRefNumber">
+					<persistence type="property" />
+				</attribute>
+				<attribute qualifier="customerFreightType" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+				<attribute qualifier="complementaryInfo" type="java.lang.String">
+                    <persistence type="property">
+                        <columntype>
+                            <value>HYBRIS.LONG_STRING</value>
+                        </columntype>
+                        <columntype database="sap">
+                            <value>nvarchar(5000)</value>
+                        </columntype>
+                        <columntype database="oracle">
+                            <value>varchar2(4000)</value>
+                        </columntype>
+                        <columntype database="mysql">
+                            <value>text</value>
+                        </columntype>
+                        <columntype database="sqlserver">
+                            <value>nvarchar(max)</value>
+                        </columntype>
+                    </persistence>
+                    <description>Complementary Information</description>
+                </attribute>
+			</attributes>
+            <indexes>
+                <index name="jnjOrderRefNumberIDX" >
+                    <key attribute="externalOrderRefNumber"/>
+                </index>
+            </indexes>
+		</itemtype>
+
+        <itemtype code="AbstractOrderEntry" autocreate="false" generate="false" abstract="true">
+            <attributes>
+                <attribute type="java.lang.String" qualifier="indirectCustomerName">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="indirectPayer">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="indirectPayerName">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="gTSHold" type="java.lang.String">
+                    <modifiers read="true" write="true" search="true"
+                               optional="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="expectedPrice">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="freeItem">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="freeItemsLogicOriginalQuantity">
+                    <description>Stores the original quantity ordered for entries with inclusive and exclusive logic for free items.</description>
+                    <persistence type="property" qualifier="p_freeitemslogicoriginalquanti"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="freeItemsQuanity">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="freeItemsAvailabilityStatus">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="freeItemUnit">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="jnjDeliveryScheduleList" qualifier="freeGoodScheduleLines">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.boolean" qualifier="showInfoLbl">
+                    <modifiers unique="true"/>
+                    <persistence type="property"/>
+                    <defaultvalue>Boolean.TRUE</defaultvalue>
+                </attribute>
+                <attribute type="java.lang.boolean" qualifier="showDescLbl">
+                    <modifiers unique="true"/>
+                    <persistence type="property"/>
+                    <defaultvalue>Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="carrierEstDeliveryDateStatus" type="JnJOrderColumnStatus">
+                    <persistence type="property" qualifier="p_estimatedDeliveryDateStatus"/>
+                </attribute>
+                <attribute qualifier="carrierActualDeliveryDateStatus" type="JnJOrderColumnStatus">
+                    <persistence type="property" qualifier="p_actualDeliveryDateStatus"/>
+                </attribute>
+                <attribute qualifier="backorderStatus" type="JnJOrderColumnStatus">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="lineOverallStatus" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="deliveryStatus" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="lineInvoiceStatus" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="invoicedQuantity" type="java.lang.Long">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="shippedQuantity" type="java.lang.Long">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="deliveredQuantity" type="java.lang.Long">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="previousStatus" type="OrderEntryStatus">
+                    <modifiers read="true" write="true" search="true" optional="true" />
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="pendingImmediateEmail" type="java.lang.Boolean">
+                    <persistence type="property"/>
+                    <defaultvalue>Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="pendingDailyEmail" type="java.lang.Boolean">
+                    <persistence type="property"/>
+                    <defaultvalue>Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="pendingConsolidatedEmail" type="java.lang.Boolean">
+                    <persistence type="property"/>
+                    <defaultvalue>Boolean.FALSE</defaultvalue>
+                </attribute>
+            </attributes>
+          </itemtype>
+        <itemtype code="OrderEntry"
+                  extends="AbstractOrderEntry"
+                  jaloclass="de.hybris.platform.jalo.order.OrderEntry"
+                  autocreate="false"
+                  generate="false">
+        </itemtype>
+
+        <itemtype code="JnJProductSalesOrg">
+            <description>creating a new JnjProductSalesOrgModel which will have association with JnjProductModel</description>
+            <deployment table="JNJ_PRODUCT_SALES_ORG" typecode="15005"/>
+            <attributes>
+                <attribute qualifier="numeratorSUOM" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="numeratorDUOM" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="salesOrg" type="java.lang.String">
+                    <persistence type="property"/>
+                    <modifiers unique="true"/>
+                </attribute>
+                <attribute qualifier="productCode" type="java.lang.String">
+                    <persistence type="property"/>
+                    <modifiers unique="true"/>
+                </attribute>
+                <attribute qualifier="disContinue" type="java.lang.boolean">
+                    <persistence type="property"/>
+                    <defaultvalue>Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="ecommerceFlag" type="java.lang.boolean">
+                    <persistence type="property"/>
+                    <defaultvalue>Boolean.TRUE</defaultvalue>
+                </attribute>
+                <attribute qualifier="salesUnitOfMeasure" type="Unit">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="deliveryUnitOfMeasure" type="Unit">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="status" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="coldChainProduct" type="java.lang.boolean">
+                    <persistence type="property"/>
+                    <defaultvalue>Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="active" type="java.lang.boolean">
+                    <modifiers unique="true"/>
+                    <persistence type="property"/>
+                    <defaultvalue>Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="offlineDate" type="java.util.Date">
+                    <modifiers read="true" write="true" search="true"
+                               optional="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                  <attribute qualifier="sector" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+            <indexes>
+                <index name="ProductSalesSalesOrg">
+                    <key attribute="salesOrg"/>
+                </index>
+                <index name="ProductSalesProductCode">
+                    <key attribute="productCode"/>
+                </index>
+                <index name="ProductSalesActive">
+                    <key attribute="active"/>
+                </index>
+                </indexes>
+        </itemtype>
+
+        <itemtype code="JnJLaProduct" extends="JnJProduct">
+            <description>creating a new JnJLaProductModel which will extends JnJProductModel</description>
+            <deployment table="JNJ_LA_PRODUCT" typecode="15006"/>
+            <attributes>
+                <attribute qualifier="salesOrgList" type="JnjProductSalesOrgList">
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" optional="true"
+                               partof="true"/>
+                </attribute>
+                  <attribute qualifier="division" type="java.lang.String">
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" optional="true"
+                               search="true"/>
+                </attribute>
+                <attribute qualifier="productSalesOrgModifiedTime" type="java.util.Date">
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" search="true"
+                               optional="true"/>
+                    <description>This is the modified time of the JnjproductSalesOrg associated with this Product. Added to enable force sync on Product when
+                        ProductSalesOrg are updated.
+                    </description>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjCommercialUomConversion">
+            <deployment table="JnjCommercialUom" typecode="15007"/>
+            <attributes>
+                <attribute type="java.lang.String" qualifier="isoCode">
+                    <modifiers unique="true" read="true" write="true" search="true"
+                               optional="false"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="commercialCode" type="java.lang.String">
+                    <modifiers unique="true" write="true" read="true"
+                               optional="false"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="primaryCode">
+                    <modifiers read="true" write="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="measurement" type="java.lang.String">
+                    <modifiers write="true" read="true"/>
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjProductCatalogsSyncJob" extends="CatalogVersionSyncJob"
+                  jaloclass="com.jnj.la.core.jalo.JnjProductCatalogsSyncJob">
+            <deployment table="Jnj_ProdCatalog_SyncJob" typecode="15008"/>
+            <attributes>
+                <attribute qualifier="country" type="Country">
+                    <modifiers unique="true"/>
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjCronJob" extends="CronJob">
+            <description>JnJ custom CronJob.</description>
+            <deployment table="Jnj_Cron_Job" typecode="15009"/>
+            <attributes>
+                <attribute type="JnjTargetCatalogs" qualifier="targetCatalog">
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                    <description>
+                        Holds the enum, representing the catalog name on which Hide Category needs to be Processed.
+                    </description>
+                    <defaultvalue>em().getEnumerationValue("JnjTargetCatalogs", "BR")</defaultvalue>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjSAPErrorTranslationTable">
+            <deployment table="JnjSAPErrorTable" typecode="15010"/>
+            <attributes>
+                <attribute type="java.lang.String" qualifier="key">
+                    <modifiers unique="true" read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="description">
+                    <modifiers read="true" write="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="errorMessageType" type="errorMessageType">
+                    <modifiers initial="true" write="true" read="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="scope" type="scope">
+                    <modifiers initial="true" write="true" read="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.Integer" qualifier="startPostion">
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.Integer" qualifier="endPosition">
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="tanslatedMessage" type="localized:java.lang.String">
+                    <modifiers read="true" write="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.Integer" qualifier="noOfExtractions">
+                    <modifiers read="true" write="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.Integer" qualifier="firstExtraction">
+                    <modifiers read="true" write="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.Integer" qualifier="secondExtraction">
+                    <modifiers read="true" write="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.Integer" qualifier="thirdExtraction">
+                    <modifiers read="true" write="true"/>
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjDropShipmentDetails" autocreate="false"
+                  generate="false">
+            <attributes>
+                <attribute qualifier="shipper" type="java.lang.String">
+                    <modifiers read="true" write="true" search="true"
+                               optional="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="principal" type="java.lang.String">
+                    <modifiers read="true" write="true" search="true"
+                               optional="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="shipperMD" type="java.lang.String">
+                    <modifiers read="true" write="true" search="true"
+                               optional="true"/>
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="Country" autocreate="false" generate="false"
+                  abstract="true">
+            <attributes>
+                <attribute qualifier="eligibleUserGroup" type="UserGroup">
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjSellOutReport">
+            <deployment table="JnjSellOutReport" typecode="15012"/>
+            <attributes>
+                <attribute type="java.lang.String" qualifier="docName">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="customer">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="company">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="user">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.util.Date" qualifier="date">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="JnjB2bUnit" qualifier="b2bUnitId">
+                    <persistence type="property"/>
+                    <modifiers optional="false"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjUploadOrderSHA">
+            <description>JnjUploadOrderSHA contains the 512 bit Hash related to file uploaded</description>
+            <deployment table="Jnj_Upload_Order_SHA" typecode="15013"/>
+            <attributes>
+                <attribute type="JnJB2bCustomer" qualifier="user">
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="soldTo">
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="userFileHashId">
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property">
+                        <columntype>
+                            <value>VARCHAR(512)</value>
+                        </columntype>
+                        	<columntype database="sap">
+							<value>nvarchar(5000)</value>
+						</columntype>
+						<columntype database="oracle">
+							<value>varchar2(4000)</value>
+						</columntype>
+						<columntype database="mysql">
+							<value>text</value>
+						</columntype>
+						<columntype database="sqlserver">
+							<value>nvarchar(max)</value>
+						</columntype>						
+                    </persistence>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="userFileName">
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.util.Date" qualifier="userFileTS">
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="xmlFileName">
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="RecordStatus" qualifier="xmlFileStatus">
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.Integer" qualifier="xmlFileCount">
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.Integer" qualifier="nodeId">
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="JnjB2bUnit" qualifier="b2bUnitId">
+                    <persistence type="property"/>
+                    <modifiers optional="false"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+        <itemtype code="LoadTranslation">
+            <deployment table="LOAD_TRANSLATION" typecode="15014"/>
+            <attributes>
+                <attribute qualifier="b2bUnit" type="B2BUnit">
+                    <persistence type="property"/>
+                    <modifiers unique="true"/>
+                </attribute>
+                <attribute qualifier="productId" type="JnJProduct">
+                    <persistence type="property"/>
+                    <modifiers unique="true"/>
+                </attribute>
+                <attribute qualifier="custUOM" type="Unit">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="custMaterialNum" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="baseUOM" type="Unit">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="customerUOM" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="denominator" type="java.lang.Integer">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="numerator" type="java.lang.Integer">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="custDevUom" type="Unit">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="catalogId" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+             <indexes>
+                <index name="LoadTranslationB2bUnit">
+                    <key attribute="b2bUnit"/>
+                </index>
+                <index name="LoadTranslationProductId">
+                    <key attribute="productId"/>
+                </index>
+                </indexes>
+        </itemtype>
+
+        <itemtype code="JnjIntLoadTranslation">
+            <deployment table="JNJ_INT_LOAD_TRANSLATION" typecode="15015"/>
+            <attributes>
+                <attribute qualifier="customerNumber" type="java.lang.String">
+                    <persistence type="property"/>
+                    <modifiers unique="true"/>
+                </attribute>
+                <attribute qualifier="jnjProductCode" type="java.lang.String">
+                    <persistence type="property"/>
+                    <modifiers unique="true"/>
+                </attribute>
+                <attribute qualifier="customerProductCode" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="baseUnitMeasure" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="customerUnitMeasure" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="numeratorConversion" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="denominatorConversion" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="customerDevUom" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="fileName" type="java.lang.String">
+                    <modifiers read="true" write="true" search="true"
+                               optional="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="recordStatus" type="RecordStatus">
+                    <persistence type="property"/>
+                    <defaultvalue>em().getEnumerationValue("RecordStatus", "LOADING")</defaultvalue>
+                </attribute>
+                <attribute qualifier="writeAttempts" type="java.lang.Integer">
+                    <modifiers read="true" write="true" search="true"
+                               optional="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="sentToDashboard" type="java.lang.Boolean">
+                    <modifiers read="true" write="true" search="true"
+                               optional="true"/>
+                    <persistence type="property"/>
+                     <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="idocNumber" type="java.lang.String">
+                    <modifiers read="true" write="true" search="true"
+                               optional="true"/>
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjCmirConversion">
+            <deployment table="JNJ_CMIR_CONVERSION" typecode="15016"/>
+            <attributes>
+                <attribute type="JnjB2bUnit" qualifier="b2bUnitId">
+                    <modifiers unique="true" read="true" write="true"
+                               search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="custUom">
+                    <modifiers unique="true" read="true" write="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="cmirUom">
+                    <modifiers write="true" read="true"/>
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnJCompany" extends="Company">
+            <description>JnjCompanyModel extends CompanyModel</description>
+            <attributes>
+                <attribute qualifier="masterCompany" type="java.lang.Boolean">
+                    <modifiers read="true" write="true" search="true"
+                               optional="true"/>
+                    <persistence type="property"/>
+                    <defaultvalue>Boolean.FALSE</defaultvalue>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjUploadOrder">
+            <description>JnjUploadOrder contains the Mapping uploaded order file related to Order</description>
+            <deployment table="Jnj_Upload_Order" typecode="15018"/>
+            <attributes>
+                <attribute type="java.lang.String" qualifier="fileNameId">
+                    <modifiers unique="true" read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="fileName">
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.util.Date" qualifier="date">
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="errorMessageList" qualifier="errorMessageList">
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="uploadFileStatus">
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="uploadByUser">
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="uploadByCustomer">
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="trackingId">
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="JnjB2bUnit" qualifier="b2bUnitId">
+                    <persistence type="property"/>
+                    <modifiers optional="false"/>
+                </attribute>
+            </attributes>
+               <indexes>
+                <index name="UploadOrderFileNameId">
+                    <key attribute="fileNameId"/>
+                </index>
+                </indexes>
+        </itemtype>
+
+        <itemtype code="JnjDeliverySchedule" autocreate="false" generate="false">
+            <description>It is created for keeping the delivery schedule of each order line</description>
+            <attributes>
+                <attribute qualifier="roundedQuantity" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="proofOfDeliveryDate" type="java.util.Date">
+                    <description>Actual date of delivery of the schedule line</description>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="carrierExpectedDeliveryDate" type="java.util.Date">
+                    <description>Carrier expected date of delivery of the schedule line</description>
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjUomConversion" autocreate="false"
+                  generate="false">
+            <attributes>
+                <attribute qualifier="height" type="java.lang.Double">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="width" type="java.lang.Double">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="length" type="java.lang.Double">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="shippingWeight" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="shippingUnit" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="volumeUnit" type="Unit">
+                    <persistence type="property"/>
+                </attribute>
+                <!-- Start:: 35488: Bad update on UoM (ISO vs Commercial). -->
+                <attribute qualifier="isoCode" type="java.lang.String">
+                    <persistence type="property"/>
+                    <description>Contains the incomming ISO Code for the Unit.</description>
+                </attribute>
+                <!-- End:: 35488: Bad update on UoM (ISO vs Commercial). -->
+            </attributes>
+        </itemtype>
+
+        <itemtype code="Category" generate="false" autocreate="false">
+            <attributes>
+                <attribute qualifier="showPlannedDate" type="java.lang.Boolean">
+                    <modifiers read="true" write="true" search="true" optional="true"/>
+                    <persistence type="property"/>
+                    <defaultvalue>Boolean.FALSE</defaultvalue>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnJLaUserAccountPreference">
+            <deployment table="JNJ_LA_USER_ACCOUNT_PREF" typecode="15020"/>
+            <attributes>
+                <attribute type="JnJB2bCustomer" qualifier="user">
+                    <persistence type="property"/>
+                    <modifiers optional="false" unique="true"/>
+                </attribute>
+                <attribute type="JnJB2BUnit" qualifier="account">
+                    <persistence type="property"/>
+                    <modifiers optional="false" unique="true"/>
+                </attribute>
+                <attribute type="JnJEmailPeriodicity" qualifier="periodicity">
+                    <persistence type="property"/>
+                    <modifiers optional="false"/>
+                </attribute>
+                <attribute type="OrderTypesList" qualifier="orderTypes">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="JnJEmailFrequency" qualifier="consolidatedEmailFrequency">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="JnJDayOfTheWeek" qualifier="dayOfTheWeek">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="MonthDates" qualifier="daysOfTheMonth">
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnJB2bCustomer" extends="B2BCustomer"
+                  generate="false" autocreate="false">
+            <description>It Will Create two new attributes in JnJB2bCustomerModel.</description>
+            <attributes>
+                <attribute qualifier="customerCode" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="accountManager" type="java.lang.String">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="accountPreferences" type="JnJUserAccountPreferenceList">
+                    <persistence type="property"/>
+                </attribute>
+                 <attribute qualifier="commercialUserFlag" type="java.lang.Boolean">
+                    <persistence type="property"/>
+                     <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="commercialUserSector">
+                    <persistence type="property"/>
+               </attribute>                
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjIndirectFormProcess" extends="StoreFrontCustomerProcess">
+            <description>Represents process that is used for sending form emails.</description>
+            <attributes>
+                <attribute qualifier="jnjCustomerFormMap" type="JnjCustomerFormMap">
+                    <persistence type="property"/>
+                    <description>Attribute contains attributes of the Customer Form that is used in this process.</description>
+                </attribute>
+                <attribute qualifier="jnjCustomerDetails" type="JnjCustomerDetailsMap">
+                    <persistence type="property"/>
+                    <description>Attribute contains attributes of the customer Form that is used in this process.</description>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjLaSoldToShipToSpecialCase">
+            <deployment table="JNJ_LA_SOLD_TO_SHIP_TO" typecode="15019"/>
+            <attributes>
+                <attribute qualifier="soldTo" type="java.lang.String">
+                    <modifiers read="true" write="true" search="true" optional="false" unique="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="shipTo" type="java.lang.String">
+                    <modifiers read="true" write="true" search="true" optional="false" unique="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="jnjOrderType" type="JnjOrderType">
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnJInvoiceOrder" autocreate="false" generate="false">
+            <attributes>
+                <attribute qualifier="updatedByFile" type="JnJUploadedInvoiceDate">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="updatedByFileDate" type="java.util.Date">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="carrierEstimateDeliveryDate" type="java.util.Date">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="carrierConfirmedDeliveryDate" type="java.util.Date">
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+            <indexes>
+                <index name="InvoiceInvDocNo">
+                    <key attribute="invDocNo"/>
+                </index>
+             </indexes>         
+        </itemtype>
+
+        <itemtype code="JnjOrdEntStsMapping" generate="false" autocreate="false">
+            <attributes>
+                <attribute type="java.lang.String" qualifier="backorderStatus">
+                    <persistence type="property"/>
+                    <modifiers unique="true"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="carrierEstDeliveryDateStatus">
+                    <persistence type="property" qualifier="p_estimatedDeliveryDateStatus"/>
+                    <modifiers unique="true"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="carrierActualDeliveryDateStatus">
+                    <persistence type="property" qualifier="p_actualDeliveryDateStatus"/>
+                    <modifiers unique="true"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnJUploadedInvoiceDate">
+            <deployment table="JNJ_LA_UPLOADED_INV_DATE" typecode="15021"/>
+            <attributes>
+                <attribute type="JnJB2bCustomer" qualifier="user">
+                    <persistence type="property"/>
+                    <modifiers optional="false" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="filename">
+                    <persistence type="property"/>
+                    <modifiers optional="false" />
+                </attribute>
+                <attribute type="JnJUploadedFileStatus" qualifier="currentStatus">
+                    <persistence type="property"/>
+                    <modifiers optional="false" />
+                </attribute>
+                <attribute qualifier="errorMessage" type="JnJFileError">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="erased" type="java.lang.Boolean">
+                    <persistence type="property"/>
+                     <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjLAEmailMatrix">
+            <description>Email Matrix: specify if we need to send email, according to the order line status change</description>
+            <deployment table="JNJ_LA_EMAIL_MATRIX" typecode="15022"/>
+            <attributes>
+                <attribute qualifier="previousStatus" type="OrderEntryStatus">
+                    <persistence type="property" />
+                    <modifiers optional="false" initial="true" read="true" write="true" unique="true" />
+                </attribute>
+                <attribute qualifier="currentStatus" type="OrderEntryStatus">
+                    <persistence type="property" />
+                    <modifiers optional="false" initial="true" read="true" write="true"  unique="true" />
+                </attribute>
+                <attribute qualifier="sendEmail" type="java.lang.Boolean">
+                    <persistence type="property"/>
+                    <modifiers optional="false" initial="true" read="true" write="true" unique="false"/>
+                     <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjLAOrderStatusChangeProcess" extends="StoreFrontCustomerProcess">
+            <description>Represents process that is used for sending emails for Order Confirmation to User</description>
+            <attributes>
+                <attribute qualifier="order" type="Order">
+                    <persistence type="property" />
+                </attribute>
+
+                <attribute qualifier="periodicity" type="JnJEmailPeriodicity">
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjLaConsolidatedEmailProcess" extends="StoreFrontCustomerProcess">
+            <description>Represents process that is used for sending emails for Consolidated Orders</description>
+            <attributes>
+                <attribute qualifier="unit" type="JnJB2BUnit" >
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="users" type="JnJB2bCustomerList" >
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" optional="true" partof="true"/>
+                </attribute>
+                <attribute qualifier="defaultRecipients" type="StringList" >
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" optional="true" partof="true"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjLAConsolidatedEmailRecipients">
+            <description>Extra recipients to send consolidated emails</description>
+            <deployment table="JNJ_LA_EMAIL_RECIPIENTS" typecode="15025"/>
+            <attributes>
+                <attribute qualifier="soldTo" type="JnjB2bUnit">
+                    <persistence type="property"/>
+                    <modifiers optional="false" initial="true" read="true" write="true" unique="true"/>
+                </attribute>
+                <attribute qualifier="recipients" type="java.lang.String">
+                    <persistence type="property"/>
+                    <modifiers initial="true" read="true" write="true" unique="false"/>
+                </attribute>
+                <attribute qualifier="enabled" type="java.lang.Boolean">
+                    <persistence type="property"/>
+                    <defaultvalue>true</defaultvalue>
+                    <modifiers optional="false" initial="true" read="true" write="true" unique="false"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+		
+		<itemtype code="JnjLaudoDeleteCronJob" extends="CronJob" autocreate="true" generate="true">
+            <attributes>
+			   <attribute type="java.lang.String" qualifier="countryCode">
+			        <persistence type="property"/>
+               </attribute>
+		    </attributes>
+        </itemtype>
+
+        <itemtype code="JnjLaudo" generate="false" autocreate="false">
+            <attributes>
+                <attribute type="java.lang.Boolean" qualifier="batchRequired">
+                    <persistence type="property"></persistence>
+                    <defaultvalue>Boolean.FALSE</defaultvalue>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjLAImmediateEmailRecipients">
+            <description>Extra recipients to send Immediate emails</description>
+            <deployment table="JNJ_LA_IMMEDIATE_EMAIL" typecode="15026"/>
+            <attributes>
+                <attribute qualifier="soldTo" type="JnjB2bUnit">
+                    <persistence type="property"/>
+                    <modifiers optional="false" initial="true" read="true" write="true" unique="true"/>
+                </attribute>
+                <attribute qualifier="recipients" type="java.lang.String">
+                    <persistence type="property"/>
+                    <modifiers initial="true" read="true" write="true" unique="false"/>
+                </attribute>
+                <attribute qualifier="enabled" type="java.lang.Boolean">
+                    <persistence type="property"/>
+                    <defaultvalue>true</defaultvalue>
+                    <modifiers optional="false" initial="true" read="true" write="true" unique="false"/>
+                </attribute>
+            </attributes>
+            <indexes>
+                <index name="EmailSoldTo">
+                    <key attribute="soldTo"/>
+                </index>
+                <index name="EmailRecipients">
+                    <key attribute="recipients"/>
+                </index>
+                <index name="EmailEnabled">
+                    <key attribute="enabled"/>
+                </index>
+            </indexes>
+        </itemtype>
+
+        <itemtype code="JnjLADailyEmailRecipients">
+            <description>Extra recipients to send Daily emails</description>
+            <deployment table="JNJ_LA_DAILY_EMAIL" typecode="15027"/>
+            <attributes>
+                <attribute qualifier="soldTo" type="JnjB2bUnit">
+                    <persistence type="property"/>
+                    <modifiers optional="false" initial="true" read="true" write="true" unique="true"/>
+                </attribute>
+                <attribute qualifier="recipients" type="java.lang.String">
+                    <persistence type="property"/>
+                    <modifiers initial="true" read="true" write="true" unique="false"/>
+                </attribute>
+                <attribute qualifier="enabled" type="java.lang.Boolean">
+                    <persistence type="property"/>
+                    <defaultvalue>true</defaultvalue>
+                    <modifiers optional="false" initial="true" read="true" write="true" unique="false"/>
+                </attribute>
+            </attributes>
+            <indexes>
+                <index name="EmailSoldTo">
+                    <key attribute="soldTo"/>
+                </index>
+                <index name="EmailRecipients">
+                    <key attribute="recipients"/>
+                </index>
+                <index name="EmailEnabled">
+                    <key attribute="enabled"/>
+                </index>
+            </indexes>
+        </itemtype>
+
+        <!-- added for cronjob monitoring email job for LATAM -->
+        <itemtype code="JnjLaCronJobMonitoingEmailBusinessProcess" extends="StoreFrontCustomerProcess" autocreate="true" generate="true">
+            <description>Business Process responsible for representing CronJob Monitoring Report</description>
+            <attributes>
+                <attribute qualifier="cronJobMonitoringEmailData" type="cronJobMonitoringEmailDataList">
+                    <persistence type="property" />
+                    <description>List containing elements representing concatenated data for job monitoring report email.</description>
+                </attribute>
+                <attribute qualifier="country" type="java.lang.String">
+                    <persistence type="property" />
+                    <description>Country.</description>
+                </attribute>
+                <attribute qualifier="userEmailList" type="java.lang.String">
+                    <persistence type="property" />
+                    <description>Email.</description>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjLaCronJobMonitoring" generate="true" autocreate="true">
+            <deployment table="JNJLA_CRONJOB_MONITORING" typecode="14021" />
+            <attributes>
+                <attribute qualifier="jobCode" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers optional="false" />
+                </attribute>
+                <attribute qualifier="country" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="frequency" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="serviceLevelStartTime" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="serviceLevelEndTime" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="averageRunningDuration" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="monitoringCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="monitored" type="boolean">
+                    <persistence type="property" />
+                    <defaultvalue>Boolean.TRUE</defaultvalue>
+                </attribute>
+            </attributes>
+        </itemtype>
+        <!-- Start : Password Reset Email -->
+        <itemtype code="JnjLAResetPasswordEmailProcess"
+                  extends="StoreFrontCustomerProcess" autocreate="true" generate="true">
+            <description>Represents process that is used for sending emails for reset password using email</description>
+            <attributes>
+                <attribute qualifier="jnjLAResetPasswordEmailDetails"
+                           type="JnjLAResetPasswordEmailMap">
+                    <persistence type="property" />
+                    <description>This attribute contains fields of the reset password requried for the email.</description>
+                </attribute>
+            </attributes>
+        </itemtype>
+        <!-- End : Password Reset Email -->
+        <itemtype code="JnjOrderArchivalResult" autocreate="true"
+                  generate="true" extends="GenericItem">
+            <description>Order Archival detail with order Code list</description>
+            <deployment table="JnjOrderDelLog" typecode="16222" />
+            <attributes>
+                <attribute autocreate="true" qualifier="orderList"
+                           type="java.lang.String" generate="true">
+                    <description>Holds list of Orders deleted</description>
+                    <persistence type="property">
+                        <columntype>
+                            <value>HYBRIS.LONG_STRING</value>
+                        </columntype>
+                        	<columntype database="sap">
+							<value>nvarchar(5000)</value>
+						</columntype>
+						<columntype database="oracle">
+							<value>varchar2(4000)</value>
+						</columntype>
+						<columntype database="mysql">
+							<value>text</value>
+						</columntype>
+						<columntype database="sqlserver">
+							<value>nvarchar(max)</value>
+						</columntype>					
+                    </persistence>
+                </attribute>
+                <attribute autocreate="true" qualifier="recordsDeletedCount"
+                           type="java.lang.Integer" generate="true">
+                    <description>Hold the number of records deleted</description>
+                    <persistence type="property" />
+
+                </attribute>
+                <attribute autocreate="true" qualifier="recordsFetchedCount"
+                           type="java.lang.Integer" generate="true">
+                    <description>Holds list of record fetched</description>
+                    <persistence type="property" />
+
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjOrderArchivalJobConfig" extends="GenericItem">
+            <description>Holds country configuration for order archival job</description>
+            <deployment table="JnjOrderArchJobConf" typecode="16223" />
+            <attributes>
+                <attribute qualifier="countryCode" type="java.lang.String">
+                    <description>Country Code</description>
+                    <persistence type="property" />
+                    <modifiers unique="true" read="true" write="true" optional="false"/>
+                </attribute>
+                <attribute qualifier="businessSectorConfig" type="java.lang.String">
+                    <description>Business Sector</description>
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="active" type="java.lang.Boolean">
+                    <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                    <description>Is configuration active for country?</description>
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjLaOrderArchivalCronJob" extends="CronJob" autocreate="true" generate="true">
+            <attributes>
+                <attribute qualifier="countryConfigList" type="JnjOrderArchivalJobConfigList">
+                    <persistence type="property"/>
+                    <modifiers read="true" write="true" optional="false"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+        
+        <itemtype code="JnjLaActiveUserReportEmailProcess" extends="StoreFrontCustomerProcess" autocreate="true" generate="true">
+			<description>Represents the process used for email with active users data.</description>
+			<attributes>
+				<attribute qualifier="activeUserReportData" type="java.util.Map">
+					<persistence type="property" />
+				</attribute>
+			</attributes>
+		</itemtype>
+		
+		<itemtype code="JnjCDLExportJob"
+				  extends="CronJob" autocreate="true" generate="true">
+			<attributes>
+				<attribute qualifier="dataForLastNoOfDays" type="java.lang.Integer">
+					<defaultvalue>Integer.valueOf(1)</defaultvalue>
+					<description>Specifies the number of days from which the data to be pulled</description>
+					<persistence type="property" />
+				</attribute>
+				<attribute type="java.util.Date" qualifier="startDate">
+					<persistence type="property" />
+				</attribute>
+				<attribute type="java.util.Date" qualifier="endDate">
+					<persistence type="property" />
+				</attribute>
+				<attribute qualifier="isFetchFromDateRange" type="java.lang.Boolean">
+					<modifiers read="true" write="true" search="true"/>
+					<defaultvalue>Boolean.False</defaultvalue>
+					<persistence type="property" />
+					<description>flag to identify fetch from Date Range</description>
+				</attribute>
+			</attributes>
+		</itemtype>		
+		
+		<itemtype code="JnjLaSAPFailedOrdersReportEmailProcess" extends="StoreFrontCustomerProcess" autocreate="true" generate="true">
+			<description>Represents the process used for sap failed orders report email.</description>
+			<attributes>
+				<attribute qualifier="sapFailedOrdersReportData" type="java.util.Map">
+					<persistence type="property" />
+				</attribute>
+				<attribute qualifier="sapFailedOrders" type="sapFailedOrdersList">
+					<persistence type="property" />
+				</attribute>
+			</attributes>
+		</itemtype>
+
+	  <itemtype code="Order" autocreate="false" generate="false">
+		<attributes>
+			<attribute qualifier="sapFailedOrderReportEmailSent" type="java.lang.Boolean">
+				<persistence type="property" />
+				<defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+			</attribute>
+		</attributes>
+		<indexes>
+                <index name="OrderCode">
+                    <key attribute="code"/>
+                </index>
+         </indexes>
+	  </itemtype>
+	  <itemtype code="JnjLaInvoiceNotificationEmailProcess" extends="StoreFrontCustomerProcess"
+                  autocreate="true" generate="true">
+            <description>Business Process responsible for representing Invoice Email Notification data.</description>
+            <attributes>
+                <attribute qualifier="invoiceNotificationEmailData" type="java.lang.String">
+                    <persistence type="property" />
+                    <description>String containing elements representing concatenated data for Invoice Notification email.</description>
+                </attribute>
+                <attribute qualifier="invoiceNotificationEmailEntries"
+                           type="invoiceEmailDataList">
+                    <persistence type="property" />
+                    <description>List containing elements representing concatenated
+                        data for Invoice Notification email.</description>
+                </attribute>
+                <attribute qualifier="b2bCustomerEmails" type="b2bUsersList">
+                    <persistence type="property" />
+                    <description>List containing elements representing invoice
+                        notification details.</description>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="ExportERPOrderCronjob" extends="CronJob" autocreate="true" generate="true">
+            <attributes>
+                <attribute type="java.util.Date" qualifier="startDate">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.util.Date" qualifier="endDate">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="jnjOrderCodes" qualifier="orderCodes">
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="OrderTypesList" qualifier="orderTypes">
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+	  
+	  <itemtype code="JnjLaOpenOrdersReportTemplate">
+            <description>This model holds the Values for open orders report template</description>
+            <deployment table="JnjLaOpenOrdersReport" typecode="16780"/>
+            <attributes>
+                  <attribute type="JnJB2bCustomer" qualifier="user">
+                    <modifiers read="true" write="true" search="true" unique="true" optional="false" />
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="templateName">
+                    <modifiers read="true" write="true" search="true" unique="true" optional="false"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="accountIdList" qualifier="selectedAccountIds">
+                    <modifiers read="true" write="true" search="true" optional="false" />
+                    <persistence type="property"/>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="quickSelection">
+                    <modifiers read="true" write="true" search="true" />
+                    <persistence type="property"/>
+                </attribute>
+                  <attribute type="java.lang.String" qualifier="fromDate">
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                  <attribute type="java.lang.String" qualifier="toDate">
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                 <attribute type="java.lang.String" qualifier="orderType">
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                 <attribute type="java.lang.String" qualifier="orderNumber">
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                 <attribute type="java.lang.String" qualifier="productCode">
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                 <attribute type="java.lang.String" qualifier="shipTo">
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                    <attribute type="java.lang.String" qualifier="reportColumns">
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+             <indexes>
+                <index name="IDX_JNJ_OPEN_ORDER_REPORTS" unique="true">
+                    <key attribute="user" />
+                    <key attribute="templateName" />
+                </index>
+                </indexes>
+        </itemtype>
+        <itemtype code="JnjLaSalesOrgDivisionMapping">
+            <description>This table holds the mapping between salesOrg code and division to derive salesOrg sector</description>
+            <deployment table="JnjSalesOrgDivMapping" typecode="16781"/>
+            <attributes>
+                <attribute qualifier="salesOrg" type="java.lang.String">
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="division" type="java.lang.String">
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+                <attribute qualifier="sector" type="java.lang.String">
+                    <modifiers read="true" write="true" search="true"/>
+                    <persistence type="property"/>
+                </attribute>
+            </attributes>
+            <indexes>
+                <index name="IDX_JNJ_SALESORG_DIVISION_MAPPING" unique="true">
+                    <key attribute="salesOrg"/>
+                    <key attribute="division"/>
+                </index>
+            </indexes>
+        </itemtype>
+
+        <!-- START Replace unique indexes causing 2205 upgrade issues -->
+        <itemtype code="CMSRelation" autocreate="false" generate="false">
+            <indexes>
+                <index name="cmsRelationByUidCvIdx" replace="true" unique="false">
+                    <key attribute="uid"/>
+                    <key attribute="catalogVersion"/>
+                </index>
+            </indexes>
+        </itemtype>
+        <itemtype code="CMSItem" autocreate="false" generate="false">
+            <indexes>
+                <index name="cmsItemByUidCvIDX" replace="true" unique="false">
+                    <key attribute="uid"/>
+                    <key attribute="catalogVersion"/>
+                </index>
+            </indexes>
+        </itemtype>
+        <itemtype code="ComponentTypeGroup" autocreate="false" generate="false">
+            <indexes>
+                <index name="componentTypeGroupByCodeIDX" replace="true" unique="false">
+                    <key attribute="code"/>
+                </index>
+            </indexes>
+        </itemtype>
+        <!-- END Replace unique indexes causing 2205 upgrade issues -->
+	  
+    </itemtypes>
+
+</items>

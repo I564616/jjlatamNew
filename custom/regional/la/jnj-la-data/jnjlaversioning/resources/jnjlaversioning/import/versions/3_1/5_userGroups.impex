@@ -1,0 +1,2 @@
+insert_update UserGroup;uid[unique=true,allow null=true];description;locname[lang=en];locname[lang=pt];locname[lang=es]
+                       ;clsManagementGroup;Access to CLS page;Access to CLS page;Acesso a página de CLS;Acceso a la pagina de CLS

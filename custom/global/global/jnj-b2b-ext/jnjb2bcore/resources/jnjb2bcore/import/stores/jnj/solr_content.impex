@@ -1,0 +1,113 @@
+# Impex ImportProcessor that injects all config properties as impex definitions.
+# All defined configuration properties are added as impex macro definitions with the prefix of "config-".
+# For example the config key mail.smtp.server can be accessed via the macro <tt>$config-mail.smtp.server
+# In order to use this import processor and to load the configuration properties the following must be added to the top of the impex file:
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+
+
+# Import the Solr configuration for the brCMSite store
+#
+$brCatalog=brContentCatalog
+$mxCatalog=mxContentCatalog
+$catalogVersions=catalogVersions(catalog(id),version);
+$serverConfigName=jnjContentSolrServerConfig
+$indexConfigName=jnjContentSolrIndexConfig
+$searchConfigName=jnjContentPageSize
+$facetSearchConfigName=jnjContentIndex
+$facetSearchConfigDescription=jnj Content Solr Index
+$searchIndexNamePrefix=jnj
+$solrIndexedType=jnjContentType
+$indexCurrencies=BRL,MXN
+$indexLanguages=en,pt,es
+
+
+#
+# Setup the Solr server, indexer, and search configs
+#
+
+REMOVE SolrServerConfig;name[unique=true] 
+;$serverConfigName
+
+# Create the solr server configuration
+INSERT_UPDATE SolrServerConfig;name[unique=true];mode(code);embeddedMaster;aliveCheckInterval;connectionTimeout;readTimeout
+;$serverConfigName;$config-solr.mode;$config-solr.embeddedMaster;1000;1000;1000
+
+# Create the solr indexer configuration
+INSERT_UPDATE SolrIndexConfig;name[unique=true];batchSize;numberOfThreads;indexMode(code);
+;$indexConfigName;100;1;DIRECT;
+
+#% final String configValue = Config.getParameter("solr.replication");
+#% if: configValue.equals("true"); 
+INSERT_UPDATE SolrEndpointUrl;master[allownull=true][unique=true];solrServerConfig(name)[unique=true];url[allownull=true]
+;true;$serverConfigName;$config-solr.master.config.url
+;false;$serverConfigName;$config-solr.slave.config.url
+#% endif:
+
+#% if: configValue.equals("false");
+INSERT_UPDATE SolrEndpointUrl;master[allownull=true][unique=true];solrServerConfig(name)[unique=true];url[allownull=true]
+;true;$serverConfigName;$config-solr.config.url
+#% endif:
+
+# Create the faceted search configuration
+INSERT_UPDATE SolrSearchConfig;description[unique=true];pageSize
+;$searchConfigName;20
+
+#
+# Setup the indexed types, their properties, and the update queries
+#
+
+# Declare the indexed type Product
+INSERT_UPDATE SolrIndexedType;identifier[unique=true];type(code);variant;sorts(&sortRefID);identityProvider
+;$solrIndexedType;ContentPage;false;sortRef1,sortRef2;jnjContentIdentityProvider
+
+INSERT_UPDATE SolrFacetSearchConfig;name[unique=true];description;indexNamePrefix;languages(isocode);currencies(isocode);solrServerConfig(name);solrSearchConfig(description);solrIndexConfig(name);solrIndexedTypes(identifier);enabledLanguageFallbackMechanism;$catalogVersions
+;$facetSearchConfigName;$facetSearchConfigDescription;$searchIndexNamePrefix;$indexLanguages;$indexCurrencies;$serverConfigName;$searchConfigName;$indexConfigName;$solrIndexedType;true;$brCatalog:Online,$brCatalog:Staged,$mxCatalog:Online,$mxCatalog:Staged
+
+
+
+
+# Non-facet properties
+INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];type(code);sortableType(code);currency[default=false];localized[default=false];multiValue[default=false];useForSpellchecking[default=false];useForAutocomplete[default=false];fieldValueProvider;
+;$solrIndexedType; itemtype;string;;;;;;;
+;$solrIndexedType; urlLink;string;;;;;;;jnjNewsValueProvider;
+;$solrIndexedType; headline;string;;;true;;;;jnjNewsValueProvider;
+;$solrIndexedType; content;string;;;true;;;;jnjNewsValueProvider;
+;$solrIndexedType; thumbnailUrl;string;;;true;;;;jnjNewsValueProvider;
+;$solrIndexedType; newsPublishDate;string;;;;;;;jnjNewsValueProvider;
+;$solrIndexedType; longDate;string;;;;;;;jnjNewsValueProvider;
+
+
+
+
+# Category facets
+INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];type(code);facet[default=true];facetType(code);facetSort(code);priority;fieldValueProvider;facetDisplayNameProvider;topValuesProvider;localized[default=false]
+;$solrIndexedType;businessCenter;string;;MultiSelectOr;Alpha;6000;jnjNewsValueProvider;;;true
+;$solrIndexedType;year;string;;MultiSelectOr;Alpha;6000;jnjNewsValueProvider;;;
+
+
+
+# Create the queries that will be used to extract data for Solr
+
+INSERT_UPDATE SolrIndexerQuery;solrIndexedType(identifier)[unique=true];identifier[unique=true];type(code);injectCurrentDate[default=true];injectCurrentTime[default=true];injectLastIndexTime[default=true];query;user(uid)
+;$solrIndexedType;$searchIndexNamePrefix-Content-fullQuery;full;;;false;"
+SELECT {content:pk} FROM {ContentPage  as content 
+JOIN CmsApprovalStatus AS approval on {approval:pk}={content:approvalStatus}
+JOIN ContentSlotForPage As slotPage on {slotPage:page}={content:pk} 
+JOIN ContentSlot As slot on {slot:pk}={slotPage:contentSlot}
+JOIN ElementsForSlot As elements on {elements:source}={slot:pk} 
+JOIN JnjNewsBannerComponent As news on {elements:target}={news:pk}
+} 
+WHERE  {approval:code} = 'approved'
+";anonymous
+
+# Define the available sorts
+INSERT_UPDATE SolrSort;&sortRefID;indexedType(identifier)[unique=true];code[unique=true]
+;sortRef1;$solrIndexedType;longDate-asc
+;sortRef2;$solrIndexedType;longDate-desc
+
+
+# Define the sort fields
+INSERT_UPDATE SolrSortField;sort(indexedType(identifier),code)[unique=true];fieldName[unique=true];ascending[unique=true]
+;$solrIndexedType:longDate-asc;longDate;true
+;$solrIndexedType:longDate-desc;longDate;false
+

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+           
+    <context:annotation-config/> 
+
+	<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+
+	<!-- Expose /acceleratoraddon/web/webroot/WEB-INF/messages/base.js.properties  resource bundle as javascript variables -->
+	<bean id="defaultJnjlaglobalreportsaddonJavaScriptMessageResourceAccessor" parent="abstractJavaScriptMessageResourceAccessor">
+		<property name="addOnName" value="jnjlaglobalreportsaddon"/>
+	</bean>
+
+	<bean id="defaultJnjlaglobalreportsaddonBeforeViewJsPropsHandlerAdaptee" parent="abstractBeforeViewJsPropsHandlerAdaptee" class="de.hybris.platform.addonsupport.interceptors.ExportJsPropertiesBeforeViewHandler">
+		<property name="messageSource" ref="defaultJnjlaglobalreportsaddonJavaScriptMessageResourceAccessor"/>
+	</bean>
+
+	<bean id="getJnjlaglobalreportsaddonBeforeViewHandler" parent="beforeViewHandlerAdapter">
+		<property name="adaptee">
+			<ref bean="defaultJnjlaglobalreportsaddonBeforeViewJsPropsHandlerAdaptee"/>
+		</property>
+	</bean>
+	<bean id="JnjlaglobalreportsaddonBeforeViewHandlerListMergeDirective" depends-on="beforeViewHandlersList" parent="listMergeDirective">
+		<property name="add" ref="getJnjlaglobalreportsaddonBeforeViewHandler"/>
+	</bean>
+	
+	<bean name="latamReportsPageController" class="com.jnj.la.b2b.jnjglobalreports.controllers.pages.JnjLatamReportsPageController">
+		<property name="configurationService" ref="configurationService" />
+		<property name="cmsSiteService" ref="cmsSiteService"/>
+	</bean>
+	<alias alias="myReportsPageController" name="latamReportsPageController" />
+	
+	<bean id="jnjLABackorderReportPdfView" class="com.jnj.la.b2b.jnjglobalreports.download.views.JnjLABackorderReportPdfView">
+        <property name="i18nService" ref="i18nService"/>
+        <property name="configurationService" ref="configurationService" />
+        <property name="backOrderReportUtils" ref="backOrderReportUtils" />
+    </bean>
+    <bean id="jnjLABackorderReportExcelView" class="com.jnj.la.b2b.jnjglobalreports.download.views.JnjLABackorderReportExcelView">
+        <property name="i18nService" ref="i18nService"/>
+        <property name="configurationService" ref="configurationService" />
+        <property name="backOrderReportUtils" ref="backOrderReportUtils" />
+    </bean>
+    <bean name="backOrderReportUtils" class="com.jnj.la.b2b.jnjglobalreports.download.utils.BackOrderReportUtils">
+		<property name="configurationService" ref="configurationService" />
+		<property name="i18nService" ref="i18nService"/>
+        <property name="messageSource" ref="storefrontMessageSource" />
+		<property name="siteBaseUrlResolutionService" ref="siteBaseUrlResolutionService" />
+		<property name="baseSiteService" ref="baseSiteService" />
+	</bean>
+		<bean id="jnjLAOpenOrderReportPdfView" class="com.jnj.la.b2b.jnjglobalreports.download.views.JnjLAOpenOrderReportPdfView">
+		<property name="i18nService" ref="i18nService"/>
+		<property name="configurationService" ref="configurationService" />
+		<property name="openOrderReportUtil" ref="openOrderReportUtil" />
+	</bean>
+	<bean id="jnjLAOpenOrderReportExcelView" class="com.jnj.la.b2b.jnjglobalreports.download.views.JnjLAOpenOrderReportExcelView">
+		<property name="i18nService" ref="i18nService"/>
+		<property name="messageSource" ref="storefrontMessageSource" />
+	</bean>
+	<bean name="openOrderReportUtil" class="com.jnj.la.b2b.jnjglobalreports.download.utils.OpenOrderReportUtil">
+		<property name="configurationService" ref="configurationService" />
+		<property name="i18nService" ref="i18nService"/>
+		<property name="messageSource" ref="storefrontMessageSource" />
+		<property name="siteBaseUrlResolutionService" ref="siteBaseUrlResolutionService" />
+		<property name="baseSiteService" ref="baseSiteService" />
+	</bean>
+	
+</beans>

@@ -1,0 +1,30 @@
+
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+# CPSIA Details Initialization
+INSERT_UPDATE JnjGTIntCpscDetails;productSkuCode[unique=true];productName;upcCode;cpscRuleDescription;mfgCompanyCode;cpsiComments;certificateCreateDate[dateformat=yyyy-MM-dd];certificateCreater;certificateModifiedDate[dateformat=yyyy-MM-dd];addressLotNumber;lotNumber[unique=true];modifiedDate[dateformat=yyyy-MM-dd];mfdDate;modifiedBy;deleteIndicatorCPSIA;srcSystem;recordStatus(code)[default='LOADING']
+
+
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT MATERIAL_NUM,MATERIAL_NAME,UPC,CPSC_RULES,MANU_COMP_CD,CPSIA_CMNTS,CREATE_DT,CREATE_BY,UPDATE_DT,ADDR_LOT_NUM,LOT_NUM,LAST_MODIFIED_DT, MANU_DT, MODIFIED_BY_USER,DELETED,SOURCE_SYS_ID	 FROM STG_CPSIA WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP""
+);		 
+"
+
+# CPSIA Contact Detail Initialization
+INSERT_UPDATE JnjGTIntCpscContactDetail;productSkuCode[unique=true];addressType[unique=true];name;addressLine1;addressline2;city;state;zipCode;country;phoneNumber;emailId;addressAdditionalinfo;deleteIndicatorContact;lotNumber[unique=true]
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT MATERIAL_NUM,ADDR_TYPE,NAME,ADDR1,ADDR2,CITY,STATE,POSTAL_CD,COUNTRY,PHONE,EMAIL,ADDR_ADD_INFO,DELETED,LOT_NUM FROM STG_CPSIA WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP""
+);
+"
+
+# CPSIA Test Detail Initialization
+INSERT_UPDATE JnjGTIntCpscTestDetail;productSkuCode[unique=true];studyNumber[unique=true];testingDate[dateformat=yyyy-MM-dd];thirdPartyName;addressLine1;addressLine2;city;state;zipCode;country;phoneNumber;studyComments;deleteIndicatorTest;lotNumber[unique=true]
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#%  
+impex.includeSQLData( 
+""SELECT MATERIAL_NUM,STUDY_NUM,DATE_TESTING,THRD_PRTY_NAME, THRD_PRTY_ADDR1, THRD_PRTY_ADDR2,	THRD_PRTY_CITY,	THRD_PRTY_STATE,THRD_PRTY_POSTAL_CD,THRD_PRTY_COUNTRY,THRD_PRTY_PHONE,STUDY_CMNTS,DELETED,LOT_NUM FROM STG_CPSIA WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP""
+);       
+"

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2000-2015 hybris AG
+ All rights reserved.
+
+ This software is the confidential and proprietary information of hybris
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with hybris.
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+<context:component-scan
+		base-package="com.jnj.b2b.cartandcheckoutaddon.controllers.pages"
+		scope-resolver="de.hybris.platform.spring.IgnoreTenantScopeMetadataResolver" />
+		
+     <bean name="jnjGTAddToCartController" class="com.jnj.b2b.cartandcheckoutaddon.controllers.pages.JnjGTAddToCartController" />
+	<alias alias="addToCartController" name="jnjGTAddToCartController" />
+		
+	<!-- Expose /acceleratoraddon/web/webroot/WEB-INF/messages/base.js.properties  resource bundle as javascript variables -->
+	<bean id="defaultCartandcheckoutaddonJavaScriptMessageResourceAccessor" parent="abstractJavaScriptMessageResourceAccessor">
+		<property name="addOnName" value="cartandcheckoutaddon"/>
+	</bean>
+
+	<bean id="defaultCartandcheckoutaddonBeforeViewJsPropsHandlerAdaptee" parent="abstractBeforeViewJsPropsHandlerAdaptee" class="de.hybris.platform.addonsupport.interceptors.ExportJsPropertiesBeforeViewHandler">
+		<property name="messageSource" ref="defaultCartandcheckoutaddonJavaScriptMessageResourceAccessor"/>
+	</bean>
+
+	<bean id="getCartandcheckoutaddonBeforeViewHandler" parent="beforeViewHandlerAdapter">
+		<property name="adaptee">
+			<ref bean="defaultCartandcheckoutaddonBeforeViewJsPropsHandlerAdaptee"/>
+		</property>
+	</bean>
+	<bean id="CartandcheckoutaddonBeforeViewHandlerListMergeDirective" depends-on="beforeViewHandlersList" parent="listMergeDirective">
+		<property name="add" ref="getCartandcheckoutaddonBeforeViewHandler"/>
+	</bean>
+	
+	<alias alias="checkoutPageController" name="jnjGTCheckoutController" />
+	<bean name="jnjGTCheckoutController" class="com.jnj.b2b.cartandcheckoutaddon.controllers.pages.JnjGTCheckoutController">
+	</bean>
+
+</beans>

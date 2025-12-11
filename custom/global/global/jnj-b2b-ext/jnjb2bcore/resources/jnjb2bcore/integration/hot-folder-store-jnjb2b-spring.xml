@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2000-2013 hybris AG
+ All rights reserved.
+
+ This software is the confidential and proprietary information of hybris
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with hybris.
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:file="http://www.springframework.org/schema/integration/file"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd
+		http://www.springframework.org/schema/integration/file http://www.springframework.org/schema/integration/file/spring-integration-file.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	
+	<bean id="jnjBaseDirectory" class="java.lang.String">
+		<constructor-arg value="#{configurationService.configuration.getProperty('jnjb2bcore.batch.impex.basefolder')}" />
+	</bean>
+	<bean id="jnjCleanupHelper" class="com.jnj.core.dataimport.batch.task.JnjCleanupHelper" parent="cleanupHelper">
+	</bean>
+	<!-- Impex import process -->
+	<!-- 1) Scan for files, site dependent -->
+	<file:inbound-channel-adapter id="batchFilesJnjb2b" directory="#{jnjBaseDirectory}"
+		filename-regex="^(.*)-(\d+)\.csv" comparator="fileOrderComparator">
+		<int:poller fixed-rate="1000" />
+	</file:inbound-channel-adapter>
+	
+	<!-- 2) move the file to processing and setup header, partly site dependent -->
+	<file:outbound-gateway request-channel="batchFilesJnjb2b" reply-channel="jnjBatchFilesHeader"
+		directory="#{jnjBaseDirectory}/processing" delete-source-files="true" />
+		
+	<int:service-activator input-channel="jnjBatchFilesHeader" output-channel="batchFilesHeaderInit" ref="jnjHeaderSetupTask" method="execute" />
+	<bean id="jnjHeaderSetupTask" class="de.hybris.platform.acceleratorservices.dataimport.batch.task.HeaderSetupTask">
+		<property name="catalog" value="brProductCatalog" />
+		<property name="net" value="false" />
+		<property name="storeBaseDirectory" ref="jnjBaseDirectory" />
+	</bean>
+
+	<!-- 3) transform csv to impex file -->
+	<alias name="jnjBatchTransformerTask" alias="batchTransformerTask"/>		
+	<bean id="jnjBatchTransformerTask" 
+		  class="com.jnj.core.dataimport.batch.task.JnjImpexTransformerTask" 
+		  init-method="initConvertersMap">
+		<property name="fieldSeparator" value="|" />
+		<property name="encoding" value="UTF-8" />
+		<property name="linesToSkip" value="0"/>
+		<property name="cleanupHelper" ref="jnjCleanupHelper" />
+		<property name="jnjInterfaceOperationArchUtility" ref="jnjInterfaceOperationArchUtility"></property>
+	</bean>
+	
+	<!-- Transformer converters mappings -->
+	<bean id="batchSapOrderConverterMapping" 
+	  class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping" 
+	  p:mapping="sapOrder" 
+	  p:converter-ref="batchSapOrderConverter"/>
+	  
+	<bean id="batchSapOrderEntryConverterMapping" 
+		  class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping" 
+		  p:mapping="sapOrderEntry" 
+		  p:converter-ref="batchSapOrderEntryConverter"/>
+		  
+	<bean id="batchSapScheduleLineConverterMapping" 
+		  class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping" 
+		  p:mapping="sapScheduleLine" 
+		  p:converter-ref="batchSapScheduleLineConverter"/>
+
+	<!-- 4) run impex import -->
+	<alias name="jnjBatchRunnerTask" alias="batchRunnerTask"/>
+	<bean id="jnjBatchRunnerTask" class="com.jnj.core.dataimport.batch.task.JnjAbstractImpexRunnerTask">
+		<property name="cleanupHelper" ref="jnjCleanupHelper" />
+		<property name="interfaceOperationArchUtility" ref="jnjInterfaceOperationArchUtility" />
+		<property name="sessionService" ref="sessionService" />
+		<property name="importService" ref="importService" />
+		<lookup-method name="getImportConfig" bean="importConfig" />
+	</bean>
+	<bean id="importConfig" class="de.hybris.platform.servicelayer.impex.ImportConfig" scope="prototype">
+		<property name="removeOnSuccess" value="true" />
+		<property name="failOnError" value="true" />
+		<property name="synchronous" value="true" />
+		<property name="legacyMode" value="false" />
+		<property name="maxThreads" value="#{configurationService.configuration.getProperty('acceleratorservices.batch.impex.max-threads')}" />
+		<property name="locale" value="en"/>
+	</bean>
+
+	<!-- 5) Cleanup -->
+	<!-- <int:service-activator input-channel="batchFilesImp" ref="batchCleanupTask" method="execute" />
+	<bean id="batchCleanupTask" class="de.hybris.platform.acceleratorservices.dataimport.batch.task.CleanupTask">
+		<property name="cleanupHelper" ref="cleanupHelper" />
+	</bean> -->
+
+	<!-- impex converters -->
+	
+			<bean id="batchSapOrderConverter" class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter">
+		<property name="header">
+			<value>#{defaultImpexProductHeader}
+				# Import media from filesystem
+				INSERT_UPDATE JnjSAPOrder;SAPOrderNumber[unique=true];customerPONumber;orderNumber;deliveryMode;shipToNumber;soldToNumber;payFromNumber;namedDeliveryDate[dateformat=mm/dd/yyyy];totalNetPrice;startDate[dateformat=mm/dd/yyyy];forbiddenSales;contractNumber;completeDelivery;salesOrganizationCode;distributionChannel;division;salesOrderOverallStatus;salesOrderDeliveryStatus;salesOrderRejectionStatus;salesOrderCreditStatus;salesOrderDataCompleteness;headerDeliveryBlock;poType;invoiceStatus;fileName
+			</value>
+		</property>
+		<property name="impexRow">
+			<value>;{+0};{1};{2};{3};{4};{5};{6};{8};{10};{11};{12};{13};{14};{15};{16};{17};{18};{19};{20};{21};{22};{23};{24};{25};{26};{S}</value>
+		</property>
+		<property name="rowFilter">
+        	<bean class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexRowFilter">
+            	<property name="expression" value="row[1]"/>
+            </bean>
+         </property>
+	</bean>
+	
+	<bean id="batchSapOrderEntryConverter" class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter">
+		<property name="header">
+			<value>#{defaultImpexProductHeader}
+				# Import media from filesystem
+				INSERT_UPDATE JnjSAPOrderEntry;orderNumber[unique=true];entryNumber[unique=true];itemCategory;higherLevelItemNumber;code;materialEntered;salesUOM;quantity;unitPrice;netPrice;tax;freightcharges;expeditedFee;discount;grossPrice;indirectCustomer;lineOverallStatus;deliveryStatus;reasonForRejection;lineInvoiceStatus;internationalFreight;insurance;handlingFee;dropShipFee;minimumOrderFee;GTSHold;orderEntryProcessStatus[default=0]
+			</value>
+		</property>
+		<property name="impexRow">
+			<value>;{+0};{1};{2};{3};{4};{5};{6};{7};{8};{9};{11};{12};{13};{14};{15};{16};{17};{18};{19};{20};{21};{22};{23};{24};{25};{26};;{S}</value>
+		</property>
+		<property name="rowFilter">
+        	<bean class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexRowFilter">
+            	<property name="expression" value="row[1]"/>
+            </bean>
+         </property>
+	</bean>
+	
+	<bean id="batchSapScheduleLineConverter" class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter">
+		<property name="header">
+			<value>#{defaultImpexProductHeader}
+				# Import media from filesystem
+				INSERT_UPDATE JnjSAPScheduleLine;orderNumber[unique=true];orderLineNumber[unique=true];lineNumber[unique=true];roundedQuantity;confirmedQuantity;deliveryDate[dateformat=mm/dd/yyyy];schLineProcessStatus[default=0]
+			</value>
+		</property>
+		<property name="impexRow">
+			<value>;{+0};{1};{2};{3};{4};{5};;{S}</value>
+		</property>
+		<property name="rowFilter">
+        	<bean class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexRowFilter">
+            	<property name="expression" value="row[1]"/>
+            </bean>
+         </property>
+	</bean>
+
+</beans>

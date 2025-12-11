@@ -1,0 +1,11 @@
+INSERT_UPDATE ServicelayerJob;code[unique=true];springId;active[default='true']
+;jnjLaActiveUsersReportJob;jnjLaActiveUsersReportJob;true
+
+INSERT_UPDATE CronJob; code[unique=true] ; job(code) ; singleExecutable ; sessionLanguage(isocode) ; active[default='true']
+; jnjLaActiveUserReportCronJob ; jnjLaActiveUsersReportJob ; false ; en ;
+
+
+
+INSERT_UPDATE Trigger; cronjob(code)[unique = true] ; cronExpression
+;jnjLaActiveUserReportCronJob ; 0 0 8 ? * 1 *
+

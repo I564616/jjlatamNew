@@ -1,0 +1,2 @@
+## messageSource=classpath:/jnjb2bcore/messages/email-registerUser_$lang.properties
+${ctx.messages.subject} ${ctx.registrationDataMap['userEmailAddress']}

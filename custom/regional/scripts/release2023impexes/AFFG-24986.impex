@@ -1,0 +1,9 @@
+$contentCatalog = mstrContentCatalog
+$contentCV = catalogVersion(catalog(id[default = $contentCatalog]), version[default = 'Staged'])
+$wideContent = CMSImageComponent, BannerComponent
+$jarResourceCms = jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/jnjlamasterstore/import/cockpits/cmscockpit
+$emailResource = jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/jnjlamasterstore/import/contentCatalogs/jnjContentCatalog/emails/templates
+$mediaResource = jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/jnjlamasterstore/import/contentCatalogs/jnjContentCatalog/media
+
+UPDATE RendererTemplate; code[unique = true]                        ; description[lang = en]                     ; templateScript[lang = en, translator = de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]; templateScript[lang = es, translator = de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]; templateScript[lang = pt, translator = de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]
+; email-orderStatusChangeNotificationBody    ; "Order Status Change Notification Body"    ; $emailResource/email-orderStatusChangeNotificationBody_en.vm                                                    ; $emailResource/email-orderStatusChangeNotificationBody_es.vm                                                    ; $emailResource/email-orderStatusChangeNotificationBody_pt.vm

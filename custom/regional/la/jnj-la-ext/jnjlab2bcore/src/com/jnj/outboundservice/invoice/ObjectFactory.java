@@ -1,0 +1,259 @@
+
+package com.jnj.outboundservice.invoice;
+
+import jakarta.xml.bind.JAXBElement;
+import jakarta.xml.bind.annotation.XmlElementDecl;
+import jakarta.xml.bind.annotation.XmlRegistry;
+import javax.xml.namespace.QName;
+
+
+/**
+ * This object contains factory methods for each 
+ * Java content interface and Java element interface 
+ * generated in the com.jnj.outboundservice.invoice package. 
+ * <p>An ObjectFactory allows you to programatically 
+ * construct new instances of the Java representation 
+ * for XML content. The Java representation of XML 
+ * content can consist of schema derived interfaces 
+ * and classes representing the binding of schema 
+ * type definitions, element declarations and model 
+ * groups.  Factory methods for each of these are 
+ * provided in this class.
+ * 
+ */
+@XmlRegistry
+public class ObjectFactory {
+
+    private final static QName _ReceiveElectronicBillingFromHybrisWrapper_QNAME = new QName("http://itsusmpl00082.jnj.com/SG910_BtB_IN0504_ElectronicBilling_Hybris_Source_v1.webservices:receiveElectronicBillingWS", "receiveElectronicBillingFromHybrisWrapper");
+    private final static QName _ReceiveElectronicBillingFromHybrisWrapperResponse_QNAME = new QName("http://itsusmpl00082.jnj.com/SG910_BtB_IN0504_ElectronicBilling_Hybris_Source_v1.webservices:receiveElectronicBillingWS", "receiveElectronicBillingFromHybrisWrapperResponse");
+    private final static QName _ElectronicBillingRequestOutERROR_QNAME = new QName("", "ERROR");
+    private final static QName _ElectronicBillingRequestInFILETYPE_QNAME = new QName("", "FILE_TYPE");
+    private final static QName _ElectronicBillingRequestHeader_QNAME = new QName("", "Header");
+    private final static QName _BTBControlAreaCustomName05_QNAME = new QName("", "CustomName05");
+    private final static QName _BTBControlAreaCustomValue01_QNAME = new QName("", "CustomValue01");
+    private final static QName _BTBControlAreaCustomName04_QNAME = new QName("", "CustomName04");
+    private final static QName _BTBControlAreaCustomValue03_QNAME = new QName("", "CustomValue03");
+    private final static QName _BTBControlAreaCustomValue02_QNAME = new QName("", "CustomValue02");
+    private final static QName _BTBControlAreaCustomValue05_QNAME = new QName("", "CustomValue05");
+    private final static QName _BTBControlAreaCustomValue04_QNAME = new QName("", "CustomValue04");
+    private final static QName _BTBControlAreaCustomName01_QNAME = new QName("", "CustomName01");
+    private final static QName _BTBControlAreaCustomName03_QNAME = new QName("", "CustomName03");
+    private final static QName _BTBControlAreaCustomName02_QNAME = new QName("", "CustomName02");
+    private final static QName _ResponseError_QNAME = new QName("", "error");
+
+    /**
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.jnj.outboundservice.invoice
+     * 
+     */
+    public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link ReceiveElectronicBillingFromHybrisWrapper }
+     * 
+     */
+    public ReceiveElectronicBillingFromHybrisWrapper createReceiveElectronicBillingFromHybrisWrapper() {
+        return new ReceiveElectronicBillingFromHybrisWrapper();
+    }
+
+    /**
+     * Create an instance of {@link ReceiveElectronicBillingFromHybrisWrapperResponse }
+     * 
+     */
+    public ReceiveElectronicBillingFromHybrisWrapperResponse createReceiveElectronicBillingFromHybrisWrapperResponse() {
+        return new ReceiveElectronicBillingFromHybrisWrapperResponse();
+    }
+
+    /**
+     * Create an instance of {@link Response }
+     * 
+     */
+    public Response createResponse() {
+        return new Response();
+    }
+
+    /**
+     * Create an instance of {@link ElectronicBillingResponse }
+     * 
+     */
+    public ElectronicBillingResponse createElectronicBillingResponse() {
+        return new ElectronicBillingResponse();
+    }
+
+    /**
+     * Create an instance of {@link ElectronicBillingRequest }
+     * 
+     */
+    public ElectronicBillingRequest createElectronicBillingRequest() {
+        return new ElectronicBillingRequest();
+    }
+
+    /**
+     * Create an instance of {@link ElectronicBillingRequestIn }
+     * 
+     */
+    public ElectronicBillingRequestIn createElectronicBillingRequestIn() {
+        return new ElectronicBillingRequestIn();
+    }
+
+    /**
+     * Create an instance of {@link BTBControlArea }
+     * 
+     */
+    public BTBControlArea createBTBControlArea() {
+        return new BTBControlArea();
+    }
+
+    /**
+     * Create an instance of {@link ElectronicBillingRequestOut }
+     * 
+     */
+    public ElectronicBillingRequestOut createElectronicBillingRequestOut() {
+        return new ElectronicBillingRequestOut();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ReceiveElectronicBillingFromHybrisWrapper }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://itsusmpl00082.jnj.com/SG910_BtB_IN0504_ElectronicBilling_Hybris_Source_v1.webservices:receiveElectronicBillingWS", name = "receiveElectronicBillingFromHybrisWrapper")
+    public JAXBElement<ReceiveElectronicBillingFromHybrisWrapper> createReceiveElectronicBillingFromHybrisWrapper(ReceiveElectronicBillingFromHybrisWrapper value) {
+        return new JAXBElement<ReceiveElectronicBillingFromHybrisWrapper>(_ReceiveElectronicBillingFromHybrisWrapper_QNAME, ReceiveElectronicBillingFromHybrisWrapper.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ReceiveElectronicBillingFromHybrisWrapperResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://itsusmpl00082.jnj.com/SG910_BtB_IN0504_ElectronicBilling_Hybris_Source_v1.webservices:receiveElectronicBillingWS", name = "receiveElectronicBillingFromHybrisWrapperResponse")
+    public JAXBElement<ReceiveElectronicBillingFromHybrisWrapperResponse> createReceiveElectronicBillingFromHybrisWrapperResponse(ReceiveElectronicBillingFromHybrisWrapperResponse value) {
+        return new JAXBElement<ReceiveElectronicBillingFromHybrisWrapperResponse>(_ReceiveElectronicBillingFromHybrisWrapperResponse_QNAME, ReceiveElectronicBillingFromHybrisWrapperResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "ERROR", scope = ElectronicBillingRequestOut.class)
+    public JAXBElement<String> createElectronicBillingRequestOutERROR(String value) {
+        return new JAXBElement<String>(_ElectronicBillingRequestOutERROR_QNAME, String.class, ElectronicBillingRequestOut.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "FILE_TYPE", scope = ElectronicBillingRequestIn.class)
+    public JAXBElement<String> createElectronicBillingRequestInFILETYPE(String value) {
+        return new JAXBElement<String>(_ElectronicBillingRequestInFILETYPE_QNAME, String.class, ElectronicBillingRequestIn.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BTBControlArea }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "Header", scope = ElectronicBillingRequest.class)
+    public JAXBElement<BTBControlArea> createElectronicBillingRequestHeader(BTBControlArea value) {
+        return new JAXBElement<BTBControlArea>(_ElectronicBillingRequestHeader_QNAME, BTBControlArea.class, ElectronicBillingRequest.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "CustomName05", scope = BTBControlArea.class)
+    public JAXBElement<String> createBTBControlAreaCustomName05(String value) {
+        return new JAXBElement<String>(_BTBControlAreaCustomName05_QNAME, String.class, BTBControlArea.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "CustomValue01", scope = BTBControlArea.class)
+    public JAXBElement<String> createBTBControlAreaCustomValue01(String value) {
+        return new JAXBElement<String>(_BTBControlAreaCustomValue01_QNAME, String.class, BTBControlArea.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "CustomName04", scope = BTBControlArea.class)
+    public JAXBElement<String> createBTBControlAreaCustomName04(String value) {
+        return new JAXBElement<String>(_BTBControlAreaCustomName04_QNAME, String.class, BTBControlArea.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "CustomValue03", scope = BTBControlArea.class)
+    public JAXBElement<String> createBTBControlAreaCustomValue03(String value) {
+        return new JAXBElement<String>(_BTBControlAreaCustomValue03_QNAME, String.class, BTBControlArea.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "CustomValue02", scope = BTBControlArea.class)
+    public JAXBElement<String> createBTBControlAreaCustomValue02(String value) {
+        return new JAXBElement<String>(_BTBControlAreaCustomValue02_QNAME, String.class, BTBControlArea.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "CustomValue05", scope = BTBControlArea.class)
+    public JAXBElement<String> createBTBControlAreaCustomValue05(String value) {
+        return new JAXBElement<String>(_BTBControlAreaCustomValue05_QNAME, String.class, BTBControlArea.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "CustomValue04", scope = BTBControlArea.class)
+    public JAXBElement<String> createBTBControlAreaCustomValue04(String value) {
+        return new JAXBElement<String>(_BTBControlAreaCustomValue04_QNAME, String.class, BTBControlArea.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "CustomName01", scope = BTBControlArea.class)
+    public JAXBElement<String> createBTBControlAreaCustomName01(String value) {
+        return new JAXBElement<String>(_BTBControlAreaCustomName01_QNAME, String.class, BTBControlArea.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "CustomName03", scope = BTBControlArea.class)
+    public JAXBElement<String> createBTBControlAreaCustomName03(String value) {
+        return new JAXBElement<String>(_BTBControlAreaCustomName03_QNAME, String.class, BTBControlArea.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "CustomName02", scope = BTBControlArea.class)
+    public JAXBElement<String> createBTBControlAreaCustomName02(String value) {
+        return new JAXBElement<String>(_BTBControlAreaCustomName02_QNAME, String.class, BTBControlArea.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "error", scope = Response.class)
+    public JAXBElement<String> createResponseError(String value) {
+        return new JAXBElement<String>(_ResponseError_QNAME, String.class, Response.class, value);
+    }
+
+}

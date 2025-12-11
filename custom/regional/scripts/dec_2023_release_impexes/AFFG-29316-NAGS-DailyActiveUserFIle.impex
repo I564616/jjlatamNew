@@ -1,0 +1,11 @@
+################## AFFG 29316 NAGS Daily Active User File ########
+INSERT_UPDATE ServicelayerJob;code[unique=true];springId;active[default='true']
+;jnjLATAMActiveUserListExtractJob;jnjGTActiveUserListExtractJob;
+ 
+INSERT_UPDATE CronJob;code[unique=true];job(code);singleExecutable;sessionLanguage(isocode);active[default='true']
+;jnjLATAMActiveUserListExtractCronJob;jnjLATAMActiveUserListExtractJob;false;en;
+ 
+INSERT_UPDATE Trigger;cronjob(code)[unique=true];active;cronExpression;
+;jnjLATAMActiveUserListExtractCronJob;false;0 0 3 1/1 * ? 
+
+#########################################################################

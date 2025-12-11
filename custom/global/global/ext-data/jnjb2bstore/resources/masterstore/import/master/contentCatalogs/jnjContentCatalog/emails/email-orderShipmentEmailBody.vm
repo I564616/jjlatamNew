@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+## messageSource=classpath:/jnjb2bcore/messages/email-orderApprovalRejection_$lang.properties
+<style>
+	input.span-18 {
+		border-left-width: 1px;
+	    border-right-width: 1px;
+	    padding-left: 5px;
+	    padding-right: 5px;
+		width: 698px;
+	}
+	.last {
+	    margin-right: 0;
+	    padding-right: 0;
+	}
+	.addIndirectCustomerPanel h2.arrowHeader span {
+	    float: right;
+	}
+	.addIndirectCustomerPanel ul {
+	    margin: 10px 0 20px;
+	    padding-bottom: 10px;
+	}
+	.addIndirectCustomerPanel ul li {
+	    clear: both;
+	    margin-top: 10px;
+	    min-height: 58px;
+	}
+	.addIndirectCustomerPanel label {
+	    display: block;
+	}
+	.addIndirectCustomerPanel label span {
+	    color: #B41601;
+	}
+	.addIndirectCustomerPanel input[type="text"], .addIndirectCustomerPanel select {
+	    color: #646464;
+	    padding-left: 2px;
+	    width: 420px;
+	}
+	.addIndirectCustomerPanel select {
+	    color: #646464;
+	    float: none;
+	    margin-bottom: 0;
+	    width: 230px;
+	}
+	.radioPanel label {
+	    display: inline;
+	}
+	.radioPanel input[type="text"] {
+	    display: block;
+	    margin: 4px 0;
+	}
+	.radioPanel input[type="radio"] {
+	    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+	    border: medium none;
+	    margin-bottom: 0;
+	}
+	.addIndirectCustomerPanel input, .addIndirectCustomerPanel select {
+	    padding: 0;
+	}
+	.addIndirectCustomerPanel select {
+	    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+	    border: 1px solid #E5E5E5;
+	    padding-bottom: 0;
+	    padding-right: 0;
+	    padding-top: 0;
+	}
+	.addIndirectCustomerPanel .buttonWrapper > input {
+	    padding: 5px 15px;
+	}
+	h2.arrowHeader {
+	    border-bottom: 1px solid #84C5D4;
+	    color: #0A8CAA;
+	    font-size: 16px;
+	    line-height: 30px;
+	    margin-bottom: 0;
+	}
+	.priceSmall {
+	    color: #B41601;
+	    font-size: 12px;
+	}
+	.instructiontxt {
+	    color: #828282;
+	    font-size: 11px;
+	    margin-bottom: 10px;
+	}
+	body {
+	    line-height: 1.5;
+	}
+	body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section {
+	    border: 0 none;
+	    font-family: inherit;
+	    font-size: 100%;
+	    font-style: inherit;
+	    font-weight: inherit;
+	    margin: 0;
+	    padding: 0;
+	    vertical-align: top;
+	}
+	body {
+	    background: none repeat scroll 0 0 #FFFFFF;
+	    color: #222222;
+	    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+	    font-size: 75%;
+	}
+	ul li {
+	    color: #646464;
+	    font-size: 12px;
+	    list-style-type: none;
+	}
+	td {
+		color: #646464;
+	}
+	td.imageControl div {
+		max-width:120px;
+		width:120px;
+		overflow:hidden;
+	}
+	td.imageControl img {
+		max-width:120px;
+		width:120px;
+	}
+	</style>
+<html style="font-family: Helvetica Neue,Arial,Helvetica,sans-serif;font-size: 75%;">
+<head>
+	<title>Confirmation Email</title>
+	
+</head>
+<body style="line-height: 1.5;font-size: 75%;font-family: Helvetica Neue,Arial,Helvetica,sans-serif;color: #222222;background: none repeat scroll 0 0 #FFFFFF;border: 0 none;font-family: inherit;font-size: 100%;font-style: inherit;font-weight: inherit;margin: 0;padding: 0;vertical-align: baseline;">
+	<table style="background-color:#ffffff" width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+		<tr>
+			<td style="color: #646464;">
+				<table bgcolor="#ffffff" width="800px" border="0" cellspacing="0" cellpadding="0" align="center">
+					<tr>
+							<td style="color: red;" width="600" height="5" style="background-color:red;">
+								<div style="width:11;height:11" >&nbsp;
+							</td>
+						</tr>
+					
+						<tr bgcolor="#ffffff">
+						  
+						  <td style="color: #646464;" height="11">
+								<table width="600">
+									<tr>
+										<td> ${ctx.cmsSlotContents.TopContentLogo1}</td>
+									 <td style="color: #646464;" width="290" height="11">
+										  <div style="width:290;height:11" >&nbsp;<div>
+									  </td>
+									<td> ${ctx.cmsSlotContents.TopContentLogo2}</td>
+									</tr>
+								</table>
+						  </td>
+		                  
+		                 </tr>
+				</table>
+				<table bgcolor="#ffffff" width="800px" border="0" cellspacing="0" cellpadding="0" align="center">
+					<tr bgcolor="#ffffff">
+						<td style="max-width:780px;width:780px;" width="780"></td>
+						<td style="max-width:120px;width:120px;" width="120"></td>
+					</tr>
+					<tr bgcolor="#ffffff">
+						<td style="color: #646464;max-width:780px;width:780px;" width="780">
+							<br /><br />
+							${ctx.messages.shipmentSaluation} ${ctx.displayName},
+							<br /><br />
+							#set( $orderDet = '/order-history/order/'+${ctx.orderCode})
+							#set ($orderDetailUrl = $ctx.secureBaseUrl+$orderDet)
+							${ctx.messages.shipmentOrder} <b>${ctx.orderNumber}</b>${ctx.messages.onway} .${ctx.messages.logOrder}<sup>${ctx.messages.tm}</sup> ${ctx.messages.view} 
+							<a href="$orderDetailUrl" style=" text-decoration: none; position:relative \9;"><u>${ctx.messages.orderdetail}</u></a>
+							<br /><br />
+							${ctx.messages.thankyou}<br/>
+							${ctx.messages.custService}<br/>
+							${ctx.messages.jnjcust}
+							<br /><br />
+							<br /><br />
+										<p style="margin:5px 0; padding-left: 10px; font-size: 10px;"><font color="#666666" face="Arial, Helvetica, sans-serif">${ctx.messages.en_company}<br />
+			                     ${ctx.messages.en_addressLine1}<br />
+			                     ${ctx.messages.en_addressLine2}<br />
+			                      #if('ctx.messages.en_country'!="")
+			                    	${ctx.messages.en_country}<br />
+			                    #end
+			                    #if('ctx.messages.en_contact'!="")
+			                    	${ctx.messages.en_contact}<br />
+			                    #end</font>
+			                    </p><br />
+						</td>
+						
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr bgcolor="#fafafa">
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="5">
+							<div style="width:11;height:5" />
+						</td>
+						<td height="5">
+							<div style="width:578;height:5" />
+						</td>
+						<td width="11" height="5">
+							<div style="width:11;height:5" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td>
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td style="color: #646464;" width="900">
+							${ctx.cmsSlotContents.EpicEmailFooter}
+						</td>
+								</tr>
+							</table>
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

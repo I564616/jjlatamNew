@@ -1,0 +1,3 @@
+## messageSource=classpath:/jnjb2bcore/messages/email-returnOrder_$lang.properties
+${ctx.messages.returnSubjectUser} 
+	

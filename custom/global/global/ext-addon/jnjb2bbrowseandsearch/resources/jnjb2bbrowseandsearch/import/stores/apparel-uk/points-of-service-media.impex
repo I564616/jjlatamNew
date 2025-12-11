@@ -1,0 +1,6 @@
+$productCatalog=apparelProductCatalog
+$productCatalogName=Apparel Product Catalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$media=@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator]
+$siteResource=jar:com.jnj.b2b.browseandsearch.constants.Jnjb2bbrowseandsearchConstants&/jnjb2bbrowseandsearch/import/stores/apparel-uk
+$medias=medias(code, $catalogVersion)

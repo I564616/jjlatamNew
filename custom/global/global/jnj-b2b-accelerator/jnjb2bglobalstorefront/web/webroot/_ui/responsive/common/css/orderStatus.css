@@ -1,0 +1,498 @@
+.price-icon-holder{
+ margin-bottom:5px;
+}
+
+.price-icon-round{
+ height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    background-color: rgb(6,140,172);
+    font-size: 18px;
+    color: white;
+ margin:0px auto;
+ display: table;
+ cursor:pointer;
+}
+.price-icon{ 
+ display: table-cell;
+ vertical-align: middle;
+ font-size:20px;
+}
+
+.MultiFile-list{
+  width: 100%;
+  max-height:50px;
+  overflow:auto;
+  padding:0px 10px;
+}
+.MultiFile-label{
+	width : 150px;
+	overflow:hidden;
+	white-space: nowrap;
+}
+/* Start - more popup */
+.os-more-popup-header{
+	font-size:18px;
+	font-weight:bold;
+	margin-bottom:10px;
+}
+.os-more-popup-content{
+	margin-bottom:10px;
+}
+/* End - more popup */
+/*Added by Siva End for Upload Place order file Start*/
+.uploadfilehome {
+    display: none !IMPORTANT;
+}
+.uploadfilealign{
+	margin-top:17px;font-size:12px;
+	
+}
+.MultiFile-label {
+   //padding: 0 0 0 6px !important;
+   height:25px;
+    display:table-row;
+}
+a.MultiFile-remove {
+    font-size: 9px;
+    text-align: left;
+   /*  float: left; */
+   display:table-cell;
+   float: left;
+  	width:10%;
+   //padding-left:10px;
+   line-height: 25px;
+}
+p.MultiFile-title{
+	 font-size: 12px;
+    width: 80%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: table-cell;
+    float: left;
+    /* margin-top: 8px; */
+    padding-left: 5px;
+    line-height: 25px;;
+    margin-bottom:0px !important;
+}
+span#placeorderfileSpn {
+    top: -31px;
+}
+.filenamebutton2 {
+    width: auto !important;
+    font-size: 9px !important;
+    padding: 4px 8px !important;
+    //margin-left: 27%;
+    //display: none;
+    letter-spacing: 0px !important;
+    border:none !important;
+}
+.templateDownloadLinks {
+    margin-top: -5px;
+    font-size: 12px;
+}
+#addtocartmsgpopup .uploadFile li, #addtocartmsgpopup .globalError{
+    font-size: 14px;
+    text-align: left;
+   }
+   #addtocartmsgpopup .modal-body{
+       overflow: auto;
+       height: 350px;
+   }
+   /*Added by Siva End for Upload Place order file end*/
+#tables{
+	box-shadow:0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 3px 11px 0 rgba(0, 0, 0, 0.19);
+}
+.panel-group .panel {
+      border-radius: 0px;
+}
+
+.panel-heading {
+      padding: 5px 25px;
+}
+.panel-heading a {
+    text-decoration:none;
+}
+.desktoptableparent {
+    height: 158px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.ordertextmargin{
+	margin-right: 0;
+    margin-left: 0;
+    padding:5px;
+    background: #fff;
+}
+.orderstatuspage .panel-group:nth-child(1){
+	margin:0px !important;
+}
+.orderstatuspage .panel-group:nth-child(2){
+	margin:0px !important;
+}
+.orderstatuspage .panel-danger{
+	margin:0px 0px 5px 0px !important;
+}
+.orderstatuspage .panel-success{
+	margin:0px 0px 5px 0px !important;
+}
+.orderstatuspage .dataTables_wrapper .row:nth-of-type(3) {    
+    padding: 0px 15px 0px 15px;
+}
+.orderstatuspage .showmore {
+    display: none;
+}
+.orderstatuspage .labelTxt a {
+   color:#828282;
+}
+.orderstatuspage .btnclsactive {
+    letter-spacing: 1.5px;
+    font-family: jnjbodyfont;
+    font-weight: bold;
+    font-size: 10px;
+    color: #fff;
+    border-radius: 27px;
+    background-color: #0a8caa;
+    text-align: center;
+    padding: 8px 15px;
+   // width: 160px;
+    //margin-right: 20px;
+    margin-top:5px;
+}
+.orderstatuspage  .orderStatus{
+	font-family: jnjbodyfont;
+    background: #fff;
+    font-size: 30px;
+    //padding: 20px;
+   // margin-top: 15px;
+}
+/* swiper css starts here*/
+.orderstatuspage table.table-bordered.dataTable tbody td:first-child {
+    font-size: 16px;
+}
+.swiper-container {
+	width: 100%;
+	height: 220px;
+	//border: 1px solid red;
+}
+.swiper-slide {
+	text-align: center;
+	font-size: 18px;
+	background: #fff;
+
+	/* Center slide text vertically */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+} 
+.deliveryStatus, .pendingStatus,.delayedStatus {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    background-color: #009900;
+    content: "";
+   // position: relative;
+    //left: -10px;
+}
+.pendingStatus{
+	background-color: #e6b800 !important;
+}
+.delayedStatus{
+	background-color: #901201 !important;
+}
+.home-status-txt{padding-left:10px} 
+
+.orderstatuspage div.dataTables_wrapper div.dataTables_filter, .orderstatuspage  #ordersTable_length, .orderstatuspage  div#ordersTable_wrapper .row:nth-child(3)
+{
+	display:none;	
+}
+.buildanordertext{
+	margin: 0px 12px auto;
+    width: 71%;	
+}
+.orderstatuspage table.dataTable{
+	margin-top: 0px !important;	
+}
+.orderstatuspage .shomoreandviewall{
+ 	margin-top:25px;	
+}
+.orderstatuspage .showmore{
+ 	  margin-top: 13px;
+}
+.orderstatuspage .shomoreandviewall {
+    //border: 1px solid #ccc;
+    padding: 20px 10px;
+    margin-top: -6px;
+    border-top: none;   
+	box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 3px 11px 0 rgba(0, 0, 0, 0.19);
+}
+.whitebg{
+	 background: #fff;	
+} 
+.orderstatuspage .placeOrder, .orderstatuspage .manageorder{
+	margin-top:20px;
+	padding: 0px;
+	box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 3px 11px 0 rgba(0, 0, 0, 0.19);
+}
+.orderstatuspage .borderforplaceorder{
+	    border-right: 1px solid #f2f2f2;
+    border-left: 1px solid #f2f2f2;
+}
+.orderstatuspage .borderforplaceorder1{
+	border-right: 1px solid #f2f2f2;	
+}
+ .orderstatuspage .placeOrder  div:first-child, .orderstatuspage .manageorder  div:first-child{
+	font-size: 25px;
+    padding: 7px 0px 5px 0px;
+   // border-bottom: 1px solid #ccc;
+	
+} 
+.fullwidth{
+		width:100%;
+	}
+	
+.orderstatuspage .disputeorder{
+	padding: 0px 9px;	
+}
+.orderstatuspage .manageorder{
+    padding: 0;
+	border-left:10px solid #f2f2f2;
+}
+.swiper-container {
+    width: 100%;
+    height: 220px;
+    display: none;
+}
+.orderStatus span {
+    font-size: 17px;
+    color: #0a8caa;
+}
+.placeordertext {
+    padding-left: 25px !important;
+}
+.placeordermobalign {
+    margin-bottom: 10px;
+}
+.marginbtmplaceorder {
+		margin-bottom: 0px;
+}
+
+@media (min-width: 768px){
+	.orderstatuspage .buildanordertext{
+		    margin: 0px 0px 10px 0px;
+			width: 94%;
+	}
+}
+@media (max-width: 992px){
+	.orderstatuspage .placeorderrightborder{
+		border-right: none;
+	}
+	.orderstatuspage .placeordermobalign{
+		display: table-cell;
+		vertical-align: middle;
+	}   
+	.orderstatuspage .centered{
+		text-align: center;
+		padding: 10px 10px 20px 10px;
+		display: grid;
+	}
+	.orderstatuspage .padding10px{
+		padding:10px;
+		display: table-cell;
+		margin: 0 auto;
+	}
+	.floatnone{
+		float:none;
+		padding: 0;
+		text-align:left;
+	}
+	.orderstatuspage .manageorder {
+		padding: 0;
+		border-left: 0px solid #f2f2f2;
+	}
+	
+}
+@media screen and (max-width: 767px) {
+	.orderstatuspage .placeOrder  div:first-child, .orderstatuspage .manageorder  div:first-child{
+	font-size: 25px;
+    padding: 7px 0px 5px 0px;
+   display: block;
+    text-align: center;
+	
+} 
+
+.orderstatuspage .centered{
+    text-align: center;
+    padding: 10px 0px;
+    border-top: 1px solid #f2f2f2;
+        display: flex;
+    flex-flow: column;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+}
+.orderstatuspage .centered{
+	display: block
+}
+	.orderstatuspage  .orderStatus{
+		margin-bottom:10px
+	}
+	.desktoptableparent{
+		display:none;
+	}
+	.orderstatuspage .btnclsactive {    
+       width: 100%;
+	   margin-right: 0px;
+	}
+	.image-upload img {    
+		//margin-right: 30px;
+	}
+	.orderstatuspage .showmore, .orderstatuspage table.dataTable {
+		display:none;	
+	}	
+	.orderstatuspage .padding10px{
+		padding:10px;
+		display: table-cell;
+		margin: 0 auto;
+		width: 100%;
+	}
+	.orderstatuspage .placeordermobalign{
+		display: table-cell;
+		vertical-align: middle;
+		float: none;
+		text-align: left;
+	}   
+	.orderstatuspage .centered{
+		text-align: center;
+		padding: 0px;
+		display: initial;
+	}
+	.orderstatuspage .buildanordertext{
+		margin: 0;
+		width: 66%;;
+	}
+	.orderstatuspage .borderforplaceorder, .orderstatuspage .borderforplaceorder1, .orderstatuspage .placeorderrightborder{
+		border-right: none;
+		border-left: none	
+	}
+	.floatnone{
+		padding:0 30px 0 0px !important;
+	}
+	.swiper-container {
+		width: 100%;
+		height: 250px;
+		display: block;
+	}
+	.marginbtmplaceorder {
+		margin-bottom: 0px;
+		float: left;
+		margin-right: 7px;
+	}
+	
+}
+@media screen and (max-width: 1024px) {
+	.managetextalign{
+		position: relative;
+		top: 9px;
+	}
+	.fullwidth{
+		width:0%;
+	}
+	.marginbtm0 {
+		margin-bottom: 0px;
+		float: left;
+		margin-right: 7px;
+	}
+	.marginbtmplaceorder {
+		margin-bottom: 0px;
+		margin-left: 15px;
+	}
+}
+.image-upload > input
+{
+    display: none;
+}
+.image-upload img
+{
+    width: 40px;
+    cursor: pointer;
+}
+.filenamebutton{
+	width: 67px !important;
+    font-size: 8px !important;
+    padding: 4px 0px !important;	
+	//margin-top: 30px;
+    margin-left: 27%;
+	display:none;
+	letter-spacing: 0px !important;
+}
+.marginbtm4 {
+    margin-bottom: 4px;
+	margin-top: -6px;
+}
+.clearfix{*zoom:1;}.clearfix:before,.clearfix:after{display:table;content:"";line-height:0;}
+.clearfix:after{clear:both;}
+.hide-text{font:0/0 a;color:transparent;text-shadow:none;background-color:transparent;border:0;}
+.input-block-level{display:block;width:100%;min-height:30px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+.btn-file{overflow:hidden;position:relative;vertical-align:middle;}.btn-file>input{position:absolute;top:0;right:0;margin:0;opacity:0;filter:alpha(opacity=0);transform:translate(-300px, 0) scale(4);font-size:23px;direction:ltr;cursor:pointer;}
+.fileupload{margin-bottom:9px;}.fileupload .uneditable-input{display:inline-block;margin-bottom:0px;vertical-align:middle;cursor:text;}
+.fileupload .thumbnail{overflow:hidden;display:inline-block;margin-bottom:5px;vertical-align:middle;text-align:center;}.fileupload .thumbnail>img{display:inline-block;vertical-align:middle;max-height:100%;}
+.fileupload .btn{vertical-align:middle;}
+.fileupload-exists .fileupload-new,.fileupload-new .fileupload-exists{display:none;}
+.fileupload-inline .fileupload-controls{display:inline;}
+.fileupload-new .input-append .btn-file{-webkit-border-radius:0 3px 3px 0;-moz-border-radius:0 3px 3px 0;border-radius:0 3px 3px 0;}
+.thumbnail-borderless .thumbnail{border:none;padding:0;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;}
+.fileupload-new.thumbnail-borderless .thumbnail{border:1px solid #ddd;}
+.control-group.warning .fileupload .uneditable-input{color:#a47e3c;border-color:#a47e3c;}
+.control-group.warning .fileupload .fileupload-preview{color:#a47e3c;}
+.control-group.warning .fileupload .thumbnail{border-color:#a47e3c;}
+.control-group.error .fileupload .uneditable-input{color:#b94a48;border-color:#b94a48;}
+.control-group.error .fileupload .fileupload-preview{color:#b94a48;}
+.control-group.error .fileupload .thumbnail{border-color:#b94a48;}
+.control-group.success .fileupload .uneditable-input{color:#468847;border-color:#468847;}
+.control-group.success .fileupload .fileupload-preview{color:#468847;}
+.control-group.success .fileupload .thumbnail{border-color:#468847;}
+.home_Contract_Link{
+	color:#0c8caa;
+	cursor: pointer;
+	
+}
+
+/* added by lokesh nov30 */
+orderstatuspage .panel-heading {
+    padding: 6px 15px;
+}
+.orderstatuspage .panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 14px;
+    color: inherit;
+}
+.orderstatuspage .centered{
+    text-align: center;
+    padding: 10px 0px;
+    border-top: 1px solid #f2f2f2;
+}
+.orderstatuspage .placeOrder a,.orderstatuspage .manageorder a,.orderstatuspage .placeOrder p,.orderstatuspage .manageorder p{
+	font-size:11px;
+	text-align: center;
+}
+.webEdiFileMessage{
+	line-height: 0px
+}
+.webEdiFileMessage p:first-child{
+	margin-top:25px
+}
+​

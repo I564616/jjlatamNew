@@ -1,0 +1,23 @@
+
+
+# 
+# Import the JNJ Product
+#
+
+
+$MDDproductCatalog=mddProdCatalog
+
+
+$languages=en
+$languagesUS=en,es
+$defaultLanguage=en
+
+# Product catalog
+INSERT_UPDATE Catalog;id[unique=true]
+;$MDDproductCatalog
+
+# Product versions for product catalogs
+INSERT_UPDATE CatalogVersion;catalog(id)[unique=true];version[unique=true];active;languages(isoCode);readPrincipals(uid)
+;$MDDproductCatalog;Staged;false;$languages;
+;$MDDproductCatalog;Online;true;$languages;
+

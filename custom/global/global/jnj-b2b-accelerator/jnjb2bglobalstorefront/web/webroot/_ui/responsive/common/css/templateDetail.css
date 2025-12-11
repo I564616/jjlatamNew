@@ -1,0 +1,379 @@
+#templatedetailpage .imgprop {
+    width: 78%;
+    height: 85px;
+    vertical-align: top;
+}
+#templatedetailpage .addtocart{
+	//margin-top: 20px;
+    padding: 10px 25px;
+}
+#templatedetailpage .marginleft30px{
+	margin-left:18px;
+}
+#templatedetailpage .txtWidth{	
+    width: 55px !important;
+	margin-top: 0px;
+	margin-left: 5px;
+}
+#templatedetailpage td.paddingforText{
+	padding-left: 10px !important;
+}
+#templatedetailpage .Subcontainer{
+	webkit-box-shadow: 0 0 5px 2px #eee;
+	-moz-box-shadow: 0 0 5px 2px #eee;
+	box-shadow: 0 0 5px 2px #eee;
+}
+#templatedetailpage .fontsize12px{
+	font-size:12px;
+}
+#templatedetailpage .paddingright40px{
+	padding:30px 40px  18px 40px !important;
+}
+#templatedetailpage .thirdline{
+	font-size:12px;
+}
+#templatedetailpage .table-padding{
+	padding-top: 0px !important;
+}
+#templatedetailpage .margintop15px{
+	margin-top:15px;
+}
+#templatedetailpage .shipping-address-padding {
+    padding: 30px 0 10px 20px !important;
+}
+.verticalmiddle{
+	vertical-align:middle !important;
+}
+#templatedetailpage #ordersTable thead {
+    display: none;
+}
+#templatedetailpage .paddingforcollapse{
+	//padding: 25px 0 15px 10px;
+    background-color: rgba(0, 136, 170,0.1);
+	//outline: 1px solid #ccc;
+	padding-left: 18px;
+}
+#templatedetailpage .dataTables_wrapper  .row:nth-of-type(3){
+	padding: 20px 15px 15px 15px;	
+}
+#templatedetailpage .padding0>span {
+    position: relative;
+    top: 0px;
+	padding-left: 30px;
+}
+#templatedetailpage .editTemplatebtn{
+	padding: 10px 30px;
+    margin-left: 15px;	
+     margin-right: 15px;	
+}
+#templatedetailpage .deleteTemplatebtn{
+	padding: 10px 30px;
+}
+#templatedetailpage .checkbox label::before{
+	top:2px;
+}
+#templatedetailpage  span.pipesymbol {
+    top: -2px;
+    padding-left: 5px;
+	position:relative;
+}
+#templatedetailpage .checkbox {    
+   /*  padding-left: 4px; */ 
+    display: block !important;
+}
+#templatedetailpage .checkboxmargin {
+    margin-top: 8px;
+}
+#templatedetailpage .table-striped>tbody>tr:first-child{
+	background-color: #fff !important;
+}
+#templatedetailpage .table-striped>tbody>tr:nth-of-type(odd){
+	background-color: #fff;
+}
+#templatedetailpage .table-striped>tbody>tr:nth-of-type(even){
+	background-color: #f9f9f9;
+}
+#templatedetailpage table.table-bordered.dataTable tbody th,#templatedetailpage table.table-bordered.dataTable tbody td{
+	border-right: none;
+}
+.paddingleft30px{
+	padding-left: 30px;
+}
+.borderrightgrey{
+	border-right: 1px solid #ccc;
+}
+#templatedetailpage .downloadlinks {
+    margin: 9px 15px 0px -10px;
+}
+#templatedetailpage .editDeletepanel{
+	background: #fff;
+    padding: 20px 0px 20px 0px;
+    margin:0px;
+    //height: 76px;
+	border-bottom: 1px solid #f2f2f2;
+}
+#templatedetailpage .viewprice{
+	background: none !important;
+    padding: 5px 3px 0px 0 !important;
+    width: auto !important;
+}
+#templatedetailpage div.SortingTable {
+    margin-top: 20px;
+    position: absolute;
+    margin-left: 250px;
+}
+#templatedetailpage .SortingTable .form-control {
+    background-position: 95% 12px !important;
+    margin: -2px 6px 0 6px !important;
+    width:150px;
+    color: #828282;
+}
+#templatedetailpage .SortingTable select.input-sm {
+    height: 38px;
+    line-height: 30px;
+}
+#templatedetailpage div.SortingTable label {
+    font-weight: normal;
+}
+#templatedetailpage .btn-group.bootstrap-select {
+    width: 125px !important;
+}
+#templatedetailpage .SortingTable button.btn.dropdown-toggle.btn-default {    
+    //width: 160px !Important;
+    height: 40px;    
+    background-position: 92% 12px !important;
+}
+#templatedetailpage .form-control {
+	display: inline-block !important;
+}
+#templatedetailpage .basecontent{
+	padding: 15px 0px;	
+}
+/* AAOL-6467*/
+#temp-temporderdetail{
+	    word-break: break-word;
+}
+@media (min-width:771px) and (max-width: 1200px){
+	#templatedetailpage .paddingleft30px {
+		padding-left: 10px !important;	
+	}	
+	#templatedetailpage #ordersTable_length .form-control {
+    background: url('../images/downarrow.png') no-repeat;
+    background-position: 95% 12px;
+    -webkit-appearance: none;
+    background-size: 15px 15px;
+    margin: -2px 6px 0 6px;
+    width: 91px;
+	}
+	#templatedetailpage div.SortingTable {
+		width:33%;
+		margin-left: 220px;
+	}   
+	#templatedetailpage .unitcase{
+		margin-left: 18px;
+		margin-top: 0px;
+	}
+	#templatedetailpage .downloadlinks{
+		margin: 10px 20px 0px 0;
+	}
+	/* #templatedetailpage .editDeletepanel{
+		height: 120px;
+	} */
+	#templatedetailpage .checkboxmargin{
+		padding-right: 20px;
+	}
+}
+@media (max-width: 767px){
+	#templatedetailpage .table-bordered{
+		border: none;
+	}
+	#templatedetailpage .imgprop {
+		width: 28%;		    
+		float: left;
+	}
+	#templatedetailpage .table>tbody>tr>td, #templatedetailpage  .table>tbody>tr>th, #templatedetailpage  .table>tfoot>tr>td, #templatedetailpage .table>tfoot>tr>th, #templatedetailpage .table>thead>tr>td, #templatedetailpage .table>thead>tr>th {
+		padding:0px !important;   
+	}
+	#templatedetailpage .firstline, #templatedetailpage .secondline {    
+		float: right;
+		width: 60%;
+	}
+	#templatedetailpage  .Tabsubtxt{
+		margin-left:0px;
+	}
+	#templatedetailpage .thirdline {		
+		float: left;
+	}
+	#templatedetailpage .marginleft30px {
+		margin-left: 10px;
+	}
+	#templatedetailpage .unitcase{
+		margin-left: 0px;
+	}
+	.marginleft0px {
+		margin-left:0px;
+	}
+	#templatedetailpage .viewprice {   
+		width: 29% !important;
+		padding: 0px !important;
+	}
+	#templatedetailpage .mobilebtnalign{
+		width:auto !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+	#templatedetailpage .downloadlinks {
+		margin: -20px 20px 0px 0px;
+	}
+	#templatedetailpage div .SortingTable {
+		width: 100%;
+		text-align: left;
+		margin-bottom:10px;
+		margin-left: 15px;
+	}
+	#templatedetailpage .dataTables_length {
+		text-align: left !important;
+	}
+	
+	#templatedetailpage  #ordersTable_length .form-control {
+		background: url('../images/downarrow.png') no-repeat;
+		background-position: 95% 12px;
+		-webkit-appearance: none;
+		background-size: 15px 15px;
+		margin: -2px 6px 0 6px;
+		width: 91px;
+	}
+	#templatedetailpage .SortingTable .form-control {
+		width:217px;
+		background-position: 95% 13px !important;
+	}
+	#templatedetailpage div.dataTables_wrapper div.dataTables_length select {
+		width: 217px ;		
+	}
+	#templatedetailpage #ordersTablemobile_length .form-control {	   		
+		background-position: 95% 12px !important;	
+	}
+	#templatedetailpage .dataTables_length select {
+		margin-left: 17px !important;
+	}
+	#templatedetailpage div#ordersTablemobile_length {
+		margin-bottom: 89px;
+		position: relative;
+		top: 30px;
+		left: -15px;
+	}
+	#templatedetailpage div#ordersTablemobile_info {
+		position: relative;
+		top: 130px;
+		float: left;
+		left: 15px;
+	}
+	#templatedetailpage  div#ordersTablemobile_paginate {
+		position: relative;
+		top: 130px;
+		float: right;
+		right: 15px;
+	}
+	#templatedetailpage .margintop15px {
+		margin-top: 10px;
+		float: right;
+		margin-right: 15px;
+	}
+	#templatedetailpage .margintop5px{
+		margin-top: 5px;
+		width:130px;
+	}
+}
+
+@media (min-width: 480px) and (max-width:780px){	
+	.tabletbtnwidth{
+		//width:23% !important;
+	}
+	.tabletShareTxt{
+		//width:29% !important;
+	}
+	#templatedetailpage .editTemplatebtn {
+		padding: 10px 15px;
+		margin-left: 15px;
+	}
+	#templatedetailpage .deleteTemplatebtn {
+		padding: 10px 15px;
+	}
+	#templatedetailpage .downloadlinks {
+		margin: 9px 15px 0px -10px !important;
+	}
+}
+@media (max-width: 480px){	
+	#templatedetailpage div#ordersTablemobile_length{
+		position: absolute;
+		top: 0px;
+		left: 12px;
+	}
+	#templatedetailpage .btn-group.bootstrap-select{
+		width: 235px !important;
+		margin-left: 20px;
+	}
+	#templatedetailpage div.SortingTable{
+		position: absolute;
+		margin-top: 76px;
+		margin-left: 27px;
+	}
+	#templatedetailpage #ordersTablemobile_length .form-control{
+		background-position: 95% 12px !important;
+	}
+	#templatedetailpage .SortingTable .form-control {
+		background-position: 95% 13px !important;
+	}
+	#templatedetailpage .dataTables_wrapper  .row:nth-of-type(3){
+		height: 140px;
+	}
+	#templatedetailpage  div#ordersTablemobile_paginate{
+		position: relative;
+		top: 80px;
+		float: right;
+		right: 15px;
+	}
+	#templatedetailpage div#ordersTablemobile_info {
+		top: 80px;
+		left: 28px;
+	}
+	#templatedetailpage .dataTables_length{
+		display:block;
+	}
+	#templatedetailpage .Tabsubtxt{
+		line-height: 0px;
+	}
+	#templatedetailpage .content{
+		line-height: 45px;
+	}
+	#templatedetailpage .txtWidth{
+		margin-left: 0px;
+	}
+	#templatedetailpage .firstline{
+		margin-bottom: 0px;
+	}
+	#templatedetailpage .editDeletepanel{
+		height: 125px;
+	}
+	#templatedetailpage .editTemplatebtn{
+		margin-left:0px;
+		padding: 10px 22px;
+	}
+	#templatedetailpage .deleteTemplatebtn{
+		padding: 10px 12px;
+	}
+	#templatedetailpage .downloadlinks{
+		margin: 15px 0px 0px -6px ;
+	}
+	#templatedetailpage .checkboxmargin{
+		padding-right: 0px;
+		margin-top: 15px;
+		padding-left: 22px;
+	}
+}
+
+@media (max-width: 380px){
+#templatedetailpage .downloadlinks{
+		margin: 15px 0px 0px 0px;
+	}
+}

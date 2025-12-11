@@ -1,0 +1,138 @@
+table.dataTable {
+     margin-top: 0px !important;
+}
+div#ordersTable_paginate {
+    float: right;
+}
+div.dataTables_wrapper div.dataTables_info {
+    float: right;
+    margin-right: 17px;
+}
+.table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+		border-bottom-width: 2px;
+		background-color: #e6e6e6;
+	}
+.table-striped>tbody>tr:nth-of-type(odd) {
+	text-align: center;
+	background-color: #fff;
+}
+.table-striped>tbody>tr:nth-of-type(even) {
+	background-color: #f9f9f9;
+	text-align: center;
+}
+div#tables .container {
+    background: none;
+}
+ div.dataTables_wrapper div.dataTables_filter {
+    display: none;
+} 
+.table>caption+thead>tr:first-child>td, .table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>td, .table>thead:first-child>tr:first-child>th {
+    border-top: 0;
+    text-align: center;
+}
+table.dataTable thead>tr>th.sorting_asc, table.dataTable thead>tr>th.sorting_desc, table.dataTable thead>tr>th.sorting, table.dataTable thead>tr>td.sorting_asc, table.dataTable thead>tr>td.sorting_desc, table.dataTable thead>tr>td.sorting {
+    padding-right: 0;
+}
+.pagination>li:last-child a {
+    border-top-right-radius: 14px;
+    border-bottom-right-radius: 14px;
+}
+.pagination>li:first-child a {
+    border-top-left-radius: 14px;
+    border-bottom-left-radius: 14px;
+}
+div#ordersTable_paginate ul li:first-child, div#ordersTable_paginate ul li:last-child {
+    display: inline;
+}
+div#ordersTable_paginate .pagination>li {
+    display: none;
+}
+.table>caption+thead>tr:first-child>td, .table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>td, .table>thead:first-child>tr:first-child>th{
+	font-size:10px;	
+}
+table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td{
+	font-size:16px;
+}
+
+.table-bordered {
+    border: 1px solid #f2f2f2;
+}
+.table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+    border: 1px solid #f2f2f2;
+} 
+ 
+.mobiletable table.table-bordered tbody th {
+    font-size: 13px;
+    text-align: left;
+    padding-left: 25px;
+    vertical-align: middle;
+    background: #f2f2f2;
+    width: 42%;
+}  
+.mobiletable table tbody tr:first-child td {
+    font-size: 24px;
+	font-weight: bold;
+}
+.mobiletable table  tbody tr td {
+    font-size: 18px;
+    text-align: left;
+    padding-left: 35px;
+}
+.mobiletable table tbody tr:last-child td {
+    padding-left: 48px;
+}
+.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+    bottom: -4px !important;    
+}
+/*   table columns nad rows customization    */
+
+table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td:first-child , table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td:last-child
+,.table>thead:first-child>tr:first-child>th:first-child, .table>thead:first-child>tr:first-child>th:last-child{
+    text-align: left;
+    padding-left: 35px;
+}
+
+table.table-bordered.dataTable tbody td:last-child{
+	    padding-left: 45px;
+}
+
+.orderstatuspage table.dataTable thead .sorting:nth-child(2):after, .orderDetailsTable table.dataTable thead .sorting:first-child:after {
+    opacity: 1 !important;
+    content: "\e252" !important;
+}
+ .orderstatuspage table.dataTable thead .sorting_asc:nth-child(2):after, .orderDetailsTable table.dataTable thead .sorting_asc:first-child:after{
+	opacity: 1 !important;
+    content: "\e252" !important;
+ }
+ .orderstatuspage table.dataTable thead .sorting_desc:nth-child(2):after, .orderDetailsTable table.dataTable thead .sorting_desc:first-child:after{
+	opacity: 1 !important;
+    content: "\e253" !important; 
+ }
+.orderstatuspage table.dataTable thead .sorting:after,.orderDetailsTable  table.dataTable thead .sorting:after, .orderDetailsTable table.dataTable thead .sorting:nth-child(2):after{
+    opacity: 0;
+    content: "\e252";
+}
+.orderstatuspage table.dataTable thead .sorting_asc:after,.orderstatuspage table.dataTable thead .sorting_desc:after, .orderDetailsTable table.dataTable thead .sorting_asc:after,.orderDetailsTable table.dataTable thead .sorting_desc:after{
+	 opacity: 0;
+    content: "\e252";	
+}
+.orderstatuspage div#ordersTable_wrapper {
+  /*   display: none; */
+}
+
+/*mobile table*/
+.mobiletable table tbody tr:last-child td:last-child   .pendingStatus, .mobiletable table tbody tr:last-child td:last-child  .deliveryStatus, .mobiletable table tbody tr:last-child td:last-child  .delayedStatus{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    background-color: #009900;
+    content: "";
+    position: relative;
+    left: -10px;
+}
+
+
+

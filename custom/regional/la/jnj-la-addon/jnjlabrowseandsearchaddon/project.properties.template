@@ -1,0 +1,44 @@
+#Sun, 08 Jan 2017 20:51:49 +0100
+# -----------------------------------------------------------------------
+# [y] hybris Platform 
+# 
+# Copyright (c) 2000-2016 hybris AG
+# All rights reserved.
+#  
+# This software is the confidential and proprietary information of hybris 
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with hybris.
+#
+#  
+# -----------------------------------------------------------------------
+
+# you can put key/value pairs here.
+# Use Config.getParameter(..) to retrieve the values during runtime.
+
+jnjlabrowseandsearchaddon.key=value
+
+# Specifies the location of the spring context file added automatically to the global platform application context.
+jnjlabrowseandsearchaddon.application-context=jnjlabrowseandsearchaddon-spring.xml
+
+yacceleratorstorefront.additionalWebSpringConfigs.jnjlabrowseandsearchaddon=classpath\:/jnjlabrowseandsearchaddon/web/spring/jnjlabrowseandsearchaddon-web-spring.xml
+
+
+
+jnjlabrowseandsearchaddon.javascript.paths.responsive=/responsive/common/js/jnjlabrowseandsearchaddon.js;/responsive/common/js/acc.customerAlsoBoughtCarousel.js
+jnjlabrowseandsearchaddon.css.paths.responsive=/responsive/common/css/jnjlabrowseandsearchaddon.css
+
+yb2bacceleratorstorefront.wro4jconfigscan.jnjlabrowseandsearchaddon=true
+
+jnjb2bglobalstorefront.additionalWebSpringConfigs.jnjlabrowseandsearchaddon=classpath\:/jnjlabrowseandsearchaddon/web/spring/jnjlabrowseandsearchaddon-web-spring.xml
+
+carousel.products.each.slide=4
+pdp.rp.carousel.hide.lang.en=true
+pdp.cab.carousel.hide.lang.en=true
+
+pdp.info.tabs.hide.lang.en=true
+pdp.desc.hide.lang.en=true
+
+jnj.la.product.detail.pdf.vm.path=/jnjlabrowseandsearchaddon/vm/productDetails.vm
+catalog.result.page.limit=10
+latam.catalog.result.page.limit=10

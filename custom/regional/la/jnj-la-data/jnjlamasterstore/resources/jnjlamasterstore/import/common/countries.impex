@@ -1,0 +1,898 @@
+#
+# Import Countries
+# Full country list conforming to ISO 3166-1 alpha-2
+#
+
+
+INSERT_UPDATE Country;isocode[unique=true];name[lang=en];name[lang=pt];name[lang=es];active[default=false]
+;AD;"Andorra";"Andorra";"Andorra"
+;AE;"United Arab Emirates";"Emirados Árabes Unidos";"Emiratos Árabes Unidos"
+;AF;"Afghanistan";"Afeganistão";"Afganistán"
+;AG;"Antigua and Barbuda";"Antígua e Barbuda";"Antigua y Barbuda"
+;AI;"Anguilla";"Anguilla";"Anguila"
+;AL;"Albania";"Albânia";"Albania"
+;AM;"Armenia";"Armênia";"Armenia"
+;AN;"Netherlands Antilles";"Antilhas Holandesas";"Antillas Neerlandesas"
+;AO;"Angola";"Angola";"Angola"
+;AQ;"Antarctica";"Antártida";"Antártida"
+;AR;"Argentina";"Argentina";"Argentina"
+;AS;"American Samoa";"Samoa Americana";"Samoa Americana"
+;AT;"Austria";"Áustria";"Austria"
+;AU;"Australia";"Austrália";"Australia"
+;AW;"Aruba";"Aruba";"Aruba"
+;AX;"Aland Islands";"Ilhas Aland";"Islas Áland"
+;AZ;"Azerbaijan";"Azerbaijão";"Azerbaiyán"
+;BA;"Bosnia and Herzegovina";"Bósnia-Herzegóvina";"Bosnia y Herzegovina"
+;BB;"Barbados";"Barbados";"Barbados"
+;BD;"Bangladesh";"Bangladesh";"Bangladesh"
+;BE;"Belgium";"Bélgica";"Bélgica"
+;BF;"Burkina Faso";"Burkina Fasso";"Burkina Faso"
+;BG;"Bulgaria";"Bulgária";"Bulgaria"
+;BH;"Bahrain";"Bahrein";"Bahréin"
+;BI;"Burundi";"Burundi";"Burundi"
+;BJ;"Benin";"Benin";"Benin"
+;BL;"Saint Barthélemy";"São Bartolomeu";"San Bartolomé"
+;BM;"Bermuda";"Bermudas";"Bermudas"
+;BN;"Brunei Darussalam";"Brunei";"Brunéi"
+;BO;"Bolivia";"Bolívia";"Bolivia"
+;BR;"Brazil";"Brasil";"Brasil"
+;BQ;"Bonaire, Saint Eustatius and Saba";"Bonaire";"Bonaire"
+;BS;"Bahamas";"Bahamas";"Bahamas"
+;BT;"Bhutan";"Butão";"Bhután"
+;BV;"Bouvet Island";"Ilha Bouvet";"Isla Bouvet"
+;BW;"Botswana";"Botsuana";"Botsuana"
+;BY;"Belarus";"Belarus";"Belarús"
+;BZ;"Belize";"Belize";"Belice"
+;CA;"Canada";"Canadá";"Canadá"
+;CC;"Cocos (Keeling) Islands";"Ilhas Cocos";"Islas Cocos"
+;CD;"Congo, the Democratic Republic of the";"República Democrática do Congo";"República Democrática del Congo"
+;CF;"Central African Republic";"República Centro-Africana";"República Centro-Africana"
+;CG;"Congo";"Congo";"Congo"
+;CH;"Switzerland";"Suíça";"Suiza"
+;CI;"Cote d'Ivoire";"Costa do Marfim";"Costa de Marfil"
+;CK;"Cook Islands";"Ilhas Cook";"Islas Cook"
+;CL;"Chile";"Chile";"Chile"
+;CM;"Cameroon";"Camarões";"Camerún"
+;CN;"China";"China";"China"
+;CO;"Colombia";"Colômbia";"Colombia"
+;CR;"Costa Rica";"Costa Rica";"Costa Rica"
+;CU;"Cuba";"Cuba";"Cuba"
+;CV;"Cape Verde";"Cabo Verde";"Cabo Verde"
+;CW;"Curaçao";"Curaçao";"Curazao"
+;CX;"Christmas Island";"Ilha Natal";"Islas Christmas"
+;CY;"Cyprus";"Chipre";"Chipre"
+;CZ;"Czech Republic";"República Tcheca";"República Checa"
+;DE;"Germany";"Alemanha";"Alemania"
+;DJ;"Djibouti";"Djibuti";"Yibuti"
+;DK;"Denmark";"Dinamarca";"Dinamarca"
+;DM;"Dominica";"Dominica";"Domínica"
+;DO;"Dominican Republic";"República Dominicana";"República Dominicana"
+;DZ;"Algeria";"Argélia";"Argel"
+;EC;"Ecuador";"Equador";"Ecuador"
+;EE;"Estonia";"Estônia";"Estonia"
+;EG;"Egypt";"Egito";"Egipto"
+;EH;"Western Sahara";"Saara Ocidental";"Sahara Occidental"
+;ER;"Eritrea";"Eritréia";"Eritrea"
+;ES;"Spain";"Espanha";"España"
+;ET;"Ethiopia";"Etiópia";"Etiopía"
+;FI;"Finland";"Finlândia";"Finlandia"
+;FJ;"Fiji";"Fiji";"Fiji"
+;FK;"Falkland Islands";"Ilhas Falkland (Malvinas)";"Islas Malvinas"
+;FM;"Micronesia, Federated States of";"Micronésia";"Micronesia"
+;FO;"Faroe Islands";"Ilhas Faroes";"Islas Faroe"
+;FR;"France";"França";"Francia"
+;GA;"Gabon";"Gabão";"Gabón"
+;GB;"United Kingdom";"Reino Unido";"Reino Unido"
+;GD;"Grenada";"Granada";"Granada"
+;GE;"Georgia";"Geórgia";"Georgia"
+;GF;"French Guiana";"Guiana Francesa";"Guayana Francesa"
+;GG;"Guernsey";"Guernsey";"Guernsey"
+;GH;"Ghana";"Gana";"Ghana"
+;GI;"Gibraltar";"Gibraltar";"Gibraltar"
+;GL;"Greenland";"Groelândia";"Groenlandia"
+;GM;"Gambia";"Gâmbia";"Gambia"
+;GN;"Guinea";"Guiné";"Guinea"
+;GP;"Guadeloupe";"Guadalupe";"Guadalupe"
+;GQ;"Equatorial Guinea";"Guiné Equatorial";"Guinea Ecuatorial"
+;GR;"Greece";"Grécia";"Grecia"
+;GS;"South Georgia and the South Sandwich Islands";"Ilhas Geórgia do Sul e Sandwich do Sul";"Georgia del Sur e Islas Sandwich del Sur"
+;GT;"Guatemala";"Guatemala";"Guatemala"
+;GU;"Guam";"Guam";"Guam"
+;GW;"Guinea-Bissau";"Guiné-Bissau";"Guinea-Bissau"
+;GY;"Guyana";"Guiana";"Guayana"
+;HK;"Hong Kong";"Hong Kong";"Hong Kong"
+;HM;"Heard Island and McDonald Islands";"Ilhas Heard e McDonald";"Islas Heard y McDonald"
+;HN;"Honduras";"Honduras";"Honduras"
+;HR;"Croatia";"Croácia";"Croacia"
+;HT;"Haiti";"Haiti";"Haití"
+;HU;"Hungary";"Hungria";"Hungría"
+;ID;"Indonesia";"Indonésia";"Indonesia"
+;IE;"Ireland";"Irlanda";"Irlanda"
+;IL;"Israel";"Israel";"Israel"
+;IM;"Isle of Man";"Ilha do Homem";"Isla de Man"
+;IN;"India";"Índia";"India"
+;IO;"British Indian Ocean Territory";"Território Britânico do Oceano índico";"Territorio Británico del Océano Índico"
+;IQ;"Iraq";"Iraque";"Irak"
+;IR;"Iran";"Irã";"Irán"
+;IS;"Iceland";"Islândia";"Islandia"
+;IT;"Italy";"Itália";"Italia"
+;JE;"Jersey";"Jersey";"Jersey"
+;JM;"Jamaica";"Jamaica";"Jamaica"
+;JO;"Jordan";"Jordânia";"Jordania"
+;JP;"Japan";"Japão";"Japón"
+;KE;"Kenya";"Kênia";"Kenia"
+;KG;"Kyrgyzstan";"Quirguistão";"Kirguistán"
+;KH;"Cambodia";"Camboja";"Camboya"
+;KI;"Kiribati";"Kiribati";"Kiribati"
+;KM;"Comoros";"Ilhas Comores";"Comoros"
+;KN;"Saint Kitts and Nevis";"São Cristóvão e Névis";"San Cristóbal y Nieves"
+;KP;"Korea, Democratic People's Republic of";"Coréia do Norte";"Corea del Norte"
+;KR;"Korea, Republic of";"Coréia do Sul";"Corea del Sur"
+;KW;"Kuwait";"Kuait";"Kuwait"
+;KY;"Cayman Islands";"Ilhas Cayman";"Islas Caimán"
+;KZ;"Kazakhstan";"Cazaquistão";"Kazajstán"
+;LA;"Lao People's Democratic Republic";"Laos";"Laos"
+;LB;"Lebanon";"Líbano";"Líbano"
+;LC;"Saint Lucia";"Santa Lúcia";"Santa Lucía"
+;LI;"Liechtenstein";"Liechtenstein";"Liechtenstein"
+;LK;"Sri Lanka";"Sri Lanka";"Sri Lanka"
+;LR;"Liberia";"Libéria";"Liberia"
+;LS;"Lesotho";"Lesoto";"Lesotho"
+;LT;"Lithuania";"Lituânia";"Lituania"
+;LU;"Luxembourg";"Luxemburgo";"Luxemburgo"
+;LV;"Latvia";"Látvia";"Letonia"
+;LY;"Libyan Arab Jamahiriya";"Líbia";"Libia"
+;MA;"Morocco";"Marrocos";"Marruecos"
+;MC;"Monaco";"Mônaco";"Mónaco"
+;MD;"Moldova";"Moldova";"Moldova"
+;ME;"Montenegro";"Montenegro";"Montenegro"
+;MF;"Saint Martin";"São Martim";"Isla de San Martín"
+;MG;"Madagascar";"Madagascar";"Madagascar"
+;MH;"Marshall Islands";"Ilhas Marshall";"Islas Marshall"
+;MK;"Macedonia";"Macedônia ";"Macedonia"
+;ML;"Mali";"Mali";"Mali"
+;MM;"Myanmar";"Myanma ";"Myanmar"
+;MN;"Mongolia";"Mongólia";"Mongolia"
+;MO;"Macao";"Macau";"Macao"
+;MP;"Northern Mariana Islands";"Ilhas Marianas do Norte";"Islas Marianas del Norte"
+;MQ;"Martinique";"Martinica";"Martinica"
+;MR;"Mauritania";"Mauritânia";"Mauritania"
+;MS;"Montserrat";"Montserrat";"Montserrat"
+;MT;"Malta";"Malta";"Malta"
+;MU;"Mauritius";"Maurício";"Mauricio"
+;MUL;"Multiple";"Múltiplos";"Múltiple"
+;MV;"Maldives";"Maldivas";"Maldivas"
+;MW;"Malawi";"Malaui";"Malawi"
+;MX;"Mexico";"México";"México"
+;MY;"Malaysia";"Malásia";"Malasia"
+;MZ;"Mozambique";"Moçambique";"Mozambique"
+;NA;"Namibia";"Namíbia";"Namibia"
+;NC;"New Caledonia";"Nova Caledônia";"Nueva Caledonia"
+;NE;"Niger";"Níger";"Níger"
+;NF;"Norfolk Island";"Ilhas Norfolk";"Islas Norkfolk"
+;NG;"Nigeria";"Nigéria";"Nigeria"
+;NI;"Nicaragua";"Nicarágua";"Nicaragua"
+;NL;"Netherlands";"Holanda";"Países Bajos"
+;NO;"Norway";"Noruega";"Noruega"
+;NP;"Nepal";"Nepal";"Nepal"
+;NR;"Nauru";"Nauru";"Nauru"
+;NU;"Niue";"Niue";"Niue"
+;NZ;"New Zealand";"Nova Zelândia";"Nueva Zelanda"
+;OM;"Oman";"Omã";"Omán"
+;PA;"Panama";"Panamá";"Panamá"
+;PE;"Peru";"Peru";"Perú"
+;PF;"French Polynesia";"Polinésia Francesa";"Polinesia Francesa"
+;PG;"Papua New Guinea";"Papua-Nova Guiné";"Papúa Nueva Guinea"
+;PH;"Philippines";"Filipinas";"Filipinas"
+;PK;"Pakistan";"Paquistão";"Pakistán"
+;PL;"Poland";"Polônia";"Polonia"
+;PM;"Saint Pierre and Miquelon";"St. Pierre e Miquelon";"San Pedro y Miquelón"
+;PN;"Pitcairn";"Ilha Pitcairn";"Islas Pitcairn"
+;PR;"Puerto Rico";"Porto Rico";"Puerto Rico"
+;PS;"Palestinian Territory";"Territórios Palestinos";"Palestina"
+;PT;"Portugal";"Portugal";"Portugal"
+;PW;"Palau";"Palau";"Islas Palaos"
+;PY;"Paraguay";"Paraguai";"Paraguay"
+;QA;"Qatar";"Qatar";"Qatar"
+;RE;"Reunion";"Ilha Reunião";"Reunión"
+;RO;"Romania";"Romênia";"Rumanía"
+;RS;"Serbia";"Sérvia";"Serbia y Montenegro"
+;RU;"Russian Federation";"Federação Russa";"Rusia"
+;RW;"Rwanda";"Ruanda";"Ruanda"
+;SA;"Saudi Arabia";"Arábia Saudita";"Arabia Saudita"
+;SB;"Solomon Islands";"Ilhas Solomão";"Islas Solomón"
+;SC;"Seychelles";"Ilhas Seychelles";"Seychelles"
+;SD;"Sudan";"Sudão";"Sudán"
+;SE;"Sweden";"Suécia";"Suecia"
+;SG;"Singapore";"Cingapura";"Singapur"
+;SH;"Saint Helena, Ascension and Tristan da Cunha";"Santa Helena";"Santa Elena"
+;SI;"Slovenia";"Eslovênia";"Eslovenia"
+;SJ;"Svalbard and Jan Mayen";"Ilhas Svalbard e Jan Mayen";"Islas Svalbard y Jan Mayen"
+;SK;"Slovakia";"Eslováquia";"Eslovaquia"
+;SL;"Sierra Leone";"Serra Leoa";"Sierra Leona"
+;SM;"San Marino";"San Marino";"San Marino"
+;SN;"Senegal";"Senegal";"Senegal"
+;SO;"Somalia";"Somália";"Somalia"
+;SR;"Suriname";"Suriname";"Surinam"
+;ST;"Sao Tome and Principe";"São Tomé e Príncipe";"Santo Tomé y Príncipe"
+;SV;"El Salvador";"El Salvador";"El Salvador"
+;SY;"Syrian Arab Republic";"Síria";"Siria"
+;SZ;"Swaziland";"Suazilândia";"Suazilandia"
+;TC;"Turks and Caicos Islands";"Ilhas Turks e Caicos";"Islas Turcas y Caicos"
+;TD;"Chad";"Chade";"Chad"
+;TF;"French Southern Territories";"Territórios do Sul da França";"Territorios Australes Franceses"
+;TG;"Togo";"Togo";"Togo"
+;TH;"Thailand";"Tailândia";"Tailandia"
+;TJ;"Tajikistan";"Tadjiquistão";"Tayikistán"
+;TK;"Tokelau";"Ilhas Tokelau";"Tokelau"
+;TL;"Timor-Leste";"Timor Leste";"Timor-Leste"
+;TM;"Turkmenistan";"Turcomenistão";"Turkmenistán"
+;TN;"Tunisia";"Tunísia";"Túnez"
+;TO;"Tonga";"Tonga";"Tonga"
+;TR;"Turkey";"Turquia";"Turquía"
+;TT;"Trinidad and Tobago";"Trinidad and Tobago";"Trinidad y Tobago"
+;TV;"Tuvalu";"Tuvalu";"Tuvalu"
+;TW;"Taiwan";"Taiwan";"Taiwán"
+;TZ;"Tanzania";"Tanzânia";"Tanzania"
+;UA;"Ukraine";"Ucrânia";"Ucrania"
+;UG;"Uganda";"Uganda";"Uganda"
+;UM;"United States Minor Outlying Islands";"Ilhas Menores dos Estados Unidos";"Islas ultramarinas de estados unidos"
+;US;"United States";"Estados Unidos";"Estados Unidos de América"
+;UY;"Uruguay";"Uruguai";"Uruguay"
+;UZ;"Uzbekistan";"Uzbequistão";"Uzbekistán"
+;VA;"Holy See (Vatican City State)";"Vaticano";"Ciudad del Vaticano"
+;VC;"Saint Vincent and the Grenadines";"Saint Vincente e Granadinas";"San Vicente y las Granadinas"
+;VE;"Venezuela";"Venezuela";"Venezuela"
+;VG;"Virgin Islands, British";"Ilhas Virgens (Inglaterra)";"Islas Vírgenes Británicas"
+;VI;"Virgin Islands, U.S.";"Ilhas Virgens (Estados Unidos)";"Islas Vírgenes de los Estados Unidos de América"
+;VN;"Vietnam";"Vietnam";"Vietnam"
+;VU;"Vanuatu";"Vanuatu";"Vanuatu"
+;WF;"Wallis and Futuna";"Ilhas Wallis e Futuna";"Wallis y Futuna"
+;WS;"Samoa";"Samoa Ocidental";"Samoa"
+;YE;"Yemen";"Iêmen";"Yemen"
+;YT;"Mayotte";"Mayotte";"Mayotte"
+;ZA;"South Africa";"África do Sul";"Sudáfrica"
+;ZM;"Zambia";"Zâmbia";"Zambia"
+;ZW;"Zimbabwe";"Zimbábue";"Zimbabue"
+
+INSERT_UPDATE Country;isocode[unique=true];name[lang=en];active[default=true]
+;BR;"Brazil"
+;MX;"Mexico"
+;PA;"Panama"
+;GD;"Grenada"
+;GT;"Guatemala"
+;CR;"Costa Rica"
+;DO;"Dominican Republic"
+;TT;"Trinidad and Tobago"
+;SV;"El Salvador"
+;HN;"Honduras"
+;NI;"Nicaragua"
+;JM;"Jamaica"
+;AN;"Netherlands Antilles"
+;BM;"Bermuda"
+;AW;"Aruba"
+;BS;"Bahamas"
+;KY;"Cayman Islands"
+;BB;"Barbados"
+;AG;"Antigua and Barbuda"
+;HT;"Haiti"
+;US;"United States"
+;SR;"Suriname"
+;EC;"Ecuador"
+;PR;"Puerto Rico"
+;AR;"Argentina"
+;UY;"Uruguay"
+;CL;"Chile"
+;PY;"Paraguay"
+;BO;"Bolivia"
+;CO;"Colombia"
+;PE;"Peru"
+
+INSERT_UPDATE Country;isocode[unique=true];eligibleUserGroup(uid)
+;BR;brUserGroup
+;MX;mxUserGroup
+;PA;cencaUserGroup
+;EC;ecUserGroup
+;AR;arUserGroup
+;UY;uyUserGroup
+;CL;clUserGroup
+;PR;prUserGroup
+;CO;coUserGroup
+;PE;peUserGroup
+
+INSERT_UPDATE Region;isocode[unique=true];name[lang=en];country(isocode)[unique=true];active[default=true]
+;AC;AC;BR
+;AL;AL;BR
+;AP;AP;BR
+;AM;AM;BR
+;BA;BA;BR
+;CE;CE;BR
+;DF;DF;BR
+;ES;ES;BR
+;GO;GO;BR
+;MA;MA;BR
+;MT;MT;BR
+;MS;MS;BR
+;MG;MG;BR
+;PA;PA;BR
+;PB;PB;BR
+;PR;PR;BR
+;PE;PE;BR
+;PI;PI;BR
+;RJ;RJ;BR
+;RN;RN;BR
+;RS;RS;BR
+;RO;RO;BR
+;RR;RR;BR
+;SC;SC;BR
+;SP;SP;BR
+;SE;SE;BR
+;TO;TO;BR
+
+;05;05;CO
+;08;08;CO
+;11;11;CO
+;13;13;CO
+;15;15;CO
+;17;17;CO
+;18;18;CO
+;19;19;CO
+;20;20;CO
+;23;23;CO
+;25;25;CO
+;27;27;CO
+;41;41;CO
+;44;44;CO
+;47;47;CO
+;50;50;CO
+;52;52;CO
+;54;54;CO
+;63;63;CO
+;66;66;CO
+;68;68;CO
+;70;70;CO
+;73;73;CO
+;76;76;CO
+;81;81;CO
+;85;85;CO
+;86;86;CO
+;88;88;CO
+;91;91;CO
+;94;94;CO
+;95;95;CO
+;97;97;CO
+;99;99;CO
+
+;01;01;PE
+;02;02;PE
+;03;03;PE
+;04;04;PE
+;05;05;PE
+;06;06;PE
+;07;07;PE
+;08;08;PE
+;09;09;PE
+;10;10;PE
+;11;11;PE
+;12;12;PE
+;13;13;PE
+;14;14;PE
+;15;15;PE
+;16;16;PE
+;17;17;PE
+;18;18;PE
+;19;19;PE
+;20;20;PE
+;21;21;PE
+;22;22;PE
+;23;23;PE
+;24;24;PE
+;25;25;PE
+
+;01;01;CR
+;02;02;CR
+;03;03;CR
+;04;04;CR
+;05;05;CR
+;06;06;CR
+;07;07;CR
+;A;A;CR
+;C;C;CR
+;G;G;CR
+;H;H;CR
+;L;L;CR
+;P;P;CR
+;SJ;SJ;CR
+
+;01;01;PR
+
+;AGS;AGS;MX
+;BC;BC;MX
+;BCS;BCS;MX
+;CHI;CHI;MX
+;CHS;CHS;MX
+;CMP;CMP;MX
+;COA;COA;MX
+;COL;COL;MX
+;DF;DF;MX
+;DGO;DGO;MX
+;GRO;GRO;MX
+;GTO;GTO;MX
+;HGO;HGO;MX
+;JAL;JAL;MX
+;MCH;MCH;MX
+;MEX;MEX;MX
+;MOR;MOR;MX
+;NAY;NAY;MX
+;NL;NL;MX
+;OAX;OAX;MX
+;PUE;PUE;MX
+;QR;QR;MX
+;QRO;QRO;MX
+;SIN;SIN;MX
+;SLP;SLP;MX
+;SON;SON;MX
+;TAB;TAB;MX
+;TLX;TLX;MX
+;TMS;TMS;MX
+;VER;VER;MX
+;YUC;YUC;MX
+;ZAC;ZAC;MX
+
+;01;01;PA
+;02;02;PA
+;03;03;PA
+;04;04;PA
+;05;05;PA
+;06;06;PA
+;07;07;PA
+;08;08;PA
+;09;09;PA
+;10;10;PA
+;EM;EM;PA
+;KY;KY;PA
+;NB;NB;PA
+
+;AV;AV;GT
+;BV;BV;GT
+;CM;CM;GT
+;CQ;CQ;GT
+;ES;ES;GT
+;GU;GU;GT
+;HU;HU;GT
+;IZ;IZ;GT
+;JA;JA;GT
+;JU;JU;GT
+;PE;PE;GT
+;PR;PR;GT
+;QC;QC;GT
+;QZ;QZ;GT
+;RE;RE;GT
+;SA;SA;GT
+;SM;SM;GT
+;SO;SO;GT
+;SR;SR;GT
+;SU;SU;GT
+;TO;TO;GT
+;ZA;ZA;GT
+
+;01;01;GD
+;02;02;GD
+;03;03;GD
+;04;04;GD
+;05;05;GD
+;06;06;GD
+;10;10;GD
+
+;01;01;DO
+;02;02;DO
+;03;03;DO
+;04;04;DO
+;05;05;DO
+;06;06;DO
+;07;07;DO
+;08;08;DO
+;09;09;DO
+;10;10;DO
+;11;11;DO
+;12;12;DO
+;13;13;DO
+;14;14;DO
+;15;15;DO
+;16;16;DO
+;17;17;DO
+;18;18;DO
+;19;19;DO
+;20;20;DO
+;21;21;DO
+;22;22;DO
+;23;23;DO
+;24;24;DO
+;25;25;DO
+;26;26;DO
+;27;27;DO
+;28;28;DO
+;29;29;DO
+;30;30;DO
+;31;31;DO
+;32;32;DO
+
+;ARI;ARI;TT
+;CHA;CHA;TT
+;CTT;CTT;TT
+;DMN;DMN;TT
+;MRC;MRC;TT
+;PED;PED;TT
+;POS;POS;TT
+;PRT;PRT;TT
+;PTF;PTF;TT
+;SFO;SFO;TT
+;SGE;SGE;TT
+;SIP;SIP;TT
+;SJL;SJL;TT
+;TOB;TOB;TT
+;TUP;TUP;TT
+
+;09;09;SV
+;AH;AH;SV
+;CA;CA;SV
+;CH;CH;SV
+;CU;CU;SV
+;LI;LI;SV
+;MO;MO;SV
+;PA;PA;SV
+;SA;SA;SV
+;SM;SM;SV
+;SO;SO;SV
+;SS;SS;SV
+;SV;SV;SV
+;UN;UN;SV
+;US;US;SV
+
+;AT;AT;HN
+;CH;CH;HN
+;CL;CL;HN
+;CM;CM;HN
+;CP;CP;HN
+;CR;CR;HN
+;EP;EP;HN
+;FM;FM;HN
+;GD;GD;HN
+;IB;IB;HN
+;IN;IN;HN
+;LE;LE;HN
+;LP;LP;HN
+;OC;OC;HN
+;OL;OL;HN
+;SB;SB;HN
+;VA;VA;HN
+;YO;YO;HN
+
+;AN;AN;NI
+;AS;AS;NI
+;BO;BO;NI
+;CA;CA;NI
+;CI;CI;NI
+;CO;CO;NI
+;ES;ES;NI
+;GR;GR;NI
+;JI;JI;NI
+;LE;LE;NI
+;MD;MD;NI
+;MN;MN;NI
+;MS;MS;NI
+;MT;MT;NI
+;NS;NS;NI
+;RI;RI;NI
+;SJ;SJ;NI
+;01;01;NI
+
+;01;01;JM
+;02;02;JM
+;03;03;JM
+;04;04;JM
+;05;05;JM
+;06;06;JM
+;07;07;JM
+;08;08;JM
+;09;09;JM
+;10;10;JM
+;11;11;JM
+;12;12;JM
+;13;13;JM
+;14;14;JM
+
+;DEV;DEV;BM
+;HA;HA;BM
+;HAM;HAM;BM
+;PAG;PAG;BM
+;PEM;PEM;BM
+;SAN;SAN;BM
+;SG;SG;BM
+;SGE;SGE;BM
+;SMI;SMI;BM
+;SOU;SOU;BM
+;WAR;WAR;BM
+
+
+;AA;AA;AW
+;01;01;AW
+
+
+;AK;AK;BS
+;BI;BI;BS
+;BP;BP;BS
+;BY;BY;BS
+;CE;CE;BS
+;CI;CI;BS
+;CK;CK;BS
+;CO;CO;BS
+;CS;CS;BS
+;EG;EG;BS
+;EX;EX;BS
+;FP;FP;BS
+;GC;GC;BS
+;HI;HI;BS
+;HT;HT;BS
+;IN;IN;BS
+;IN;IN;BS
+;LI;LI;BS
+;MC;MC;BS
+;MG;MG;BS
+;MI;MI;BS
+;NE;NE;BS
+;NO;NO;BS
+;NS;NS;BS
+;RC;RC;BS
+;RI;RI;BS
+;SA;SA;BS
+;SE;SE;BS
+;SO;SO;BS
+;SS;SS;BS
+;SW;SW;BS
+;WG;WG;BS
+
+;BT;BT;KY
+;EE;EE;KY
+;GT;GT;KY
+;NS;NS;KY
+;SI;SI;KY
+;WB;WB;KY
+;01;01;KY
+
+;01;01;BB
+;02;02;BB
+;03;03;BB
+;04;04;BB
+;05;05;BB
+;06;06;BB
+;07;07;BB
+;08;08;BB
+;09;09;BB
+;10;10;BB
+;11;11;BB
+
+
+;03;03;AG
+;04;04;AG
+;05;05;AG
+;06;06;AG
+;07;07;AG
+;08;08;AG
+;10;10;AG
+;11;11;AG
+
+
+;AR;AR;HT
+;CE;CE;HT
+;GA;GA;HT
+;ND;ND;HT
+;NE;NE;HT
+;NI;NI;HT
+;NO;NO;HT
+;OU;OU;HT
+;SD;SD;HT
+;SE;SE;HT
+
+
+;AK;AK;US
+;AL;AL;US
+;AR;AR;US
+;AZ;AZ;US
+;CA;CA;US
+;CO;CO;US
+;CT;CT;US
+;DC;DC;US
+;DE;DE;US
+;FL;FL;US
+;GA;GA;US
+;HI;HI;US
+;IA;IA;US
+;ID;ID;US
+;IL;IL;US
+;IN;IN;US
+;KS;KS;US
+;KY;KY;US
+;LA;LA;US
+;MA;MA;US
+;MD;MD;US
+;ME;ME;US
+;MI;MI;US
+;MN;MN;US
+;MO;MO;US
+;MS;MS;US
+;MT;MT;US
+;NC;NC;US
+;ND;ND;US
+;NE;NE;US
+;NH;NH;US
+;NJ;NJ;US
+;NM;NM;US
+;NV;NV;US
+;NY;NY;US
+;OH;OH;US
+;OK;OK;US
+;OR;OR;US
+;PA;PA;US
+;RI;RI;US
+;SC;SC;US
+;SD;SD;US
+;TN;TN;US
+;TX;TX;US
+;UT;UT;US
+;VA;VA;US
+;VT;VT;US
+;WA;WA;US
+;WI;WI;US
+;WV;WV;US
+;WY;WY;US
+
+;BR;BR;SR
+;CM;CM;SR
+;CR;CR;SR
+;MA;MA;SR
+;NI;NI;SR
+;PM;PM;SR
+;PR;PR;SR
+;SA;SA;SR
+;SI;SI;SR
+;WA;WA;SR
+
+;01;01;EC
+;02;02;EC
+;03;03;EC
+;04;04;EC
+;05;05;EC
+;06;06;EC
+;07;07;EC
+;08;08;EC
+;09;09;EC
+;10;10;EC
+;11;11;EC
+;12;12;EC
+;13;13;EC
+;14;14;EC
+;15;15;EC
+;16;16;EC
+;17;17;EC
+;18;18;EC
+;19;19;EC
+;20;20;EC
+;21;21;EC
+;22;22;EC
+;23;23;EC
+;24;24;EC
+
+;01;01;PR
+
+;01;01;CL
+;02;02;CL
+;03;03;CL
+;04;04;CL
+;05;05;CL
+;06;06;CL
+;07;07;CL
+;08;08;CL
+;09;09;CL
+;10;10;CL
+;11;11;CL
+;12;12;CL
+;13;13;CL
+;14;14;CL
+;15;15;CL
+
+;00;00;AR
+;01;01;AR
+;02;02;AR
+;03;03;AR
+;04;04;AR
+;05;05;AR
+;06;06;AR
+;07;07;AR
+;08;08;AR
+;09;09;AR
+;10;10;AR
+;11;11;AR
+;12;12;AR
+;13;13;AR
+;14;14;AR
+;16;16;AR
+;17;17;AR
+;18;18;AR
+;19;19;AR
+;20;20;AR
+;21;21;AR
+;22;22;AR
+;23;23;AR
+;24;24;AR
+;EX;EX;AR
+
+;AR;AR;UY
+;CA;CA;UY
+;CL;CL;UY
+;CO;CO;UY
+;DU;DU;UY
+;EX;EX;UY
+;FL;FL;UY
+;FO;FO;UY
+;FZ;FZ;UY
+;LA;LA;UY
+;MA;MA;UY
+;MO;MO;UY
+;PA;PA;UY
+;RI;RI;UY
+;RN;RN;UY
+;RO;RO;UY
+;SA;SA;UY
+;SC;SC;UY
+;SJ;SJ;UY
+;SO;SO;UY
+;TA;TA;UY
+;TT;TT;UY
+;ZA;ZA;UY
+
+;01;01;PY
+
+;01;01;BO
+;02;02;BO
+;03;03;BO
+;04;04;BO
+;05;05;BO
+;06;06;BO
+;07;07;BO
+;08;08;BO
+;09;09;BO
+
+
+INSERT_UPDATE Country;isocode[unique=true];phoneCode
+;BR;"+55"
+;MX;"+52"
+;PA;"+507"
+;GD;"+1 473"
+;GT;"+502"
+;CR;"+506"
+;DO;"+1 809/+1 829/+1 849"
+;TT;"+1 868"
+;SV;"+503"
+;HN;"+504"
+;NI;"+505"
+;JM;"+1 876"
+;AN;"+599"
+;BM;"+1 441"
+;AW;"+297"
+;BS;"+1 242"
+;KY;"+1 345"
+;BB;"+1 246"
+;AG;"+1 268"
+;HT;"+509"
+;US;"+1"
+;SR;"+597"
+;AR;"+54"
+;UY;"+598"
+;CL;"+56"
+;PY;"+595"
+;BO;"+591"
+;CO;"+57"
+;EC;"+593"
+;PE;"+51"
+;PR;"+1"

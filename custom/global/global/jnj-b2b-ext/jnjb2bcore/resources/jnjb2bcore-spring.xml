@@ -1,0 +1,2514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2000-2013 hybris AG
+ All rights reserved.
+
+ This software is the confidential and proprietary information of hybris
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with hybris.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:oxm="http://www.springframework.org/schema/oxm"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+			http://www.springframework.org/schema/aop
+         	http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+           http://www.springframework.org/schema/util
+           http://www.springframework.org/schema/util/spring-util-3.1.xsd
+           http://www.springframework.org/schema/oxm 
+		   http://www.springframework.org/schema/oxm/spring-oxm-3.1.xsd">
+
+<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+	<!-- SystemSetup for the jnjb2bcore -->
+	<bean id="b2bAcceleratorCoreSystemSetup" class="com.jnj.core.setup.CoreSystemSetup"  parent="abstractCoreSystemSetup">
+		<property name="setupSyncJobService" ref="b2bSetupSyncJobService"/>
+	</bean>
+<bean id="jnjGTProductType" class="com.jnj.core.handlers.JnJGTProductTypeDynamicHandler" scope="tenant" />
+
+    <import resource="classpath:/jnjb2bcore/integration/hot-folder-store-jnjgtb2b-spring.xml"/>
+	<!-- Solr field value providers -->
+
+	<bean id="volumeAwareProductPriceValueProvider" class="com.jnj.core.solr.provider.VolumeAwareProductPriceValueProvider"  parent="abstractPropertyFieldValueProvider">
+		<property name="fieldNameProvider" ref="solrFieldNameProvider"/>
+		<property name="priceService" ref="priceService"/>
+		<property name="commonI18NService" ref="commonI18NService"/>
+		<property name="sessionService" ref="sessionService"/>
+		<property name="userService" ref="userService"/>
+		<property name="priceComparator" ref="volumePriceComparator"/>
+		<property name="catalogVersionService" ref="catalogVersionService"/>
+	</bean>
+
+	<bean id="volumePriceComparator" class="com.jnj.core.VolumeAwarePriceInformationComparator" scope="singleton"/>
+
+	<bean id="productVolumePricesProvider" class="com.jnj.core.solr.provider.ProductVolumePricesProvider"  parent="abstractPropertyFieldValueProvider">
+		<property name="fieldNameProvider" ref="solrFieldNameProvider"/>
+		<property name="priceService" ref="priceService"/>
+	</bean>
+
+	<bean id="powertoolsCategorySource" parent="abstractCategorySource">
+		<property name="rootCategory" value="1"/> <!-- '1' is the root icecat category -->
+	</bean>
+	<bean id="powertoolsBrandCategorySource" parent="abstractCategorySource">
+		<property name="rootCategory" value="brands"/> <!-- 'brands' is the root of the brands hierarchy -->
+	</bean>
+
+	<bean id="abstractCategoryCodeValueProvider" abstract="true" class="de.hybris.platform.commerceservices.search.solrfacetsearch.provider.impl.CategoryCodeValueProvider" parent="abstractPropertyFieldValueProvider" >
+		<property name="fieldNameProvider" ref="solrFieldNameProvider"/>
+		<property name="commonI18NService" ref="commonI18NService"/>
+	</bean>
+	<bean id="abstractCategoryNameValueProvider" abstract="true" class="de.hybris.platform.commerceservices.search.solrfacetsearch.provider.impl.CategoryNameValueProvider" parent="abstractPropertyFieldValueProvider" >
+		<property name="fieldNameProvider" ref="solrFieldNameProvider"/>
+		<property name="commonI18NService" ref="commonI18NService"/>
+	</bean>
+
+	<bean id="powertoolsCategoryCodeValueProvider" parent="abstractCategoryCodeValueProvider">
+		<property name="categorySource" ref="powertoolsCategorySource"/>
+	</bean>
+	<bean id="powertoolsBrandCategoryCodeValueProvider" parent="abstractCategoryCodeValueProvider">
+		<property name="categorySource" ref="powertoolsBrandCategorySource"/>
+	</bean>
+	<bean id="powertoolsCategoryNameValueProvider" parent="abstractCategoryNameValueProvider">
+		<property name="categorySource" ref="powertoolsCategorySource"/>
+	</bean>
+	<bean id="powertoolsBrandCategoryNameValueProvider" parent="abstractCategoryNameValueProvider">
+		<property name="categorySource" ref="powertoolsBrandCategorySource"/>
+	</bean>
+
+	<bean id="image515ValueProvider" parent="abstractImageValueProvider">
+		<property name="mediaFormat" value="515Wx515H"/>
+	</bean>
+	<bean id="image300ValueProvider" parent="abstractImageValueProvider">
+		<property name="mediaFormat" value="300Wx300H"/>
+	</bean>
+	<bean id="image96ValueProvider" parent="abstractImageValueProvider">
+		<property name="mediaFormat" value="96Wx96H"/>
+	</bean>
+	<bean id="image65ValueProvider" parent="abstractImageValueProvider">
+		<property name="mediaFormat" value="65Wx65H"/>
+	</bean>
+	<bean id="image30ValueProvider" parent="abstractImageValueProvider">
+		<property name="mediaFormat" value="30Wx30H"/>
+	</bean>
+
+	<bean id="productUrlValueProvider" class="de.hybris.platform.commerceservices.search.solrfacetsearch.provider.impl.ProductUrlValueProvider" parent="abstractPropertyFieldValueProvider" >
+		<property name="urlResolver" ref="productModelUrlResolver"/>
+		<property name="fieldNameProvider" ref="solrFieldNameProvider"/>
+		<property name="i18nService" ref="i18nService"/>
+		<property name="commonI18NService" ref="commonI18NService"/>
+	</bean>
+
+	<bean id="promotionCodeValueProvider" class="de.hybris.platform.commerceservices.search.solrfacetsearch.provider.impl.PromotionCodeValueProvider" parent="abstractPropertyFieldValueProvider" >
+		<property name="promotionsService" ref="promotionsService"/>
+		<property name="fieldNameProvider" ref="solrFieldNameProvider"/>
+	</bean>
+
+	<bean id="promotionImageValueProvider" class="de.hybris.platform.commerceservices.search.solrfacetsearch.provider.impl.PrimaryPromotionImageValueProvider" parent="abstractPropertyFieldValueProvider" >
+		<property name="promotionsService" ref="promotionsService"/>
+		<property name="fieldNameProvider" ref="solrFieldNameProvider"/>
+	</bean>
+
+
+
+	<bean id="jnjNewsValueProvider" class="com.jnj.core.solr.provider.JnjNewsBannerComponentValueProvider" parent="abstractPropertyFieldValueProvider" />
+
+
+	<!--
+		Event listeners are singletons, therefore the dependency for a bean in tenant-scope
+		must be configured with a lookup method.
+	-->
+	<bean id="b2b-customerRegistrationEventListener" class="com.jnj.core.event.RegistrationEventListener" parent="abstractSiteEventListener">
+		<property name="modelService" ref="modelService"/>
+		<property name="businessProcessService" ref="businessProcessService"/>
+
+	</bean>
+	<bean id="b2b-forgottenPasswordEventListener" class="com.jnj.core.event.ForgottenPasswordEventListener" parent="abstractSiteEventListener">
+		<property name="modelService" ref="modelService"/>
+		<property name="businessProcessService" ref="businessProcessService"/>
+
+	</bean>
+	<bean id="b2b-submitOrderEventListener" class="com.jnj.core.event.SubmitOrderEventListener" parent="abstractSiteEventListener">
+		<property name="businessProcessService" ref="businessProcessService"/>
+		<property name="modelService" ref="modelService"/>
+		<property name="baseStoreService" ref="baseStoreService"/>
+	</bean>
+	<bean id="b2b-orderConfirmationEventListener" class="com.jnj.core.event.OrderConfirmationEventListener" parent="abstractSiteEventListener">
+		<property name="modelService" ref="modelService"/>
+		<property name="businessProcessService" ref="businessProcessService"/>
+	</bean>
+
+	<!-- Process resourcess definition -->
+
+	<bean id="b2bCustomerRegistrationEmailProcessDefinitionResource" class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
+		<property name="resource" value="classpath:/jnjb2bcore/processes/customerRegistrationEmailProcess.xml"/>
+	</bean>
+	<bean id="b2bForgottenPasswordEmailProcessDefinitionResource" class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
+		<property name="resource" value="classpath:/jnjb2bcore/processes/forgottenPasswordEmailProcess.xml"/>
+	</bean>
+	<bean id="b2bOrderConfirmationEmailProcessDefinitionResource" class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
+		<property name="resource" value="classpath:/jnjb2bcore/processes/orderConfirmationEmailProcess.xml"/>
+	</bean>
+	<bean id="replenishmentOrderConfirmationEmailProcessDefinitionResource" class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
+		<property name="resource" value="classpath:/jnjb2bcore/processes/replenishmentOrderConfirmationEmailProcess.xml"/>
+	</bean>
+	<bean id="replenishmentOrderProcessDefinitionResource" class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
+		<property name="resource" value="classpath:/jnjb2bcore/processes/replenishmentOrderProcess.xml"/>
+	</bean>
+
+	<bean id="replenishmentOrderPlacedProcessDefinitionResource" class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
+		<property name="resource" value="classpath:/jnjb2bcore/processes/replenishmentOrderPlacedEmailProcess.xml"/>
+	</bean>
+
+	<bean id="quoteOrderApproveProcessDefinitionResource" class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
+		<property name="resource" value="classpath:/jnjb2bcore/processes/quoteOrderApproveEmailProcess.xml"/>
+	</bean>
+
+	<bean id="quoteOrderRejectProcessDefinitionResource" class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
+		<property name="resource" value="classpath:/jnjb2bcore/processes/quoteOrderRejectEmailProcess.xml"/>
+	</bean>
+
+	<!-- Actions -->
+	<bean id="abstractAction" class="de.hybris.platform.processengine.action.AbstractAction"  abstract="true">
+		<property name="modelService" ref="modelService"/>
+		<property name="processParameterHelper" ref="processParameterHelper"/>
+	</bean>
+
+	<bean id="sendEmail" class="de.hybris.platform.acceleratorservices.process.email.actions.SendEmailAction"  parent="abstractAction">
+		<property name="emailService" ref="emailService"/>
+	</bean>
+
+	<bean id="generateB2BCustomerRegistrationEmail" class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"  parent="abstractAction">
+		<property name="modelService" ref="modelService"/>
+		<property name="frontendTemplateName" value="CustomerRegistrationEmailTemplate"/>
+		<property name="cmsEmailPageService" ref="cmsEmailPageService"/>
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy"/>
+		<!-- rma: fixed circular reference issue with BTG 4/29/2011 -->
+		<property name="emailGenerationService" ref="emailGenerationService"/>
+	</bean>
+
+	<bean id="generateB2BForgottenPasswordEmail" class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"  parent="abstractAction">
+		<property name="modelService" ref="modelService"/>
+		<property name="cmsEmailPageService" ref="cmsEmailPageService"/>
+		<property name="frontendTemplateName" value="ForgottenPasswordEmailTemplate"/>
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy"/>
+		<property name="emailGenerationService" ref="emailGenerationService"/>
+	</bean>
+
+	<bean id="generateB2BOrderConfirmationEmail" class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"  parent="abstractAction">
+		<property name="modelService" ref="modelService"/>
+		<property name="cmsEmailPageService" ref="cmsEmailPageService"/>
+		<property name="frontendTemplateName" value="OrderConfirmationEmailTemplate"/>
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy"/>
+		<property name="emailGenerationService" ref="emailGenerationService"/>
+	</bean>
+
+	<bean id="generateB2BReplenishmentOrderConfirmationEmail" class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"  parent="abstractAction">
+		<property name="modelService" ref="modelService"/>
+		<property name="cmsEmailPageService" ref="cmsEmailPageService"/>
+		<property name="frontendTemplateName" value="ReplenishmentOrderConfirmationEmailTemplate"/>
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy"/>
+		<property name="emailGenerationService" ref="emailGenerationService"/>
+	</bean>
+
+	<bean id="generateB2BReplenishmentOrderPlacedEmail" class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"  parent="abstractAction">
+		<property name="modelService" ref="modelService"/>
+		<property name="cmsEmailPageService" ref="cmsEmailPageService"/>
+		<property name="frontendTemplateName" value="ReplenishmentOrderPlacedEmailTemplate"/>
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy"/>
+		<property name="emailGenerationService" ref="emailGenerationService"/>
+	</bean>
+
+	<bean id="generateB2BQuoteOrderApproveEmail" class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"  parent="abstractAction">
+		<property name="modelService" ref="modelService"/>
+		<property name="cmsEmailPageService" ref="cmsEmailPageService"/>
+		<property name="frontendTemplateName" value="QuoteOrderApproveEmailTemplate"/>
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy"/>
+		<property name="emailGenerationService" ref="emailGenerationService"/>
+	</bean>
+
+	<bean id="generateB2BQuoteOrderRejectEmail" class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"  parent="abstractAction">
+		<property name="modelService" ref="modelService"/>
+		<property name="cmsEmailPageService" ref="cmsEmailPageService"/>
+		<property name="frontendTemplateName" value="QuoteOrderRejectEmailTemplate"/>
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy"/>
+		<property name="emailGenerationService" ref="emailGenerationService"/>
+	</bean>
+
+	<bean id="removeSentEmail" class="de.hybris.platform.acceleratorservices.process.email.actions.RemoveSentEmailAction"  parent="abstractAction">
+		<property name="modelService" ref="modelService"/>
+	</bean>
+
+	<!-- Simple Suggestion Service -->
+	<!-- <alias alias="b2bSimpleSuggestionService" name="b2bDefaultSimpleSuggestionService"/>
+	<bean id="b2bDefaultSimpleSuggestionService"	class="com.jnj.core.suggestion.impl.DefaultSimpleSuggestionService" >
+		<property name="simpleSuggestionDao" ref="b2bSimpleSuggestionDao"/>
+	</bean> -->
+	<!-- <alias alias="b2bSimpleSuggestionDao" name="b2bDefaultSimpleSuggestionDao"/>
+	<bean id="b2bDefaultSimpleSuggestionDao"	class="com.jnj.core.suggestion.dao.impl.DefaultSimpleSuggestionDao" parent="abstractItemDao" >
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>
+	</bean>
+ -->
+	<bean id="b2bMccSiteUrlHelper" class="com.jnj.core.util.MccSiteUrlHelper" >
+		<property name="siteBaseUrlResolutionService" ref="siteBaseUrlResolutionService"/>
+		<property name="cmsSiteService" ref="cmsSiteService"/>
+	</bean>
+
+	<!-- SALES QUOTE ACC PROCESS -->
+	<bean id="salesQuoteProcess"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource"
+		>
+		<property name="resource" value="classpath:/jnjb2bcore/processes/b2bACCSalesquote.xml" />
+	</bean>
+
+	<alias alias="b2bQuoteBusinessProcessStrategy" name="acceleratorQuoteBusinessProcessStrategy"/>
+	<bean id="acceleratorQuoteBusinessProcessStrategy"
+		class="de.hybris.platform.b2b.strategies.impl.DefaultB2BQuoteBusinessProcessStrategy"
+		parent="defaultB2BQuoteBusinessProcessStrategy" >
+		<property name="processCode" value="accSalesQuote" />
+		<property name="processName" value="PENDING_QUOTE" />
+	</bean>
+
+	<!-- Process resourcess definition -->
+	<!-- APPROVAL PROCESS -->
+	<bean id="b2bAccApprovalProcessDefinitionResource"
+		  class="de.hybris.platform.processengine.definition.ProcessDefinitionResource"
+		  >
+		<property name="resource" value="classpath:/jnjb2bcore/processes/b2bAccOrderApproval.xml"/>
+	</bean>
+
+	<bean id="orderPendingApprovalEmailProcessDefinitionResource"
+		  class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
+		<property name="resource"
+				  value="classpath:/jnjb2bcore/processes/orderPendingApprovalEmailProcess.xml"/>
+	</bean>
+
+	<bean id="orderApprovalRejectionEmailProcessDefinitionResource"
+		  class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
+		<property name="resource" value="classpath:/jnjb2bcore/processes/orderApprovalRejectionEmailProcess.xml"/>
+	</bean>
+
+	<bean id="startWorkflowForAdmin"
+		  class="com.jnj.core.actions.StartWorkFlowForAdmin"
+		   parent="abstractProceduralB2BOrderApproveAction">
+		<property name="b2bWorkflowIntegrationService" ref="b2bWorkflowIntegrationService"/>
+		<property name="permissionResultHelper" ref="permissionResultHelper"/>
+		<property name="workflowProcessingService" ref="workflowProcessingService"/>
+		<property name="workflowService" ref="newestWorkflowService"/>
+		<property name="b2bUnitService" ref="b2bUnitService"/>
+		<property name="userService" ref="userService"/>
+	</bean>
+
+	<bean id="checkCreditCardOrderAction"
+		class="com.jnj.core.actions.CheckCreditCardOrderAction"
+		 parent="abstractSimpleB2BApproveOrderDecisionAction">
+	</bean>
+
+	<bean id="b2bSetupSyncJobService" class="com.jnj.core.setup.impl.B2BDefaultSetupSyncJobService" parent="defaultSetupSyncJobService" >
+		<property name="cronJobService" ref="cronJobService"/>
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>
+	</bean>
+
+	<bean id="powertoolsCatalogSyncJobPerformable" class="com.jnj.core.setup.MultipleCatalogsSyncJobPerformable" parent="abstractJobPerformable"  >
+		<property name="setupSyncJobService" ref="setupSyncJobService"/>
+	</bean>
+
+	<bean id="organizationOrdersReportingJob"
+			  class="com.jnj.core.btg.OrganizationOrdersReportingJob"
+
+			  parent="abstractJobPerformable">
+			<property name="b2BUnitService" ref="b2bUnitService"/>
+			<property name="commonI18NService" ref="commonI18NService"/>
+			<property name="catalogVersionService" ref="catalogVersionService"/>
+			<property name="currencies">
+				<list>
+					<value>USD</value>
+					<value>EUR</value>
+					<value>CAD</value>
+				</list>
+			</property>
+			<property name="catalog" value="powertoolsProductCatalog"/>
+		</bean>
+
+		<bean id="organizationCategoryPurchasedReportingJob"
+			class="com.jnj.core.btg.OrganizationOrdersReportingJob"
+
+			parent="abstractJobPerformable">
+			<property name="b2BUnitService" ref="b2bUnitService"/>
+			<property name="commonI18NService" ref="commonI18NService"/>
+			<property name="catalogVersionService" ref="catalogVersionService"/>
+			<property name="currencies">
+				<list>
+					<value>USD</value>
+					<value>EUR</value>
+					<value>CAD</value>
+				</list>
+			</property>
+			<property name="categories">
+				<list>
+					<value>1360</value>
+				</list>
+			</property>
+			<property name="catalog" value="powertoolsProductCatalog"/>
+
+		</bean>
+
+	
+	<bean id="b2b-orderCPendingApprovalEventListener"
+		class="com.jnj.core.event.OrderPendingApprovalEventListener" parent="abstractEventListener">
+		<property name="modelService" ref="modelService"/>
+		<property name="businessProcessService" ref="businessProcessService"/>
+
+	</bean>
+
+	<bean id="b2b-replenishmentOrderConfirmationEventListener"
+		class="com.jnj.core.event.ReplenishmentOrderConfirmationEventListener" parent="abstractEventListener">
+		<property name="modelService" ref="modelService"/>
+		<property name="businessProcessService" ref="businessProcessService"/>
+	</bean>
+
+	<bean id="b2b-replenishmentOrderPlacedEventListener"
+		class="com.jnj.core.event.ReplenishmentOrderPlacedEventListener" parent="abstractEventListener">
+		<property name="modelService" ref="modelService"/>
+		<property name="businessProcessService" ref="businessProcessService"/>
+	</bean>
+
+	<bean id="b2b-orderApprovalRejectionEventListener"
+		class="com.jnj.core.event.OrderApprovalRejectionEventListener" parent="abstractEventListener">
+		<property name="modelService" ref="modelService"/>
+		<property name="businessProcessService" ref="businessProcessService"/>
+	</bean>
+
+	<bean id="abstractQuoteEventListener"
+		class="com.jnj.core.event.QuoteEventListener"
+		abstract="true" parent="abstractOrderEventListener">
+		<property name="modelService" ref="modelService" />
+		<property name="orderHistoryService" ref="orderHistoryService" />
+	</bean>
+
+	<bean id="b2b-quoteApprovedEventListener"
+		class="com.jnj.core.event.QuoteApprovedEventListener"
+		parent="abstractQuoteEventListener">
+		<property name="i18NService" ref="i18NService"/>
+		<property name="businessProcessService" ref="businessProcessService"/>
+	</bean>
+	
+	<bean id="b2b-quoteRejectedEventListener"
+		class="com.jnj.core.event.QuoteRejectedEventListener"
+		parent="abstractQuoteEventListener">
+		<property name="i18NService" ref="i18NService"/>
+		<property name="businessProcessService" ref="businessProcessService"/>	
+	</bean>
+
+	<bean id="abstractMerchantEventListener" class="com.jnj.core.event.AbstractMerchantEventListener" abstract="true" parent="abstractOrderEventListener"/>
+
+	<bean id="b2b-merchantApprovedEventListener"
+		class="com.jnj.core.event.MerchantApprovedEventListener"
+		parent="abstractMerchantEventListener">
+		<property name="createSnapshot" value="true"/>
+	</bean>
+
+	<bean id="b2b-merchantRejectedEventListener"
+		class="com.jnj.core.event.MerchantRejectedEventListener"
+		parent="abstractMerchantEventListener">
+		<property name="createSnapshot" value="true"/>
+	</bean>
+
+	<bean id="b2b-orderApprovedEventListener"
+		class="com.jnj.core.event.OrderApprovedEventListener"
+		parent="abstractOrderEventListener">
+		<property name="createSnapshot" value="true"/>
+
+	</bean>
+
+	<bean id="b2b-orderRejectedEventListener"
+		class="com.jnj.core.event.OrderRejectedEventListener"
+		parent="abstractOrderEventListener">
+		<property name="createSnapshot" value="true"/>
+	</bean>
+
+	<bean id="abstractOrderEventListener"
+		class="com.jnj.core.event.AbstractOrderEventListener"
+		abstract="true" parent="abstractEventListener">
+		<property name="modelService" ref="modelService"/>
+		<property name="orderHistoryService" ref="orderHistoryService"/>
+		<property name="i18NService" ref="i18NService"/>
+		<property name="businessProcessService" ref="businessProcessService"/>
+	</bean>
+
+	<bean id="informOfOrderApproval"
+		class="com.jnj.core.actions.B2BAcceleratorInformOfOrderApproval"
+		>
+		<property name="fromAddress" value="b2b@hybris.com"/>
+		<property name="b2bEmailService" ref="b2bEmailService"/>
+	</bean>
+
+	<bean id="setBookingLineEntries"
+		class="com.jnj.core.actions.AcceleratorBookingLineEntries"
+		 parent="abstractSimpleB2BApproveOrderDecisionAction" />
+
+	<bean id="generateB2BOrderPendingApprovalEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		 parent="abstractAction">
+		<property name="modelService" ref="modelService"/>
+		<property name="cmsEmailPageService" ref="cmsEmailPageService"/>
+		<property name="frontendTemplateName" value="OrderPendingApprovalEmailTemplate"/>
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy"/>
+		<property name="emailGenerationService" ref="emailGenerationService"/>
+	</bean>
+
+	<bean id="sendOrderPendingApprovalNotification"
+		class="com.jnj.core.actions.SendOrderPendingApprovalNotification"
+		 parent="abstractAction">
+		<property name="eventService" ref="eventService"/>
+	</bean>
+
+	<!-- actions -->
+	<bean name="cloneCartAction"
+		class="com.jnj.core.actions.replenishment.CloneCartAction"
+		parent="abstractAction" >
+		<property name="typeService" ref="typeService"/>
+		<property name="cartService" ref="cartService"/>
+		<property name="userService" ref="userService"/>
+		<property name="guidKeyGenerator" ref="guidKeyGenerator"/>
+	</bean>
+
+	<bean name="calculateCartAction"
+		class="com.jnj.core.actions.replenishment.CalculateCartAction"
+		parent="abstractAction" >
+		<property name="commerceCartService" ref="commerceCartService"/>
+		<property name="impersonationService" ref="impersonationService"/>
+	</bean>
+
+	<bean name="authorizePaymentAction"
+		class="com.jnj.core.actions.replenishment.AuthorizePaymentAction"
+		parent="abstractAction" >
+		<property name="commerceCheckoutService" ref="b2bCommerceCheckoutService"/>
+		<property name="impersonationService" ref="impersonationService"/>
+	</bean>
+
+	<bean name="placeOrderAction"
+		class="com.jnj.core.actions.replenishment.PlaceOrderAction"
+		parent="abstractAction" >
+		<property name="commerceCheckoutService" ref="b2bCommerceCheckoutService"/>
+		<property name="impersonationService" ref="impersonationService"/>
+	</bean>
+	<bean name="confirmationAction"
+		class="com.jnj.core.actions.replenishment.ConfirmationAction"
+		parent="abstractAction" >
+		<property name="eventService" ref="eventService"/>
+	</bean>
+
+	<bean id="sendReplenishmentOrderPlacedNotification"
+		class="com.jnj.core.actions.SendReplenishmentOrderPlacedNotification"
+		>
+		<property name="eventService" ref="eventService"/>
+	</bean>
+
+	<bean id="auditAutoApproval"
+		class="de.hybris.platform.b2b.process.approval.actions.SystemAuditAction"
+		parent="abstractProceduralB2BOrderApproveAuditAction">
+		<property name="permissionResultHelper" ref="permissionResultHelper"/>
+		<property name="messageKey" value="approval.process.orderapprovedautomatically"/>
+	</bean>
+
+	<bean id="auditSubmittedToMerchantForApproval"
+		class="de.hybris.platform.b2b.process.approval.actions.SystemAuditAction"
+		parent="abstractProceduralB2BOrderApproveAuditAction">
+		<property name="permissionResultHelper" ref="permissionResultHelper"/>
+		<property name="messageKey" value="approval.process.submittedtomerchant"/>
+	</bean>
+
+	<bean id="createQuoteOrderHistory"
+		class="com.jnj.core.actions.CreateQuoteOrderHistory"
+		parent="abstractSimpleB2BApproveOrderDecisionAction" >
+		<property name="orderHistoryService" ref="orderHistoryService"/>
+		<property name="modelService" ref="modelService"/>
+		<property name="userService" ref="userService"/>
+	</bean>
+
+	<bean id="checkOrderEntryCostCentersActive"
+		class="com.jnj.core.actions.CheckOrderEntryCostCentersActive"
+		parent="abstractSimpleB2BApproveOrderDecisionAction"  />
+
+	<bean id="startFulfilmentProcessAction" parent="abstractProceduralB2BOrderApproveAction"
+		class="com.jnj.core.actions.StartFulfilmentProcessAction"
+		>
+		<property name="businessProcessService" ref="businessProcessService"/>
+	</bean>
+
+	<!-- Send rejection notification -->
+	<bean id="sendOrderApprovalRejectionNotification"
+		class="com.jnj.core.actions.SendOrderApprovalRejectionNotification"
+		 parent="abstractAction">
+		<property name="eventService" ref="eventService"/>
+	</bean>
+
+	<bean id="generateB2BOrderApprovalRejectionEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		 parent="abstractAction">
+		<property name="modelService" ref="modelService"/>
+		<property name="cmsEmailPageService" ref="cmsEmailPageService"/>
+		<property name="frontendTemplateName" value="OrderApprovalRejectionEmailTemplate"/>
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy"/>
+		<property name="emailGenerationService" ref="emailGenerationService"/>
+	</bean>
+
+	<bean id="auditStartOfApproval"
+		class="de.hybris.platform.b2b.process.approval.actions.SystemAuditAction"
+		parent="abstractProceduralB2BOrderApproveAuditAction">
+		<property name="permissionResultHelper" ref="permissionResultHelper"/>
+		<property name="messageKey" value="approval.process.ordersubmitted"/>
+	</bean>
+
+	<bean id="auditOrderRejection"
+		class="de.hybris.platform.b2b.process.approval.actions.SystemAuditAction"
+		parent="abstractProceduralB2BOrderApproveAuditAction">
+		<property name="permissionResultHelper" ref="permissionResultHelper"/>
+		<property name="messageKey" value="approval.process.orderrejected"/>
+	</bean>
+
+	<bean id="auditOrderApproval"
+		class="de.hybris.platform.b2b.process.approval.actions.SystemAuditAction"
+		parent="abstractProceduralB2BOrderApproveAuditAction">
+		<property name="permissionResultHelper" ref="permissionResultHelper"/>
+		<property name="messageKey" value="approval.process.orderapproved"/>
+	</bean>
+
+	<!-- checkout flow configuration -->
+	<!-- We force the Single step checkout strategy. -->
+	<!-- <alias alias="b2bCheckoutFlowStrategy" name="b2bSingleStepCheckoutFlowStrategy"/>
+	
+	<bean id="b2bSingleStepCheckoutFlowStrategy" 
+		class="com.jnj.core.checkout.flow.impl.FixedB2BCheckoutFlowStrategy" >
+		<property name="checkoutFlow" value="SINGLE"/>
+	</bean>
+
+	<bean id="b2bMultiStepCheckoutFlowStrategy"
+		class="com.jnj.core.checkout.flow.impl.FixedB2BCheckoutFlowStrategy" >
+		<property name="checkoutFlow" value="MULTISTEP"/>
+	</bean> -->
+	
+	<!--Checkout PCI Strategies -->
+<!-- 	<alias alias="b2bCheckoutPciStrategy" name="configuredB2BCheckoutPciStrategy"/>
+	<bean id="configuredB2BCheckoutPciStrategy"
+	      class="com.jnj.core.checkout.pci.impl.ConfiguredB2BCheckoutPciStrategy" >
+		This strategy looks in the session to see if HOP is the chosen option.  HOP is only valid if configured in the application properties file. Defaults to wsCheckoutPciStrategy.
+		<property name="siteConfigService" ref="siteConfigService"/>
+
+		Default to the wsCheckoutPciStrategy
+		<property name="defaultCheckoutPciStrategy" ref="b2bWSCheckoutPciStrategy"/>
+	</bean>
+	
+	<bean id="b2bWSCheckoutPciStrategy"
+		class="com.jnj.core.checkout.pci.impl.FixedB2BCheckoutPciStrategy" >
+		Use the Payment extension web services to create credit card details
+		<property name="subscriptionPciOption" value="DEFAULT"/>
+	</bean>
+	<bean id="b2bHOPCheckoutPciStrategy"
+		class="com.jnj.core.checkout.pci.impl.FixedB2BCheckoutPciStrategy" >
+		Use the Hosted Order Payment to create credit card details
+		<property name="subscriptionPciOption" value="HOP"/>
+	</bean> -->
+
+	<bean id="b2bSendOrderPlacedNotificationAction" class="com.jnj.core.actions.SendOrderPlacedNotificationAction"  parent="abstractAction">
+		<property name="eventService" ref="eventService"/>
+	</bean>
+	
+	<bean id="syncMasterToLocalCatalog" class="com.jnj.core.cronjobs.JnjSyncMasterToLocalCatalog">
+		<property name="modelService" ref="modelService"/>
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>		
+		<property name="sessionService" ref="sessionService"/>
+	</bean>
+	
+	<alias alias="productDao" name="jnjProductDao" />
+	<bean id="jnjProductDao" class="com.jnj.core.dao.impl.DefaultJnjProductDao" parent="defaultProductDao"/>
+	
+	<alias name="jnjProductService" alias="productService"/>
+	<bean id="jnjProductService" class="com.jnj.core.services.impl.DefaultJnJProductService"  parent="defaultProductService"/>
+	<!-- JnJ Changes starts -->
+	
+	<alias  alias="customerProductCodeSearchService" name="defaultCustomerProductCodeSearchService" />
+	<bean id="defaultCustomerProductCodeSearchService" class="com.jnj.core.services.search.impl.DefaultCustomerProductCodeSearchService" >
+		<property name="customerProductCodeSearchDao" ref="customerProductCodeSearchDao" />
+	</bean>
+	
+	<alias alias="customerProductCodeSearchDao" name="defaultCustomerProductCodeSearchDao"/>
+	<bean id="defaultCustomerProductCodeSearchDao" class="com.jnj.core.dao.search.impl.DefaultCustomerProductCodeSearchDao" />	
+	
+	<!-- Added for Load Translation : Start-->
+	<bean id="jnjPasswordExpiryEmailCronJob" class="com.jnj.facades.cronjobs.JnjPasswordExpiryEmailCronJob" autowire="byName" scope="tenant" />
+	<!-- Added for Load Translation : End-->
+	
+	<!-- Added for Load Invoices : Start-->
+		<alias alias="invoiceService" name="jnjInvoiceService"/>
+		<bean id="jnjInvoiceService" class="com.jnj.core.services.impl.DefaultJnjInvoiceService"/>
+		
+		<bean id="JnjInvoiceDao" class="com.jnj.core.dao.impl.DefaultJnjInvoiceDao">
+  			<property name="flexibleSearchService" ref="flexibleSearchService"/>
+  			<property name="modelService" ref="modelService"/>
+  		</bean>
+	<!-- Added for Load Invoices : End-->
+	
+	<!-- Customer Eligibility Changes [Author: Akash Rawat] -->
+		<bean id="customerEligibilityService" class="com.jnj.core.services.customerEligibility.impl.DefaultJnjCustomerEligibilityService" >
+			<property name="modelService" ref="modelService" />
+			<property name="companyB2BCommerceService" ref="b2bCommerceUnitService" />
+			<property name="commerceCategoryService" ref="commerceCategoryService" />
+			<property name="catalogService" ref="catalogService" />
+			<property name="catalogVersionService" ref="catalogVersionService" />
+			<property name="categoryService" ref="categoryService" />
+			<property name="customerEligiblityDao" ref="customerEligiblityDao" />
+		</bean>
+	
+		<bean id="customerEligiblityDao" class="com.jnj.core.dao.customerEligibility.impl.DefaultJnjCustomerEligibilityDao" >
+			<property name="flexibleSearchService" ref="flexibleSearchService" />
+			<property name="userService" ref="userService" />
+			<property name="sessionService" ref="sessionService" />
+		</bean>
+	<!-- End of Customer Eligibility Changes -->
+	
+	
+	
+	<!-- Start of Customer  Load -->
+	<alias name="jnjCustomerDataService" alias="jnjCustomerDataService"/> 
+  	<bean id="jnjCustomerDataService" class="com.jnj.core.services.impl.DefaultJnJCustomerDataService">
+  	<property name="jnJCustomerDataDao" ref="jnjCustomerDataDao"/>
+  	</bean>
+  	
+  	<alias name="jnjCustomerDataDao" alias="jnjCustomerDataDao"/> 
+  	<bean id="jnjCustomerDataDao" class="com.jnj.core.dao.impl.DefaultJnJCustomerDataDao" parent="abstractItemDao">
+  	</bean>
+  
+  	
+	<alias name="jnjAddressService" alias="jnjAddressService" /> 
+  	<bean id="jnjAddressService" class="com.jnj.core.services.impl.DefaultJnJAddressService"  parent="addressService">
+  	<!-- <property name="jnJAddressDao" ref="jnjAddressDao"/> -->
+  	</bean>
+  	
+  	<alias name="jnjAddressDao" alias="jnjAddressDao"/> 
+  	<bean id="jnjAddressDao" class="com.jnj.core.dao.impl.DefaultJnJAddressDao">
+  	</bean>
+	
+  	<bean id="jnJSalesOrgCustService" class="com.jnj.core.services.impl.DefaultJnjSalesOrgCustService">
+  	</bean>
+  	<bean id="jnJSalesOrgCustomerDao" class="com.jnj.core.dao.impl.DefaultJnjSalesOrgCustomerDao"/>
+	<!--  End  of Customer  Load -->
+	
+	<!-- Added for Config Service : Start-->
+	<alias name="jnjConfigService" alias="jnjConfigService" /> 
+	<bean id="jnjConfigService" class="com.jnj.core.services.impl.JnjConfigServiceImpl">
+  		<property name="jnjConfigDao" ref="jnjConfigDao" /> 
+    </bean>
+	
+	<alias name="jnjConfigDao" alias="jnjConfigDao" />
+	<bean id="jnjConfigDao" class="com.jnj.core.dao.impl.DefaultJnjConfigDao" parent="abstractItemDao">
+		<property name="flexibleSearchService" ref="flexibleSearchService" />
+		<property name="modelService" ref="modelService" />
+    </bean>
+	<!-- Added for Config Service : End-->
+	<!-- Added for Submi Order : Start-->
+	
+	<bean id="jnjOrderService" class="com.jnj.core.services.impl.DefaultJnjOrderService"/> 
+	
+	<!-- Start of - Overriding DefaultOrderService to prevent SubmitOrderStrategies -->
+		<alias alias="orderService" name="jnjDefaultOrderService"/>
+	<bean id="jnjDefaultOrderService" parent="defaultOrderService" >
+		<property name="submitOrderStrategies">
+			<list>
+				<!-- implementation that sends SubmitOrderEvent -->
+				<!-- <ref bean="eventPublishingSubmitOrderStrategy"/> -->
+			</list>
+		</property>
+	</bean>
+	<!-- End of - Overriding DefaultOrderService to prevent SubmitOrderStrategies -->
+    
+    
+    <alias name="jnjOrderDao" alias="jnjOrderDao" />
+	<bean id="jnjOrderDao" class="com.jnj.core.dao.impl.DefaultJnjOrderDao" parent="defaultOrderDao">
+		<property name="flexibleSearchService" ref="flexibleSearchService" />
+		<property name="modelService" ref="modelService" />
+    </bean>
+	<!-- Added for Submi Order : End-->
+	
+	<!-- Added By Komal Sehgal for Document Transfer -->
+	<bean id="fileUploadUtil" class="com.jnj.core.util.JnjFileUploadToSharedFolderUtil">
+  	</bean>
+  	<!-- 
+    <bean id="sftpFileTransferUtil" class="com.jnj.core.util.JnjSftpFileTransferUtil">
+  	</bean>
+  	 -->
+    <!--  Document Transfer Ends -->
+    <!-- Added for Contact Us : Start -->
+	<bean id="contactUsEmailProcessDefinitionResource" class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource" value="classpath:/jnjb2bcore/processes/contactUsEmailProcess.xml" /> 
+	</bean>
+	<bean id="defaultjnjContactUsService" class="com.jnj.core.services.impl.DefaultJnjContactUsService">
+		<property name="eventService" ref="eventService" />
+		<property name="baseStoreService" ref="baseStoreService" />
+		<property name="baseSiteService" ref="baseSiteService" />
+		<property name="commonI18NService" ref="commonI18NService" />
+		<property name="userService" ref="userService" />
+	</bean>
+	<bean id="jnjContactUsMessagingEventListener" class="com.jnj.core.event.JnjContactUsMessagingEventListener" parent="abstractSiteEventListener">
+		<property name="modelService" ref="modelService" /> 
+		<property name="businessProcessService" ref="businessProcessService" /> 
+	</bean>
+	<bean id="generateContactUsEmailAction" class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"  parent="abstractAction">
+     	<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="frontendTemplateName" value="JnjContactUsEmailTemplate" />
+		<property name="emailGenerationService" ref="contactUsEmailGenerationService" />
+	</bean>
+	<bean id="contactUsEmailGenerationService" class="com.jnj.core.services.impl.ContactUsEmailGenerationService" parent="emailGenerationService" />
+	<!-- Added for Contact Us : End -->
+	<!-- Added for Forgot Password : Start  -->
+	<bean id="jnjForgotPasswordErrorCounter" class="com.jnj.core.util.JnjForgotPasswordErrorCounter" />
+	<!-- Added for Forgot Password : End -->
+	
+	  
+  	
+  	<alias name="jnjCartService" alias="commerceCartService"/>
+  	<bean id="jnjCartService" class="com.jnj.core.services.cart.impl.DefaultJnjCartService" parent="defaultCommerceCartService" />  	
+ 
+	<!--ShopingCart  End  -->
+			
+	<bean id="jnjUnitOfMeasureValueProvider" class="com.jnj.core.solr.provider.JnjUnitOfMeasureValueProvider" parent="abstractPropertyFieldValueProvider" />
+	<bean id="jnjProductShowPriceProvider" class="com.jnj.core.solr.provider.JnjProductShowPriceValueProvider" parent="abstractPropertyFieldValueProvider" />	
+	
+	<bean id="abstractjnjCategoryCodeValueProvider" abstract="true" class="com.jnj.core.solr.provider.JnjCategoryCodeValueProvider" parent="abstractPropertyFieldValueProvider" >
+	<property name="categoriesQualifier" value="supercategories"/>
+	</bean>
+	<bean id="jnjPlpCategoryCodeValueProvider" parent="abstractjnjCategoryCodeValueProvider" >
+	<property name="categoryLevel" value="3"/>
+	</bean>
+	<bean id="jnjSeachCategoryCodeValueProvider" parent="abstractjnjCategoryCodeValueProvider" >
+	<property name="categoryLevel" value="5"/>
+	</bean>
+	
+	<bean id="jnjContentIdentityProvider"  class="com.jnj.core.solr.provider.JnjContentIdentityProvider" scope="tenant" />
+	
+	
+	<alias name="jnjSearchTextPopulator" alias="commerceSearchTextPopulator" />
+	<bean id="jnjSearchTextPopulator" class="de.hybris.platform.commerceservices.search.solrfacetsearch.populators.SearchTextPopulator" >
+		<property name="freeTextQueryBuilders">
+			<list>
+				<bean class="de.hybris.platform.commerceservices.search.solrfacetsearch.querybuilder.impl.DefaultFreeTextQueryBuilder">
+					<property name="propertyName" value="ean" />
+					<property name="boost" value="100" />
+				</bean>
+				<bean class="de.hybris.platform.commerceservices.search.solrfacetsearch.querybuilder.impl.DefaultFreeTextQueryBuilder">
+					<property name="propertyName" value="code" />
+					<property name="boost" value="90" />
+				</bean>
+				<bean class="de.hybris.platform.commerceservices.search.solrfacetsearch.querybuilder.impl.DefaultFreeTextQueryBuilder">
+					<property name="propertyName" value="name" />
+					<property name="boost" value="50" />
+				</bean>
+				<bean class="de.hybris.platform.commerceservices.search.solrfacetsearch.querybuilder.impl.DefaultFreeTextQueryBuilder">
+					<property name="propertyName" value="description" />
+					<property name="boost" value="40" />
+				</bean>
+				<bean class="de.hybris.platform.commerceservices.search.solrfacetsearch.querybuilder.impl.DefaultFreeTextQueryBuilder">
+					<property name="propertyName" value="keywords" />
+					<property name="boost" value="20" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<alias name="jnjSolrQueryConverter" alias="solrQueryConverter" />
+	<bean id="jnjSolrQueryConverter"  parent="defaultSolrQueryConverter" class="com.jnj.core.services.search.impl.JnjSolrQueryConverter" />
+	<alias name="jnjSearchFiltersPopulator" alias="commerceSearchFiltersPopulator" />
+	<bean id="jnjSearchFiltersPopulator" class="com.jnj.core.services.search.populators.JnjSearchFiltersPopulator" parent="defaultCommerceSearchFiltersPopulator"/>
+	
+	<bean id="jnjSolrService" class="com.jnj.core.services.search.impl.DefaultJnjGTSolrService" />
+	
+	<alias name="jnjSolrAutoSuggestService" alias="solrAutoSuggestService"/>
+	<bean id="jnjSolrAutoSuggestService" class="com.jnj.core.suggestion.JnjSolrAutoSuggestService" scope="tenant" parent="defaultSolrAutoSuggestService" />
+	
+	
+	<bean id="defaultjnjTemplateService" class=" com.jnj.core.services.template.impl.DefaultJnjTemplateService">
+  	</bean>
+	<bean id="defaultjnjTemplateDao" class="com.jnj.core.dao.template.impl.DefaultJnjTemplateDao" parent="abstractItemDao">
+  	</bean>
+	<bean id="jnjGetDefaultB2BUnitUtil" class="com.jnj.core.util.JnjGetCurrentDefaultB2BUnitUtil">
+  	</bean>
+  	<bean id="b2bUnitService" class="de.hybris.platform.b2b.services.impl.DefaultB2BUnitService">
+  	</bean>
+  	
+
+  	<!-- Synchronization Orders Starts [Author: Akash Rawat, Created: 10/28/2013]-->
+		<alias alias="ordersService" name="defaultJnjSAPOrdersService"/>
+		<bean id="defaultJnjSAPOrdersService" class="com.jnj.core.services.synchronizeOrders.impl.DefaultJnjSAPOrdersService" >
+			<property name="addressService" ref="addressService" />
+			<property name="b2bUnitService" ref="b2bUnitService" />
+			<property name="b2BCommerceUnitService" ref="b2bCommerceUnitService"/>
+			<property name="modelService" ref="modelService" />
+			<property name="productService" ref="productService" />
+			<property name="commonI18NService" ref="commonI18NService" />
+			<property name="baseStoreService" ref="baseStoreService" />
+			<property name="baseSiteService" ref="baseSiteService" />
+			<property name="eventService" ref="eventService" />
+			<property name="jnjSAPOrdersDao" ref="jnjSAPOrdersDao" />
+			<property name="catalogService" ref="catalogService" />
+			<property name="catalogVersionService" ref="catalogVersionService" />
+		</bean>
+		
+		<alias name="defaultJnjSAPOrdersDao" alias="jnjSAPOrdersDao"/>
+		<bean id="defaultJnjSAPOrdersDao" class="com.jnj.core.dao.synchronizeOrders.impl.DefaultJnjSAPOrdersDao" >
+			<property name="flexibleSearchService" ref="flexibleSearchService" />
+		</bean>
+		
+		<bean id="jnjCartToOrderCronJobModelDao" class="com.jnj.core.dao.impl.JnjCartToOrderCronJobModelDao" parent="b2bAcceleratorCartToOrderCronJobModelDao" />
+		
+		<alias name="jnjCustomerAccountService" alias="b2bCustomerAccountService"/>
+		<bean id="jnjCustomerAccountService" class="com.jnj.core.services.impl.DefaultJnjCustomerAccountService" parent="defaultB2BCustomerAccountService" >
+			<property name="b2bAcceleratorCartToOrderCronJobModelDao" ref="jnjCartToOrderCronJobModelDao"/>
+		</bean>
+		
+	<!-- End of Synchronization Order Notification -->
+
+<!-- Create User Notification -->
+	  <bean id="jnjCreateUserEmailProcessDefinitionResource" class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
+			<property name="resource" value="classpath:/jnjb2bcore/processes/jnjCreateUserEmailProcess.xml"/>
+		</bean>
+		
+		
+		
+		<bean id="generateCreateUserEmail" class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"  parent="abstractAction">
+			<property name="modelService" ref="modelService"/>
+			<property name="cmsEmailPageService" ref="cmsEmailPageService"/>
+			<property name="frontendTemplateName" value="CreateUserNotificationEmailTemplate"/>
+			<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy"/>
+			<property name="emailGenerationService" ref="emailGenerationService"/>
+		</bean>
+		<bean id="jnjCreateUserEventListener" class="com.jnj.core.event.JnjCreateUserEventListener"	parent="abstractSiteEventListener">
+			<property name="modelService" ref="modelService"/>
+			<property name="businessProcessService" ref="businessProcessService"/>
+		</bean>
+		
+	
+	<!--End of Create User Notification  -->
+	
+	<bean id="jnjPasswordExpiryEmailProcessDefinitionResource" class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
+			<property name="resource" value="classpath:/jnjb2bcore/processes/jnjPasswordExpiryNotificationEmailProcess.xml"/>
+		</bean>
+		
+		<!-- Start of Bean For Interface Email NOTIFICATION -->
+		<bean id="jnjInterfaceEmailProcessDefinitionResource" class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
+			<property name="resource" value="classpath:/jnjb2bcore/processes/jnjInterfaceEmailProcess.xml"/>
+		</bean>
+		<!-- End of Bean For Interface Email NOTIFICATION -->
+		
+		<!-- Synchronization Order Notification [Author: Akash, Created: 11/06/2013  -->
+		<bean id="jnjOrderStatusNotificationProcessDefinitionResource" class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
+			<property name="resource" value="classpath:/jnjb2bcore/processes/jnjOrderStatusNotificationEmailProcess.xml"/>
+		</bean>
+		
+		<bean id="generateInterfaceNotificationEmail" class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"  parent="abstractAction">
+			<property name="modelService" ref="modelService"/>
+			<property name="cmsEmailPageService" ref="cmsEmailPageService"/>
+			<property name="frontendTemplateName" value="InterfaceNotificationEmailTemplate"/>
+			<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy"/>
+			<property name="emailGenerationService" ref="emailGenerationService"/>
+		</bean>
+		
+		<bean id="generateOrderStatusNotificationEmail" class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"  parent="abstractAction">
+			<property name="modelService" ref="modelService"/>
+			<property name="cmsEmailPageService" ref="cmsEmailPageService"/>
+			<property name="frontendTemplateName" value="JnjOrderStatusNotificationEmailTemplate"/>
+			<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy"/>
+			<property name="emailGenerationService" ref="jnjGTEmailGenerationService"/>
+		</bean>
+		
+		<bean id="generatePasswordExpiryNotificationEmail" class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"  parent="abstractAction">
+			<property name="modelService" ref="modelService"/>
+			<property name="cmsEmailPageService" ref="cmsEmailPageService"/>
+			<property name="frontendTemplateName" value="PasswordExpiryNotificationEmailTemplate"/>
+			<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy"/>
+			<property name="emailGenerationService" ref="emailGenerationService"/>
+		</bean>
+		
+		<bean id="jnjPasswordExpiryEventListener" class="com.jnj.core.event.JnjPasswordExpiryEventListener"	parent="abstractSiteEventListener">
+			<property name="modelService" ref="modelService"/>
+			<property name="businessProcessService" ref="businessProcessService"/>
+		</bean>
+	
+	<!-- Start of Bean For Register Email Notifications -->
+		
+		<bean id="jnjRegisterEventListener" class="com.jnj.core.event.JnjRegisterEventListener"	parent="abstractSiteEventListener">
+			<property name="modelService" ref="modelService"/>
+			<property name="businessProcessService" ref="businessProcessService"/>
+		</bean>
+		<bean id="generateRegisterEmail" class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"  parent="abstractAction">
+			<property name="modelService" ref="modelService"/>
+			<property name="cmsEmailPageService" ref="cmsEmailPageService"/>
+			<property name="frontendTemplateName" value="RegisterEmailTemplate"/>
+			<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy"/>
+			<property name="emailGenerationService" ref="emailGenerationService"/>
+		</bean>	
+		<bean id="jnjRegisterEmailProcessDefinitionResource" class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
+			<property name="resource" value="classpath:/jnjb2bcore/processes/jnjRegisterEmailProcess.xml"/>
+		</bean>
+		<bean id="generateRegisterUserEmail" class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"  parent="abstractAction">
+			<property name="modelService" ref="modelService"/>
+			<property name="cmsEmailPageService" ref="cmsEmailPageService"/>
+			<property name="frontendTemplateName" value="RegisterUserEmailTemplate"/>
+			<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy"/>
+			<property name="emailGenerationService" ref="emailGenerationService"/>
+		</bean>	
+		
+		
+		
+	   <bean id="jnjRegisterUserEmailProcessDefinitionResource" class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
+			<property name="resource" value="classpath:/jnjb2bcore/processes/jnjRegisterUserEmailProcess.xml"/>
+		</bean>
+				
+		<!-- Start of Bean For End Email Notifications -->
+	
+	<!--  -->
+	<alias name="jnjDefaultB2BUserGroupsLookUpStrategy" alias="b2bUserGroupsLookUpStrategy" />
+	<bean name="jnjDefaultB2BUserGroupsLookUpStrategy"
+		class="de.hybris.platform.b2bacceleratorservices.strategies.impl.DefaultB2BUserGroupsLookUpStrategy">
+		<property name="groups">
+			<list>
+				<value>b2badmingroup</value>
+				<value>b2bcustomergroup</value>
+				<value>b2bmanagergroup</value>
+				<value>b2bapprovergroup</value>
+				<value>bidGroup</value>
+				<value>productsGroup</value>
+				<value>useradminGroup</value>
+				<value>selfOrderGroup</value>
+				<value>expectedPriceGroup</value>
+				<value>reportsGroup</value>
+				<value>contractBalanceGroup</value>
+				<value>consingmentGroup</value>
+				<value>viewOnlyBuyerGroup</value>
+				<value>synthesGroup</value>
+				<value>indirectCustomerFormGroup</value>
+				<value>ocdGroup</value>
+				<!--CR 31439:User Management -->
+				<value>indirectCustomerGroup</value>
+				<value>priceChangeGroup</value>
+				<value>otherOrderGroup</value>
+				<value>laudoUserGroup</value>
+				<value>placeOrderBuyerGroup</value>
+				<value>viewOnlySalesRepGroup</value>
+				<value>placeOrderSalesGroup</value>
+				<value>jnjGTAdminGroup</value>
+				<value>jnjGTCsrGroup</value>
+				<value>JnjGTInternalNoChargeUser</value>
+				<value>financialReportGroup</value>
+				
+				<!-- AAOL- 5669 -->
+				<value>jnjGTSerializationGroup</value>
+				
+			</list>
+		</property>
+	</bean>
+	
+	<!-- News Releases Start-->
+	<bean id="jnjNewsReleaseService" class="com.jnj.core.services.news.impl.DefaultJnjNewsReleaseService"/>
+	<bean id="jnjNewsReleasesDao" class="com.jnj.core.dao.news.impl.DefaultJnjNewsReleasesDao"/>
+	<!-- News Relaeses Ends -->
+	
+
+	<bean id="core.passwordEncoderFactory" class="de.hybris.platform.persistence.security.PasswordEncoderFactoryImpl">
+		<property name="encoders">
+			<map>
+				<entry key="*" value-ref="${default.password.encoder}" />
+				<entry key="plain" value-ref="core.plainTextEncoder" />
+				<entry key="SHA256" value-ref="sha256PasswordEncoder" />
+				<entry key="sha-512" value-ref="sha512PasswordEncoder" />
+				<entry key="md5" value-ref="core.saltedMD5PasswordEncoder" />
+				<entry key="pbkdf2" value-ref="pbkdf2PasswordEncoder" />
+				<entry key="argon2" value-ref="argon2PasswordEncoder"/>
+				<entry key="scrypt" value-ref="scryptPasswordEncoder"/>
+				<entry key="bcrypt" value-ref="bcryptPasswordEncoder"/>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="core.saltedSHA256PasswordEncoder" class="de.hybris.platform.persistence.security.SaltedPasswordEncoder"> 
+		<property name="salt" value="hybris blue pepper can be used to prepare delicious noodle meals" /> 
+		<property name="algorithmn" value="SHA-256" /> 
+	</bean>
+	
+	 <bean id="contentSearchQueryPageableConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="solrSearchRequest" /> 
+		<property name="populators">
+			<list>
+				<ref bean="contentSearchSolrQueryPopulator" />
+				<ref bean="commerceSearchPagePopulator" />
+				<ref bean="commerceSearchSortPopulator" />
+				<ref bean="commerceSearchFiltersPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="contentSearchSolrQueryPopulator" class="com.jnj.core.solr.search.solrfacetsearch.populators.ContentSearchSolrQueryPopulator" />
+	
+	<bean id="contentSolrSearchResponseConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="facetSearchPageData" /> 
+		<property name="populators">
+			<list>
+				<ref bean="commerceSearchResponseQueryPopulator" />
+				<ref bean="commerceSearchResponsePaginationPopulator" />
+				<ref bean="commerceSearchResponseResultsPopulator" />
+				<ref bean="commerceSearchResponseFacetsPopulator" />
+				<ref bean="commerceSearchResponseBreadcrumbsPopulator" />
+				<ref bean="commerceSearchResponseSortsPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="jnjSolrContentSearchService" class="com.jnj.core.solr.search.solrfacetsearch.service.impl.JnjSolrContentSearchService" />
+	
+	<bean id="jnjCmsUtil" class="com.jnj.core.util.JnJCmsUtil"/>
+	
+	<!-- Defect 29839.3 Issued Fx [Akash : 12/11] -->
+		<bean id="jnjCategorySetShowPriceJob" class="com.jnj.core.services.JnjCategorySetShowPriceJob"  parent="abstractJobPerformable">
+			<property name="commerceCategoryService" ref="commerceCategoryService"/>
+		</bean>
+		
+	<!-- Defect 29839.3 changes Ends -->
+	<bean id="jnjCustomerService" class="com.jnj.core.services.impl.DefaultJnjCustomerService">
+		<property name="baseSiteService" ref="baseSiteService" />
+		<property name="baseStoreService" ref="baseStoreService"/>
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>
+		<property name="typeService" ref="typeService"/>
+		<property name="commonI18NService" ref="commonI18NService"/>
+		<property name="eventService" ref="eventService"/>
+		 <property name="i18nService" ref="i18nService"/>
+		 <property name="modelService" ref="modelService"/>
+		 <property name="passwordEncoderService" ref="passwordEncoderService"/>
+		<property name="secureTokenService" ref="secureTokenService" />
+		<property name="tokenValiditySeconds" value="#{configurationService.configuration.getProperty('jnj.na.tokenValiditySeconds.reset.password')}" />
+		<property name="userService" ref="userService"/>
+		<property name="customerAccountDao" ref="customerAccountDao"/>
+		<property name="customerEmailResolutionService" ref="customerEmailResolutionService"/>
+		<property name="customerNameStrategy" ref="customerNameStrategy"/>
+        <property name="monthsForOrderExpiry" value="#{configurationService.configuration.getProperty('guest.orderstatuspage.access.expiry.month')}"/>
+	    <property name="paymentService" ref="paymentService"/>
+	    <property name="timeService" ref="timeService"/>		
+	    <property name="pagedB2BCustomerDao" ref="pagedB2BCustomerDao"/>
+	    <property name="commerceCommonI18NService" ref="commerceCommonI18NService"/>
+	     <property name="configurationService" ref="configurationService"/>
+	    <property name="commerceConsentService" ref="commerceConsentService"/>
+        <property name="sessionService" ref="sessionService"/>
+	</bean>
+	
+	<bean id="jnjCustomerDao" class="com.jnj.core.dao.impl.DefaultJnjCustomerDao" parent="pagedB2BCustomerDao">
+	</bean>
+	
+
+	<!-- Start of Bean for JnjCmsComponentService-->
+	<bean id="jnjCmsComponentService" class="com.jnj.core.services.component.impl.DefaultJnjCmsComponentService"></bean>
+	<!-- End of Bean for JnjCmsComponentService -->
+	
+	<!-- Start of Bean for JnjCmsComponentDao-->
+	<bean id="jnjCmsComponentDao" class="com.jnj.core.dao.component.impl.DefaultJnjCmsComponentDao"></bean>
+	<!-- End of Bean for JnjCmsComponentDao -->
+
+	<!-- Start of Bean for JnjUnitService-->
+	<bean id="jnjUnitService" class="com.jnj.core.services.unit.impl.DefaultJnjUnitService"></bean>
+	<!-- End of Bean for JnjUnitService -->
+	
+	<!-- Start of Beans for jnjInterfaceNotificationEventListner --> 
+	<bean id="jnjInterfaceNotificationEventListner" class="com.jnj.core.event.JnjInterfaceNotificationEventListner"	parent="abstractSiteEventListener"></bean>
+	<!-- End of Beans for jnjInterfaceNotificationEventListner -->
+	
+	<bean id="jnjOrderStatusNotificationEventListener" class="com.jnj.core.event.JnjOrderStatusNotificationEventListener"	parent="abstractSiteEventListener"></bean>
+	
+	<!-- Start of Bean for jnjEmailNotificationService-->
+	<bean id="jnjEmailNotificationService" class="com.jnj.core.services.email.notification.impl.DefaultJnjEmailNotificationService"></bean>
+	<!-- End of Bean for jnjEmailNotificationService -->
+	
+	<!-- Start of Bean for jnjEmailNotificationDao-->
+	<bean id="jnjEmailNotificationDao" class="com.jnj.core.dao.email.notification.impl.DefaultJnjEmailNotificationDao"></bean>
+	<!-- End of Bean for jnjEmailNotificationDao -->
+	
+	<!-- Sync Order - Operation Architecture Changes: Akash -->
+	<bean id="jnjSyncOrderImportCronJobInitDefaultsInterceptor" class="com.jnj.core.impex.impl.JnjSyncOrderImportCronJobInitDefaultsInterceptor" autowire="byName"/>
+	<bean id="jnjSyncOrderImportCronJobInitDefaultsInterceptorMapping" class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="jnjSyncOrderImportCronJobInitDefaultsInterceptor"/>
+		<property name="typeCode" value="JnjSyncOrderImpExImportCronJob"/>
+	</bean>
+	<!-- End of Sync Order - Operation Architecture Changes -->
+	
+	<!-- Generic Operation Architecture Changes -->
+	<alias name="defaultJnjInterfaceOperationArchUtility" alias="jnjInterfaceOperationArchUtility"/>
+	<bean id="defaultJnjInterfaceOperationArchUtility" class="com.jnj.operationarchitecture.impl.DefaultJnjInterfaceOperationArchUtility" >
+		<property name="modelService" ref="modelService"/>
+	</bean>
+	
+	<bean id="JnjInterfaceOperationArchCleanupJob" class="com.jnj.core.operationarchitecture.JnjInterfaceOperationArchCleanupJob"  parent="abstractJobPerformable">
+		<property name="jnjInterfaceOperationArchUtility" ref="jnjInterfaceOperationArchUtility"/>
+	</bean>
+	
+	<bean id="jnjRemoveSentEmail" class="com.jnj.core.process.email.actions.JnjRemoveSentEmailAction"  parent="removeSentEmail" />
+	<!-- Generic Operation Architecture Changes  -->
+	
+	<!-- CR #31918 Changes -->
+<!-- 	<bean id="jnjParagraphComponentPrepareInterceptor" class="com.jnj.core.interceptor.JnjParagraphComponentPrepareInterceptor"
+    scope="tenant" autowire="byName"/>
+ 
+	<bean id="jnjParagraphComponentPrepareInterceptorMapping" scope="tenant"
+	      class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+	        <property name="interceptor" ref="jnjParagraphComponentPrepareInterceptor"/>
+	        <property name="typeCode" value="JnjParagraphComponent"/>
+	        property name="replacedInterceptors" ref="uniqueCatalogItemValidator"/ 
+	</bean> -->
+	<!-- CR #31918 Changes -->
+	
+	<bean id="jnjModelService" class="com.jnj.core.services.impl.DefaultJnjModelService" scope="tenant"/>
+	
+	<!-- Bean for File Purge Starts-->
+		<bean id="jnjFilePurge" class="com.jnj.core.datapurge.JnjFilePurge"></bean>
+		 <bean id="jnjFilePurgeCronJob" class="com.jnj.core.cronjobs.JnjFilePurgeCronJob" autowire="byName" scope="tenant" />
+	<!-- Bean for File Purge Ends-->
+	
+	<!-- START items copied from jnjGTb2bcore-spring.xml -->
+	
+	<!-- Start of Bean for Customer -->
+        <alias name="jnjGTB2BUnitService" alias="jnjB2BUnitService" />
+	<bean id="jnjGTB2BUnitService" class="com.jnj.core.services.b2bunit.impl.DefaultJnjGTB2BUnitService"
+		parent="defaultB2BUnitService" />
+
+	<!-- NA- On Deman request -->
+	<alias name="jnjGTB2BUnitDao" alias="jnjB2BUnitDao" />
+	<bean id="jnjGTB2BUnitDao" class="com.jnj.core.dao.b2bunit.impl.DefaultJnjGTB2BUnitDao"
+		parent="abstractItemDao" />
+	<!-- End of Bean for Customer -->
+
+	<!-- Start of Bean for Address -->
+	<bean id="jnjGTAddressService" name="jnjGTAddressService"
+		class="com.jnj.core.services.address.impl.DefaultJnjGTAddressService"
+		parent="jnjAddressService" />
+
+	<bean id="jnjGTAddressDao" class="com.jnj.core.dao.address.impl.DefaultJnjGTAddressDao"
+		parent="abstractItemDao" />
+	<!-- End of Bean for Customer -->
+
+	<!-- Start of Bean for Surgeon -->
+	<bean id="jnjGTSurgeonService" class="com.jnj.core.services.surgeon.impl.DefaultJnjGTSurgeonService" />
+	<!-- End of Bean for Surgeon -->
+
+
+	<!-- Start of Bean for Credit Card Service -->
+
+	<bean id="jnjGTCreditCardService"
+		class="com.jnj.core.services.creditcard.impl.DefaultJnjGTCreditCardService" />
+
+	<!-- End of Bean for Credit Card Service -->
+
+	<!-- Start of Bean for Territory -->
+	<bean id="jnjGtTerritoryService"
+		class="com.jnj.core.services.territory.impl.DefaultJnjGTTerritoryService" />
+	<bean id="jnjGTTerritoryDao" class="com.jnj.core.dao.territory.impl.DefaultJnjGTTerritoryDao"
+		parent="abstractItemDao"></bean>
+	<!-- End of Bean for Territory -->
+
+	<!-- End of Bean for User Service -->
+	<alias name="jnjGTUserService" alias="GTCustomerService" />
+	<bean id="jnjGTUserService"
+		class="com.jnj.core.services.customer.impl.DefaultJnjGTCustomerService"
+		parent="jnjCustomerService">
+		<property name="configurationService" ref="configurationService" />
+	<!-- End of Bean for User Service -->
+	</bean>
+	<alias name="jnjGTProductService" alias="productService" />
+	<bean id="jnjGTProductService" class="com.jnj.core.services.impl.DefaultJnJGTProductService"
+		parent="jnjProductService">
+		<property name="productModelUrlResolver" ref="productModelUrlResolver" />
+		<property name="mediaService" ref="mediaService"/>
+		<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+
+	<alias alias="productDao" name="jnjGTProductDao" />
+	<bean id="jnjGTProductDao" class="com.jnj.core.dao.impl.DefaultJnjGTProductDao" parent="jnjProductDao" />
+
+	<alias name="jnjGTCartService" alias="commerceCartService" />
+	<bean id="jnjGTCartService" class="com.jnj.core.services.cart.impl.DefaultJnjGTCartService"
+		parent="jnjCartService" />
+
+	<bean id="jnjGTOrderService" name="jnjGTOrderService"
+		class="com.jnj.core.services.impl.DefaultJnjGTOrderService" parent="jnjOrderService" />
+
+	<alias name="jnjGTOrderTemplateService" alias="jnjGTOrderTemplateService" />
+	<bean id="jnjGTOrderTemplateService"
+		class="com.jnj.core.services.Ordertemplate.impl.DefaultJnjGTOrderTemplateService" />
+
+
+	<!-- Start Solr Related Beans -->
+	<bean id="jnjGTIncludedB2BUnitsValueProvider"
+		class="com.jnj.core.solr.provider.JnjGTIncludedB2BUnitsValueProvider"
+		parent="abstractPropertyFieldValueProvider">
+		<property name="fieldNameProvider" ref="solrFieldNameProvider" />
+	</bean>
+
+	<bean id="jnjGTProductPriceValueProvider"
+		class="com.jnj.core.solr.provider.JnjGTProductPriceValueProvider"
+		parent="abstractPropertyFieldValueProvider">
+		<property name="fieldNameProvider" ref="solrFieldNameProvider" />
+	</bean>
+
+	<bean id="jnjGTImageAvlIndValueProvider"
+		class="com.jnj.core.solr.provider.JnjGTImageAvlIndValueProvider"
+		parent="abstractPropertyFieldValueProvider">
+		<property name="fieldNameProvider" ref="solrFieldNameProvider" />
+	</bean>
+
+	<bean id="jnjGTGTINValueProvider" class="com.jnj.core.solr.provider.JnjGTGTINValueProvider"
+		parent="abstractPropertyFieldValueProvider">
+		<property name="fieldNameProvider" ref="solrFieldNameProvider" />
+	</bean>
+
+	<bean id="jnjGTUOMValueProvider" class="com.jnj.core.solr.provider.JnjGTUOMValueProvider"
+		parent="abstractPropertyFieldValueProvider">
+		<property name="fieldNameProvider" ref="solrFieldNameProvider" />
+	</bean>
+
+	<bean id="jnjGTVolumeValueProvider" class="com.jnj.core.solr.provider.JnjGTVolumeValueProvider"
+		parent="abstractPropertyFieldValueProvider">
+		<property name="fieldNameProvider" ref="solrFieldNameProvider" />
+	</bean>
+
+	<bean id="jnjGTWeightProvider" class="com.jnj.core.solr.provider.JnjGTWeightProvider"
+		parent="abstractPropertyFieldValueProvider">
+		<property name="fieldNameProvider" ref="solrFieldNameProvider" />
+	</bean>
+
+	<bean id="jnjGTIsProdSaleableProvider"
+		class="com.jnj.core.solr.provider.JnjGTProductIsSaleableValueProvider"
+		parent="abstractPropertyFieldValueProvider">
+		<property name="fieldNameProvider" ref="solrFieldNameProvider" />
+	</bean>
+	<bean id="jnjGTLatamIsProdSaleableProvider"
+		class="com.jnj.core.solr.provider.JnjGTLatamProductIsSaleableValueProvider"
+		parent="abstractPropertyFieldValueProvider">
+		<property name="fieldNameProvider" ref="solrFieldNameProvider" />
+	</bean>
+
+	<bean id="jnjGTBaseMaterialNumberValueProvider"
+		class="com.jnj.core.solr.provider.JnjGTBaseMaterialNumberValueProvider"
+		parent="abstractPropertyFieldValueProvider">
+		<property name="fieldNameProvider" ref="solrFieldNameProvider" />
+	</bean>
+
+	<bean id="jnjGTStatusCodeValueProvider" abstract="true"
+		class="com.jnj.core.solr.provider.JnjGTStatusCodeValueProvider"
+		parent="abstractPropertyFieldValueProvider">
+		<property name="fieldNameProvider" ref="solrFieldNameProvider" />
+	</bean>
+	
+	<bean id="jnjGTLaunchStatusCodeValueProvider" parent="jnjGTStatusCodeValueProvider">
+		<property name="indexOnlyActive" value="TRUE" />
+	</bean>
+
+	<bean id="jnjGTCurrentStatusCodeValueProvider" parent="jnjGTStatusCodeValueProvider">
+		<property name="indexOnlyActive" value="FALSE" />
+	</bean>
+
+	<bean id="jnjGTParentFieldValueProvider" class="com.jnj.core.solr.provider.JnjGTParentFieldValueProvider"
+		parent="abstractPropertyFieldValueProvider">
+		<property name="fieldNameProvider" ref="solrFieldNameProvider" />
+	</bean>
+	
+	<bean id="jnjGTImageValueProvider" abstract="true" class="com.jnj.core.solr.provider.JnjGTImageValueProvider" parent="abstractImageValueProvider"/>
+	
+	<alias name="jnjGTImage515ValueProvider" alias="image515ValueProvider" />
+	<bean id="jnjGTImage515ValueProvider" parent="jnjGTImageValueProvider">
+		<property name="mediaFormat" value="515Wx515H"/>
+	</bean>
+	
+	<alias name="jnjGTImage300ValueProvider" alias="image300ValueProvider" />
+	<bean id="jnjGTImage300ValueProvider" parent="jnjGTImageValueProvider">
+		<property name="mediaFormat" value="300Wx300H"/>
+	</bean>
+
+	<alias name="jnjGTImage96ValueProvider" alias="image96ValueProvider" />
+	<bean id="jnjGTImage96ValueProvider" parent="jnjGTImageValueProvider">
+		<property name="mediaFormat" value="96Wx96H"/>
+	</bean>
+
+	<alias name="jnjGTImage65ValueProvider" alias="image65ValueProvider" />
+	<bean id="jnjGTImage65ValueProvider" parent="jnjGTImageValueProvider">
+		<property name="mediaFormat" value="65Wx65H"/>
+	</bean>
+
+	<alias name="jnjGTImage30ValueProvider" alias="image30ValueProvider" />	
+	<bean id="jnjGTImage30ValueProvider" parent="jnjGTImageValueProvider">
+		<property name="mediaFormat" value="30Wx30H"/>
+	</bean>
+	
+	<bean id="jnjGTFacetDisplayNameProvider"
+	      class="com.jnj.core.solr.provider.JnjGTFacetDisplayNameProvider"/>
+	
+	<alias name="jnjGTCommerceSearchPagePopulator" alias="commerceSearchPagePopulator" />
+	<bean id="jnjGTCommerceSearchPagePopulator" class="com.jnj.facades.converters.populator.JnjGTSearchPagePopulator"  />
+	
+	<alias name="jnjGTSearchTextPopulator" alias="commerceSearchTextPopulator" />
+	<bean id="jnjGTSearchTextPopulator"
+		class="de.hybris.platform.commerceservices.search.solrfacetsearch.populators.SearchTextPopulator">
+		<property name="freeTextQueryBuilders">
+			<list>
+				<bean
+					class="com.jnj.core.services.search.querybuilder.impl.JnjGTFreeTextQueryBuilder">
+					<property name="propertyName" value="name" />
+					<property name="boost" value="100" />
+				</bean>
+				<bean
+					class="com.jnj.core.services.search.querybuilder.impl.JnjGTFreeTextQueryBuilder">
+					<property name="propertyName" value="baseMaterialNumber" />
+					<property name="boost" value="90" />
+				</bean>
+				<bean
+					class="com.jnj.core.services.search.querybuilder.impl.JnjGTFreeTextQueryBuilder">
+					<property name="propertyName" value="manufacturerName" />
+					<property name="boost" value="80" />
+				</bean>
+				<bean
+					class="com.jnj.core.services.search.querybuilder.impl.JnjGTFreeTextQueryBuilder">
+					<property name="propertyName" value="description" />
+					<property name="boost" value="50" />
+				</bean>
+				<bean
+					class="com.jnj.core.services.search.querybuilder.impl.JnjGTFreeTextQueryBuilder">
+					<property name="propertyName" value="gtin" />
+					<property name="boost" value="40" />
+				</bean>
+				<bean
+					class="com.jnj.core.services.search.querybuilder.impl.JnjGTFreeTextQueryBuilder">
+					<property name="propertyName" value="upc" />
+					<property name="boost" value="20" />
+				</bean>
+				<bean class="com.jnj.core.services.search.querybuilder.impl.JnjGTFreeTextQueryBuilder">
+					<property name="propertyName" value="code" />
+					<property name="boost" value="15" />
+				</bean>
+				<bean
+					class="com.jnj.core.services.search.querybuilder.impl.JnjGTFreeTextQueryBuilder">
+					<property name="propertyName" value="ingredient" />
+					<property name="boost" value="10" />
+				</bean>
+				<bean
+					class="com.jnj.core.services.search.querybuilder.impl.JnjGTFreeTextQueryBuilder">
+					<property name="propertyName" value="globalBU" />
+					<property name="boost" value="9" />
+				</bean>
+				<bean
+					class="com.jnj.core.services.search.querybuilder.impl.JnjGTFreeTextQueryBuilder">
+					<property name="propertyName" value="summary" />
+					<property name="boost" value="8" />
+				</bean>
+				<bean
+					class="com.jnj.core.services.search.querybuilder.impl.JnjGTFreeTextQueryBuilder">
+					<property name="propertyName" value="pcmBrand" />
+					<property name="boost" value="7" />
+				</bean>
+				<bean
+					class="com.jnj.core.services.search.querybuilder.impl.JnjGTFreeTextQueryBuilder">
+					<property name="propertyName" value="longBullet" />
+					<property name="boost" value="6" />
+				</bean>
+				<bean
+					class="com.jnj.core.services.search.querybuilder.impl.JnjGTFreeTextQueryBuilder">
+					<property name="propertyName" value="pcmSubBrand" />
+					<property name="boost" value="5" />
+				</bean>
+				<bean
+					class="com.jnj.core.services.search.querybuilder.impl.JnjGTFreeTextQueryBuilder">
+					<property name="propertyName" value="shortBullets" />
+					<property name="boost" value="4" />
+				</bean>
+				<bean class="com.jnj.core.services.search.querybuilder.impl.JnjGTFreeTextQueryBuilder">
+					<property name="propertyName" value="keywords" />
+					<property name="boost" value="3" />
+				</bean>
+				<bean
+					class="com.jnj.core.services.search.querybuilder.impl.JnjGTFreeTextQueryBuilder">
+					<property name="propertyName" value="artworkApprovalCrr" />
+					<property name="boost" value="2" />
+				</bean>
+				<bean
+					class="com.jnj.core.services.search.querybuilder.impl.JnjGTFreeTextQueryBuilder">
+					<property name="propertyName" value="rmcNo" />
+					<property name="boost" value="1" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="jnjGTSolrService"
+		class="com.jnj.core.services.search.impl.DefaultJnjGTSolrService" />
+
+
+	<bean id="abstractjnjGTOnlyCategoryCodeValueProvider" abstract="true"
+		class="com.jnj.core.solr.provider.JnjGTOnlyCategoryCodeValueProvider"
+		parent="abstractPropertyFieldValueProvider">
+		<property name="categoriesQualifier" value="supercategories" />
+	</bean>
+
+	<bean id="jnjGTLevel1CodeValueProvider" parent="abstractjnjGTOnlyCategoryCodeValueProvider">
+		<property name="categoryLevel" value="1" />
+	</bean>
+
+	<bean id="jnjGTLevel2CodeValueProvider" parent="abstractjnjGTOnlyCategoryCodeValueProvider">
+		<property name="categoryLevel" value="2" />
+	</bean>
+	<!-- End Solr Related Beans -->
+    <alias name="jnjGTContactUsService" alias="GTContactUsService"/>
+	<bean id="jnjGTContactUsService" class="com.jnj.core.services.impl.DefaultJnjGTContactUsService"
+		parent="defaultjnjContactUsService" />
+
+	<alias name="DefaultJnjGTOrderDao" alias="jnjGTOrderDao" />
+	<bean id="DefaultJnjGTOrderDao" class="com.jnj.core.dao.order.impl.DefaultJnjGTOrderDao" />
+	<!-- Start : Successful Registration Email -->
+	<bean id="jnjGTSuccessfulRegistrationEmailEventListener"
+		class="com.jnj.core.event.JnjGTSuccessfulRegistrationEmailEventListener"
+		parent="abstractSiteEventListener" />
+	<bean id="jnjGTSuccessfulRegistrationProcessDefinitionResource"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjb2bcore/processes/jnjGTSuccessfulRegistrationProcess.xml" />
+	</bean>
+	<bean id="generateSuccessfulRegistrationEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="RegisterUserEmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="emailGenerationService" />
+	</bean>
+	<!-- For Approval Email send to the supervisor -->
+	<bean id="jnjGTSupervisorApprovalProcessDefinitionResource"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjb2bcore/processes/jnjGTSupervisorApprovalProcess.xml" />
+	</bean>
+	<bean id="generateSupervisorApprovalEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="supervisorApprovalEmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="emailGenerationService" />
+	</bean>
+	<!-- End : Successful Registration Email -->
+	<!-- Start : Registration Confirmation Email -->
+	<bean id="jnjGTRegistrationConfirmationEmailEventListener"
+		class="com.jnj.core.event.JnjGTRegistrationConfirmationEmailEventListener"
+		parent="abstractSiteEventListener" />
+	<bean id="jnjGTRegistrationConfirmationProcessDefinitionResource"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjb2bcore/processes/jnjGTRegistrationConfirmationProcess.xml" />
+	</bean>
+	<bean id="generateRegistrationConfirmationEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="RegisterConfirmationEmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="emailGenerationService" />
+	</bean>
+	<!-- End : Registration Confirmation Email -->
+
+	<!-- Start : For ContactUs Email -->
+	<bean id="jnjGTContactUsEventListener" class="com.jnj.core.event.JnjGTContactUsEventListener"
+		parent="abstractSiteEventListener">
+		<property name="modelService" ref="modelService" />
+		<property name="businessProcessService" ref="businessProcessService" />
+	</bean>
+
+	<bean id="jnjGTContactUsProcessDefinitionResource"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjb2bcore/processes/jnjGTContactUsEmailProcess.xml" />
+	</bean>
+	<bean id="generateContactUsEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="ContactUsEmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="contactUsEmailGenerationService" />
+	</bean>
+	<!-- End : For ContactUs Email -->
+
+	<!-- UserDisableLoginEmail -->
+
+	<bean id="jnjGTUserLoginDisableEmailEventListener"
+		class="com.jnj.core.event.JnjGTUserLoginDisableEmailEventListener"
+		parent="abstractSiteEventListener">
+		<property name="businessProcessService" ref="businessProcessService" />
+	</bean>
+	<bean id="jnjGTUserDisableLoginEmailProcessDefinitionResource"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjb2bcore/processes/jnjGTUserDisableLoginEmailProcess.xml" />
+	</bean>
+	<bean id="generateUserLoginDisableEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="DisablingUserLoginEmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="emailGenerationService" />
+	</bean>
+
+
+	<!-- End: user Disable login -->
+
+	<alias alias="cartFactory" name="jnjGTCartFactory" />
+	<bean id="jnjGTCartFactory" name="jnjGTCartFactory"
+		class="com.jnj.core.factory.order.JnjGTCartFactory" parent="defaultCartFactory" />
+
+	<!-- Add Account Email Process Start -->
+	<bean id="jnjGTAddAccountEventListener" class="com.jnj.core.event.JnjGTAddAccountEventListener"
+		parent="abstractSiteEventListener">
+		<property name="modelService" ref="modelService" />
+		<property name="businessProcessService" ref="businessProcessService" />
+	</bean>
+	<bean id="generateAddAccountEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="AddAccountEmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="emailGenerationService" />
+	</bean>
+	<bean id="jnjGTAddAccountCSREmailProcessDefinitionResource"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjb2bcore/processes/jnjGTAddAccountCSREmailProcess.xml" />
+	</bean>
+	<!-- Add Account Email Process End -->
+
+
+
+	<!-- Add ExistingAccount Email Process Start -->
+	<bean id="jnjGTAddExistingAccountEventListener" class="com.jnj.core.event.JnjGTAddExistingAccountEventListener"
+		parent="abstractSiteEventListener">
+		<property name="modelService" ref="modelService" />
+		<property name="businessProcessService" ref="businessProcessService" />
+	</bean>
+	<bean id="generateAddExistingAccountEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="AddExisitingAccountCSREmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="emailGenerationService" />
+	</bean>
+	<bean id="jnjGTAddExistingAccountCSREmailProcessDefinitionResource"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjb2bcore/processes/jnjGTAddExistingAccountCSREmailProcess.xml" />
+	</bean>
+	<!-- Add ExistingAccount Email Process End -->
+
+	<!-- Add ExistingUserAccount Email Process Start -->
+
+	<bean id="generateAddExistingUserAccountEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="AddExisitingAccountUSEREmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="emailGenerationService" />
+	</bean>
+	<bean id="jnjGTAddExistingUserAccountCSREmailProcessDefinitionResource"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjb2bcore/processes/jnjGTAddExistingAccountUSEREmailProcess.xml" />
+	</bean>
+	<!-- Add ExistingUserAccount Email Process End -->
+
+
+
+	<!-- Adding Service and Dao classes for the User -->
+	<alias name="jnjGTReportsDao" alias="GTReportsDao"/>
+	<bean id="jnjGTReportsDao" class="com.jnj.core.dao.reports.impl.DefaultJnjGTReportsDao"
+		parent="abstractItemDao">
+	</bean>
+	<bean id="jnjGTReportsService"
+		class="com.jnj.core.services.reports.impl.DefaultJnjGTReportsService">
+	</bean>
+
+	<alias name="jnjGTCartDao" alias="GTCartDao"/>
+	<bean id="jnjGTCartDao" name="jnjGTCartDao"
+		class="com.jnj.core.dao.cart.impl.DefaultJnjGTCartDao" />
+
+	
+	<!-- Start: Invoice Details -->
+	<alias alias="invoiceDao" name="jnjGTInvoiceDao" />
+	<bean id="jnjGTInvoiceDao" class="com.jnj.core.dao.invoice.impl.DefaultJnjGTInvoiceDao"></bean>
+	<bean id="jnjGTInvoiceService" class="com.jnj.core.services.impl.DefaultJnjGTInvoiceService"></bean>
+	<!-- End: Invoice Detail -->
+
+	<bean id="jnjGTSurgeonDao" class="com.jnj.core.dao.surgeon.impl.DefaultJnjGTSurgeonDao" />
+
+	<!-- <bean name="jnjGTB2BCommerceUserService"
+		class=" com.jnj.core.services.company.impl.JnjGTB2BCommerceUserServiceImpl"
+		parent="b2bCommerceUserService">
+	</bean> -->
+                                <alias name="jnjGTB2BCommerceUserService" alias="b2bCommerceUserService"/>
+                                <bean name="jnjGTB2BCommerceUserService"
+                                                class=" com.jnj.core.services.company.impl.DefaultJnjGTB2BCommerceUserService"
+                                                parent="defaultB2BCommerceUserService">
+                                </bean>
+
+	
+	
+	<alias name="jnjGTPagedB2BCustomerDao" alias="pagedB2BCustomerDao"/>
+     <bean name="jnjGTPagedB2BCustomerDao"
+    class="com.jnj.core.dao.company.impl.DefaultJnjGTPagedB2BCustomerDao"
+    parent="defaultPagedB2BCustomerDao">
+    </bean>
+
+
+	<!-- Add Approved Email Listener Start -->
+	<bean id="jnjGTApprovedUserEventListener" class="com.jnj.core.event.JnjGTApprovedUserEventListener"
+		parent="abstractSiteEventListener">
+		<property name="modelService" ref="modelService" />
+		<property name="businessProcessService" ref="businessProcessService" />
+	</bean>
+	<!-- Add Approved Email  Email Listener End -->
+
+	<!-- Add Create User Listener Start -->
+	<bean id="jnjGTCreateUserEventListener" class="com.jnj.core.event.JnjGTCreateUserEventListener"
+		parent="abstractSiteEventListener">
+		<property name="modelService" ref="modelService" />
+		<property name="businessProcessService" ref="businessProcessService" />
+	</bean>
+	<!-- Add Create User Email Listener End -->
+	
+	<!-- Add Temporary Password Listener Start -->
+	<bean id="jnjGTTemporaryPasswordEventListener" class="com.jnj.core.event.JnjGTTemporaryPasswordEventListener"
+		parent="abstractSiteEventListener">
+		<property name="modelService" ref="modelService" />
+		<property name="businessProcessService" ref="businessProcessService" />
+	</bean>
+	<!-- Add Temporary Password Listener End -->
+	
+
+
+	<!-- Add Approved Complete Profile Email Listener Start -->
+	<bean id="generateApprovedProfileComplete"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="ApprovedCompleteProfileEmail" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="emailGenerationService" />
+	</bean>
+	<bean id="jnjGTApprovedProfileCompleteProcessDefinitionResource"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjb2bcore/processes/jnjGTApprovedCompleteProfile.xml" />
+	</bean>
+
+	<!-- Add Approved Complete Profile Email Listener End -->
+
+	<!-- Add Create User  Profile Email Listener Start -->
+	<bean id="generateCreateUserProfileComplete"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="CreateUserProfileEmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="emailGenerationService" />
+	</bean>
+	<bean id="jnjGTCreateUserProfileProcessDefinitionResource"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjb2bcore/processes/jnjGTCreateUserProfile.xml" />
+	</bean>
+
+	<!-- Add Create User  Profile Email Listener End -->
+	
+	<!-- Add Temporary Password Email Process Start -->
+	<bean id="generateTemporaryPwdEmailProcess"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="TemporaryPasswordEmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="emailGenerationService" />
+	</bean>
+	<bean id="jnjGTTemporaryPwdEamilProcessDefinitionResource"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjb2bcore/processes/jnjGTTemporaryPwdEmailProcess.xml" />
+	</bean>
+
+	<!-- Add Temporary Password Email Process End -->
+	
+
+	<!-- Add Approved In Complete Profile Email Listener Start -->
+	<bean id="generateApprovedProfileInComplete"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="ApprovedInCompleteProfileEmail" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="emailGenerationService" />
+	</bean>
+	<bean id="jnjGTApprovedProfileInCompleteProcessDefinitionResource"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjb2bcore/processes/jnjGTApprovedInCompleteProfile.xml" />
+	</bean>
+
+	<!-- Add Approved In Complete Profile Email Listener End -->
+
+	<!-- Cut Email Notification Process Start -->
+	<bean id="JnjGTCutNotificationEmailEventListener" class="com.jnj.core.event.JnjGTCutNotificationEmailEventListener"
+		parent="abstractSiteEventListener">
+		<property name="businessProcessService" ref="businessProcessService" />
+	</bean>
+	<bean id="generateCutNotificationEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="JnjGTCutNotificationEmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="emailGenerationService" />
+	</bean>
+	<bean id="jnjGTCutNotificationEmailProcessDefinitionResource"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjb2bcore/processes/jnjGTCutNotificationEmailProcess.xml" />
+	</bean>
+	<!-- Cut Email Notification Process End -->
+	<!-- Password Expiration Process Start -->
+	<bean id="jnjGTProfilePasswordExpiryEventListener" class="com.jnj.core.event.JnjGTProfilePasswordExpiryEventListner"
+		parent="abstractSiteEventListener">
+		<property name="modelService" ref="modelService" />
+		<property name="businessProcessService" ref="businessProcessService" />
+	</bean>
+	<bean id="generateProfilePasswordExpiryEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="ProfilePasswordExpiryEmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="emailGenerationService" />
+	</bean>
+	<bean id="jnjGTProfilePasswordExpireEmailProcessDefinitionResource"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjb2bcore/processes/jnjGTProfilePasswordExpireEmailProcess.xml" />
+	</bean>
+	<!-- Password Expiration Process End -->
+
+	<!-- Add Reject Email Email Start -->
+	<bean id="jnjGTRejectUserEventListener" class="com.jnj.core.event.JnjGTRejectUserEventListener"
+		parent="abstractSiteEventListener">
+		<property name="modelService" ref="modelService" />
+		<property name="businessProcessService" ref="businessProcessService" />
+	</bean>
+	<bean id="generateRejectUserEmailAction"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="RejectUserEmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="emailGenerationService" />
+	</bean>
+	<bean id="jnjGTRejectUserProcessDefinitionResource"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjb2bcore/processes/jnjGTRejectUserProcess.xml" />
+	</bean>
+	<!-- End Reject Email Email End -->
+
+	<alias name="JnjGTCustomerDAO" alias="GTCustomerDao"/>
+	<bean id="JnjGTCustomerDAO" class="com.jnj.core.dao.customer.impl.DefaultJnjGTCustomerDAO">
+		<property name="userService" ref="userService"/>
+		<property name="sessionService" ref="sessionService"/>
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>
+		<property name="configurationService" ref="configurationService"/>
+	</bean>
+
+	<alias name="jnjGTOrderTemplateDao" alias="GTOrderTemplateDao"/>
+	<bean id="jnjGTOrderTemplateDao"
+		class="com.jnj.core.dao.Ordertemplate.impl.DefaultJnjGTOrderTemplateDao"
+		parent="defaultjnjTemplateDao">
+	</bean>
+
+
+	<!-- DISPUTE INQUIRY EMAIL CHANGES: AKASH -->
+
+	<bean id="jnjGTDisputeInquiryEventListener" class="com.jnj.core.event.JnjGTDisputeInquiryEventListener"
+		parent="abstractSiteEventListener">
+		<property name="modelService" ref="modelService" />
+		<property name="businessProcessService" ref="businessProcessService" />
+	</bean>
+
+	<bean id="generateDisputeInquiryEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="JnjGTDisputeInquiryEmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="jnjGTEmailGenerationService" />
+	</bean>
+
+	<bean id="jnjGTDisputeInquiryEmailProcess"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjb2bcore/processes/jnjGTDisputeInquiryEmailProcess.xml" />
+	</bean>
+
+	<alias alias="GTEmailGenerationService" name="jnjGTEmailGenerationService" />
+	<bean id="jnjGTEmailGenerationService" class="com.jnj.core.email.JnjGTEmailGenerationService"
+		parent="emailGenerationService" />
+
+	<!-- END OF DISPUTE INQUIRY EMAIL CHANGES: AKASH -->
+	
+	<!-- AAOL-5163 -->
+	<alias alias="GTReturnEmailGenerationService" name="jnjGTReturnEmailGenerationService" />
+	<bean id="jnjGTReturnEmailGenerationService" class="com.jnj.core.email.JnjGTReturnEmailGenerationService"
+		parent="emailGenerationService" />
+
+	<!-- ORDER STATUS INBOUND VALIDATION EMAIL CHANGES: AKASH -->
+	<bean id="jnjGTOrderStatusValidationEventListener" class="com.jnj.core.event.JnjGTOrderStatusValidationEventListener"
+		parent="abstractSiteEventListener">
+		<property name="modelService" ref="modelService" />
+		<property name="businessProcessService" ref="businessProcessService" />
+	</bean>
+	
+	<bean id="generateOrderStatusValidationEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="JnjGTOrderStatusValidationEmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="emailGenerationService" />
+	</bean>
+	
+	<bean id="jnjGTOrderStatusValidationEmailProcess"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjb2bcore/processes/jnjGTOrderStatusValidationEmailProcess.xml" />
+	</bean>
+	
+	<!-- END OF ORDER STATUS INBOUND VALIDATION EMAIL CHANGES-->
+
+	<!-- Interceptor for Removing customer model Start -->
+	<bean name="jnjGtB2BCustomerRemoveInterceptor" id="jnjGtB2BCustomerRemoveInterceptor "
+		class="com.jnj.core.interceptor.JnjGTB2BCustomerRemoveInterceptor"
+		scope="tenant" autowire="byName" />
+
+	<bean id="jnjGtB2BCustomerRemoveInterceptorMapping" scope="tenant"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="jnjGtB2BCustomerRemoveInterceptor" />
+		<property name="typeCode" value="JnJB2bCustomer" />
+
+	</bean>
+	<!-- Interceptor for Removing customer model Start -->
+
+	<!-- Interceptor for Modifying customer model Start -->
+
+	<bean name="jnjGtB2BCustomerPrepareInterceptor" id="jnjGtB2BCustomerPrepareInterceptor "
+		class="com.jnj.core.interceptor.JnjGTB2BCustomerPrepareInterceptor"
+		scope="tenant" autowire="byName" />
+
+	<bean id="jnjGtB2BCustomerPrepareInterceptorMapping" scope="tenant"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="jnjGtB2BCustomerPrepareInterceptor" />
+		<property name="typeCode" value="JnJB2bCustomer" />
+
+	</bean>
+	<!-- Interceptor for Modifying customer model End -->
+
+	<!-- Interceptor for Modifying B2Bunit Start -->
+	<bean name="jnjGtB2BUnitPrepareInterceptor" id="jnjGtB2BUnitPrepareInterceptor "
+		class="com.jnj.core.interceptor.JnjGTB2BUnitPrepareInterceptor"
+		scope="tenant" autowire="byName" />
+
+	<bean id="jnjGtB2BUnitPrepareInterceptorrMapping" scope="tenant"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="jnjGtB2BUnitPrepareInterceptor" />
+		<property name="typeCode" value="JnjB2BUnit" />
+
+	</bean>
+	<!-- Interceptor for Modifying B2Bunit model End -->
+
+	<!-- Interceptor for Removing B2Bunit model Start -->
+	<bean name="jnjGtB2BUnitRemoveInterceptor" id="jnjGtB2BUnitRemoveInterceptor"
+		class="com.jnj.core.interceptor.JnjGTB2BUnitRemoveInterceptor"
+		scope="tenant" autowire="byName" />
+
+	<bean id="jnjGtB2BUnitRemoveInterceptorMapping" scope="tenant"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="jnjGtB2BUnitRemoveInterceptor" />
+		<property name="typeCode" value="JnjB2BUnit" />
+	</bean>
+	<!-- Interceptor for Removing B2Bunit model End -->
+
+	<!-- Audittrail dao Start -->
+	<!-- <bean id="JnjGTAuditTrailDao" class="com.jnj.core.dao.operations.impl.DefaultJnjGTAuditTrailDao"/> -->
+	<bean id="jnjGTOperationService"
+		class="com.jnj.core.services.operations.impl.DefaultJnjGTOperationsService" />
+	<alias alias="GTOperationsDao" name="jnjGTOperationsDao" />
+	<bean id="jnjGTOperationsDao" class="com.jnj.core.dao.operations.impl.DefaultJnjGTOperationsDao"
+		parent="abstractItemDao" />
+	<!-- CR #31918 Changes -->
+
+	<!-- Interceptor for Modifying Usergroup model Start -->
+	<bean name="jnjGtUserGroupPrepareInterceptor" id="jnjGtUserGroupPrepareInterceptor"
+		class="com.jnj.core.interceptor.JnjGTUserGroupPrepareInterceptor"
+		scope="tenant" autowire="byName" />
+
+	<bean id="jnjGtUserGroupPrepareInterceptorMapping" scope="tenant"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="jnjGtUserGroupPrepareInterceptor" />
+		<property name="typeCode" value="UserGroup" />
+	</bean>
+	<!-- Interceptor for Modifying Usergroup model End -->
+
+	<!-- Interceptor for Removing Usergroup model Start -->
+	<bean name="jnjGtUserGroupRemoveInterceptor" id="jnjGtUserGroupRemoveInterceptor"
+		class="com.jnj.core.interceptor.JnjGTUserGroupRemoveInterceptor"
+		scope="tenant" autowire="byName" />
+
+	<bean id="jnjGtUserGroupRemoveInterceptorMapping" scope="tenant"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="jnjGtUserGroupRemoveInterceptor" />
+		<property name="typeCode" value="UserGroup" />
+	</bean>
+	<!-- Interceptor for Removing Usergroup model End -->
+
+	<!-- Cart Order Confirmation Email Process Start -->
+	<bean id="jnjGTCartOrderConfirmationEventListener" class="com.jnj.core.event.JnjGTCartOrderConfirmationEventListener"
+		parent="abstractSiteEventListener">
+		<property name="modelService" ref="modelService" />
+		<property name="businessProcessService" ref="businessProcessService" />
+	</bean>
+	<bean id="generateCartOrderConfirmationEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="CartOrderConfirmationUSEREmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="emailGenerationService" />
+	</bean>
+	<bean id="jnjGTCartOrderConfirmationUSERSREmailProcessDefinitionResource"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjb2bcore/processes/jnjGTCartOrderConfirmationUSEREmailProcess.xml" />
+	</bean>
+	<!-- Cart Order Confirmation Email Process End -->
+
+	<bean id="jnjGTGetContractPriceMapper" class="com.jnj.core.outbound.mapper.impl.DefaultJnjGTGetContractPriceMapper" />
+	<bean id="jnjGTGetContractPriceService" class="com.jnj.core.outbound.services.impl.DefaultJnjGTGetContractPriceService" />
+	
+	<bean id="webserviceTemplateForContractPrice" name="webserviceTemplateForContractPrice"
+		class="org.springframework.ws.client.core.WebServiceTemplate">
+		<property name="marshaller" ref="marshallerForContractPrice" />
+		<property name="unmarshaller" ref="unmarshallerForContractPrice" />
+		<!--<property name="messageSender" ref="messageSender"/>-->
+	</bean>
+	
+	<oxm:jaxb2-marshaller id="marshallerForContractPrice"
+		context-path="com.jnj.hcswmd01.mu007_epic_contractprice_v1.getcontractpricewrapperwebservice" />
+	<oxm:jaxb2-marshaller id="unmarshallerForContractPrice"
+		context-path="com.jnj.hcswmd01.mu007_epic_contractprice_v1.getcontractpricewrapperwebservice" />
+
+  <bean id="jnjImageMagickMediaConversionStrategy" 
+        class="com.jnj.mediaconversion.imagemagick.JnjImageMagickMediaConversionStrategy">
+        <property name="configurationService" ref="configurationService"/>
+        <property name="imageMagickService" ref="imageMagickService"/>
+        <property name="mediaService" ref="mediaService"/>
+        <property name="mimeMappingStrategy" ref="mimeMappingStrategy"/>
+        <property name="convertedMediaCreationStrategy" ref="convertedMediaCreationStrategy"/>
+    </bean>
+    
+   <!--  <bean id="jnjAmazonDBService" class="com.jnj.pcm.services.imageLoad.impl.JnjAmazonDBServiceImpl" />
+    <bean id="jnjAmazonMediaService" class="com.jnj.pcm.services.imageLoad.impl.JnjAmazonMediaServiceImpl" />
+    <bean id="jnjAmazonUploadService" class="com.jnj.pcm.services.imageLoad.impl.JnjAmazonUploadServiceImpl" />
+    <bean id="jnjPcmProductService" class="com.jnj.pcm.services.products.impl.JnjPcmProductServiceImpl" />  
+    
+    <bean id="jnjImageMagickService" class="com.jnj.pcm.services.imageLoad.impl.JnjImageMagickServiceImpl" />
+    <bean id="jnjAmazonDAO" class="com.jnj.pcm.dao.impl.JnjAmazonDAOImpl" />
+     <bean id="jnjPcmProdcutDAO" class="com.jnj.pcm.dao.impl.JnjPcmProductDAOImpl" />
+    <bean id="jnjPcmZonzaDao" class="com.jnj.pcm.dao.impl.JnjPcmZonzaDaoImpl" />
+     <bean id="jnjZonzaImageLoadService" class="com.jnj.pcm.services.imageLoad.impl.JnjZonzaImageLoadServiceImpl" /> -->
+     
+	<!-- <alias alias="baseStoreSelectorStrategy" name="JnjGTBaseStoreSelectorStrategy"/>
+	<bean id="JnjGTBaseStoreSelectorStrategy"
+			class="com.jnj.pcm.core.strategies.impl.JnjGTBaseStoreSelectorStrategyImpl" scope="tenant">
+		<property name="baseSiteService" ref="baseSiteService"/>
+		<property name="userService" ref="userService"/>
+	</bean>
+	
+	<alias alias="cmsSiteService" name="JnjGTCMSSiteService" />
+	<bean id="JnjGTCMSSiteService" class="com.jnj.pcm.core.services.impl.JnjGTCmsSiteServiceImpl" parent="abstractCMSService"
+		scope="tenant">
+		<property name="baseStoreService" ref="baseStoreService"/>
+		<property name="catalogService" ref="catalogService" />
+		<property name="cmsSiteDao" ref="cmsSiteDao" />
+		<lookup-method name="lookupCmsPageService" bean="cmsPageService" />
+	</bean>  -->
+	
+		<!-- Start : Request Account Registration Email -->
+	<!--<bean id="jnjPCMRequestAccountEmailEventListener"
+		class="com.jnj.pcm.core.event.JnjPCMRequestAccountEmailEventListener"
+		parent="abstractSiteEventListener" />
+	<bean id="jnjPCMRequestAccountEmailProcessDefinitionResource"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjb2bcore/processes/jnjPCMRequestAccountEmailProcess.xml" /> 
+	</bean> -->
+	<bean id="generateRequestAccountEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="RequestAccountEmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="emailGenerationService" />
+	</bean>
+	<!-- End : Request Account Registration Email -->
+	
+	<!-- Start : Product Details Email -->
+	<!-- <bean id="jnjPCMProductDetailsEmailEventListener"
+		class="com.jnj.pcm.core.event.JnjPCMProductDetailsEmailEventListener"
+		parent="abstractSiteEventListener" />
+	<bean id="jnjPCMProductDetailsEmailProcessDefinitionResource"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjb2bcore/processes/jnjPCMProductDetailsEmailProcess.xml" />
+	</bean> -->
+	<bean id="generateProductDetailsEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="ProductDetailsEmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="emailGenerationService" />
+	</bean>
+	<bean id="jnjMultiRecipientsEmailGenerationService" class="com.jnj.core.email.JnjMultiRecipientsEmailGenerationService" parent="emailGenerationService"/>
+	<!-- End : Product Details Email -->
+	
+	<!-- Start : Amazon Email -->
+	<!-- <bean id="jnjPCMAmazonEmailEventListener"
+		class="com.jnj.pcm.core.event.JnjPCMAmazonEmailEventListener"
+		parent="abstractSiteEventListener" />
+	<bean id="jnjPCMAmazonEmailProcessDefinitionResource"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjb2bcore/processes/jnjPCMAmazonEmailProcess.xml" />
+	</bean> -->
+	<bean id="generateAmazonEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="AmazonEmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="emailGenerationService" />
+	</bean>
+	<!-- End : Amazon Email -->
+	
+	
+	<bean id="jnjGTExportCatalogEventListener"
+		class="com.jnj.core.event.JnjGTExportCatalogEventListener"
+		parent="abstractSiteEventListener" />
+	<bean id="jnjGTExportCatalogEmailProcessDefinitionResource"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjb2bcore/processes/jnjGTExportCatalogEmailProcess.xml" />
+	</bean>
+	<bean id="generateExportCatalogEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="ExportCatalogEmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="jnjGTEmailGenerationService" />
+	</bean>
+	
+	
+	
+	
+	<!-- <alias alias="requestAccountService" name="jnjPCMRequestAccountService" />
+	<bean id="jnjPCMRequestAccountService" class="com.jnj.pcm.services.registration.impl.JnjPCMRequestAccountServiceImpl"/>
+	
+	<alias alias="categoryService" name="jnjPCMCategoryService" />
+	<bean id="jnjPCMCategoryService" class="com.jnj.pcm.category.impl.JnjPCMCategoryServiceImpl" parent="defaultCategoryService"/> -->
+		<!-- Start: JnjPCMNewProductEmail Beans -->
+	<!-- <bean id="jnjPCMNewProductEmailEventListener"
+		class="com.jnj.pcm.core.event.JnjPCMNewProductEmailEventListener"
+		parent="abstractSiteEventListener" />
+	<bean id="jnjPCMNewProductEmailProcessDefinitionResource"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjb2bcore/processes/jnjPCMNewProductEmailProcess.xml" />
+	</bean>  -->
+	
+	<bean id="generateNewProductEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="NewProductWorkflowEmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="jnjUserGroupRecipientsEmailGenerationService" />
+	</bean>
+	<bean id="jnjUserGroupRecipientsEmailGenerationService" class="com.jnj.core.email.JnjUserGroupRecipientsEmailGenerationService"
+		parent="emailGenerationService" />
+	<!-- End: JnjPCMNewProductEmail Beans -->
+	
+	<!-- Start:: Beans for Automated Sync Actions in the PCM WORKFLOWs -->
+    <!-- For New Product Workflow -->
+    <!-- <bean id="jnjPCMPublishProductOnlineNewProductWorkFlowAction" class="com.jnj.pcm.core.workflow.actions.JnjPCMPublishProductOnlineNewProductWorkFlowAction" />
+    <bean id="jnjPCMMandatoryAttributeCheckNewProductWorkFlowAction" class="com.jnj.pcm.core.workflow.actions.JnjPCMMandatoryAttributeCheckNewProductWorkFlowAction" /> -->
+    
+	<!-- For Update Product Workflow -->
+	
+	<!-- <bean id="jnjPCMPublishProductOnlineUpdateProductWorkFlowAction" class="com.jnj.pcm.core.workflow.actions.JnjPCMPublishProductOnlineUpdateProductWorkFlowAction" />
+    <bean id="jnjPCMMandatoryAttributeCheckUpdateProductWorkFlowAction" class="com.jnj.pcm.core.workflow.actions.JnjPCMMandatoryAttributeCheckUpdateProductWorkFlowAction" />  -->
+    
+	<!-- End:: Beans for Automated Sync Action in the WORKFLOWs -->
+	<!-- Start: JnjPCMNewProductMandatoryCheck Beans -->
+	
+	<!-- <bean id="jnjPCMNewProductMandatoryCheckEmailEventListener"
+		class="com.jnj.pcm.core.event.JnjPCMNewProductMandatoryCheckEmailEventListener"
+		parent="abstractSiteEventListener" />
+	<bean id="jnjPCMNewProductMandatoryCheckEmailProcessDefinitionResource"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjb2bcore/processes/jnjPCMNewProductMandatoryCheckEmailProcess.xml" />
+	</bean>  -->
+	<bean id="generateNewProductMandatoryCheckEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="NewProductMandatoryCheckEmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="emailGenerationService" />
+	</bean>
+	<!-- End: JnjPCMNewProductMandatoryCheck Beans -->
+	
+	
+	<!-- Start: JnjPCMUpdateProductMandatoryCheck Beans -->
+	<!-- <bean id="jnjPCMUpdateProductMandatoryCheckEmailProcessDefinitionResource"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjb2bcore/processes/jnjPCMUpdateProductMandatoryCheckEmailProcess.xml" />
+	</bean>  -->
+	<bean id="generateUpdateProductMandatoryCheckEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="UpdateProductMandatoryCheckEmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="emailGenerationService" />
+	</bean>
+	<!-- End: JnjPCMUpdateProductMandatoryCheck Beans -->
+	
+	<!-- Start : Zonza Unreachable Email -->
+	<!-- <bean id="jnjPCMZonzaUnreachableEventListener"
+		class="com.jnj.pcm.core.event.JnjPCMZonzaUnreachableEventListener"
+		parent="abstractSiteEventListener" />
+	<bean id="jnjPCMZonzaUnreachableEmailProcessDefinitionResource"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjb2bcore/processes/jnjPCMZonzaUnreachableEmailProcess.xml" />
+	</bean>  -->
+	<bean id="generateZonzaUnreachableEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="ZonzaUnreachableEmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="jnjMultiRecipientsEmailGenerationService" />
+	</bean>
+	<!-- End : Zonza Unreachable Email -->
+	
+	<!-- Start : Multiple Image Sets Found Email -->
+	<!-- <bean id="jnjPCMMultiImageSetsFoundEventListener"
+		class="com.jnj.pcm.core.event.JnjPCMMultiImageSetsFoundEventListener"
+		parent="abstractSiteEventListener" />
+	<bean id="jnjPCMMultiImageSetsFoundEmailProcessDefinitionResource"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjb2bcore/processes/jnjPCMMultiImageSetsFoundEmailProcess.xml" />
+	</bean> -->
+	<bean id="generateMultiImageSetFoundEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="MultiImageSetsFoundEmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="emailGenerationService" />
+	</bean>
+	<!-- End : Multiple Image Sets Found Email -->
+	
+	<!-- Start : Incomplete Product Attributes Email -->
+	<!-- <bean id="jnjPCMIncompleteActiveProductEventListener"
+		class="com.jnj.pcm.core.event.JnjPCMIncompleteActiveProductEventListener"
+		parent="abstractSiteEventListener" />
+	<bean id="jnjPCMIncompleteActiveProductEmailProcessDefinitionResource"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjb2bcore/processes/jnjPCMIncompleteActiveProductEmailProcess.xml" />
+	</bean> -->
+	<bean id="generateIncompleteProductEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="IncompleteActiveProductEmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="emailGenerationService" />
+	</bean>
+	<!-- End : Incomplete Product Attributes Email -->
+		<alias alias="B2BCustomerModelValidateInterceptor" name="jnjGtB2BCustomerValidateInterceptor" />
+	<bean  name="jnjGtB2BCustomerValidateInterceptor"  id="jnjGtB2BCustomerValidateInterceptor" class="com.jnj.core.interceptor.JnjGTB2BCustomerValidateInterceptor" scope="tenant" autowire="byName">
+		<property name="b2bUnitService" ref="b2bUnitService"/>
+		<property name="userService" ref="userService"/>
+		<property name="l10NService" ref="l10nService"/>
+	</bean>
+
+	<bean id="jnjGtB2BCustomerValidateInterceptorMapping" scope="tenant"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="jnjGtB2BCustomerValidateInterceptor" />
+		<property name="typeCode" value="B2BCustomer" />
+	</bean>
+	
+	<!-- ORDER SHIP NOTIFICATION EMAIL CHANGES: AKASH -->
+	<bean id="JnjGTOrderShipmentEmailEventListener" class="com.jnj.core.event.JnjGTOrderShipmentEmailEventListener"
+		parent="abstractSiteEventListener" >
+		<property name="modelService" ref="modelService" />
+		<property name="businessProcessService" ref="businessProcessService" />
+	</bean>
+
+	<bean id="generateOrderShipNotificationEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="JnjGTOrderShipmentEmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="emailGenerationService" />
+	</bean>
+
+	<bean id="JnjGTOrderShipmentEmailProcess"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjb2bcore/processes/JnjGTOrderShipmentEmailProcess.xml" />
+	</bean>
+	<!-- END OF ORDER SHIP NOTIFICATION EMAIL CHANGES:-->
+	
+	<!-- BACKORDER NOTIFICATION EMAIL CHANGES:-->
+	<bean id="jnjGTBackorderEmailNotificationEventListener" class="com.jnj.core.event.JnjGTBackorderEmailNotificationEventListener"
+		parent="abstractSiteEventListener" >
+		<property name="modelService" ref="modelService" />
+		<property name="businessProcessService" ref="businessProcessService" />
+	</bean>
+
+	<bean id="generateBackorderNotificationEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="JnjGTBackorderEmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="emailGenerationService" />
+	</bean>
+
+	<bean id="JnjGTBackorderEmailProcess"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjb2bcore/processes/JnjGTBackOrderEmailProcess.xml" />
+	</bean>
+
+	<!-- END OF BACKORDER NOTIFICATION EMAIL CHANGES -->
+	<bean id="jnJGTMDDProductExportService" class="com.jnj.core.services.impl.DefaultJnJGTMDDProductExportService"/>
+	
+	<!-- END items-->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
+    <property name="maxUploadSize" value="50000000"/>
+</bean>
+	
+	<!-- ShopingCart  Start-->  	
+  	<bean id="jnjContractService" class="com.jnj.core.services.contract.impl.DefaultJnjContractService">
+  	</bean>
+  		<alias name="jnjGTConTractDao" alias="jnjConTractDao"/>
+  	<bean id="jnjGTConTractDao" class="com.jnj.core.dao.contract.DefaultJnjContractDao" parent="abstractItemDao">
+  	</bean>
+  	
+ 	<!-- Beans for LoadContract -->         
+    <!--  <bean id="jnjContractDataLoad" class="com.jnj.core.dataload.JnjContractDataLoad"></bean>  
+     <bean id="jnjContractMapper" class="com.jnj.core.dataload.mapper.JnjContractMapper"></bean> 
+     <bean id="jnjLoadContractsJob" class="com.jnj.core.cronjobs.JnjLoadContractsJob" autowire="byName" scope="tenant" />  -->
+     
+	 <!-- Beans for DropShipment Changes--> 
+	<bean id="JnjOrderUtil" class="com.jnj.core.order.util.JnjOrderUtil" autowire="byName" scope="tenant" ></bean>
+	
+	<!-- Changes for AAOL - 6138 -->
+	<alias name="jnjCommonUtil" alias="commonUtil"/>
+	<bean id="jnjCommonUtil" class="com.jnj.core.util.JnJCommonUtil" autowire="byName" scope="tenant" >
+	    <property name="userService" ref="userService" />
+	</bean>
+   	<bean id="jnjDropshipmentDAO" class="com.jnj.core.dao.impl.DefaultJnjGTDropshipmentDAO"/>
+	<bean id="jnjDropshipmentService" class="com.jnj.core.services.impl.DefaultJnjGTDropshipmentService"/>
+	<bean id="jnjGTorderSplitService" class="com.jnj.core.services.ordersplit.impl.DefaultJnjGTOrderSplitService"/>
+	
+	<bean id="jnjGTDropShipmentService" class="com.jnj.core.services.impl.DefaultJnjGTDropshipmentService" />
+	
+	<!-- Bean for Custom B2BAcceleratorScheduleOrderService -->
+	<alias name="jnjB2BAcceleratorScheduleOrderService" alias="b2bAcceleratorScheduleOrderService" />
+	<bean id="jnjB2BAcceleratorScheduleOrderService"
+		class="com.jnj.core.services.order.impl.JnjB2BAcceleratorScheduleOrderService"
+		parent="defaultB2BAcceleratorScheduleOrderService">
+		<property name="cartToOrderJobBeanId" value="jnjB2bAcceleratorCartToOrderJob" />
+	</bean>
+	<!-- End of Bean for Custom B2BAcceleratorScheduleOrderService -->
+	
+	<!-- Bean for generating order template number AAOL-3607 -->
+	<bean id="orderTemplateNumberseriesGenerator"  class="de.hybris.platform.servicelayer.keygenerator.impl.PersistentKeyGenerator" init-method="init" scope="tenant">
+    <property name="key" value="ordertemplatenumberseries"/>
+    <property name="digits" value="5"/>
+    <property name="start" value="00000"/>
+    <property name="numeric" value="true"/> 
+	</bean>
+	<!-- Bean for generating order template number AAOL-3607 -->
+	<bean id="jnjGTIntegrationJobPerformable" class="com.jnj.core.integration.job.JnjGTIntegrationJobPerformable" parent="abstractJobPerformable"/>
+		<alias name="jnjMasterFeedService" alias="jnjGTMasterFeedService"/>
+	<bean id="jnjMasterFeedService" class="com.jnj.core.services.impl.DefaultJnjMasterFeedService"/>
+	<alias name="jnjMasterFeedDao" alias="jnjGTMasterFeedDao"/>
+	<bean id="jnjMasterFeedDao" class="com.jnj.core.dao.impl.DefaultJnjMasterFeedDao"/>
+	<bean id="dBConnector" class="com.jnj.core.connector.JNJDBConnector">
+        <property name="dataSource" ref="dataSource1"/>
+	</bean>
+
+	<bean id="dataSource1" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<!-- <property name="driverClassName" value="${rsa.db.driver}"/>
+		<property name="url" value="${rsa.db.url}"/>
+		<property name="username" value="${rsa.db.username}"/>
+		<property name="password" value="${rsa.db.password}"/> 
+		<property name="connectionProperties" value="oracle.net.CONNECT_TIMEOUT=60000;oracle.jdbc.ReadTimeout=60000"/> -->
+	</bean> 
+	
+	<bean id="defaultJnjMasterCommonUtil" class="com.jnj.core.util.DefaultJnjMasterCommonUtil"/>
+	<bean id="jnjDeliveryScheduleUtil" class="com.jnj.core.util.JnjDeliveryScheduleUtil"/>
+	<bean id="jnjGTCustomerUtil" class="com.jnj.core.util.JnjGTCustomerUtil"/>
+	<bean id="jnjVariantProductUtil" class="com.jnj.core.util.JnjVariantProductUtil"/>
+	<bean id="jnjGTCancelOrderLineItemEmailTiggerJobPerformable" class="com.jnj.core.order.job.JnjGTCancelOrderLineItemEmailTiggerJobPerformable" parent="abstractJobPerformable"/>
+	<bean id="jnjGTOrderCancelNotificationEventListener" class="com.jnj.core.event.JnjGTOrderCancelNotificationEventListener" parent="abstractSiteEventListener">
+		<property name="modelService" ref="modelService" />
+		<property name="businessProcessService" ref="businessProcessService" />
+	</bean>
+	<bean id="generateOrderCancelNotificationEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="JnjGTOrderCancelNotificationEmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="emailGenerationService" />
+	</bean>
+	<bean id="JnjGTOrderCancelEmailProcess"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjb2bcore/processes/jnjGTOrderCancelEmailProcess.xml" />
+	</bean>
+	
+	<!-- 5163 -->
+	<!-- Mail for User -->
+	<bean id="jnjReturnOrderUserProcessDefinitionResource" class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
+			<property name="resource" value="classpath:/jnjb2bcore/processes/jnjReturnOrderUserEmailProcess.xml"/>
+	</bean>
+	
+	<bean id="generateReturnOrderUserEmail" class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"  parent="abstractAction">
+			<property name="modelService" ref="modelService"/>
+			<property name="cmsEmailPageService" ref="cmsEmailPageService"/>
+			<property name="frontendTemplateName" value="JnjReturnOrderUserEmailTemplate"/>
+			<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy"/>
+			<property name="emailGenerationService" ref="jnjGTReturnEmailGenerationService"/>
+	</bean>
+	
+	<bean id="jnjReturnOrderUserEventListener" class="com.jnj.core.event.JnjGTReturnOrderUserEventListener"	parent="abstractSiteEventListener"></bean>
+	
+	
+	<!-- Mail for CSR -->
+	<bean id="jnjReturnOrderCSRProcessDefinitionResource" class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
+			<property name="resource" value="classpath:/jnjb2bcore/processes/jnjReturnOrderCSREmailProcess.xml"/>
+	</bean>
+	
+	<bean id="generateReturnOrderCSREmail" class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"  parent="abstractAction">
+			<property name="modelService" ref="modelService"/>
+			<property name="cmsEmailPageService" ref="cmsEmailPageService"/>
+			<property name="frontendTemplateName" value="JnjReturnOrderCSREmailTemplate"/>
+			<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy"/>
+			<property name="emailGenerationService" ref="jnjGTReturnEmailGenerationService"/>
+	</bean>
+	
+	<bean id="jnjReturnOrderCSREventListener" class="com.jnj.core.event.JnjGTReturnOrderCSREventListener"	parent="abstractSiteEventListener"></bean>
+	
+	<!-- Bean Declaration for JnjSolrFacetSearchListener -->
+	
+	<bean id="jnjSearchFacetSearchListener" class="com.jnj.core.solr.JnjSolrFacetSearchListener">
+	</bean>
+	
+	<bean id="jnjSearchFacetSearchListenerDefinition" parent="solrListenerDefinition">
+		<property name="priority" value="1100" />
+		<property name="listener" ref="jnjSearchFacetSearchListener" />
+	</bean>
+	
+	<alias alias="defaultFacetSearchStrategy" name="jnjFacetSearchStrategy" />
+	<bean id="jnjFacetSearchStrategy" class="com.jnj.core.solr.JnjFacetSearchStrategy"
+		parent="abstractFacetSearchStrategy">
+		<property name="solrIndexService" ref="solrIndexService"/>
+		<property name="facetSearchContextFactory" ref="facetSearchContextFactory" />
+		<property name="facetSearchResultConverter" ref="facetSearchResultConverter" />
+		<property name="facetSearchQueryConverter" ref="facetSearchQueryConverter" />
+		 <property name="solrSearchProviderFactory" ref="solrSearchProviderFactory" />
+	</bean>
+
+	<!-- AFFG-20804 -->
+	<bean id="hierarchyModelUrlResolver"
+		  class="com.jnj.core.services.product.url.JnjGTProductHierarchyUrlResolver">
+		<property name="threadContextService" ref="threadContextService"/>
+		<property name="commerceCategoryService" ref="commerceCategoryService"/>
+		<property name="baseSiteService" ref="baseSiteService"/>
+		<property name="pattern" value="/{category-path}/ProductHierarchy/{category-code}"/>
+	</bean>
+</beans>																 

@@ -1,0 +1,18 @@
+$contentCatalog=mstrContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$contentCatalog]),version[default='Staged'])
+
+INSERT_UPDATE JnjLinkComponent; $contentCV[unique = true]; uid[unique = true]       ; name              ; url              ; &componentRef            ; target(code)[default = 'sameWindow']; linkName[lang = en]; shiftRight[default = 'false']; details(code, $contentCV); linkName[lang = es]; linkName[lang = pt]
+                              ;                          ; ChatMedicalLinkComponent ; Chat Medical Link ; /chat?sector=MDD ; ChatMedicalLinkComponent ;                                     ; Medical            ;                              ;                          ; Medical            ; Medical
+                              ;                          ; ChatPharmaLinkComponent  ; Chat Pharma Link  ; /chat?sector=PHR ; ChatPharmaLinkComponent  ;                                     ; Pharma             ;                              ;                          ; Pharma             ; Pharma
+
+INSERT_UPDATE JnjLinkComponent; $contentCV[unique = true]; uid[unique = true]    ; name               ; url                                      ; &componentRef         ; target(code)[default = 'sameWindow']; linkName[lang = en]; shiftRight[default = 'false']; details(code, $contentCV)
+                              ;                          ; InventoryAnalysisLink ; Inventory Analysis ; /reports/inventoryAnalysis/backorder     ; InventoryAnalysisLink ;                                     ; Inventory Analysis ;
+                              ;                          ; OrderAnalysisLink     ; Order Analysis     ; /reports/orderAnalysis/salesreport       ; OrderAnalysisLink     ;                                     ; Order Analysis     ;
+                              ;                          ; FinancialAnalysisLink ; Financial Analysis ; /reports/financialAnalysis/invoiceReport ; FinancialAnalysisLink ;                                     ; Financial Analysis ;
+
+INSERT_UPDATE CMSNavigationNode; uid[unique = true]; $contentCV[unique = true]; name                 ; parent(uid, $contentCV); links(&componentRef)                                          ; &nodeRef          ; title[lang = en]
+                               ; ReportNavLinkNode ;                          ; Report Nav Link Node ; ReportNavNode          ; InventoryAnalysisLink,OrderAnalysisLink,FinancialAnalysisLink ; ReportNavLinkNode ;
+                               ; ChatNavLinkNode   ;                          ; Chat Nav Link Node   ; ChatNavNode            ; ChatMedicalLinkComponent,ChatPharmaLinkComponent              ; ChatNavLinkNode   ;
+
+INSERT_UPDATE NavigationBarComponent; $contentCV[unique = true]; uid[unique = true]; name                    ; wrapAfter; link(uid, $contentCV); styleClass  ; navigationNode(uid, $contentCV); dropDownLayout(code)[default = AUTO]; &componentRef
+                                    ;                          ; ChatBarComponent  ; Contracts Bar Component ; 10       ; ChatLinkComponent    ; reportsMenu ; ChatNavNode                    ;                                     ; ChatBarComponent

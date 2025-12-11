@@ -1,0 +1,19 @@
+# Import the Solr configuration for Content
+#
+# Localization es
+#
+$lang=es
+
+$indexedType=jnjContentType
+
+
+UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true,default=$indexedType];name[unique=true];displayName[lang=$lang]
+
+ ;;businessCenter;Centro de negocios;
+ ;;year;Año;
+
+
+# Define the available sorts
+UPDATE SolrSort;indexedType(identifier)[unique=true,default=$indexedType];code[unique=true];name[lang=$lang]
+ ;;longDate-asc;Más antiguo;
+ ;;longDate-desc;Más reciente;

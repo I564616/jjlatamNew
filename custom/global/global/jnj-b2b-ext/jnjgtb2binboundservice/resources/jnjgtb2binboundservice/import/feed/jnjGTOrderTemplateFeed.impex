@@ -1,0 +1,14 @@
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+
+# Initialization
+insert_update JnjGTIntOrderTemplate;Source;buisnessSector;email;userId;id[unique=true];name;orderType;shipToId;soldToId;shareStatus;recordStatus(code)[default='LOADING']
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#%
+impex.includeSQLData(""SELECT SOURCE_SYS_ID,BUSINESS_SECTOR,EMAIL,USER_ID,ORDER_ID,NAME,ORDER_TYPE,SHIP_TO_ID,SOLD_TO_ID,PRIVATE from STG_ORDER_TEMPLATE WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP"");"
+
+
+# Initialization
+insert_update JnjGTIntOrderTemplateEntry;Source;buisnessSector;lineid;orderId[unique=true];orderLineId[unique=true];product;quantity;recordStatus(code)[default='LOADING']
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#%
+impex.includeSQLData(""SELECT SOURCE_SYS_ID,BUSINESS_SECTOR,LINE_ID,ORDER_ID,ORDER_LINE_ID,PROD_SKU_CODE,QUANTITY from STG_ORDER_LINES WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP"");"

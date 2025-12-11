@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+
+    <bean name="jnjLaVersionService" class="com.jnj.la.versioning.services.JnJLaVersionService">
+        <property name="configService" ref="jnjConfigService"/>
+    </bean>
+
+    <bean name="jnjLAVersionFolderUtils" class="com.jnj.la.versioning.util.JnjLAVersionFolderUtils"/>
+
+    <bean name="jnjlaversioningSystemSetup" class="com.jnj.la.versioning.setup.JnjLAVersioningSystemSetup" parent="abstractCoreSystemSetup">
+        <property name="versionService" ref="jnjLaVersionService"/>
+        <property name="jnjLAVersionFolderUtils" ref="jnjLAVersionFolderUtils"/>
+        <property name="syncCatalogService" ref="jnjLaSyncCatalogService" />
+    </bean>
+</beans>

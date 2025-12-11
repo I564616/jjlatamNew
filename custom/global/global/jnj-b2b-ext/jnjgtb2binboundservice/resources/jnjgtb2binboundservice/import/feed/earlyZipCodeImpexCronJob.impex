@@ -1,0 +1,2 @@
+UPDATE JnjGTEarlyZipCodes[batchmode=true];itemtype(code)[unique=true];isUpdated
+;JnjGTEarlyZipCodes;false

@@ -1,0 +1,528 @@
+<style>
+.integralServicesPanel h2.arrowHeader span {
+    float: right;
+}
+.integralServicesPanel ul {
+    margin: 10px 0 20px;
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+.integralServicesPanel ul li {
+    clear: both;
+    margin-top: 10px;
+    min-height: 58px;
+}
+.integralServicesPanel label {
+    display: block;
+}
+.integralServicesPanel label span {
+    color: #B41601;
+}
+.integralServicesPanel input[type="text"], .integralServicesPanel select {
+    color: #646464;
+    padding-left: 2px;
+    width: 420px;
+}
+.integralServicesPanel select {
+    float: none;
+    width: 230px;
+}
+.integralServicesPanel input.date {
+    font-size: 12px;
+    width: 99px;
+}
+.integralServicesPanel input, .consignmentIssuePanel select {
+    padding: 0;
+}
+.integralServicesPanel select {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid #E5E5E5;
+    color: #646464;
+    margin-bottom: 0;
+    padding: 0;
+}
+.integralServicesPanel .buttonWrapper > input {
+    padding: 5px 15px;
+}
+.integralServicesPanel ul {
+    border-bottom: 1px solid #F5F5F5;
+}
+.integralServicesHeader .hcolumn1 {
+    width: 132px;
+}
+.integralServicesHeader .hcolumn2 {
+    width: 92px;
+}
+.integralServicesHeader .hcolumn3 {
+    width: 140px;
+}
+.integralServicesHeader .hcolumn4 {
+    width: 99px;
+}
+.integralServicesHeader .hcolumn5 {
+    width: 80px;
+}
+.integralServicesHeader .hcolumn6 {
+    width: 78px;
+}
+.integralServicesHeader .hcolumn7 {
+    width: 72px;
+}
+.integralServicesHeader > div {
+    float: left;
+}
+.integralServicesRow {
+    min-height: 20px;
+    overflow: hidden;
+    padding: 10px 20px;
+}
+.integralServicesRow > div {
+    float: left;
+}
+.integralServicesRow .column1 {
+    width: 132px;
+}
+.integralServicesRow .column2 {
+    width: 92px;
+}
+.integralServicesRow .column3 {
+    width: 140px;
+}
+.integralServicesRow .column4 {
+    width: 99px;
+}
+.integralServicesRow .column5 {
+    width: 80px;
+}
+.integralServicesRow .column6 {
+    width: 78px;
+}
+.integralServicesRow .column7 {
+    width: 72px;
+}
+.integralServicesRow .column1 input[type="text"] {
+    width: 104px;
+}
+.integralServicesRow .column2 input[type="text"] {
+    width: 73px;
+}
+.integralServicesRow .column3 input[type="text"] {
+    width: 117px;
+}
+.integralServicesRow .column4 input[type="text"] {
+    width: 82px;
+}
+.integralServicesRow .column5 input[type="text"] {
+    width: 67px;
+}
+.integralServicesRow .column6 input[type="text"] {
+    width: 60px;
+}
+.integralServicesRow .column7 input[type="text"] {
+    width: 79px;
+}
+.integralServicesHeaderP2 {
+    margin-top: 0;
+}
+.integralServicesHeaderP2 > div {
+    float: left;
+}
+.integralServicesHeaderP2 .hcolumn1 {
+    width: 186px;
+}
+.integralServicesHeaderP2 .hcolumn2 {
+    width: 100px;
+}
+.integralServicesHeaderP2 .hcolumn3 {
+    width: 240px;
+}
+.integralServicesHeaderP2 .hcolumn4 {
+    width: 168px;
+}
+.integralServicesRow .panel2column1 {
+    width: 186px;
+}
+.integralServicesRow .panel2column2 {
+    width: 100px;
+}
+.integralServicesRow .panel2column3 {
+    width: 240px;
+}
+.integralServicesRow .panel2column4 {
+    width: 168px;
+}
+.integralServicesRow .panel2column1 input[type="text"] {
+    width: 167px;
+}
+.integralServicesRow .panel2column2 input[type="text"] {
+    width: 80px;
+}
+.integralServicesRow .panel2column3 input[type="text"] {
+    width: 218px;
+}
+.integralServicesRow .panel2column4 input[type="text"] {
+    width: 169px;
+}
+input.span-18 {
+	border-left-width: 1px;
+    border-right-width: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+	width: 698px;
+}
+.last {
+    margin-right: 0;
+    padding-right: 0;
+}
+ul li {
+    clear: both;
+    margin-top: 10px;
+    min-height: 58px;
+}
+label {
+    display: block;
+}
+h2.arrowHeader {
+    border-bottom: 1px solid #84C5D4;
+    color: #0A8CAA;
+    font-size: 16px;
+    line-height: 30px;
+    margin-bottom: 0;
+}
+.priceSmall {
+    color: #B41601;
+    font-size: 12px;
+}
+.instructiontxt {
+    color: #828282;
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+body {
+    line-height: 1.5;
+}
+body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section {
+    border: 0 none;
+    font-family: inherit;
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+body {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #222222;
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    font-size: 75%;
+}
+ul li {
+    color: #646464;
+    font-size: 12px;
+    list-style-type: none;
+}
+td {
+	color: #646464;
+}
+</style>
+<html>
+<head>
+	<title>Confirmation Email</title>
+</head>
+<body style="line-height: 1.5;font-size: 75%;font-family: Helvetica Neue,Arial,Helvetica,sans-serif;color: #222222;background: none repeat scroll 0 0 #FFFFFF;border: 0 none;font-family: inherit;font-size: 100%;font-style: inherit;font-weight: inherit;margin: 0;padding: 0;vertical-align: baseline;">
+	<table style="background-color:#ffffff" width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+		<tr>
+			<td style="color: #646464;">
+				<table bgcolor="#ffffff" width="600" border="0" cellspacing="0" cellpadding="0" align="center">
+					<tr bgcolor="#ffffff">
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td style="color: #646464;" height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr bgcolor="#ffffff">
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td style="color: #646464;">
+							<img src="${ctx.jnjCustomerFormMap['siteLogoPath']}" width="333" height="84" border="0" />
+						</td>
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr bgcolor="#ffffff">
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td style="color: #646464;" height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td style="color: #646464;" height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td style="color: #646464;" width="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td style="color: #646464;" height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td style="color: #646464;" width="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td style="color: #646464;" height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td style="color: #646464;" height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<!-- INSERT HERE -->
+						<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+							<div class="size3of5 cell">
+								<label><b>Register added by: </b></label>
+								<label class="required">
+									${ctx.jnjCustomerFormMap['fromEmail']}
+								</label>
+								<label class="required">
+									(${ctx.jnjCustomerFormMap['contactLastName']} , ${ctx.jnjCustomerFormMap['contactFirstName']} )
+								</label>
+							</div>
+							<div class="integralServicesPanel ">
+								<table width="100%" cellspacing="0" cellpadding="0">
+									<tr>
+										<td style="color: #646464;" align="left">
+											<h2 class="arrowHeader">Integral Services</h2>
+										</td>
+									</tr>
+								</table>
+								<ul>
+									<li>
+										<div class="size3of5 cell">
+											<label for="customerName"><b>Customer Name:</b></label>
+											<label class="required" id="customerName">
+												${ctx.jnjCustomerFormMap['customerName']}
+											</label>
+										</div>
+									</li>
+									<li>
+										<div class="size3of5 cell">
+											<label for="hospital"><b>Hospital:</b></label>
+											<label class="required" id="hospital">
+												${ctx.jnjCustomerFormMap['hospital']}
+											</label>
+										</div>
+									</li>
+									<li>
+										<div class="size3of5 cell">
+											<label for="contactFirstName"><b>First Name :</b></label>
+											<label class="required" id="contactFirstName">
+												${ctx.jnjCustomerFormMap['contactFirstName']}
+											</label>
+										</div>
+									</li>
+									<li>
+										<div class="size3of5 cell">
+											<label for="contactLastName"><b>Last Name:</b></label>
+											<label class="required" id="contactLastName">
+												${ctx.jnjCustomerFormMap['contactLastName']}
+											</label>
+										</div>
+									</li>
+									<li>
+										<div class="size3of5 cell">
+											<label for="Cemail"><b>Contact Email<span>*</span>:</b></label>
+											<label class="required" id="Cemail">
+												${ctx.jnjCustomerFormMap['contactEmail']}
+											</label>
+										</div>
+									</li>
+									<li>
+										<div class="size3of5 cell">
+											<label for="Cphone"><b>Contact Phone<span>*</span>:</b></label>
+											<label class="required" id="Cphone">
+												${ctx.jnjCustomerFormMap['contactPhone']}
+											</label>
+										</div>
+									</li>
+									<li>
+										<div class="size3of5 cell">
+											<label for="soldto"><b>Sold to<span>*</span>:</b></label>
+											<label class="required" id="soldto">
+												${ctx.jnjCustomerFormMap['soldTo']}
+											</label>
+										</div>
+									</li>
+									<li>
+										<div class="size3of5 cell">
+											<label for="shipto"><b>Ship To<span>*</span>:</b></label>
+											<label class="required" id="shipto">
+												${ctx.jnjCustomerFormMap['shipTo']}
+											</label>
+										</div>
+									</li>
+									<li>
+										<div class="size3of5 cell">
+											<label for="stockpartner"><b>Special Stock Partner<span>*</span>:</b></label>
+											<label class="required" id="stockpartner">
+												${ctx.jnjCustomerFormMap['specialStockPartner']}
+											</label>
+										</div>
+									</li>
+									<li>
+										<div class="size1of3  cell">
+											<label for="oreason"><b>Order Reason<span>*</span>:</b></label>
+												${ctx.jnjCustomerFormMap['orderReason']}
+										</div>
+									</li>
+									<li class="multiDates">
+										<div class="cell">
+											<label for="FromofDate"><b>Period<span>*</span>:</b></label>
+											<label class="required" id="FromofDate">
+												${ctx.jnjCustomerFormMap['periodFrom']}&nbsp;<span>to</span>&nbsp;${ctx.jnjCustomerFormMap['periodTo']}
+											</label>
+										</div>
+									</li>
+									<li>
+										<div class="size2of3 cell">
+											<label for="ponum"><b>PO Number:</b></label>
+											<label class="required" id="ponum">
+												${ctx.jnjCustomerFormMap['poNumber']}
+											</label>
+										</div>
+									</li>
+								</ul>
+								<div id="group_0" class="panelGroup">
+									<!-- Integral Services head starts -->
+									#set($counter = $ctx.jnjCustomerFormMap['size'] - 1)
+									#foreach($number in [0..$counter])
+										#set($term = "jnjFormGroup_" + $number)
+										<table cellpadding="0" cellspacing="0" width="100%">
+											<tr>
+												<th style="color: #48A7BD;font-size: 12px;font-weight: bold;line-height: 15px;border: 1px solid #E5E5E5;border-right: none;padding: 10px 20px;background: none repeat scroll 0 0 #F7F7F7;">J&J Procedure Code</th>
+												<th style="color: #48A7BD;font-size: 12px;font-weight: bold;line-height: 15px;border-top: 1px solid #E5E5E5;border-bottom: 1px solid #E5E5E5;border-right: none;border-left: none;padding: 10px 20px;background: none repeat scroll 0 0 #F7F7F7;">Hospital Code</th>
+												<th style="color: #48A7BD;font-size: 12px;font-weight: bold;line-height: 15px;border-top: 1px solid #E5E5E5;border-bottom: 1px solid #E5E5E5;border-right: none;border-left: none;padding: 10px 20px;background: none repeat scroll 0 0 #F7F7F7;">Procedure Description</th>
+												<th style="color: #48A7BD;font-size: 12px;font-weight: bold;line-height: 15px;border-top: 1px solid #E5E5E5;border-bottom: 1px solid #E5E5E5;border-right: none;border-left: none;padding: 10px 20px;background: none repeat scroll 0 0 #F7F7F7;">Procedure Type</th>
+												<th style="color: #48A7BD;font-size: 12px;font-weight: bold;line-height: 15px;border-top: 1px solid #E5E5E5;border-bottom: 1px solid #E5E5E5;border-right: none;border-left: none;padding: 10px 20px;background: none repeat scroll 0 0 #F7F7F7;">Folio</th>
+												<th style="color: #48A7BD;font-size: 12px;font-weight: bold;line-height: 15px;border-top: 1px solid #E5E5E5;border-bottom: 1px solid #E5E5E5;border-right: none;border-left: none;padding: 10px 20px;background: none repeat scroll 0 0 #F7F7F7;">Patient</th>
+												<th style="color: #48A7BD;font-size: 12px;font-weight: bold;line-height: 15px;border-top: 1px solid #E5E5E5;border-bottom: 1px solid #E5E5E5;border-right: none;border-left: none;padding: 10px 20px;background: none repeat scroll 0 0 #F7F7F7;">Doctor</th>
+											</tr>
+											<tr>
+												<td style="color: #646464;line-height: 15px;text-align:center;padding: 10px 20px;">${ctx.jnjCustomerFormMap[$term].jnjProcedureCode}</td>
+												<td style="color: #646464;line-height: 15px;text-align:center;padding: 10px 20px;">${ctx.jnjCustomerFormMap[$term].hospitalCode}</td>
+												<td style="color: #646464;line-height: 15px;text-align:center;padding: 10px 20px;">${ctx.jnjCustomerFormMap[$term].procedureDescription}</td>
+												<td style="color: #646464;line-height: 15px;text-align:center;padding: 10px 20px;">${ctx.jnjCustomerFormMap[$term].procedureType}</td>
+												<td style="color: #646464;line-height: 15px;text-align:center;padding: 10px 20px;">${ctx.jnjCustomerFormMap[$term].folio}</td>
+												<td style="color: #646464;line-height: 15px;text-align:center;padding: 10px 20px;">${ctx.jnjCustomerFormMap[$term].patient}</td>
+												<td style="color: #646464;line-height: 15px;text-align:center;padding: 10px 20px;">${ctx.jnjCustomerFormMap[$term].doctor}</td>
+											</tr>
+											<tr>
+												<td colspan="7">
+													<table cellpadding="0" cellspacing="0" width="100%">
+														<tr>
+															<th style="color: #646464;font-size: 12px;font-weight: bold;line-height: 15px;border: 1px solid #E5E5E5;border-right: none;padding: 10px 20px;background: none repeat scroll 0 0 #F7F7F7;">Item</th>
+															<th style="color: #646464;font-size: 12px;font-weight: bold;line-height: 15px;border-top: 1px solid #E5E5E5;border-bottom: 1px solid #E5E5E5;border-right: none;border-left: none;padding: 10px 20px;background: none repeat scroll 0 0 #F7F7F7;">Qtd</th>
+															<th style="color: #646464;font-size: 12px;font-weight: bold;line-height: 15px;border-top: 1px solid #E5E5E5;border-bottom: 1px solid #E5E5E5;border-right: none;border-left: none;padding: 10px 20px;background: none repeat scroll 0 0 #F7F7F7;">UoM</th>
+															<th style="color: #646464;font-size: 12px;font-weight: bold;line-height: 15px;border-top: 1px solid #E5E5E5;border-bottom: 1px solid #E5E5E5;border-right: none;border-left: none;padding: 10px 20px;background: none repeat scroll 0 0 #F7F7F7;">Batch Number</th>
+														</tr>
+														#set($counterInner = 0)
+														#foreach($jnjFormGroupItemData in ${ctx.jnjCustomerFormMap[$term].item})
+															#if($counterInner%2==0)
+															<tr>
+																<td style="color: #646464;line-height: 15px;text-align:center;padding: 10px 20px;">${jnjFormGroupItemData}</td>
+																<td style="color: #646464;line-height: 15px;text-align:center;padding: 10px 20px;">${ctx.jnjCustomerFormMap[$term].qty[$counterInner]}</td>
+																<td style="color: #646464;line-height: 15px;text-align:center;padding: 10px 20px;">${ctx.jnjCustomerFormMap[$term].uom[$counterInner]}</td>
+																<td style="color: #646464;line-height: 15px;text-align:center;padding: 10px 20px;">${ctx.jnjCustomerFormMap[$term].batchNumber[$counterInner]}</td>
+															</tr>
+															#else
+															<tr>
+																<td style="color: #646464;background: none repeat scroll 0 0 #F9F9F9;line-height: 15px;text-align:center;padding: 10px 20px;">${jnjFormGroupItemData}</td>
+																<td style="color: #646464;background: none repeat scroll 0 0 #F9F9F9;line-height: 15px;text-align:center;padding: 10px 20px;">${ctx.jnjCustomerFormMap[$term].qty[$counterInner]}</td>
+																<td style="color: #646464;background: none repeat scroll 0 0 #F9F9F9;line-height: 15px;text-align:center;padding: 10px 20px;">${ctx.jnjCustomerFormMap[$term].uom[$counterInner]}</td>
+																<td style="color: #646464;background: none repeat scroll 0 0 #F9F9F9;line-height: 15px;text-align:center;padding: 10px 20px;">${ctx.jnjCustomerFormMap[$term].batchNumber[$counterInner]}</td>
+															</tr>
+															#end
+														#set($counterInner = $counterInner + 1)
+														#end
+													</table>
+												</td>
+											</tr>
+										</table>
+									#set($counter = $counter + 1)
+								#end
+								</div>
+							</div>
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

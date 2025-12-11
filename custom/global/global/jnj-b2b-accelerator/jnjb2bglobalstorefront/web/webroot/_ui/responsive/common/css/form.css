@@ -1,0 +1,225 @@
+/* start - added by lokesh nov 14 */
+.bootstrap-select.btn-group .dropdown-toggle .filter-option{
+ width:90% !important;
+}
+
+
+/* check boxes alignments start*/
+
+.checkbox label::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 15px !important;
+    height: 15px !important;;
+    left: 0;
+    margin-left: -19px !important;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    background-color: #fff;
+    -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+    -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+    transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+    top: 0px;
+}
+.checkbox-info input[type="checkbox"]:checked + label::before, .checkbox-info input[type="radio"]:checked + label::before {
+    background-color: #08a !important;
+    border-color: #08a !important;
+}
+.checkboxmargin{
+	    margin-top: 20px;
+}
+
+/* Start - Added by lokesh - sep 28 */
+.checkout-clear-cart{
+	width:150px;
+}
+/* Start - Added by lokesh - sep 28 */
+/* check boxes alignments ends*/
+
+.form-control{
+	color:#828282;
+}
+
+/* datepicker table css*/
+.datepicker table tr td.active.active{
+	background-color: #08a !important;
+    border-color: #08a !important;
+}
+.datepicker.dropdown-menu{
+    border: 1px solid #08a !important;
+}
+.datepicker table tr td, .datepicker table tr th{
+	    color: #828282;
+}
+.firstline{
+	font-size: 18px;
+    color: #0a8caa;
+    margin-bottom: 12px;
+    font-family: jnjbodyfont;
+    font-weight: bold;
+	letter-spacing:1px;
+} 
+ .firstline strong{
+	 line-height:25px;
+ }
+ .secondline{
+    font-size: 14px;
+    color: #828282;
+    font-weight: bold;
+}
+ .thirdline{
+        padding-top: 8px;
+        font-size: 12px;
+        color: #828282;
+}
+/* datepicker table css ends */
+/* dropdown alignments */
+
+/* .bootstrap-select .dropdown-toggle,.bootstrap-select  .dropdown-toggle:active{
+	background: url('../images/downarrow.png') no-repeat;
+    background-position: 95% 12px !important;
+    background-position: 92% 9px !important;
+    -webkit-appearance: none;
+    background-size: 15px 15px;
+	margin: 0px 6px 0px 6px;
+    height: 34px;
+    width: 121px;
+    padding-right: 122px;
+    color: #828282;
+   // border-color: #08a;
+    font-size: 14px;   
+	width:136px !important;
+	} */
+span.bs-caret {
+    display: none;
+}
+/* .bootstrap-select.dropdown-toggle:hover,.bootstrap-select.dropdown-toggle:focus{
+	background: url('../images/downarrow.png') no-repeat;
+
+	background-position: 95% 12px !important;
+	background-position: 92% 9px !important;
+	-webkit-appearance: none;
+	background-size: 15px 15px;
+	margin: 0px 6px 0px 0px;
+    height: 34px;	
+	padding-right: 122px;
+	
+	//border-color: #08a;
+	color: #828282;
+	//width:136px !important;
+} */
+/* .bootstrap-select.open>.dropdown-toggle.btn-default:active, .bootstrap-select.open>.dropdown-toggle.btn-default:hover {
+    color: #828282;
+    background-color: #fff;
+    border-color: #ccc;
+} */
+
+.bootstrap-select .dropdown-menu.open{	
+    //min-width: 134px !important;
+    padding: 0px 0px;
+    margin: 10px 0px 10px 0px !important;
+}
+
+.dataTables_length .bootstrap-select .dropdown-menu.open{
+    padding: 0px 0px;
+    margin: 10px 0 10px 0px !important;
+} 
+
+.bootstrap-select .dropdown-menu>li>a{
+	color: #828282;
+}
+.checkoutshipping .bootstrap-select.btn-group>.btn:first-child {
+    //margin-left: 10px;
+}
+.bootstrap-select .btn-default,.bootstrap-select .btn-default:active,.bootstrap-select .btn-default:focus,.bootstrap-select .open>.dropdown-toggle.btn-default {
+    color: #828282 !important;
+    background-color: #fff !important;
+    border-color: #ccc !important;
+    background: url('../images/downarrow.png') no-repeat !important;
+    background-position: 92% 9px !important;
+    -webkit-appearance: none !important;
+    background-size: 15px 15px !important;
+    height: 34px ;
+}
+.dataTables_wrapper  .row:nth-of-type(3) .bootstrap-select .btn-default,.dataTables_wrapper  .row:nth-of-type(3).bootstrap-select .btn-default:active,.dataTables_wrapper  .row:nth-of-type(3) .bootstrap-select .open>.dropdown-toggle.btn-default {
+    color: #828282 !important;
+    background-color: #fff !important;
+    border-color: #ccc;
+    background: url('../images/downarrow.png') no-repeat;
+    background-position: 92% 12px !important;
+    -webkit-appearance: none;
+    background-size: 15px 15px;
+    margin: 0px 6px 0px 0px;
+    height: 40px;
+    //padding-right: 122px;  
+    //width: 136px !important;
+}
+
+.btn-default:focus,.btn-default:hover {
+    background-color: #fff;
+    background-position: 0 -15px;
+}
+ .bootstrap-select .dropdown-menu>li>a:focus,.bootstrap-select .dropdown-menu>li>a:hover {   
+    background-image: linear-gradient(to bottom,#08a,#08a 100%);   
+}
+.bootstrap-select .dropdown-menu>li>a:focus,.bootstrap-select .dropdown-menu>li>a:hover {
+    color: #fff;    
+}
+.bootstrap-select .dropdown-menu>li>a {   
+    padding: 10px 20px;   
+}
+.selectmethod .dropdown-menu li{
+	   padding: 8px 10px;
+	   font-size: 12px;
+	   border-radius: 3px;
+}
+ .selectmethod .dropdown-menu li:hover{
+	  background-color: #08a;
+	  color:#fff;	  
+ }
+ .form-group.selectmethod {
+    margin-bottom: 12px;
+}
+select.form-control{
+	background: url('../images/downarrow.png') no-repeat;
+	background-position: 95% 12px;
+	-webkit-appearance: none;
+	background-size: 15px 15px;
+	margin: -2px 6px 0 6px;	
+}
+ /* dropdown alignmentsends */
+ div.dataTables_wrapper div.dataTables_length select{
+    width: 150px;
+    display: inline-block;
+    height: 38px;
+}
+ .dataTables_wrapper  .row:nth-of-type(3) {
+   // border: 1px solid red;
+    background-color: #fff;
+    width: 100%;
+    margin-left: 0;
+    padding: 20px 15px 10px 15px;
+	box-shadow: 0 0 0px 2px #f2f2f2;
+}
+.breadcrumb +.row.content, .breadcrumb +.row .content, .headingTxt.content {
+	font-family: jnjheading1font;
+    font-size: 48px;
+    margin-bottom: 15px !important;
+	line-height:48px;word-break:break-word;
+}
+/* Hiding show and strength messsges */
+div#checkpass_showdiv,#checkpass_gendiv {
+    display: none;
+}
+div#checkpass_bar, div#checkpass_text,div#checkpass_minchar,#newPassword_minchar, #newPassword_text,#newPassword_bar {
+    display: none;
+}
+div#Paymetric_ErrorLogging {
+    color: #B41601;
+}
+ 
+ .contactmessagebox select.form-control {
+    margin: -2px 6px 0 0px;
+        background-position: 95% 9px;
+}

@@ -1,0 +1,332 @@
+#contractpage .table-striped>tbody>tr:nth-of-type(odd){
+	background-color: #fff
+}
+#contractpage .table-striped>tbody>tr:nth-of-type(even){
+	background-color: #f9f9f9;
+}
+#contractpage  #global-search-txt-holder{
+    position: relative;
+}
+#contractpage #global-search-txt{
+	border-radius: 20px;
+    font-size: 14px;
+}
+
+#contractpage .bootstrap-select .btn-default{
+	width:160px;
+}
+#contractpage .search-icon{
+	position: absolute;
+    top: 0;
+    right: 22px;
+    z-index: 2;
+    display: block;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    //pointer-events: none;/*commented by Jayasree*/
+    color: #0a8caa;
+    background: none !important;
+    border: none !important;
+    cursor: pointer;	
+}
+#contractpage .firstrow{
+	padding: 0px 15px;
+    height: 60px;
+	border-bottom: 1px solid #f2f2f2;
+}
+#contractpage .padding0 span{
+	top: -1px;
+}
+#contractpage  div.SortingTable {
+    margin-top: 20px;
+    position: absolute;
+    margin-left: 250px;
+}
+#contractpage div#datatab-desktop_paginate{
+	padding: 20px 30px 0 0 !important;
+}
+#contractpage .paddingforcollapse{
+	//padding: 25px 0 15px 10px;
+    background-color: rgba(0, 136, 170,0.1);
+	//outline: 1px solid #ccc;
+	padding-left: 18px;
+}
+#contractpage .borderrightgrey{
+	border-right: 1px solid #ccc;
+}
+#contractpage .contractsection{
+	padding-left: 30px;
+	width:35%;
+}
+#contractpage .checkboxmargin{
+	margin-top: 10px;
+}
+#contractpage .dataTables_wrapper  .row:nth-of-type(3){
+	padding: 20px 15px 15px 15px;
+}
+#contractpage .searchby{
+	line-height: 32px;
+}
+.float-rightoleft{
+	float:right;
+}
+#contractpage .paddingforText{
+	padding-left:5px;
+}
+#contractpage .panel-title{
+	border-top: 1px solid #f2f2f2;
+}
+#contractpage .contractfilterpanel {
+	padding: 20px 20px 20px 15px;
+    display: block;
+}
+#contractpage .downloadlinks{
+	/* margin: -38px 30px 0px 0; */
+	margin: 20px 15px 0px 0;
+}
+#contractpage #ordersTable thead{
+	display: block;
+}
+#contractpage .table>tbody>tr>td{
+	vertical-align: middle;	
+}
+#contractpage .table>tbody>tr>td:nth-child(3){
+	text-align: left;
+}
+#contractpage table.table-bordered.dataTable tbody td{
+	border-right: 1px solid #f2f2f2;
+}
+#contractpage  table.table-bordered.dataTable thead th:last-child{
+	padding-left: 0px;
+	width:130px;
+	text-align:center;
+}
+#contractpage table.table-bordered.dataTable tbody td:last-child{
+	padding-left: 35px;
+}
+#contractpage .SortingTable .bootstrap-select .btn-default,#contractpage .SortingTable .bootstrap-select .btn-default:active,#contractpage .SortingTable .bootstrap-select .btn-default:focus,#contractpage .SortingTable .bootstrap-select .open>.dropdown-toggle.btn-default{
+	height: 40px;
+}
+#contractpage .checkbox{
+	padding-left: 4px;
+    display: block !important;
+}
+#contractpage .btn-group.bootstrap-select:nth-of-type(1){
+	//margin: 0 0 0px 10px !important; //commented by jayashree
+}
+#contractpage div#ordersTable_length label:nth-child(1) strong, div#datatab-desktop_length label:nth-child(1) strong{
+	//padding-right: 10px !important; //commented by jayashree
+} 
+#contractpage  .panel-title{
+	font-size:14px;
+}
+#contractpage  .contractno{
+	width:160px;
+}
+#contractpage .horizontal-line{
+	display:none;
+}
+.sort-by-contract-mobile{
+	font-weight:bold;
+	display:inline-block;
+}
+@media (max-width: 1200px){
+	
+	#contractpage .paddingleft30px {
+		padding-left: 10px !important;	
+	}	
+	#contractpage #ordersTable_length .form-control {
+    background: url('../images/downarrow.png') no-repeat;
+    background-position: 95% 12px;
+    -webkit-appearance: none;
+    background-size: 15px 15px;
+    margin: -2px 6px 0 6px;
+    width: 91px;
+	}
+	#contractpage div.SortingTable {
+		width:33%;
+		margin-left: 255px;
+	} 
+	#contractpage .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+		width: 150px;
+	}
+	#contractpage  .dataTables_length .btn-group.bootstrap-select:nth-of-type(1) {
+		margin-bottom: 0px !important;
+		width: 145px !important;
+	}	
+}
+@media screen and (max-width: 480px) {
+	#contractpage .contractfilterpanel {
+		padding: 20px 20px 20px 0px !important;
+	    display: block;
+	}	
+	#contractpage .searchby {
+		width:30%;
+	}
+	#contractpage .dataTables_wrapper .row:nth-of-type(3) {
+		padding: 50px 15px 25px 15px;
+		height:200px;
+	} 
+	#contractpage div#ordersTablemobile_length{
+		position: absolute;
+		top: -25px;
+		left: 12px;
+	}
+	#contractpage div.SortingTable{
+		position: absolute;
+		width: 100%;
+		margin-top: 80px;
+		margin-left: 27px;
+	}
+	#contractpage #ordersTablemobile_length .form-control{
+		background-position: 95% 12px !important;
+	}
+	#contractpage .SortingTable .form-control {
+		background-position: 95% 13px !important;
+	}
+	#contractpage div#ordersTablemobile_info {
+		top: 136px;
+		left: 28px;
+	}
+	#contractpage .dataTables_length label strong{
+		//margin-right: 30px;
+		width:30%;
+	}
+	#contractpage .dataTables_length .btn-group.bootstrap-select:nth-of-type(1) {
+		margin-bottom: 0px !important;
+		width: 65% !important;
+	}
+	#contractpage div.SortingTable {
+		width: 100%;
+		text-align: left;
+		margin-bottom:10px;
+		//margin-left: 15px;
+	}
+	#contractpage div.SortingTable label{
+		width:100%;	
+	}
+	#contractpage div.SortingTable strong{
+		width:43px !important;
+	}
+	#contractpage div.SortingTable .bootstrap-select{
+		width:65% !important;
+	}
+	
+	#contractpage .dataTables_length {
+		text-align: left !important;
+	}
+	
+	#contractpage  #ordersTable_length .form-control {
+		background: url('../images/downarrow.png') no-repeat;
+		background-position: 95% 12px;
+		-webkit-appearance: none;
+		background-size: 15px 15px;
+		margin: -2px 6px 0 6px;
+		width: 91px;
+	}
+	.SortingTable .form-control {
+		width:217px;
+		background-position: 95% 13px !important;
+	}
+	#contractpage div.dataTables_wrapper div.dataTables_length select {
+		width: 217px ;		
+	}
+	#contractpage #ordersTablemobile_length .form-control {	   		
+		background-position: 95% 12px !important;	
+	}
+	#contractpage .dataTables_length select {
+		margin-left: 17px !important;
+	}
+	#contractpage div#ordersTablemobile_length {
+		position: relative;
+		width:100%;
+		margin:0px -15px 0px -15px;
+	}
+	#ordersTablemobile_length label{
+		width:100%;	
+	}
+	#contractpage div#ordersTablemobile_info {
+		position: relative;
+		top: 140px;
+		float: left;
+		left: 27px;
+	}
+	#contractpage  div#ordersTablemobile_paginate {
+		position: relative;
+		top: 140px;
+		float: right;
+		right: 30px;
+	}
+	#contractpage .dataTables_length {
+		display: block;
+	}
+	#contractpage  .dataTables_length .btn-group.bootstrap-select:nth-of-type(1) {
+		margin-bottom: 0px !important;
+	} 
+	#contractpage .firstrow{
+		height:115px;
+	}
+	#contractpage .float-rightoleft {
+		float: left;
+	}
+	#contractpage .search-txt-holder{
+		margin-bottom: 20px;
+	}
+	#contractpage .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn){
+		width:65% !important;
+	}
+	#contractpage .btn-group.bootstrap-select:nth-of-type(1){
+		margin: 0 0 0px 0px !important;
+	}
+	#contractpage .contract-search{
+		width:100%;
+	}
+	#contractpage .paddingtop10px{
+		padding-top:10px;
+	}
+	#contractpage .downloadlinks{
+		margin: 20px 0px 10px 0px;
+	}
+	#contractpage .panel-title{		
+		border-top:none;
+	}
+	#contractpage #datatab-mobile thead>tr>th:first-child{
+		text-align:left;
+		padding-left: 30px;
+	}
+	#contractpage table.table-bordered.dataTable tbody td:last-child{
+		padding-left: 20px;
+	}
+	#contractpage .borderrightgrey{
+		border-bottom: 1px solid #ccc !important;
+		border-right:none;
+	}
+	#contractpage  .paddingtop10px{
+		padding-top:10px;
+	}
+	#contractpage .horizontal-line{
+		display:block !important;
+		height:1px; 
+		background:#f2f2f2;
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	#contractpage .sort-by-contract-mobile{
+		width:30%;
+		float:left;
+		margin-top: 10px;
+	}
+	#contractpage .contract-mobile-plus{
+		top: 2px;
+		left: 28px;
+	}
+	#contractpage  table.table-bordered.dataTable thead th:last-child{
+		text-align:left;
+		padding-left:28px !important;
+	}
+	#contractpage #ordersTablemobile.table.table-bordered.dataTable tbody td:last-child{
+		padding-left: 16px !important;
+	}
+}

@@ -1,0 +1,413 @@
+/* Upload Image popup AAOL 4937 */
+/* Upload Image popup */
+.inline-to-block{
+	display:inline-block;
+}
+.attach-file-label{margin-top:8px;vertical-align:top;padding-right:5px}
+.attach-file-field{width:250px}
+.upload-desc{font-size:10px}
+.upload-file-row{margin:0px}
+.hide-btn{visibility:hidden !important}
+.show-btn{visibility:visibile !important}
+.upload-file-add-btn,.upload-file-del-btn{width:15px}
+.upload-file-row{margin-bottom:10px}
+.upload-file-row:last-child{margin-bottom:0px}
+.browse-btn{color: #0c8caa;cursor:pointer;font-weight:bold}
+.upload-file-del-btn .glyphicon-minus{color:#b41601}
+.add-file-link{color: #0c8caa;cursor: pointer;font-weight: bold;display:none}
+/* .upload-file-add-btn .glyphicon-plus{color:#3c763d;}
+.upload-file-add-btn{pointer-events:none;color:grey} */
+.btn-disable{pointer-events:none;color:#ccc}
+.btn-disable .glyphicon-plus,.btn-disable .glyphicon-minus{color:#ccc}
+.btn-enable .glyphicon-plus{color:#3c763d}
+.btn-enable .glyphicon-minus{color:#b41601}
+/* #error-msg-holder{display:none} */
+
+.lineHeight-label{
+	line-height:35px;
+}
+.moreBrowseBtn{
+	padding-top: 10px;
+}
+.marginTop12px{
+	margin-top:12px;
+}
+.cancel-Txt{
+	padding-top:8px;
+}
+#uploadImage-browseBtn{
+	color: #0a8caa;
+	font-weight: normal;
+}
+.txtboxWdth{
+	width:90%;
+}
+.valign-Top{
+	vertical-align:top;
+}
+.return{
+	padding:10px 5px 10px 15px !important;
+}
+/* End AAOL-4937*/
+/* Start - Return an order screen */
+.cart-update-all-link {
+    margin-top: 5px;
+    font-size: 14px !important;
+    font-family: jnjbodyfont;
+	white-space: nowrap;
+}
+.cart-update-link {
+    margin-top: 0px;white-space: nowrap;
+}
+.margin-right-to-none{margin-right:10px;}
+
+.reason-code-label{width:34%;display:inline-block}
+.reason-code-dropdown{width:64%;display:inline-block}
+
+.product-order-label,.customer-reference-label{width:45%;display:inline-block;padding-right:10px}
+.product-order-txt,.customer-reference-txt{width:53%;display:inline-block;}
+
+
+.prodctCodelabel{width:45%;display:inline-block;padding-right:10px}
+.prodctCodeTxt{width:53%;display:inline-block;}
+
+.quantityboxGTNLabel{width:40%;display:inline-block;padding-right:10px;float:left;line-height:30px;}
+.quantityboxGTN{width:60%;display:inline-block;float:left}
+
+/* End - Return an order screen */
+.margintop15{
+	margin-top:15px;
+}
+.margintop10 {
+    margin-top: 10px;
+    margin-bottom: -5px;
+}
+#returnorderpage  #filename{
+	//padding-top:10px;
+}
+
+#returnorderpage .canceltxt{
+	font-size: 14px;
+	color: #0a8caa;
+    padding: 8px 20px 0px 0px;
+}
+.headingTxt{
+	font-family: jnjheading1font;
+}
+#returnorderpage  .subcontent1{
+    font-size: 30px;
+    padding: 0px 0px 20px 5px;
+}
+#returnorderpage .subcontent2{
+    font-size: 15px;
+	padding: 25px 10px 10px 10px;
+	border-top: 1px solid #f2f2f2;
+}
+#returnorderpage .subtxt{
+	font-size: 14px;
+}
+#returnorderpage .btnclsactive {
+	padding: 10px 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#returnorderpage .btnclsnormal {
+	padding: 10px 20px;
+	
+	
+}
+#returnorderpage .first-row-content{
+	padding: 0px 10px 10px 10px;
+}
+#returnorderpage  .instr-temp{
+    margin-top: 15px;	
+}
+/* updated by lokesh dec 7 */
+#returnorderpage .upload-file{
+	margin-top: 8px;
+    padding-right: 0px;
+    padding-left: 0px;
+    text-align: right;
+}
+#returnorderpage  .return-uploadfilename{
+	width:100%;
+	overflow:hidden;
+	text-overflow: ellipsis;
+	padding-top:6px;
+}
+
+#returnorderpage .upload-file-button .btn{
+	width:100%
+}
+#returnorderpage .instr-temp-text{
+	//margin-left: 15px;
+}
+#returnorderpage #instrct-template{
+	margin-top: 15px;
+	text-align: right;
+	margin-right: 10px;
+}
+.instr-temp-text{
+	margin-left: 10px;
+}
+/* #returnorderpage .imgprop{
+	width: 50px;
+    height: 65px;
+    vertical-align: middle;
+    margin-right: 20px;
+} */
+#returnorderpage .Tablesubtxt{
+	display:inline-block; 
+	vertical-align: middle;
+	line-height:20px;
+}
+#returnorderpage .table>thead:first-child>tr:first-child>th:nth-child(2),#returnorderpage .table>thead:first-child>tr:first-child>th:last-child, #returnorderpage table.table-bordered.dataTable tbody td:last-child  {
+	padding-left: 10px;
+}
+#returnorderpage .table>thead:first-child>tr:first-child>th {
+	text-align:left;
+}
+#returnorderpage .dataTables_wrapper  .row:nth-of-type(3){
+	display:none; 
+}
+#returnorderpage .table-striped>tbody>tr:nth-of-type(odd){
+	text-align:left;
+}
+#returnorderpage .table>tbody>tr>td{
+	vertical-align: middle !important;
+	//text-align: center;
+}
+#returnorderpage .secondline{
+	margin-bottom:0px;
+	white-space: nowrap;
+}
+#returnorderpage .textbox-size{
+	width: 86%;
+}
+/*  hiding bootsrap show items, search and pagination  */
+#returnorderpage div.dataTables_wrapper div.dataTables_filter, #returnorderpage  #ordersTable_length, #returnorderpage  div#ordersTable_wrapper .row:nth-child(3)
+{
+ display:none; 
+}
+#returnorderpage .subcontent3{
+	padding: 30px 0px 18px 0px;
+}
+#returnorderpage .boxprop{
+	width: 60%;
+    display: inline;
+	margin-left: 10px;
+}
+#returnorderpage .return-label-head{
+	font-size:10px;
+	font-family:jnjlabelfont;
+}
+#returnorderpage #return-num{
+	font-weight:bold;
+	font-size:30px;
+}
+#returnorderpage .return-head-content{
+	font-size:18px;
+	line-height:50px;
+}
+#returnorderpage .quescls{
+    margin-top: 8px;
+    margin-left: 5px;
+    padding: 1px 4px;
+    font-family: jnjlabelfont;
+    font-size: 12px;
+    background-color: #0a8caa;
+}
+#returnorderpage .table-cell{
+	display:table-cell;
+	vertical-align:middle;
+}
+.quantitybox {
+    width: 50% ;
+}
+#returnorderpage .txtWidth{
+	width: 60px;
+	margin-top: 0px;
+}
+#returnorderpage .tabdata{
+	font-size: 10px;
+}
+#returnorderpage table.dataTable{
+	margin-bottom: 0px !important;
+}
+#returnorderpage table.table-bordered.dataTable tbody td:{
+    padding-left: 10px;
+	text-align: center;
+    vertical-align: middle;
+	font-size: 14px;
+}
+#returnorderpage table.table-bordered.dataTable tbody th, #returnorderpage table.table-bordered.dataTable tbody td:first-child,#returnorderpage .table>thead:first-child>tr:first-child>th:first-child{
+	text-align: left;
+    padding-left: 25px;
+}
+@media screen and (max-width: 1226px){
+	#returnorderpage .boxprop {
+		width: 50%;
+	}
+}
+@media screen and (max-width:1024px){
+	/* Start - Return an order screen */
+	  
+	.product-order-label,.customer-reference-label{width:55%;padding-right:10px}
+	.product-order-txt,.customer-reference-txt{width:43%;}
+	
+	.reason-code-label{width:30%;}
+	.reason-code-dropdown{width:55%;}
+	
+	.prodctCodelabel{width:48%;padding-right:0px}
+	.prodctCodeTxt{width:48%;}
+	
+	.quantityboxGTNLabel{width:30%}
+	.quantityboxGTN{width:53%;}
+	.returnOrderScreen .table-cell{
+	display:table-cell;
+	vertical-align: middle;
+}
+	/* End - Return an order screen */
+}
+@media screen and (max-width: 968px){
+	#returnorderpage .upload-file{
+		margin: 15px 0px 15px 0px;
+	}
+	#returnorderpage .boxprop {
+		width: 58%;
+	}
+	#returnorderpage .subcontent2{
+		padding: 25px 0px 10px 0px;
+	}
+	#returnorderpage .subcontent3{
+		padding: 20px 0px 18px 0px;
+	}
+	#returnorderpage .table-padding{
+		margin-top: 25px;
+	}
+	#returnorderpage .quantitybox{
+		width: 45%
+	}
+	#returnorderpage  .cartbtn{
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+	#returnorderpage table.table-bordered.dataTable tbody th, #returnorderpage table.table-bordered.dataTable tbody td:first-child, #returnorderpage .table>thead:first-child>tr:first-child>th:first-child{
+		padding-left: 18px;
+	}
+}
+@media screen and (min-width: 768px) and (max-width: 1023px){
+	#returnorderpage  #filename{
+		float:right;
+		margin-top:5px;
+		margin-right:15px;
+	}
+	#returnorderpage .upload-file{
+		margin-top: 8px;
+		padding-right: 15px;
+		padding-left: 15px;
+		text-align: center;
+	}
+	#returnorderpage .instr-temp-text{
+		//margin-left: 15px;
+	}
+	.textbox-size{
+		width:80px !important
+	}
+}
+@media screen and (max-width: 767px){
+	/* Start - Return an order screen */
+	#uploadReturnOrderFile{margin-right:10px}
+	.product-order-label,.customer-reference-label{width:45%;padding-right:10px}
+	.product-order-txt,.customer-reference-label{width:53%;}
+	.reason-code-label{width:45%;}
+	.reason-code-dropdown{width:53%;}
+	.prodctCodelabel{width:45%;padding-right:0px}
+	.prodctCodeTxt{width:53%;}
+	.quantityboxGTNLabel{width:55%}
+	.quantityboxGTN{width:45%;}
+	/* End - Return an order screen */
+	
+	 .full-width{width:100% !important;}
+	 .full-width:nth-child(1){margin-bottom:10px}
+	#returnorderpage  #filename{
+		float:left;
+		margin-top:5px;
+		margin-right:15px;
+	}
+	/* #returnorderpage .btnclsnormal {
+	padding: 10px 20px;
+	width: 100%;
+	
+} */
+	#returnorderpage .quantitybox{
+		margin-left: 59px;
+		width: 35%;
+	}
+	#returnorderpage .subcontent1 {
+		font-size: 24px;
+	}
+	#returnorderpage .subcontent2{
+		padding: 25px 10px 25px 10px;
+		border-bottom:1px solid #f2f2f2;
+	}
+	#returnorderpage .btnclsactive {
+		//width: 50%;
+		//margin-bottom: 10px;
+	}
+	.continueShopBtn .btnclsactive {
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	#returnorderpage .headingTxt.content {
+		font-family: jnjheading1font;
+		font-size: 33px;
+		margin-bottom: 0px !important;
+	}
+	#returnorderpage .addtoreturn{
+		width: 100%;
+	}
+	#returnorderpage .upload-file-button {
+		//padding: 10px 30px;
+		width: 100%;
+		margin-bottom: 15px;
+	}
+	#returnorderpage .instr-temp-text {
+		margin-left: 0px;
+	}
+	.referncepo{
+		margin-top:10px
+	}
+	.marginbtm20{
+		    margin-bottom: 15px;
+	}
+	.returnOrderScreen .table-cell{
+	display:table-cell;
+	vertical-align: middle;
+	}
+	.continueShopBtn.btnclsactive{
+	width: 100%;
+	
+	}
+		
+}
+
+/* Return confirmation page css */ 
+.returndetails p{
+	margin-bottom: 0;
+}
+.returndetails {
+    margin-top: 15px;
+    margin-bottom: -5px;
+}
+.continueShopBtn .btnclsactive {
+	margin:20px 0px !important;
+}
+#returnorderpage div#datatab-mobile_paginate,#returnorderpage  div#datatab-mobile_info{
+	display:none;
+}
+.buttonDisable{ pointer-events: none; cursor: default !important; background-color: #828282 !important; color: #fff}
+.returnOrderErrProp{
+	margin-top:5px;
+	//padding-left:8px;
+}

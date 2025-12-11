@@ -1,0 +1,2681 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+  ~ [y] hybris Platform
+  ~
+  ~ Copyright (c) 2000-2016 SAP SE
+  ~ All rights reserved.
+  ~
+  ~ This software is the confidential and proprietary information of SAP
+  ~ Hybris ("Confidential Information"). You shall not disclose such
+  ~ Confidential Information and shall use it only in accordance with the
+  ~ terms of the license agreement you entered into with SAP Hybris.
+  -->
+<!--
+	ATTENTION: This is just an example file. You have to edit it according to your needs.
+-->
+
+<items 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="items.xsd">
+    <collectiontypes>
+        <collectiontype elementtype="JnjGTIntSalesOrg" code="SalesOrgCollection"
+                        autocreate="true" type="list" />
+        <collectiontype elementtype="JnjGTIntPartnerFunc" code="PartnerFuncCollection"
+                        autocreate="true" type="list" />
+    </collectiontypes>
+    <enumtypes>
+        <!-- <enumtype code="JnjGTSourceSysId" autocreate="true" generate="true"
+            dynamic="true">
+            <value code="MDD" />
+            <value code="CONSUMER" />
+            <value code="CONSUMER_CAN" />
+        </enumtype>
+
+        <enumtype code="RecordStatus" autocreate="true" generate="true"
+            dynamic="true">
+            <value code="LOADING" />
+            <value code="PENDING" />
+            <value code="ERROR" />
+            <value code="SUCCESS" />
+            <value code="PROCESSING" />
+        </enumtype> -->
+
+    </enumtypes>
+
+    <relations>
+
+    </relations>
+
+    <itemtypes>
+
+        <!-- COMMON INTERFACE FEED CHANGES [Author: Akash, 21/05/2014] -->
+        <!-- <itemtype code="JnjGTIntermediateMaster" autocreate="true"
+            generate="true">
+            <deployment table="INT_MASTER" typecode="12001" />
+            <attributes>
+                <attribute qualifier="recordStatus" type="RecordStatus">
+                    <persistence type="property" />
+                    <defaultvalue>em().getEnumerationValue("RecordStatus", "LOADING")</defaultvalue>
+                </attribute>
+                <attribute qualifier="writeAttempts" type="java.lang.Integer">
+                    <modifiers read="true" write="true" search="true"
+                        optional="true" />
+                    <persistence type="property" />
+                    <defaultvalue>0</defaultvalue>
+                </attribute>
+                <attribute qualifier="sentToDashboard" type="java.lang.Boolean">
+                    <modifiers read="true" write="true" search="true"
+                        optional="true" />
+                    <persistence type="property" />
+                    <defaultvalue>Boolean.FALSE</defaultvalue>
+                </attribute>
+            </attributes>
+        </itemtype> -->
+
+        <!-- END OF COMMON INTERFACE FEED CHANGES -->
+
+        <!-- PRODUCT EXCLUSION CHANGES [Author: Akash, 21/05/2014] -->
+
+        <itemtype code="JnjGTIntProductExclusion" autocreate="true"
+                  generate="true" extends="JnjGTIntermediateMaster">
+            <!-- 			<deployment table="INT_PROD_EXC" typecode="11150" /> -->
+            <attributes>
+                <attribute qualifier="materialCustNumber" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="classificationType" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="characteristic" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="materialCustInd" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="systemId" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <!-- END OF PRODUCT EXCLUSION CHANGES -->
+
+        <!-- START OF Customer Master,local & affiliation CHANGES -->
+        <itemtype code="JnjGTIntB2BUnit" autocreate="true" generate="true"
+                  extends="JnjGTIntermediateMaster" jaloclass="com.jnj.gt.jalo.JnjIntB2BUnit">
+            <description>It Will Create a new dummy table which will store all the intermediate data of customer master table  </description>
+            <!-- 			<deployment table="IntB2BUnit" typecode="11151" /> -->
+            <attributes>
+                <attribute qualifier="uid" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="sourceSysId" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="custName1" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="custName2" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="shortCustName1" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="shortCustName2" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="custStatusCde" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="tradeCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="tradeName" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="salesRepLocNo" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="addressLine1" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="addressLine2" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="addressLine3" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="addressLine4" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="poBoxNumber" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="town" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="countyName" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="region" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="stateName" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="postalCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="postalExtCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="poBoxPostalCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="isoCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="countryName" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="email" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="firstName" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="middleName" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="lastName" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="payFromAddress" type="java.lang.boolean">
+                    <persistence type="property" />
+                     <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="shipToAddress" type="java.lang.boolean">
+                    <persistence type="property" />
+                     <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="billToAddress" type="java.lang.boolean">
+                    <persistence type="property" />
+                     <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="soldToAddress" type="java.lang.boolean">
+                    <persistence type="property" />
+                     <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="globalLocNo" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjGTIntSalesOrg" autocreate="true" generate="true"
+                  jaloclass="com.jnj.gt.jalo.JnjGTIntSalesOrg">
+            <description>It Will Create a new dummy table which will store all the intermediate data of sales org table  </description>
+            <!-- 			<deployment table="IntSalesOrg" typecode="11152" /> -->
+            <deployment table="JNJ_GT_INT_SALES_ORG" typecode="11070" />
+            <attributes>
+                <attribute qualifier="sourceSysId" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="salesOrg" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="customerNumber" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="division" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="distChannel" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="customerGroup" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="priceList" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjGTIntPartnerFunc" autocreate="true"
+                  generate="true" extends="JnjGTIntermediateMaster" jaloclass="com.jnj.gt.jalo.JnjGTIntPartnerFunc">
+            <description>It Will Create a new dummy table which will store all the intermediate data of Partner Function table  </description>
+            <!-- 			<deployment table="IntPartnerFunc" typecode="11153" /> -->
+            <attributes>
+                <attribute qualifier="partFuncCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="sourceSysId" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="customerNumber" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="partFuncName" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="partCustNo" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjGTIntB2BUnitLocal" autocreate="true"
+                  generate="true" extends="JnjGTIntermediateMaster" jaloclass="com.jnj.gt.jalo.JnjGTIntB2BUnitLocal">
+            <description>It Will Create a new dummy table which will store all the intermediate data of customer local table  </description>
+            <!-- 			<deployment table="IntB2BUnitLocal" typecode="11154" /> -->
+            <attributes>
+                <attribute qualifier="customerNumber" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="division" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="sourceSysId" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="priceBook" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjGTIntAffiliation" autocreate="true"
+                  generate="true" extends="JnjGTIntermediateMaster" jaloclass="com.jnj.gt.jalo.JnjGTIntAffiliation">
+            <description>It Will Create a new dummy table which will store all the intermediate data of affiliation table  </description>
+            <!-- 			<deployment table="IntAffiliation" typecode="11155" /> -->
+            <attributes>
+                <attribute qualifier="parentCustNo" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="sourceSysId" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="childCustNo" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="partnerTypeCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="partnerTypeName" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="delIndicator" type="java.lang.Boolean">
+                    <persistence type="property" />
+                     <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <!-- END OF Customer Master,local & affiliation CHANGES -->
+
+
+        <!-- CPSIA Feed Change Starts [Author: Tushar Sharma] -->
+
+        <itemtype code="JnjGTIntCpscDetails" generate="true"
+                  autocreate="true" extends="JnjGTIntermediateMaster">
+            <description>  </description>
+            <!-- 			<deployment table="CPSC_DETAILS" typecode="11156" /> -->
+            <attributes>
+
+                <attribute type="java.lang.String" qualifier="productSkuCode">
+                    <persistence type="property"></persistence>
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="lotNumber">
+                    <persistence type="property"></persistence>
+                </attribute>
+
+                <attribute qualifier="srcSystem" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="productName">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="upcCode">
+                    <persistence type="property" />
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="cpscRuleDescription">
+                    <persistence type="property">
+                        <columntype>
+                            <value>HYBRIS.LONG_STRING</value>
+                        </columntype>
+                        <columntype database="sap">
+							<value>nvarchar(5000)</value>
+						</columntype>
+						<columntype database="oracle">
+							<value>varchar2(4000)</value>
+						</columntype>
+						<columntype database="mysql">
+							<value>text</value>
+						</columntype>
+						<columntype database="sqlserver">
+							<value>nvarchar(max)</value>
+						</columntype>						
+                    </persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="mfgCompanyCode">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="cpsiComments">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+
+                <attribute type="java.util.Date" qualifier="certificateCreateDate">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="certificateCreater">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+
+                <attribute type="java.util.Date" qualifier="certificateModifiedDate">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="addressLotNumber">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="mfdDate">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+
+                <attribute type="java.util.Date" qualifier="modifiedDate">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="modifiedBy">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+
+                <attribute type="java.lang.Boolean" qualifier="deleteIndicatorCPSIA">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                    <defaultvalue>Boolean.FALSE</defaultvalue>
+                </attribute>
+
+            </attributes>
+        </itemtype>
+
+
+        <itemtype code="JnjGTIntCpscContactDetail" generate="true"
+                  autocreate="true" extends="GenericItem">
+            <description>  </description>
+            <!-- 			<deployment table="IntCpscContact" typecode="11157" /> -->
+            <deployment table="JNJ_GT_INT_CPSC_CNTCT" typecode="11071" />
+            <attributes>
+
+                <attribute type="java.lang.String" qualifier="productSkuCode">
+                    <persistence type="property"></persistence>
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="addressType">
+                    <persistence type="property"></persistence>
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="name">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="addressline1">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="addressline2">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="city">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="state">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="zipCode">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="country">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="phoneNumber">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="emailId">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="addressAdditionalInfo">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.Boolean" qualifier="deleteIndicatorContact">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                    <defaultvalue>Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="lotNumber">
+                    <persistence type="property"></persistence>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjGTIntCpscTestDetail" generate="true"
+                  autocreate="true" extends="GenericItem">
+            <description>  </description>
+            <!-- 			<deployment table="IntCpscTest" typecode="11158" /> -->
+            <deployment table="JNJ_GT_INT_CPSC_TEST" typecode="11072" />
+            <attributes>
+
+                <attribute type="java.lang.String" qualifier="productSkuCode">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <!-- Change in attribute name from "studynumber" to "studyNumber" -->
+                <attribute type="java.lang.String" qualifier="studyNumber">
+                    <persistence type="property"></persistence>
+                </attribute>
+
+                <attribute type="java.util.Date" qualifier="testingDate">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="thirdPartyName">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="addressLine1">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="addressLine2">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="city">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="state">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="zipCode">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="country">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="phoneNumber">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+
+                <attribute type="java.lang.String" qualifier="studyComments">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.Boolean" qualifier="deleteIndicatorTest">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                    <defaultvalue>Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute type="java.lang.String" qualifier="lotNumber">
+                    <persistence type="property"></persistence>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <!-- CPSIA Feed Change Ends [Author: Tushar Sharma] -->
+
+        <!-- PRODUCT LOT MASTER CHANGES [Author: Tushar ] -->
+        <itemtype code="JnjGTIntProductLotMaster" autocreate="true"
+                  generate="true" extends="JnjGTIntermediateMaster">
+            <description>Creating JnJ NA INT Product Lot Master Model</description>
+            <!-- 			<deployment table="LOT_MASTER" typecode="11159" /> -->
+            <attributes>
+                <attribute qualifier="productSkuCode" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers optional="false" read="true" write="true"
+                               search="true" />
+                </attribute>
+                <attribute qualifier="lotNumber" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers optional="false" read="true" write="true"
+                               search="true"/>
+                </attribute>
+                <attribute qualifier="companyCode" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers optional="false" read="true" write="true"
+                               search="true" />
+                </attribute>
+                <attribute qualifier="expirationDate" type="java.util.Date">
+                    <persistence type="property" />
+                    <modifiers optional="true" read="true" write="true"
+                               search="true" />
+                </attribute>
+                <attribute qualifier="vendorBatch" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers optional="true" read="true" write="true"
+                               search="true" />
+                </attribute>
+                <attribute qualifier="srcSysId" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers optional="true" read="true" write="true"
+                               search="true" />
+                </attribute>
+                <attribute qualifier="division" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers optional="false" read="true" write="true"
+                               search="true" />
+                </attribute>
+            </attributes>
+        </itemtype>
+        <!-- PRODUCT LOT MASTER CHANGES [Author: Tushar ] -->
+
+
+
+        <!-- PRODUCT MASTER, PRODUCT LOCAL AND LISTPRICES CHANGES [Author: Dheeraj,
+            Akash [23/05/2014] -->
+
+        <itemtype code="JnjGTIntProduct" autocreate="true" generate="true"
+                  extends="JnjGTIntermediateMaster">
+            <description>Creating Intermediary product model</description>
+            <!-- 			<deployment table="INT_NA_PRODUCT" typecode="11160" /> -->
+            <attributes>
+                <attribute qualifier="srcSystem" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="businessSector" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="materialNum" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="productCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="productModCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="productStatus" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="minorProdGrpCd" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="ghexInd" type="java.lang.Boolean">
+                    <persistence type="property" />
+                    <defaultvalue>Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="hazmatCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="francMjrPrdGrpCd" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="salesOrgCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="legacyProductCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="jnjPortalInd" type="java.lang.Boolean">
+                    <persistence type="property" />
+                    <defaultvalue>Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="franchiseCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="franchiseName" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="categoryCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="categoryName" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="brandCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="brandName" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="subBrandCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="subBrandName" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="functionNameCd" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="functionName" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="mfgCompCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="deaRegInd" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="firstShipEffectDate" type="java.util.Date">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="publishInd" type="java.lang.Boolean">
+                    <persistence type="property" />
+                    <defaultvalue>Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="materialBaseNum" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="baseUom" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="usaOtcReadyInd" type="java.lang.Boolean">
+                    <persistence type="property" />
+                    <defaultvalue>Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="eCatalogDesciption" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="eCatalogLongDesciption" type="java.lang.String">
+                    <persistence type="property">
+                        <columntype>
+                            <value>HYBRIS.LONG_STRING</value>
+                        </columntype>
+                        <columntype database="sap">
+							<value>nvarchar(5000)</value>
+						</columntype>
+						<columntype database="oracle">
+							<value>varchar2(4000)</value>
+						</columntype>
+						<columntype database="mysql">
+							<value>text</value>
+						</columntype>
+						<columntype database="sqlserver">
+							<value>nvarchar(max)</value>
+						</columntype>						
+                    </persistence>
+                </attribute>
+                <attribute qualifier="newProductStartDate" type="java.util.Date">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="materialStatusEffectDate" type="java.util.Date">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="kitInd" type="java.lang.Boolean">
+                    <persistence type="property" />
+                     <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="recordTimeStamp" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="globalBusinessUnit" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="globalProductCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="netContent" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnJGTIntProductLocal" autocreate="true"
+                  generate="true" extends="JnjGTIntermediateMaster">
+            <description>Creating Intermediary product local model</description>
+            <!-- 			<deployment table="IntProductLoc" typecode="11161" /> -->
+            <attributes>
+                <attribute qualifier="srcSystem" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="productSkuCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="inFieldInd" type="java.lang.Boolean">
+                    <persistence type="property" />
+                    <defaultvalue>Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="dChainStatusEffectiveDate" type="java.util.Date">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="dChainSpecStatus" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="productSubType" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnJGTIntProductLocalPlant" autocreate="true"
+                  generate="true" extends="JnjGTIntermediateMaster">
+            <description>Creating Intermediary product plant local model</description>
+            <!-- 			<deployment table="IntProdLocPlnt" typecode="11162" /> -->
+            <attributes>
+                <attribute qualifier="srcSystem" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="productSkuCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="plantCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="batchMgmt" type="java.lang.Boolean">
+                    <persistence type="property" />
+                    <defaultvalue>Boolean.FALSE</defaultvalue>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnJGTIntProductPlant" autocreate="true"
+                  generate="true" extends="GenericItem">
+            <description>Creating Intermediary product planet model</description>
+            <!-- 			<deployment table="IntProductPlant" typecode="11163" /> -->
+            <deployment table="JNJ_GT_INT_PROD_PLANT" typecode="11073" />
+            <attributes>
+                <attribute qualifier="srcSystem" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="productSkuCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="countryOriginCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="countryAssemblyCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="countryOriginName" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="countryAssemblyName" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="prodPlnt" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="businessSector" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjGTIntProductUnit" autocreate="true"
+                  generate="true" extends="GenericItem">
+            <!-- 			<deployment table="INT_PROD_UNIT" typecode="11164" /> -->
+            <deployment table="JNJ_GT_INT_PROD_UNIT" typecode="11074" />
+            <attributes>
+                <attribute qualifier="srcSystem" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers optional="true" read="true" write="true"
+                               search="true" />
+                </attribute>
+                <attribute qualifier="productSkuCode" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers optional="true" read="true" write="true"
+                               search="true" />
+                </attribute>
+                <attribute qualifier="unitCode" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers optional="true" read="true" write="true"
+                               search="true" />
+                </attribute>
+                <attribute qualifier="unitName" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers optional="true" read="true" write="true"
+                               search="true" />
+                </attribute>
+                <attribute qualifier="shipUnitInd" type="java.lang.Boolean">
+                    <persistence type="property" />
+                    <defaultvalue>Boolean.FALSE</defaultvalue>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute qualifier="salesUomInd" type="java.lang.Boolean">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                    <defaultvalue>Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="lineUomCode" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute qualifier="lineUomName" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute qualifier="depth" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute qualifier="height" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute qualifier="width" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute qualifier="volumeUomCode" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute qualifier="volumeQty" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute qualifier="weightUomCode" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute qualifier="weightUomName" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute qualifier="weightQty" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute qualifier="gtin" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute qualifier="denom" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute qualifier="numerator" type="java.lang.Integer">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute qualifier="lwrPackagingLvlQty" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute qualifier="packagingLvlCode" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute qualifier="regionCode" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute qualifier="packagingLvlLabelUomCode" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute qualifier="packagingLevelQty" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute qualifier="lwrPackagingLvlUomCode" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute qualifier="outerCaseCode" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute qualifier="startDate" type="java.util.Date">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute qualifier="endDate" type="java.util.Date">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute qualifier="rcvUnitInd" type="java.lang.Boolean">
+                    <persistence type="property" />
+                    <defaultvalue>Boolean.FALSE</defaultvalue>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute qualifier="netWeightQty" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute qualifier="innerPackPerCase" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute qualifier="tiersPerPallet" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute qualifier="casesPerTier" type="java.lang.String">
+                    <persistence type="property" />
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjGTIntProductReg" autocreate="true"
+                  generate="true" extends="GenericItem">
+            <description>Creating Intermediary product unit model</description>
+            <!-- 			<deployment table="INT_PRODUCT_REG" typecode="11165" /> -->
+            <deployment table="JNJ_GT_INT_PROD_REG" typecode="11075" />
+            <attributes>
+                <attribute qualifier="srcSystem" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="productSkuCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="regionCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="salesOrgCompCde" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="salesOrgDivision" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="businessSector" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjGTIntProductSalesOrg" autocreate="true"
+                  generate="true" extends="GenericItem">
+            <description>Creating Intermediary product sorg model</description>
+            <!-- 			<deployment table="INT_PRODUCT_SORG" typecode="11166" /> -->
+            <deployment table="JNJ_GT_INT_PROD_SORG" typecode="11076" />
+            <attributes>
+                <attribute qualifier="srcSystem" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="productSkuCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="salesOrg" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="distChannel" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="businessSector" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjGTIntProductKit" autocreate="true"
+                  generate="true" extends="GenericItem">
+            <description>Creating Intermediary product kit model</description>
+            <!-- 			<deployment table="INT_PRODUCT_KIT" typecode="11167" /> -->
+            <deployment table="JNJ_GT_INT_PROD_KIT" typecode="11077" />
+            <attributes>
+                <attribute qualifier="srcSystem" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="productSkuCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="componentCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="kitFeatureCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="kitFeatureName" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="kitFeatureQty" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="componentQty" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="businessSector" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjGTIntProductDesc" autocreate="true"
+                  generate="true" extends="GenericItem">
+            <description>Creating Intermediary product description model</description>
+            <!-- 			<deployment table="INT_PRODUCT_DESC" typecode="11168" /> -->
+            <deployment table="JNJ_INT_PROD_DESC" typecode="11078" />
+            <attributes>
+                <attribute qualifier="srcSystem" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="productSkuCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="productDesc" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="languageCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="languageName" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="businessSector" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+
+                <!--  TODO - move - NA Regional Changes -->
+                <attribute qualifier="regionCode" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="salesOrgCompCde" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="salesOrgDivision" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <!-- END OF PRODUCT MASTER, PRODUCT LOCAL AND LISTPRICES CHANGES ] -->
+
+        <!-- START OF SURGEON CHANGES [Author: Sakshi] -->
+
+        <itemtype code="JnjGTIntSurgeon" autocreate="true" generate="true"
+                  extends="JnjGTIntermediateMaster">
+            <!-- 			<deployment table="IntSurgeon" typecode="11169" /> -->
+            <attributes>
+                <attribute qualifier="surgeonId" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="hospitalId" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="firstName" type="java.lang.String">
+                    <persistence type="property"></persistence>
+
+                </attribute>
+                <attribute qualifier="middleName" type="java.lang.String">
+                    <persistence type="property"></persistence>
+
+                </attribute>
+                <attribute qualifier="lastName" type="java.lang.String">
+                    <persistence type="property"></persistence>
+
+                </attribute>
+                <attribute qualifier="city" type="java.lang.String">
+                    <persistence type="property"></persistence>
+
+                </attribute>
+                <attribute qualifier="state" type="java.lang.String">
+                    <persistence type="property"></persistence>
+
+                </attribute>
+                <attribute qualifier="country" type="java.lang.String">
+                    <persistence type="property"></persistence>
+
+                </attribute>
+                <attribute qualifier="postalCode" type="java.lang.String">
+                    <persistence type="property"></persistence>
+
+                </attribute>
+                <attribute qualifier="recType" type="java.lang.String">
+                    <persistence type="property"></persistence>
+
+                </attribute>
+                <attribute qualifier="recNumber" type="java.lang.String">
+                    <persistence type="property"></persistence>
+
+                </attribute>
+                <attribute qualifier="businessSector" type="java.lang.String">
+                    <persistence type="property"></persistence>
+
+                </attribute>
+                <attribute qualifier="sourceSysId" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+            </attributes>
+        </itemtype>
+        <!-- END OF SURGEON CHANGES [Author: Sakshi] -->
+        <!-- SalesRep Alignment Feed Change Start [Author: Komal Sehgal] -->
+
+        <itemtype code="JnjGTIntTerritory" autocreate="true"
+                  generate="true" extends="JnjGTIntermediateMaster">
+            <!-- 			<deployment table="INT_TERRITORY" typecode="11170" /> -->
+            <attributes>
+                <attribute type="java.lang.String" qualifier="territoryCode">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="sourceSystemId">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="wwid">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="shipToNumber">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="billToNumber">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="soldToNumber">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="buisnessSector">
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+
+
+        <itemtype code="JnjGTIntSalesAlignmentOrg" autocreate="true"
+                  generate="true" extends="JnjGTIntermediateMaster">
+            <!-- 			<deployment table="INT_SALESALIGNMENT_ORG" typecode="11171" /> -->
+            <attributes>
+                <attribute type="java.lang.String" qualifier="salesOrgDivCd">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="orgId">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="delIndicator">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.util.Date" qualifier="lastUpdatedDate">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="parntOrgId">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="parntOrgTypeCd">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="orgTypeCd">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.util.Date" qualifier="orgEffectiveDate">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.util.Date" qualifier="orgEndDate">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="buisnessSector">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="sourceSystemId">
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+
+        <itemtype code="JnjGTIntSalesAlignmentCust" autocreate="true"
+                  generate="true" extends="JnjGTIntermediateMaster">
+            <!-- 			<deployment table="INT_SALESALIGNMENT_CUST" typecode="11172" /> -->
+            <attributes>
+                <attribute type="java.lang.String" qualifier="salesOrgDivCd">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="uniCustomerNumber">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="orgId">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.util.Date" qualifier="alnAfflnEffectiveDate">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.util.Date" qualifier="alnAfflnEndDate">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="delIndiactor">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.util.Date" qualifier="lastUpdatedDate">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="buisnessSector">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="sourceSystemId">
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjGTIntSalesAlignmentUser" autocreate="true"
+                  generate="true" extends="JnjGTIntermediateMaster">
+            <!-- 			<deployment table="INT_SALESALIGNMENT_USER" typecode="11173" /> -->
+            <attributes>
+                <attribute type="java.lang.String" qualifier="salesOrgDivCd">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="uniCustomerNumber">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="orgId">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.util.Date" qualifier="alnAfflnEffectiveDate">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.util.Date" qualifier="alnAfflnEndDate">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="delIndiactor">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.util.Date" qualifier="lastUpdatedDate">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="orgTypeCd">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="primRepInd">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="wwid">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="buisnessSector">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="sourceSystemId">
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjGTIntSalesAlignmentProduct" autocreate="true"
+                  generate="true" extends="JnjGTIntermediateMaster">
+            <!-- 			<deployment table="INT_SALESALIGNMENT_PROD" typecode="11174" /> -->
+            <attributes>
+                <attribute type="java.lang.String" qualifier="salesOrgDivCd">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="orgId">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.util.Date" qualifier="alnAfflnEffectiveDate">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.util.Date" qualifier="alnAfflnEndDate">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="delIndiactor">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.util.Date" qualifier="lastUpdatedDate">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="sourceSysId">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="buisnessSector">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="franMajorProdGrpCd">
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+        <!-- SalesRep Alignment Feed Change Start [Author: Komal Sehgal] -->
+
+        <!-- START OF SURGEON CHANGES [Author: Sakshi] -->
+
+        <itemtype code="JnjGTIntOrderTemplate" autocreate="true"
+                  generate="true" extends="JnjGTIntermediateMaster">
+            <!-- 			<deployment table="IntOrderTemplate" typecode="11175" /> -->
+            <attributes>
+                <attribute qualifier="source" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="buisnessSector" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="recTimeStamp" type="java.util.Date">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="id" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="orderType" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="name" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="soldToId" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="shipToId" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="email" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="userId" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="shareStatus" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjGTIntOrderTemplateEntry" autocreate="true"
+                  generate="true" extends="JnjGTIntermediateMaster">
+            <!-- 			<deployment table="IntOrderTemplateEntry" typecode="11176" /> -->
+            <attributes>
+                <attribute qualifier="source" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="buisnessSector" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="recTimeStamp" type="java.util.Date">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="lineid" type="java.lang.Integer">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="orderLineId" type="java.lang.Integer">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="orderId" type="java.lang.Integer">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="product" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="quantity" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+            </attributes>
+        </itemtype>
+        <!-- END OF SURGEON CHANGES [Author: Sakshi] -->
+
+        <!-- START OF Credit Card CHANGES [Author: Himanshi] -->
+        <itemtype code="JnjGTIntCreditCard" autocreate="true"
+                  generate="true" extends="JnjGTIntermediateMaster">
+            <!-- 			<deployment table="IntCreditCard" typecode="11177" /> -->
+            <attributes>
+                <attribute qualifier="sourceId" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                    <modifiers unique="true" />
+                </attribute>
+                <attribute qualifier="buisnessSector" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="recTimeStamp" type="java.util.Date">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="cardSource" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="cardSequenceNumber" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                    <modifiers unique="true" />
+                </attribute>
+                <attribute qualifier="shipToAccountNumer" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="cardNumber" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="cardLasr4Digit" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="cardExpiryMonth" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="cardExpiryYear" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="cardType" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="userId" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="indicator" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="cardAddedDate" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+
+            </attributes>
+        </itemtype>
+        <!-- END OF Credit Card CHANGES [Author: Himanshi] -->
+
+        <!-- Start OF User Management CHANGES [Author: Sakshi] -->
+        <itemtype code="JnjGTIntB2bCustomer" autocreate="true"
+                  generate="true" extends="JnjGTIntermediateMaster">
+            <!-- 			<deployment table="IntB2bCustomer" typecode="11178" /> -->
+            <attributes>
+                <attribute qualifier="source" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="buisnessSector" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="recTimeStamp" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="id" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                    <modifiers unique="true" />
+                </attribute>
+                <attribute qualifier="firstName" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="lastName" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="registrationDate" type="java.util.Date">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="email" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                    <modifiers unique="true" />
+                </attribute>
+                <attribute qualifier="wwid" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="billToId" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="userType" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="phoneType1" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="phoneType2" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="phoneType3" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="phone" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="fax" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="mobile" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="superVisorFirstName" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="superVisorLastName" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="authorizedBuyer" type="java.lang.Boolean">
+                    <persistence type="property"></persistence>
+                     <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+                </attribute>
+                <attribute qualifier="suuperVisorNumber" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="salesOrg" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="gateWayAccessCode" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="address1" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="address2" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="city" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="state" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="postalCode" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="country" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="companyName" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="status" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjGTIntUserPermission" autocreate="true"
+                  generate="true">
+            <!-- 			<deployment table="IntUserPermission" typecode="11179" /> -->
+            <deployment table="JNJ_GT_INT_USER_PERM" typecode="11079" />
+            <attributes>
+                <attribute qualifier="source" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="buisnessSector" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="recTimeStamp" type="java.util.Date">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="permissionCode" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="userId" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="email" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjGTIntUserB2bUnit" autocreate="true"
+                  generate="true">
+            <!-- 			<deployment table="IntUserB2bUnit" typecode="11180" /> -->
+            <deployment table="JNJ_GT_INT_USR_B2B_UNT" typecode="11080" />
+            <attributes>
+                <attribute qualifier="source" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="buisnessSector" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="recTimeStamp" type="java.util.Date">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="customerNumber" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="email" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="userId" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjGTIntUserSalesOrg" autocreate="true"
+                  generate="true">
+            <!-- 			<deployment table="IntUserSalesOrg" typecode="11181" /> -->
+            <deployment table="JNJ_GT_INT_USR_SLS_ORG" typecode="11081" />
+            <attributes>
+                <attribute qualifier="source" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="buisnessSector" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="recTimeStamp" type="java.util.Date">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="salesOrgDivCdId" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="orgId" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+                <attribute qualifier="userId" type="java.lang.String">
+                    <persistence type="property"></persistence>
+                </attribute>
+            </attributes>
+        </itemtype>
+        <!-- END OF User Management CHANGES [Author: Sakshi] -->
+
+
+
+        <!-- Start OF INVOICE DETAIL CHANGES [Author: Abhishek] -->
+        <itemtype code="JnjGTIntInvoice" generate="true" autocreate="true"
+                  extends="JnjGTIntermediateMaster">
+            <description>  </description>
+            <!-- 			<deployment table="JnjGTIntInvoice" typecode="11182" /> -->
+            <attributes>
+                <attribute type="java.lang.String" qualifier="businessSector">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="sourceSysId">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.util.Date" qualifier="recTimestamp">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="invoiceDocNum">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="salesOrg">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="salesOrgDistChannel">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="salesOrgDivCode">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="billingType">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="currency">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="netValue">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.util.Date" qualifier="billingDate">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="payerAccNum">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="soldToAccNum">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="poOrderNum">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="taxAmt">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="shipToAccNum">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="billToAccNum">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="shipToName1">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="shipToName2">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="shipToName3">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="shipToName4">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="shipToStreet1">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="shipToStreet2">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="shipToStreet3">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="shipToCity">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="shipToState">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="shipToPostal">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="shipToCountry">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="ORDER_SOURCE">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="shipToPONum">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="payerAccGLN">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="soldToAccGLN">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="billToAccGLN">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="shipToAccGLN">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+
+        <itemtype code="JnjGTIntInvoiceEntry" generate="true"
+                  autocreate="true" extends="GenericItem">
+            <description>  </description>
+            <!-- 			<deployment table="JnjGTIntInvoiceEntry" typecode="11183" /> -->
+            <deployment table="JNJ_GT_INT_INV_ENTRY" typecode="11082" />
+            <attributes>
+                <attribute type="java.lang.String" qualifier="businessSector">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="sourceSysId">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.util.Date" qualifier="recTimestamp">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="product">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="lineNum">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="highLvlItemNum">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="qty">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="netTotalValue">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="productDivison">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="plant">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="subTotal1">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="subTotal2">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="subTotal3">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="subTotal4">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="orderNum">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="salesUOM">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="deliveryNum">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="originalInvoiceNum">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="netValuePerUnit">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="invoiceNum">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="carrierCode">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="gtin">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="orderedGtin">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.util.Date" qualifier="shipDate">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="taxValue">
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+
+        <itemtype code="JnjGTIntInvoiceEntryLot" generate="true"
+                  autocreate="true" extends="GenericItem">
+            <description>  </description>
+            <!-- 			<deployment table="JnjGTIntInvoiceEntryLot" typecode="11184" /> -->
+            <deployment table="JNJ_GT_INT_INVC_ENTLOT" typecode="11083" />
+            <attributes>
+                <attribute type="java.lang.String" qualifier="businessSector">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="sourceSysId">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.util.Date" qualifier="recTimestamp">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="lotNum">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="lotQty">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="invoiceNum">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="lineItemNum">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.util.Date" qualifier="expiryDate">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="vendorBatch">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+
+        <itemtype code="JnjGTIntInvoicePrice" generate="true"
+                  autocreate="true" extends="GenericItem">
+            <description>  </description>
+            <!-- 			<deployment table="JnjGTIntInvoicePrice" typecode="11185" /> -->
+            <deployment table="JNJ_GT_INT_INVC_PRICE" typecode="11084" />
+            <attributes>
+                <attribute type="java.lang.String" qualifier="businessSector">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="sourceSysId">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.util.Date" qualifier="recTimestamp">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="headerPriceValue">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="conditionType">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="invoiceNum">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+            </attributes>
+        </itemtype>
+        <!-- End OF INVOICE DETAIL CHANGES [Author: Abhishek] -->
+
+        <!-- List Price Feed Changes[START] -->
+        <itemtype code="JnjGTIntListPrice" generate="true"
+                  autocreate="true" extends="JnjGTIntermediateMaster">
+            <description> It Will Create a new dummy table which will store all the intermediate data of List Price table </description>
+            <!-- 			<deployment table="IntListPrice" typecode="11186" /> -->
+            <attributes>
+                <attribute type="java.lang.String" qualifier="srcSysId">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="listPriceID">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="businessSector">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.util.Date" qualifier="validFrom">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.util.Date" qualifier="validTo">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="division">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="productSkuCode">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="priceTypeCode">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="priceBook">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="customerGroup">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="distChannel">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="salesOrg">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.util.Date" qualifier="recTimestamp">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjGTIntListPriceAmt" generate="true"
+                  autocreate="true" extends="GenericItem">
+            <description> It Will Create a new dummy table which will store all the intermediate data of List Price AMOUNT table </description>
+            <!-- 			<deployment table="IntListPriceAMT" typecode="11187" /> -->
+            <deployment table="JNJ_GT_INT_LST_PRC_AMT" typecode="11085" />
+            <attributes>
+                <attribute type="java.lang.String" qualifier="currencyCode">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="srcSysId">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="listPriceID">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="businessSector">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="priceUomCode">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.Double" qualifier="listPriceAmt">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="productSkuCode">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.lang.Boolean" qualifier="deleteIndicator">
+                    <persistence type="property"></persistence>
+                    <defaultvalue>Boolean.FALSE</defaultvalue>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+                <attribute type="java.util.Date" qualifier="recTimestamp">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+            </attributes>
+        </itemtype>
+        <!-- List Price Feed Changes[End] -->
+        <!-- Order Sync Feed Change Start [Author: Raghav Kumar] -->
+
+        <itemtype code="JnjGTIntOrderHeader" autocreate="true"
+                  generate="true" extends="JnjGTIntermediateMaster">
+            <!-- 			<deployment table="INT_ORDER_HEADER" typecode="11188" /> -->
+            <attributes>
+                <attribute type="java.lang.String" qualifier="sapOrderNumber">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="sourceSystemId">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="purchaseOrder">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="webOrderNumber">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="orderType">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="shipToCustomerNumber">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="shipToName">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="shipStreet1">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="shipStreet2">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="shipCity">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="shipState">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="shipCountry">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="shipPostalCode">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="shipAttention">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="shipToGLN">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="soldToAccount">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="billToAccount">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="reqDeliveryDate">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="currency">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="totalNetValue">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="creationDate">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="salesOrg">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="distributionChannel">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="division">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="overAllStatus">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="deliveryStatus">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="rejectionStatus">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="creditStatus">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="orderIncompleteStatus">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="invoiceStatus">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="deliveryBlock">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="poType">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="orderReasonCode">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="dropShipInd">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="billBlock">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="priceDate">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="creditRepCode">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="surgeonName">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="surgeonType">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="surgeryNumber">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="patientName">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="caseDate">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="retDistDebitMemo">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="classOfTrade">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="shipToPoNum">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="refCustNum">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.util.Date" qualifier="recordTimeStamp">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjGTIntOrdHdrNote" autocreate="true"
+                  generate="true">
+            <!-- 			<deployment table="INT_ORDER_HEADER_NOTE" typecode="11189" /> -->
+            <deployment table="JNJ_GT_INT_ORD_HDR_NOTE" typecode="11086" />
+            <attributes>
+                <attribute type="java.lang.String" qualifier="sapOrderNumber">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="sourceSystemId">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="hdrNoteCode">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="hdrNotes">
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjGTIntOrderLine" autocreate="true"
+                  generate="true">
+            <!-- 			<deployment table="INT_ORDER_LINE" typecode="11190" /> -->
+            <deployment table="JNJ_GT_INT_ORD_LINE" typecode="11087" />
+            <attributes>
+                <attribute type="java.lang.String" qualifier="sapOrderNumber">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="sourceSystemId">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="sapOrderLineNumber">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="materialNumber">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="salesUom">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="qty">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="unitPrice">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="netValue">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="currency">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="overAllStatus">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="deliveryStatus">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="invoiceStatus">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="reasonForRejection">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="plant">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="plantName">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="itemCategory">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="highLevelItemNumber">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="taxAmt">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="materialEntered">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="batchNumber">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="productDivision">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="subTotal1">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="subTotal2">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="subTotal3">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="subTotal4">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="subTotal5">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="subTotal6">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="route">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="returnInvNumber">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="gtin">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="gtinEntered">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="contractNum">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="priceOverrideReasonCd">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="approverNameCd">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="shipToCustNum">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="OrderEntryStatus" qualifier="consumerLineStatus">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.util.Date" qualifier="recordTimeStamp">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjGTIntOrdLineHoldLocal" autocreate="true"
+                  generate="true">
+            <!-- 			<deployment table="INT_ORDER_LINE_HOLD_LCL" typecode="11191" /> -->
+            <deployment table="JNJ_INT_ORD_LNE_HLD" typecode="11088" />
+            <attributes>
+                <attribute type="java.lang.String" qualifier="sourceSystemId">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="sapOrderNumber">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="sapOrderLineNumber">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="holdCode">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="reasonForRejection">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.util.Date" qualifier="recordTimeStamp">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjGTIntOrdLinePriceLocal" autocreate="true"
+                  generate="true">
+            <!-- 			<deployment table="INT_ORDER_LINE_PRC_LCL" typecode="11192" /> -->
+            <deployment table="JNJ_GT_INT_ORD_LNE_PRC" typecode="11089" />
+            <attributes>
+                <attribute type="java.lang.String" qualifier="sourceSystemId">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="sapOrderNumber">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="sapOrderLineNumber">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="pricingConditionType">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="pricingConditionName">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="currency">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="unitPrice">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="currencyForUp">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="value">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="currencyForCv">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.util.Date" qualifier="recordTimeStamp">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjGTIntOrderSchLine" autocreate="true"
+                  generate="true">
+            <!-- 			<deployment table="INT_ORDER_SCH_LINE_LCL" typecode="11193" /> -->
+            <deployment table="JNJ_GT_INT_ORD_SCH_LNE" typecode="11090" />
+            <attributes>
+                <attribute type="java.lang.String" qualifier="sourceSystemId">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="sapOrderNumber">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="sapOrderLineNumber">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="schLineNumber">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="deliveryDate">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="lineStatus">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="confirmedQty">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="schedShipDate">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="deliveryLineBlock">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.util.Date" qualifier="recordTimeStamp">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjGTIntOrderLineTxt" autocreate="true"
+                  generate="true">
+            <!-- 			<deployment table="INT_ORDER_LINE_TXT" typecode="11194" /> -->
+            <deployment table="JNJ_GT_INT_ORD_LNE_TXT" typecode="11091" />
+            <attributes>
+                <attribute type="java.lang.String" qualifier="sourceSystemId">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="sapOrderNumber">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="sapOrderLineNumber">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="txtCd">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="txtDesc">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.util.Date" qualifier="recordTimeStamp">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjGTIntOrderLinePart" autocreate="true"
+                  generate="true">
+            <!-- 			<deployment table="INT_ORDER_LINE_PART" typecode="11195" /> -->
+            <deployment table="JNJ_GT_INT_ORD_LNE_PRT" typecode="11092" />
+            <attributes>
+                <attribute type="java.lang.String" qualifier="sourceSystemId">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="sapOrderNumber">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="sapOrderLineNumber">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="partFunc">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="customerNum">
+                    <persistence type="property" />
+                </attribute>
+                <attribute type="java.util.Date" qualifier="recordTimeStamp">
+                    <persistence type="property"></persistence>
+                    <modifiers read="true" write="true" search="true" />
+                </attribute>
+            </attributes>
+        </itemtype>
+        <!-- Order Sync Feed Change End [Author: Raghav Kumar] -->
+
+        <itemtype code="JnjGTIntShipTrckHdr" autocreate="true"
+                  generate="true" extends="JnjGTIntermediateMaster" jaloclass="com.jnj.gt.jalo.JnjGTIntShipTrckHdr">
+            <description>It Will Create a new dummy table which will store all the intermediate data of ship track header table  </description>
+            <!-- 			<deployment table="ShipTrckHdr" typecode="11196" /> -->
+            <attributes>
+                <attribute qualifier="deliveryNum" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="sourceSysId" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="bolNum" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="carrierScacCde" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="actualShipDate" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="actualShipTime" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="containerId" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="trackingNum" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="sapOrderNum" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="correlationId" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="carrierScacName" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="actualDeliveryDate" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="actualDeliveryTime" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="JnjGTIntShipTrckLine" autocreate="true"
+                  generate="true" jaloclass="com.jnj.gt.jalo.JnjGTIntShipTrckLine">
+            <description>It Will Create a new dummy table which will store all the intermediate data of Ship Track line table  </description>
+            <!-- 			<deployment table="ShipTrckLine" typecode="11197" /> -->
+            <deployment table="JNJ_GT_SHIP_TRCK_LINE" typecode="11093" />
+            <attributes>
+                <attribute qualifier="sapOrderNum" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="sourceSysId" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="deliveryNum" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="deliveryQty" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="sapOrderLineNum" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="trackingNum" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="deliveryLineNum" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="correlationId" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="AbstractOrder" autocreate="false" generate="false"
+                  abstract="true">
+            <attributes>
+                <attribute type="JnjGTIntermediateMaster" qualifier="operationArchModel">
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <!-- Adding attributes in existing type JnjOrderEntryStatus -->
+        <itemtype code="JnjGTTanOrdEntStsMapping" autocreate="true"	generate="true">
+            <!-- 			<deployment table="Jnj_NA_Tan_Ord" typecode="11198" /> -->
+            <deployment table="JNJ_GT_TAN_ORD_STS_MAPP" typecode="11094" />
+            <attributes>
+                <attribute type="java.lang.String" qualifier="firstTanOrderLineStatus">
+                    <persistence type="property" />
+                    <modifiers unique="true" />
+                </attribute>
+                <attribute type="java.lang.String" qualifier="secondTanOrderLineStatus">
+                    <persistence type="property" />
+                    <modifiers unique="true" />
+                </attribute>
+                <attribute type="OrderEntryStatus" qualifier="finalStatus">
+                    <persistence type="property" />
+                    <modifiers unique="true" />
+                </attribute>
+            </attributes>
+        </itemtype>
+    </itemtypes>
+</items>

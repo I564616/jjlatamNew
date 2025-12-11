@@ -1,0 +1,69 @@
+#
+# Import the JNJ Content Catalog
+#
+
+
+$MstrContentCatalog=mstrContentCatalog
+$BRContentCatalog=brContentCatalog
+$MXContentCatalog=mxContentCatalog
+$CENCAContentCatalog=cencaContentCatalog
+$ECContentCatalog=ecContentCatalog
+$ARContentCatalog=arContentCatalog
+$CLContentCatalog=clContentCatalog
+$URContentCatalog=uyContentCatalog
+$COContentCatalog=coContentCatalog
+$PEContentCatalog=peContentCatalog
+$PRContentCatalog=prContentCatalog
+
+
+
+$languages=en,pt,es
+
+
+# Content catalog for CMS contents
+INSERT_UPDATE ContentCatalog;id[unique=true]
+;$MstrContentCatalog
+;$BRContentCatalog
+;$MXContentCatalog
+;$CENCAContentCatalog
+;$ECContentCatalog
+;$ARContentCatalog
+;$CLContentCatalog
+;$URContentCatalog
+;$COContentCatalog
+;$PEContentCatalog
+;$PRContentCatalog
+
+# Catalog versions for content catalogs
+INSERT_UPDATE CatalogVersion;catalog(id)[unique=true];version[unique=true];active;languages(isoCode)
+;$MstrContentCatalog;Staged;false;$languages
+;$BRContentCatalog;Staged;false;$languages
+;$BRContentCatalog;Online;true;$languages
+;$MXContentCatalog;Staged;false;$languages
+;$MXContentCatalog;Online;true;$languages
+;$CENCAContentCatalog;Staged;false;$languages
+;$CENCAContentCatalog;Online;true;$languages
+;$ECContentCatalog;Staged;false;$languages
+;$ECContentCatalog;Online;true;$languages
+;$ARContentCatalog;Staged;false;$languages
+;$ARContentCatalog;Online;true;$languages
+;$CLContentCatalog;Online;true;$languages
+;$CLContentCatalog;Staged;false;$languages
+;$URContentCatalog;Online;true;$languages
+;$URContentCatalog;Staged;false;$languages
+;$COContentCatalog;Staged;false;$languages
+;$COContentCatalog;Online;true;$languages
+;$PEContentCatalog;Staged;false;$languages
+;$PEContentCatalog;Online;true;$languages
+;$PRContentCatalog;Staged;false;$languages
+;$PRContentCatalog;Online;true;$languages
+
+
+###Start:: 35068: PHARMA price list is not working
+###Default Price Rows are not required as 
+###Default price Row for all products
+#INSERT PriceRow;minqtd;price;unitFactor;unit(code);currency(isoCode)
+#;1;0;1;pieces;MXN
+#;1;0;1;pieces;BRL
+#;1;0;1;pieces;USD
+#End:: 35068: PHARMA price list is not working

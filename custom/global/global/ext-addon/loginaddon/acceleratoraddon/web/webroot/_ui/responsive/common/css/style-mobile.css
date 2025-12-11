@@ -1,0 +1,21 @@
+@media screen and (max-width: 767px) {
+	.table-bordered {
+		border: 1px solid #ddd;
+	}
+	.table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+		border: 1px solid #ddd;
+	}
+	.orderDetailsTable div#ordersTable_wrapper .row:first-child .col-sm-6{
+		    background: none !important;
+	}
+	#buildorderpage .Subcontainer{
+                margin-right: 3px;
+                margin-left: -5px;
+        }
+	.textboxstyle {
+		width:100%;
+	}
+	.jnj-body-padding {
+		padding: 0 !important;
+	}
+}

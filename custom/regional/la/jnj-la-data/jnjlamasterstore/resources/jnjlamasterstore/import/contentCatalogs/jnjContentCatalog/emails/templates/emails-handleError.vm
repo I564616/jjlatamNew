@@ -1,0 +1,22 @@
+<html>
+	<head>
+	</head>
+
+	<body>
+		Job: $ctx.cronJobName<br/>
+		<br/>
+		Started:  $ctx.startDate <br/> 
+		
+		<br/>
+		<h3>
+		
+		<p>Dear RSA Team,</p>
+                <p>Please find the failed records attached and do the needful.</p>
+        
+		<p>Thanks,</p>
+        
+		<p>latamjobsfailedrecords@jnjportal.com</p>
+
+		</h3> 
+	</body>
+</html>

@@ -1,0 +1,1 @@
+Aprobación para el Registro de Usuario: ${ctx.registrationDataMap['email']}

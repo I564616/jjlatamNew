@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<table style="width:100%;font-family:Calibri;padding-bottom:20px" cellspacing="0" cellpadding="0">
+    <tr>
+        <td>
+           <img width="150%" src="${mediaBaseUrl}${siteLogoPath1}" />
+        </td>
+        <td></td>
+        <td>
+           <img width="175%" src="${mediaBaseUrl}${siteLogoPath}" />
+        </td>
+    </tr>
+</table>
+<br />
+<br />
+
+<table width="100%" cellpadding="8" cellspacing="1" style="margin:0 20px;">
+    <tr>
+        <td colspan="2">
+            #if(${productImage} != "")
+            <img style="border: 1px solid #ccc; display: inline-block;" width="190%" src="${productImage}" />
+            #end
+        </td>
+        <td colspan="3" style="color: #828282;">
+                <span style="font-size: 14px; margin-bottom: 5px;">
+                        ${productData.name}
+                        <br />
+                </span>
+
+            <span style="font-size: 10px; font-weight: normal; position: initial;">
+                    ${productCode}:&nbsp;${productData.code}
+                </span>
+            <br />
+
+            <span style="font-size: 10px; font-weight: normal; position: initial;">
+	                    ${gtin}:&nbsp;${productData.gtin}
+	                </span>
+
+            <br />
+            <br />
+
+            <span style="font-size: 10px; line-height: 18px; margin-bottom: 5px;">
+                #if(${productData.description})
+                    ${productData.description}
+                    <br />
+                    <br />
+                #end
+            </span>
+
+            #if(${productData.shortOverview})
+            <span style="font-size: 10px;">
+                        <b>${shortOverView}</b>
+                    </span>
+            <br />
+            <span style="font-size: 10px; line-height: 18px;">
+                        ${productData.shortOverview}
+                    </span>
+            #end
+        </td>
+    </tr>
+</table>
+<br />
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left">
+    <tr style="font-size: 14px;">
+        <td style="color: #828282;">
+            <b>${productDetails}</b>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            &nbsp;
+        </td>
+    </tr>
+</table>
+
+<table width="100%" border="1" cellspacing="0" cellpadding="2.5" align="left" style="font-size: 10px">
+    <thead>
+    <tr>
+        <th colspan="3">
+                    <span>
+                        ${productSpecification}
+                    </span>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td bgcolor="#ededed">
+                    <span>
+                        ${productCode}
+                    </span>
+        </td>
+        <td colspan="2">
+                    <span>
+                        #if(${productData.catalogId})
+                            ${productData.catalogId}
+                        #end
+                    </span>
+        </td>
+    </tr>
+    #if(${divisionValue})
+    <tr>
+        <td bgcolor="#ededed">
+                    <span>
+                        ${division}
+                    </span>
+        </td>
+        <td colspan="2">
+                    <span>
+                     	${divisionValue}
+                    </span>
+        </td>
+    </tr>
+    #end
+
+    <tr>
+        <td bgcolor="#ededed">
+                    <span>
+                        ${status}
+                    </span>
+        </td>
+        <td colspan="2">
+                    <span>
+                        #if(${productData.status})
+                            ${productData.status}
+                        #end
+                    </span>
+        </td>
+    </tr>
+
+    <tr>
+        <td bgcolor="#ededed">
+                    <span>
+                        ${deliveredIn}
+                    </span>
+        </td>
+        <td colspan="2">
+                    <span>
+                        #if(${productData.deliveryUnitCode})
+                            ${productData.deliveryUnitCode} <br />
+                            ${each} &nbsp; ${productData.deliveryUnitCode}
+                            ${contains} ${productData.numeratorDUOM} &nbsp; ${productData.baseUnitCode}
+                        #end
+                    </span>
+        </td>
+    </tr>
+
+    <tr>
+        <td bgcolor="#ededed">
+                    <span>
+                        ${soldIn}
+                    </span>
+        </td>
+        <td colspan="2">
+                    <span>
+                        #if(${productData.salesUnitCode})
+                            ${productData.salesUnitCode} <br />
+                            ${each} &nbsp; ${productData.salesUnitCode}
+                            ${contains} ${productData.numeratorSUOM} &nbsp; ${productData.baseUnitCode}
+                        #end
+                    </span>
+        </td>
+    </tr>
+
+    <tr>
+        <td bgcolor="#ededed">
+                    <span>
+                        ${depth}
+                    </span>
+        </td>
+        <td colspan="2">
+                    <span>
+                        #if(${productData.length})
+                            ${productData.length}
+                        #end
+                    </span>
+        </td>
+    </tr>
+    <tr>
+        <td bgcolor="#ededed">
+                    <span>
+                        ${height}
+                    </span>
+        </td>
+        <td colspan="2">
+                    <span>
+                        #if(${productData.height})
+                            ${productData.height}
+                        #end
+                    </span>
+        </td>
+    </tr>
+    <tr>
+        <td bgcolor="#ededed">
+                    <span>
+                        ${width}
+                    </span>
+        </td>
+        <td colspan="2">
+                    <span>
+                        #if(${productData.width})
+                            ${productData.width}
+                        #end
+                    </span>
+        </td>
+    </tr>
+    <tr>
+        <td bgcolor="#ededed">
+                    <span>
+                        ${volume}
+                    </span>
+        </td>
+        <td colspan="2">
+                    <span>
+                        #if(${productData.volume} && ${productData.volumeUnit})
+                            ${productData.volume} ${productData.volumeUnit}
+                        #end
+                    </span>
+        </td>
+    </tr>
+    <tr>
+        <td bgcolor="#ededed">
+                    <span>
+                        ${weight}
+                    </span>
+        </td>
+        <td colspan="2">
+                    <span>
+                        #if(${productData.shipWeight} && ${productData.shippingUnit})
+                            ${productData.shipWeight} ${productData.shippingUnit}
+                        #end
+                    </span>
+        </td>
+    </tr>
+    <tr>
+        <td bgcolor="#ededed">
+                    <span>
+                        ${country}
+                    </span>
+        </td>
+        <td colspan="2">
+                    <span>
+                        #if(${productData.originCountry})
+                            ${productData.originCountry}
+                        #end
+                    </span>
+        </td>
+    </tr>
+
+    </tbody>
+</table>
+<br />
+<br />
+
+#if(!${productData.classAttributeFeatureMap.isEmpty()}  && !${productData.structuredClassifications.isEmpty()} && !${pdpTabsHideFlag})
+<table width="100%" border="1" cellspacing="0" cellpadding="2.5" align="left" style="font-size: 10px">
+    <thead>
+        <tr>
+            <th colspan="3">
+                <span>
+                    ${attributes}
+                </span>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        #foreach($entry in $productData.structuredClassifications.entrySet())
+            <tr>
+                #if($entry.key == "OTHER ATTRIBUTES")
+                    <td bgcolor="#ededed" colspan="3">
+                            <span>
+                                ${other_attributes}
+                            </span>
+                    </td>
+                #else
+                    <td bgcolor="#ededed" colspan="3">
+                        <span>
+                            $entry.key
+                        </span>
+                    </td>
+                #end
+            </tr>
+            #foreach($rootFeature in $entry.value.entrySet())
+                <tr>
+                    <span> <td bgcolor="#ededed">$rootFeature.key</td></span>
+                    <span><td colspan="2">$rootFeature.value</td></span>
+                </tr>
+            #end
+        #end
+    </tbody>
+</table>
+#end
+
+#if(${productData.brandDescription}  && !${pdpTabsHideFlag})
+<table width="100%" cellspacing="0" cellpadding="0">
+    <tr>
+        <td>
+            <table>
+                <tr>
+                    <td style="font-size: 14px; color: #828282; page-break-inside: avoid;">
+                        <b>${aboutTheBrand}</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-size: 10px; page-break-inside: avoid;">
+                        <p>${productData.brandDescription}</p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<br />
+#end
+
+#if(${productDocumentsList.size()} > 0 && !${pdpTabsHideFlag})
+<table width="100%" cellspacing="0" cellpadding="0">
+    <tr>
+        <td>
+            <table>
+                <tr>
+                    <td style="font-size: 14px; color: #828282">
+                        <b>${additionalInformation}</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="color: #0c8caa; font-size: 10px;">
+                        #foreach($entry in $productDocumentsList)
+                        <span>
+                                    <a href="${entry.urlLink}" target="_blank">
+                                        ${entry.name}
+                                    </a>
+                                </span>
+                        <br />
+                        #end
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+#end
+
+#if(${franchiseLogo} != "")
+<table width="100%" cellspacing="0" cellpadding="0">>
+    <tr>
+        <td align="right">
+            <img width="100%" src="${franchiseLogo}" style="display: inline-block;" />
+        </td>
+    </tr>
+</table>
+#end
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+#
+# Import the JNJ Product Catalog
+#
+# Localization en
+#
+$MstrProductCatalog=mstrProductCatalog
+$BRproductCatalog=brProductCatalog
+$MXproductCatalog=mxProductCatalog
+$languages=en
+
+UPDATE Catalog;id[unique=true];name[lang=$languages];
+ ;$MstrProductCatalog;"Master Product Catalog";
+ ;$BRproductCatalog;"Brazil Product Catalog"; 
+ ;$MXproductCatalog;"Maxico Product Catalog";

@@ -1,0 +1,374 @@
+<style>
+input.span-18 {
+	border-left-width: 1px;
+    border-right-width: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+	width: 698px;
+}
+.last {
+    margin-right: 0;
+    padding-right: 0;
+}
+.addIndirectCustomerPanel h2.arrowHeader span {
+    float: right;
+}
+.addIndirectCustomerPanel ul {
+    margin: 10px 0 20px;
+    padding-bottom: 10px;
+}
+.addIndirectCustomerPanel ul li {
+    clear: both;
+    margin-top: 10px;
+    min-height: 58px;
+}
+.addIndirectCustomerPanel label {
+    display: block;
+}
+.addIndirectCustomerPanel label span {
+    color: #B41601;
+}
+.addIndirectCustomerPanel input[type="text"], .addIndirectCustomerPanel select {
+    color: #646464;
+    padding-left: 2px;
+    width: 420px;
+}
+.addIndirectCustomerPanel select {
+    color: #646464;
+    float: none;
+    margin-bottom: 0;
+    width: 230px;
+}
+.radioPanel label {
+    display: inline;
+}
+.radioPanel input[type="text"] {
+    display: block;
+    margin: 4px 0;
+}
+.radioPanel input[type="radio"] {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    margin-bottom: 0;
+}
+.addIndirectCustomerPanel input, .addIndirectCustomerPanel select {
+    padding: 0;
+}
+.addIndirectCustomerPanel select {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid #E5E5E5;
+    padding-bottom: 0;
+    padding-right: 0;
+    padding-top: 0;
+}
+.addIndirectCustomerPanel .buttonWrapper > input {
+    padding: 5px 15px;
+}
+h2.arrowHeader {
+    border-bottom: 1px solid #84C5D4;
+    color: #0A8CAA;
+    font-size: 16px;
+    line-height: 30px;
+    margin-bottom: 0;
+}
+.priceSmall {
+    color: #B41601;
+    font-size: 12px;
+}
+.instructiontxt {
+    color: #828282;
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+body {
+    line-height: 1.5;
+}
+body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section {
+    border: 0 none;
+    font-family: inherit;
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+body {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #222222;
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    font-size: 75%;
+}
+ul li {
+    color: #646464;
+    font-size: 12px;
+    list-style-type: none;
+}
+td {
+	color: #646464;
+}
+</style>
+<html>
+<head>
+	<title>Correo de confirmación</title>
+</head>
+<body id="containerBody">
+	<table style="background-color:#ffffff" width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+		<tr>
+			<td align="center">
+				<table bgcolor="#ffffff" width="600" border="0" cellspacing="0" cellpadding="0" align="center">
+					<tr bgcolor="#ffffff">
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr bgcolor="#ffffff">
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td>
+							<img src="${ctx.jnjCustomerFormMap['siteLogoPath']}" width="333" height="84" border="0" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr bgcolor="#ffffff">
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<!-- INSERT HERE -->
+						<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+							<div class="span-18 last" id="addindirectcustomer" style="display:block">
+								<!-- My Profile VIEW START -->
+								<div class="addIndirectCustomerPanel ">
+									<div class="size3of5 cell">
+										<label><b>Inscripción agregada por: </b></label>
+										<label class="required">
+											${ctx.jnjCustomerFormMap['fromEmail']}
+										</label>
+										<label class="required">
+										(${ctx.jnjCustomerFormMap['fromDisplayName']})
+										</label>
+									</div>
+									<br /><br />
+									<table width="100%" cellspacing="0" cellpadding="0">
+										<tr>
+											<td align="left">
+												<h2 class="arrowHeader">Agregar Pagador Indirecto </h2>
+											</td>
+										</tr>
+									</table>
+									<ul>
+										<li>
+											<div class="size3of5 cell">
+												<label for="Cname"><b>Nombre del Pagador<span>*</span>:</b></label>
+												<label id="Cname" class="required">
+													${ctx.jnjCustomerFormMap['payerName']}
+												</label>
+											</div>
+										</li>
+										<li class="radioPanel">
+											<div class="size3of5 cell">
+												#if(${ctx.jnjCustomerFormMap['cnpjOrCpf']} == "CNPJ")
+													<input checked="true" type="radio" id="radiocnpj" name="radio1" class="required" disabled />
+													<label for="radiocnpj"><b>CNPJ<span>*</b></span>
+													</label>
+													<input type="radio" id="radiocpf" name="radio1" disabled />
+													<label for="radiocpf">CPF<span>*</span>
+													</label>
+													<input type="radio" id="radiotaxid" name="radio1" disabled />
+													<label for="radiotaxid">ID de impuesto<span>*</span>
+													</label>
+												#elseif(${ctx.jnjCustomerFormMap['cnpjOrCpf']} == "Tax ID")
+													<input type="radio" id="radiocnpj" name="radio1" class="required" disabled />
+													<label for="radiocnpj">CNPJ<span>*</span>
+													</label>
+													<input type="radio" id="radiocpf" name="radio1" disabled />
+													<label for="radiocpf">CPF<span>*</span>
+													</label>
+													<input checked="true" type="radio" id="radiotaxid" name="radio1" disabled />
+													<label for="radiotaxid"><b>Tax Id<span>*</b></span>
+													</label>
+												#else
+													<input type="radio" id="radiocnpj" name="radio1" class="required" disabled />
+													<label for="radiocnpj">CNPJ<span>*</span>
+													</label>
+													<input checked="true" type="radio" id="radiocpf" name="radio1" disabled />
+													<label for="radiocpf"><b>CPF<span>*</b></span>
+													</label>
+													<input type="radio" id="radiotaxid" name="radio1" disabled />
+													<label for="radiotaxid">Tax Id<span>*</span>
+													</label>
+												#end
+											</div>
+											<div class="size3of5 cell">
+												<label for="cnpjOrCpfText">
+													${ctx.jnjCustomerFormMap['cnpjOrCpfText']}
+												</label>
+											</div>
+										</li>
+										#if(${ctx.jnjCustomerFormMap['cnpjOrCpf']} != "CNPJ")
+											<li id="cpfdiv">
+												<div class="size3of5 cell">
+													<label for="indicate"><b>Por favor, indique Médico o Paciente<span>*</span>:</b></label>
+													<label id="indicate" class="required">
+														${ctx.jnjCustomerFormMap['cpfPatientOrPhysicianName']}
+													</label>
+												</div>
+											</li>
+										#end
+										<li>
+											<div class="size1of3 cell">
+												<label for="customertype"><b>Tipo de pagador<span>*</span>:</b></label>
+												${ctx.jnjCustomerFormMap['payerType']}
+											</div>
+										</li>
+										<li>
+											<div class="size1of3 cell">
+												<label for="selectp"><b>Público / privado<span>*</span>:</b></label>
+												${ctx.jnjCustomerFormMap['publicOrPrivate']}
+											</div>
+										</li>
+										<li>
+										    <div class="size1of3 cell">
+										        <label for="selectp"><b>Licitação<span>*</span>:</b></label>
+										        ${ctx.jnjCustomerFormMap['bid']}
+										     </div>
+										 </li>
+										 <li>
+                                             <div class="size1of3 cell">
+                                                 <label for="selectp"><b>Companhia<span>*</span>:</b></label>
+                                                 ${ctx.jnjCustomerFormMap['company']}
+                                             </div>
+                                         </li>
+                                        <li>
+											<label for="state"><b>Estado:</b></label>
+											<label id="state">
+												${ctx.jnjCustomerFormMap['state']}
+											</label>
+										</li>
+										<li>
+											<label for="city"><b>Ciudad:</b></label>
+											<label id="city">
+												${ctx.jnjCustomerFormMap['city']}
+											</label>
+										</li>
+										<li>
+											<label for="address"><b>Dirección:</b></label>
+											<label id="address">
+												${ctx.jnjCustomerFormMap['address']}
+											</label>
+										</li>
+										<li>
+											<label for="town"><b>Barrio:</b></label>
+											<label id="town">
+												${ctx.jnjCustomerFormMap['neighborhood']}
+											</label>
+										</li>
+										<li>
+											<label for="zip"><b>Código postal:</b></label>
+											<label id="zip">
+												${ctx.jnjCustomerFormMap['zipCode']}
+											</label>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!-- Content Ends -->
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

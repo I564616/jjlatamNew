@@ -1,0 +1,55 @@
+### Employee
+$passwordEncoding=md5
+$defaultPassword=1234
+$setPassword=@password[translator=de.hybris.platform.impex.jalo.translators.ConvertPlaintextToEncodedUserPasswordTranslator][default='$passwordEncoding:$defaultPassword']
+
+INSERT_UPDATE Employee;UID[unique=true];$setPassword;description;name;groups(uid);sessionLanguage(isocode);sessionCurrency(isocode)
+;syncUser;;Product Sync User;Product Sync User;;en;EUR
+
+### Sync Job
+$sourceVersion=sourceVersion(catalog(id),version[default='Staged'])[unique=true];
+$targetVersion=targetVersion(catalog(id),version[default='Staged'])[unique=true];
+$masterProductCatalog=mstrProductCatalog
+$brazilProductCatalog=brProductCatalog
+$mexicoProductCatalog=mxProductCatalog
+
+INSERT_UPDATE CatalogVersionSyncJob;code;$sourceVersion;$targetVersion;createNewItems;removeMissingItems;rootTypes(code);
+;MasterStaged->BrazilStaged;$masterProductCatalog;$brazilProductCatalog;true;true;Category,Product,Media,Keyword,PriceRow,TaxRow,DiscountRow,MediaContainer;syncUser;
+;MasterStaged->MexicoStaged;$masterProductCatalog;$mexicoProductCatalog;true;true;Category,Product,Media,Keyword,PriceRow,TaxRow,DiscountRow,MediaContainer;syncUser;
+
+;BrazilStaged->BrazilOnline;$brazilProductCatalog;$brazilProductCatalog:Online;true;true;Category,Product,Media,Keyword,PriceRow,TaxRow,DiscountRow,MediaContainer;syncUser;
+;MexicoStaged->MexicoOnline;$mexicoProductCatalog;$mexicoProductCatalog:Online;true;true;Category,Product,Media,Keyword,PriceRow,TaxRow,DiscountRow,MediaContainer;syncUser;
+
+### Sync Cron Job
+INSERT_UPDATE CatalogVersionSyncCronJob;code[unique=true];job(code);sessionLanguage(isocode)
+;Sync-MasterStaged-BrazilStaged;MasterStaged->BrazilStaged;en
+;Sync-MasterStaged-MexicoStaged;MasterStaged->MexicoStaged;en
+#;Sync-MasterS-MasterO;MastercatalogStaged->Online;en
+;Sync-BrazilStaged->BrazilOnline;BrazilStaged->BrazilOnline;en
+;Sync-MexicoStaged->MexicoOnline;MexicoStaged->MexicoOnline;en
+
+######## Excluding Attributes which should not be sync from Master to Brazil ########   
+$catalog-syncjob-name=MasterStaged->BrazilStaged
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+;Product:description;$catalog-syncjob-name;false;false;;false;false 
+;JnJProduct:medicalSpecialty;$catalog-syncjob-name;false;false;;false;false 
+
+######## Excluding Attributes which should not be sync from Master to Mexico ########
+$catalog-syncjob-name=MasterStaged->MexicoStaged
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+;Product:description;$catalog-syncjob-name;false;false;;false;false 
+;JnJProduct:medicalSpecialty;$catalog-syncjob-name;false;false;;false;false 
+
+
+INSERT_UPDATE ServicelayerJob;code[unique=true];springId;active[default='true']
+;syncMasterToLocalCatalog;syncMasterToLocalCatalog;true
+;syncBRProdStagedToOnline;brProdStagedToOnline;true
+;syncMXProdStagedToOnline;mxProdStagedToOnline;true
+
+INSERT_UPDATE CronJob;code[unique=true];job(code);active[default='true'];sessionLanguage(isocode)
+;syncCatalogCron_Job;syncMasterToLocalCatalog;true;en
+;syncBRProdStgToOnline;syncBRProdStagedToOnline;true;en
+;syncMXProdStgToOnline;syncMXProdStagedToOnline;true;en
+
+
+

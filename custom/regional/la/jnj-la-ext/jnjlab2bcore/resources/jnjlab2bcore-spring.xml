@@ -1,0 +1,994 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+
+	<bean name="CustomersCacheRegion"
+		class="de.hybris.platform.regioncache.region.impl.DefaultCacheRegion">
+		<!--FRAMEWORK_UPDATE - TODO - Constructors has been changed. Check if you need to adjust your configuration. Please check update guide for more details.-->
+		<constructor-arg name="name" value="customersCacheRegion" />
+		<constructor-arg name="maxEntries" value="50000" />
+		<!--<constructor-arg name="evictionPolicy" value="LFU" />-->
+		<property name="handledTypes">
+			<array>
+				<value>15002</value> <!--JnJLaB2BUnit type code  -->
+				<value>11018</value> <!-- JnjIndirectCustomer type code-->
+				<value>15003</value> <!-- JnjIndirectPayer type code-->
+			</array>
+		</property>
+	</bean>
+
+	<!--End Caching related beans -->
+	<!-- UpserProduct related beans -->
+	<bean id="jnjLaUpsertProductCronJob" class="com.jnj.la.core.cronjobs.JnjLaUpsertProductCronJob"
+		autowire="byName" scope="tenant" />
+
+	<bean id="jnjlaContractService"
+		class="com.jnj.la.core.services.contract.impl.JnjContractServiceImpl">
+	</bean>
+
+	<bean id="jnjContractDao" class="com.jnj.la.core.dao.contract.impl.JnjContractDaoImpl"
+		parent="abstractItemDao">
+	</bean>
+
+	<bean id="jnjLAProductDataService"
+		class="com.jnj.la.core.services.impl.JnjLAProductDataServiceImpl"
+		autowire="byName" />
+
+	<bean id="jnjLaProductDao" class="com.jnj.la.core.daos.impl.JnjLaProductDaoImpl"
+		parent="jnjGTProductDao" />
+
+	<alias name="jnjLaProductService" alias="productService" />
+	<bean id="jnjLaProductService" class="com.jnj.la.core.services.impl.JnjLaProductServiceImpl"
+		parent="jnjGTProductService" autowire="byName" />
+
+	<bean id="jnjLaEmailUtil" class="com.jnj.la.email.util.JnjLaEmailUtil"
+		autowire="byName" />
+
+	<!-- syncProduct related beans -->
+	<bean id="syncMasterToLocalCatalog" class="com.jnj.la.core.cronjobs.JnjSyncMasterToLocalCatalog">
+		<property name="modelService" ref="modelService" />
+		<property name="flexibleSearchService" ref="flexibleSearchService" />
+		<property name="sessionService" ref="sessionService" />
+	</bean>
+
+	<!-- BR Product catalog sync Service layer job -->
+	<bean id="brProdStagedToOnline" class="com.jnj.la.cronjobs.JnjSyncBRProdStagedToOnline">
+		<property name="modelService" ref="modelService" />
+		<property name="flexibleSearchService" ref="flexibleSearchService" />
+		<property name="sessionService" ref="sessionService" />
+	</bean>
+
+	<!-- MX Product catalog sync Service layer job -->
+	<bean id="mxProdStagedToOnline" class="com.jnj.la.cronjobs.JnjSyncMXProdStagedToOnline">
+		<property name="modelService" ref="modelService" />
+		<property name="flexibleSearchService" ref="flexibleSearchService" />
+		<property name="sessionService" ref="sessionService" />
+	</bean>
+
+	<!-- CENCA Product catalog sync Service layer job -->
+	<bean id="cencaProdStagedToOnline" class="com.jnj.la.cronjobs.JnjSyncCENCAProdStagedToOnline">
+		<property name="modelService" ref="modelService" />
+		<property name="flexibleSearchService" ref="flexibleSearchService" />
+		<property name="sessionService" ref="sessionService" />
+	</bean>
+
+	<!-- EC Product catalog sync Service layer job -->
+	<bean id="ecProdStagedToOnline" class="com.jnj.la.cronjobs.JnjSyncECProdStagedToOnline">
+		<property name="modelService" ref="modelService" />
+		<property name="flexibleSearchService" ref="flexibleSearchService" />
+		<property name="sessionService" ref="sessionService" />
+	</bean>
+
+	<!-- AR Product catalog sync Service layer job -->
+	<bean id="arProdStagedToOnline" class="com.jnj.la.cronjobs.JnjSyncARProdStagedToOnline">
+		<property name="modelService" ref="modelService" />
+		<property name="flexibleSearchService" ref="flexibleSearchService" />
+		<property name="sessionService" ref="sessionService" />
+	</bean>
+
+	<!-- UY Product catalog sync Service layer job -->
+	<bean id="uyProdStagedToOnline" class="com.jnj.la.cronjobs.JnjSyncUYProdStagedToOnline">
+		<property name="modelService" ref="modelService" />
+		<property name="flexibleSearchService" ref="flexibleSearchService" />
+		<property name="sessionService" ref="sessionService" />
+	</bean>
+
+	<!-- CL Product catalog sync Service layer job -->
+	<bean id="clProdStagedToOnline" class="com.jnj.la.cronjobs.JnjSyncCLProdStagedToOnline">
+		<property name="modelService" ref="modelService" />
+		<property name="flexibleSearchService" ref="flexibleSearchService" />
+		<property name="sessionService" ref="sessionService" />
+	</bean>
+
+	<!-- CO Product catalog sync Service layer job -->
+	<bean id="coProdStagedToOnline" class="com.jnj.la.cronjobs.JnjSyncCOProdStagedToOnline">
+		<property name="modelService" ref="modelService" />
+		<property name="flexibleSearchService" ref="flexibleSearchService" />
+		<property name="sessionService" ref="sessionService" />
+	</bean>
+
+	<!-- PE Product catalog sync Service layer job -->
+	<bean id="peProdStagedToOnline" class="com.jnj.la.cronjobs.JnjSyncPEProdStagedToOnline">
+		<property name="modelService" ref="modelService" />
+		<property name="flexibleSearchService" ref="flexibleSearchService" />
+		<property name="sessionService" ref="sessionService" />
+	</bean>
+
+	<!-- PR Product catalog sync Service layer job -->
+	<bean id="prProdStagedToOnline" class="com.jnj.la.cronjobs.JnjSyncPRProdStagedToOnline">
+		<property name="modelService" ref="modelService" />
+		<property name="flexibleSearchService" ref="flexibleSearchService" />
+		<property name="sessionService" ref="sessionService" />
+	</bean>
+
+	<bean id="jnjCategoryShowPlannedDateJob" class="com.jnj.la.core.cronjobs.JnjCategoryShowPlannedDateJob"
+		parent="abstractJobPerformable" />
+
+	<bean id="jnjLoadTranslationService"
+		class="com.jnj.la.core.services.impl.JnjLoadTranslationServiceImpl" />
+	<bean id="jnJCrossReferenceDao" class="com.jnj.core.dao.impl.JnJCrossReferenceDaoImpl">
+		<property name="modelService" ref="modelService" />
+		<property name="flexibleSearchService" ref="flexibleSearchService" />
+	</bean>
+
+	<bean id="jnjCompanyService" class="com.jnj.core.services.impl.JnjCompanyServiceImpl" />
+
+	<bean id="JnjlatamOrderUtil" class="com.jnj.la.core.util.JnjlatamOrderUtil"
+		autowire="byName" scope="tenant" />
+
+	<!-- START Dropshipment -->
+	<bean id="jnjlaDropshipmentDAO"
+		class="com.jnj.la.core.dao.dropshipment.impl.JnjDropshipmentDAOImpl" />
+
+	<bean id="jnjlaDropshipmentService"
+		class="com.jnj.la.core.services.dropshipment.impl.JnjDropshipmentServiceImpl" />
+
+	<bean id="jnjlaSoldToShipToOrderTypeDAO"
+		  class="com.jnj.la.core.dao.dropshipment.impl.JnjLaSoldToShipToOrderTypeDAOImpl" />
+
+	<bean id="jnjlaCustomerAddressDropshipmentService"
+		  class="com.jnj.la.core.services.dropshipment.impl.JnjLaCustomerAddressDropshipmentServiceImpl" />
+
+	<!-- END Dropshipment -->
+
+	<!-- beans for SalesOrgCustomer Interface added -->
+	<bean id="jnjSalesOrgCustomerJob" class="com.jnj.la.core.cronjobs.JnjLaSalesOrgCustomerJob"
+		parent="abstractJobPerformable" />
+
+	<alias name="jnjLaSalesOrgCustomerService" alias="jnJSalesOrgCustService" />
+	<bean id="jnjLaSalesOrgCustomerService"
+		class="com.jnj.core.services.impl.JnjLaSalesOrgCustomerServiceImpl" />
+
+	<!-- Cart Service -->
+	<bean id="jnjLaCartService" class="com.jnj.la.core.services.cart.impl.JnjLACartServiceImpl"
+		parent="jnjGTCartService" />
+
+	<bean name="jnjLatamCartFactory" class="com.jnj.la.core.factory.order.JnjLatamCartFactory"
+		parent="defaultCartFactory" />
+	<alias alias="cartFactory" name="jnjLatamCartFactory" />
+
+	<bean name="jnjLatamOrderDao" class="com.jnj.la.core.dao.order.impl.JnjLatamOrderImpl" />
+	<alias alias="DefaultJnjGTOrderDao" name="jnjLatamOrderDao" />
+
+	<bean name="jnjLatamCustomerDAOImpl"
+		  class="com.jnj.la.core.dao.customer.impl.JnjLatamCustomerDAOImpl">
+		<property name="userService" ref="userService"/>
+		<property name="sessionService" ref="sessionService"/>
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>
+		<property name="configurationService" ref="configurationService"/>
+    </bean>
+
+
+	<bean id="jnjLatamCustomerService"
+		class="com.jnj.la.core.services.customer.impl.JnjLatamCustomerServiceImpl"
+		parent="jnjGTUserService" />
+
+	<alias alias="B2BCustomerModelValidateInterceptor" name="jnjLaB2BCustomerValidateInterceptor" />
+	<bean id="jnjLaB2BCustomerValidateInterceptor" name="jnjLaB2BCustomerValidateInterceptor"
+		class="com.jnj.la.core.interceptors.JnjLaB2BCustomerValidateInterceptor"
+		scope="tenant" autowire="byName">
+		<property name="b2bUnitService" ref="b2bUnitService" />
+		<property name="userService" ref="userService" />
+		<property name="l10NService" ref="l10nService" />
+	</bean>
+
+	<bean id="jnjLaB2BCustomerValidateInterceptorMapping" scope="tenant"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="jnjLaB2BCustomerValidateInterceptor" />
+		<property name="typeCode" value="JnJB2bCustomer" />
+		<property name="replacedInterceptors" ref="jnjGtB2BCustomerValidateInterceptor" />
+	</bean>
+
+	<alias name="jnjLatamCartServiceForAccelerator" alias="cartService" />
+	<bean id="jnjLatamCartServiceForAccelerator"
+		class="com.jnj.la.core.services.cart.impl.JnjLatamCartServiceForAccelerator"
+		parent="defaultCartServiceForAccelerator" />
+
+	<bean id="jnjLatamUOMValueProvider" class="com.jnj.la.core.solr.provider.JnjLatamUOMValueProvider"
+		parent="abstractPropertyFieldValueProvider">
+		<!-- <property name="fieldNameProvider" ref="solrFieldNameProvider" /> -->
+	</bean>
+	<bean name="jnjSellOutReportsService"
+		class="com.jnj.la.core.services.impl.JnjSellOutReportsServiceImpl" />
+	<alias alias="sellOutReportsService" name="jnjSellOutReportsService" />
+
+	<bean name="jnjSellOutReportsDao" class="com.jnj.la.core.daos.impl.JnjSellOutReportsDaoImpl">
+		<property name="flexibleSearchService" ref="flexibleSearchService" />
+		<property name="modelService" ref="modelService" />
+	</bean>
+	<alias alias="sellOutReportsDao" name="jnjSellOutReportsDao" />
+
+	<alias name="jnjlaCommonUtil" alias="jnjCommonUtil" />
+	<bean id="jnjlaCommonUtil" class="com.jnj.la.core.util.JnjLaCommonUtil">
+	   <property name="userService" ref="userService" />
+	</bean>
+
+	<alias name="jnjOrderDao" alias="jnjOrderDao" />
+	<bean id="jnjOrderDao" class="com.jnj.la.core.daos.impl.DefaultLaJnjOrderDao"
+		parent="defaultOrderDao">
+		<property name="flexibleSearchService" ref="flexibleSearchService" />
+		<property name="modelService" ref="modelService" />
+	</bean>
+
+	<bean id="jnjRSAProductDataService" class="com.jnj.la.core.services.product.impl.JnjRSAProductDataServiceImpl">
+		<property name="configurationService" ref="configurationService"/>
+		<property name="jnjRSAProductDao" ref="jnjRSAProductDao"/>
+	</bean>
+
+	<!-- Customer Eligibility Changes [Author: Akash Rawat] -->
+	<bean id="customerEligibilityService"
+		class="com.jnj.la.core.services.customer.impl.DefaultJnjLaCustomerEligibilityService">
+		<property name="modelService" ref="modelService" />
+		<property name="companyB2BCommerceService" ref="b2bCommerceUnitService" />
+		<property name="commerceCategoryService" ref="commerceCategoryService" />
+		<property name="catalogService" ref="catalogService" />
+		<property name="catalogVersionService" ref="catalogVersionService" />
+		<property name="categoryService" ref="categoryService" />
+		<property name="customerEligiblityDao" ref="customerEligiblityDao" />
+		<property name="customerLaEligiblityDao" ref="customerLaEligiblityDao" />
+	</bean>
+
+	<bean id="customerLaEligiblityDao"
+		class="com.jnj.la.core.dao.customer.impl.DefaultJnjLaCustomerEligibilityDao">
+		<property name="flexibleSearchService" ref="flexibleSearchService" />
+		<property name="userService" ref="userService" />
+		<property name="sessionService" ref="sessionService" />
+		<property name="rsaDBConnector" ref="rsaDBConnector" />
+		<property name="configurationService" ref="configurationService"/>
+	</bean>
+	<!-- End of Customer Eligibility Changes -->
+
+	<alias alias="invoiceService" name="jnjInvoiceService" />
+	<bean id="jnjInvoiceService"
+		class="com.jnj.la.core.services.impl.DefaultJnjLaInvoiceService" />
+
+	<bean id="jnjInvoiceDao" class="com.jnj.core.dao.impl.DefaultJnjInvoiceDao">
+		<property name="flexibleSearchService" ref="flexibleSearchService" />
+		<property name="modelService" ref="modelService" />
+	</bean>
+
+	<bean id="jnjlaInvoiceDao" class="com.jnj.la.core.daos.impl.DefaultJnjLaInvoiceDao">
+		<property name="flexibleSearchService" ref="flexibleSearchService" />
+		<property name="modelService" ref="modelService" />
+		<property name="rsaDBConnector" ref="rsaDBConnector" />
+		<property name="configurationService" ref="configurationService"/>
+		<property name="jnjLaCronjobUtil" ref="jnjLaCronjobUtil"/>
+	</bean>
+
+	<bean id="jnjBrInvoiceDao" class="com.jnj.la.core.daos.impl.DefaultJnjBrInvoiceDao" parent="jnjlaInvoiceDao" />
+
+	<!-- RSA Products pull related beans -->
+	<bean id="jnjRSAProductDao" class="com.jnj.la.core.dao.product.impl.JnjRSAProductDaoImpl"
+		autowire="byName" >
+		<property name="rsaDBConnector" ref="rsaDBConnector"/>
+		<property name="configurationService" ref="configurationService"/>
+		<property name="jnjLaCronjobUtil" ref="jnjLaCronjobUtil"/>
+	</bean>
+
+	<bean id="jnjRSAOrderDataService"
+		  class="com.jnj.la.core.services.order.impl.JnjRSAOrderDataServiceImpl"
+		  autowire="byName"/>
+
+	<alias name="defaultOrderEntryCloneHelper" alias="orderEntryCloneHelper"/>
+	<bean id="defaultOrderEntryCloneHelper" class="com.jnj.la.core.services.order.impl.OrderEntryCloneHelper"/>
+
+	<bean id="jnjRSAOrderDao" class="com.jnj.la.core.dao.order.impl.JnjRSAOrderDaoImpl">
+		<property name="rsaDBConnector" ref="rsaDBConnector"/>
+		<property name="configurationService" ref="configurationService"/>
+		<property name="jnjLaCronjobUtil" ref="jnjLaCronjobUtil"/>
+	</bean>
+
+	<bean id="jnJLaCustomerDataDao" class="com.jnj.la.core.daos.impl.DefaultJnJLaCustomerDataDao">
+		<property name="flexibleSearchService" ref="flexibleSearchService" />
+		<property name="modelService" ref="modelService" />
+	</bean>
+
+	<alias name="jnjCustomerDataService" alias="jnjCustomerDataService" />
+	<bean id="jnjCustomerDataService"
+		class="com.jnj.la.core.services.impl.DefaultJnJLaCustomerDataService">
+		<property name="jnJCustomerDataDao" ref="jnjCustomerDataDao" />
+		<property name="jnJLaCustomerDataDao" ref="jnJLaCustomerDataDao" />
+	</bean>
+
+	<bean id="rsaDBConnector" class="com.jnj.core.connector.JNJRSADBConnector">
+		<property name="dataSource" ref="dataRSASource" />
+	</bean>
+
+	<bean id="dataRSASource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${rsa.db.driver}" />
+		<property name="url" value="${rsa.db.url}" />
+		<property name="username" value="${rsa.db.username}" />
+		<property name="password" value="${rsa.db.password}" />
+	</bean>
+
+	<!-- RSA Orders pull related beans -->
+	<bean id="jnjLAOrderService"
+		class="com.jnj.la.core.services.order.impl.JnjLAOrderServiceImpl"
+		parent="jnjGTOrderService" autowire="byName">
+    </bean>
+
+	<bean id="jnjSAPErrorService"
+		class="com.jnj.la.core.services.order.impl.JnjLatamSAPErrorServiceImpl" />
+
+	<bean id="jnjSAPErrMessageDao" class="com.jnj.la.core.daos.impl.JnjLatamSAPErrMessageDaoImpl" />
+
+	<alias name="jnjLaSAPOrdersDao" alias="jnjSAPOrdersDao" />
+	<bean id="jnjLaSAPOrdersDao" class="com.jnj.la.core.dao.order.impl.DefaultJnjLaSAPOrdersDao">
+		<property name="flexibleSearchService" ref="flexibleSearchService" />
+	</bean>
+	<bean id="jnjLatamSuccessfulRegistrationEmailEventListener"
+		class="com.jnj.core.event.JnjLatamSuccessfulRegistrationEmailEventListener"
+		parent="abstractSiteEventListener" />
+
+	<alias alias="defaultJnjSAPOrdersService" name="defaultLaJnjSAPOrdersService" />
+	<bean id="defaultLaJnjSAPOrdersService"
+		class="com.jnj.la.core.services.order.impl.DefaultJnjLASAPOrdersService">
+		<property name="addressService" ref="addressService" />
+		<property name="b2bUnitService" ref="b2bUnitService" />
+		<property name="b2BCommerceUnitService" ref="b2bCommerceUnitService" />
+		<property name="modelService" ref="modelService" />
+		<property name="productService" ref="productService" />
+		<property name="commonI18NService" ref="commonI18NService" />
+		<property name="baseStoreService" ref="baseStoreService" />
+		<property name="baseSiteService" ref="baseSiteService" />
+		<property name="eventService" ref="eventService" />
+		<property name="jnjSAPOrdersDao" ref="jnjSAPOrdersDao" />
+		<property name="catalogService" ref="catalogService" />
+		<property name="catalogVersionService" ref="catalogVersionService" />
+	</bean>
+
+	<bean id="jnjLaCoreUtil" class="com.jnj.la.core.util.JnjLaCoreUtil" />
+
+	<bean id="jnjIndirectPayerFormEmailEventListener"
+		class="com.jnj.core.event.JnjIndirectPayerFormEmailEventListener"
+		parent="abstractSiteEventListener">
+		<property name="modelService" ref="modelService" />
+		<property name="businessProcessService" ref="businessProcessService" />
+	</bean>
+
+	<bean id="jnjFormEventListener" class="com.jnj.core.event.JnjFormEventListener"
+		parent="abstractSiteEventListener">
+		<property name="modelService" ref="modelService" />
+		<property name="businessProcessService" ref="businessProcessService" />
+	</bean>
+
+	<bean id="jnjAddIndirectFormEmailProcessDefinitionResource"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjlab2bcore/processes/jnjAddIndirectFormEmailProcess.xml" />
+	</bean>
+
+
+
+	<bean id="generateAddIndirectFormEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="AddIndirectFormTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="emailGenerationService" />
+	</bean>
+
+
+	<bean id="jnjAddIndirectFormPayerEmailProcessDefinitionResource"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjlab2bcore/processes/jnjAddIndirectFormPayerEmailProcess.xml" />
+	</bean>
+
+
+	<bean id="jnjConsignmentIssueFormEmailProcessDefinitionResource"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjlab2bcore/processes/jnjConsignmentIssueFormEmailProcess.xml" />
+	</bean>
+
+	<bean id="jnjLatamEmailGenerationService" class="com.jnj.facades.services.impl.JnjLatamEmailGenerationService"
+		  parent="emailGenerationService">
+		<property name="configurationService" ref="configurationService"/>
+		<property name="modelService" ref="modelService" />
+	</bean>
+
+	<bean id="generateConsignmentIssueFormEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="ConsingmentIssueFormTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="jnjLatamEmailGenerationService" />
+	</bean>
+
+	<bean id="generateAddIndirectPayerFormEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="AddIndirectPayerFormTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="emailGenerationService" />
+
+	</bean>
+	<alias name="injLatamCategoryFacetDisplayNameProvider" alias="categoryFacetDisplayNameProvider" />
+	<bean id="injLatamCategoryFacetDisplayNameProvider"
+		class="com.jnj.la.core.solr.provider.JnjLatamCategoryFacetDisplayNameProvider"
+		parent="commerceCategoryFacetDisplayNameProvider">
+	</bean>
+
+
+
+	<alias name="jnjDefaultB2BUserGroupsLookUpStrategy" alias="b2bUserGroupsLookUpStrategy" />
+	<bean name="jnjDefaultB2BUserGroupsLookUpStrategy"
+		class="de.hybris.platform.b2bacceleratorservices.strategies.impl.DefaultB2BUserGroupsLookUpStrategy">
+		<property name="groups">
+			<list>
+				<value>JnjGTInternalNoChargeUser</value>
+				<value>accountManagerGroup</value>
+				<value>acctmgrgroup</value>
+				<value>addIndirectPayer</value>
+				<value>addProductMediaGroup</value>
+				<value>admingroup</value>
+				<value>affiliatesGroup</value>
+				<value>analyticsperspectivegroup</value>
+				<value>approvePDPGroup</value>
+				<value>approveProductsGroup</value>
+				<value>arDistributorGroup</value>
+				<value>arGeneralGroup</value>
+				<value>arUserGroup</value>
+				<value>b2badmingroup</value>
+				<value>b2bapprovergroup</value>
+				<value>b2bcustomergroup</value>
+				<value>b2bgroup</value>
+				<value>b2bmanagergroup</value>
+				<value>backofficeadmingroup</value>
+				<value>bidGroup</value>
+				<value>brAccountManagerGroup</value>
+				<value>brAffiliatesGroup</value>
+				<value>brDistributorGroup</value>
+				<value>brGovernmentGroup</value>
+				<value>brHospitalGroup</value>
+				<value>brKeyAccountManagerGroup</value>
+				<value>brRetailGroup</value>
+				<value>brSalesRepGroup</value>
+				<value>brSalesThirdPartyGroup</value>
+				<value>brUserGroup</value>
+				<value>btgmanager</value>
+				<value>catalogGroup</value>
+				<value>cencaAccountManagerGroup</value>
+				<value>cencaAffiliatesGroup</value>
+				<value>cencaCustomerGroup</value>
+				<value>cencaDistributorGroup</value>
+				<value>cencaGovernmentGroup</value>
+				<value>cencaHospitalGroup</value>
+				<value>cencaKeyAccountManagerGroup</value>
+				<value>cencaRetailGroup</value>
+				<value>cencaSalesRepGroup</value>
+				<value>cencaSalesThirdPartyGroup</value>
+				<value>cencaUserGroup</value>
+				<value>changeProductAssignmentGroup</value>
+				<value>clDistributorGroup</value>
+				<value>clUserGroup</value>
+				<value>cmsmanagergroup</value>
+				<value>coAccountManagerGroup</value>
+				<value>coAffiliatesGroup</value>
+				<value>coCustomerGroup</value>
+				<value>coDistributorGroup</value>
+				<value>coGovernmentGroup</value>
+				<value>coHospitalGroup</value>
+				<value>coKeyAccountManagerGroup</value>
+				<value>coRetailGroup</value>
+				<value>coSalesRepGroup</value>
+				<value>coSalesThirdPartyGroup</value>
+				<value>coUserGroup</value>
+				<value>cockpitgroup</value>
+				<value>consingmentGroup</value>
+				<value>contractBalanceGroup</value>
+				<value>createCategoriesGroup</value>
+				<value>createUserGroup</value>
+				<value>crossReferenceTable</value>
+				<value>csagentgroup</value>
+				<value>customergroup</value>
+				<value>customerservicegroup</value>
+				<value>distributorGroup</value>
+				<value>downloadPharmaPriceList</value>
+				<value>ecAccountManagerGroup</value>
+				<value>ecAffiliatesGroup</value>
+				<value>ecCustomerGroup</value>
+				<value>ecDistributorGroup</value>
+				<value>ecGovernmentGroup</value>
+				<value>ecHospitalGroup</value>
+				<value>ecKeyAccountManagerGroup</value>
+				<value>ecRetailGroup</value>
+				<value>ecSalesRepGroup</value>
+				<value>ecSalesThirdPartyGroup</value>
+				<value>ecUserGroup</value>
+				<value>editUserGroup</value>
+				<value>employeegroup</value>
+				<value>expectedPriceGroup</value>
+				<value>governmentGroup</value>
+				<value>hideHelpNewsBidsGroup</value>
+				<value>hideHelpNewsTabGroup</value>
+				<value>hideHelpOrderStatusTabGroup</value>
+				<value>hideHelpPlaceOrderTabGroup</value>
+				<value>hospitalGroup</value>
+				<value>indirectCustomerFormGroup</value>
+				<value>indirectCustomerGroup</value>
+				<value>integralServicesGroup</value>
+				<value>jnjEMEAAdminGroup</value>
+				<value>jnjEMEAproductmanagergroup</value>
+				<value>jnjGTAdminGroup</value>
+				<value>jnjGTCsrGroup</value>
+				<value>jnjGTproductmanagergroup</value>
+				<value>keyAccountManagerGroup</value>
+				<value>laudoManagementGroup</value>
+				<value>laudoUserGroup</value>
+				<value>manageLaudo</value>
+				<value>manageProductsDataGroup</value>
+				<value>mxAccountManagerGroup</value>
+				<value>mxAffiliatesGroup</value>
+				<value>mxDistributorGroup</value>
+				<value>mxGovernmentGroup</value>
+				<value>mxHospitalGroup</value>
+				<value>mxKeyAccountManagerGroup</value>
+				<value>mxRetailGroup</value>
+				<value>mxSalesRepGroup</value>
+				<value>mxSalesThirdPartyGroup</value>
+				<value>mxUserGroup</value>
+				<value>ocdGroup</value>
+				<value>orderFileUploadGroup</value>
+				<value>orderHistoryGroup</value>
+				<value>otherOrderGroup</value>
+				<value>peAccountManagerGroup</value>
+				<value>peAffiliatesGroup</value>
+				<value>peDistributorGroup</value>
+				<value>peGovernmentGroup</value>
+				<value>peHospitalGroup</value>
+				<value>peKeyAccountManagerGroup</value>
+				<value>peRetailGroup</value>
+				<value>peSalesRepGroup</value>
+				<value>peSalesThirdPartyGroup</value>
+				<value>peUserGroup</value>
+				<value>pharmaDistributorBIDGroup</value>
+				<value>pharmaDistributorGroup</value>
+				<value>pharmaHospitalGroup</value>
+				<value>pharmaPharmacyGroup</value>
+				<value>pharmaPriceListGroup</value>
+				<value>placeOrderBuyerGroup</value>
+				<value>placeOrderGroup</value>
+				<value>placeOrderSalesGroup</value>
+				<value>prAccountManagerGroup</value>
+				<value>prAffiliatesGroup</value>
+				<value>prDistributorGroup</value>
+				<value>prGovernmentGroup</value>
+				<value>prHospitalGroup</value>
+				<value>prKeyAccountManagerGroup</value>
+				<value>prRetailGroup</value>
+				<value>prSalesRepGroup</value>
+				<value>prSalesThirdPartyGroup</value>
+				<value>prUserGroup</value>
+				<value>priceChangeGroup</value>
+				<value>productDataTranslationGroup</value>
+				<value>productManagerGroup</value>
+				<value>productWriterGroup</value>
+				<value>productmanagergroup</value>
+				<value>productsGroup</value>
+				<value>publisherGroup</value>
+				<value>readProductDataGroup</value>
+				<value>reportsGroup</value>
+				<value>requestQuoteGroup</value>
+				<value>resetPasswordGroup</value>
+				<value>retailGroup</value>
+				<value>revokeAddProductMediaGroup</value>
+				<value>revokeApproveProductsGroup</value>
+				<value>salesRepGroup</value>
+				<value>salesThirdPartyGroup</value>
+				<value>salesrepgroup</value>
+				<value>searchOrderGroup</value>
+				<value>selfOrderGroup</value>
+				<value>selloutGroup</value>
+				<value>servicesGroup</value>
+				<value>synchronizeStageToOnlineGroup</value>
+				<value>synthesGroup</value>
+				<value>uploadedFilesGroup</value>
+				<value>useradminGroup</value>
+				<value>uyDistributorGroup</value>
+				<value>uyUserGroup</value>
+				<value>viewCatalogGroup</value>
+				<value>viewOnlyBuyerGroup</value>
+				<value>viewOnlySalesRepGroup</value>
+				<value>viewSecurityQAGroup</value>
+				<value>vjdbcReportsGroup</value>
+				<value>workflowsGroup</value>
+				<value>indirectPayerFormGroup</value>
+				<value>chatGroup</value>
+				<value>invoiceHistoryGroup</value>
+				<value>clsManagementGroup</value>
+			</list>
+		</property>
+	</bean>
+
+	<alias name="defaultB2BCommerceB2BUserGroupService" alias="b2bCommerceB2BUserGroupService" />
+	<bean name="defaultB2BCommerceB2BUserGroupService"
+		class="com.jnj.la.core.services.usergroup.JnjLaB2BCommerceB2BUserGroupService">
+		<property name="pagedB2BUserGroupDao" ref="pagedB2BUserGroupDao" />
+		<property name="userService" ref="userService" />
+		<property name="modelService" ref="modelService" />
+	</bean>
+	<bean id="jnjLatamPagedB2BCustomerDaoImpl"
+		class="com.jnj.core.dao.company.impl.JnjLatamPagedB2BCustomerDaoImpl"
+		parent="jnjGTPagedB2BCustomerDao" />
+
+	<alias name="jnjLatamB2BCommerceUserServiceImpl" alias="jnjGTB2BCommerceUserService" />
+	<bean id="jnjLatamB2BCommerceUserServiceImpl"
+		class="com.jnj.core.services.company.JnjLatamB2BCommerceUserServiceImpl">
+		<property name="modelService" ref="modelService"/>
+		<property name="b2BUnitService" ref="b2bUnitService"/>
+		<property name="pagedB2BCustomerDao" ref="pagedB2BCustomerDao"/>
+		<property name="userService" ref="userService" />
+	</bean>
+
+
+	<bean id="JnjLaConfirmShipmentEmailEventListener"
+		class="com.jnj.core.event.JnjLaConfirmShipmentEmailEventListener"
+		parent="abstractSiteEventListener">
+		<property name="modelService" ref="modelService" />
+		<property name="businessProcessService" ref="businessProcessService" />
+	</bean>
+
+	<bean id="generateShipmentConfimationationEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="JnjGTOrderShipmentEmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="emailGenerationService" />
+	</bean>
+
+	<bean id="JnjGTShipmentConfirmationEmailBusinessProcess"
+		class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+			value="classpath:/jnjlab2bcore/processes/JnjGTShipmentConfirmationEmailBusinessProcess.xml" />
+	</bean>
+
+	<bean id="jnjLatamEdiOrderService"
+		class="com.jnj.la.core.services.order.impl.JnjLatamEdiOrderServiceImpl"
+		autowire="byName"/>
+
+	<!-- laudo -->
+	<bean id="jnjLaudoService" class="com.jnj.core.services.laudo.impl.JnjLaudoServiceImpl" />
+
+	<bean id="jnjLaudoDao" class="com.jnj.core.dao.laudo.impl.JnjLaudoDaoImpl" >
+	  <property name="jnjConfigService" ref="jnjConfigService" />
+	  <property name="jnjLatamCustomerService" ref="jnjLatamCustomerService" />
+	  <property name="jnjCommonFacadeUtil" ref="jnjCommonFacadeUtil" />
+	  <property name="flexibleSearchService" ref="flexibleSearchService" />
+    </bean>
+    <alias name="jnjLatamCommonFacadeUtil" alias="jnjCommonFacadeUtil"/>
+    <bean id="jnjLatamCommonFacadeUtil"
+          class="com.jnj.facades.util.impl.JnjLatamCommonFacadeUtilImpl"/>
+
+	<bean id="jnjLatamMediaService"
+		class="com.jnj.core.services.media.impl.JnjLatamMediaServiceImpl"
+		parent="mediaService" />
+
+	<bean id="jnjLaudoMapper" class="com.jnj.core.mapper.laudo.JnjLaudoMapper">
+		<property name="userService" ref="userService"/>
+	</bean>
+	<alias alias="commerceCartCalculationStrategy" name="jnjLatamCommerceCartCalculationStrategy" />
+	<bean id="jnjLatamCommerceCartCalculationStrategy"
+		class="com.jnj.la.commerceservices.order.impl.JnjLatamCommerceCartCalculationStrategy">
+		<property name="calculationService" ref="calculationService" />
+		<property name="promotionsService" ref="promotionsService" />
+		<property name="timeService" ref="timeService" />
+		<property name="baseSiteService" ref="baseSiteService" />
+		<property name="configurationService" ref="configurationService" />
+		<property name="commerceCartCalculationMethodHooks" ref="commerceCartCalculationMethodHooks" />
+		<property name="externalTaxesService" ref="externalTaxesService" />
+		<property name="calculateExternalTaxes" value="false" />
+	</bean>
+	<bean id="jnjCrossReferenceService" class="com.jnj.core.services.impl.JnjCrossReferenceServiceImpl" />
+
+	<bean id="jnjLatamCommonServiceImpl" class="com.jnj.facades.services.impl.JnjLatamCommonServiceImpl" />
+
+	<bean id="jnjLaMessageService" class="com.jnj.core.services.impl.JnjLaMessageServiceImpl"
+		parent="messageService" />
+
+	<bean id="jnjLaUnitOfMeasureValueProvider" class="com.jnj.core.solr.provider.JnjLaUnitOfMeasureValueProvider" parent="jnjUnitOfMeasureValueProvider" />
+
+    <alias name="jnjLatamGetCurrentDefaultB2BUnitUtil" alias="jnjGetDefaultB2BUnitUtil"/>
+    <bean id="jnjLatamGetCurrentDefaultB2BUnitUtil" class="com.jnj.core.util.JnjLatamGetCurrentDefaultB2BUnitUtil"/>
+
+	<alias name="jnjLatamAddressDao" alias="jnjAddressDao"/>
+	<bean id="jnjLatamAddressDao" class="com.jnj.la.dataload.dao.impl.DefaultJnjLatamAddressDao"/>
+
+	<bean id="jnjLAOrderStatusChangeProcess" class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource" value="classpath:/jnjlab2bcore/processes/jnjLAOrderStatusChangeProcess.xml" />
+	</bean>
+
+    <bean id="generateLAOrderStatusChangeNotificationEmail"
+          class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+          parent="abstractAction">
+        <property name="modelService" ref="modelService" />
+        <property name="cmsEmailPageService" ref="cmsEmailPageService" />
+        <property name="frontendTemplateName" value="JnjOrderStatusChangeNotificationEmailTemplate" />
+        <property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+        <property name="emailGenerationService" ref="jnjLatamEmailGenerationService" />
+    </bean>
+
+	<bean id="jnjLAOrderLineStatusEventListener" class="com.jnj.core.event.JnjLAOrderStatusNotificationEventListener"
+		  parent="abstractSiteEventListener">
+		<property name="modelService" ref="modelService" />
+		<property name="businessProcessService" ref="businessProcessService" />
+		<property name="commerceCommonI18NService" ref="commerceCommonI18NService"/>
+	</bean>
+
+	<bean id="jnjUpdateInvoiceService" class="com.jnj.la.core.services.impl.JnJUpdateInvoiceServiceImpl">
+		<property name="invoiceService" ref="invoiceService" />
+		<property name="modelService" ref="modelService" />
+        <property name="uploadedInvoiceDateDao" ref="jnjUploadedInvoiceDateDao" />
+        <property name="configurationService" ref="configurationService" />
+	</bean>
+
+    <bean id="jnjUploadedInvoiceDateDao" class="com.jnj.la.core.dao.invoice.JnJUploadedInvoiceDateDaoImpl">
+        <property name="flexibleSearchService" ref="flexibleSearchService" />
+    </bean>
+
+    <bean id="jnjUpdateCarrierStatusService" class="com.jnj.la.core.services.impl.JnJUpdateCarrierStatusServiceImpl">
+        <property name="modelService" ref="modelService" />
+        <property name="invoiceDao" ref="jnjlaInvoiceDao" />
+    </bean>
+
+    <bean id="jnjLAEmailMatrixDao" class="com.jnj.la.core.dao.order.impl.JnjLAEmailMatrixDaoImpl">
+        <property name="flexibleSearchService" ref="flexibleSearchService" />
+    </bean>
+
+	<bean id="jnjLaConsolidatedEmailEventListener" class="com.jnj.core.event.JnjLaConsolidatedEmailEventListener"
+		  parent="abstractSiteEventListener">
+		<property name="modelService" ref="modelService" />
+		<property name="businessProcessService" ref="businessProcessService" />
+	</bean>
+
+    <bean id="jnjLaConsolidatedEmailProcess" class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+        <property name="resource" value="classpath:/jnjlab2bcore/processes/jnjLaConsolidatedEmailProcess.xml" />
+    </bean>
+
+    <bean id="generateLaConsolidatedEmail"
+          class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction" parent="abstractAction">
+        <property name="modelService" ref="modelService" />
+        <property name="cmsEmailPageService" ref="cmsEmailPageService" />
+        <property name="frontendTemplateName" value="JnjConsolidatedOpenedOrdersEmailTemplate" />
+        <property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+        <property name="emailGenerationService" ref="jnjLatamEmailGenerationService" />
+    </bean>
+    
+    <alias name="JnjLaReportsDao" alias="GTReportsDao" />
+    <bean id="JnjLaReportsDao" class="com.jnj.la.core.daos.impl.DefaultJnjLaReportsDao">
+	    <property name="jnjGetCurrentDefaultB2BUnitUtil" ref="jnjGetDefaultB2BUnitUtil" />
+	    <property name="configurationService" ref="configurationService" />
+	    <property name="modelService" ref="modelService" />
+	    <property name="flexibleSearchService" ref="flexibleSearchService" />
+    </bean>
+
+	<bean id="jnjLaCronJobDao" class="com.jnj.la.core.daos.impl.JnjLaCronJobDaoImpl" parent="abstractItemDao" />
+
+	<bean id="jnjLaCronJobMonitoringReportEventListener" class="com.jnj.core.event.JnjLaCronJobMonitoringReportEventListener" parent="abstractSiteEventListener">
+		<property name="modelService" ref="modelService" />
+		<property name="businessProcessService" ref="businessProcessService" />
+	</bean>
+	<bean id="generateLaCronJobMonitoringEmail"
+		  class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		  parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="JnjLaCronJobMonitoringEmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="jnjLatamEmailGenerationService" />
+	</bean>
+	<bean id="jnjLaCronJobMonitoringEmailProcess"
+		  class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+				  value="classpath:/jnjlab2bcore/processes/JnjLaCronJobMonitoringEmailProcess.xml" />
+	</bean>
+
+	<bean id="jnjLaCronjobUtil" class="com.jnj.la.core.util.JnJLaCronjobUtil">
+		<property name="rsaDBConnector" ref="rsaDBConnector"/>
+	</bean>
+	
+	<bean id="cencaOrderSplitService" class="com.jnj.la.core.services.ordersplit.impl.JnjCencaOrderSplitServiceImpl">
+		<property name="jnjGTB2BUnitService" ref="jnjGTB2BUnitService" />
+		<property name="jnjGetCurrentDefaultB2BUnitUtil" ref="jnjGetDefaultB2BUnitUtil" />
+	</bean>
+	
+	<bean id="peOrderSplitService" class="com.jnj.la.core.services.ordersplit.impl.JnjPeruOrderSplitServiceImpl">
+		<property name="jnjGTB2BUnitService" ref="jnjGTB2BUnitService" />
+	</bean>
+	
+	<bean id="prOrderSplitService" class="com.jnj.la.core.services.ordersplit.impl.JnjPuertoRicoOrderSplitServiceImpl">
+		<property name="jnjGTB2BUnitService" ref="jnjGTB2BUnitService" />
+		<property name="jnjCencaOrderSplitService" ref="cencaOrderSplitService" />
+	</bean>
+	
+	<alias name="jnjLaContactUsService" alias="GTContactUsService" />
+	<bean id="jnjLaContactUsService" class="com.jnj.core.services.impl.DefaultJnjLaContactUsService">
+		<property name="cmsSiteService" ref="cmsSiteService" />
+		<property name="baseStoreService" ref="baseStoreService"/>
+		<property name="baseSiteService" ref="baseSiteService"/>
+		<property name="commonI18NService" ref="commonI18NService"/>
+		<property name="eventService" ref="eventService" />
+		<property name="userService" ref="userService"/>
+	</bean>
+
+	<!-- Add Reset Password Email Listener Start -->
+	<bean id="jnjLAResetPasswordEventListener" class="com.jnj.core.event.JnjLAResetPasswordEventListener"
+		  parent="abstractSiteEventListener">
+		<property name="modelService" ref="modelService"/>
+		<property name="businessProcessService" ref="businessProcessService"/>
+		<property name="i18nService" ref="i18nService"/>
+		<property name="messageFacade" ref="messageFacade"/>
+	</bean>
+	<bean id="generateResetPasswordEmailProcess"
+		  class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		  parent="abstractAction">
+		<property name="modelService" ref="modelService"/>
+		<property name="cmsEmailPageService" ref="cmsEmailPageService"/>
+		<property name="frontendTemplateName" value="TemporaryOTPPasswordEmailTemplate"/>
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy"/>
+		<property name="emailGenerationService" ref="emailGenerationService"/>
+	</bean>
+	<bean id="jnjLAResetPasswordEmailProcessDefinitionResource"
+		  class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		<property name="resource"
+				  value="classpath:/jnjlab2bcore/processes/jnjLAResetPasswordProcess.xml"/>
+	</bean>
+
+	<alias name="jnjLAP360IntegrationService" alias="jnjCCP360IntegrationService"/>
+	<bean id="jnjLAP360IntegrationService" class="com.jnj.la.core.services.p360.impl.DefaultJnjLAP360IntegrationService">
+		<property name="jnjCCP360IntegrationDao" ref="jnjCCP360IntegrationDao"/>
+		<property name="configurationService" ref="configurationService"/>
+		<property name="jnjGTP360CountryNameStrategy" ref="GTP360CountryNameStrategy"/>
+		<property name="jnjLAProductDao" ref="jnjLaProductDao" />
+	</bean>
+
+	<alias name="laCommerceProductReferenceService" alias="commerceProductReferenceService"/>
+	<bean id="laCommerceProductReferenceService"
+		  class="com.jnj.core.services.impl.DefaultLatamCommerceProductReferenceService" parent="defaultCommerceProductReferenceService">
+		
+	</bean>
+
+	<bean id="jnjClassAttributeAssignmentDao" class="com.jnj.core.dao.impl.JnjClassAttributeAssignmentDaoImpl" parent="abstractItemDao">
+		<property name="flexibleSearchService" ref="flexibleSearchService" />
+	</bean>
+
+	<bean id="jnjClassAttributeAssignmentService" class="com.jnj.core.services.impl.JnjClassAttributeAssignmentServiceImpl" >
+		<property name="jnjClassAttributeAssignmentDao" ref="jnjClassAttributeAssignmentDao"/>
+	</bean>
+
+	<bean id="jnjOrderArchivalDao" class="com.jnj.la.core.dao.order.impl.DefaultJnjOrderArchivalDao">
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>
+		<property name="configurationService" ref="configurationService"/>
+	</bean>
+	<bean id="jnjOrderArchivalService" class="com.jnj.la.core.services.impl.DefaultJnjOrderArchivalService">
+		<property name="modelService" ref="modelService"/>
+		<property name="configurationService" ref="configurationService"/>
+		<property name="jnjOrderArchivalDao" ref="jnjOrderArchivalDao"/>
+	</bean>
+	
+	<bean id="jnjLaActiveUsersReportEventListener" class="com.jnj.core.event.JnjLaActiveUsersReportEventListener"
+		parent="abstractSiteEventListener">
+	 <property name="modelService" ref="modelService" />
+		<property name="businessProcessService" ref="businessProcessService" /> 
+	</bean>
+	
+	<bean id="generateActiveUsersReportEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="JnjLaActiveUserReportEmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="jnjLatamEmailGenerationService" />
+	</bean>
+	
+	<bean id="jnjLaActiveUsersReportEmailProcess"
+		  class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		  <property name="resource"
+				  value="classpath:/jnjlab2bcore/processes/JnjLaActiveUsersReportEmailProcess.xml" />
+	</bean>
+
+	<alias name="laRequiredAddOnsNameProvider" alias="reqAddOnsNameProvider"/>
+	<alias name="laRequiredAddOnsNameProvider" alias="requiredAddOnsNameProvider" />
+	<bean id="laRequiredAddOnsNameProvider"
+		  class="com.jnj.la.core.services.impl.JnjLaRequiredAddonsNameProvider"/>
+		  
+   <bean id="generateSAPFailedOrdersReportEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="JnjLaSAPFailedOrdersReportEmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="jnjLatamEmailGenerationService" />
+	</bean>
+	
+	<bean id="sapFailedOrdersReportEmailStatusUpdateAction"
+		class="com.jnj.la.core.action.UpdateSAPFailedOrdersAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+	</bean>
+	
+	<bean id="JnjLaSAPFailedOrdersReportEmailProcess"
+		  class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		  <property name="resource"
+				  value="classpath:/jnjlab2bcore/processes/JnjLaSAPFailedOrdersReportEmailProcess.xml" />
+	</bean>
+	
+	<bean id="jnjLaInvoiceNotificationEmailEventListener" class="com.jnj.core.event.JnjLaInvoiceNotificationEmailEventListener"
+		parent="abstractSiteEventListener">
+	    <property name="modelService" ref="modelService" />
+		<property name="businessProcessService" ref="businessProcessService" /> 
+		<property name="enumerationService" ref="enumerationService" />
+		<property name="jnjLAOrderService" ref="jnjLAOrderService"/>
+		<property name="configurationService" ref="configurationService"/>		
+	</bean>
+	
+	<bean id="jnjLaInvoiceNotificationEmailProcess"
+		  class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+		  <property name="resource"
+				  value="classpath:/jnjlab2bcore/processes/jnjLaInvoiceNotificationEmailProcess.xml" />
+	</bean>
+	
+	<bean id="generateInvoiceNotificationEmail"
+		class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"
+		parent="abstractAction">
+		<property name="modelService" ref="modelService" />
+		<property name="cmsEmailPageService" ref="cmsEmailPageService" />
+		<property name="frontendTemplateName" value="JnjLaInvoiceNotificationEmailTemplate" />
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailGenerationService" ref="jnjLatamEmailGenerationService" />		
+	</bean>
+
+	<alias name="defaultJnjLatamVtexOrderService" alias="jnjLatamVtexOrderService"/>
+	<bean id="defaultJnjLatamVtexOrderService" class="com.jnj.core.service.vtex.order.impl.DefaultJnjLatamVtexOrderService">
+	    <property name="modelService" ref="modelService" />
+	    <property name="jnjLatamVtexOrderDao" ref="jnjLatamVtexOrderDao" />
+	</bean>
+
+	<alias name="defaultJnjLatamVtexOrderDao" alias="jnjLatamVtexOrderDao"/>
+	<bean id="defaultJnjLatamVtexOrderDao" class="com.jnj.core.dao.vtex.order.impl.DefaultJnjLatamVtexOrderDao">
+	 	 <property name="flexibleSearchService" ref="flexibleSearchService" />
+	</bean>
+
+   	<bean id="jnjCDLExportDao" class="com.jnj.la.core.dao.customer.impl.DefaultJnjCDLExportDao">
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>
+	</bean>
+   
+    
+</beans>

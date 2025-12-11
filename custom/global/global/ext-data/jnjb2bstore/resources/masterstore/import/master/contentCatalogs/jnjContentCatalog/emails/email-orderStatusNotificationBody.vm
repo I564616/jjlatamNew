@@ -1,0 +1,820 @@
+## messageSource=classpath:/jnjb2bcore/messages/email-orderApprovalRejection_$lang.properties
+#macro( genHtmlBoldFont $text )
+<font color="#414a4f" size="2" face="Arial, Helvetica, sans-serif"><b>$text</b></font>
+#end
+#macro(genHtmlLinkStartTag $url)
+<a href="$url"><font color="#666666">
+#end
+#macro(genHtmlLinkEndTag)
+</font></a>
+#end
+#macro(genHtmlLink $url $textColor $bodyContent)
+<a href="$url"><font color="$textColor">$bodyContent</font></a>
+#end
+
+<style>
+input.span-18 {
+	border-left-width: 1px;
+    border-right-width: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+	width: 698px;
+}
+.blank_row
+{
+    height: 20px
+    background-color: #FFFFFF;
+}	
+.last {
+    margin-right: 0;
+    padding-right: 0;
+}
+.interfaceNotificationBody h2.arrowHeader span {
+    float: right;
+}
+.interfaceNotificationBody ul {
+    margin: 10px 0 20px;
+    padding-bottom: 10px;
+}
+.interfaceNotificationBody ul li {
+    clear: both;
+    margin-top: 10px;
+}
+.interfaceNotificationBody label {
+    display: block;
+}
+.interfaceNotificationBody label span {
+    color: #B41601;
+}
+.interfaceNotificationBody input[type="text"], .interfaceNotificationBody select {
+    color: #646464;
+    padding-left: 2px;
+    width: 420px;
+}
+.interfaceNotificationBody select {
+    color: #646464;
+    float: none;
+    margin-bottom: 0;
+    width: 230px;
+}
+.radioPanel label {
+    display: inline;
+}
+.radioPanel input[type="text"] {
+    display: block;
+    margin: 4px 0;
+}
+.radioPanel input[type="radio"] {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    margin-bottom: 0;
+}
+.interfaceNotificationBody input, .interfaceNotificationBody select {
+    padding: 0;
+}
+.interfaceNotificationBody select {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid #E5E5E5;
+    padding-bottom: 0;
+    padding-right: 0;
+    padding-top: 0;
+}
+.interfaceNotificationBody .buttonWrapper > input {
+    padding: 5px 15px;
+}
+h2.arrowHeader {
+    border-bottom: 1px solid #84C5D4;
+    color: #0A8CAA;
+    font-size: 16px;
+    line-height: 30px;
+    margin-bottom: 0;
+}
+.priceSmall {
+    color: #B41601;
+    font-size: 12px;
+}
+.instructiontxt {
+    color: #828282;
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+
+body {
+    line-height: 1.5;
+}
+body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section {
+    border: 0 none;
+    font-family: inherit;
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+body {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #222222;
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    font-size: 75%;
+}
+ul li {
+    color: #646464;
+    font-size: 12px;
+    list-style-type: none;
+}
+td {
+	color: #646464;
+}
+
+table.readDashboard
+{
+	background:#EEE;
+	color:#333;
+	font-size:12px;
+	font: 'Arial';
+	text-align:center;
+}
+
+table.readDashboard th
+{
+	background:#CCC;
+	font-weight:bold;
+}
+.inlineClass{display:inline;}
+.inlineClass div{display:inline;}
+</style>
+<html>
+<head>
+	<title>Confirmation Email</title>
+</head>
+<body id="containerBody" style="font-size:10px;">
+	<table style="background-color:#ffffff" width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+		<tr>
+			<td style="vertical-align:top;">
+				<table bgcolor="#ffffff" width="900" border="0" cellspacing="0" cellpadding="0" align="center">
+					<tr>
+							<td style="color: red;" width="600" height="5" colspan="3" style="background-color:red;">
+								<div style="width:11;height:11" >&nbsp;
+							</td>
+						</tr>
+					
+						<tr bgcolor="#ffffff">
+						  <td style="color: #646464;" width="11" height="11">
+						  <div style="width:11;height:11" />
+						  </td>
+						  <td style="color: #646464;" height="11">
+								<table width="800">
+									<tr>
+										<td> ${ctx.cmsSlotContents.TopContentLogo1}</td>
+									 <td style="color: #646464;" width="690" height="11">
+										  <div style="width:690;height:11" >&nbsp;<div>
+									  </td>
+									<td> ${ctx.cmsSlotContents.TopContentLogo2}</td>
+									</tr>
+								</table>
+						  </td>
+		                  <td style="color: #646464;" width="1" height="11">
+		                         <div style="width:1;height:11" />
+		                   </td>
+		                 </tr>
+
+					<tr class="blank_row">	
+						<td colspan="3">&nbsp;</td>
+					</tr>
+						
+					<br>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td>
+							<h2 class="arrowHeader">
+								#if(${ctx.orderData.orderType} == 'ZHOR')
+									${ctx.messages.houseOrder}
+								#elseif(${ctx.orderData.orderType} == 'ZOR')
+									${ctx.messages.standardOrder}
+								#elseif(${ctx.orderData.orderType} == 'ZEX')
+									${ctx.messages.internationalOrder}
+								#elseif(${ctx.orderData.orderType} == 'ZNC')
+									${ctx.messages.noChargeOrder}
+								#elseif(${ctx.orderData.orderType} == 'ZKB')
+									${ctx.messages.replishmentOrder}
+								#elseif(${ctx.orderData.orderType} == 'ZRE')
+									${ctx.messages.returnOrder}
+								#elseif(${ctx.orderData.orderType} == 'ZDEL')
+									${ctx.messages.deliveredOrder}
+								#elseif(${ctx.orderData.orderType} == 'ZTOR')
+									${ctx.messages.tradeOrder}
+								#elseif(${ctx.orderData.orderType} == 'KE')
+									${ctx.messages.consignmentChargeOrder}
+								#elseif(${ctx.orderData.orderType} == 'KB')
+									${ctx.messages.consignmentFillupOrder}
+								#elseif(${ctx.orderData.orderType} == 'KA')
+									${ctx.messages.consignmentReturnOrder}
+								#else
+									${ctx.messages.affiliateOrder}
+								#end	
+							</h2>
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<!-- INSERT HERE -->
+						<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+							<div class="span-18 last" id="addindirectcustomer" style="display:block">
+								<div class="interfaceNotificationBody ">
+									${ctx.messages.salutation} $ctx.userFullName,<br/><br/>
+									
+									<!-- STANDARD ORDER ZOR , CONSIGNMENT CHARGE ORDER, CONSIGNMENT FILL UP ORDER, CONSIGNMENT RETURN ORDER -->
+									#if($ctx.orderData.orderType == "ZOR" || $ctx.orderData.orderType == "KA" || $ctx.orderData.orderType == 'KB' ||$ctx.orderData.orderType == 'KE')
+									${ctx.messages.thankyouForOrderPlaced} ${ctx.orderData.orderNumber} ${ctx.messages.placed} ${ctx.messages.jnjcust} ${ctx.messages.portal}<br/>
+									${ctx.messages.paragraphNote}<br/><br/>
+									
+										
+									#if(${ctx.orderData.purchaseOrderNumber})
+									<strong>${ctx.messages.custPONumber} </strong> ${ctx.orderData.purchaseOrderNumber}
+									#end<br/>
+											
+									#if(${ctx.orderData.orderNumber})
+									<strong>${ctx.messages.jjorderNumber}  </strong>  ${ctx.orderData.orderNumber}
+									#end<br/>					
+									
+									#if($ctx.orderData.orderType == "ZOR" || $ctx.orderData.orderType == "ZNC")
+										#if(${ctx.orderData.attention})
+										<strong>${ctx.messages.importantInstructions} </strong> ${ctx.orderData.attention}
+										#end<br/><br/><br/>	
+									#end
+									
+									${ctx.messages.paragraphPdfView}
+									#if($ctx.orderData.entries.size() > 0)
+										
+									#end
+									#end
+									<!-- International ORDER ZEX -->
+									#if($ctx.orderData.orderType == "ZEX")
+									${ctx.messages.thankyou} ${ctx.orderData.orderNumber} ${ctx.messages.isRej}. ${ctx.messages.clickhere} <a href='$ctx.orderDetailUrl'>here</a>. ${ctx.messages.shipmentNotification}<br/><br/>
+									${ctx.messages.summaryPurchase}<br/>
+										<ul>	
+											#if(${ctx.orderData.orderNumber})
+											<li><strong>${ctx.messages.SAPon}</strong> ${ctx.orderData.orderNumber}</li>
+											#end
+											#if(${ctx.orderData.status})
+											<li><strong>${ctx.messages.oderStatus}</strong> ${ctx.orderData.status}</li>
+											#end
+											#if(${ctx.orderData.orderType})
+											<li><strong>${ctx.messages.orderType}</strong> ${ctx.messages.international}</li>
+											#end
+											#if(${ctx.orderData.accountNumber})
+											<li><strong>${ctx.messages.accNumber}</strong> ${ctx.orderData.accountNumber}</li>
+											#end
+											#if(${ctx.orderData.gln})
+											<li><strong>${ctx.messages.gln}</strong> ${ctx.orderData.gln}</li>
+											#end
+											#if($ctx.orderData.b2bUnitName)
+												<li><strong>${ctx.messages.billName}</strong>
+												$ctx.orderData.b2bUnitName
+												</li>
+											#end
+											#if(${ctx.orderData.billingAddress.formattedAddress})
+											<li><strong>${ctx.messages.billAddress}</strong> ${ctx.orderData.billingAddress.formattedAddress}</li>
+											#end
+											#if(${ctx.orderData.paymentType.displayName})
+											<li><strong>${ctx.messages.paymentType}</strong> ${ctx.orderData.paymentType.displayName}</li>
+											#end
+											#if(${ctx.orderData.purchaseOrderNumber})
+											<li><strong>${ctx.messages.po}</strong> ${ctx.orderData.purchaseOrderNumber}</li>
+											#end
+											#if(${ctx.orderData.deliveryAddress.formattedAddress})
+											<li><strong>${ctx.messages.shippingAddress}</strong> ${ctx.orderData.deliveryAddress.formattedAddress}</li>
+											#end
+											#if(${ctx.orderData.attention})
+											<li><strong>${ctx.messages.attention}</strong> ${ctx.orderData.attention}</li>
+											#end
+											
+										</ul>
+										#if($ctx.orderData.entries.size() > 0)
+											<table class="productDetailsTable" style="border: 1px solid #e1e1e1;border-collapse:collapse;" border="1" cellpadding="5">
+												<tr>
+												
+												<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.lineStatus}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.prodName}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.jjid}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.gtin}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.hazmat}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.lot}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.shipuom}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.uomeach}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.defofeach}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.qty}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.contract}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.shpmtd}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.shipDate}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.estiamtedDelDate}</strong></td>
+			
+												</tr>
+												#foreach($entry in ${ctx.orderData.entries} )
+													<tr>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.status)$entry.status#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.product.name)$entry.product.name#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.product.code)$entry.product.code#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.product.gtin)$entry.product.gtin#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.hazmatInd) $entry.hazmatInd #end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.lotComment)$entry.lotComment#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.product.deliveryUnit)$entry.product.deliveryUnit#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.product.salesUnit)$entry.product.salesUnit#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.product.deliveryUnit)${entry.product.deliveryUnit} (${entry.product.numerator}&nbsp;${entry.product.salesUnit})#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.quantity)$entry.quantity#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.shippingMethod)$entry.shippingMethod#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.expectedShipDate)$entry.expectedShipDate#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.scheduleLines && $entry.scheduleLines.get(0) && $entry.scheduleLines.get(0).deliveryDate)$entry.scheduleLines.get(0).formattedDeliveryDate#end</td>
+													</tr>
+												#end
+											</table>
+										#end
+									#end
+									<!-- NO charge ORDER ZNC -->
+									#if($ctx.orderData.orderType == "ZNC")
+									${ctx.messages.thankyou} ${ctx.orderData.orderNumber} ${ctx.messages.isRej}. ${ctx.messages.clickhere} <a href='$ctx.orderDetailUrl'>here</a>. ${ctx.messages.shipmentNotification}<br/><br/>
+									${ctx.messages.summaryPurchase}<br/>
+										<ul>	
+											#if(${ctx.orderData.orderNumber})
+											<li><strong>${ctx.messages.SAPon}</strong> ${ctx.orderData.orderNumber}</li>
+											#end
+											#if(${ctx.orderData.status})
+											<li><strong>${ctx.messages.oderStatus}</strong> ${ctx.orderData.status}</li>
+											#end
+											#if(${ctx.orderData.orderType})
+											<li><strong>${ctx.messages.orderType}</strong> ${ctx.messages.nocharge}</li>
+											#end
+											#if(${ctx.orderData.accountNumber})
+											<li><strong>${ctx.messages.accNumber}</strong> ${ctx.orderData.accountNumber}</li>
+											#end
+											#if(${ctx.orderData.gln})
+											<li><strong>${ctx.messages.gln}</strong> ${ctx.orderData.gln}</li>
+											#end
+											#if($ctx.orderData.b2bUnitName)
+												<li><strong>${ctx.messages.billName}</strong>
+												$ctx.orderData.b2bUnitName
+												</li>
+											#end
+											#if(${ctx.orderData.billingAddress.formattedAddress})
+											<li><strong>${ctx.messages.billAddress}</strong> ${ctx.orderData.billingAddress.formattedAddress}</li>
+											#end
+											#if(${ctx.orderData.reasonCode})
+											<li><strong>${ctx.messages.reasonCode}</strong> ${ctx.orderData.reasonCode}</li>
+											#end
+											#if(${ctx.orderData.purchaseOrderNumber})
+											<li><strong>${ctx.messages.po}</strong> ${ctx.orderData.purchaseOrderNumber}</li>
+											#end
+											#if(${ctx.orderData.dropShipAccount})
+											<li><strong>${ctx.messages.dropShip}</strong> ${ctx.orderData.dropShipAccount}</li>
+											#end
+											#if(${ctx.orderData.deliveryAddress.formattedAddress})
+											<li><strong>${ctx.messages.shippingAddress}</strong> ${ctx.orderData.deliveryAddress.formattedAddress}</li>
+											#end
+											#if(${ctx.orderData.attention})
+											<li><strong>${ctx.messages.ImportantInstructions}</strong> ${ctx.orderData.attention}</li>
+											#end
+											#if(${ctx.orderData.cordisHouseAccount})
+											<li><strong>${ctx.messages.cordis}</strong> ${ctx.orderData.cordisHouseAccount}</li>
+											#end
+										</ul>
+										#if($ctx.orderData.entries.size() > 0)
+											<table class="productDetailsTable" style="border: 1px solid #e1e1e1;border-collapse:collapse;" border="1" cellpadding="5">
+												<tr>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.lineStatus}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.prodName}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.jjid}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.gtin}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.hazmat}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.lot}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.shipuom}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.uomeach}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.defofeach}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.qty}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.shpmtd}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.shipDate}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.estiamtedDelDate}</strong></td>
+												</tr>
+												#foreach($entry in ${ctx.orderData.entries} )
+													<tr>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.status)$entry.status#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.product.name)$entry.product.name#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.product.code)$entry.product.code#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.product.gtin)$entry.product.gtin#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.hazmatInd) $entry.hazmatInd #end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.lotComment)$entry.lotComment#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.product.deliveryUnit)$entry.product.deliveryUnit#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.product.salesUnit)$entry.product.salesUnit#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.product.deliveryUnit)${entry.product.deliveryUnit} (${entry.product.numerator}&nbsp;${entry.product.salesUnit})#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.quantity)$entry.quantity#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.shippingMethod)$entry.shippingMethod#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.expectedShipDate)$entry.expectedShipDate#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.scheduleLines && $entry.scheduleLines.get(0) && $entry.scheduleLines.get(0).deliveryDate)$entry.scheduleLines.get(0).formattedDeliveryDate#end</td>
+													</tr>
+												#end
+											</table>
+										#end
+									#end
+									<!-- Replenishment Order ZKB -->
+									#if($ctx.orderData.orderType == "ZKB")
+									${ctx.messages.thankyou} ${ctx.orderData.orderNumber} ${ctx.messages.isRej}. ${ctx.messages.clickhere} <a href='$ctx.orderDetailUrl'>here</a>. ${ctx.messages.shipmentNotification}<br/><br/>
+									${ctx.messages.summaryPurchase}<br/>
+										<ul>
+											#if(${ctx.orderData.orderNumber})
+											<li><strong>${ctx.messages.SAPon}</strong> ${ctx.orderData.orderNumber}</li>
+											#end
+											#if(${ctx.orderData.status})
+											<li><strong>${ctx.messages.oderStatus}</strong> ${ctx.orderData.status}</li>
+											#end
+											#if(${ctx.orderData.orderType})
+											<li><strong>${ctx.messages.orderType}</strong> ${ctx.messages.replishment}</li>
+											#end
+											#if(${ctx.orderData.accountNumber})
+											<li><strong>${ctx.messages.accNumber}</strong> ${ctx.orderData.accountNumber}</li>
+											#end
+											#if(${ctx.orderData.gln})
+											<li><strong>${ctx.messages.gln}</strong> ${ctx.orderData.gln}</li>
+											#end
+											#if($ctx.orderData.b2bUnitName)
+												<li><strong>${ctx.messages.billName}</strong>
+												$ctx.orderData.b2bUnitName
+												</li>
+											#end
+											#if(${ctx.orderData.billingAddress.formattedAddress})
+											<li><strong>${ctx.messages.billAddress}</strong> ${ctx.orderData.billingAddress.formattedAddress}</li>
+											#end
+											#if(${ctx.orderData.purchaseOrderNumber})
+											<li><strong>${ctx.messages.po}</strong> ${ctx.orderData.purchaseOrderNumber}</li>
+											#end
+											#if(${ctx.orderData.dropShipAccount})
+											<li><strong>${ctx.messages.dropShip}</strong> ${ctx.orderData.dropShipAccount}</li>
+											#end
+											#if(${ctx.orderData.deliveryAddress.formattedAddress})
+											<li><strong>${ctx.messages.shippingAddress}</strong> ${ctx.orderData.deliveryAddress.formattedAddress}</li>
+											#end
+											#if(${ctx.orderData.attention})
+											<li><strong>${ctx.messages.attention}</strong> ${ctx.orderData.attention}</li>
+											#end
+											#if(${ctx.orderData.cordisHouseAccount})
+											<li><strong>${ctx.messages.cordis}</strong> ${ctx.orderData.cordisHouseAccount}</li>
+											#end
+										</ul>
+										#if($ctx.orderData.entries.size() > 0)
+											<table class="productDetailsTable" style="border: 1px solid #e1e1e1;border-collapse:collapse;" border="1" cellpadding="5">
+												<tr>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.lineStatus}Line Status</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.prodName}Product Name</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.jjid}J&J ID</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.gtin}GTIN</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.hazmat}Hazmat Message</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.shipuom}Ship Unit of Measure</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.uomeach}UOM of Eaches</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.defofeach}Definition of Eaches</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.qty}Quantity</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.shpmtd}Shipping Method</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.shipDate}Estimated Ship Date</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.estiamtedDelDate}Estimated Delivery Date</strong></td>
+												</tr>
+												#foreach($entry in ${ctx.orderData.entries} )
+													<tr>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.status)$entry.status#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.product.name)$entry.product.name#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.product.code)$entry.product.code#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.product.gtin)$entry.product.gtin#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.hazmatInd) $entry.hazmatInd #end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.product.deliveryUnit)$entry.product.deliveryUnit#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.product.salesUnit)$entry.product.salesUnit#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.product.deliveryUnit)${entry.product.deliveryUnit} (${entry.product.numerator}&nbsp;${entry.product.salesUnit})#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.quantity)$entry.quantity#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.shippingMethod)$entry.shippingMethod#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.expectedShipDate)$entry.expectedShipDate#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.scheduleLines && $entry.scheduleLines.get(0) && $entry.scheduleLines.get(0).deliveryDate)$entry.scheduleLines.get(0).formattedDeliveryDate#end</td>
+													</tr>
+												#end
+											</table>
+										#end
+									#end
+									<!-- Return Order ZRE -->
+									#if($ctx.orderData.orderType == "ZRE")
+									${ctx.messages.thankyou} ${ctx.orderData.orderNumber} ${ctx.messages.isRej}. ${ctx.messages.clickhere} <a href='$ctx.orderDetailUrl'>here</a>. ${ctx.messages.shipmentNotification}<br/><br/>
+									${ctx.messages.summaryPurchase}<br/>
+										<ul>
+											#if(${ctx.orderData.orderNumber})
+											<li><strong>${ctx.messages.returnGoods}</strong> ${ctx.orderData.orderNumber}</li>
+											#end
+											#if(${ctx.orderData.status})
+											<li><strong>${ctx.messages.oderStatus}</strong> ${ctx.orderData.status}</li>
+											#end
+											#if(${ctx.orderData.orderType})
+											<li><strong>${ctx.messages.orderType}</strong> ${ctx.messages.return}</li>
+											#end
+											#if(${ctx.orderData.reasonCode})
+											<li><strong>${ctx.messages.reasonCode}</strong> ${ctx.orderData.reasonCode}</li>
+											#end
+											#if(${ctx.orderData.accountNumber})
+											<li><strong>${ctx.messages.accNumber}</strong> ${ctx.orderData.accountNumber}</li>
+											#end
+											#if(${ctx.orderData.gln})
+											<li><strong>${ctx.messages.gln}</strong> ${ctx.orderData.gln}</li>
+											#end
+											#if(${ctx.orderData.customerPoNumber})
+											<li><strong>${ctx.messages.custPo}</strong> ${ctx.orderData.customerPoNumber}</li>
+											#end
+										</ul>
+										#if($ctx.orderData.entries.size() > 0)
+											<table class="productDetailsTable" style="border: 1px solid #e1e1e1;border-collapse:collapse;" border="1" cellpadding="5">
+												<tr>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.lineStatus}Line Status</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.prodName}Product Name</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.jjid}J&J ID</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.gtin}GTIN</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.qty}Quantity</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.lotNum}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.custPONum}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.invoiceNum}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.ror}</strong></td>
+												</tr>
+												#foreach($entry in ${ctx.orderData.entries} )
+													<tr>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.status)$entry.status#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.product.name)$entry.product.name#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.product.code)$entry.product.code#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.product.gtin)$entry.product.gtin#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.quantity)$entry.quantity#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.lotNumber)$entry.lotNumber#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.poNumber)$entry.poNumber#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.returnInvNumber)$entry.returnInvNumber#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.rejectionReason)$entry.rejectionReason#end</td>
+													</tr>
+												#end
+											</table>
+										#end
+									#end
+									<!-- Delivered Order ZDEL -->
+									#if($ctx.orderData.orderType == "ZDEL")
+									${ctx.messages.thankyou} ${ctx.orderData.orderNumber} ${ctx.messages.isRej}. ${ctx.messages.clickhere} <a href='$ctx.orderDetailUrl'>here</a>. ${ctx.messages.shipmentNotification}<br/><br/>
+									${ctx.messages.summaryPurchase}<br/>
+										<ul>
+											#if(${ctx.orderData.orderNumber})
+											<li><strong>${ctx.messages.SAPon}</strong> ${ctx.orderData.orderNumber}</li>
+											#end
+											#if(${ctx.orderData.status})
+											<li><strong>${ctx.messages.oderStatus}</strong> ${ctx.orderData.status}</li>
+											#end
+										</ul>
+									#end
+									<!-- Consumer Orders House ZHOR / Trade ZTOR / Affiliate ZIO2 -->
+									#if($ctx.orderData.orderType == "ZHOR" || $ctx.orderData.orderType == "ZTOR" || $ctx.orderData.orderType == "ZIO2")
+									${ctx.messages.thankyou} ${ctx.orderData.orderNumber} ${ctx.messages.isRej}. ${ctx.messages.clickhere} <a href='$ctx.orderDetailUrl'>here</a>. ${ctx.messages.shipmentNotification}<br/><br/>
+									${ctx.messages.summaryPurchase}<br/>
+										<ul>
+											#if(${ctx.orderData.orderNumber})
+											<li><strong>${ctx.messages.SAPon}</strong> ${ctx.orderData.orderNumber}</li>
+											#end
+											#if(${ctx.orderData.status})
+											<li><strong>${ctx.messages.oderStatus}</strong> ${ctx.orderData.status}</li>
+											#end
+											#if($ctx.orderData.orderType == "ZHOR" && ${ctx.orderData.reasonCode})
+											<li><strong>${ctx.messages.reasonCode}</strong> ${ctx.orderData.reasonCode}</li>
+											#end
+											#if(${ctx.orderData.soldToAccount})
+											<li><strong>${ctx.messages.soldToacc}</strong> ${ctx.orderData.soldToAccount}</li>
+											#end
+											#if(${ctx.orderData.billingAddress.firstName} || ${ctx.orderData.billingAddress.lastName})
+											<li>
+												<strong>${ctx.messages.soldToName}</strong>
+												#if(${ctx.orderData.billingAddress.firstName})
+													${ctx.orderData.billingAddress.firstName}
+												#end 
+												#if(${ctx.orderData.billingAddress.lastName})
+													&nbsp;${ctx.orderData.billingAddress.lastName}
+												#end
+											</li>
+											#end
+											#if(${ctx.orderData.billingAddress.formattedAddress})
+											<li><strong>${ctx.messages.soldtoAdd}</strong> ${ctx.orderData.billingAddress.formattedAddress}</li>
+											#end
+											#if(${ctx.orderData.purchaseOrderNumber})
+											<li><strong>${ctx.messages.po}</strong> ${ctx.orderData.purchaseOrderNumber}</li>
+											#end
+											#if(${ctx.orderData.deliveryAddress.companyName})
+											<li>
+												<strong>${ctx.messages.shiptoAccNum}</strong>
+												${ctx.orderData.deliveryAddress.companyName}
+											</li>
+											#end
+											#if(${ctx.orderData.deliveryAddress.formattedAddress})
+											<li><strong>${ctx.messages.shipAddress}</strong> ${ctx.orderData.deliveryAddress.formattedAddress}</li>
+											#end
+											#if(${ctx.orderData.requestedDeliveryDate})
+											<li><strong>${ctx.messages.reqDelDate}</strong> ${ctx.orderData.requestedDeliveryDate}</li>
+											#end
+											#if($ctx.orderData.orderWeight)
+											<li><strong>${ctx.messages.ordWgt}</strong> $ctx.orderData.orderWeight </li>
+											#end
+											#if($ctx.orderData.orderVolume)
+											<li><strong>${ctx.messages.ordVol}</strong> $ctx.orderData.orderVolume </li>
+											#end
+										</ul>
+										#if($ctx.orderData.entries.size() > 0)
+											<table class="productDetailsTable" style="border: 1px solid #e1e1e1;border-collapse:collapse;" border="1" cellpadding="5">
+												<tr>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.prodName}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.jjid}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.upc}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.shipuom}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.uomeach}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.defofeach}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.weight}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.cubicVol}</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>${ctx.messages.qty}</strong></td>
+												</tr>
+												#foreach($entry in ${ctx.orderData.entries} )
+													<tr>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.product.name)$entry.product.name#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.product.code)$entry.product.code#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.product.upc)$entry.product.upc#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.product.deliveryUnit)$entry.product.deliveryUnit#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.product.salesUnit)$entry.product.salesUnit#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.product.deliveryUnit)${entry.product.deliveryUnit} (${entry.product.numerator}&nbsp;${entry.product.salesUnit})#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.orderWeight)$entry.orderWeight#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.cubicVolume)$entry.cubicVolume#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.quantity)$entry.quantity#end</td>
+													</tr>
+												#end
+											</table>
+										#end
+									#end
+									<br /><br />
+									
+								 <br /><br />
+								 #if($ctx.orderData.orderType == "ZOR" || $ctx.orderData.orderType == "KA" || $ctx.orderData.orderType == 'KB' ||$ctx.orderData.orderType == 'KE')
+								${ctx.messages.regards}<br />
+								${ctx.messages.customerServicesTeam}<br />
+																		
+								<br /><br />
+								${ctx.messages.en_company_new}<br />
+								${ctx.messages.en_addressLine1_new}<br />
+								${ctx.messages.en_addressLine2_new}<br />
+								${ctx.messages.en_country_new}<br />
+								${ctx.messages.en_contact_new}<br /> 
+								#else
+										<p style="margin:5px 0; padding-left: 10px; font-size: 10px;"><font color="#666666" face="Arial, Helvetica, sans-serif">${ctx.messages.en_company}<br />
+			                     ${ctx.messages.en_addressLine1}<br />
+			                     ${ctx.messages.en_addressLine2}<br />
+			                      #if('ctx.messages.en_country'!="")
+			                    	${ctx.messages.en_country}<br />
+			                    #end
+			                    #if('ctx.messages.en_contact'!="")
+			                    	${ctx.messages.en_contact}<br />
+			                    #end</font>
+			                    </p>
+								#end
+								<br />
+								</div>
+							</div>
+							<!-- Content Ends -->
+						</td>
+						<td width="11" height="11">
+						
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr bgcolor="#fafafa">
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="5">
+							<div style="width:11;height:5" />
+						</td>
+						<td height="5">
+							<div style="width:578;height:5" />
+						</td>
+						<td width="11" height="5">
+							<div style="width:11;height:5" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td>
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td style="color: #646464;" width="900">
+							${ctx.cmsSlotContents.EpicEmailFooter}
+						</td>
+								</tr>
+							</table>
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+				</table>
+			</td>
+			
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,13 @@
+INSERT_UPDATE ServicelayerJob; code[unique = true]                       ; springId[unique = true]                   ; active[default = 'true']
+                             ; jnjLaCreateERPOrderJob        ; jnjLaCreateERPOrderJob        ;
+
+REMOVE CronJob	; code[unique=true]              
+				; jnjLaCreateERPOrderCronJob 
+				
+INSERT_UPDATE ExportERPOrderCronjob; code[unique=true]              ; job(code)                      ; singleExecutable ; sessionLanguage(isocode) ; active[default='true']
+                     ; jnjLaCreateERPOrderCronJob ; jnjLaCreateERPOrderJob     ; false            ; en                      
+
+
+INSERT_UPDATE Trigger; cronjob(code)[unique = true]         ; cronExpression
+# Must run every 6 hours
+                     ; jnjLaCreateERPOrderCronJob                  ; 0 0 6 1/1 * ? *

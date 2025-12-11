@@ -1,0 +1,446 @@
+<style>
+input.span-18 {
+	border-left-width: 1px;
+    border-right-width: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+	width: 698px;
+}
+.last {
+    margin-right: 0;
+    padding-right: 0;
+}
+.addIndirectCustomerPanel h2.arrowHeader span {
+    float: right;
+}
+.addIndirectCustomerPanel ul {
+    margin: 10px 0 20px;
+    padding-bottom: 10px;
+}
+.addIndirectCustomerPanel ul li {
+    clear: both;
+    margin-top: 10px;
+    min-height: 58px;
+}
+.addIndirectCustomerPanel label {
+    display: block;
+}
+.addIndirectCustomerPanel label span {
+    color: #B41601;
+}
+.addIndirectCustomerPanel input[type="text"], .addIndirectCustomerPanel select {
+    color: #646464;
+    padding-left: 2px;
+    width: 420px;
+}
+.addIndirectCustomerPanel select {
+    color: #646464;
+    float: none;
+    margin-bottom: 0;
+    width: 230px;
+}
+.radioPanel label {
+    display: inline;
+}
+.radioPanel input[type="text"] {
+    display: block;
+    margin: 4px 0;
+}
+.radioPanel input[type="radio"] {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    margin-bottom: 0;
+}
+.addIndirectCustomerPanel input, .addIndirectCustomerPanel select {
+    padding: 0;
+}
+.addIndirectCustomerPanel select {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid #E5E5E5;
+    padding-bottom: 0;
+    padding-right: 0;
+    padding-top: 0;
+}
+.addIndirectCustomerPanel .buttonWrapper > input {
+    padding: 5px 15px;
+}
+h2.arrowHeader {
+    border-bottom: 1px solid #84C5D4;
+    color: #0A8CAA;
+    font-size: 16px;
+    line-height: 30px;
+    margin-bottom: 0;
+}
+.priceSmall {
+    color: #B41601;
+    font-size: 12px;
+}
+.instructiontxt {
+    color: #828282;
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+body {
+    line-height: 1.5;
+}
+body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section {
+    border: 0 none;
+    font-family: inherit;
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+body {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #222222;
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    font-size: 75%;
+}
+ul li {
+    color: #646464;
+    font-size: 12px;
+    list-style-type: none;
+}
+td {
+	color: #646464;
+}
+</style
+<html>
+<head>
+	<title>Confirmation Email</title>
+</head>
+<body style="line-height: 1.5;font-size: 75%;font-family: Helvetica Neue,Arial,Helvetica,sans-serif;color: #222222;background: none repeat scroll 0 0 #FFFFFF;border: 0 none;font-family: inherit;font-size: 100%;font-style: inherit;font-weight: inherit;margin: 0;padding: 0;vertical-align: baseline;">
+	<table style="background-color:#ffffff" width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+		<tr>
+			<td style="color: #646464;">
+				<table bgcolor="#ffffff" width="600" border="0" cellspacing="0" cellpadding="0" align="center">
+					<tr bgcolor="#ffffff">
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td style="color: #646464;" height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr bgcolor="#ffffff">
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td>
+							<img src="${ctx.jnjCustomerFormMap['siteLogoPath']}" width="333" height="84" border="0" />
+						</td>
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr bgcolor="#ffffff">
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td style="color: #646464;" height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td style="color: #646464;" height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td style="color: #646464;" width="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td style="color: #646464;" height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td style="color: #646464;" width="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td style="color: #646464;" height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td style="color: #646464;" height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+							<td style="color: #646464;" width="11" height="11">
+							<div style="width:11;height:11" />
+						   </td>
+            		
+					<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+							<div class="span-18 last" id="addindirectcustomer" style="display:block">
+								<!-- My Profile VIEW START -->
+								<div class="">
+									<table width="100%" cellspacing="0" cellpadding="0">
+										<tr>
+											<td align="left">
+												<span style="color:grey;">Dear user,<br />Please find  below your information with you got yourself registered.<br>
+										</tr>
+										<tr>
+											<td align="left">
+												<h2 class="arrowHeader">Account and User Information</h2>
+											</td>
+										</tr>
+									</table>
+									<ul>
+										<li>
+											<div class="size3of5 cell">
+												<label for="Cname"><b>Customer Code<span>*</span>:</b></label>
+												<label id="Cname" class="required">
+													${ctx.jnjCustomerFormMap['customerCode']}
+												</label>
+											</div>
+										</li>
+										<li>
+											<div class="size3of5 cell">
+												<label for="Cname"><b>Customer Name<span>*</span>:</b></label>
+												<label id="Cname" class="required">
+													${ctx.jnjCustomerFormMap['customerName']}
+												</label>
+											</div>
+										</li>
+										<li>
+											<div class="size3of5 cell">
+												<label for="Cname"><b>Account Manager<span>*</span>:</b></label>
+												<label id="Cname" class="required">
+													${ctx.jnjCustomerFormMap['accountManager']}
+												</label>
+											</div>
+										</li>
+										<li>
+											<div class="size3of5 cell">
+												<label for="Cname"><b>Country<span>*</span>:</b></label>
+												<label id="Cname" class="required">
+													${ctx.jnjCustomerFormMap['countryName']}
+												</label>
+											</div>
+										</li>
+										<li>
+											<div class="size3of5 cell">
+												<label for="Cname"><b>Email<span>*</span>:</b></label>
+												<label id="Cname" class="required">
+													${ctx.jnjCustomerFormMap['email']}
+												</label>
+											</div>
+										</li>
+									</ul>
+								<div>
+							</div>
+						</td>	
+							<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr bgcolor="#fafafa">
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr bgcolor="#fafafa">
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">You are about to enter a Private Web Site that is restricted to authorized use by Johnson &amp; Johnson Medical Devices and Diagnostics for Latin America and their authorized agents for business purposes only. The actual or attempted unauthorized
+							access, use or modification of the web site and its contents is strictly prohibited by the Company. Unauthorized users and/or unauthorized use are subject to criminal and/or civil penalties in accordance with applicable domestic and foreign laws.
+							<br
+							/>
+							<br />The use of this web site may be monitored and recorded for administrative and security reasons. If such monitoring and/or recording reveals possible evidence of criminal activity, the Company may provide the monitored evidence of such activity
+							to law enforcement officials. Access to this application from an untrusted workstation, including, but not limited to, cyber cafes and public kiosks, is prohibited.
+							<br />&nbsp;
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td align="left" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">Please read our Privacy Policy. The use of information on this site is under the terms of our Legal Notice
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td align="left" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">Last Update: November 2013</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr bgcolor="#0A8CAA">
+						<td width="11" height="5">
+							<div style="width:11;height:5" />
+						</td>
+						<td height="5">
+							<div style="width:578;height:5" />
+						</td>
+						<td width="11" height="5">
+							<div style="width:11;height:5" />
+						</td>
+					</tr>
+					<tr bgcolor="#e5e5e5">
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr bgcolor="#e5e5e5">
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td>
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td align="left" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">This site is published by Johnson and Johnson Medical Devices and Diagnostics - Latin America, L.L.C. which is solely responsible for its contents and is destined for the use of the Johnson &amp; Johnson family of companies employees and customers
+										in Latin America.
+										<br />
+										<br />All Contents &copy;Johnson and Johnson Medical Devices and Diagnostics - Latin America, L.L.C. 2009 - 2013. All Rights Reserved.
+										</div>
+									</td>
+								</tr>
+							</table>
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr bgcolor="#e5e5e5">
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

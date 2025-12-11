@@ -1,0 +1,65 @@
+#select-profile{padding-left: 10px;padding-top: 20px;padding-bottom: 10px;}
+#um-create-form-holder{margin-top:20px;}
+#select-profile-txt{margin-right:15px;}
+#um-roles-accounts{padding-left: 15px;}
+#roles-head-txt{margin: 10px 0 15px 0;}
+#um-roles-accounts .rolesPanel{margin-bottom:20px}
+.usm-create-subHead{font-size:18px;margin: 10px 0 15px 0;}
+.star-sign{color:#b41601;}
+.usm-account-num{color:#0a8caa;font-weight: bold;}
+.usm-account-list{border:1px solid #f2f2f2;box-shadow: 0px 1px 8px #ccc, 0px 0px 0px #ccc;}
+.usm-account-list .checkbox{margin-top:0px;}
+.usm-account-list .even-row {background: #f2f2f2;width:100%;padding:15px;}
+.usm-account-list .odd-row {background: #ffffff;width:100%;padding:15px;}
+#accont-btn-holder{margin-top:0px;margin-bottom:15px;}
+#emeo-usrmanagement-createusr .buttonMargin{margin-right: 10px;}
+#emeo-usrmanagement-createusr .headingTxt{font-family: jnjbodyfont;}
+#emeo-usrmanagement-createusr .canceltxt{font-size: 14px;color: #0a8caa;padding: 12px 10px 0px 0px;}
+#emeo-usrmanagement-createusr .subcontent1 {padding: 20px 0px 20px 5px;border-bottom: 1px solid #ddd;}
+#emeo-usrmanagement-createusr .subcontent1  .pane-title{font-size:30px;}
+
+#emeo-usrmanagement-createusr label{font-weight:normal;}
+#emeo-usrmanagement-createusr .formPanel .form-group {margin-bottom: 20px;}
+#emeo-usrmanagement-createusr .rolesPanel .checkboxmargin {margin-top: 0px !important;}
+#emeo-usrmanagement-createusr .formPanel{padding-left: 23px;float:left}
+#emeo-usrmanagement-createusr .roleTxt{margin:18px 0 5px 0;font-size:17px;	}
+#emeo-usrmanagement-createusr .whiteBg{background:#fff;}
+
+.usm-phone-code{width:20%;display:table-cell;padding-right:5px;}
+.usm-phone-number{width:78%;display:table-cell}
+.usm-phone-label{width:100%}
+#emeo-usrmanagement-createusr .formPanel .form-control,#emeo-usrmanagement-createusr .formPanel .bootstrap-select>.dropdown-toggle{height:40px;}
+
+#usm-notification{margin-top:20px;}
+
+/* Edit */
+.status-dropdown .bootstrap-select .dropdown-toggle{width:150px}
+.password-info{padding-top: 20px;padding-bottom: 20px;border-bottom:1px solid #ddd;margin-bottom:5px}
+.password-info .pw-field{margin-top:10px}
+#status-txt{padding-right:15px}
+#usm-access-row{margin-bottom:20px;}
+.usm-access-subdata{padding-left:5px;margin-top:10px;}
+.access-content{margin-bottom:10px;}
+.usm-access-subdata-row{margin-bottom:10px;}
+#crs-notes{margin-bottom:0px;padding-left:15px}
+#add-tonote-txt{margin-top:15px;}
+#add-tonote-btn{margin-top:15px;margin-bottom:15px;}
+#jnj-employee{margin-bottom:15px;}
+#add-notes-container{padding-left:15px}
+.text-right-to-left{text-align:right}
+#update-cancel{margin-top:20px;}
+.hide-btn{display:none}
+.grant-access-row{margin-bottom:25px}
+#access-content-3{overflow-y:auto;}
+.cancel-bottom-btn{padding-right:10px}
+.cancel-bottom-btn{padding-right:10px}
+.paddleftaccess{padding-left:20px}
+#division-code{margin-top:15px}
+#access-content-2{padding-left:25px}
+#division-code{margin-bottom:10px}
+#wwid{margin-bottom:10px}
+#account-holder-usm{max-height:224px;overflow-y:auto}
+.table-cls{display:table;width:100%}
+.table-row{display:table-row}
+
+

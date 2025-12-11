@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+   <context:component-scan
+		base-package="com.jnj.la.b2b.cartandcheckoutaddon.controllers.pages"
+		scope-resolver="de.hybris.platform.spring.IgnoreTenantScopeMetadataResolver" />
+
+    <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+
+	<bean id="defaultJnjlacartandcheckoutaddonJavaScriptMessageResourceAccessor" parent="abstractJavaScriptMessageResourceAccessor">
+		<property name="addOnName" value="jnjlacartandcheckoutaddon"/>
+	</bean>
+
+	<bean id="defaultJnjlacartandcheckoutaddonBeforeViewJsPropsHandlerAdaptee" parent="abstractBeforeViewJsPropsHandlerAdaptee" class="de.hybris.platform.addonsupport.interceptors.ExportJsPropertiesBeforeViewHandler">
+		<property name="messageSource" ref="defaultJnjlacartandcheckoutaddonJavaScriptMessageResourceAccessor"/>
+	</bean>
+
+	<bean id="getJnjlacartandcheckoutaddonBeforeViewHandler" parent="beforeViewHandlerAdapter">
+		<property name="adaptee">
+			<ref bean="defaultJnjlacartandcheckoutaddonBeforeViewJsPropsHandlerAdaptee"/>
+		</property>
+	</bean>
+	<bean id="JnjlacartandcheckoutaddonBeforeViewHandlerListMergeDirective" depends-on="beforeViewHandlersList" parent="listMergeDirective">
+		<property name="add" ref="getJnjlacartandcheckoutaddonBeforeViewHandler"/>
+	</bean>
+	
+	
+	<bean id="latamCartPageController" class="com.jnj.la.b2b.cartandcheckoutaddon.controllers.pages.JnjLatamCartPageController">
+        <property name="jnjConfigService" ref="jnjConfigService"/>
+	</bean>
+	<alias alias="JnjGTCartPageController" name="latamCartPageController" />  
+
+	<bean name="latamCheckoutController" class="com.jnj.la.b2b.cartandcheckoutaddon.controllers.pages.JnjLatamCheckoutController">
+		<property name="configurationService" ref="configurationService"/>
+	</bean>
+	<alias alias="jnjGTCheckoutController" name="latamCheckoutController" />
+	
+	<bean name="JnjLaContractController" class="com.jnj.la.b2b.cartandcheckoutaddon.controllers.pages.JnJLaContractController" />
+	<alias alias="JnjGTContractController" name="JnjLaContractController" />
+	
+</beans>

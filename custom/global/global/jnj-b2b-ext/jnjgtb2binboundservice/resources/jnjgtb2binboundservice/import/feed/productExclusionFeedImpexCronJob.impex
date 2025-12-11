@@ -1,0 +1,48 @@
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+#% final String configValue = Config.getParameter("delete.cons.product.customer.relation");
+#% if: configValue.equals("true");
+# Initialization
+REMOVE JnjB2bUnitToIncludedProducts[batchmode=true];target[unique=true,allownull=true]
+#% impex.initDatabase($config-inbound.quote$config-db.url$config-inbound.quote,$config-inbound.quote$config-db.username$config-inbound.quote,$config-inbound.quote$config-db.password$config-inbound.quote,$config-inbound.quote$config-db.driver$config-inbound.quote);
+"#% 
+impex.includeSQLData( 
+""SELECT distinct item_t1.TargetPK  FROM products item_t0 JOIN unit_exc_prod item_t1 ON  item_t0.PK = item_t1.TargetPK  WHERE ( item_t0.p_catalogversion  = (SELECT  item_t2.PK  FROM catalogversions item_t2 JOIN catalogs item_t3 ON  item_t3.PK = item_t2.p_catalog  WHERE ( item_t3.p_id ='naProdCatalog' AND  item_t2.p_version ='Staged') ))""
+);
+"
+#% endif:
+
+# Initialization
+REMOVE JnjGTIntProductExclusion;characteristic[unique=true];classificationType[unique=true];systemId[unique=true];materialCustInd[unique=true];materialCustNumber[unique=true]
+#% impex.initDatabase($config-inbound.quote$config-db.url$config-inbound.quote,$config-inbound.quote$config-db.username$config-inbound.quote,$config-inbound.quote$config-db.password$config-inbound.quote,$config-inbound.quote$config-db.driver$config-inbound.quote);
+"#% 
+impex.includeSQLData( 
+""SELECT  item_t0.p_characteristic , item_t0.p_classificationtype, item_t0.p_systemid , item_t0.p_materialcustind , item_t0.p_materialcustnumber  FROM JNJ_GT_INT_MASTER item_t0 WHERE  item_t0.p_recordstatus  IN (SELECT  item_t1.PK  FROM enumerationvalues item_t1 WHERE ( item_t1.Code ='PENDING'))""
+);
+"
+
+# Initialization
+INSERT_UPDATE JnjGTIntProductExclusion;characteristic[unique=true];classificationType[unique=true];systemId[unique=true];materialCustInd[unique=true];materialCustNumber[unique=true];recordStatus(code)[default='LOADING']
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""Select CHARACTER_VAL,CLASS_TYPE,SOURCE_SYS_ID,MATCUST_IND,MATCUST_NUM from STG_PRODUCT_EXCLUSIONS WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP""
+);
+"
+
+# Initialization For US PCM
+REMOVE JnjGTExProductAttribute;code[unique=true];characteristicValue;classType
+#% impex.initDatabase($config-inbound.quote$config-db.url$config-inbound.quote,$config-inbound.quote$config-db.username$config-inbound.quote,$config-inbound.quote$config-db.password$config-inbound.quote,$config-inbound.quote$config-db.driver$config-inbound.quote);
+"#% 
+impex.includeSQLData( 
+""SELECT  item_t0.p_code , item_t0.p_characteristicvalue , item_t0.p_classtype  FROM JNJ_GT_EX_PROD_ATTR item_t0 WHERE ( item_t0.p_classtype ='PRODUCT_ATTRIBUTE')""
+);
+"
+
+# Initialization
+INSERT_UPDATE JnjGTExProductAttribute;code[unique=true];characteristicValue;classType[default='PRODUCT_ATTRIBUTE']
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#%
+impex.includeSQLData( 
+""Select MATCUST_NUM from STG_PRODUCT_EXCLUSIONS WHERE CHARACTER_VAL in ('2','3','4','6','8','9','13','29','68','69','72','A3','A5') and MATCUST_IND='MAT' and CLASS_TYPE='PRODUCT_ATTRIBUTE' and MigrationStatus=1 ORDER BY REC_TIMESTAMP""
+);
+"

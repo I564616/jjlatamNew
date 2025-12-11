@@ -1,0 +1,2 @@
+## messageSource=classpath:/jnjb2bcore/messages/email-profilePasswordExpiry_$lang.properties
+${ctx.messages.registerSubject} ${ctx.jnjCustomerFormMap['email']}

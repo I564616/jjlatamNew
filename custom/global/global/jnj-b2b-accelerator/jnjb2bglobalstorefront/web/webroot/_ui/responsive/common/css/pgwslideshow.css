@@ -1,0 +1,245 @@
+.ps-current ul {
+    padding: 0px 15px;
+    /* margin: 0 auto; */
+}
+.pgwSlideshow {
+    width: 100%;   
+    display: none;
+	margin-bottom: 30px;  /* KIT ADDED */
+	box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 3px 11px 0 rgba(0, 0, 0, 0.19);
+}
+
+.pgwSlideshow a{
+    color: #fff;
+}
+
+.pgwSlideshow .ps-current {
+    text-align: center;
+    position: relative;
+    min-height: 150px;
+    overflow: hidden;
+	width: 50%;
+	float: left;
+	background: #fff;
+	//padding:30px 15px 30px 15px;
+}
+
+.pgwSlideshow .ps-current > ul  > li {
+    text-align: center;
+    width: 100%;
+    z-index: 1;
+    opacity: 0;
+    display: block;
+}
+
+.PreviewImgSige{
+	height:80%;
+	margin: auto;
+	margin-top:40px; 
+}
+.noImgPreviewImgSige{
+	height:40%;
+	margin: auto;
+	margin-top:120px; 
+}
+.pgwSlideshow .ps-current > ul  > li img {
+	//display: block;
+    max-width: 100%;
+    //margin: auto;
+	//height: 300px;
+	min-height:100px;
+	/* height:80%;
+	margin-top:40px;  */
+}
+.modal .pwdstrengthbar{
+	width:225px !important;
+	margin-bottom:0px;
+}
+.pgwSlideshow .ps-caption {
+    
+    filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#99000000', endColorstr='#99000000');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#99000000', endColorstr='#99000000')";
+    text-align: left;
+    font-size: 1rem;
+    color: #fff;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    padding: 10px;
+    display: none;
+}
+
+.pgwSlideshow .ps-caption span {
+    padding: 7px;
+    display: inline-block;
+}
+
+.pgwSlideshow .ps-list {
+    overflow: hidden;
+    position: relative;
+	clear: both;
+	    padding: 10px 0px;
+	border-top: 1px solid #ddd;
+	text-align: center;
+}
+
+.pgwSlideshow .ps-list ul {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+   //left: 0;
+	margin: 0px auto;
+	//border:1px solid red;
+}
+
+.pgwSlideshow .ps-list li {
+    /* float: left; */
+	float: left;
+    display: inline-block;
+}
+
+.pgwSlideshow .ps-list li .ps-item {
+    display: block;
+    margin: 15px 8px;
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+}
+
+.pgwSlideshow .ps-list li img {
+    display: block;
+    border: 1px solid #ddd;
+   	/* width: 60px; */
+    height: 70px;
+}
+
+.pgwSlideshow .ps-list li .ps-item.ps-selected {
+    float: left;
+    opacity: 1;
+    border: 4px solid #fff;
+    overflow: hidden;
+}
+
+.pgwSlideshow .ps-list li .ps-item.ps-selected img {
+   /*  margin: -4px; */
+}
+
+/* .pgwSlideshow .ps-prevIcon {
+    border-color:transparent #fff transparent;
+    border-style: solid;
+    border-width: 10px 10px 10px 0;
+    display: block;
+} 
+
+.pgwSlideshow .ps-nextIcon {
+    border-color:transparent #fff transparent;
+    border-style: solid;
+    border-width: 10px 0 10px 10px;
+    display: block;
+}*/
+/* hiding arrow */
+.pgwSlideshow .ps-current .ps-prev {
+    background: rgba(0, 0, 0, 0.5);
+    filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#99000000', endColorstr='#99000000');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#99000000', endColorstr='#99000000')";
+    border: 1px solid #777;
+    border-left: 0;
+    border-radius: 0 4px 4px 0;
+    position: absolute;
+    padding: 20px 20px 20px 15px;
+    left: 0;
+    top: 45%;
+    cursor: pointer;
+	display:none !important;
+}
+
+.pgwSlideshow .ps-current .ps-next {
+    background: rgba(0, 0, 0, 0.5);
+    filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#99000000', endColorstr='#99000000');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#99000000', endColorstr='#99000000')";
+    border: 1px solid #777;
+    border-right: 0;
+    border-radius: 4px 0 0 4px;
+    position: absolute;
+    padding: 20px 15px 20px 20px;
+    right: 0;
+    top: 45%;
+    cursor: pointer;
+	display:none !important;
+}
+
+.pgwSlideshow .ps-list .ps-prev {
+    background: rgba(0, 0, 0, 0.5);
+    filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#bb000000', endColorstr='#bb000000');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#bb000000', endColorstr='#bb000000')";
+   // border: 1px solid #777;
+    border-left: 0;
+    border-radius: 0 4px 4px 0;
+    padding: 20px 15px 20px 12px;
+    cursor: pointer;
+    position: absolute;
+    left: -15px;
+    top: 43px;
+    z-index: 1000;
+    display: none ;
+	background: url("../images/downarrow.png") no-repeat;
+    transform: rotate(90deg);
+    background-size: 40px 40px;
+    width: 60px;
+    height: 60px;
+}
+
+.pgwSlideshow .ps-list .ps-next {
+    background: rgba(0, 0, 0, 0.5);
+    filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#bb000000', endColorstr='#bb000000');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#bb000000', endColorstr='#bb000000')";
+   // border: 1px solid #777;
+    border-right: 0;
+    border-radius: 4px 0 0 4px;
+    padding: 20px 12px 20px 15px;
+    cursor: pointer;
+    position: absolute;
+    right: -18px;
+    top: 28px;
+    z-index: 1000;
+    display: none ;
+	background: url("../images/downarrow.png") no-repeat;
+    transform: rotate(270deg);
+    background-size: 40px 40px;
+    width: 60px;
+    height: 60px;
+}
+
+/*
+ * The media-queries are not used because IE8 doesn't support them.
+ */
+.pgwSlideshow.narrow .ps-list li img {
+    width: 60px;
+    height: 60px;
+}
+
+.pgwSlideshow.narrow .ps-current .ps-prev {
+    padding: 15px 15px 15px 12px;
+    top: 40%;
+}
+
+.pgwSlideshow.narrow .ps-current .ps-next {
+    padding: 15px 12px 15px 15px;
+    top: 40%;
+}
+
+.pgwSlideshow.narrow .ps-list .ps-prev {
+    padding: 15px 12px 15px 10px;
+    top: 20px;
+}
+
+.pgwSlideshow.narrow .ps-list .ps-next {
+    padding: 15px 10px 15px 12px;
+    top: 20px;
+}
+
+.pgwSlideshow.narrow .ps-caption {
+    font-size: 0.8rem;
+    padding: 8px;
+}

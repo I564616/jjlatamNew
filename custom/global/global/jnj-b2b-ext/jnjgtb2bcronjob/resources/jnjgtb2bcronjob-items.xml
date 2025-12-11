@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+  ~ [y] hybris Platform
+  ~ 
+  ~ Copyright (c) 2000-2016 SAP SE
+  ~ All rights reserved.
+  ~ 
+  ~ This software is the confidential and proprietary information of SAP 
+  ~ Hybris ("Confidential Information"). You shall not disclose such 
+  ~ Confidential Information and shall use it only in accordance with the 
+  ~ terms of the license agreement you entered into with SAP Hybris.
+  -->
+<!--
+	ATTENTION: This is just an example file. You have to edit it according to your needs.
+-->
+
+<items 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+			xsi:noNamespaceSchemaLocation="items.xsd">
+
+	<enumtypes>
+		<enumtype code="JnjGTRecordsLoadingStatus" autocreate="true" generate="true"
+			dynamic="true">
+			<value code="STAGE_TO_INTERMEDIATE" />
+			<value code="INTERMEDIATE_TO_HYBRIS" />
+			<value code="COMPLETE" />
+		</enumtype>
+		<enumtype code="ResetPwdJobAction" autocreate="true" generate="true"
+			dynamic="true">
+			<value code="SEND_ACTIVATION_EMAIL" />
+			<value code="RESET_PASSWORD_URL" />
+		</enumtype>
+		<enumtype code="JnjPCMFullCatalogExportCountry" autocreate="true" generate="true"
+			dynamic="true">
+			<value code="CANADA" />
+			<value code="UNITED_STATES" />
+			<value code="ALL" />
+		</enumtype>
+	</enumtypes>
+	<itemtypes>
+				
+		<itemtype code="JnjInterfaceCronJob" extends="CronJob"
+			autocreate="true" generate="true"
+			jaloclass="com.jnj.gt.core.jalo.JnjInterfaceCronJob">
+
+			<attributes>
+				<attribute qualifier="impexFile" type="java.lang.String">
+					<modifiers unique="true"/>					
+					<persistence type="property" />
+				</attribute>
+				<attribute qualifier="facadeBean" type="java.lang.String">
+					<modifiers unique="true"/>					
+					<persistence type="property" />
+				</attribute>
+				<attribute type="JnjGTRecordsLoadingStatus" qualifier="recordsLoadingStatus">
+					<persistence type="property" />
+					<defaultvalue>em().getEnumerationValue("JnjGTRecordsLoadingStatus", "COMPLETE")</defaultvalue>
+				</attribute>
+				<attribute qualifier="associatedStgTables" type="ListOfStrings">
+					<description>Read status will be updated in tables given in this colln after corresponding operation</description>					
+					<persistence type="property" />					
+				</attribute>
+				<attribute qualifier="sourceSysIds" type="ListOfStrings">
+					<description>Job will process only the orders for given source system id. This parameter is only applicable for the JnjGTFeedMultiThreadMDDJob Job</description>					
+					<persistence type="property" />					
+				</attribute>		
+				<attribute qualifier="impexFiles" type="ListOfStrings">	
+					<description>This parameter is only applicable for the JnjGTFeedMultiThreadMDDJob Job</description>		
+					<persistence type="property" />					
+				</attribute>
+				<attribute qualifier="numberOfThreads" type="java.lang.Integer">
+					<description>This parameter is only applicable for the Jobs that run multi-threaded Order Processing Facade JnjGTIntMultiThreadFacade</description>					
+					<persistence type="property" />					
+				</attribute>
+							
+			</attributes>
+			
+		</itemtype>
+
+
+	   <itemtype code="JnjInterfaceStageCleanupCronJob" extends="CronJob"
+		autocreate="true" generate="true"
+		jaloclass="com.jnj.gt.core.jalo.JnjInterfaceIntermediateCleanupCronJob">
+
+		<attributes>
+			<attribute qualifier="PROCESSED_IGNORED_RETENTION" type="java.lang.Integer">
+				<modifiers unique="true"/>					
+				<persistence type="property" />
+			</attribute>
+			<attribute qualifier="PROCESSED_LOADING_RETENTION" type="java.lang.Integer">
+				<modifiers unique="true"/>					
+				<persistence type="property" />
+			</attribute>
+			<attribute qualifier="DATE_RETENTION" type="java.util.Date">
+				<modifiers unique="true"/>					
+				<persistence type="property" />
+			</attribute>
+			<attribute qualifier="USE_PREPARED_STATEMENTS" type="java.lang.Boolean">
+				<modifiers unique="true"/>					
+				<persistence type="property" />
+				 <defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+			</attribute>
+		</attributes>
+	</itemtype>
+
+	<itemtype code="JnjInterfaceIntermediateCleanupCronJob" extends="CronJob"
+		autocreate="true" generate="true"
+		jaloclass="com.jnj.gt.core.jalo.JnjInterfaceIntermediateCleanupCronJob">
+
+		<attributes>
+			<attribute qualifier="RETENTION" type="java.lang.Integer">
+				<modifiers unique="true"/>					
+				<persistence type="property" />
+			</attribute>
+			<attribute qualifier="DATE_RETENTION" type="java.util.Date">
+				<modifiers unique="true"/>					
+				<persistence type="property" />
+			</attribute>
+		</attributes>
+	</itemtype>
+
+	<itemtype code="JnjPCMFullCatalogUploadCronJob" extends="CronJob"
+			autocreate="true" generate="true"
+			jaloclass="com.jnj.pcm.core.jalo.JnjPCMFullCatalogUploadCronJob">
+			<attributes>
+				<attribute type="JnjPCMFullCatalogExportCountry" qualifier="processedCountries">
+					<persistence type="property" />
+					<defaultvalue>em().getEnumerationValue("JnjPCMFullCatalogExportCountry", "ALL")</defaultvalue>
+				</attribute>
+			</attributes>
+		</itemtype>
+		<!-- Start CR_119 -->
+		<itemtype code="JnjGTUserResetPwdCronJob" extends="CronJob"
+			autocreate="true" generate="true"
+			jaloclass="com.jnj.gt.job.JnjGTUserResetPwdCronJob">
+			<attributes>
+				<attribute type="ResetPwdJobAction" qualifier="resetPwdJobAction">
+					<persistence type="property" />
+					<defaultvalue>em().getEnumerationValue("ResetPwdJobAction", "RESET_PASSWORD_URL")</defaultvalue>
+				</attribute>
+			</attributes>
+		</itemtype>
+		<itemtype code="JnjGTShipmentConfirmationEmailCronJob"
+			extends="CronJob" autocreate="true" generate="true"
+			jaloclass="com.jnj.core.jalo.JnjGTShipmentConfirmationEmailCronJob">
+		<attributes>
+			<attribute qualifier="maxEmailAttempts" type="java.lang.Integer">
+				<description>This parameter limits the number of attempts the cronjob will try to send the email</description>
+			<persistence type="property" />
+		</attribute>
+		</attributes>
+	</itemtype>
+	</itemtypes>
+</items>

@@ -1,0 +1,516 @@
+<style>
+input.span-18 {
+	border-left-width: 1px;
+    border-right-width: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+	width: 698px;
+}
+.last {
+    margin-right: 0;
+    padding-right: 0;
+}
+.consignmentIssuePanel h2.arrowHeader span {
+    float: right;
+}
+.consignmentIssuePanel ul {
+    margin: 10px 0 20px;
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+.consignmentIssuePanel ul li {
+    clear: both;
+    margin-top: 10px;
+    min-height: 58px;
+}
+.consignmentIssuePanel label {
+    display: block;
+}
+.consignmentIssuePanel label span {
+    color: #B41601;
+}
+.consignmentIssuePanel input[type="text"], .consignmentIssuePanel select {
+    color: #646464;
+    padding-left: 2px;
+    width: 420px;
+}
+.consignmentIssuePanel select {
+    color: #646464;
+    float: none;
+    width: 230px;
+}
+.consignmentIssuePanel input.date {
+    font-size: 12px;
+    width: 99px;
+}
+.consignmentIssuePanel input, .consignmentIssuePanel select {
+    padding: 0;
+}
+.consignmentIssuePanel select {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid #E5E5E5;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    padding-right: 0;
+    padding-top: 0;
+}
+.consignmentIssuePanel .buttonWrapper > input {
+    padding: 5px 15px;
+}
+.consignmentIssueHeader .hcolumn1 {
+    width: 139px;
+}
+.consignmentIssueHeader .hcolumn2 {
+    width: 70px;
+}
+.consignmentIssueHeader .hcolumn3 {
+    width: 99px;
+}
+.consignmentIssueHeader .hcolumn4 {
+    width: 120px;
+}
+.consignmentIssueHeader .hcolumn5 {
+    width: 110px;
+}
+.consignmentIssueHeader .hcolumn6 {
+    width: 80px;
+}
+.consignmentIssueHeader .hcolumn7 {
+    width: 76px;
+}
+.consignmentIssueHeader > div {
+    float: left;
+}
+h2.arrowHeader {
+    border-bottom: 1px solid #84C5D4;
+    color: #0A8CAA;
+    font-size: 16px;
+    line-height: 30px;
+    margin-bottom: 0;
+}
+.priceSmall {
+    color: #B41601;
+    font-size: 12px;
+}
+.instructiontxt {
+    color: #828282;
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+body {
+    line-height: 1.5;
+}
+body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section {
+    border: 0 none;
+    font-family: inherit;
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+body {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #222222;
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    font-size: 75%;
+}
+ul li {
+    color: #646464;
+    font-size: 12px;
+    list-style-type: none;
+}
+.consignmentIssueRow {
+    min-height: 20px;
+    overflow: hidden;
+    padding: 10px 20px;
+}
+.even {
+    background: none repeat scroll 0 0 #FFFFFF;
+}
+.servicesTableHead, .servicesTableHead2 {
+    background: none repeat scroll 0 0 #F7F7F7;
+    border: 1px solid #E5E5E5;
+    margin-top: 20px;
+    min-height: 16px;
+    overflow: hidden;
+    padding: 10px 20px;
+}
+ul li {
+    clear: both;
+    margin-top: 10px;
+    min-height: 58px;
+}
+label {
+    display: block;
+}
+td {
+	color: #646464;
+}
+</style>
+<html>
+<head>
+	<title>E-mail de confirmação</title>
+</head>
+<body>
+	<table style="background-color:#ffffff" width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+		<tr>
+			<td align="center">
+				<table bgcolor="#ffffff" width="600" border="0" cellspacing="0" cellpadding="0" align="center">
+					<tr bgcolor="#ffffff">
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr bgcolor="#ffffff">
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td>
+							<img src="${ctx.jnjCustomerFormMap['siteLogoPath']}" width="333" height="84" border="0" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr bgcolor="#ffffff">
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<!-- INSERT HERE -->
+						<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+							<div class="size3of5 cell">
+								<label><b>Retirada de Artigos em Consignação:</b></label>
+								<label class="required">
+									${ctx.jnjCustomerFormMap['fromEmail']}
+								</label>
+								<label class="required">
+									(${ctx.jnjCustomerFormMap['contactLastName']} , ${ctx.jnjCustomerFormMap['contactFirstName']} )
+								</label>
+							</div>
+							<table width="100%" cellspacing="0" cellpadding="0">
+								<tr>
+									<td align="left">
+										<h2 class="arrowHeader">Retirada de artigos em consignação</h2>
+									</td>
+								</tr>
+							</table>
+							<ul>
+								<li>
+									<div class="size3of5 cell">
+										<label for="Cname"><b>Nome do cliente:</b></label>
+										<label class="required" id="Cname">
+											${ctx.jnjCustomerFormMap['customerName']}
+										</label>
+									</div>
+						
+								</li>
+								<li>
+									<div class="size3of5 cell">
+										<label for="Chospital"><b>Hospital:</b></label>
+										<label class="required" id="Chospital">
+											${ctx.jnjCustomerFormMap['hospital']}
+										</label>
+									</div>
+						
+								</li>
+								<li>
+									<div class="size3of5 cell">
+										<label for="Cfirstname"><b>Nome:</b></label>
+										<label class="required" id="Cfirstname">
+											${ctx.jnjCustomerFormMap['contactFirstName']}
+										</label>
+									</div>
+						
+								</li>
+								<li>
+									<div class="size3of5 cell">
+										<label for="Clastname"><b>Sobrenome:</b></label>
+										<label class="required" id="Clastname">
+											${ctx.jnjCustomerFormMap['contactLastName']}
+										</label>
+									</div>
+						
+								</li>
+								<li>
+									<div class="size3of5 cell">
+										<label for="Cemail"><b>E-mail de contato:</b></label>
+										<label class="required" id="Cemail">
+											${ctx.jnjCustomerFormMap['contactEmail']}
+										</label>
+									</div>
+								</li>
+								<li>
+									<div class="size3of5 cell">
+										<label for="Cphone"><b>Telefone de contato:</b></label>
+										<label class="required" id="Cphone">
+											${ctx.jnjCustomerFormMap['contactPhone']}
+										</label>
+									</div>
+								</li>
+								#if(${ctx.jnjCustomerFormMap['cityOrState']})
+								<li>
+									<div class="size3of5 cell">
+										<label for="CityOrState"><b>Cidade / Estado:</b></label>
+										<label class="required" id="CityOrState">
+											${ctx.jnjCustomerFormMap['cityOrState']}
+										</label>
+									</div>
+								</li>
+								#end
+								<li>
+									<div class="size3of5 cell">
+										<label for="soldto"><b>Vendido a:</b></label>
+										<label class="required" id="soldTo">
+											${ctx.jnjCustomerFormMap['soldTo']}
+										</label>
+									</div>
+						
+								</li>
+								<li>
+									<div class="size3of5 cell">
+										<label for="shipto"><b>Entregue a:</b></label>
+										<label class="required" id="shipto">
+											${ctx.jnjCustomerFormMap['shipTo']}
+										</label>
+									</div>
+								</li>
+                                <li>
+									<div class="size3of5 cell">
+										<label for="residentialQuarter"><b>Bairro:</b></label>
+										<label class="required" id="residentialQuarter">
+											${ctx.jnjCustomerFormMap['residentialQuarter']}
+										</label>
+									</div>
+								</li>
+                                <li>
+									<div class="size3of5 cell">
+										<label for="city"><b>Cidade:</b></label>
+										<label class="required" id="city">
+											${ctx.jnjCustomerFormMap['city']}
+										</label>
+									</div>
+								</li>
+                                <li>
+									<div class="size3of5 cell">
+										<label for="state"><b>Estado:</b></label>
+										<label class="required" id="state">
+											${ctx.jnjCustomerFormMap['state']}
+										</label>
+									</div>
+								</li>
+                                <li>
+									<div class="size3of5 cell">
+										<label for="zipCode"><b>CEP:</b></label>
+										<label class="required" id="zipCode">
+											${ctx.jnjCustomerFormMap['zipCode']}
+										</label>
+									</div>
+								</li>
+								<li>
+									<div class="size1of7  cell">
+										<label for="datepickerform0"><b>Data da OC:</b></label>
+										<label class="required" id="datepickerform0">
+											${ctx.jnjCustomerFormMap['date']}
+										</label>
+									</div>
+								</li>
+								<li>
+									<div class="size3of5 cell">
+										<label for="POnum"><b>Número da PO:</b></label>
+										<label class="required" id="POnum">
+											${ctx.jnjCustomerFormMap['poNumber']}
+										</label>
+									</div>
+						
+								</li>
+								<li>
+									<div class="size3of5 cell">
+										<label for="billdet"><b>Documento de Faturamento de Reabastecimento / Reposição:</b></label>
+										<label class="required" id="billdet">
+											${ctx.jnjCustomerFormMap['replenishmentOrFillUpDoc']}
+										</label>
+									</div>
+								</li>
+								<li>
+									<div class="size3of5 cell">
+										<label for="Nfe"><b>NFe de reabastecimento/reposição:</b></label>
+										<label class="required" id="Nfe">
+											${ctx.jnjCustomerFormMap['replenishmentOrFillUpNFE']}
+										</label>
+									</div>
+								</li>
+								<li>
+									<div class="size3of5 cell">
+										<label for="patient"><b>Paciente:</b></label>
+										<label class="required" id="patient">
+											${ctx.jnjCustomerFormMap['patient']}
+										</label>
+									</div>
+								</li>
+								<li>
+									<div class="size3of5 cell">
+										<label for="doctor"><b>Médico:</b></label>
+										<label class="required" id="doctor">
+											${ctx.jnjCustomerFormMap['doctor']}
+										</label>
+									</div>
+								</li>
+                                <li>
+									<div class="size3of5 cell">
+										<label for="healthPlan"><b>Convênio:</b></label>
+										<label class="required" id="healthPlan">
+											${ctx.jnjCustomerFormMap['healthPlan']}
+										</label>
+									</div>
+								</li>
+                                <li>
+									<div class="size1of7  cell">
+										<label for="datepickerform1"><b>Data da Cirurgia:</b></label>
+										<label class="required" id="datepickerform1">
+											${ctx.jnjCustomerFormMap['surgeryDate']}
+										</label>
+									</div>
+								</li>
+                                <li>
+									<div class="size3of5 cell">
+									    <label for="billingAndReplacement"><b>Faturação/Reposição:</b></label>
+										<label class="required" id="billingAndReplacement">
+											${ctx.jnjCustomerFormMap['billingOrReplacement']}
+										</label>
+									</div>
+								</li>
+                                <li>
+									<div class="size3of5 cell">
+										<label for="observation"><b>Observação:</b></label>
+										<label class="required" id="observation">
+											${ctx.jnjCustomerFormMap['observation']}
+										</label>
+									</div>
+								</li>
+							</ul>
+							<!-- Consignment table head starts -->
+							<table cellpadding="0" cellspacing="0" width="100%">
+								<tr>
+									<th style="color: #48A7BD;font-size: 12px;font-weight: bold;line-height: 15px;border: 1px solid #E5E5E5;border-right: none;padding: 10px 20px;background: none repeat scroll 0 0 #F7F7F7;">Artigo</th>
+									<th style="color: #48A7BD;font-size: 12px;font-weight: bold;line-height: 15px;border-top: 1px solid #E5E5E5;border-bottom: 1px solid #E5E5E5;border-right: none;border-left: none;padding: 10px 20px;background: none repeat scroll 0 0 #F7F7F7;">Quantidade</th>
+									<th style="color: #48A7BD;font-size: 12px;font-weight: bold;line-height: 15px;border-top: 1px solid #E5E5E5;border-bottom: 1px solid #E5E5E5;border-right: none;border-left: none;padding: 10px 20px;background: none repeat scroll 0 0 #F7F7F7;">Unidade de medida</th>
+									<th style="color: #48A7BD;font-size: 12px;font-weight: bold;line-height: 15px;border-top: 1px solid #E5E5E5;border-bottom: 1px solid #E5E5E5;border-right: none;border-left: none;padding: 10px 20px;background: none repeat scroll 0 0 #F7F7F7;">Número de lote</th>
+								</tr>
+								#set($counter = 0)
+								#foreach($itemContent in ${ctx.jnjCustomerDetailsMap['item']})
+									#if($counter%2==0)
+										<tr>
+											<td style="line-height: 15px;text-align:center;padding: 10px 20px;">$itemContent</td>
+											<td style="line-height: 15px;text-align:center;padding: 10px 20px;">${ctx.jnjCustomerDetailsMap['qty'][$counter]}</td>
+											<td style="line-height: 15px;text-align:center;padding: 10px 20px;">${ctx.jnjCustomerDetailsMap['uom'][$counter]}</td>
+											<td style="line-height: 15px;text-align:center;padding: 10px 20px;">${ctx.jnjCustomerDetailsMap['batchNumber'][$counter]}</td>
+										</tr>
+									#else
+										<tr>
+											<td style="background: none repeat scroll 0 0 #F9F9F9;line-height: 15px;text-align:center;padding: 10px 20px;">$itemContent</td>
+											<td style="background: none repeat scroll 0 0 #F9F9F9;line-height: 15px;text-align:center;padding: 10px 20px;">${ctx.jnjCustomerDetailsMap['qty'][$counter]}</td>
+											<td style="background: none repeat scroll 0 0 #F9F9F9;line-height: 15px;text-align:center;padding: 10px 20px;">${ctx.jnjCustomerDetailsMap['uom'][$counter]}</td>
+											<td style="background: none repeat scroll 0 0 #F9F9F9;line-height: 15px;text-align:center;padding: 10px 20px;">${ctx.jnjCustomerDetailsMap['batchNumber'][$counter]}</td>
+										</tr>
+									#end
+									#set($counter = $counter + 1)
+								#end
+							</table>
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

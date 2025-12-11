@@ -1,0 +1,339 @@
+/* added to convert Input to look like Anchor tag */
+#invoice-details-page .pdfdownloadlinks {
+    border: none;
+    background: none;
+    color: #12c2e9;
+}
+#invoice-details-page .invoice-label-head{
+	font-size:10px;
+	font-family:jnjlabelfont;
+}
+#invoice-details-page .invoice-content-holder{
+	margin-bottom:20px;
+}
+#invoice-details-page .invoice-content-holder .invoice-label-head{
+	margin-bottom:8px;
+}
+#invoice-details-page  .invoice-cutom-name-label{
+	font-size:10px;
+	font-family:jnjlabelfont;
+	margin-bottom:10px;
+}
+#invoice-details-page .invoice-content{
+	line-height:20px;
+	font-family: jnjbodyfont;
+}
+#invoice-details-page .invoice-left .invoice-content{
+	font-size:14px;
+}
+#invoice-details-page .invoice-right .invoice-content{
+	font-size:18px;
+}
+#invoice-details-page .invoice-head-content{
+	font-size:18px;
+	line-height:50px;
+}
+#invoice-details-page .invoice-leftTotop-content{
+		margin-top:25px;
+}
+#invoice-details-page .invoice-rightTobottom-content{
+	margin-top:25px;
+}
+#invoice-details-page #invoice-separator{
+	//padding:0px !important;
+	//background-color:#f2f2f2;
+	//height:200px;
+	border-right:1px solid #f2f2f2;
+}
+#invoice-details-page .invoice-content-active{
+	color:#5cb85c;
+} 
+#invoice-details-page #invoice-num{
+	font-weight:bold;
+	font-size:30px;
+}
+#invoice-details-page #download-link{
+	margin-top:20px;
+}
+#invoice-details-page .invoice-number-table{
+	//margin-top:10px;
+	font-family: jnjbodyfont;
+	font-size:18px;
+}
+#invoice-details-page .jnj-panel-footer{
+	margin-top: 0px;
+	padding-top: 30px;
+	padding-bottom: 15px;
+}
+#invoice-details-page .jnj-panel-header{
+	padding: 15px 15px 15px 15px;
+}
+#invoice-details-page .jnj-panel-body{
+	padding: 0px 16px 0px 16px !important;
+	border-bottom:none;
+}
+#invoice-details-page .btnclsnormal{
+	padding: 10px 40px;
+}
+#invoice-details-page .invoice-add-to-cart{
+    padding: 10px 30px;
+	margin-bottom:40px;
+	margin-top:15px;
+}
+#invoice-details-page .invoice-add-to-cart-bottom{
+    padding: 10px 30px;
+	margin-bottom:40px;
+	margin-top:40px;
+}
+#invoice-details-page .mainbody-container{
+	//box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 0px 1px 0 rgba(0, 0, 0, 0.19);
+	webkit-box-shadow: 0 0 5px 2px #eee;
+	-moz-box-shadow: 0 0 5px 2px #eee;
+	box-shadow: 0 0 5px 2px #eee;
+}
+#invoice-details-page .jnj-panel{
+	    padding: 15px 0px 0px 0px;
+}
+#invoice-details-page .checkbox label::before{
+	top: 1px;
+}
+#invoice-details-page .dataTable .checkbox{
+	padding-left:0px !important
+}
+#invoice-details-page .invoice-check-content{
+	padding-left:10px !important
+}
+#invoice-details-page .invoice-check-content div{
+	margin-top:5px !important
+}
+#invoice-details-page #invoice-head-chck-label{
+	padding-left:10px;padding-top:2px;
+}
+#invoice-details-page  table.table-bordered.dataTable tbody th,#invoice-details-page  table.table-bordered.dataTable tbody td:first-child,#invoice-details-page  .table>thead:first-child>tr:first-child>th:first-child{
+	padding-left: 30px;
+}
+#invoice-details-page table.dataTable thead .sorting:after{
+	opacity: 1;
+	margin-left: 0px;
+}
+#invoice-details-page .link-holder{
+	margin-top:10px;
+}
+#invoice-details-page .link-txt{
+	margin-right: 10px;
+    padding-left: 20px;
+}
+#invoice-details-page .invoice-cnu-head{
+	width:105px;
+	text-align:left;
+	padding:8px 15px;
+}
+#invoice-details-page .invoice-tcell-chckbox{
+	margin:0px;	
+}
+#invoice-details-page .invoice-tcell-chckbox-mob{
+	margin-top:0px !important;
+}
+
+#invoice-details-page .invoice-accordian-header{
+	padding: 20px 30px;
+   border-top: 1px solid #f2f2f2;
+}
+#invoice-details-page .invoice-accordian-body{
+	border-bottom: 1px solid #f2f2f2;
+}
+#invoice-details-page .invoice-accordian-icon{
+	font-size: 12px;
+    top: -2px;
+	padding-right:5px;
+}
+#invoice-details-page .ref_no {    
+    font-size: 24px;
+    color: #0a8caa !important;
+    //font-weight: bold;
+	padding-left:0px;
+}
+#invoice-details-page .table-padding{
+	padding-top:0px;
+	padding-bottom:0px;
+}
+#invoice-details-page .invoice-download-link{
+	margin-top:10px;
+}
+#invoice-details-page .invoice-status{
+	margin-bottom:10px;
+}
+#invoice-details-page table>tbody>tr>td{
+	padding-top:10px;
+	padding-bottom:10px;
+}
+#invoice-details-page .invoice-desktop-table td{
+	padding:25px 20px !important;
+}
+#invoice-details-page .invoice-desktop-table th{
+	padding:10px 20px !important;
+}
+#invoice-details-page .invoice-desktop-table .text-center{
+	text-align:center !important;
+}
+#invoice-details-page .invoice-desktop-table .text-left{
+	text-align:left !important;
+}
+#invoice-details-page .dataTables_wrapper  .row:nth-of-type(3){
+	padding:0;
+}
+
+/* Added for NA inovice details page*/
+
+#invoice-details-page .paddingleft15px{
+	padding-left: 15px;
+}
+/* 
+#invoice-details-page .packingList{
+	float: right;
+    padding-right: 34px;
+}*/
+#invoice-details-page .paddingtop15px{
+	padding-top: 15px;
+}
+#invoice-details-page .lineheight32px{
+	line-height:32px;
+}
+#invoice-details-page .dispute-button{
+	padding: 10px 20px;
+}
+#invoice-details-page .paddingForIpadNA{
+ padding-left: 15px;
+}
+#invoice-details-page .snoWidth{
+	width:50px !important;
+}
+#invoice-details-page .na-invoice-desktop th:first-child{
+    padding: 10px 20px !important;
+}
+#invoice-details-page .na-invoice-desktop th{
+    padding: 10px 10px !important;
+}
+#invoice-details-page .na-invoice-desktop td:first-child{
+    padding: 25px 20px !important;
+}
+#invoice-details-page .na-invoice-desktop td{
+    padding: 25px 10px !important;
+}
+#invoice-details-page .retrieveInfo{
+	padding-left:10px;
+}
+.word-break{word-break:break-word}
+
+/*  */
+@media only screen and (max-width:1024px){
+	#invoice-details-page .packingList {
+    	float: left;
+    	padding-right: 0px; 
+    	padding-left: 15px; 
+	}
+	
+	#invoice-details-page .clearBoth { 
+	 clear: both;
+	}	
+	#invoice-details-page .billofLandIpad { 
+	 padding-left: 0px;
+	}
+		
+	#invoice-details-page .sub-details-row{
+		padding-left: 10px;
+	}
+
+	#invoice-details-page table>thead>tr>th:last-child{
+		text-align: center;
+		width:90px;
+	}
+	#invoice-details-page table>thead>tr>th:nth-child(3){
+		text-align: left;
+	}
+	#invoice-details-page .margintop20px{
+		margin-top: 0px;
+	}
+	#invoice-details-page .invoice-bottom-margin{
+		margin-bottom:5px;
+	}
+	
+}
+@media screen and (max-width: 767px) {
+	#invoice-details-page .jnj-panel-body{
+		padding: 20px 16px 20px 16px;
+	}
+	#invoice-details-page .searchby{
+		margin-bottom: 20px !important;
+	}
+	#invoice-details-page .jnj-panel{
+		padding: 15px 0px 40px 0px;
+	}
+	#invoice-details-page .link-holder{
+		text-align:center;
+		position:absolute;
+		margin-top: 111px;
+	}
+	#invoice-details-page .link-txt{
+		margin-right: 20px;
+		padding-left: 0px;
+	}
+	#invoice-details-page div.dataTables_wrapper div.dataTables_info{
+		float: left;
+		margin: 20px 0px 0 30px;
+	}
+	#invoice-details-page table>tbody>tr>td{
+		padding-bottom: 0px;
+	}
+	#invoice-details-page table.dataTable{
+		margin-bottom: 20px !important;
+	}
+	#invoice-details-page .selectchkbox{
+		float:left !important;
+	}
+	#invoice-details-page .change{
+		margin-left: 0px;
+	}
+	
+	#invoice-details-page table>tbody>tr>td:nth-child(2){
+		text-align: center;
+		padding-right: 27px;
+	}
+	#invoice-details-page #invoice-separator{
+		width:100% !important;
+		border-bottom:1px solid #f2f2f2;
+	}
+	.contract-check-content.display-table-cell{
+		display:block !important;
+	}
+}
+@media screen and (max-width: 480px) {
+	#invoice-details-page #invoice-separator{
+		width:100% !important;
+		height:1px;
+	}
+	#invoice-details-page .invoice-rightTobottom-content{
+		padding-left:0px;
+	}
+	#invoice-details-page .jnj-panel {
+		padding: 15px 0px 0px 0px;
+	}
+	#invoice-details-page .details{
+		padding-left:5px;
+	}
+	#invoice-details-page .invoice-mobile-table.table>tbody>tr>td {
+		padding-bottom: 8px;
+	}
+	.invoice-mobile-table .ref_no{
+		font-size:14px !important;
+	}
+}
+
+#invoice-details-page .packingList{
+	padding-left:0px;
+} 
+
+#Orderhistorypage .panel-heading .panel-title{
+	font-size: 16px !important;
+    margin: 0 !important;
+}

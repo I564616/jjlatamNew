@@ -1,0 +1,3501 @@
+# ImpEx for Importing Categories into J&J Store
+
+# Macros / Replacement Parameter definitions
+$productCatalog=mstrProductCatalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$supercategories=supercategories(code[unique=true], $catalogVersion)
+
+# Insert Categories at Level 4
+UPDATE Category;code[unique=true];name[lang=en];$catalogVersion
+#############################################################################MD&D#############################################################################################
+;000110100100000000;Total DC/Cases;
+;000110100100000001;Total DC/Instruments;
+;000110100200000000;Total DC/L Various Implants;
+;000110100200000001;Total DC/L DC Plate;
+;000110100200000002;Total DC/L F Plate;
+;000110100300000000;Total LCP/Cases;
+;000110100300000001;Total LCP/Instr.;
+;000110100300000002;Total LISS LF/Cases;
+;000110100300000003;Total LISS LF/Instr.;
+;000110100400000000;Total LCP Straight Plates;
+;000110100400000001;Total LCP Form Plates;
+;000110100400000002;Total LCP Reco Plates;
+;000110100500000000;Total LCP Metaphyseal Plate/Cases;
+;000110100500000001;Total LCP Metaphyseal Plate/Instr.;
+;000110100500000002;Total LCP Metaphyseal Plate/Screws;
+;000110100500000003;Total LCP Metaphyseal Plate/Plates;
+;000110100500000004;Total LCP distal medial tibia Plates;
+;000110100600000000;LISS Proximal Lateral Tibial Plate 5.0;
+;000110100600000001;Proximal Lateral Tibial Plate 4.5/5.0;
+;000110100600000002;LCP Proximal Tibial Plate 4.5/5.0;
+;000110100600000003;LCP Medial Proximal Tibial Plate 4.5/5.0;
+;000110100700000000;Total LISS LF/Plates;
+;000110100700000001;Total LCP DF Plates;
+;000110100700000002;Total LCP Condylar Plates Plates;
+;000110100800000000;Total LCP Proximal Femur Plates;
+;000110100850000000;Total VA-LCP Prox Femur Plates/Plates;
+;000110100900000000;Total VA-LCP Condylar Plates;
+;000110101000000000;Total LCP Trochanteric Plates;
+;000110101000000001;Total Locking Attachement Pl.;
+;000110101000000002;Total Conn. Scr. f/ Locking Attach. Pl.;
+;000110101000000003;Total Periprosthetic Screws;
+;000110101100000000;Total TomoFix/Cases;
+;000110101100000001;Total TomoFix/Instr.;
+;000110101100000002;Total TomoFix/Screws;
+;000110101100000003;Total TomoFix/Plates;
+;000110101200000000;Total DC/L Cortex-Screw;
+;000110101300000000;Total LISS LF/Screws;
+;000110101300000001;Total Locking Screws;
+;000110101300000002;Total Cannulated Locking Screws;
+;000110101300000003;Total Cannulated Connical Screws;
+;000110101400000000;Total VA Locking Screws;
+;000110101500000000;Total 5.0 mm Dynamic Locking Screws;
+;000110101600000000;Total 6.5 mm Cancellous Screws;
+;000110101700000000;Total Cannulated Locking Screws;
+;000110101700000001;Total Cannulated Connical Screws;
+;000110200104000000;Total DHS-DCS/Cases;
+;000110200104000001;Total DHS-DCS/Instruments;
+;000110200104000002;Total DHS-DCS/DHS Plate;
+;000110200104000003;Total DHS-DCS/DCS Plate;
+;000110200104000004;Total DHS-DCS/Screws;
+;000110200104000005;Total DHS-DCS/Various Implants;
+;000110200106000004;Total ABP/130°-Pl;
+;000110200106000007;Total Cann.-LC-ABP;
+;000110200109000000;Total DHHS/Cases;
+;000110200109000001;Total DHHS/Instruments;
+;000110200109000002;Total DHHS/Blade+Screws;
+;000110200109000003;Total DHHS/Plates;
+;000110200111000000;Total DHS Blade Sets;
+;000110200111000001;Total DHS Blade Cases;
+;000110200111000002;Total DHS Blade Instruments;
+;000110200111000003;Total DHS Blade SSt;
+;000110200111000004;Total DHS Blade TAN;
+;000110200112000001;Total LCP DHS Cases;
+;000110200112000002;Total LCP DHS Instruments;
+;000110200112000003;Total LCP DHS Plates Sst;
+;000110200112000004;Total LCP DHS Plates TAN;
+;000110200113000001;Total LCP DHS Plates with collar TAN;
+;000110200113000002;Total LCP DHS Plates with collar Sst;
+;000110200120000001;Total Trochanter Stabilizing Plate Cases;
+;000110200120000002;Total Trochanter Stab. Plate Instruments;
+;000110200120000003;Total Trochanter Stabilizing Plates;
+;000110200120000004;Total Locking Trochanter Stab. Plates;
+;000110200121000001;Total Modular Blade Plate Cases;
+;000110200121000002;Total Modular Blade Plate Instruments;
+;000110200121000003;Total Modular Blade Plate;
+;000110300108000000;Total DC/Cases;
+;000110300108000001;Total DC/Instruments;
+;000110300108000002;Total DC/Small Cortex-Screws;
+;000110300108000003;Total DC/Small Cancel-Screws;
+;000110300108000004;Total DC/S Various Implants;
+;000110300108000005;Total DC/Small DC-Plates;
+;000110300108000006;Total DC/Small Form Plates;
+;000110300108000007;Total DC/Conical Head Screws;
+;000110300109000000;Total DC/Small Clavicle Hook Plates;
+;000110300110000000;Total LCP/Cases;
+;000110300110000001;Total LCP/Instr.;
+;000110300110000002;Total LCP/Screws;
+;000110300110000003;Total LCP/Plates;
+;000110300111000000;Total Humerus Block+But.Fix/Cases;
+;000110300111000001;Total Humerus Block+But.Fix/Instruments;
+;000110300111000002;Total Humerus Block+But.Fix/Implants;
+;000110300112000000;Total PHILOS Plates/Cases;
+;000110300112000001;Total PHILOS Plates/Instruments;
+;000110300112000002;Total PHILOS Plates/Screws;
+;000110300112000003;Total PHILOS Plates/Plates;
+;000110300113000000;Total LCP Elbow Plates/Cases;
+;000110300113000001;Total LCP Elbow Plates/Instr.;
+;000110300113000002;Total LCP Elbow Plates/Screws;
+;000110300113000003;Total LCP DHP Plates/Plates;
+;000110300113000004;Total LCP Olecranon Plates;
+;000110300113000005;Total LCP DMH Plates;
+;000110300113000006;Total LCP Olecranon Hook Plates;
+;000110300113000007;Tot. LCP Extra-articular Dist.Humerus Pl;
+;000110300113000008;Total LCP Radial Head Pl;
+;000110300113000019;Total LCP Medial DHP Plates/Plates;
+;000110300113000020;Total LCP Dorsolat. DHP Plates/Plates;
+;000110300113000021;Total LCP Dorslat. DHP Pl. wh sup./Pl;
+;000110300114000000;Total LCP 1/3 Tubular Plates/Cases;
+;000110300114000001;Total LCP 1/3 Tubular Plates/Instr.;
+;000110300114000002;Total LCP 1/3 Tubular Plates/Screws;
+;000110300114000003;Total LCP 1/3 Tubular Plates/Plates;
+;000110300115000000;Total LCP Clavicular Hook Plates/Cases;
+;000110300115000001;Total LCP Clavicle Plates/Instr.;
+;000110300115000002;Total LCP Clavicular Hook Plates/Screws;
+;000110300115000003;Total LCP Clavicular Hook Plates/Plates;
+;000110300115000006;Total LCP Sup Ant.Clavicle Pl./Pl.;
+;000110300115000008;Total LCP Sup Ant. Clavicle Pl./Cases;
+;000110300115000010;Total LCP Ant. Clavicle Pl./Plates;
+;000110300115000012;Total LCP Ant. Clavicle Pl./Cases;
+;000110300115000014;Total LCP Sup. Clavicle Pl./Plates;
+;000110300115000016;Total LCP Sup. Clavicle Pl./Cases;
+;000110300117000000;Tot. Periarticular Prox. Hum. Pl/Cases;
+;000110300117000001;Tot. Periarticular Prox. Hum. Pl/Instr.;
+;000110300117000002;Tot. Periarticular Prox. Hum. Pl/Plates;
+;000110300118000001;Total VA-LCP Elbow Plates/Cases;
+;000110300118000002;Total VA-LCP Elbow Plates/Instr.;
+;000110300118000003;Total VA-LCP Medial DHP Plates/Plates;
+;000110300118000004;Total VA-LCP Ext. Med. DHP Plates/Plates;
+;000110300118000005;Total VA-LCP Dorsolat. DHP Plates/Plates;
+;000110300118000006;Total VA-LCP Dorslat. DHP Pl. wh sup./Pl;
+;000110300118000007;Total VA-LCP Lateral DHP Plates/Plates;
+;000110300118000008;Total VA-LCP Prox.Olec. Plates/Plates;
+;000110300118000009;Total VA-LCP Stand. Olec. Plates/Plates;
+;000110300118000010;Total VA-LCP Extr.-art. Px. Ulna/Pl.;
+;000110300119000000;Total LCP (SF) Clavicle Hook Plates;
+;000110300120000000;Total LCP Metaphyseal Plate/Cases;
+;000110300120000001;Total LCP Metaphyseal Plate/Instr.;
+;000110300120000002;Total LCP Metaphyseal Plate/Screws;
+;000110300120000003;Total LCP Metaphyseal Plate/Plates;
+;000110300121000000;Total DC/S Various Implants;
+;000110300121000001;Total DC/Small DC-Plates;
+;000110300122000000;Total DC/Small Form Plates/3.5-1/3-Tub;
+;000110300122000001;Total DC/Small Form Plates/3.5-T;
+;000110300122000002;Total DC/Small Form Pl/3.5-Cloverleaf;
+;000110300122000003;Total DC/Small Form Plates/3.5-Varoius;
+;000110300122000004;Total DC/Small Form Plates/3.5-Prox.Tib.;
+;000110300123000000;Total LCP/Plates/Straight Plates;
+;000110300123000001;Total LCP/Plates/Form Plates;
+;000110300123000002;Total LCP/Plates/Reco Plates;
+;000110300123000003;Total LCP/Plates/LIF/3.0;
+;000110300123000004;Total LCP Curved Pl./Plates;
+;000110300125000000;Total LCP 3.5 Prox Tibia Plate/Cases;
+;000110300125000001;Total LCP 3.5 Prox Tibia Plate/Instr.;
+;000110300125000002;Total LCP 3.5 Prox Tibia Plate/Screws;
+;000110300125000003;Total LCP 3.5 Prox Tibia Plate/Plates;
+;000110300125000004;LCP Med. Prox. Tibia 3.5/Pl.;
+;000110300125000005;LCP Post.Med.Prox.Tibia 3.5/Pl.;
+;000110300125000006;LCP Prox. Tibia 3.5 Low Bend/Plates;
+;000110300126000000;Total VA-LCP ProxTibia Plates;
+;000110300126000001;Total VA-LCP Proximal Tibia Plate Instr.;
+;000110300130000000;LCP Anterolateral Distal Tibia Cases;
+;000110300130000001;LCP Anterolateral Distal Tibia Instr.;
+;000110300130000002;LCP Anterolateral Distal Tibia Plates;
+;000110300130000003;LCP Anterolateral Distal Tibia Loan Sets;
+;000110300130000010;Total LCP DTP/Instruments;
+;000110300130000020;Total LCP DTP/Plates;
+;000110300130000030;Total LCP DTP/Screws;
+;000110300130000040;Total LCP DTP/Cases;
+;000110300130000050;Total LCP DTP w/o Tab/Cases;
+;000110300130001030;Total LCP DTP w/o Tab;
+;000110300130001045;"Total LCP Low-Bend MDTP Instr; & Cases";
+;000110300130001050;Total LCP Low-bend MDTP w/o tab;
+;000110300132000000;Total LCP Pilon Plate/Cases;
+;000110300132000001;Total LCP Pilon Plate/Instr.;
+;000110300132000002;Total LCP Pilon Plate/Plates;
+;000110300134000000;Total VA LCP Distal Tibia/Cases;
+;000110300134000001;Total VA LCP Distal Tibia/Instr.;
+;000110300134000002;Total VA LCP Med Dist Tib Plates;
+;000110300134000003;Total VA LCP Anteromed Dist Tib Plates;
+;000110300134000004;Total VA LCP Anterolat Dist Tib Plates;
+;000110300134000005;Total VA LCP Postlat Dist Tib L-Plates;
+;000110300134000006;Total VA LCP Postlat Dist Tib T-Plates;
+;000110300150000000;LCP Distal Fibula Plates Cases;
+;000110300150000001;LCP Distal Lateral Fibula Plates;
+;000110300150000002;LCP Distal Posterolat Fibula Plates;
+;000110300151000000;Total VA LCP Distal Fibula/Cases;
+;000110300151000001;Total VA LCP Distal Fibula/Instr.;
+;000110300151000002;Total VA LCP Distal Fibula Plates;
+;000110300500000000;Total Cortex Screws 3.5;
+;000110300510000000;Total Cancel Screws 4.0;
+;000110300520000000;Total Conical Head Screws 3.5;
+;000110300550000000;Total Locking Screws/3.5;
+;000110300560000000;Total Dynamic Locking Screws/3.7;
+;000110300570000000;Total VA Locking Screws/3.5;
+;000110300580000000;Total Perforated Locking Screws/3.5;
+;000110300590000000;Total Locking Screws/2.7 (head LCP 3.5);
+;000110400110000000;Total CSS 4.5/Cases;
+;000110400110000001;Total CSS 4.5/Instruments;
+;000110400110000002;Total CSS 4.5/Screws;
+;000110400110000003;Total CSS 4.5/Various Implants;
+;000110400111000000;Total CSS 4.0/Cases;
+;000110400111000001;Total CSS 4.0/Instruments;
+;000110400111000002;Total CSS 4.0/Screws;
+;000110400112000000;Total CSS 7.0/Cases;
+;000110400112000001;Total CSS 7.0/Instruments;
+;000110400112000002;Total CSS 7.0/Screws;
+;000110400112000003;Total CSS 7.0/Various Implants;
+;000110400112000004;Total CSS 7.0/Screws/SDS/SSt;
+;000110400112000005;Total CSS 7.0/Screws/SDS/TAN;
+;000110400113000000;Total CSS 7.3/Cases;
+;000110400113000001;Total CSS 7.3/Instruments;
+;000110400113000002;Total CSS 7.3/Screws;
+;000110400113000003;Total CSS 7.3/Various Implants;
+;000110400114000000;Total 6.5 CSS/Cases;
+;000110400114000001;Total 6.5 CSS/Instr.;
+;000110400114000002;Total 6.5 CSS/Screws;
+;000110400115000000;Total CSS 2.4/Cases;
+;000110400115000001;Total CSS 2.4/Instruments;
+;000110400115000002;Total CSS 2.4/Screws;
+;000110400116000000;Total CSS 3.0/Cases;
+;000110400116000001;Total CSS 3.0/Instruments;
+;000110400116000002;Total CSS 3.0/Screws;
+;000110400116000003;Total CSS 3.0/Washers;
+;000110400117000000;Total CSS 3.5/Cases;
+;000110400117000001;Total CSS 3.5/Instruments;
+;000110400117000002;Total CSS 3.5/Screws;
+;000110400117000003;"Total CSS 3.5/Screws; SDS; SSt";
+;000110400117000004;"Total CSS 3.5/Screws; SDS; TAN";
+;000110500110000000;Total TFNA Cases;
+;000110500110000010;Total TFNA/Instruments;
+;000110500110000020;Total TFNA/Nail  short;
+;000110500110000030;Total TFNA/Nail  long;
+;000110500110000040;Total TFNA/Blade;
+;000110500110000050;Total TFNA/Screw;
+;000110500110000060;Total TFNA/End Caps;
+;000110500115000000;Total PFN Cases;
+;000110500115000001;Total PFN/Instruments;
+;000110500115000002;Total PFN/Nail Standard;
+;000110500115000003;Total PFN/Nail Long;
+;000110500115000004;Total PFN/Fem. Neck Screw;
+;000110500115000005;Total PFN/Hip Pin;
+;000110500115000006;Total PFN/End Caps;
+;000110500115000007;Total PFN/Nail Short;
+;000110500115000008;Total PFN/V-Blade;
+;000110500115000009;Total PFN/Nail for V-Blade;
+;000110500116000000;Total PFNA Cases;
+;000110500116000001;Total PFNA/Instruments;
+;000110500116000002;Total PFNA/Nail Standard;
+;000110500116000003;Total PFNA/Nail Long;
+;000110500116000004;Total PFNA/Blade;
+;000110500116000005;Total PFNA/Hip Pin;
+;000110500116000006;Total PFNA/End Caps;
+;000110500116000007;Total PFNA/Nail Small;
+;000110500116000008;Total PFNA/Nail Extra Small;
+;000110500117000000;Total TFN Cases;
+;000110500117000001;Total TFN/Instruments;
+;000110500117000002;Total TFN/Nail Standard;
+;000110500117000003;Total TFN/Nail Long;
+;000110500117000004;Total TFN/Helix-Blade;
+;000110500117000005;Total TFN/Locking Screws;
+;000110500117000006;Total TFN/End Caps;
+;000110500117000007;Total TFN/Nail Short;
+;000110500117000008;Total TFN/Femoral Neck Screw;
+;000110500117000009;Total TFN/Set Screw;
+;000110500118000000;Total PFNA-II Cases;
+;000110500118000001;Total PFNA-II/Instruments;
+;000110500118000002;Total PFNA-II/Nail Standard;
+;000110500118000003;Total PFNA-II/Nail Long;
+;000110500118000004;Total PFNA-II/Blade;
+;000110500118000005;Total PFNA-II/Hip Pin;
+;000110500118000006;Total PFNA-II/End Caps;
+;000110500118000007;Total PFNA-II/Nail Small;
+;000110500118000008;Total PFNA-II/Nail Extra Small;
+;000110500119000000;Total ElastNail/Cases;
+;000110500119000001;Total ElastNail/Instruments;
+;000110500119000002;Total ElastNail 440/Nail-TAN;
+;000110500119000003;Total ElastNail 440/Nail-SSt;
+;000110500119000004;Total End Cap for TEN/STEN-TAN;
+;000110500119000005;Total End Cap for TEN/STEN-SSt;
+;000110500120000000;Total Reaming/Cases;
+;000110500120000001;Total Reaming/Instr.;
+;000110500122000000;Total Uni Nails/Cases;
+;000110500122000001;Total Uni Nails/Instr. (excl. Ream.);
+;000110500122000002;Total Uni Nails/Tibial N;
+;000110500122000003;Total Uni Nails/Femoral N;
+;000110500122000004;Total Uni Nails/SUN Tibial Nail;
+;000110500122000005;Total Uni Nails/SUN Femoral Nail;
+;000110500123000000;"Total UTN/CTN; PTN+DAD/Cases";
+;000110500123000010;"Total UTN/CTN; PTN+DAD/Instruments";
+;000110500123000020;"Total UTN/CTN; PTN+DAD/UTN Nails";
+;000110500123000030;"Total UTN/CTN; PTN+DAD/CTN Nails";
+;000110500123000040;"Total UTN/CTN; PTN+DAD/PTN Nails";
+;000110500123000050;"Total UTN/CTN; PTN+DAD/Var Impl UTN/CTN";
+;000110500123000060;"Total UTN/CTN; PTN+DAD/Var Implants PTN";
+;000110500123002020;"Total UTN/CTN; PTN+DAD/UTN Nails GENTAMI";
+;000110500123002030;"Total UTN/CTN; PTN+DAD/CTN Nails GENTAMI";
+;000110500124000000;Total UFN/CFN/Cases;
+;000110500124000001;Total AFN/Cases;
+;000110500124000010;Total UFN/CFN/Instruments;
+;000110500124000011;Total AFN/Instruments;
+;000110500124000020;Total UFN/CFN/UFN Nails;
+;000110500124000030;Total UFN/CFN/CFN Nails;
+;000110500124000040;Total AFN/Nails;
+;000110500124000050;Total AFN/Various Implants;
+;000110500124000060;Total UFN/CFN/Var. Impl. UFN/CFN;
+;000110500125000000;Total DFN/Cases;
+;000110500125000010;Total DFN/Instruments;
+;000110500125000020;Total DFN/DFN Nails;
+;000110500125000030;Total DFN/Various Implants DFN;
+;000110500126000000;Total UHN/Cases;
+;000110500126000010;Total UHN/Instruments;
+;000110500126000020;Total UHN/UHN Nails;
+;000110500126000030;Total UHN/Various Implants UHN;
+;000110500126000040;Total UHN/PHN Nails;
+;000110500126000050;Total FlexNailHumerus/Nails-TAN;
+;000110500126000051;Total FlexNailHumerus/Locking;
+;000110500126000052;Total FlexNailHumerus/Implants;
+;000110500128000000;Total ASLS/Cases;
+;000110500128000010;Total ASLS/Instruments;
+;000110500128000020;Total ASLS/Screws;
+;000110500129000000;Total LockBolts/SSt;
+;000110500129000001;Total LockBolts+Screws/TAN;
+;000110500130000000;Total Expert Tibial Nail/Cases;
+;000110500130000001;Total Expert Tibial Nail/Instr.;
+;000110500130000002;Total Expert Tibial Nail/Nails;
+;000110500130000003;Total Expert Tibial Nail/Var. Impl.;
+;000110500130000004;Total Suprapatellar Insertion Instrument;
+;000110500131000000;Total ModAD/Cases;
+;000110500131000001;Total ModAD/Instr.;
+;000110500132000000;Total EXPERT RAFN/Cases;
+;000110500132000010;Total EXPERT RAFN/Instruments;
+;000110500132000020;Total EXPERT RAFN Nails;
+;000110500132000030;Total EXPERT RAFN/Various Implants RAFN;
+;000110500133000000;Total EXPERT H/Cases;
+;000110500133000001;Total EXPERT H/Instr.;
+;000110500133000002;Total EXPERT H/ Nails;
+;000110500133000003;Total EXPERT H/Var Impl.;
+;000110500134000000;Total EXPERT HAN/Cases;
+;000110500134000001;Total EXPERT HAN/Instr.;
+;000110500134000002;Total EXPERT HAN/Nails;
+;000110500134000003;Total EXPERT HAN/Var Implants;
+;000110500135000000;Expert UN/RN /Cases;
+;000110500135000001;Expert UN/RN /Instr.;
+;000110500135000002;Expert UN/RN /Nails;
+;000110500135000003;Expert UN/RN Var Implants;
+;000110500136000000;Total OleON/Cases;
+;000110500136000001;Total OleON/Instr.;
+;000110500136000002;Total OleON/Nails;
+;000110500136000003;Total OleON/Var Implants;
+;000110500137000000;Total Synsonic/Cases;
+;000110500137000001;Total Synsonic/Instr.;
+;000110500137000002;Total Synsonic/Implants;
+;000110500137000003;Total Synsonic/Var Implants;
+;000110500140000000;Total Expert™ ModAD/Cases;
+;000110500140000001;Total Expert™ ModAD/Instr.;
+;000110500161000000;Total EXPERT LFN/Cases;
+;000110500161000001;Total EXPERT LFN/Instr.;
+;000110500161000002;Total EXPERT LFN/Nails;
+;000110500161000003;Total EXPERT LFN/Var Implants;
+;000110500162000000;Total EXPERT ALFN/Cases;
+;000110500162000001;Total EXPERT ALFN/Instruments;
+;000110500162000002;Total EXPERT ALFN/ Nails;
+;000110500162000003;Total EXPERT ALFN/ Var Implants;
+;000110500163000000;Total Expert A2FN/Cases;
+;000110500163000001;Total Expert A2FN/Instruments;
+;000110500163001004;Total Expert A2FN/Nails;
+;000110500163001005;Total Expert A2FN/Var Implants;
+;000110500164000000;Total LPHN/Cases;
+;000110500164000001;Total LPHN/Instruments;
+;000110500164001002;Total LPHN/Plates;
+;000110500164001003;Total LPHN/Var Implants;
+;000110500165000000;Total MultiLoc HN/Cases;
+;000110500165000001;Total MultiLoc HN/Instruments;
+;000110500165001002;Total MultiLoc HN/Nails;
+;000110500165001003;Total MultiLoc HN/MultiLoc Screws;
+;000110500165001004;Total MultiLoc HN/Var Implants;
+;000110500167000000;Total Expert SSFN Femur/Cases;
+;000110500167000001;Total Expert SSFN Femur/Instruments;
+;000110500167001004;Total Expert SSFN Femur/Nails;
+;000110500200000000;Total CNS Vario Case;
+;000110500200000001;Total CNS Instruments;
+;000110500200000002;Total CNS Tibial Nails;
+;000110500200000003;Total CNS Femoral Nails;
+;000110500200000010;Total CNS/Var Implants;
+;000110500250000000;Total SureLock Vario Case;
+;000110500250000001;Total SureLock Instruments;
+;000110508127001030;Total ASLS/Sleeves;
+;000110508300001002;Total Expert Tibial Nail + AC;
+;000110508300001003;Total UTN PROtect;
+;000110508300001004;Total Expert HAN PROtect;
+;000110508300001012;Total Expert LFN + AC;
+;000110600120000004;Total DISPOFIX Single Use ExFix;
+;000110600120001002;Total Small Ex.Fix radiolucent;
+;000110600120001003;Low Profile Wrist Fixator;
+;000110600130000000;Total Lar Ex-Fix/Cases;
+;000110600130000001;Total Lar Ex-Fix/Instruments;
+;000110600130000002;Total Lar Ex-Fix/Fix. Comp.;
+;000110600130000003;Total Lar Ex-Fix/Impl/SteinmPin;
+;000110600130000004;Total Lar Ex-Fix/Impl/SchanzScr;
+;000110600130000005;Total Ex-Fix/Various Implants;
+;000110600132000000;Total Hybrid/Cases;
+;000110600132000001;Total Hybrid/Instruments;
+;000110600132000002;Total Hybrid/Fix.Comp.;
+;000110600132000003;Total Hybrid/Impl. Wires;
+;000110600132000004;Total Hybrid/Various Implants;
+;000110600133000000;Total DO/Cases;
+;000110600133000001;Total DO/Instruments;
+;000110600133000002;Total DO/Fix.Comp.;
+;000110600133000003;Total DO/Impl.;
+;000110600134000000;Total MEFiSTO/Cases;
+;000110600134000001;Total MEFiSTO/Instruments;
+;000110600134000002;Total MEFiSTO/Fix. Comp.;
+;000110600134000004;Total ALF/Cases;
+;000110600134000005;Total ALF/Instruments;
+;000110600134000006;Detail ALF/Fix.Comp.;
+;000110600134000007;Total Orthopedic Module/Cases;
+;000110600134000008;Total Orthopedic Module/Comp.;
+;000110600135000000;Total DO Monolateral Cases;
+;000110600135000001;Total DO Monolateral Instruments;
+;000110600135000002;Total DO Monolateral Fix.Comp.;
+;000110600135000003;Total DO Monolateral Impl.;
+;000110600136000000;Total DO/Cases;
+;000110600136000001;Total DO/Instruments;
+;000110600136000002;Total DO/Fix.Comp.;
+;000110600136000003;Total DO/Impl.;
+;000110600137000000;Total Medium Ex.Fix./Cases;
+;000110600137000001;Total Medium Ex.Fix./Instruments;
+;000110600137000002;Total Medium Ex.Fix./Fixation Components;
+;000110600137000005;Total Medium Ex.Fix./Various Implants;
+;000110600138000000;Total Mini Fix Hand/Cases;
+;000110600138000001;Total Mini Fix Hand/Instr.;
+;000110600138000002;Total Mini Fix Hand/Fix Comp;
+;000110600138000003;Total Mini Fix Hand/Impl.;
+;000110600139000000;Total Dist. Rad. Ex.Fix+ADRF/Cases;
+;000110600139000001;Total Dist. Rad. Ex.Fix+ADRF/Instr.;
+;000110600139000002;Total Dist. Rad. Ex.Fix+ADRF/FixComp;
+;000110600140000000;Total Ex Fix various/Cases;
+;000110600140000001;Total Ex Fix var/Instr.;
+;000110600140000002;Total Ex Fix var/Var Implants;
+;000110600140000003;Total Ex Fix var/Fix.Comp;
+;000110600141000000;Total Small Ex.Fix/Cases;
+;000110600141000001;Total Small Ex.Fix/Instr.;
+;000110600141000002;Total Small Ex.Fix/Fix Comp;
+;000110600141000003;Total Small Ex.Fix/Impl.Sch-Screws;
+;000110700140000000;Total DC/Cases;
+;000110700140000001;Total DC/Instruments;
+;000110700140000002;Total DC/L-Pl-Recon.;
+;000110700140000003;Total DC/S-Pl-Recon.;
+;000110700140000004;Total DC/S-Cortex-Scr;
+;000110700140000005;Total Osteochon Dissecans/Implants;
+;000110700143000000;Total Pelvic various/Cases;
+;000110700143000001;Total Pelvic various/Instruments;
+;000110700143000002;Total Pelvic various/Screws;
+;000110700143000003;Total Sacral Bar Sets/Implants;
+;000110700143000004;Total Pelvic various/Var Implants;
+;000110700146000000;Total Pelvic System/Cases;
+;000110700146000001;Total Pelvic System/Instruments;
+;000110700146000002;Total Pelvic System/Screws;
+;000110700146000003;Total Pelvic System/Low Profile Rec. Pl.;
+;000110700146000005;Total Pelvic System/ Lock LP Rec. Pl.;
+;000110700146000007;Total Pelvic System/Specialty Plates;
+;000110700146000008;Total Pelvic Syst/ Lock Speciality Plate;
+;000110700148000000;Total Pelvic C-Clamp/Cases;
+;000110700148000001;Total Pelvic C-Clamp Instruments;
+;000110700148000002;Total Pelvic C-Clamp Implants;
+;000110700149000000;Total Pelvic Cable Vario Case;
+;000110700149000001;Total Pelvic Cable Instruments;
+;000110700149000002;Total Pelvic Cable Implants;
+;000110700150000000;Total OsseLign / Cases;
+;000110700150000001;Total OsseLign / Instruments;
+;000110700150000002;Total OsseLign / Implants;
+;000110800105000000;Total ABP/Cases;
+;000110800105000001;Total ABP/Instr.;
+;000110800105000002;Total ABP/OT-Hip Pl.;
+;000110800105000003;Total ABP/OT-Tibia;
+;000110800105000005;Total ABP/Cond.-Pl;
+;000110800105000006;Total ABP/Various Implants;
+;000110800110000000;Total LCP Pediatric Hip Plate/Cases;
+;000110800110000001;Total LCP Pediatric Hip Plate/Instr.;
+;000110800110000002;Total LCP Pediatric Hip Plate/Screws;
+;000110800110000003;Total LCP Pediatric Hip Plate/Plates;
+;000110800111000000;Total LCP Pediatric Condylar Pl./Cases;
+;000110800111000001;Total LCP Pediatric Condylar Pl./Instr.;
+;000110800111000002;Total LCP Pediatric Condylar Pl./Screws;
+;000110800111000003;Total LCP Pediatric Condylar Pl./Plates;
+;000110800115000000;Total Ligament/Scr/4.0-Cancel-SST;
+;000110800120000000;Total Osteotomy Guiding Device Cases;
+;000110800120000001;Total Osteotomy Guiding Device Instr.;
+;000110800130000000;Total SCFE Screw System/Cases;
+;000110800130000001;Total SCFE Screw System/Instruments;
+;000110800130000002;Total SCFE Screw System/Implants;
+;000110900151000000;Total Bone Forceps/Cases;
+;000110900151000001;Total Bone Forceps/Instruments;
+;000110900152000000;Total General Instrument/Cases;
+;000110900152000001;Total General Instrument/Instruments;
+;000110900152000002;Total General Instrument/Various;
+;000110900153000000;Total Wire/Cases;
+;000110900153000001;Total Wire/Instruments;
+;000110900153000002;Total Wire/Cerclage;
+;000110900153000003;Total Wire/Kirschner;
+;000110900154000000;Total OPERACE MIni;
+;000110900154000001;Total OPERACE Small;
+;000110900154000002;Total OPERACE Large;
+;000110900158000000;Total Vet/Sets;
+;000110900158000001;Total Vet/Instruments;
+;000110900158000002;Total Vet/Screws;
+;000110900158000003;Total Vet/Plates;
+;000110900159000010;Total Cable System/Cases/Sets;
+;000110900159000020;Total Cable System/Instruments;
+;000110900159000030;Total Cable System/Implants;
+;000110900160000000;Total MIO/Cases;
+;000110900160000001;Total MIO/Instruments;
+;000110900160000002;Total MIO/Components;
+;000110900160000003;Total MIO/Implants;
+;000111000100000000;Total 1.5 HCS/Cases;
+;000111000100000001;Total 1.5 HCS/Instr.;
+;000111000100000002;Total 1.5 HCS/Screws;
+;000111000110000000;Total 2.0 HCS/Cases;
+;000111000110000001;Total 2.0 HCS/Instr.;
+;000111000110000002;Total 2.0 HCS/Screws;
+;000111000120000000;Total 2.4 HCS/Cases;
+;000111000120000001;Total 2.4 HCS/Instr.;
+;000111000120000002;Total 2.4 HCS/Screws;
+;000111000130000000;Total 3.0 HCS/Cases;
+;000111000130000001;Total 3.0 HCS/Instr.;
+;000111000130000002;Total 3.0 HCS/Screws;
+;000111000140000000;Total 4.0 HCS/Cases;
+;000111000140000001;Total 4.0 HCS/Instr.;
+;000111000140000002;Total 4.0 HCS/Screws;
+;000111000150000000;Total 4.5 HCS/Cases;
+;000111000150000001;Total 4.5 HCS/Instr.;
+;000111000150000002;Total 4.5 HCS/Screws;
+;000111000160000000;Total 6.5 HCS/Cases;
+;000111000160000001;Total 6.5 HCS/Instr.;
+;000111000160000002;Total 6.5 HCS/Screws;
+;000111300100000000;Total Instruments & Cases;
+;000111300100000001;MiniSet 1.5;
+;000111300100000002;Total MiniSet 2.0;
+;000111300100000003;Total MiniSet 2.7;
+;000111300200000000;Total Instruments & Cases;
+;000111300200000001;Total Compact Hand 1.0 / 1.3;
+;000111300200000002;Total Compact Hand 1.5;
+;000111300200000003;Total Compact Hand 2.0;
+;000111300200000004;Total Compact Hand 2.4;
+;000111300300000000;Total Instruments & Cases;
+;000111300300000001;Total 1.0 Module;
+;000111300300000002;Total 1.3 Module;
+;000111300300000003;Total 1.5 Module;
+;000111300300000004;Total 2.0 Module;
+;000111300300000005;Total 2.4 Module;
+;000111300350000000;Total Instruments & Cases;
+;000111300350000001;Total 1.5 VA Module;
+;000111300350000002;Total 2.0 Module;
+;000111300400000000;Total Instruments & Cases;
+;000111300400000001;Total LCP Rotation Corr. Pl. 1.5/2.0;
+;000111300400000002;Total LCP Distal Ulna Plate 2.0;
+;000111300500000000;Total Instruments & Cases;
+;000111300500000001;Total LC-DCP Plates;
+;000111300500000002;Total LCP Wrist Fusion Plates;
+;000111300500000003;Total 4 Corner Plates;
+;000111300550000000;Total Instruments & Cases;
+;000111300550000001;Total Plates;
+;000111300600000000;Total Instruments & Cases;
+;000111300600000001;Total Volar  DRP;
+;000111300600000002;Total Dorsal DRP;
+;000111300700000000;Total Instruments & Cases;
+;000111300700000001;Total ExtraArticular DRP;
+;000111300700000002;Total JuxtaArticular DRP;
+;000111300700000003;Total Buttress Plate;
+;000111300700000004;Total DiaMeta DRP;
+;000111300700000005;Total Extra Long DRP;
+;000111300800000000;Total Instruments & Cases;
+;000111300800000001;Total Volar Column DRP;
+;000111300900000000;Total Instruments & Cases;
+;000111300900000001;Total Dorsal DRP;
+;000111301000000000;Total Instruments & Cases;
+;000111301000000001;Total VA ExtraArticular DRP;
+;000111301000000002;Total VA Two Column DRP;
+;000111301000000003;VA-LCP Volar Rim DRP;
+;000111301000000004;Total VA-LCP Two-Column DiaMeta DRP;
+;000111301100000000;Total Instruments & Cases;
+;000111301100000001;Total VA Dorsal DRP;
+;000111301200000000;Total Instruments & Cases;
+;000111301200000001;Total Implants;
+;000111301300000000;Total 2.4 mm Locking Screws;
+;000111301300000001;Total Locking Buttress Pins;
+;000111301400000000;Total 2.4mm VA Locking Scrwes;
+;000111301400000001;Total VA-Locking Buttress Pins;
+;000111301500000000;Total 2.4mm Cortex Screws;
+;000111301600000001;Total VA-LCP Radial Shaft Plates;
+;000111301700000001;Total VA-LCP Distal Ulna Plates;
+;000111308172000000;Total Polypin 2.0/Cases;
+;000111308172000001;Total Polypin 2.0/Instruments;
+;000111308172000002;Total Polypin 2.0/Implants;
+;000111400187000000;Total Locking Calcaneal Plate/Cases;
+;000111400187000010;Total Locking Calcaneal Plate/Instr;
+;000111400187000020;Total Locking Calcaneal Plate/Plates;
+;000111400187000030;Total Locking Calcaneal Plate/Screws;
+;000111400188000000;Total LCP Compact Foot/Cases;
+;000111400188000001;Total LCP Compact Foot/Instr.;
+;000111400188000002;Total LCP Compact Foot/Screws;
+;000111400188000003;Total LCP Compact Foot/Plates;
+;000111400188000004;Total Compact Foot/Plates;
+;000111400189000000;Total LCP Pilon Plate/Cases;
+;000111400189000001;Total LCP Pilon Plate/Instr.;
+;000111400189000002;Total LCP Pilon Plate/Screws;
+;000111400189000003;Total LCP Pilon Plate/Plates;
+;000111400190000000;Total Midfoot Fusion Bolt/Cases;
+;000111400190000001;Total Midfoot Fusion Bolt/Instr.;
+;000111400190000002;Total Midfoot Fusion Bolt/Screws;
+;000111400191000000;Hallux Valgus IM Plate/Cases;
+;000111400191000001;Total Hallux Valgus IM Plate/Instr.;
+;000111400191000002;Total Hallux Valgus IM Plate/Screws;
+;000111400191000003;Total Hallux Valgus IM Plate/Plates;
+;000111400191000004;X Lock. Plate/Cases;
+;000111400191000005;Total  X Lock. Plate/Instr.;
+;000111400191000006;Total  X Lock. Plate/Screws;
+;000111400191000007;Total  X Lock. Plate/Plates;
+;000111400192000000;Total Foot Chisels/Cases;
+;000111400192000001;Total Foot Chisels/Instr.;
+;000111400192000002;Total Foot Distraction/Comp. dev/Cases;
+;000111400192000003;Total Foot Distraction/Comp.dev/Instr.;
+;000111400192000004;Total Foot Trephines/Cases;
+;000111400192000005;Total Foot Trephines/Instr.;
+;000111400193000000;Total VA Foot Module/Cases;
+;000111400193000001;Total VA Foot Module/Instruments;
+;000111400193000002;Total VA Foot Module/Screws;
+;000111400193000003;Total VA Foot Module/Plates;
+;000111400194000000;Total VA Ankle Trauma System/Cases;
+;000111400194000001;Total VA Ankle Trauma System/Instr.;
+;000111400194000002;Total VA Ankle Trauma System/Plates;
+;000111400195000000;Total VA LCP Medial Column Plate/Cases;
+;000111400195000001;Total VA LCP Medial Column Plate/Instr.;
+;000111400195000002;Total VA LCP Medial Column Plates/Dorsal;
+;000111400195000003;Total VA LCP Medial Column Pl/Plantar;
+;000111400196000000;Total VA Locking Calcaneal Plate/Cases;
+;000111400196000001;Total VA Locking Calcaneal Plate/Instr.;
+;000111400196000002;Total VAL Calcaneal Plate/Standard Pl;
+;000111400196000003;Total VAL Calcaneal Plate/ Anterolat Pl;
+;000111400197000000;Total Calcaneal Plate/Plates;
+;000111400210000000;Total 2.7mm ProStitch Instruments;
+;000111400500000000;Total Cortex Screws 2.7;
+;000111400510000000;Total LowProf Metaphys-Compr Screws 2.7;
+;000111400520000000;Total Locking Screws 2.7 (head LCP 2.4);
+;000111400530000000;Total VA Locking Screws 2.7;
+;000111400550000000;Total Cortex Screws 4.0;
+;000111500110000000;Total Stems cemented;
+;000111500110000010;Total Stems cementless;
+;000111500110000020;Total Eccenter;
+;000111500110000030;Total Heads;
+;000111500110000040;Total Glenoid;
+;000111500110000050;Total Resurfacing Heads;
+;000111500110000060;Total Special Implants;
+;000111500111000000;Total Stems cemented;
+;000111500111000010;Total Stems cementless;
+;000111500111000020;Total Reverse Metaphysis;
+;000111500111000030;Total Reverse Adapter;
+;000111500111000040;Total Height Adapter;
+;000111500111000050;Total Inlays;
+;000111500111000060;Total CTA Heads;
+;000111500111000070;Total Resurfacing Heads;
+;000111500111000080;Total Baseplates;
+;000111500111000090;Total Glenospheres;
+;000111500120000000;Total Instruments;
+;000111500130000000;Total Demo Implants;
+;000111550110000000;Total  Implants;
+;000111550120000000;Total Instruments;
+;000111550130000000;Total Demo Implants;
+;000111550140000000;Total Cases;
+;000111608002000002;Total Coated Screws/Cort-Scr permanOS;
+;000111608002000003;Total Coated Screws/DHS/DCS Scr permanOS;
+;000111608002000004;Total Coated Scr./Spong-Screws permanOS;
+;000111608050000001;Total PCL Augmentation Implants;
+;000111608050000002;Total PCL Augmentation Instruments;
+;000111608050000003;Total Demo PCL Augmentation Articles;
+;000111608100000001;Total PMMA Cements;
+;000111608100000002;Total Cannluas;
+;000111608100000003;Total Syringes;
+;000111608100000004;Total  Injection;
+;000111608100000005;Total Demo;
+;000111608190000000;Total Bone Graft Harvesting;
+;000111608191000000;Total Diamond Trephine/Cases;
+;000111608191000001;Total Diamond Trephine/Instruments;
+;000111608191000002;Total Diamond Trephine/Implants;
+;000111608192000000;Total chronOS/Cases;
+;000111608192000001;Total chronOS/Instruments;
+;000111608192000002;Total chronOS/Implants;
+;000111608193000000;Total Norian/Cases;
+;000111608193000001;Total Norian/Instruments;
+;000111608193000002;Total Norian/Implants;
+;000111608193000003;Loan charge Norian;
+;000111608194000000;Total chronOS Inject/Cases;
+;000111608194000001;Total chronOS Inject/Instruments;
+;000111608194000002;Total chronOS Inject/Implants;
+;000111608195000000;Total chronOS Granules in Trauma;
+;000111608196000000;Total Cancellous Allograft Chips;
+;000111608196000001;Total Cancellous Allograft Blocks;
+;000111608196000002;Total Cortical/cancellous Allograft Chip;
+;000111608196000003;Total Cortical/cancellous Allograft Chip;
+;000111608196000100;Total Allograft HTO Wedge;
+;000111608196000110;Total Allograft Iliac Crest Wedge;
+;000111608196000120;Total Allograft Ilium Tricortical Strip;
+;000111608197000000;Total Demineralized Bone Matrixes;
+;000111608197000001;Total DBMx-press;
+;000111608197000010;Total DIZG Commission Trauma;
+;000111608200000001;Total RapidSorb 1.5;
+;000111608200000002;Total RapidSorb 2.0;
+;000111608300000001;Total Norian Drillable / Cases;
+;000111608300000002;Total Norian Drillable Implants;
+;000111608400000100;Total chronOS Contour / Cases;
+;000111608400000200;Total chronOS Contour Instruments;
+;000111608400000300;Total chronOS Contour Implants;
+;000111608400000400;Total Demo chronOS Contour 1 x 2.5 cc;
+;000111608500000001;Total chronOS Putty;
+;000111608501000001;Total Hemostatic Bone Putty;
+;000111608600000001;Total Forsteo;
+;000111700100000000;Total Ortho/Cases;
+;000111700100000001;Total Ortho/Instruments;
+;000111700100000002;Total Ortho/Plates;
+;000111700200000000;Total Large Fragments/Cases;
+;000111700200000001;Total Large Fragments/Instruments;
+;000111700200000002;Total Large Fragments/Plates;
+;000111700200000003;Total Large Fragments/Screws;
+;000111700200000004;Total Large Fragments/General Implants;
+;000111700300000000;Total Small & Mini Fragments/Cases;
+;000111700300000001;Total Small & Mini Fragments/Instruments;
+;000111700300000002;Total Small & Mini Fragments/Plates;
+;000111700300000003;Total Small & Mini Fragments/Screws;
+;000111700300000004;Total Small & Mini Frag/General Implants;
+;000180000000000000;Total Group Interpore;
+;000190005000001000;Total Mediation Charge for DBX;
+;000190009100000000;Total Repair charge;
+;000190009150000000;Total AO-Course charge;
+;000190009200000000;Total Loan charge;
+;000190009250000000;Total Loan PT;
+;000190009300000000;Total Working time charge;
+;000190009400000000;Total Shipping charge / freight charge;
+;000190009500001000;Total cleaning charge;
+;000190009500001100;Total sterilisation charge;
+;000190009600001000;Total Surcharge;
+;000190009700001000;Total Discount;
+;000190009800001000;Total SIMS Trauma;
+;000195007000000000;Total Custom-made device;
+;000197000000000000;Total Prototypes & Semi-/Finished USA;
+;000197000100000000;Total Veterinary Products (USA);
+;000199000000000000;Total PreOPlan Trauma;
+;000199000001000000;Total PreOPlan Osteotomies;
+;000199000002000000;Total PreOPlan Trauma & Osteotomies;
+;000199000003000000;Total PreOPlan Trial;
+;000199980001000000;Total Stand. Nails/Cases;
+;000199980001000001;Total Stand. Nails/Instruments;
+;000199980001000002;Total Stand. Nails/Tibial N;
+;000199980002000001;Total ClawNailHum/Instruments;
+;000199980002000002;Total ClawNailHum/Nail-7.0-SSt;
+;000199980002000003;Total ClawNailHum/Var Implants-SSt;
+;000199980003000000;Total LIF / Cases;
+;000199980003000001;Total LIF / Instruments;
+;000199980003000002;Total LIF / Implants;
+;000199986000000000;Total Remaining stock Promo material;
+;000199986000000001;Total Trauma Brochure + Flyer;
+;000199986000000002;Total Trauma Catalog;
+;000199995000000000;Total Remaining stock Course;
+;000199995010000000;Total Remaining stock Synthetic Models;
+;000199995011000000;Total Remaining stock Synthetic Bones;
+;000199996000000000;Total Remaining stock Promo material;
+;000199996000000001;Total Trauma Brochure + Flyer;
+;000199996000000002;Total Trauma Catalog;
+;000199999000000000;Total Remaining stock SYNTHES;
+;000199999996000000;Total set TRAUMA (ONLY JAPAN);
+;000199999998000000;Prothetics (ONLY FOR RUSSIA);
+;000199999999000000;Total Remaining stock not assigned;
+;000220100202000000;Total CSLP/Cases;
+;000220100202000001;Total CSLP/Instr.;
+;000220100202000002;Total CSLP/Plate;
+;000220100202000003;Total CSLP/Screw;
+;000220100205000000;Total Vectra/Cases;
+;000220100205000001;Total Vectra/Instr.;
+;000220100205000002;Total Vectra/Plate;
+;000220100205000003;Total Vectra/Screw;
+;000220100206000000;Total Dens/Cases;
+;000220100206000001;Total Dens/Instr.;
+;000220100206000002;Total Dens/Screw;
+;000220100216000000;Case;
+;000220100216000001;Instruments;
+;000220100217000000;Total Case;
+;000220100217000001;Total Instruments;
+;000220100218000000;Total Cases;
+;000220100218000001;Total Instruments;
+;000220100220000000;Total SynCage Small Cases;
+;000220100220000001;Total SynCage Small Instruments;
+;000220100220000002;Total SynCage Small Implants;
+;000220100230000000;Total ECD Cases;
+;000220100230000001;Total ECD Instruments;
+;000220100230000002;Total ECD Implants;
+;000220100239000000;Total SynMesh cervical Sets;
+;000220100239000001;Total SynMesh Instruments;
+;000220100239000002;Total SynMesh Implants;
+;000220100240000000;Total Vectra-T/Cases;
+;000220100240000001;Total Vectra-T/Instr.;
+;000220100240000002;Total Vectra-T/Plate;
+;000220100245000000;Total Zero-P Cases;
+;000220100245000001;Total Zero-P Instruments;
+;000220100245000002;Total Zero-P Implants;
+;000220100246000000;Total Zero-P VA Cases;
+;000220100246000001;Total Zero-P VA Instruments;
+;000220100246000002;Total Zero-P VA Implants;
+;000220100251000000;Total SynCage-C/Cases;
+;000220100251000001;Total SynCage-C/Instruments;
+;000220100251000002;Total SynCage-C/Implants;
+;000220100251000100;SynCage-C Loan Sets;
+;000220100252000000;Total SynCage-C short/Cases;
+;000220100252000001;Total SynCage-C short/Instruments;
+;000220100252000002;Total SynCage-C short/Implants;
+;000220100253000000;Total Cervios Case;
+;000220100253000001;Total Cervios Instruments;
+;000220100253000002;Total Cervios Implants;
+;000220100254000000;Total ACIS Integrate Case;
+;000220100254000001;Total ACIS Integrate Instruments;
+;000220100254000002;Total ACIS Integrate Implants;
+;000220100260000000;Total Synex Small Cases;
+;000220100260000001;Total Synex Small Instruments;
+;000220100260000002;Total Synex Small Implants;
+;000220100265000000;Total ACIS Implants;
+;000220100265000001;Total ACIS prefilled Implants;
+;000220100266000000;Total ACIS Ti-coated Implants;
+;000220108000000000;Total ACF Implants;
+;000220108000000001;Total ACF Implants (Agency);
+;000220108000000002;Total ACF Implants (Service Fee);
+;000220108001000000;Total Cervios chronOS Implants;
+;000220108001000001;Total Cervios Promotive Implants;
+;000220108002000000;Total Zero-P Allograft Implants;
+;000220108003000000;Total Zero-P chronOS Implants;
+;000220108005000000;Total Zero-P VA Allograft Implants;
+;000220108006000000;Total Zero-P VA PROmotive Implants;
+;000220108007000000;Total ACIS Integrate ChronOs Impl.;
+;000220150201000000;Total Posterior Cervical Basic Implants;
+;000220150202000000;Total ExoPlate/Implants;
+;000220150202000001;Total ExoPlate/Instruments;
+;000220150203000000;Total CerviFix/Cases;
+;000220150203000001;Total CerviFix/Instr.;
+;000220150203000002;Total CerviFix/Implants;
+;000220150204000000;Total Post. Plate/Cases;
+;000220150204000001;Total Post. Plate/Instr.;
+;000220150204000002;Total Post. Plate/Plate;
+;000220150204000003;Total Post. Plate/Screws;
+;000220150204000010;Total Hook Plate;
+;000220150205000000;Total StarLock Case;
+;000220150205000001;Total StarLock Instruments;
+;000220150205000002;Total StarLock Implants;
+;000220150206000000;Total Synapse/Cases;
+;000220150206000001;Total Synapse/Instr.;
+;000220150206000002;Total Synapse/Implants;
+;000220150207000000;Total Axon/Cases;
+;000220150207000001;Total Axon/Instr.;
+;000220150207000002;Total Axon/Implants;
+;000220150208000000;Total OC Fusion/Cases;
+;000220150208000001;Total OC Fusion/Instr.;
+;000220150208000002;Total OC Fusion/Implants;
+;000220150209000000;Total Synapse 4.0/Cases;
+;000220150209000001;Total Synapse 4.0/Instr.;
+;000220150209000002;Total Synapse 4.0/Implants;
+;000220150212000000;Total C1/C2 / Cases;
+;000220150212000001;Total C1/C2 / Instruments;
+;000220150212000002;Total C1/C2 / Screws;
+;000220150213000000;Total Arch Fixation System/Cases;
+;000220150213000001;Total Arch Fixation System/Instruments;
+;000220150213000002;Total Arch Fixation System/Plates;
+;000220150213000003;Total Arch Fixation System/Screws;
+;000220150213000004;Total Arch Fixation System/Spacers;
+;000220150215000000;Total Spine Cable Case;
+;000220150215000001;Total Spine Cable Instruments;
+;000220150215000002;Total Spine Cable Implants;
+;000220158000000000;Total ODL Spacer;
+;000220170201000000;Total PRODISC C/Cases;
+;000220170201000001;Total PRODISC C/Instruments;
+;000220170201000002;Total PRODISC C/Implants;
+;000220170202000000;Total PRODISC-C Nova/Cases;
+;000220170202000001;Total PRODISC-C Nova/Instruments;
+;000220170202000002;Total PRODISC-C Nova/Implants;
+;000220170204000000;Total Prodisc-C Vivo/Cases;
+;000220170204000001;Total Prodisc-C Vivo/Instr.;
+;000220170204000002;Total Prodisc-C Vivo/Implants;
+;000220200231000001;Total VentroFix Cases/Sets;
+;000220200231000002;Total VentroFix Instr.;
+;000220200231000003;Total VentroFix Impl.;
+;000220200232000001;Total TeleFix Cases/Sets;
+;000220200232000002;Total TeleFix Instr.;
+;000220200232000003;Total TeleFix Impl.;
+;000220200236000000;Total Synex RL Vario Case;
+;000220200236000001;Total Synex RL Instruments;
+;000220200236000002;Total Synex RL implants;
+;000220200237000000;synex Instrument Sets;
+;000220200237000001;synex Instrumente;
+;000220200237000002;synex Implantate;
+;000220200237000003;synex VarioCase;
+;000220200238000000;Total: synex II / VARIO Case;
+;000220200238000001;Total synex II / Instruments;
+;000220200238000002;Total synex II / Implants;
+;000220200239000000;Total SynMesh thoracic/lumbar Sets;
+;000220200239000001;Total SynMesh Instruments;
+;000220200239000002;Total SynMesh Implants;
+;000220200241000000;Total ArcoFix Cases/Sets;
+;000220200241000001;Total ArcoFix Instr.;
+;000220200241000002;Total ArcoFix Impl.;
+;000220200242000000;Total: synex II New / VARIO Case;
+;000220200242000001;Total synex II New / Instruments;
+;000220200242000002;Total synex II New / Implants;
+;000220200243000000;Total TLSP Cases/Sets;
+;000220200243000001;Total TLSP Instr.;
+;000220200243000002;Total TLSP Impl.;
+;000220200270000001;Total MIS OR Frame/Instr.;
+;000220200270000002;Total MIS OR Frame/Cases;
+;000220200271000000;Total SynFrame RL VARIO Case;
+;000220200271000001;Total SynFrame RL Zervikal Instrumente;
+;000220200271001001;Total SynFrame RL Lumbal Instrumente;
+;000220200272000000;Total MiniSynFrame/Instr.;
+;000220250214000000;Total JacobsSys./Instr.;
+;000220250214000001;Total JacobsSys./Impl.;
+;000220250224000000;Total Spine Fix./Cases;
+;000220250224000001;Total Spine Fix./Instr.;
+;000220250224000002;Total Spine Fix./Screws;
+;000220250224000003;Total Spine Fix./Hook;
+;000220250224000004;Total Spine Fix./Others;
+;000220250235000000;Total USS Deformity /Cases;
+;000220250235000001;Total USS Deformity /Instr.;
+;000220250235000003;Total USS Deformity/Screw-side opening;
+;000220250235000005;Total USS Def/Hook-Ped.;
+;000220250235000006;Total USS Def/Hook-Lam.;
+;000220250235000007;Total USS Def/Rod;
+;000220250235000009;Total USS Def/Connector;
+;000220250235000011;Total USS Def/Anterior;
+;000220250235000012;Total USS Def/Others;
+;000220250240000000;Total USS Paediatric/Cases;
+;000220250240000001;Total USS Paediatric/Instr.;
+;000220250240000002;Total USS Paediatric/Nut/Sleeve;
+;000220250240000003;Total USS Paediatric/Screw-doub. op.;
+;000220250240000004;Total USS Paediatrics/Hook Pedicle;
+;000220250240000005;Total USS Paediatrics/Hook Lamina;
+;000220250240000006;Total USS Paediatrics/Hook Additional;
+;000220250240000007;Total USS Paediatric Halfrings;
+;000220250240000010;Total USS Paediatrics/Rod;
+;000220250240000011;Total USS Paediatrics/Connector;
+;000220250240000012;Total USS Paediatrics/Crosslink;
+;000220250240000013;Total USS Paediatrics/Parallel Connector;
+;000220250240000014;Total USS Paediatrics/Anterior;
+;000220250240000100;Loan Sets;
+;000220250245000000;Total USS II/Cases;
+;000220250245000001;Total USS II/Instr.;
+;000220250245000002;Total USS II/Nut/Sleeve;
+;000220250245000003;Total USS II/Screw-doub. op.;
+;000220250245000004;Total USS II/Hook Pedicle;
+;000220250245000005;Total USS II/Hook Lamina;
+;000220250245000006;Total USS II/Hook Additional;
+;000220250245000007;Total USS II Halfrings;
+;000220250245000010;Total USS II/Rod;
+;000220250245000011;Total USS II/Rod Connector;
+;000220250245000012;Total USS II/Crosslink;
+;000220250245000013;Total USS II/Parallel Connector;
+;000220250245000014;Total USS II/Anterior;
+;000220250246000000;Total USS LP/Cases;
+;000220250246000001;Total USS LP/Instr.;
+;000220250246000002;Total USS LP/Nut/Sleeve;
+;000220250246000003;Total USS LP/Screw;
+;000220250246000004;Total USS LP/Hook Pedicle;
+;000220250246000005;Total USS LP/Hook Lamina;
+;000220250246000006;Total USS LP/Hook Additional;
+;000220250250000000;Total Titanium Rib/Cases;
+;000220250250000001;Total Titanium Rib/Instr.;
+;000220250250000002;Total Titanium Rib Locks;
+;000220250250000003;Total Titanium Rib Extension Bars;
+;000220250250000004;Total Titanium Rib/ Rib Clamps;
+;000220250250000005;Total Titanium Rib Additional Implants;
+;000220250251000000;Total USS II Ilio-Sacral/Cases;
+;000220250251000001;Total USS II Ilio-Sacral/Instr.;
+;000220250251000002;Total USS II Ilio-Sacral/Screws;
+;000220250251000003;Total USS II Ilio-Sacral/S2 clamps;
+;000220250251000004;Total USS II Ilio-Sacral/Tele Con;
+;000220250251000005;Total USS II Ilio-Sacral/Fix Con;
+;000220250251000006;Total USS II Ilio-Sacral/Collet;
+;000220250251000007;Total USS II Ilio-Sacral/Clamps;
+;000220250251000008;Total USS II Ilio-Sacral/Rod Con;
+;000220250252000000;Total Titanium Rib/Cases;
+;000220250252000001;Total Titanium Rib/Instr.;
+;000220250252000002;Total Titanium Rib Locks;
+;000220250252000003;Total Titanium Rib Extension Bars;
+;000220250252000004;Total Titanium Rib/ Rib Clamps;
+;000220250252000005;Total Titanium Rib Additional Implants;
+;000220250260000000;Total Pangea/Cases;
+;000220250260000001;Total Pangea/Instr.;
+;000220250260000002;Total Pangea/Locking Caps;
+;000220250260000003;Total Pangea/Screws;
+;000220250260000004;Total Pangea/Pedicle Hooks;
+;000220250260000005;Total Pangea/Lamina Hooks;
+;000220250260000008;Total Pangea/Transverse Process Hooks;
+;000220250260000009;Total Pangea/Transverse Bars;
+;000220250260000010;Total Pangea/Rods;
+;000220250265000000;Total Trolley/Cases;
+;000220250265000001;Total Trolley/Instruments;
+;000220250265000002;Total Trolley/Screws double;
+;000220250265000003;Total Trolley/Screws single;
+;000220250265000004;Total Trolley/Cable Tie;
+;000220250265000005;Total Trolley/Connectors;
+;000220250265000006;"Total Trolley/Rods; TAN polished";
+;000220250270000001;Total Crosslinks USS Fracture;
+;000220250270000002;Total Crosslinks LP preass. preass.;
+;000220250270000003;Total Mini-Crosslinks;
+;000220250270000004;Total Micro-Crosslink;
+;000220250270000005;Total Crosslink-Rods;
+;000220250280000003;Total Anterior/Plates;
+;000220250285000000;Total Universal Reduction Screw/Cases;
+;000220250285000001;Total Universal Reduction Screw/Instr;
+;000220250285000002;Total Universal Reduction Screw/Screws;
+;000220250285000003;Total Universal Reduction Screw/Screws;
+;000220250285000004;Total Universal Hook;
+;000220250290000000;Total URS Degen /Cases;
+;000220250290000001;Total URS Degen /Instr;
+;000220250290000002;Total URS Degen /Screws;
+;000220250300000000;Total Matrix Cases;
+;000220250300000001;Total Matrix Instruments;
+;000220250300000003;Total Matrix Monoaxial Screws;
+;000220250300000004;Total Matrix Reduction Screws;
+;000220250300000005;Total Matrix Sagittal Screws;
+;000220250300000006;Total Matrix Hooks;
+;000220250300000007;Total Matrix Connectors;
+;000220250500000000;Total Non-Fusion Scoliosis Cases;
+;000220250500000001;Total Non-Fusion Scoliosis Instruments;
+;000220250500000002;Total Non-Fusion Scoliosis Implants;
+;000220250500000003;Total Non-Fusion Scoliosis for VEPTR;
+;000220300216000000;Total Spondylolysis Hook Screw/Instr.;
+;000220300216000001;Total Spondylolysis Hook Screw/Impl.;
+;000220300233000000;Total Click'X/Cases;
+;000220300233000001;Total Click'X/Instr.;
+;000220300233000002;Total Click'X/Implants;
+;000220300233000011;Total Click'X/Standard Screws;
+;000220300233000012;Total Click'X/Preass. Screws;
+;000220300233000013;Total Click'X/Monoax. Screws;
+;000220300233000111;Total Click'X/Standard Screws Cannulated;
+;000220300233000112;Total Click'X/Preass. Screws Cannulated;
+;000220300233000211;Total Click'X/Standard Screws Perforated;
+;000220300233000212;Total Click'X/Preass. Screws Perforated;
+;000220300233000213;Total Click'X/Preass. Screws Perforated;
+;000220300233001002;Total Click'X/Implants;
+;000220300233001003;Total Click'X/Implants;
+;000220300240000000;Total USS Degenerative /Cases;
+;000220300240000001;Total USS Degenerative /Instr.;
+;000220300240000003;Total USS Deg/Screw-side open;
+;000220300240000004;Total USS Deg/Screw-back open;
+;000220300240000005;Total USS Deg/VAS;
+;000220300240000007;Total USS Deg/Rod;
+;000220300240000010;Total USS Deg/Sacral;
+;000220300250000001;USS II Degen. Dual Side-Opening Screws;
+;000220300260000000;Total USS II Polyaxial/Cases;
+;000220300260000001;Total USS II Polyaxial/Instruments;
+;000220300260000010;Total USS II Polyaxial/Screws post.;
+;000220300260000012;Total USS II Polyaxial/Screws ant.;
+;000220300260000014;Total USS II Polyaxial/Screws perf.;
+;000220300260000015;Total USS II Polyaxial/3D Heads Side-O;
+;000220300270000000;Total Pangea Degen/Cases;
+;000220300270000001;Total PANGEA Degen/Instruments;
+;000220300270000002;Total Pangea/Screws;
+;000220300270000010;Total PANGEA Degen/Implants;
+;000220300280000000;Total MIS Rod Insertion/Cases;
+;000220300280000001;Total MIS Rod Insertion/Instruments;
+;000220300280000002;Total MIS Rod Insertion/Implants;
+;000220300295000000;Total USS Fracture MIS Cases;
+;000220300295000001;Total USS Fracture MIS Instruments;
+;000220300295000002;Total USS Fracture MIS Clamps;
+;000220300295000003;Total USS Fracture MIS Locking Caps;
+;000220300295000004;Total USS Fracture MIS Rods;
+;000220300295000005;Total USS Fracture MIS/Schanz Screws;
+;000220300295000006;Total USS Fracture MIS/Perf. Schanz Scr.;
+;000220300300000000;Total USS Fracture/Cases;
+;000220300300000001;Total USS Fracture /Instr.;
+;000220300300000002;Total USS Fracture/Frac. Clamp;
+;000220300300000003;Total USS Fracture/Rod;
+;000220300300000004;Total USS Fracture/Anterior;
+;000220300300000005;Total USS Fracture/SchanzScrews;
+;000220300400000000;Total Matrix Cases;
+;000220300400000001;Total Matrix Instruments;
+;000220300400000002;Total Matrix Screw Heads;
+;000220300400000003;Total Matrix Locking Caps;
+;000220300400000004;Total Matrix Monoaxial Screws;
+;000220300400000005;Total Matrix Scr. Solid Preassembled;
+;000220300400000006;Total Matrix Scr. Cannulated Unassembled;
+;000220300400000007;Total Matrix Scr. Cann. Preassembled;
+;000220300400000008;Total Matrix Transconnectors;
+;000220300400000009;Total Matrix Scr. Perforated;
+;000220300400000010;Total Matrix Other Implants;
+;000220300400000011;Total Matrix Connectors;
+;000220300450000000;Total Matrix MIS Cases;
+;000220300450000001;Total Matrix MIS Instruments;
+;000220300450000002;"Total Matrix MIS Screws; cannulated";
+;000220300450000003;Total Matrix MIS Rods;
+;000220300450000004;"Total Screws; cannulated; sterile";
+;000220300450000005;"Total Matrix MIS Rods; sterile";
+;000220300460000000;Total Matrix Perforated Cases;
+;000220300460000001;Total Matrix Perforated Instruments;
+;000220300460000002;Total Matrix Perforated Screws;
+;000220350210000000;Total In-Space Cases;
+;000220350210000001;Total In-Space Instruments;
+;000220350210000002;Total In-Space Implants;
+;000220350250000000;Total Nflex Cases;
+;000220350250000001;Total Nflex Instruments;
+;000220350250001002;Total Nflex Implants;
+;000220350260000000;Total StenoFix Cases;
+;000220350260000001;Total StenoFix Instruments;
+;000220350260000002;Total StenoFix Implants;
+;000220350270000000;Total AdvancedPS Cases;
+;000220350270000001;Total AdvancedPS Instruments;
+;000220350270000002;Total AdvancedPS Implants;
+;000220350280000000;Total ISPF Cases;
+;000220350280000001;Total ISPF Instruments;
+;000220350280000002;Total ISPF Implants;
+;000220350290000000;Total Peek Rods Cases;
+;000220350290000001;Total Peek Rods Instruments;
+;000220350290000002;Total Peek Rods Implants;
+;000220350300000000;Total Facet Wedge cases;
+;000220350300000001;Total Facet Wedge Instruments;
+;000220350300000002;Total Facet Wedge Implants;
+;000220400228000001;Total General Spinal Instr.;
+;000220400228000002;Total Anterior Access Instruments;
+;000220400228000003;Total MIS Access Instruments;
+;000220400228000004;Total Buttress Plate;
+;000220400230000000;Total MIPI Instruments;
+;000220400240000000;Total Case;
+;000220400240000001;Total Instruments;
+;000220400245000000;Total Case Insight Access System;
+;000220400245000001;Total Insight Access  Instruments;
+;000220400250000000;Total Crosslinks USS Fracture;
+;000220400250000001;Total Crosslinks LP preassembled;
+;000220400250000002;Total Mini-Crosslinks;
+;000220400250000003;Total Micro-Crosslink;
+;000220400250000004;Total Crosslink-Rods;
+;000220400260000000;Total Rods Ø5/Ø6 for Degen;
+;000220400260000001;Total Rods Ø6 L200-500;
+;000220400260000002;Total Rods Ø5 L150-500;
+;000220400260000003;Total Specialty Rods / Deformity;
+;000220400260000004;Total Hex-End Rods Ø6 L200-500;
+;000220400260000005;Total Dual Flared Rods Ø 6.0;
+;000220400260001500;Total Matrix Rods;
+;000220400270000000;Total C-Rings;
+;000220400270000001;Total Screws for Pedicle Hook;
+;000220400270000002;Total Connectors for Rods;
+;000220400270000003;Total Anterior Washers/Staples;
+;000220400270000004;Total USS Other Misc items;
+;000220400280000000;Total MIS MIRA/Cases;
+;000220400280000001;Total MIS MIRA/Instruments;
+;000220400290000001;Total Pedicle Prep Instruments;
+;000220408000000000;Total ABP Sets;
+;000220408000000001;Total ABP Cases;
+;000220408000000002;Total ABP Cases;
+;000220408000000003;Total ABP Instruments;
+;000220500201000000;Total ProPrep Cases;
+;000220500201000001;Total ProPrep Instruments;
+;000220500232000001;Total CFC Cases;
+;000220500232000002;Total CFC Instr.;
+;000220500232000003;Total CFC Impl.;
+;000220500234000000;Total SynCage Cases;
+;000220500234000001;Total SynCage Instr.;
+;000220500234000002;Total SynCage Impl.;
+;000220500235000000;Total SynCage-LR Cases;
+;000220500235000001;Total SynCage-LR Instruments;
+;000220500235000002;Total SynCage-LR Implants;
+;000220500238000000;Total VISIOS Case;
+;000220500238000001;Total VISIOS Instruments;
+;000220500238000002;Total VISIOS Implants;
+;000220500239000000;Total T-PAL Cases;
+;000220500239000001;Total T-PAL Instruments;
+;000220500239000002;Total T-PAL Implants;
+;000220500240000000;Total TRAVIOS Cases;
+;000220500240000001;Total TRAVIOS Instruments;
+;000220500240000002;Total TRAVIOS Implants;
+;000220500242000000;Total PLIVIOS Cases;
+;000220500242000001;Total PLIVIOS Instruments;
+;000220500242000002;Total PLIVIOS Implants;
+;000220500243000000;Total OPAL Cases;
+;000220500243000001;Total OPAL Instruments;
+;000220500243000002;Total OPAL Implants;
+;000220500245000000;Total Oracle / Lateral SynCage Cases;
+;000220500245000001;Total Lateral Instruments;
+;000220500245000002;Total Lateral Implants;
+;000220500245000003;Total ORACLE Demo Implants;
+;000220500247000000;Total Lateral SynFix Cases;
+;000220500247000001;Total Lateral SynFix Instruments;
+;000220500247000002;Total Lateral SynFix Implants;
+;000220500247000003;Total Lateral SynFix Demo Implants;
+;000220500248000000;Total Cases;
+;000220500248000001;Total Instruments;
+;000220500259000000;Total SynFix-LR Cases;
+;000220500259000001;Total SynFix-LR Instruments;
+;000220500259000002;Total SynFix-LR Implants;
+;000220500259000003;Total SynFix-LR Demo Implants;
+;000220500300000000;Total PLIVIOS Revolution Cases;
+;000220500300000001;Total PLIVIOS Revolution Instruments;
+;000220500300001002;Total PLIVIOS Revolution Impl.;
+;000220500408000000;Total ATB Cases/Sets;
+;000220500408000001;Total ATB Instr.;
+;000220500408000002;Total ATB Impl.;
+;000220500409000000;Total Antegra/Antegra-T Cases/Sets;
+;000220500409000001;Total Antegra/ Antegra-T Instr.;
+;000220500409000002;Total Antegra Plate;
+;000220500409000003;Total Antegra / Antegra-T Screws;
+;000220500500000000;Total Synfix Evolution Instruments;
+;000220500500000001;Total Synfix Evolution Cases;
+;000220500500000002;Total Synfix Evolution Implants;
+;000220500501000000;Total Lateral Access Insruments;
+;000220500502000000;Total Syncage Evolution Instruments;
+;000220500502000001;Total Syncage Evolution Cases;
+;000220500502000002;Total Syncage Evolution Implants;
+;000220508256000000;Total PlivioPore Cases;
+;000220508256000001;Total PlivioPore Instruments;
+;000220508256000002;Total PlivioPore Implants;
+;000220508402000000;Total SynCage PROmotive Cases;
+;000220508402000100;Total SynCage PROmotive Implants;
+;000220508403000100;Total Plivios chronOS;
+;000220508407000000;Total ALIF Implants (Agency);
+;000220508407000010;Total FRA Implants (Service Fee);
+;000220508407000020;Total FRA Cases;
+;000220508407000021;Total FRA Instruments;
+;000220508409000100;Total PLIVIOS Revolution chronOS;
+;000220508410000000;Total TLIF Luminary (Agency);
+;000220600201000000;Total VBS/Sets;
+;000220600201001001;Total VBS Instr.;
+;000220600201001002;Total VBS Impl.;
+;000220600202000000;Total PCO/Sets;
+;000220600202001001;Total PCO Instr.;
+;000220600202001002;Total PCO Impl.;
+;000220600203000000;Total SynFlate/Sets;
+;000220600203001001;Total SynFlate Instr.;
+;000220600203001002;Total SynFlate Impl.;
+;000230008010000000;Total Cases;
+;000230008010000001;Total MBCP;
+;000230008010000010;Total Synthacer;
+;000230008010000021;Total Syntainer Instruments;
+;000230008025000001;permanOS Inject;
+;000230008030000001;Total chronOS Preforms in Spine;
+;000230008040000001;Total chronOS™ Granules in Spine;
+;000230008050000001;Total chronOS Composite;
+;000230008070000001;Total chronOS Putty;
+;000230008070000002;"Total Demo chronOS Putty; 2.5cc";
+;000230008100000001;Total DBX (Agency);
+;000230008100000002;Total DBX (LAT);
+;000230008100000010;Total DBX (Service Fee);
+;000230008110000001;Total Allograft C&S;
+;000230008200000001;Total PMMA Cements;
+;000230008200000010;Total Cannulas;
+;000230008200000020;Total Injection;
+;000230008200000030;Total Viscosimeter;
+;000230008200000040;Total Demo;
+;000230008200000050;Total US Augmentation;
+;000230008300000001;Total DBM (Agency);
+;000230008300000010;Total DIZG Commission Spine;
+;000238000010000001;Detail Hemostatic Bone Putty;
+;000250002000000000;Total PRODISC L/Cases;
+;000250002000000001;Total PRODISC L/Instr.;
+;000250002000000002;Total PRODISC L/Implants;
+;000250002010000000;Total PRODISC L Revision/Cases;
+;000250002010000001;Total PRODISC L Revision/Instr.;
+;000250003000000000;Total PRODISC O/Cases;
+;000250003000000001;Total PRODISC O/Instr.;
+;000250003000000002;Total PRODISC O/Implants;
+;000290009100000000;Total Repair charge;
+;000290009150000000;Total Spine-Course charge;
+;000290009200000000;Total Loan charge;
+;000290009250000000;Total Loan PT;
+;000290009300000000;Total Working time charge;
+;000290009400000000;Total Shipping charge / freight charge;
+;000290009500001000;Total cleaning charge;
+;000290009500001100;Total sterilisation charge;
+;000290009600001000;Total Surcharge;
+;000290009700001000;Total Discount;
+;000290009800001000;Total SIMS Spine;
+;000295007000000000;Total Custom-made device;
+;000297000000000000;Total Prototypes & Semi-/Finished USA;
+;000297000002000000;Total Demo material;
+;000299980201000000;Total Scout Vario Cases;
+;000299980201000001;Total Scout Instruments;
+;000299980201000002;Total Scout Fixation Implants;
+;000299980201000003;Total Scout Vessel Guard Barriers;
+;000299980203000000;Total FDR C/Cases;
+;000299980203000001;Total FDR C/Instr.;
+;000299980203000002;Total FDR C/Implants;
+;000299980204000000;Total ACLP/ All items;
+;000299980205000000;Total Vectra-R/ All items;
+;000299980206000000;Total Cavitoplasty/ All items;
+;000299980208000000;Total H Plate/Instr.;
+;000299980208000001;Total H Plate/Plate;
+;000299980208000010;Total Others (CS);
+;000299980210000000;Total Allo PLIF/ All items;
+;000299980215000000;Total Cases;
+;000299980215000001;Total Instruments;
+;000299980215000002;Total Impl. Spinal Fix.Ex.;
+;000299980215000003;Total Impl. ATLP;
+;000299980215000010;Total Notched Spinal Plate/Plates;
+;000299980215000020;Total Spinal Fix. Int./Schanz Screw;
+;000299980215000030;Total Spinal Fix. Int./Frac. Clamp;
+;000299980215000040;Total Spinal Fix. Int./Thr. Rod;
+;000299980215000050;Total Spinal Fix. Int./CL Sys.;
+;000299980215000060;Total Spinal Fix. Int./Others;
+;000299980220000000;Total SoFi/Cases;
+;000299980220000001;Total SoFi/Instruments;
+;000299980220000002;Total SoFi/Implants;
+;000299980230000000;Total Vamos Cases;
+;000299980230000001;Total Vamos Instruments;
+;000299980230000002;Total Vamos Implants;
+;000299980235000000;Total Lotus/Cases;
+;000299980235000001;Total Lotus/Instruments;
+;000299980235000010;Total Lotus/Screws post.;
+;000299980235000012;Total Lotus/Screws ant.;
+;000299980235000013;Total Lotus/3D heads Top-Loading;
+;000299980235000014;Total Lotus/3D heads Closed;
+;000299980235000015;Total Lotus/3D Heads Side-O;
+;000299980235000016;Total Lotus/Locking caps;
+;000299980235000017;Tot. Lotus/3D heads Top-Loading Threaded;
+;000299980235000018;Tot. Lotus Top-Load. Thread. Locking Cap;
+;000299980235000020;Total Lotus rods TAN;
+;000299980240000000;Total VamosFlex Cases;
+;000299980240000001;Total VamosFlex Instruments;
+;000299980240001002;Total VamosFlex Implants;
+;000299980244000000;Total  LIVIOS Cases;
+;000299980244000001;Total  LIVIOS Instruments;
+;000299980244000002;Total  LIVIOS Implants;
+;000299980246000000;Total  ORACLE Plate Cases;
+;000299980246000001;Total  ORACLE Plate Instruments;
+;000299980246000002;Total  ORACLE Plate Implants;
+;000299980249000000;Total Click'X Top Loading Deformity Set;
+;000299980250000000;Total SynCage Open Cases;
+;000299980250000001;Total SynCage Open Instruments;
+;000299980250000002;Total SynCage Open Implants;
+;000299980252000000;Total SynCage Narrow Cases;
+;000299980252000001;Total SynCage Narrow Instruments;
+;000299980252000002;Total SynCage Narrow Implants;
+;000299980255000000;Total Vectra-One/Cases;
+;000299980255000001;Total Vectra-One/Instr.;
+;000299980255000002;Total Vectra-One/Plate;
+;000299980260000000;Total Facet Interference Screw Cases;
+;000299980260000001;Total Facet Interference Screw Instr;
+;000299980260000002;Total Facet Interference Screw Implants;
+;000299980280000000;Total Pangea Anterior;
+;000299980290000000;Total ClampFix/Cases;
+;000299980290000001;Total ClampFix/Instruments;
+;000299980290000011;Total ClampFix/Rods;
+;000299980290000012;Total ClampFix/Schanz Screws;
+;000299980290000013;Total ClampFix/Post Screws;
+;000299980290000014;Total ClampFix/Clamps;
+;000299980290000112;Total ClampFix/Schanz Screws;
+;000299980290000113;Total ClampFix/Cann. Post Scr.;
+;000299980290000114;Total ClampFix/Perf. Schanz Scr.;
+;000299980291000000;Total ClampFix MIS/Cases;
+;000299980400000000;Total Matrix 6.0 Cases;
+;000299980400000001;Total Matrix 6.0 Instruments;
+;000299980400000002;Total Matrix 6.0 Pedicle Bone Screws;
+;000299980400000003;Total Matrix 6.0 Pre-assembled Screws;
+;000299980400000004;Total Matrix 6.0 Hooks;
+;000299980400000005;Total Matrix 6.0 Heads;
+;000299980404000001;Total MIS TL/Implants;
+;000299980404000002;Total MIS TL/Instr.;
+;000299980404000003;Total MIS TL/Cases;
+;000299980404000004;Total MIS TL/Coursematerial;
+;000299980500000000;Total Matrix 6.0 Cases;
+;000299980500000001;Total Matrix 6.0 Instruments;
+;000299980500000002;Total Matrix 6.0 Polyaxial;
+;000299980500000003;Total Matrix 6.0 Fenestrated Screws;
+;000299980500000004;Total Matrix 6.0 Cannulated Screws;
+;000299980500000005;Total Matrix 6.0 Transconnectors;
+;000299980500000006;Total Matrix 6.0 Other Implants;
+;000299981000000000;Total APF Disc/Cases;
+;000299981000000001;Total APF Disc/Instr.;
+;000299981000000002;Total APF Disc/Implants;
+;000299984000000000;Total FDR L/Cases;
+;000299984000000001;Total FDR L/Instr.;
+;000299984000000002;Total FDR L/Implants;
+;000299984020000000;Total FDR-E/Cases;
+;000299984020000001;Total FDR-E/Instr.;
+;000299984020000002;Total FDR-E/Implants;
+;000299984030000000;Total Oracle Disc/Cases;
+;000299984030000001;Total Oracle Disc/Instr.;
+;000299984030000002;Total Oracle Disc/Implants;
+;000299986000000000;Total Remaining stock Promo material;
+;000299986000000001;Total Spine Brochure + Flyer;
+;000299986000000002;Total Spine Catalog;
+;000299988410000000;Total TLIF Luminary (Agency);
+;000299988410000001;Total TLIF Luminary (Service Fee);
+;000299988410000002;Total TLIF Luminary  Cases;
+;000299988410000003;Total TLIF Luminary  Instr.;
+;000299995000000000;Total Remaining stock Course;
+;000299995010000000;Total Remaining stock Synthetic Models;
+;000299995011000000;Total Remaining stock Synthetic Bones;
+;000299996000000000;Total Remaining stock Promo material;
+;000299996000000001;Total Spine Brochure + Flyer;
+;000299996000000002;Total Spine Catalog;
+;000299999000000000;Total Remaining stock SYNTHES;
+;000299999996000000;Total set SPINE (ONLY JAPAN);
+;000299999997000000;Total DePuy Spine;
+;000299999999000000;Total Remaining stock not assigned;
+;000330100200000000;Total General Midface;
+;000330100302000000;Total 1.0 Midface/Cases;
+;000330100302000001;Total 1.0 Midface/Instruments;
+;000330100302000002;Total 1.0 Midface/Plates-TiCP;
+;000330100302000003;Total 1.0 Midface/Screws;
+;000330100304000000;Total 1.3 Midface/Cases;
+;000330100304000001;Total 1.3 Midface/Instruments;
+;000330100304000002;Total 1.3 Midface/Plates;
+;000330100304000003;Total 1.3 Midface/Screws;
+;000330100304000004;Total 1.3 Midface/Impl/Add;
+;000330100306000000;Total 1.5 Midface/Cases;
+;000330100306000001;Total 1.5 Midface/Instruments;
+;000330100306000002;Total 1.5 Midface/Screws;
+;000330100306000003;Total 1.5 Midface/Plates-TiCP;
+;000330100307000000;Total Stardrive/Cases;
+;000330100307000001;Total Stardrive/Instr.;
+;000330100307000002;Total Stardrive/Screws;
+;000330100308000000;Total 2.0 Miface/Cases;
+;000330100308000001;Total 2.0 Midface/Instruments;
+;000330100308000002;Total 2.0 Midface/Plates;
+;000330100308000003;Total 2.0 Midface/Screws;
+;000330100309000000;Total Others/Cases;
+;000330100310000000;Total General Orbit/Cases;
+;000330100310000001;Total General Orbit/Instuments;
+;000330100310000002;Total General Orbit/Implants;
+;000330100311000000;Total Matrix Midface/Cases;
+;000330100311000001;Total Matrix Midface/Instruments;
+;000330100311000002;Total Matrix Midface/Plates;
+;000330100311000003;Total Matrix Midface/Screws;
+;000330100312000000;Total Matrix Orthognatics/Cases;
+;000330100312000001;Total Matrix Midface/Instruments;
+;000330100312000002;Total Matrix Orthognatics/Plates;
+;000330100312000003;Total Matrix Orthognatics/Screws;
+;000330100313000000;Total Matrix Orthognatics LOCK/Cases;
+;000330100313000001;Total Matrix Orthognatics LOCK/Inst.;
+;000330100313000002;Total Matrix Orthogn. LOCK/Plates;
+;000330100313000003;Total Matrix Orthogn. LOCK/Screws;
+;000330150001000000;Total Patient Specific Implant;
+;000330150004000000;Total CSS Anatomical bone models;
+;000330150005000000;Total CSSPlan. Service & Surgical Guides;
+;000330150006000000;Total CSS Planning Services;
+;000330150007000000;Total Patient Specific Mandible Plate;
+;000330150008000000;Total Patient Specific Orthognathic Plat;
+;000330150009000000;Total Patient Specific Plate Contouring;
+;000330200310000000;Total 2.0 Mandible/Cases;
+;000330200310000001;Total 2.0 Mandible/Instruments;
+;000330200310000002;Total 2.0 Mandible/Plates;
+;000330200310000003;Total 2.0 Mandible/Screws;
+;000330200311000000;Total UniLOCK 2.0/Cases;
+;000330200311000001;Total UniLOCK 2.0/Instruments;
+;000330200311000002;Total UniLOCK 2.0/Plates;
+;000330200311000003;Total UniLOCK 2.0/Screws;
+;000330200312000000;Total 2.4 Mandible/Cases;
+;000330200312000001;Total 2.4 Mandible/Instruments;
+;000330200312000002;Total 2.4 Mandible/Plates;
+;000330200312000003;Total 2.4 Mandible/Screws;
+;000330200314000000;Total 2.7 Mandible/Cases;
+;000330200314000001;Total 2.7 Mandible/Instruments;
+;000330200314000002;Total 2.7 Mandible/Plates;
+;000330200314000003;Total 2.7 Mandible/Screws;
+;000330200315000000;Total UniLOCK/Cases;
+;000330200315000001;Total UniLOCK/Instruments;
+;000330200315000002;Total UniLOCK/Plates;
+;000330200315000003;Total UniLOCK/Screws;
+;000330200316000000;Total THORP/Cases;
+;000330200316000001;Total THORP/Instruments;
+;000330200316000002;Total THORP/Plates;
+;000330200316000003;Total THORP/Screws;
+;000330200317000000;Total FixBridge/Cases;
+;000330200317000001;Total FixBridge/Instruments;
+;000330200318000000;Total Transbuccal/Cases;
+;000330200318000001;Total Transbuccal/Instruments;
+;000330200319000000;Total Others Mandible;
+;000330200320000000;Total Mandible MF;
+;000330200321000000;Total 90° Screwdriver/Cases;
+;000330200321000001;Total 90° Screwdriver/Inserts;
+;000330200321000002;Total 90° Screwdriver/Screwdriver;
+;000330200321000003;Total 90° Screwdriver/Maintenance;
+;000330200322000000;Total Endoscopy/Cases;
+;000330200322000001;Total Endoscopy/Instruments;
+;000330200322000002;Total Endoscopy/Plates;
+;000330200322000003;Total Endoscopy/Screws/;
+;000330200323000000;Total Mand ExFix/Cases;
+;000330200323000001;Total Mand ExFix/Instruments;
+;000330200323000002;Total Mand ExFix/Impl.;
+;000330200323000003;Total Mand ExFix/Fix Comp/;
+;000330200324000000;Total MatrixMandible/Cases;
+;000330200324000001;Total MatrixMandible/Instruments;
+;000330200324000002;Total MatrixMandible/Plates;
+;000330200324000003;Total MatrixMandible/Screws;
+;000330200330000000;Total Orthodontic Bone Anchors/Cases;
+;000330200330000001;Total Orthodontic Bone Anchors/Instru.;
+;000330200330000002;Total Orthodontic Bone Anchors/Implants;
+;000330200331000000;Total Rapid IMF;
+;000330308000000000;Total RapidSorb Cases;
+;000330308000000001;Total RapidSorb Instruments;
+;000330308000000002;Total RapidSorb 1.5/ Implants;
+;000330308000000003;Total RapidSorb 1.5/ Fixation;
+;000330308000000004;Total RapidSorb 2.0/ Implants;
+;000330308000000005;Total RapidSorb 2.0/ Fixation;
+;000330308000000006;Total RapidSorb Cranial Clamp;
+;000330358100000000;Total RapidSorb PLUS Instruments;
+;000330400370000000;Total 1.0 Neuro/Cases;
+;000330400370000010;Total 1.0 Neuro/Instruments;
+;000330400370000020;Total 1.0 Neuro/Plates;
+;000330400370000030;Total 1.0 Neuro/Screws;
+;000330400372000000;Total 1.3 Neuro/Case;
+;000330400372000010;Total 1.3 Neuro/Instruments;
+;000330400372000020;Total 1.3 Neuro/Plates;
+;000330400372000030;Total 1.3 Neuro/Screws;
+;000330400374000000;Total 1.5 Neuro/Case;
+;000330400374000010;Total 1.5 Neuro/Instruments;
+;000330400374000020;Total 1.5 Neuro/Plates;
+;000330400374000030;Total 1.5 Neuro/Screws;
+;000330400374001000;Total 1.5 Neuro Kits;
+;000330400375000000;Total 1.6 Neuro/Case;
+;000330400375000001;Total 1.6 Neuro/Instruments;
+;000330400375000020;Total 1.6 Neuro/Plates;
+;000330400375000030;Total 1.6 Neuro/Screws;
+;000330400375001000;Total 1.6 Neuro Kits;
+;000330400377000000;Total MatrixNeuro/Case;
+;000330400377000001;Total MatrixNeuro/Instruments;
+;000330400377000020;Total MatrixNeuro/Plates;
+;000330400377000030;Total MatrixNeuro/Screws;
+;000330400377001000;Total MatrixNEURO Kits;
+;000330400380000000;Total FlapFix/Cases;
+;000330400380000010;Total FlapFix/Instruments;
+;000330400380000020;Total FlapFix/Implants;
+;000330400381000000;Total NGCC/Cases;
+;000330400381000010;Total NGCC/Instruments;
+;000330400381000020;Total NGCC/Implants;
+;000330400382000000;Total SyntheCel Dura Substitutes;
+;000330400382000001;Total SyntheCel Dura Onlay;
+;000330500390000000;Total TSFS Secondary Cases;
+;000330500390000001;Total TSFS Secondary Instruments;
+;000330500390000002;Total TSFS Secondary Implants;
+;000330500391000000;Total Sternum SST General/Cases;
+;000330500391000001;Total Sternum SST General/Instruments;
+;000330500391000002;Total Sternum SST General/Implants;
+;000330500392000000;Total MatrixRIB Fix. Sys. General/Cases;
+;000330500392000001;Total MatrixRIB Fix. Sys. General/Instr.;
+;000330500392000002;Total MatrixRIB Fix. Sys. General/Impl.;
+;000330500393000000;Total Sternal Tie Sys. General/Cases;
+;000330500393000001;Total Sternal Tie Sys. General/Instr.;
+;000330500393000002;Total  Sternal Tie Sys. General/Impl.;
+;000330500395000000;Total TSFS Primary Cases;
+;000330500395000001;Total TSFS Primary Instruments;
+;000330500395000002;Total TSFS Primary Implants;
+;000330500397000000;Total Thoracoscopic Rib Cases;
+;000330500397000001;Total Thoracoscopic Rib Instruments;
+;000330500397000002;Total Thoracoscopic Rib Implants;
+;000330508394000000;Total XCM Biologic Tissue Matrix;
+;000330508396000000;Total Hemostatic Bone Putty;
+;000330600200000002;Total Distraction General/General Screws;
+;000330600310000000;Total Single Vector Distr/Cases;
+;000330600310000001;Total Single Vector Distr/Instruments;
+;000330600310000002;Total Single Vector Distr/Implants;
+;000330600311000000;Total Multivector Distractor/Cases;
+;000330600311000001;Total Multivector Distractor/Instruments;
+;000330600311000002;Total Multivector Distractor/Implants;
+;000330600312000000;Total Maxillary Distractor/Cases;
+;000330600312000001;Total Maxillary Distractor/Instruments;
+;000330600312000002;Total Maxillary Distractor/Implants;
+;000330600313000000;Total Alveolar Distractor/Cases;
+;000330600313000001;Total Alveolar Distractor/Instruments;
+;000330600313000002;Total Alveolar Distractor/Implants;
+;000330600320000000;Total Ext.Midface Distr./Cases;
+;000330600320000001;Total Ext.Midface Distr./Instruments;
+;000330600320000002;Total Ext.Midface Distr./Implants;
+;000330600325000000;Total Int.Midface Distr./Cases;
+;000330600325000001;Total Int.Midface Distr./Instruments;
+;000330600325000002;Total Int.Midface Distr./Implants;
+;000330600330000000;Total Transpalatal Distr./Cases;
+;000330600330000001;Total Transpalatal Distr./Instruments;
+;000330600330000002;Total Transpalatal Distr./Implants;
+;000330600335000000;Total Craniomaxillofacial Distr./Cases;
+;000330600335000001;Total Craniomaxillofacial Distr./Instru.;
+;000330600335000002;Total Craniomaxillofacial Distr./Impl.;
+;000330600340000000;Total curvilinear Distr./Cases;
+;000330600340000001;Total curvilinear Distr./Instruments;
+;000330600340000002;Total curvilinear Distr./Implants;
+;000330708100000100;Total SynPOR Standard Implants;
+;000330708100000200;Total SynPOR Orbita Implants;
+;000330708100000300;Total SynPOR Augmentation Implants;
+;000330708200000100;Total SynPOR Ocular Spheres/Cases;
+;000330708200000200;Total SynPOR Ocular Spheres/Instruments;
+;000330708200000300;Total SynPOR Ocular Spheres/Implants;
+;000330708300000100;Total SynPOR Facial Shapes/Cases;
+;000330708300000200;Total SynPOR Facial Shapes/Instruments;
+;000330708300000300;Total SynPOR Facial Shapes/Implants;
+;000330808305000000;Total Norian CRS / Cases;
+;000330808305000002;Total Norian CRS Implants;
+;000330808306000000;Total Norian Reinforced / Cases;
+;000330808306000002;Total Norian Reinforced Implants;
+;000330808340000000;Total chronOS Preforms in CMF;
+;000330808350000000;Total chronOS™ Granules in CMF;
+;000330808360000001;Total chronOS Putty;
+;000330808400000001;Total DBX Putty 0.5cc;
+;000330808400000002;Total DBX Putty 0.5cc;
+;000330808400000003;Total DBX (Service Fee);
+;000330808500000001;Total Demin. Cortical Strut;
+;000330808500000010;Total DIZG Commission CMF;
+;000330900100000000;Total 1.3 Dental/Cases;
+;000330900100000010;Total 1.3 Dental/Instruments;
+;000330900100000020;Total 1.3 Dental/Plates;
+;000330900100000030;Total 1.3 Dental/Screws;
+;000330900101000000;Total 1.5 Dental/Cases;
+;000330900101000010;Total 1.5 Dental/Instruments;
+;000330900101000020;Total 1.5 Dental/Plates;
+;000330900101000030;Total 1.5 Dental/Screws;
+;000330900102000000;Total 2.0 Dental/Cases;
+;000330900102000010;Total 2.0 Dental/Instruments;
+;000330900102000020;Total 2.0 Dental/Plates;
+;000330900102000030;Total 2.0 Dental/Screws;
+;000331008100000000;Total DermaMatrix;
+;000340000100000000;Total Universal Screw Removal Set;
+;000390005000001000;Total Mediation Charge for DBX;
+;000390009100000000;Total Repair charge;
+;000390009150000000;Total CMF-Course charge;
+;000390009200000000;Total Loan charge;
+;000390009250000000;Total Loan PT;
+;000390009300000000;Total Working time charge;
+;000390009400000000;Total Shipping charge / freight charge;
+;000390009500001000;Total cleaning charge;
+;000390009500001100;Total sterilisation charge;
+;000390009600001000;Total Surcharge;
+;000390009700001000;Total Discount;
+;000390009800001000;Total SIMS CMF;
+;000395007000000000;Total Custom-made device;
+;000395007000000001;Total PSI Implant;
+;000397000000000000;Total Prototypes & Semi-/Finished USA;
+;000399980376000000;Total 2.0 Neuro/Case;
+;000399980376000010;Total 2.0 Neuro/Instruments;
+;000399980376000020;Total 2.0 Neuro/Plates;
+;000399980376000030;Total 2.0 Neuro/Screws;
+;000399986000000000;Total Remaining stock Promo material;
+;000399986000000001;Total CMF Brochure + Flyer;
+;000399986000000002;Total CMF Catalog;
+;000399988330000000;Total Resorb. Membr. 0.2 mm perf./Impl.;
+;000399988331000000;Total PolyMax General/Cases;
+;000399988331000001;Total PolyMax General/Instruments;
+;000399988331000002;Total PolyMax General/Demo;
+;000399988350000000;Total Resorb. Membr. 0.6 mm perf./Impl.;
+;000399988355000000;Total PolyMax 1.5/Cases;
+;000399988355000010;Total  PolyMax 1.5/Instruments;
+;000399988355000020;Total PolyMax 1.5/Plates;
+;000399988355000030;Total PolyMax 1.5/Screws;
+;000399988355000040;Total Tacks;
+;000399988357000000;Total PolyMax 2.0/Cases;
+;000399988357000010;Total PolyMax 2.0/Instruments;
+;000399988357000020;Total 2.0 Midface/Heaters;
+;000399988357000030;Total PolyMax 2.0/Plates;
+;000399988357000040;Total PolyMax 2.0/Screws;
+;000399988357000050;Total Tacks;
+;000399988359000000;Total Poly FlapFix/Cases;
+;000399988359000010;Total Poly FlapFix/Instruments;
+;000399988359000020;Total Poly FlapFix/Implants;
+;000399988360000000;Total Resorbable Cranial Clamp/Cases;
+;000399988360000010;Total Resorbable Cranial Clamp/Instrum.;
+;000399988360000020;Total Resorbable Cranial Clamp/Implants;
+;000399988361000020;Total RapidSorb 1.5/Plates;
+;000399988361000030;Total RapidSorb 1.5/Screws;
+;000399988361000040;Total Tacks;
+;000399988362000030;Total RapidSorb 2.0/Plates;
+;000399988362000040;Total RapidSorb 2.0/Screws;
+;000399988362000050;Total Tacks;
+;000399995000000000;Total Remaining stock Course;
+;000399995010000000;Total Remaining stock Synthetic Models;
+;000399995011000000;Total Remaining stock Synthetic Bones;
+;000399996000000000;Total Remaining stock Promo material;
+;000399996000000001;Total CMF Brochure + Flyer;
+;000399996000000002;Total CMF Catalog;
+;000399999000000000;Total Remaining stock SYNTHES;
+;000399999996000000;Total set CMF (ONLY JAPAN);
+;000399999999000000;Total Remaining stock not assigned;
+;000440050402000000;Total:Uni/Handpiece;
+;000440050402000001;Total:Uni/Right Angle Drive;
+;000440050402000002;Total:Uni/Att.;
+;000440050404000000;Total:Small/Handpiece;
+;000440050404000001;Total:Small/Att.;
+;000440100403000000;Total:Reamer;
+;000440100403000001;Total:Oscillator;
+;000440100403000002;Total:Reciprocator;
+;000440100403000003;Total:Attachments;
+;000440100403000004;Total:Battery components;
+;000440100403000005;Total:Cases;
+;000440100404000000;Total Reamer II;
+;000440100404000001;Total  Oscillator II;
+;000440100404000002;Total Reciprocator II;
+;000440100405000000;Total Reamer;
+;000440100405000001;Total Oscillator;
+;000440100405000002;Total Reciprocator;
+;000440100405000003;Total Attachments;
+;000440100405000004;Total:Cases;
+;000440110406000000;Total:CAD/Handpiece;
+;000440110406000001;Total:CAD/ Cases;
+;000440110407000000;Total:PD/Handpiece;
+;000440110407000001;Total:PD/Battery components;
+;000440110407000002;Total:PD/Cases;
+;000440110408000000;Total:Att. CAD/PD/K-Wire;
+;000440110408000001;Total:Att. CAD/PD/Reducing Gear;
+;000440110408000002;Total:Att. CAD/PD/RDL;
+;000440110408000003;Total:Att. CAD/PD/Osc. Drill;
+;000440110408000004;Total:Att. CAD/PD/OSA;
+;000440110408000005;Total:Att. CAD/PD/RSA;
+;000440110408000006;Total:Att. CAD/PD/Chucks;
+;000440110408000007;Total:Att. CAD/PD/Comp. Att.;
+;000440110408000008;Total:Att. CAD/PD/Torq. Limiter;
+;000440120001000001;Total Handpieces;
+;000440120001000002;Total Accessories;
+;000440120001000003;Total Cases;
+;000440120002000001;Total Handpieces;
+;000440120002000002;Total Accessories;
+;000440120002000003;Total Cases;
+;000440120003000001;"Total Drill Attachments; for TRS";
+;000440120003000002;"Total Ream Attachments; for TRS";
+;000440120003000003;"Total Saw Attachments; for TRS";
+;000440120003000004;"Total K-Wire Attachment; for TRS";
+;000440120003000005;"Total DHS Attachment; for TRS";
+;000440120003000006;"Total Screw Attachment; for TRS";
+;000440120003000007;"Total Torque Limiter; for TRS";
+;000440120003000008;"Total RDL Adapter; for TRS";
+;000440150401000000;Total:COLIBRI/Handpiece;
+;000440150401000001;Total:COLIBRI/Battery components;
+;000440150402000000;Total:COLIBRI II/Handpiece;
+;000440150402000001;Total:COLIBRI II/Battery components;
+;000440150403000000;Total:COLIBRI/Att./K-Wire;
+;000440150403000001;Total:COLIBRI/Att./OSA;
+;000440150403000002;Total:COLIBRI/Att./Quick Coupling;
+;000440150403000003;Total:COLIBRI/Att./DHS-DCS Coupling;
+;000440150403000004;Total:COLIBRI/Att./J-Chucks;
+;000440150403000005;Total:Colibri/Att./Chucks/Mini;
+;000440150403000006;Total:COLIBRI/Att./Chuck Mini/RDL Adapt.;
+;000440150403000007;Total:COLIBRI/Att./Reamer;
+;000440150405000000;Total:COLIBRI/Cases/Case W/O Lid;
+;000440150405000001;Total:COLIBRI/Cases/Lid;
+;000440200412000000;Total:M&H/Mini/PT Air;
+;000440200412000001;Total:Mini Drill/MD+ /Att.;
+;000440200412000002;Total:Mini Drill/MD +/Cases;
+;000440200413000000;Total: Consoles;
+;000440200413000001;Total: Handpieces;
+;000440200413000003;Total: Attachments;
+;000440200413000004;Total. Footswitch;
+;000440200413000005;Total: Calibrating units;
+;000440200413000006;Total: Accessories;
+;000440200413000007;Total: Cases / Sets;
+;000440200414000000;Total: Cases / Sets;
+;000440200414000001;Total: Handpieces;
+;000440200414000002;Total. Footswitch;
+;000440200414000003;Total: Air Hoses;
+;000440200414000004;Total: Accessories;
+;000440200415000001;Total: Attachments;
+;000440200416000001;Total: Accessories;
+;000440200417000001;Total: Handpieces;
+;000440200418000001;Total: Attachments;
+;000440200419000001;Total: Accessories;
+;000440210010000001;Total: Consoles;
+;000440210010000002;Total: Handpieces;
+;000440210010000003;Total: Footswitches;
+;000440210020000001;Total: Handpieces;
+;000440210030000001;Total: Attachments;
+;000440210040000001;Total: Handpieces;
+;000440210040000002;Total: Attachments;
+;000440210050000001;Total: Footswitches;
+;000440210050000002;Total: Accessories;
+;000440210060000001;Total: Handpieces;
+;000440210060000002;Total: Footswitches;
+;000440210060000003;Total: Accessories;
+;000440210070000001;Total: Pumps;
+;000440210070000002;Total: Directional irrigators;
+;000440210070001001;Total: Bone collectors STERILE;
+;000440210070001002;Total: Super suckers STERILE;
+;000440210070001003;Total: Irrigation clips STERILE;
+;000440210070001004;Total: Irrigation tubing STERILE;
+;000440210080001001;Tot.: Cutters f/ EMax/XMax/Univ. STERILE;
+;000440210080001002;Total: Cutters for BlackMax STERILE;
+;000440210080001003;Total: Cutters for IMRI STERILE;
+;000440210080001004;Total: Microsaw Blades STERILE;
+;000440210080001005;Total: G1 Cutters;
+;000440210090000001;Total: Jobe Shoulder System;
+;000440210090000002;Total: Microear instrument set;
+;000440210100000001;Total: Cases/Trays;
+;000440210100000002;Total: Consumables-Misc;
+;000440210100000003;Total: Durable-Misc;
+;000440210100000004;Total: Sets;
+;000440210110000001;Total: G1 Consoles;
+;000440210110000002;Total: G1 Electric Handpieces;
+;000440210110000003;Total: G1 Electric Footswitches;
+;000440210120000001;Total: G1 Attachments;
+;000440210130000001;Total: G1 Cases and trays;
+;000440220010000000;Total: Handpiece;
+;000440220010000001;Total:Battery components;
+;000440220010000002;Total: Attachments;
+;000440220010000003;Total: Cases and washing baskets;
+;000440250001000001;Total: Consoles;
+;000440250001000002;Total: Handpieces;
+;000440250001000003;Total: Footswitches;
+;000440250001000004;Total: Accessories;
+;000440250001000005;Total: Cases / Sets;
+;000440250001000006;Total Piezo Tips;
+;000440300414000000;Total:Saws/Osc. Saw/Handpiece;
+;000440300415000000;Total: Saws/Tuke/Handpiece;
+;000440350416000000;Total: Impact mach./AP/Handpiece;
+;000440350416000001;Total: Impact mach./AP/Att.;
+;000440350417000000;Total: Impact mach./Rasp Driver/PT Air;
+;000440350417000001;Total: Impact mach./Rasp Driver/Att.;
+;000440400418000000;Total:Energy Supply/Air/Hoses;
+;000440400418000001;Total:Energy Supply/Air/Couplings/Filte;
+;000440400418000002;Total:Energy supply/Air/Accessories;
+;000440400419000000;Total:Electric/Charger;
+;000440400419000004;Total:Electric/Miscellaneous;
+;000440400420000000;Total:Handdrill;
+;000440400420000001;Total:Handdrill/Att.;
+;000440500420000000;Total:CT/Osc. Saw Blades/Large;
+;000440500420000001;Total:CT/Osc. Saw Blades/Mini;
+;000440500420000002;Total:CT/Osc. Saw Blades/EPD&APD;
+;000440500420000003;Total:CT/Osc. Saw Blades/COLIBRI Saw bl.;
+;000440500420000004;Total:CT/Osc. Saw Blades/TPLO Saw bl.;
+;000440500420000005;Total:CT/Osc. Saw Blades/BES;
+;000440500420001000;Total:CT/Osc. Saw Blades/Large STERIL;
+;000440500420001001;Total:CT/Osc. Saw Blades/Mini STERIL;
+;000440500420001002;Total:CT/Osc. Saw Blades/EPD&APD STERIL;
+;000440500420001003;Total:CT/Osc. Saw Blades/COLIBRI STERIL;
+;000440500420001004;Total:CT/Osc. Saw Blades/BES STERIL;
+;000440500421000000;Total:CT/Recip. Saw Blades/Large;
+;000440500421000001;Total:CT/Recip. Saw Blades/MINI;
+;000440500421000002;Total:CT/Recip. Saw Blades/EPD&APD;
+;000440500421001000;Total:CT/Recip. Saw Blades/Large STERIL;
+;000440500421001001;Total:CT/Recip. Saw Blades/MINI STERIL;
+;000440500421001002;Total:CT/Rec. Saw Blades/EPD&APD STERIL;
+;000440500422000000;Total:CT/Drills/Large;
+;000440500422000001;Total:CT/Drills/Mini;
+;000440500422000002;Total:CT/Drills/EPD&APD;
+;000440500422001000;Total:CT/Drills/Large STERIL;
+;000440500422001001;Total:CT/Drills/Mini STERIL;
+;000440500422001002;Total:CT/Drills/EPD&APD STERIL;
+;000440500423000000;Total:CT/Burrs/Large;
+;000440500423000001;Total:CT/Burrs/Mini;
+;000440500423001001;Total:CT/Burrs/Mini STERIL;
+;000440500423001002;Total:CT/Burs/EPD&APD Torx STERIL;
+;000440500423001003;Total:CT/Burs/EPD&APD Dental&Mini STERIL;
+;000440500423001004;Total:CT/Burs/EPD&APD Torx;
+;000440500423001005;Total:CT/Burs/EPD&APD Dental&Mini;
+;000440500424000000;Total:CT/Mini Rasps/EPD&APD;
+;000440500424001000;Total:CT/Mini Rasps/EPD&APD STERILE;
+;000440500425001001;Total: Piezo Tips STERILE;
+;000440600425000000;Total Trays (Cases old);
+;000440600425000200;Loan Single Items;
+;000440600426000000;Total Graphic Cases (old);
+;000440600427000000;Total:Cases/VARIO/Framing;
+;000440600427000001;Total:Cases/VARIO/Lid;
+;000440600427000002;Total Cases/VARIO/Mod. Sc. Rack;
+;000440600427000003;Total Cases/Vario Frame w/bottom;
+;000440600428000000;Total Syncase;
+;000440700430000000;Total: Spare/UNI/PT Air;
+;000440700430000001;Total: Spare/UNI/Right Angle Drive;
+;000440700430000002;Total: Spare/UNI/PT Air old;
+;000440700430000003;Total: Spare/UNI/Right Angle Drive old;
+;000440700430000004;Total: Spare/UNI/Drive f/Medull. Reamer;
+;000440700430000005;Total: Attachments;
+;000440700431000000;Total: Reamer;
+;000440700431000001;Total: Oscillator;
+;000440700431000002;Total: Reciprocator;
+;000440700431000003;Total: Attachments;
+;000440700432000000;Total: Spare/Small/PT Air;
+;000440700432000001;Total: Spare/Spare Small/Att.;
+;000440700433000000;Total Reamer;
+;000440700433000001;Total Oscillator;
+;000440700433000002;Total Reciprocator;
+;000440700433000003;Total Attachments;
+;000440700434000000;Total: Spare/CAD/PD/PT Air;
+;000440700435000000;Total: Spare/PD/PT Battery;
+;000440700436000000;Total: Spare/Attachm. CAD/PD/K-Wire;
+;000440700436000001;Total: Spare/Attachm. CAD/PD/Reducing Ge;
+;000440700436000002;Total: Spare/Attachm. CAD/PD/RDL;
+;000440700436000003;Total: Spare/Attachm.CAD/PD/OscDrillAtt.;
+;000440700436000004;Total: Spare/Attachm. CAD/PD/OSA;
+;000440700436000005;Total: Spare/Attachm. CAD/PD/RSA;
+;000440700436000006;Total: Spare/Attachm. CAD/PD/Chucks;
+;000440700436000007;Total: Spare/Attachm. CAD/PD/Comp.Attach;
+;000440700436000008;Total Spare/Attachm. CAD/PD/Torq Limiter;
+;000440700437000000;Total:Spare Attachm./COLIBRI/PT;
+;000440700437000001;Total:Spare Attachm./COLIBRI/K-Wire;
+;000440700437000002;Total:Spare Attachm./COLIBRI/OSA;
+;000440700437000003;Total:Spare Attachm./COLIBRI/Att.Gen;
+;000440700437000004;Total:Spare Attm./COLIBRI/Quick Chuck;
+;000440700437000005;Total:Spare Attm./COLIBRI/J-Chucks;
+;000440700437000006;Total:SpareAttm./Colibri/DHS-DCS Chuck;
+;000440700437000007;Total:SpareAttm./COLIBRI/Chucks Mini;
+;000440700437000008;Total:SpareAttm./COLIBRI/Reamer;
+;000440700438000000;Total:Spare/Hand Drill;
+;000440700439000000;Total Spare Handpiece;
+;000440700439000001;Total Spare Attachment;
+;000440700439000002;Total Spare Universal Batt. Charger ll;
+;000440700439000003;Total Spare Accessories;
+;000440700440000000;Total:Spare/Mini/PT Air;
+;000440700440000001;Total:Spare/Mini/Straight Chuck;
+;000440700440000002;Total:Spare/Mini/Drill 90°;
+;000440700440000003;Total:Spare/Mini/Drill 45° for K-Wires;
+;000440700440000004;Total:Spare/Mini/Reciprocating Saw;
+;000440700440000005;Total:Spare/Mini/Osc. Saw;
+;000440700441000000;Total: Spare Consoles;
+;000440700441000001;Total: Spare Handpieces;
+;000440700441000003;Total: Spare Attachments;
+;000440700441000004;Total: Spare Footswitch;
+;000440700441000005;Total: Spare Calibrating units;
+;000440700441000006;Total: Spare Accessories;
+;000440700442000000;Total:Spare/Osc. Saws/PT Air;
+;000440700442000001;Total:Spare/Osc. Saws/PT Air old;
+;000440700442000002;Total:Spare/Osc. Saws/Tuke;
+;000440700443000000;Total:Spare Handpiece;
+;000440700443000001;Total:Spare Footswitch;
+;000440700443000003;Total:Spare Attachments;
+;000440700443000004;Total:Spare Footswitch;
+;000440700443000005;Total:Spare Air Hose;
+;000440700443000006;Total:Spare Accessories;
+;000440700444000000;Total:Spare Impact Machines/PT Air;
+;000440700444000001;Total:Spare Impact Machines/ Att.;
+;000440700445000000;Total: Spare Consoles;
+;000440700445000001;Total: Spare Handpieces;
+;000440700445000002;Total: Spare Footswitches;
+;000440700445000003;Total: Spare Diverse;
+;000440700446000000;Total:Spare/Energy Supply/Hoses;
+;000440700446000001;Total:Spare/Energy Supply/Couplings/Fil;
+;000440700446000002;Total:Spare/Spare Energy Supply/Accessor;
+;000440700446000003;Total:Spare/Spare Energy Supply/Electric;
+;000440700448000000;Total:Spare/PT rest;
+;000440700450000000;Total:Spare/VARIO Case/Holders;
+;000440700450000001;Total:Spare/VARIO Case/Side Panel;
+;000440700450000002;Total:Spare/VARIO Case/Handle;
+;000440700450000003;Total:Spare/VARIO Case/Foot;
+;000440700460000001;Total:Repair Supply/Equipment;
+;000440700480000000;Total Product Units/Instr.;
+;000440700490000000;Total Spare Anspach Systems;
+;000441004010000405;Air Power Line;
+;000441004010000406;CAD;
+;000441004010000407;PD;
+;000441004010000411;Attachments;
+;000441004015000401;PT;
+;000441004015000403;Attachments;
+;000441004020000001;PT;
+;000441004444000001;Cases;
+;000441004444000002;Accessories;
+;000445000000000000;Total SC Basic;
+;000445000001000000;Total SC Standard;
+;000445000005000000;Total SC Standard plus;
+;000490009100000000;Total Repair charge;
+;000490009200000000;Total Loan charge;
+;000490009300000000;Total Working time charge;
+;000490009400000000;Total Shipping charge / freight charge;
+;000490009500001000;Total cleaning charge;
+;000490009500001100;Total sterilisation charge;
+;000490009600001000;Total Surcharge;
+;000490009700001000;Total Discount;
+;000495007000000000;Total Custom-made device;
+;000497000000000000;Total Prototypes & Semi-/Finished USA;
+;000499995000000000;Total Remaining stock Course;
+;000499995010000000;Total Remaining stock Synthetic Models;
+;000499995011000000;Total Remaining stock Synthetic Bones;
+;000499996000000000;Total Remaining stock Promo material;
+;000499996000000001;Total PT Brochure + Flyer;
+;000499996000000002;Total PT Catalog;
+;000499999000000000;Total Remaining stock SYNTHES;
+;000499999996000000;Total set Other (ONLY JAPAN);
+;000499999999000000;Total Remaining stock not assigned;
+;000499999999000001;Total Remaining Anspach stock n.a.;
+;000660100600000000;Total UKS Cases;
+;000660100600000001;Total UKS Instruments;
+;000660100600000002;Total UKS Condyles;
+;000660100600000003;Total UKS Tibial Baseplates;
+;000660100600000004;Total UKS Tibial Insert;
+;000660100600000005;Total UKS All Poly Plateaus;
+;000660100601000000;Total UNICIA Cases;
+;000660100601000001;Total UNICIA Instruments;
+;000660100601000002;Total UNICIA Condyles;
+;000660100601000003;Total UNICIA Tibial Baseplates;
+;000660100601000004;Total UNICIA Tibial Insert;
+;000660100601000005;Total UNICIA All Poly Plateaus;
+;000660100602000000;Total CKS Cases;
+;000660100602000001;Total CKS Instruments;
+;000660100602000002;Total CKS Primary Femoral Components;
+;000660100602000003;Total CKS PS Rev Femoral Comp;
+;000660100602000004;Total CKS Prim Tibial Insert;
+;000660100602000005;Total CKS PS Rev Tibial Insert;
+;000660100602000006;Total CKS All Poly Tibial Comp;
+;000660100602000007;Total CKS Tibial Baseplates;
+;000660100602000008;Total CKS Patellae;
+;000660100602000009;Total CKS Revision Spacers;
+;000660100602000010;Total CKS Revision Stem;
+;000660100602000011;Total CKS Other;
+;000660100602000012;Total CKS Samples/Workshop;
+;000660100604000000;Total MAEVA Cases;
+;000660100604000001;Total MAEVA Instruments;
+;000660100604000002;Total MAEVA Prim Femoral Components;
+;000660100604000003;Total MAEVA Rev Femoral Comp;
+;000660100604000004;Total MAEVA Primary Tibial Insert;
+;000660100604000005;Total MAEVA Rev Tibial Insert;
+;000660100604000006;Total MAEVA Monoblock Tibial Components;
+;000660100604000007;Total MAEVA Tibial Baseplates;
+;000660100604000008;Total MAEVA Patellae;
+;000660100604000009;Total MAEVA Revision Spacers;
+;000660100604000010;Total MAEVA Revision Stem;
+;000660100604000011;Total MAEVA Other;
+;000660100604000012;Total MAEVA Special Implants;
+;000660100604000013;Total MAEVA Samples;
+;000660100604000014;Total MAEVA Rest;
+;000660200608000000;Total Cases;
+;000660200608000001;Total Instruments;
+;000660200608000002;Total VO Special Instruments;
+;000660200610000000;Total PPF Unc Prim Stem;
+;000660200610000001;Total PTP Unc Prim Stem;
+;000660200610000002;Total ProxiLock US Unc Prim Stem;
+;000660200610000003;Total MST CLS Unc Prim Stem;
+;000660200610000004;Total PSA Unc Prim Stem;
+;000660200610000005;Total CMK3 Unc Prim Stem;
+;000660200610000006;Total Optima Unc Prim Stem;
+;000660200610000007;Total Vectra 1 Unc Prim Stem;
+;000660200610000008;Total Vectra 2 Unc Prim Stem;
+;000660200610000009;Total Prima Unc Prim Stem;
+;000660200610000010;Total Proxilock FT Unc Prim Stem;
+;000660200610000011;Total Starfit Unc Prim Stem;
+;000660200610000012;Total Vectra Unc Prim Stem;
+;000660200612000000;Total Screw In Unc Prim Cup;
+;000660200612000001;Total PTP Unc Prim Cup;
+;000660200612000002;Total Ellip Unc Prim Cup HA;
+;000660200612000003;Total Ellip Unc Prim Cup PC;
+;000660200612000004;Total Ellip Unc Prim Cup Hedr;
+;000660200612000005;Total Arc2F Unc Prim Cup;
+;000660200612000006;Total Vectra 1 Unc Prim Cup;
+;000660200612000007;Total Vectra 2 Unc Prim Cup;
+;000660200612000008;Total Elliptical Cup modular;
+;000660200614000000;Total F-Stem;
+;000660200614000001;Total Müller Cem Prim Stem;
+;000660200614000002;Total MST SL Cem Prim Stem WHN;
+;000660200614000003;Total MST 30 Cem Prim Stem WHN;
+;000660200614000004;Total MST CH Cem Prim Stem WHN;
+;000660200614000005;Total PSA Cem Prim Stem;
+;000660200614000006;Total CMK3 Cem Prim Stem;
+;000660200614000007;Total Optima Cem Prim Hip Stem;
+;000660200614000008;Total Vectra 1 Cem Prim Hip Stem;
+;000660200614000009;Total Vectra 2 Cem Prim Hip Stem;
+;000660200614000010;Total Vectra 3 Cem Prim Stem;
+;000660200614000011;Total CMK Refl Cem Prim Stem;
+;000660200614000012;Total CMK OC Cem Prim Stem;
+;000660200614000013;Total Vectra Cem Prim Stem;
+;000660200616000000;Total Implex Cem Prim Cup;
+;000660200616000001;Total Müller Cem Prim Cup;
+;000660200616000002;Total MST CH Cem Prim Cup;
+;000660200616000003;Total PSA Cem Prim Cup;
+;000660200616000004;Total CMK Cem Prim Cup;
+;000660200616000005;Total CMK OC Cem Prim Cup;
+;000660200616000006;Total CMK Sombrero;
+;000660200618000000;Total MST ARR;
+;000660200618000002;Total CMK ARC;
+;000660200620000000;Total PPF Unc Rev Stem;
+;000660200620000001;Total PTP Unc Rev Stem;
+;000660200620000002;Total ConeLock/Wagner Unc Rev Stem;
+;000660200620000003;Total Vectra 2 Unc Rev Stem;
+;000660200620000004;Total PSA Unc Rev Stem;
+;000660200622000000;Total CMK3 Cem Rev Stem;
+;000660200622000001;Total Vectra 2 Cem Rev Stem;
+;000660200622000002;Total PSA Cem Rev Stem;
+;000660200622000003;Total CMK Refl Cem Rev Stem;
+;000660200622000004;Total CMK OC Cem Rev Stem;
+;000660200624000000;Total Ellip Unc Rev Cup PC;
+;000660200624000001;Total Ellip Unc Rev Cup HA;
+;000660200624000002;Total Vectra 1 Unc Rev Cup;
+;000660200624000003;Total Ellip Unc Rev Cup Hedr;
+;000660200626000000;Total Vectra Cem Rev Cup;
+;000660200628000000;Total Screw In Cup Insert;
+;000660200628000001;Total PTP Cup Insert;
+;000660200628000002;Total Arc2F Cup Insert;
+;000660200628000003;Total Vectra Cup Insert;
+;000660200628000004;Total PSA Cup Insert;
+;000660200628000005;Total Vectra Cup Insert Rev;
+;000660200628000006;Total Insert for Ellipt Cup modular;
+;000660200630000000;Total CoCr Heads;
+;000660200630000001;Total AL2O3 Cer Heads;
+;000660200630000002;Total SSt Heads;
+;000660200630000003;Total Zirconium Cer Heads;
+;000660200630000004;Total Biolox-delta Cer Heads;
+;000660200630000005;Total SM CMK dia. 28 mm;
+;000660200632000000;Total Implex Hemi Head;
+;000660200632000001;Total SM Hemi Head;
+;000660200632000002;Total Bipolar Heads;
+;000660200634000000;Total Medullary Plugs;
+;000660200634000001;Total VO 3.0 Screw;
+;000660200634000002;Total 5.0 Screw;
+;000660200634000003;Total 6.5 Screw;
+;000660200634000004;Total Special Implants;
+;000660200634000005;Total Spacers;
+;000660200634000006;Total Trochanter Plates;
+;000660200634000007;Total Wires;
+;000660200634000008;Centralizer;
+;000660200634000009;Total X-Ray Templates;
+;000660200634000010;Total 4.9 Locking bolt;
+;000660200636000000;Total Samples;
+;000660200636000001;Total Coursematerial;
+;000660200638000000;Total Rest Hüfte;
+;000660250000000000;Total MAB Instruments;
+;000660250000001000;Total MAB Implants;
+;000660251000000000;Total IQL Instruments;
+;000660251000001000;Total IQL Implants;
+;000660252000000000;Total Johnson&Johnson Instruments;
+;000660252000001000;Total Johnson&Johnson Implants;
+;000660253000000000;Total Martin S.A. Instruments;
+;000660253000001000;Total Martin S.A. Implants;
+;000660254000000000;Total Stryker Howmedica Instruments;
+;000660254000001000;Total Stryker Howmedica Implants;
+;000660255000000000;Total Zimmer Instruments;
+;000660255000001000;Total Zimmer Implants;
+;000660300640000000;Total Cases;
+;000660300640000001;Total Shoulder Instruments;
+;000660300646000000;Total Stem;
+;000660300650000000;Total Bearing Heads;
+;000660500678000001;Total Instruments;
+;000660500678000002;Total Implants;
+;000660500680000000;Total Cases;
+;000660500680000001;Total Instruments;
+;000660500680000002;Total Implants;
+;000660500683000000;Total Hedrocel Samples;
+;000660600684000000;Total:ORTHO-PT/Reamer/PT Air;
+;000660600684000001;Total:ORTHO-PT/Reamer/Att.;
+;000660600686000000;Total Osc. Saw;
+;000660600688000000;Total Recip. Saw;
+;000660600690000000;Total PT Air;
+;000660600690000001;Total Att.;
+;000660600692000000;Total Cases;
+;000660600694000000;Total:ORTHO-PT/Cutting Tools/Osc.;
+;000660600694000001;Total:ORTHO-PT/Cutting Tools/Recip.;
+;000660600696000000;Total Air;
+;000660600696000001;Total Nipples;
+;000660600698000000;Total Reamer;
+;000660600698000001;Total Osc. Saw;
+;000660600698000002;Total Recip. Saw;
+;000660600698000003;Total RD;
+;000660600698000007;Total Rest;
+;000669000699000000;Total Rest Prothetik;
+;000669000699000100;Total Leihset;
+;000669000699000998;Total old French products;
+;000690009100000000;Total Repair charge;
+;000690009200000000;Total Loan charge;
+;000690009300000000;Total Working time charge;
+;000690009400000000;Total Shipping charge / freight charge;
+;000690009500001000;Total cleaning charge;
+;000690009500001100;Total sterilisation charge;
+;000690009600001000;Total Surcharge;
+;000690009700001000;Total Discount;
+;000695007000000000;Total Custom-made device;
+;000699995000000000;Total Remaining stock Course;
+;000699995010000000;Total Remaining stock Synthetic Models;
+;000699995011000000;Total Remaining stock Synthetic Bones;
+;000699996000000000;Total Remaining stock Promo material;
+;000699999999000000;Total Remaining stock not assigned;
+;000770100700000000;Total Basic System;
+;000770100700000001;Total Computer;
+;000770100700000002;Total Peripherics;
+;000770100700000003;Total Interfaces;
+;000770100700000004;Total Tracking System;
+;000770100700000005;Total Carts;
+;000770100700000006;Total Cables;
+;000770100705000000;Total Basic Software;
+;000770100705000001;Total Instruments;
+;000770100705000002;Total Cases;
+;000770100705000003;Total Implants;
+;000770100705000004;Total Demo Material;
+;000770100710000000;Total Software;
+;000770100710000001;Total Instruments;
+;000770100715000000;Total Software;
+;000770100715000001;Total Instruments;
+;000770100720000000;Total Software;
+;000770100720000001;Total Instruments;
+;000770100725000000;Total Software;
+;000770100725000001;Total Instruments;
+;000770100730000000;Total Software;
+;000770100730000001;Total Instruments;
+;000770100735000000;Total Software;
+;000770100735000001;Total Instruments;
+;000770100740000000;Total Software;
+;000770100740000001;Total Instruments;
+;000770100745000000;Total Software;
+;000770100745000001;Total Instruments;
+;000770100780000001;Total Instruments;
+;000770100790000000;Total Maintenance General;
+;000779000799000000;Total Rest Medivision;
+;000790009100000000;Total Repair charge;
+;000790009200000000;Total Loan charge;
+;000790009300000000;Total Working time charge;
+;000790009400000000;Total Shipping charge / freight charge;
+;000790009500001000;Total cleaning charge;
+;000790009500001100;Total sterilisation charge;
+;000790009600001000;Total Surcharge;
+;000790009700001000;Total Discount;
+;000790009900001000;Total Additional Services;
+;000795007000000000;Total Custom-made device;
+;000799986000000000;Total Remaining stock Promo material;
+;000799986000000001;Total Medivision Brochure + Flyer;
+;000799986000000002;Total Medivision Catalog;
+;000799995000000000;Total Remaining stock Course;
+;000799996000000000;Total Remaining stock Promo material;
+;000799996000000001;Total Medivision Brochure + Flyer;
+;000799996000000002;Total Medivision Catalog;
+;000799999999000000;Total Remaining stock not assigned;
+;000880100801000000;Total Draen/Cases;
+;000880100801000001;Total Draen/Instruments;
+;000880100801000002;Total Synth/Impl.;
+;000880100899000000;Total Rest Biomaterialien;
+;000890009100000000;Total Repair charge;
+;000890009200000000;Total Loan charge;
+;000890009300000000;Total Working time charge;
+;000890009400000000;Total Shipping charge / freight charge;
+;000890009500001000;Total cleaning charge;
+;000890009500001100;Total sterilisation charge;
+;000890009600001000;Total Surcharge;
+;000890009700001000;Total Discount;
+;000895007000000000;Total Custom-made device;
+;000899996000000000;Total Remaining stock Promo material;
+;000899996000000001;Total Biomaterialien Brochure + Flyer;
+;000899999999000000;Total Remaining stock not assigned;
+;001010100000000000;Total FMS;
+;001010300000000000;Total Knee;
+;001010500000000000;Total Mitek others;
+;001010600000000000;Total Shoulder;
+;001010700000000000;Total Small Joint;
+;001010900000000000;Total Tissue Management;
+;001090009200000000;Total loan charge Mitek;
+;001110100000000000;Total Knees;
+;001110300000000000;Total Trauma;
+;001110500000000000;Total Hips;
+;001110700000000000;Total Extremities;
+;001110900000000000;"Total Castings; Braces and Supports";
+;001111100000000000;Total Cement;
+;001111300000000000;Total Navigation;
+;001111500000000000;Total Biomaterial - Joints Recon;
+;001111700000000000;Total Other Products;
+;001190009200000000;Total loan charge joint recontstruction;
+;001290009200000000;Total loan charge Codman;
+;001290100000000000;Total Drug delivery;
+;001290300000000000;Total Hydrocephalus;
+;001290500000000000;Total Instruments;
+;001290700000000000;Total Neuro critical care;
+;001290900000000000;Total Neuroradiology;
+;001291100000000000;Total Other Codman;
+;001291300000000000;Total Operative Neurosurgery;
+;001310100000000000;Total Other Products;
+;055005040504030504;Other Mitek;
+;055005040504030509;Service and Repair;
+;055005040504030798;Small Joints;
+;055005040504030801;Tissue Engineering;
+;055005040504032300;Fluid Management;
+;055005040504032310;Shavers;
+;055005040504033290;Injectable Therapies;
+;055005040504037905;Anchors;
+;055005040504037907;Tissue Management;
+;055005040504037909;Knee Systems;
+;055005040504037935;Visualization;
+;055005040504037936;CAIS;
+;055005040504037946;Hip Arthroscopy;
+;055005660566030271;Hydrocephalus;
+;055005660566030274;Neuro ICU Technologies;
+;055005660566030283;Operative Neurosurgery;
+;055005660566030559;Drug Delivery Systems;
+;055005660566030565;Surgical Instruments;
+;055005667856037856;Hemorrhagic;
+;055005667856037931;Access;
+;055005667856037933;Ischemic;
+;055007030567030392;OrthobiologiJointReconstr;
+;055007030567030558;Bone Cement;
+;055007030567030570;HipReconstructionProducts;
+;055007030567030580;Knee Reconstruction Prod;
+;055007030567030793;iOrthopaedics;
+;055007030567037816;Other Reconstruction;
+;055007030567037821;Extremities;
+;055007037843037843;Trauma Products;
+;055078237823037823;DePuy Spine;
+;055078307830037830;Synthes Other;
+;055078317831037831;Synthes Spine;
+;055078337833037833;Synthes CMF;
+;055078357835037835;Synthes Power Tools;
+;055078377837037837;Synthes Trauma;
+
+
+
+#############################################################################New MD&D#############################################################################################
+
+;051003240329040681;PROTECTIV StraightHubCath;
+;051003240329040682;PROTECTIV Ported Hub Cath;
+;051003240329040683;PROTECTIV* Winged;
+;051003240330040684;PROTECTIVAcuvancStrghtHub;
+;051003240330040685;PROTECTIV AcuvancePortHub;
+;051003240330040686;PROTECTIV Acuvance Winged;
+;051003240331040687;Plastic Straight Hub Cath;
+;051003240331040688;Plastic Ported Hub Cath;
+;051003240331040689;Winged Hub Catheters;
+;051003240331040690;Metal Hub Catheters;
+;051003240331040691;VascularAccessAccessories;
+;051003240332040692;Mid-Line Catheters;
+;051003240332040693;PICC Line Catheters;
+;051003240332040694;Central Line Catheters;
+;051003240332040695;Other Long Line Catheters;
+;051012781206040339;TablesUltrasnd/Stereotact;
+;051012781206040340;Sentinel Node Products;
+;051012781206040399;Hand Held Probes;
+;051012781206040608;Service - Breast;
+;051012781206040841;Ultrasound Visible Marker;
+;051012781206041267;ST Probes;
+;051012781206041268;Mammotome Capital;
+;051012781206041269;Markers;
+;051012781206041272;Other Breast Care Product;
+;051012790400040400;Advant Linear Cutter;
+;051012790400040401;Advant Circular;
+;051012790400040402;Advant PPH;
+;051012790400040403;Advant Linear Stapler;
+;051012790601040596;Swedish Adjustable Gastric Band;
+;051012790601040597;Gastric Tube;
+;051012790601040598;Handheld Instruments;
+;051012790601040599;Accessories;
+;051012790601040831;SAGB Quick Close Gastric Band;
+;051012790601040832;Gastric Band Kits;
+;051012790601040896;SAGB Quick Close w/Velocity;
+;051012790601040897;SAGB Gen II Gastric Band w/Velocity;
+;051012790836040835;Inscope Multiple Clip Applier;
+;051012790838040836;Esophageal Balloon;
+;051012790838040837;Optical Dilator;
+;051012790840040839;Biopsy Forceps;
+;051012797117040602;HALS;
+;051012797117040603;Endopouch;
+;051012797117047058;Endo Kits;
+;051012797117047068;Trocars and Accessories;
+;051012797117047078;Endoscopic Sutures;
+;051012797117047105;Endo Ligation;
+;051012797117047114;Endo Instruments;
+;051012797117047116;Other Endo Products;
+;051012797117047159;Endo Cutters;
+;051012797117047195;Endo Stapling;
+;051012797187040348;Mechanical Kits/Other;
+;051012797187040833;Curved Cutter;
+;051012797187047127;External  Products;
+;051012797187047138;Linear Cutters;
+;051012797187047148;Linear Staplers;
+;051012797187047166;PPH Products;
+;051012797187047167;Circular Prod excl PPH;
+;051012797187047168;STARR Products;
+;051012797187047185;Ligation Products;
+;051012797406047401;Esophageal Capsule Endoscope;
+;051012797406047402;Ancillary Capital Products;
+;051079730500040516;Stratafix Spiral ;
+;051079730500040517;Stratafix PDS Plus ;
+;051079730500040642;Sutures Absorbable - Gut;
+;051079730500040643;Sutures Absorbable - PDS;
+;051079730500040644;Sutures Absorbable-Vicryl;
+;051079730500040645;Sutures Absorbable-Vicryl Rapid;
+;051079730500040646;Sutures Absorbable-Monocryl;
+;051079730500040647;Sutures Absorbable-Other;
+;051079730500040650;SuturesNon-Absorb-Ethibond;
+;051079730500040651;SuturesNon-Absorb-Ethilon;
+;051079730500040652;SuturesNon-Absorb-Mersilene;
+;051079730500040653;SuturesNon-Absorb-Prolene;
+;051079730500040654;SuturesNon-Absorb-Silk;
+;051079730500040655;SuturesNon-Absorb-Other;
+;051079730500040658;SuturesNon-Absorb-Pronova;
+;051079730500040659;D Special;
+;051079730500040771;Sutures Absorbable - Vicryl Plus;
+;051079730500040845;E-Packs;
+;051079730500040923;Sutures Absorbable - PDS Plus;
+;051079730500040924;Sutures Absorbable - Monocryl Plus;
+;051079730500041331;Sutures Absorbable - SynSyl;
+;051079730500041332;Sutures Absorbable - Qualtrus;
+;051079730512040931;Dermabond Propen;
+;051079730512040932;Dermabond Propen XL;
+;051079730512040933;Dermabond Mini;
+;051079730512040937;Dermabond Nx;
+;051079730512047979;Dermabond - High Viscosity;
+;051079730512048009;Prineo Skin Closure Sys;
+;051079730512048070;Dermabond - Low Viscosity;
+;051079737903040878;Prolene Soft Mesh (EP) ;
+;051079737903040879;Securestrap Open (EP) ;
+;051079737903040925;Prolene;
+;051079737903040926;Proceed Ventral Patch;
+;051079737903040927;Ultrapro Plug;
+;051079737903040928;Ultrapro Hernia System;
+;051079737903040929;Mersilene;
+;051079737903040930;Vicryl;
+;051079737903040936;Securestrap;
+;051079737903040989;Physiomesh;
+;051079737903047976;PHS;
+;051079737903047977;3DP;
+;051079737903047993;Vypro;
+;051079737903047995;Proceed;
+;051079737903047996;Ultrapro;
+;051079737903048011;Flex HD;
+;051079737974047554;Closed Wound Drains;
+;051079737974047555;Reservoirs;
+;051079170581047713;Interceed XL;
+;051079170581047715;Interceed;
+;051079170581047716;Intercoat;
+;051079171315040434;TVT-O;
+;051079171315040445;TVT - Exact;
+;051079171315040446;TVT - Abbrevio;
+;051079171315040955;TVT - Secur;
+;051079171315047983;Bulkamid;
+;051079171315047988;TVT Classic;
+;051079177911047911;Thermachoice;
+;051079177983040956;Morcellex;
+;051079177983047913;Versapoint;
+;051079177983047929;VerascopeMicrospanHystero;
+;051079177983047936;X-tract DIVAMorcell/Motor;
+;051079178006040934;Pelvic Floor Repair Prolift;
+;051079178006047915;Pelvic Floor RepairGynemesh;
+;051079178006047916;Prolift + M;
+;051079178006047917;Prosima;
+;051079178006047918;Espriva;
+;051079178006047928;Artisyn;
+;052003230323040389;Oth AdvancedWoundCareProd;
+;052003230324040380;Bio-Patch;
+;052003230324040842;Bio-Patch SSI;
+;052005250525040349;NU Gauze & Packing Strips;
+;052005250525040371;K-Y* Products;
+;052005250525040372;RELEASE Non-AdheringDress;
+;052005250525040373;BAB Dressing;
+;052005250525041221;Anti-Microbial Handwashes;
+;052005250525041222;Non-AntiMicrobialHandwash;
+;052005250525041223;SurgicalDisinfectantScrub;
+;052005250525041224;Hand Moist-Protectants;
+;052005250525047398;Surgical Sponges & Pads;
+;052005250525047437;Dressings & Bandages;
+;052005250525047483;Adhesive Tapes;
+;052005250525047501;Kits and Soft Goods;
+;052005250525047510;Oth Gen Wound Care Prod;
+;052005257578047578;IVIG;
+;052005257578047579;VIG;
+;052005257578047580;Hep-B IL;
+;052005257578047581;Hep-B SBL;
+;052005257578047582;Filtrates;
+;052005257578047583;Other;
+;052075757575040587;Surgicel;
+;052075757575040588;Nu-Knit;
+;052075757575040589;Fibrillar;
+;052075757575040591;Instat;
+;052075757575040592;Surgifoam;
+;052075757575040593;Surgifoam Powder;
+;052075757575040595;SNOW;
+;052075757575040780;Other Hemostats;
+;052075757575040843;Surgifoam Powder Kit;
+;052075757575040909;Surgiflo;
+;052075757576040594;Human Thrombin;
+;052075757576040781;Fibrin Glue;
+;052075757577040910;Omnex;
+;052075757579040921;Surgiflo + Thrombin;
+;052075757579040938;Thrombin Pad;
+;052075757579040939;Fibrin Pad;
+;052003430343040342;Disposables;
+;052003430343040393;Electrosurgery Devices;
+;052003430374040374;Disposables;
+;052003430374040375;Hardware;
+;052003430374040376;Accessories;
+;052003430374040377;Service;
+;052003437113040604;Service - HS;
+;052003437113047118;Hardware & Generators;
+;052003437113047119;Disposables;
+;052004700470040469;Sizers;
+;052004700470040470;Saline;
+;052004700470040471;Gels Round;
+;052004700470040472;Dermis;
+;052004700470040473;Tissue Expanders;
+;052004700470040474;Other Breast Aesthetics;
+;052004700470040481;Gels Shaped;
+;052004700470040483;Gel/Saline Combination;
+;052004700475040475;OPA;
+;052004700475040476;Other Body Aesthetics;
+;052004700477040477;Fillers;
+;052004700477040478;Topical;
+;052004700477040479;Other Facial Aesthetics;
+;052004700477040485;PDS Plates;
+;052004700480040480;Misc Aesthetics;
+;052004700480040487;Mentor Solution;
+;052004890460040460;Cyclops articulating scope;
+;052004890460040461;Cyclops service;
+;052004890489040486;BSP Spin;
+;052004890489040488;BSP Seeker;
+;052004890489040489;Balloons;
+;052004890489040490;Guides;
+;052004890489040491;Irrigation;
+;052004890489040492;LUMA & Wires;
+;052004890489040493;Inflation;
+;052004890489040494;BSP Accessories;
+;052004890495040495;Stratus Spacers;
+;052004890495040496;Stratus Accessories;
+;052004890497040497;Airway;
+;052004890497040498;Wiggle;
+;052004890497040499;All other;
+;052012511251041251;Non-Invasive;
+;052012511252041252;GI Lab;
+;052012511253041253;Catheter Lab;
+;052012511254041254;OR - General/GYN;
+;052012511255041255;OR - Ortho & ENT;
+;052012511256041256;Other;
+;052012511257041257;Repair;
+;053004040404040404;Usage Revenue;
+;053004040404040405;Disposable Revenue;
+;053004040404040406;Non-product Solution Revenue;
+;053004040404040407;MPU/ Accessories Revenue;
+;053012660298040353;Accessories;
+;053012660298040875;Biological Indicators;
+;053012660298047999;STERRAD* NX Cassette;
+;053012660298048000;STERRAD* 200 Cassette;
+;053012660298048001;STERRAD* 100/100S/100 NX Cassette;
+;053012660298048002;STERRAD* 50 Cassette;
+;053012660513040301;CIDEX OPAC & PAAC;
+;053012660513040302;CIDEX OPA & DISOPA;
+;053012660513040303;Nu-Cidex;
+;053012660513047349;CIDEX OPA PLUS;
+;053012660513047353;Cidex GTA (Cidex, Cidex Plus);
+;053012660513047356;PRESEPT Disinfection Prod;
+;053012660513047359;All Oth Disinfection Prod;
+;053012660513047896;Detergents (Enzol/Cidezyme/Cidezyme GI/etc.);
+;053012660514040893;Hand Hygiene;
+;053012660514047400;Microshield;
+;053012660514047406;BioPatch - ASP;
+;053012660515040304;NGAER (EvoTech,Adaptascope,EndoCk;
+;053012660515047897;AERs (auto Endoscope Reprocessors) Equipments and Consumables;
+;053012660520041273;STERRAD* 200;
+;053012660520047360;STERRAD* 100S;
+;053012660520047361;STERRAD* 100NX;
+;053012660520047362;STERRAD* 50;
+;053012660520047874;STERRAD* Equipment Rental;
+;053012660520047998;STERRAD* NX;
+;053012660529040536;Time and Material;
+;053012660529040537;Parts;
+;053012660529040538;Service Agreements;
+;053012660545040545;Area Decontamination Capital;
+;053012660545040546;Area Decont Consum & Acces;
+;053087808780048780;Other Comprehensive Care;
+;058512321236040622;Cardio Diagnostic Wires;
+;058512321236040711;Other Dx Cardiology;
+;058512321236040712;Angioguard Coronary;
+;058512321236040713;Other IX Cardiology;
+;058512321236040965;PTCA FireStar/DuraStar Rx;
+;058512321236040987;PTCA Empira Rx;
+;058512321236040988;PTCA Empira NC Rx;
+;058512321236047601;Cardio Diagnostic Catheters;
+;058512321236047603;Cardio Sheath;
+;058512321236047604;Exoseal;
+;058512321236047605;Presillion & Plus BMS;
+;058512321236047607;Transradial Products;
+;058512321236047611;Guiding Catheters;
+;058512321236047613;Steerable Guidewires;
+;058512321236047626;Other Coronary Stents;
+;058512321236047862;Disposable;
+;058512321236047863;Hardware;
+;058512331233040720;Bx Velocity Cypher OTW;
+;058512367859040731;PTA Balloons - .014;
+;058512367859040732;Angioguard OTW (for Carotid);
+;058512367859040733;Other Endo IX - Guides, Wires;
+;058512367859040734;Genesis SDS .014 Rx;
+;058512367859040737;Large SMART + SMART Control Large;
+;058512367859040739;Long SMART 100MM - 150MM;
+;058512367859040754;Genesis .018;
+;058512367859040755;Genesis .035;
+;058512367859040756;Genesis Unmounted;
+;058512367859040763;PTA Balloons OTW - .014;
+;058512367859040764;PTA POWERFLEX PRO - .035;
+;058512367859040846;Palmaz Blue .014;
+;058512367859040847;Palmaz Blue .018;
+;058512367859040957;Cypher Infra-popliteal;
+;058512367859040958;Angioguard Rx (for Carotid);
+;058512367859040966;Other Sx Stents;
+;058512367859040977;Outback;
+;058512367859040978;Frontrunner/Other CTO;
+;058512367859041312;Base SMART;
+;058512367859041491;Precise Biliary 018 OTW;
+;058512367859041509;Precise-Biliary 014 Rx;
+;058512367859041514;Carotid Stents;
+;058512367859047606;Aquatrack;
+;058512367859047646;Other Bx Stents;
+;058512367859047657;PTA Balloons - .035;
+;058512367859047694;Trapese - Perm Vena Cava Filter;
+;058512367859047698;Optease-Retr Vena Cava Filter;
+;058512367859047717;PTA Balloons - .018;
+;058512367859047720;SMART Flex Base;
+;058512367859047721;SMART RE-FLEX Base;
+;058512367859047722;SMART Flex (120mm-150mm);
+;058512367859047723;SMART RE_FLEX (120mm-150mm);
+;058512367859047724;SMART Flex (200mm);
+;058512367859047725;SMART RE_FLEX (200mm);
+;058512367859047848;Incraft;
+;058512367859047853;Other Endo DX - Sheaths, DX Caths, Wires;
+;058513221347040605;Circular Ablation;
+;058513221347040610;Linear Ablation;
+;058513221347040633;Navistar 8mm;
+;058513221347040634;Navistar Thermocool;
+;058513221347040916;Navistar RMT 4MM;
+;058513221347040917;Nav Bi-Directional 4mm;
+;058513221347040918;Nav Bi-Directional 8mm;
+;058513221347040940;Navistar RMT 8MM;
+;058513221347041346;Navistar 4mm;
+;058513221347047711;Refstar;
+;058513221347047714;Nav Cables & Esophagel;
+;058513221347047768;Refstar RMT;
+;058513221347047771;Nav RMT Thermocool;
+;058513221347047772;Nav Bi Dir Thermocool;
+;058513221347047779;C3 RefStar;
+;058513221347047780;Nav SF Thermocool;
+;058513221347047781;Nav Smart Touch Thermocool;
+;058513221351040730;Other Biosense Cardiology;
+;058513221351041349;NOGA Catheters;
+;058513221351047718;NOGA Systems;
+;058513221545041545;Biosense Webster Other;
+;058513227761040632;Celsius 8mm;
+;058513227761047661;Celsius 4mm;
+;058513227761047701;Celsius Thermocool;
+;058513227761047704;Non Nav SF Thermocool;
+;058513227761047762;Celsius RMT 8MM;
+;058513227761047763;Celsius RMT 4MM;
+;058513227761047764;Non-Nav Bi-Directional 4mm;
+;058513227761047765;Non-Nav Bi-Directional 8mm;
+;058513227761047767;Non-Nav TX Cables;
+;058513227761047773;Non Nav Bi Dir Thermocool;
+;058513227761047777;Celsius RMT Thermocool;
+;058513227762041345;CARTO Hardware;
+;058513227762041516;Service Contracts & Parts;
+;058513227762041517;Software;
+;058513227762041536;Generators & Pumps;
+;058513227762041540;Carto 3 HW;
+;058513227762041541;Software Carto Sound;
+;058513227762041542;Software RMT Module;
+;058513227762041543;Software Other;
+;058513227762041544;Non J&J Equipment Sales;
+;058513227858040747;Lasso;
+;058513227858040915;Pentaray;
+;058513227858040919;Siemens 3D Ultrasound;
+;058513227858047663;Diagnostic Catheters;
+;058513227858047669;DX Cables & Other;
+;058513227858047670;Sheath;
+;058513227858047702;"20"" Pole Catheter";
+;058513227858047766;Siemens 2D Ultrasound;
+;058513227858047770;Lasso SAS Nav;
+;058513227858047774;GE 2D Ultrasound;
+;058513227858047775;GE 3D Ultrasound;
+;058513227858047776;C3 Diagnostic;
+;058513227858047778;C3 Lasso Nav;
+;123600410045040045;ACUVUE Disposable Spheres;
+;123600410046040046;ACUVUE 2*;
+;123600410047040047;SUREVUE*DisposableSpheres;
+;123600410049040049;1 Day ACUVUE*;
+;123600410051040051;ACUVUE ADVANCE with CARESENSE;
+;123600410053040053;ADVANCE Plus;
+;123600410847040840;ACUVUE TruEye;
+;123600410849040849;1 Day ACUVUE*MOIST;
+;123600410950040950;1-Day ACUVUE EasyGO;
+;123600411234041234;VISTAVUE*;
+;123600411522041522;ACUVUE* ADVANCE;
+;123600411523041523;ACUVUE* CLEAR;
+;123600411524041524;ACUVUE*OASYS;
+;123600430044040044;OASYS FOR ASTIGMATISM;
+;123600430048040048;1 DAY ACUVUE MOIST FOR ASTIGMATISM;
+;123600430848040848;1 DAY ACUVUE* FOR ASTIGMATISM;
+;123600430851040851;ACUVUE* ADVANCE FOR ASTIGMATISM;
+;123600431416041416;ACUVUE* TORIC;
+;123603700052040052;Other Lens  Products;
+;123603700369040369;ACUVUE* Colours;
+;123603700577040580;Ttl Combo Other;
+;123603700856040855;Apollo;
+;123603701521041521;1 Day ACUVUE* Colours;
+;123614720059040059;ACUVUE Oasys for Presbyopia;
+;123614721471041471;ACUVUE* BIFOCAL;
+;123614721472041472;1 Day ACUVUE Moist for Presbyopia;
+;123615310050040050;AV2 DEFINE;
+;123615311525041525;1 DAY ACUVUE*DEFINE;
+;123615311530041530;1 DAY DEFINE with LACREON;
+;123615311531041531;1 Day ACUVUE DEFINE with LACREON Natural Shine B;
+;123605760576040576;Neptune;
+;067005950595047921;Health and Fitness;
+;067005950595047922;Consulting and Services;
+;067005950595047924;Other HCS;
+;067006700670040533;J&J Medical Divested Prod;
+;067006700670040542;IOLAB;
+;067006700670040606;WOVEN PROFESSIONAL;
+;067006700670040640;All Oth Professional Prod;
+;067006700670047950;Non Woven Healthcare;
+;067006700670047952;Other Non Woven Prof.;
+;067006700670047960;Prophy Paste;
+;067006700670047962;DELTON;
+;067006700670047970;Misc. Preventive;
+;067006700670047980;Composites;
+;067006700670047981;Dental Sutures;
+;067006700670047982;Dental Amalgams;
+;067006700670047986;Misc. Dental Products;
+;067006700670047990;Athletic TapesZonas,Coach;
+;067006700670047992;Protective Padding(J-PAD);
+;067006700670047994;Other Athletic Products;
+;067077897791047791;Ossix;
+;067078177813047813;Ind Tech Products;
+;029502890289040814;Red Bld Cells 0.8%;
+;029502890289041512;Traditional CPRR Revenue;
+;029502890289048010;ABO Blood Grouping Sera;
+;029502890289048012;Anti-D Typing Sera;
+;029502890289048014;Rh-Hr Sera;
+;029502890289048016;Red Bld Cells 3% incl kts;
+;029502890289048018;Anti-Human Serum;
+;029502890289048020;Enhancement Media;
+;029502890289048022;Rare Sera & Miscellaneous;
+;029502890985040819;AutoVue Innova;
+;029502890985040820;AutoVue Ultra;
+;029502890985040821;OrthoScan;
+;029502890985041511;BioVue CPRR Revenue;
+;029502890985048021;BioVue Cassettes;
+;029502890985048041;AutoVue;
+;029502890985048043;BioVue Accessories;
+;029502890985048046;Other IH Accessories;
+;029502890985048047;BioVue Other Instruments;
+;029502890985048051;Other IH Instruments;
+;029502890985048056;BioVue Service & Parts;
+;029502890985048057;Other IH Service & Parts;
+;029502890985048065;Ortho Vision Cassettes;
+;029502890985048066;Ortho Vision MAX Cassettes;
+;029502890986040636;IDMTS Instruments ProVue;
+;029502890986041237;IDMTS CPRR Rev;
+;029502890986048025;IDMTS Other Cards-Buffers;
+;029502890986048026;IDMTS ABD Cards;
+;029502890986048027;IDMTS IGG Cards;
+;029502890986048040;IDMTS Other Instruments;
+;029502890986048042;IDMTS Accessories & Cons;
+;029502890986048044;IDMTS Instruments Manual;
+;029502890986048055;IDMTS Service & Parts;
+;029502890986048060;Ortho Vision Cards;
+;029502890986048061;Ortho Vision MAX Cards;
+;029502898335048330;Other Transfusion Med Prd;
+;029506750673040673;Bayer;
+;029506750675040661;Chem dHDL Slides;
+;029506750675040662;Chem Protein Microtip Assays;
+;029506750675040663;Chem TDM Microtip Assays;
+;029506750675040664;Chem DAT Microtip Assays;
+;029506750675040665;Chem Other Microtip Assays;
+;029506750675040666;Chem V5,1FS Analyzers;
+;029506750675040671;Chem Microtip Consumables;
+;029506750675040922;VITROS 5600 Integr System;
+;029506750675041243;Chem MPP Revenue;
+;029506750675041244;Chem CPRR Revenue;
+;029506750675048084;Chem Accessories;
+;029506750675048086;Desktop Accessories;
+;029506750675048141;Chem Basic Slides;
+;029506750675048142;Chem V250/350 Analyzers;
+;029506750675048143;Chem All Other Analyzers;
+;029506750675048145;Chem Service & Parts;
+;029506750675048147;Desktop Slides;
+;029506750675048151;Desktop Service & Parts;
+;029506750675048152;Chem All Other Reagents;
+;029506750675048166;VITROS 4600 System;
+;029506750675048181;Chem Classic Slides;
+;029506750675048182;Chem Special Slides;
+;029506750675048183;Chem Protein Sld ex dHDL;
+;029506750675048184;Chem TDM/TOX Slides;
+;029506750675048187;Desktop Analyzers;
+;029506750675048601;Chem Rental Revenue;
+;029506750675048602;Chem Consumables;
+;029506750675048603;Desktop Consumables;
+;029506750676040291;T3U;
+;029506750676040293;Myoglobin;
+;029506750676040826;b-HCG GenII 2;
+;029506750676040827;Troponin I Gen 2;
+;029506750676040828;NT-proBNP;
+;029506750676040829;HBsAg ES;
+;029506750676040830;aHAV Total;
+;029506750676041245;Eci Service & Parts;
+;029506750676041246;Eci Consumables;
+;029506750676041418;TT4;
+;029506750676041419;TT3;
+;029506750676041420;FT4;
+;029506750676041421;FT3;
+;029506750676041422;TSH;
+;029506750676041424;LH;
+;029506750676041425;FSH;
+;029506750676041426;b-HCG;
+;029506750676041427;Prolactin;
+;029506750676041428;Estradiol;
+;029506750676041429;Progesterone;
+;029506750676041431;Testosterone;
+;029506750676041432;Cortisol;
+;029506750676041434;Ferritin;
+;029506750676041436;B12;
+;029506750676041437;Folate;
+;029506750676041439;CK-MB;
+;029506750676041441;Troponin I;
+;029506750676041443;AFP;
+;029506750676041444;CA125;
+;029506750676041446;CA 19-9;
+;029506750676041447;CA15-3;
+;029506750676041448;CEA;
+;029506750676041449;PSA;
+;029506750676041451;aHBs;
+;029506750676041452;HBsAg;
+;029506750676041453;HIV 1/2;
+;029506750676041454;aHCV;
+;029506750676041455;HBsAg Confirmatory;
+;029506750676041456;aHBe;
+;029506750676041457;aHBc;
+;029506750676041458;aHBc IgM;
+;029506750676041459;aHAV IgM;
+;029506750676041466;HBeAg;
+;029506750676041468;NTx;
+;029506750676048087;Rubella IgG;
+;029506750676048088;Rubella IgM;
+;029506750676048089;Toxo IgG;
+;029506750676048091;Toxo IgM;
+;029506750676048092;CMV IgG;
+;029506750676048093;CMV IgM;
+;029506750676048095;ECi Accessories;
+;029506750676048155;Eci/ECi Q Analyzers;
+;029506750676048156;Other Eci Wells;
+;029506750676048158;ECi/ECi Q Rental Revenue;
+;029506750676048165;VITROS 3600 Imm System;
+;029506751318048605;Other Clinical Labs Prd;
+;029506758163048163;HCV Diagnostics;
+;029506770677040617;Other Revenue;
+;029506770677040674;Shipping & Handling Rev;
+;029506770677040679;Consulting Revenue;
+;029506778604048604;IDEXX Slides;
+;029580548054048050;RhoGAM;
+;029580548054048053;MicRhoGAM;
+;029582068206040639;Syphilis;
+;029582068206040641;CMV;
+;029582068206040904;Chagas ELISA;
+;029582068206041242;Donor Scr CPRR Rev;
+;029582068206048059;Donor Scr Service & Parts;
+;029582068206048134;HIV Riba;
+;029582068206048135;Arriba Kits;
+;029582068206048136;HCV Riba;
+;029582068206048137;HIV 1/2;
+;029582068206048160;HBsAg;
+;029582068206048162;HCV Screening;
+;029582068206048164;HBC;
+;029582068206048169;HTLV-I/II;
+;029582068206048178;Non-J&J Donor Scr Prds;
+;029582068206048180;Other Donor Scr Rgnts;
+;029582068206048190;Donor Scr Instr;
+;029582068206048192;Donor Scr Accessories & Cons;
+;029505900590047910;Instrumentation;
+;029505900590047912;Procedural Kits;
+;029505900590047914;Photosette;
+;029505900590047920;All Oth Therakos Products;
+;029581758175040699;Molecular Diagnostics;
+;029581758175040757;Cellular Diagnostics;
+;029581758175040758;Other Veridex Biosystems;
+;063006300630048342;Ancillaries/Informatics;
+;063006300630048346;Legacy EC Meters;
+;063006300630048347;Legacy EC Strips;
+;063006300630048354;OT & SS PM Meters;
+;063006300630048356;OT & SS PM Strips;
+;063006300630048360;Misc.;
+;063006300630048366;OT Ultra Family Meters;
+;063006300630048367;OT Ultra Strips;
+;063006300630048384;OT UltraVue Meter;
+;063006300630048385;OT Select Meter;
+;063006300630048386;OT Select Strips;
+;063006300630048388;OT Vita Meters;
+;063006300630048389;OT Vita Strips;
+;063006300630048392;One Pro Blood Pressure Meter;
+;063006300630048393;OT Verio Meters;
+;063006300630048394;OT Verio Strips;
+;063006300630048395;OT Select Simple Meter;
+;063006300630048396 ;OT Quick Click Pen Needles;
+;063006300630048397;OT Verio Pro+ (POCT);
+;063024002400042401;Animas IR Legacy Pumps;
+;063024002400042404;Animas Cartridges;
+;063024002400042405;Misc Infusion Sets;
+;063024002400042408;Animas Pump--2020;
+;063024002400042409;OT Ping;
+;063024002400043893;OT Vibe;
+;063024002400043894;Misc;
+
+#############################################################################Pharma#############################################################################################
+
+;G034T037P360I02610;Dukoral
+;G034T037P360I02840;Epaxal/Epaxal Junior
+;G034T037P360I03960;Hepavax – Gene
+;G034T037P360I04445;Inflexal V
+;G034T037P360I04925;Other Vaccines
+;G034T037P360I06070;Quinvaxem
+;G034T037P360I07655;Vivotif
+;G034T037P360I04650;Moru-Viraten
+;G034T037P360I04782;Nmc
+;G001T001P002I0L020;Denoral
+;G002T002P372I04740;Nariclear
+;G002T002P010I01324;Bronchosedal
+;G002T002P010I01320;Bronchosedal Cons.
+;G002T002P011I0I105;Mizollen
+;G002T002P012I0I055;Tylenol With Pseud.
+;G002T002P012I07606;Tylenol Sinus Cons.
+;G002T002P013I04540;Levotuss
+;G002T002P014I06487;Rinomar
+;G002T002P015I07500;Tinset
+;G002T002P016I03680;Hismanal
+;G002T002P017I03685;Hismanal D
+;G002T002P018I04530;Livostin
+;G002T002P018I04532;Livostin D
+;G002T002P018I04535;Livostin Cons.
+;G002T002P350I07600;Tylenol With Phen
+;G003T003P019I0I041;Levaquin I.V.
+;G003T003P019I0I057;Floxin Oral
+;G003T003P019I0I089;Levaquin Oral
+;G003T003P019I0I119;Floxin I.V.
+;G003T003P266I0I102;Cefzon
+;G003T003P308I04848;Omnicef
+;G003T003P340I01380;Zeftera
+;G003T003P341I02580;Doribax
+;G003T003P344I07590;Sirturo
+;G003T003P353I01410;Cetraxal
+;G004T004P023I0I067;Pevaryl
+;G004T004P023I05560;Pevaryl Cons.
+;G004T004P024I0I069;Pevisone
+;G004T004P025I00060;Acnidazil
+;G004T004P029I0L047;Travogen
+;G004T004P030I04821;Nizoral Gynaecological
+;G004T004P030I04823;Nizoral Topical (Cream)
+;G004T004P030I04825;Nizoral Systemic (Tablets)
+;G004T004P030I04826;Nizoral Shampoo
+;G004T004P030I04827;Nizoral Shampoo Cons
+;G004T004P030I04480;Ketoconazole Generic
+;G004T004P030I04820;Nizoral Topical Cons.
+;G004T004P032I0I068;Gyno-Pevaryl
+;G004T004P032I03650;Gyno-Pevaryl Cons.
+;G004T004P033I01909;Daktacort
+;G004T004P033I01910;Daktarin Topical
+;G004T004P033I01911;Daktarin I.V.
+;G004T004P033I01912;Daktozin
+;G004T004P033I01915;Daktarin Systemic
+;G004T004P033I01918;Gyno-Daktarin
+;G004T004P033I01917;Daktarin Topical Cons.
+;G004T004P033I01919;Gyno-Daktarin Cons.
+;G004T004P033I01900;Daktacort Cons.
+;G004T004P035I0I072;Terazol
+;G004T004P035I07260;Terconazole
+;G004T004P038I06950;Sporanox Caps
+;G004T004P038I06952;Sporanox Solution
+;G004T004P038I06954;Sporanox I.V.
+;G004T004P038I04470;Itraconazole Generic
+;G004T004P279I0I169;Retinol
+;G005T007P359I06840;Invokana
+;G005T007P359I06845;Canagliflozin Fdc
+;G005T007P366I06320;Reopro All.Mgmt.
+;G005T007P039I0I088;Reopro
+;G005T007P040I0I085;Retavase
+;G005T007P041I07200;Sufrexal
+;G005T007P042I07201;Sufrexal Iv
+;G005T007P043I04790;Nebilet
+;G005T007P301I04770;Natrecor
+;G005T007P354I07830;Xarelto
+;G006T008P363I07280;Nucynta Er
+;G006T008P044I0I031;Ciloprin
+;G006T008P045I07482;Thalamonal
+;G006T008P046I04320;Hypnomidate
+;G006T008P048I06100;Rapifen
+;G006T008P307I07618;Ultiva
+;G006T008P351I07270;Nucynta Ir
+;G006T010P074I07330;Topiramate Generic
+;G006T010P074I0I140;Topamax
+;G006T010P075I07010;Stugeron Cons.
+;G006T010P075I07007;Stugeron
+;G006T010P076I06850;Sibelium
+;G006T010P077I03510;Galantamine Generic
+;G006T010P077I06700;Razadyne / Reminyl
+;G006T010P283I0I182;Cipramil
+;G006T010P302I0I060;Vascor
+;G006T010P348I0L148;Other Neurology
+;G006T010P348I01400;Carisbamate
+;G006T011P078I06250;Remeron
+;G006T011P079I01780;Concerta Guarabo
+;G006T011P079I0I124;Concerta
+;G006T011P079I04640;Methylphenidate Generic
+;G006T011P080I0L133;Toledomin
+;G006T011P081I03770;Haloperidol Generic
+;G006T011P081I03750;Haldol
+;G006T011P082I07599;Triperidol
+;G006T011P083I02590;Dipiperon
+;G006T011P084I03464;Frenactil
+;G006T011P085I0L032;Spiropitan
+;G006T011P086I04324;Imap
+;G006T011P087I04900;Orap
+;G006T011P088I04450;Impromen
+;G006T011P089I03810;Haloperidol Dec. Gen
+;G006T011P089I03800;Haldol Dec
+;G006T011P090I06800;Semap
+;G006T011P092I07540;Tremblex
+;G006T011P093I04460;Impromen Decanoas
+;G006T011P094I06550;Risperidone
+;G006T011P094I06510;Risperdal Oral Solution
+;G006T011P094I06520;Risperdal Quicklet
+;G006T011P094I06530;Risperdal Tablets
+;G006T011P095I06540;Risperdal Consta
+;G006T011P310I04520;Lexapro
+;G006T011P333I05050;Invega
+;G006T011P334I06960;Invega Sustenna
+;G006T011P143I0L135;Tagonis
+;G007T012P367I00580;Band-Aid
+;G007T012P374I01810;Consumer Vietnam
+;G007T012P096I0I029;Masse
+;G007T012P096I04571;Masse Cons.
+;G007T012P097I0I030;Purpose
+;G007T012P098I0I021;Delfen
+;G007T012P099I0I052;Gynol Ii
+;G007T012P099I0C982;Gynol Ii* Extra Stre
+;G007T012P100I0I051;Ortho-Gynol
+;G007T012P321I00950;Benecol
+;G007T012P322I0L143;Other Consumer
+;G007T012P327I0C772;Motrin Ib
+;G008T013P101I0L144;Other Dermatological
+;G008T013P101I0L029;Other Acne
+;G008T013P102I0I125;Renova
+;G008T013P103I0I022;Retin-A
+;G008T013P103I03490;Generic Tretinoin
+;G008T013P104I0I053;Erycette
+;G008T013P105I02720;Elubiol
+;G008T014P106I0I042;Pramlintide
+;G010T015P371I07800;Resolor
+;G010T015P107I04605;Mylanta
+;G010T015P108I07510;Titanoreine
+;G010T015P108I07480;Titanoreine Cons.
+;G010T015P109I05040;Pancreaze
+;G010T015P109I0I049;Pancrease
+;G010T015P110I05940;Priamide
+;G010T015P111I01240;Bilagol
+;G010T015P112I06200;Reasec
+;G010T015P113I07630;Vesadol
+;G010T015P114I07646;Vesalium
+;G010T015P115I01940;Decaris
+;G010T015P116I07682;Vermox
+;G010T015P116I07680;Vermox Cons.
+;G010T015P117I03100;Fluvermal
+;G010T015P117I03130;Fluvermal Cons.
+;G010T015P118I04400;Imodium
+;G010T015P118I04405;Imodium Cons.
+;G010T015P118I04380;Imogas
+;G010T015P118I04370;Imoflora
+;G010T015P119I04420;Imodium Plus
+;G010T015P120I04600;Motilium
+;G010T015P120I04610;Motilium Cons.
+;G010T015P121I05925;Prepulsid
+;G010T015P122I04565;Arestal
+;G010T015P123I00040;Aciphex Er
+;G010T015P123I05150;Rabeprazole Generic
+;G010T015P123I05100;Aciphex/ Pariet
+;G010T015P123I01850;Dakar
+;G010T015P274I0L024;Norbiline
+;G010T015P151I07520;Touristil
+;G014T019P362I04935;Other Veridex Biosys
+;G014T019P362I04660;Molecular Diagnost.
+;G014T019P362I01430;Cellular Diagnostics
+;G014T019P375I04670;Mdd Vietnam
+;G014T019P144I0I165;Various Alza
+;G014T019P144I09990;Pseudophedrine
+;G014T019P144I09991;Covera
+;G014T019P144I09992;Dynacirc
+;G014T019P144I09993;Scop
+;G014T019P144I09994;Catapres
+;G014T019P144I09995;Nicoderm
+;G014T019P144I09996;Viadur
+;G014T019P145I0L142;Other Cardiological
+;G014T019P145I01740;Cnto328
+;G014T019P145I04952;Other Cns
+;G014T019P145I01260;Biopatch
+;G014T019P145I06310;Rhogam
+;G014T019P145I04595;Md&D Prods
+;G014T019P145I0L141;Other Anti-Infective
+;G014T019P145I0L140;Other Antifungals
+;G014T019P145I0L149;Other Oncology
+;G014T019P145I0L150;Other Psychotropics
+;G014T019P145I0L151;Other Reproductive M
+;G014T019P145I0L152;Other Respiratory
+;G014T019P145I0L153;Other Wound Healing
+;G014T019P145I0L154;Other Hematology
+;G014T019P145I0L155;Other Urology
+;G014T019P145I0L156;Other Whc
+;G014T019P145I00070;Agrylin
+;G014T019P145I03250;Fosrenol
+;G014T019P145I04630;Mezavant
+;G014T019P145I07150;Sudafed
+;G014T019P145I09801;Benadryl
+;G014T019P145I00600;Bapineuzumab
+;G014T019P145I00560;Avonex
+;G014T019P145I0L089;Various Human
+;G014T019P145I0L102;Eiw Acc. & Adj. -H
+;G014T019P145I04833;Ky Jelly - Human
+;G014T019P145I07635;Resprin
+;G014T019P145I0L145;Other Gastro-Intestinal Cons.
+;G014T019P145I07633;Zocor
+;G014T019P145I08870;Mcneil Prod
+;G014T019P145I01100;Biafine
+;G014T019P145I01980;Dermatop
+;G014T019P145I06750;Roc
+;G014T019P145I00010;Various Mcneil Specialty
+;G014T019P145I01370;Centany
+;G014T019P145I01690;Clinium
+;G014T019P145I01720;Clopercol
+;G014T019P145I01830;Cypher
+;G014T019P145I02520;Dimitronal
+;G014T019P145I02605;Droxican
+;G014T019P145I02770;Ertaczo
+;G014T019P145I03470;Frenadol
+;G014T019P145I03720;Hepagene
+;G014T019P145I04510;Liazal
+;G014T019P145I04570;Prosynap
+;G014T019P145I04737;Nalorphine
+;G014T019P145I04980;Oxymorphone
+;G014T019P145I05550;Pepcid
+;G014T019P145I06300;Remivox
+;G014T019P145I06500;Ritanserin
+;G014T019P145I06562;Rubalgan
+;G014T019P145I06580;R126638 Microfine
+;G014T019P145I07660;Vestra
+;G014T019P145I07690;Rivizor
+;G014T019P145I08600;Crown-Prod.
+;G014T019P145I08700;Jsi Prod.
+;G014T019P145I08800;Syntex Prod.
+;G014T019P145I08850;Biotech Prod.
+;G014T019P145I08900;Chimica Prod.
+;G014T019P145I08905;Replens
+;G014T019P145I09000;Packing Material
+;G014T019P145I09001;Non Active Ingredients
+;G014T019P145I09002;Miscellaneous Products
+;G014T019P145I0I002;Persa-Gel
+;G014T019P145I0I003;Meclan
+;G014T019P145I0I004;Timunox
+;G014T019P145I0I019;Grifulvin
+;G014T019P145I0I037;Condoms/Shields
+;G014T019P145I0I039;Walgreen
+;G014T019P145I0I054;Other Acp
+;G014T019P145I0I058;Various Prod. Icom
+;G014T019P145I0I062;Actis
+;G014T019P145I0I064;Lutrepulse
+;G014T019P145I0I070;Lyspafen
+;G014T019P145I0I074;Luvatren
+;G014T019P145I0I075;Suprofen
+;G014T019P145I0I077;Xomazyme H65
+;G014T019P145I0I083;Analgen
+;G014T019P145I0I090;Topiramate (Endocr.)
+;G014T019P145I0I092;Panorex
+;G014T019P145I0I095;Chemet
+;G014T019P145I0I096;Amphotec/Amphocil
+;G014T019P145I0I138;Silkis
+;G014T019P145I0I150;Commissions Icom
+;G014T019P145I0I155;Lenium
+;G014T019P145I0I160;Ethyol
+;G014T019P145I0I163;Actisite
+;G014T019P145I0I183;Poppy Seed
+;G014T019P145I0I184;Buprenorphine Base
+;G014T019P145I0I185;Tilidine
+;G014T019P145I0I186;Cegripe
+;G014T019P145I0I187;Hydroxychloroquine
+;G014T019P145I0I188;Etodolac
+;G014T019P145I0I189;Articaine
+;G014T019P145I0I190;Mefloquinh Hcl
+;G014T019P145I0I191;Propofol
+;G014T019P145I0I192;Ketorolac
+;G014T019P145I0I193;Methimazole
+;G014T019P145I0I194;Fosinopril
+;G014T019P145I0I195;Miochol
+;G014T019P145I0I196;Otogesic
+;G014T019P145I0I197;Cardioprotect
+;G014T019P145I0I198;Flebocortid
+;G014T019P145I0I199;Mellitron
+;G014T019P145I0I200;Sterrad
+;G014T019P145I0L001;Maxenal
+;G014T019P145I00000;Price Changes
+;G014T019P145I00003;Cash Discount
+;G014T019P145I00004;Fx-Changes/Exch.Rate Adj
+;G014T019P145I00075;Anti Acid
+;G014T019P145I01000;Betadorm
+;G014T019P145I04850;Operidine
+;G014T019P145I0I117;Virostat
+;G014T019P145I0L025;Sedalium
+;G014T019P145I0L028;Duphar Products
+;G014T019P145I0L030;Sedalande
+;G014T019P145I0L040;Deliv. Others Human
+;G014T019P145I0L066;J & J Professional
+;G014T019P145I0L086;Discounts - H
+;G014T019P145I0L090;Adjustments - H
+;G014T019P145I0L091;Life Scan Prod.
+;G014T019P145I0L111;Ethicon Prod.
+;G014T019P145I0L116;Sterling Products
+;G014T019P145I0L117;Rapolyte
+;G014T019P145I0L120;Other Ex-Sourcing H
+;G014T019P145I0I118;Eprex-Other
+;G014T019P145I0I133;Gyne-T 220
+;G014T019P145I03630;Griseofulvin Generic
+;G014T019P145I0C193;K-Y* Lubricating Jel
+;G014T019P145I0C997;Uristat
+;G014T019P145I00011;Specialty Pharmaceutical Discounts
+;G014T019P145I01390;Cegripe Cons.
+;G014T019P145I01860;Dacryo Cons.
+;G014T019P145I04500;Ivermectine Cons.
+;G014T019P145I05540;Pepcid Cons.
+;G014T019P145I06460;Rhinofebral Cons.
+;G014T019P145I04955;Other Otc Prods Cons.
+;G014T019P145I09004;R-Compounds
+;G014T019P145I0I097;Contract Revenue
+;G014T019P145I09824;Visine
+;G014T019P145I07650;Vivitrol
+;G014T019P145I04440;Inuvair
+;G014T019P145I07870;Zyrtec
+;G014T019P147I09997;Quixin
+;G014T019P147I09998;Betimol
+;G014T019P147I09999;Alamast
+;G014T019P147I0I061;Vision Products
+;G014T019P147I08400;Vistakon Prods.
+;G014T019P148I0I056;Vitamines
+;G014T019P150I0L005;Coldrin
+;G015T020P152I0I040;Micronor Hrt
+;G015T020P153I0I115;Prefest
+;G015T020P154I0I045;Systen Conti/Sequi
+;G015T020P155I0I065;Systen/Evorel
+;G015T020P156I0I027;Ortho Dienoestrol
+;G015T020P157I0I028;Ortho Gynest
+;G015T020P158I0I120;Ortho-Est
+;G015T020P159I0I129;Progestasert
+;G015T021P162I0I158;Other Oc'S
+;G015T021P166I0I006;Ortho-Novum 7/7/7
+;G015T021P166I0I007;Ortho-Novum 1/35
+;G015T021P166I0I008;Ortho-Novum 10/11
+;G015T021P166I0I009;Modicon
+;G015T021P166I0I010;Cilest
+;G015T021P166I0I011;Ortho-Novum 1/80
+;G015T021P166I0I012;Ortho-Novum 1/50
+;G015T021P166I0I013;Micro-Novum
+;G015T021P166I0I014;Ortho-Novum Sq
+;G015T021P166I0I015;Ortho-Novum 0.5Mg
+;G015T021P166I0I016;Ortho-Novum 2Mg
+;G015T021P166I0I036;Veridate
+;G015T021P166I0I059;Neo-Eunomin
+;G015T021P166I0I084;Tri-Cilest/ Tri-Cyclen
+;G015T021P166I0I093;Empty Dialpacks
+;G015T021P166I0I104;Ortho-Cept
+;G015T021P166I0I181;Jolivette
+;G015T021P166I04580;Mononessa
+;G015T021P166I07320;Trinessa
+;G015T021P166I04795;Necon 7/7/7
+;G015T021P166I00800;Belara
+;G015T021P166I07575;Tricyclen Lo Generic
+;G015T021P336I07570;Tricyclen Lo
+;G015T022P175I0I035;Diaphragms
+;G015T022P176I0I147;Evra
+;G015T022P177I0I026;Gyne-T 200
+;G015T022P178I0I134;Gyne-T 380
+;G015T022P179I0I032;Universal Introducer
+;G015T022P180I0I033;Vaginal Applicators
+;G015T024P184I0I018;Protostat
+;G015T024P185I0I023;Sultrin
+;G015T024P186I0I034;Aci-Jel
+;G016T023P181I0I100;Muse
+;G016T023P182I02560;Ditropan Ir
+;G016T023P182I0I126;Ditropan/ Lyrinel
+;G016T023P182I04990;Oxybutynin Chl. Generic
+;G016T023P183I0I139;Testoderm
+;G016T023P309I0I175;Priligy
+;G016T025P187I0I123;Citra
+;G016T025P188I0I164;Neutraphos
+;G016T025P189I0I132;Elmiron
+;G016T025P190I0I146;Macrobid
+;G016T025P191I0I162;Macrodantin
+;G016T025P192I0I137;Mycelex
+;G016T025P193I0I156;Urispas
+;G017T034P194I0I103;Regranex
+;G017T034P195I07202;Sufrexal Ointment
+;G018T027P198I01050;Bethoguard
+;G018T027P198I02630;Econea
+;G018T027P198I02880;Farox
+;G018T027P198I03310;Funds Powder
+;G018T027P198I03320;Fungamet
+;G018T027P198I05530;Penbotec
+;G018T027P198I05570;Permethrine
+;G018T027P198I05820;Philabuster
+;G018T027P198I07820;Xamox
+;G018T027P198I05950;Prevel
+;G018T027P198I0L078;Fruitgard
+;G018T027P198I0L124;Various Plant Prot.
+;G018T027P198I02870;Fenaminol
+;G018T027P198I0L083;Azaconazole
+;G018T027P198I0L113;Other Ex-Sourcing P
+;G018T027P198I09003;Commissions General
+;G018T027P198I0L107;Adjustments - P
+;G018T027P198I06050;Pyrioin
+;G018T027P199I0L099;Century
+;G018T027P200I0L075;Fungaflor Certis
+;G018T027P201I0L076;Fungaflor Ph
+;G018T027P202I0L109;Rodewod
+;G018T027P203I0L069;Propiconazole/Wocose
+;G018T027P204I0L134;Cyproconazole/Evipol
+;G018T027P205I0L105;Flurox
+;G018T027P206I0L137;Af033
+;G018T027P207I0L067;Norbloc
+;G018T027P272I0L138;Lurox
+;G018T027P306I0L127;Terminox/Bombora
+;G018T028P208I00073;Adequan
+;G018T028P209I0L128;Ear Cleaner
+;G018T028P211I04505;Fludomin
+;G018T028P212I03300;Furexel
+;G018T028P213I0L079;Galastop
+;G018T028P215I0L114;Synbiotics Diagnostic
+;G018T028P217I0L080;Vet Kem
+;G018T028P218I03691;Hypnorm
+;G018T028P219I01926;Dehydrobenzperidol Vet
+;G018T028P220I02991;Fentanyl Vet
+;G018T028P221I06920;L-Spartakon
+;G018T028P222I01800;Conofite
+;G018T028P223I01916;Daktarin Vet
+;G018T028P224I07250;Surolan
+;G018T028P225I07469;Telmin
+;G018T028P226I07471;Telmin + Trichlorfon
+;G018T028P227I07470;Telmin Kh
+;G018T028P228I03060;Flubenol Easy Dog
+;G018T028P229I03055;Flubenol Kh
+;G018T028P230I06910;Spartrix
+;G018T028P231I04602;Motilium Vet
+;G018T028P232I04830;Nizoral-Vet
+;G018T028P233I07700;Vulketan
+;G018T028P234I00095;Appertex
+;G018T028P267I01710;Clinagel
+;G018T028P269I03065;Flubenol Easy Cat
+;G018T028P271I06949;Itrafungol
+;G018T028P275I05000;Palfium
+;G018T028P276I0I071;Pevet
+;G018T028P278I05930;Prepulsid Vet.
+;G018T028P313I03040;Felimazole
+;G018T028P314I07670;Vetoryl
+;G018T028P346I07860;Yarvitan
+;G018T029P235I0L093;Albendazole
+;G018T029P236I0L104;Bayer Products
+;G018T029P238I02750;Enzec
+;G018T029P239I03030;Fertagyl
+;G018T029P241I06060;Qualimec
+;G018T029P242I04507;Qualimec Pour_On
+;G018T029P243I06940;Spasmentral
+;G018T029P244I06504;L-Ripercol
+;G018T029P245I04970;Ovitelmin
+;G018T029P246I04975;Seponver Plus
+;G018T029P247I04330;Imaverol
+;G018T029P249I06505;L-Ripercol Pour On
+;G018T029P251I03200;Flukiver
+;G018T029P252I07620;Vecoxan
+;G018T030P240I01420;Cavalesse
+;G018T030P240I05580;Perloquan
+;G018T030P240I04585;Maprelin
+;G018T030P240I02780;Enurace
+;G018T030P240I05980;Probiotics
+;G018T030P240I04910;Orion Prods
+;G018T030P240I00074;Antisedan
+;G018T030P240I02400;Domosedan Inj.
+;G018T030P240I02410;Domosedan Gel
+;G018T030P240I02420;Domitor
+;G018T030P240I02500;Dexdomitor
+;G018T030P240I04430;Kaodyn
+;G018T030P240I00960;Benedyn
+;G018T030P240I03020;Fiberdyn
+;G018T030P240I0L146;Various Animal Healt
+;G018T030P240I07255;Surosolve
+;G018T030P240I07595;Truleva
+;G018T030P240I0I201;Ky Jelly - A.Health
+;G018T030P240I0L097;Various L.A.
+;G018T030P240I01750;Comforion Vet
+;G018T030P240I07485;Innovar Vet
+;G018T030P240I0L121;Sudonil
+;G018T030P240I0L126;J&J Surgicos
+;G018T030P240I0L132;Moxidectine
+;G018T030P240I01350;Carfentanil
+;G018T030P240I01360;Clazuril
+;G018T030P240I03760;Haldol Vet
+;G018T030P240I04299;Hypnodil
+;G018T030P240I04760;L-Narpenol
+;G018T030P240I04831;Keto Shampoo Vet
+;G018T030P240I04840;Oftentral
+;G018T030P240I04855;Operidine Vet
+;G018T030P240I04930;Orozyme
+;G018T030P240I05001;Palfium Vet.
+;G018T030P240I07472;Telmin Fuchsbandwurm
+;G018T030P240I07530;L-Tramisol
+;G018T030P240I08650;Pitman Moore Prod.
+;G018T030P240I0L004;Deliv. Others Vet C.A.
+;G018T030P240I0L035;Deliv. Others Vet L.A.
+;G018T030P240I0L036;Various Pig & Poultry
+;G018T030P240I0L059;Tetramisole
+;G018T030P240I0L088;Various C.A.
+;G018T030P240I0L118;Other Ex-Sourcing V
+;G018T030P240I03120;Fluvermal Vel
+;G018T030P240I04410;Imodium Vet
+;G018T030P240I04321;Hypnomidate
+;G018T030P240I0L110;Adjustments  - V
+;G018T030P240I0L108;Eiw Accruewels & Adjustments
+;G018T030P240I04973;Ovitrol
+;G018T030P240I06900;Siphotrol
+;G018T030P240I0L129;Metacam
+;G018T030P253I00006;Cash Discount - V
+;G018T030P254I0L085;Discounts - V
+;G018T031P256I0L130;Decimite
+;G018T031P257I06230;Regumate
+;G018T031P259I06975;Stresnil
+;G018T031P260I07476;Mebenvet
+;G018T031P261I03050;Flubenol
+;G018T031P262I01700;Clinafarm
+;G018T031P263I05525;Parconazole
+;G018T031P264I01695;Clinacox
+;G018T031P312I06948;Solubenol
+;G018T032P268I0L136;Diazinon Sheep Dip
+;G018T032P270I03205;Flukiver Plus
+;G024T009P356I04965;Other Pain Management
+;G024T009P356I0L139;Other Analgesic
+;G024T009P047I03000;Sufenta
+;G024T009P049I0I152;Hydrocodone
+;G024T009P050I0I154;Noscapine
+;G024T009P051I0I001;Parafon
+;G024T009P052I0I153;Thebaine
+;G024T009P053I05500;Perdogrip
+;G024T009P054I05510;Perdolan (Mono)
+;G024T009P054I05200;Perdolan Cons.
+;G024T009P055I05507;Perdolan Codeine
+;G024T009P056I05506;Perdolan Compositum
+;G024T009P057I05511;Perdolan Mono C
+;G024T009P058I07607;Tylenol Pm Cons.
+;G024T009P058I0I020;Tylenol
+;G024T009P058I06955;Tylenol Children Cons.
+;G024T009P058I07605;Tylenol Adult Cons.
+;G024T009P058I02998;Tylenol Cold/Flu Cons.
+;G024T009P058I06350;Resprin Cons.
+;G024T009P059I0I005;Tylenol With Codeine
+;G024T009P060I0I038;Tylox
+;G024T009P060I0I170;Oxycodone
+;G024T009P061I0I024;Tolectin
+;G024T009P062I0I063;Naprosyn
+;G024T009P063I0I145;Ultracet
+;G024T009P063I07300;Ultracet Generic
+;G024T009P064I0I112;Ultram
+;G024T009P064I07613;Ultram Odt
+;G024T009P065I0I151;Ms-Long
+;G024T009P066I05600;Ibuprofen
+;G024T009P066I05605;Motrin Children Cons.
+;G024T009P066I02595;Doctril
+;G024T009P066I05590;Dolormin Gel
+;G024T009P066I02570;Dolormin Cons.
+;G024T009P066I04950;Other Analgesic Cons.
+;G024T009P067I0I094;Clonix
+;G024T009P068I0I161;Flexeril
+;G024T009P068I01840;Cyclobenzaprine Generic
+;G024T009P069I02545;Dipidolor
+;G024T009P070I02995;Durogesic/Duragesic
+;G024T009P070I02996;Durogesic Matrix
+;G024T009P070I02997;Fentanyl Transd
+;G024T009P071I01925;Dehydrobenzperidol
+;G024T009P072I01330;Burgodin
+;G024T009P073I02950;Fentanyl Generic
+;G024T009P073I02990;Fentanyl
+;G024T009P273I04815;Neomeritine
+;G024T009P303I0I180;Axert
+;G024T009P305I04920;Poppy Straw
+;G024T009P311I04270;Pdp-12
+;G024T009P311I04280;Jurnista
+;G024T009P315I02760;Ionsys
+;G024T009P337I07640;Ultram Er Generic
+;G024T009P337I07615;Ultram Er
+;G011T016P124I0I107;Raricap
+;G011T016P125I0I025;Eprex
+;G011T016P126I0I079;Pletaal
+;G011T016P265I00025;Procrit
+;G011T016P265I0J025;Procrit
+;G011T016P281I0I157;Venoferrum
+;G012T017P357I08300;Centocor Prods.
+;G012T017P357I0L147;Other Immunology
+;G012T017P365I06870;Simponi All.Mgmt.
+;G012T017P365I06875;Simponi Iv
+;G012T017P364I06290;Remicade All.Mgmt.
+;G012T017P127I0I017;Okt*3
+;G012T017P128I0I135;Cilferon A
+;G012T017P129I06040;Protopic
+;G012T017P129I0I046;Prograf
+;G012T017P130I06280;Remicade Us
+;G012T017P130I0I091;Remicade
+;G012T017P300I04960;Orthovisc
+;G012T017P339I01730;Stelara
+;G012T017P345I04490;Kiacta
+;G012T017P349I01340;Simponi
+;G013T018P358I00055;Zytiga
+;G013T018P368I04340;Ibrutinib
+;G013T018P370I00970;Bendamustine
+;G013T018P131I0I080;Leustatin
+;G013T018P132I0I130;Doxil
+;G013T018P133I02800;Ergamisol
+;G013T018P282I0I174;Caelyx
+;G013T018P304I07625;Velcade
+;G013T018P316I07850;Zarnestra
+;G013T018P329I0I168;Yondelis
+;G013T018P343I01870;Dacogen
+;G033T036P361I07585;Tmc278 Fdc (Fix Dose Combo)
+;G033T036P369I01920;Darunavir Fdc
+;G033T036P373I07593;Tmc 435
+;G033T036P335I07550;Prezista
+;G033T036P338I07580;Edurant
+;G033T036P342I07560;Intelence
+;G033T036P347I07710;Incivo (Telaprevir)

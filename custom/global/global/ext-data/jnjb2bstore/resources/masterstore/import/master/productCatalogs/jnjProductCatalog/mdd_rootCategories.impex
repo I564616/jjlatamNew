@@ -1,0 +1,66 @@
+$productCatalog=mddProdCatalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$supercategories=supercategories(code[unique=true], $catalogVersion)
+$brandsupercategory=OrthopedicCare,Access,CardiovascularCare
+$jnjJarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/contentCatalogs/jnjContentCatalog
+ 
+# Insert ROOT LEVEL Categories
+INSERT_UPDATE Category;code[unique=true];name;$supercategories;$catalogVersion;allowedPrincipals(uid);displayProducts[default='false'];
+;Categories;Catalog;;;customergroup;
+;DefaultCategory;Default Category;Categories;;;
+;OrthopedicCare;Orthopedic Care;Categories;;customergroup;true
+;Access;Access;Categories;;customergroup;true
+;CardiovascularCare;Cardiovascular Care;Categories;;customergroup;true
+
+;Janssen;Janssen;OrthopedicCare;;customergroup;true
+;Ortho-Clinical;Ortho-Clinical Diagnostic;OrthopedicCare;;customergroup;true
+;AST;AST;OrthopedicCare;;customergroup;true
+;BisenseWebster;BisenseWebster;OrthopedicCare;;customergroup;true
+
+
+
+;Ethicon;Ethicon;Access;;customergroup;true
+;DepuySynthesJointReconstruction;DepuySynthes Joint Reconstruction;Access;;customergroup;true
+
+;CodmanNeuro;CodmanNeuro;CardiovascularCare;;customergroup;true
+;Ethicon-EndoSugery;Ethicon Endo Sugery;CardiovascularCare;;customergroup;true
+;DepuySynthes-Spine;Depuy Synthes Spine;CardiovascularCare;;customergroup;true
+
+
+
+
+
+# Insert ROOT LEVEL Categories
+INSERT_UPDATE JnJProduct;code[unique=true];name;$supercategories;$catalogVersion;jnjPortalInd;availableInd;publishInd;modStatus(code);catalogId
+;dummyProduct;Dummy MDD Product;DefaultCategory;;0;0;0;NOTAPPLICABLE;DefaultCategory
+
+
+
+
+
+
+
+
+
+$jnjJarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/contentCatalogs/jnjContentCatalog
+INSERT_UPDATE Media;$catalogVersion[unique=true];code[unique=true];mime;realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];altText
+;;Janssen;image/png;brand_logo1;$jnjJarResourceCms/media/brand_logo1.png;banner
+;;Ortho-Clinical;image/png;brand_logo2;$jnjJarResourceCms/media/brand_logo3.png;banner
+;;AST;image/png;brand_logo3;$jnjJarResourceCms/media/brand_logo4.png;banner
+;;BisenseWebster;image/png;brand_logo4;$jnjJarResourceCms/media/brand_logo2.png;banner
+
+
+;;Ethicon;image/png;brand_logo4;$jnjJarResourceCms/media/brand_logo5.png;banner
+;;DepuySynthesJointReconstruction;image/png;brand_logo4;$jnjJarResourceCms/media/brand_logo6.png;banner
+
+;;CodmanNeuro;image/png;brand_logo4;$jnjJarResourceCms/media/brand_logo8.png;banner
+;;Ethicon-EndoSugery;image/png;brand_logo4;$jnjJarResourceCms/media/brand_logo9.png;banner
+;;DepuySynthes-Spine;image/png;brand_logo4;$jnjJarResourceCms/media/brand_logo7.png;banner
+
+
+
+
+
+
+
+

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hybrisconfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="resources/schemas/extensions.xsd">
+	<extensions>
+		<!-- 
+				All extensions located in ${HYBRIS_BIN_DIR}/platform/ext are automatically loaded. 
+				More information about how to configure available extensions can be found here : https://wiki.hybris.com/x/nZVzC
+		-->
+
+		<path dir="${HYBRIS_BIN_DIR}" />
+		<path dir="${HYBRIS_BIN_DIR}/custom/global" />
+
+		<!-- ext-backoffice -->
+		<extension name="backoffice" />
+		<extension name="platformbackoffice"/>
+		<extension name="basecommercebackoffice"/>
+		<extension name="b2bcommercebackoffice" />
+		<extension name="backofficesolrsearch" />
+		<extension name="solrfacetsearchbackoffice" />
+		<extension name="cmsbackoffice" />
+		<extension name="cmssmartedit" />
+		<extension name="pcmbackoffice" />
+
+		<!-- ext-channel  -->
+		<extension name="mobileservices"/>
+
+		<!-- ext-platform -->
+		<extension name="oauth2" />
+
+		<!-- ext-commerce -->
+		<extension name="commerceservices" />
+		<extension name="basecommerce" />
+		<extension name="solrfacetsearch" />
+		<extension name="solrserver" />
+		<extension name="b2bcommerce" />
+		<extension name="b2bapprovalprocess" />
+		<extension name="commercefacades" />
+
+		<!-- ext-content -->
+		<extension name="cms2" />
+		<extension name="cms2lib" />
+
+		<!-- ext-addon -->
+		<extension name="addonsupport" />
+
+		<!-- ext-accelerator -->
+		<extension name="acceleratorservices" />
+		<extension name="acceleratorfacades" />
+		<extension name="acceleratorcms" />
+		<extension name="acceleratorstorefrontcommons" />
+		<extension name="b2bacceleratorfacades" />
+		<extension name="b2bacceleratorservices" />
+
+		<!-- ext-integration -->
+		<extension name="samlsinglesignon"/>
+		
+		<!-- ext-webservices -->
+		<extension name="webservicescommons"/>
+
+		<!-- ext-jnj -->
+		<extension name="jnjb2bglobalcore"/>
+		<extension name="jnjb2bglobalstorefront"/>
+
+		<extension name="jnjb2bstore"/>
+		<extension name="jnjb2bsvstore"/>
+
+		<extension name="jnjcommon"/>
+		<extension name="jnjb2bcore"/>
+		<extension name="jnjb2bfacades"/>
+		<extension name="jnjb2boutboundservice"/>
+		<extension name="jnjgtb2boutboundservice"/>
+		<extension name="jnjgtb2bcronjob"/>
+		<extension name="jnjgtb2binboundservice"/>
+		<extension name="jnjutil"/>
+		<extension name="jnjglobalsinglesignon"/>
+		<!--<extension name="jnjmobileservices"/>-->
+		<extension name="jnjgtb2bcommercewebservices"/>
+
+		<extension name="jnjglobalreports"/>
+		<extension name="jnjb2bbrowseandsearch"/>
+		<extension name="jnjb2bglobalordertemplate"/>
+		<extension name="jnjglobalresources"/>
+		<extension name="jnjglobalprofile"/>
+		<extension name="cartandcheckoutaddon"/>
+		<extension name="loginaddon"/>
+
+		<!--<extension name="jnjb2bbackoffice"/>-->
+		
+		<!-- Regional Extensions -->
+		<!--<extension name="jnjsvbrowseandsearch"/>
+		<extension name="jnjsvcartandcheckoutaddon"/>
+		<extension name="jnjsvloginaddon"/>
+		<extension name="jnjsvordertemplate"/>
+		<extension name="jnjsvprofile"/>
+		<extension name="jnjsvreports"/>
+		<extension name="jnjsvresources"/>
+		<extension name="jnjsvoccaddon"/>
+		
+		<extension name="jnjsvbackoffice"/>
+		
+		<extension name="jnjsvstore"/>
+		
+		<extension name="jnjsvcore"/>
+		<extension name="jnjsvcronjob"/>
+		<extension name="jnjsvfacades"/>
+		<extension name="jnjsvinboundservice"/>
+		<extension name="jnjsvoutboundservice"/>-->
+
+	</extensions>
+</hybrisconfig>

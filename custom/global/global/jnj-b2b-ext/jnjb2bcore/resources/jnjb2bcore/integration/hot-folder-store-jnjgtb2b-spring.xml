@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2000-2013 hybris AG
+ All rights reserved.
+
+ This software is the confidential and proprietary information of hybris
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with hybris.
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:file="http://www.springframework.org/schema/integration/file"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd
+		http://www.springframework.org/schema/integration/file http://www.springframework.org/schema/integration/file/spring-integration-file.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	
+	<bean id="jnjGTBaseDirectory" class="java.lang.String">
+		<constructor-arg value="#{configurationService.configuration.getProperty('jnj.gt.inbound.impex.basefolder')}" />
+	</bean>
+	
+	<!-- Impex import process -->
+	<!-- 1) Scan for files, site dependent -->
+	<file:inbound-channel-adapter id="batchFilesjnjGTb2b" directory="#{jnjGTBaseDirectory}"
+		filename-regex="^(.*).csv" comparator="fileOrderComparator"
+        auto-startup = "false">
+		<int:poller fixed-rate="1000" />
+	</file:inbound-channel-adapter>
+	
+	<!-- 2) move the file to processing and setup header, partly site dependent -->
+	<file:outbound-gateway request-channel="batchFilesjnjGTb2b" reply-channel="jnjGTBatchFilesHeader"
+		directory="#{jnjGTBaseDirectory}/processing" delete-source-files="true" />
+		
+	<int:service-activator input-channel="jnjGTBatchFilesHeader" output-channel="batchFilesHeaderInit" ref="jnjGTHeaderSetupTask" method="execute" />
+	<bean id="jnjGTHeaderSetupTask" class="de.hybris.platform.acceleratorservices.dataimport.batch.task.HeaderSetupTask">
+		<property name="catalog" value="caProdCatalog" />
+		<property name="net" value="false" />
+		<property name="storeBaseDirectory" ref="jnjGTBaseDirectory" />
+	</bean>
+	
+	<!-- 3) transform csv to impex file -->
+	<alias name="jnjGTBatchTransformerTask" alias="batchTransformerTask"/>
+	<bean id="jnjGTBatchTransformerTask" 
+		  class="de.hybris.platform.acceleratorservices.dataimport.batch.task.ImpexTransformerTask" 
+		  init-method="initConvertersMap">
+		<property name="fieldSeparator" value="," />
+		<property name="encoding" value="UTF-8" />
+		<property name="linesToSkip" value="0"/>
+		<property name="cleanupHelper" ref="cleanupHelper" />
+	</bean>
+
+
+	<!-- Transformer converters mappings -->
+	
+	<!-- A. Mapping bean for Order Header In-bound csv files -->
+	<bean id="batchSapOrderHeaderMapping" 
+	  class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping" 
+	  p:mapping="IN0500_OrderDetailsToHybrisHeaderData" 
+	  p:converter-ref="batchSapOrderHeaderConverter"/>
+	  
+	  
+	<!-- B. Mapping bean for Order line/entry in-bound csv files -->
+	<bean id="batchOrderLineMapping" 
+	  class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping" 
+	  p:mapping="IN0500_OrderDetailsToHybrisLineData" 
+	  p:converter-ref="batchSapOrderLineConverter"/>
+
+
+	<!-- C. Mapping bean for Schedule Line in-bound csv files -->
+	<bean id="batchOrderSchLinerMapping" 
+	  class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping" 
+	  p:mapping="IN0500_OrderDetailsToHybrisSchLineData" 
+	  p:converter-ref="batchSapOrderSchLineConverter"/>
+	  
+	<!-- D. Mapping bean for Shipping Tracking Header in-bound csv files -->
+	<bean id="batchShipTrackHeaderMapping" 
+	  class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping" 
+	  p:mapping="IN0500_OrderDetailsToHybrisShipTrackHeader"
+	  p:converter-ref="batchSapShipTrackHeaderConverter"/>
+	  
+	  
+	<!-- E. Mapping bean for Shipping Tracking Line in-bound csv files -->
+	<bean id="batchShipTrackLineMapping" 
+	  class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.mapping.impl.DefaultConverterMapping" 
+	  p:mapping="IN0500_OrderDetailsToHybrisShipTrackLine" 
+	  p:converter-ref="batchSapShipTrackLineConverter"/>
+
+	<!-- IMPEX CONVERTERS -->
+	
+	<!-- A. IMPEX converter for Sap Order in-bound Batch -->
+	<bean id="batchSapOrderHeaderConverter" class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter">
+		<property name="header">
+			<value>
+				# Import media from filesystem
+				INSERT_UPDATE jnjGTIntOrderHeader;sourceSystemId;sapOrderNumber[unique=true];purchaseOrder;webOrderNumber;orderType;shipToCustomerNumber;soldToAccount;payFromAccount;billToAccount;reqDeliveryDate;currency;totalNetValue;creationDate;forbiddenSales;contractReferenceOH;completeDelivery;salesOrg;businessSectorOH;distributionChannel;division;overAllStatus;deliveryStatus;rejectionStatus;creditStatus;headerDataCompleteness;deliveryBlock;poType;invoiceStatus;orderReasonCode;shipToName;shipStreet1;shipStreet2;shipCity;shipRegion;shipCountry;shipPostalCode;recordStatus(code)[default='PENDING']
+		    </value>
+		</property>
+		<property name="impexRow">
+		<value>;{+0};{1};{2};{3};{4};{5};{6};{7};{8};{9};{10};{11};{12};{13};{14};{15};{16};{17};{18};{19};{20};{21};{22};{23};{24};{25};{26};{27};{28};{29};{30};{31};{32};{33};{34};{35};{36};{S}</value>
+		</property>
+		<property name="rowFilter">
+        	<bean class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexRowFilter">
+            	<property name="expression" value="row[1]"/>
+            </bean>
+         </property>
+	</bean>
+	
+	<!-- B. IMPEX converter for Sap Order Line in-bound Batch -->
+	<bean id="batchSapOrderLineConverter" class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter">
+		<property name="header">
+			<value>
+				# Import media from filesystem
+				INSERT_UPDATE jnjGTIntOrderLine;sourceSystemId[unique=true];sapOrderNumber[unique=true];sapOrderLineNumber[unique=true];itemCategory;itemDivision;highLevelItemNumber;materialNumber;customerMaterial;plant;plantName;contractReference;salesUom;qty;unitPrice;netValue;subTotal1;subTotal2;promotionalAllowance;unsaleableAllowance;currency;taxAmt;overallStatus;deliveryStatus;reasonForRejection;invoiceStatus;materialEntered
+			</value>
+		</property>
+		<property name="impexRow">
+		<value>;{+0};{1};{2};{3};{4};{5};{6};{7};{8};{9};{10};{11};{12};{13};{14};{15};{16};{17};{18};{19};{20};{21};{22};{23};{24};{26};{S}</value>
+		</property>
+		<property name="rowFilter">
+        	<bean class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexRowFilter">
+            	<property name="expression" value="row[1]"/>
+            </bean>
+         </property>
+	</bean>
+	
+	<!-- C. IMPEX converter for Sap Order Schedule Line in-bound Batch -->
+	<bean id="batchSapOrderSchLineConverter" class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter">
+		<property name="header">
+			<value>
+				# Import media from filesystem
+				INSERT_UPDATE jnjGTIntOrderSchLine;sourceSystemId[unique=true];sapOrderNumber[unique=true];sapOrderLineNumber[unique=true];schLineNumber[unique=true];roundedQuantity;confirmedQty;schedShipDate;deliveryLineBlock;deliveryDate
+			</value>
+		</property>
+		<property name="impexRow">
+		<value>;{+0};{1};{2};{3};{4};{5};{6};{7};{8};{S}</value>
+		</property>
+		<property name="rowFilter">
+        	<bean class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexRowFilter">
+            	<property name="expression" value="row[1]"/>
+            </bean>
+         </property>
+	</bean>
+	
+	<!-- D. IMPEX converter for Sap Ship-Track Header in-bound Batch -->
+	<bean id="batchSapShipTrackHeaderConverter" class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter">
+		<property name="header">
+			<value>
+				# Import media from filesystem
+				INSERT_UPDATE jnjGTIntShipTrckHdr;sourceSysId[unique=true];deliveryNum[unique=true];actualDeliveryTime;bolNum;carrierScacCde;carrierScacName;actualDeliveryDate;timeTrspProcess;containerId;trackingNum;actualShipDate;actualShipTime;recordStatus(code)[default='PENDING']
+			</value>
+		</property>
+		<property name="impexRow">
+		<value>;{+0};{1};{2};{3};{4};{5};{6};{7};{8};{9};{10};{11};{12};{S}</value>
+		</property>
+		<property name="rowFilter">
+        	<bean class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexRowFilter">
+            	<property name="expression" value="row[1]"/>
+            </bean>
+         </property>
+	</bean>
+	
+	<!-- E. IMPEX converter for Sap Ship-Track Line in-bound Batch -->
+	<bean id="batchSapShipTrackLineConverter" class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexConverter">
+		<property name="header">
+			<value>
+				# Import media from filesystem
+				INSERT_UPDATE jnjGTIntShipTrckLine;sourceSysId[unique=true];deliveryNum[unique=true];deliveryLineNum[unique=true];deliveryQty;sapOrderNum
+			</value>
+		</property>
+		<property name="impexRow">
+		<value>;{+0};{1};{2};{3};{4};{S}</value>
+		</property>
+		<property name="rowFilter">
+        	<bean class="de.hybris.platform.acceleratorservices.dataimport.batch.converter.impl.DefaultImpexRowFilter">
+            	<property name="expression" value="row[1]"/>
+            </bean>
+         </property>
+	</bean>
+</beans>

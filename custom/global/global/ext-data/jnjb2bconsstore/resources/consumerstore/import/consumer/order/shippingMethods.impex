@@ -1,0 +1,11 @@
+### ALL SHIPPING METHODS AVAILABLE IN SAP ###
+insert_update JnjGTShippingMethod;route[unique=true];expidateRoute[unique=true];dispName;rank[unique=true];sortBy
+;FDE2D;XFDE2D;FedEx 2nd Day;500;100
+;FDEFO;XFDEFO;FedEx First Overnight;900;500
+;FDEPO;XFDEPO;FedEx ND 10:30 AM;700;300
+;FDESA;XFDESA;FedEx Saturday;800;400
+;FDESO;XFDESO;FedEx ND 3:00 PM;600;200
+;UPSSE;XUPSSE;UPS Next Day Early;900;9000
+;UPSSL;XUPSSL;UPS Next Day 3:00;600;7000
+;UPSSN;XUPSSN;UPS Next Day 10:30;700;8000
+;Standard;Standard;Standard;0;0

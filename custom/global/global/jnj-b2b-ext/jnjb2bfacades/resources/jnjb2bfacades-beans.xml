@@ -1,0 +1,1532 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- [y] hybris Platform Copyright (c) 2000-2013 hybris AG All rights reserved. 
+	This software is the confidential and proprietary information of hybris ("Confidential 
+	Information"). You shall not disclose such Confidential Information and shall 
+	use it only in accordance with the terms of the license agreement you entered 
+	into with hybris. -->
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="beans.xsd">
+ 
+	<bean class="com.jnj.facades.data.JnjOrderEntryData"
+		extends="de.hybris.platform.commercefacades.order.data.OrderEntryData">
+		<property name="indirectCustomer" type="String" />
+		<property name="priceOverride" type="String" />
+		<property name="priceOverrideReason" type="String" />
+		<property name="expectedPrice" type="String" />
+		<property name="expectedDeliveryDate" type="java.util.Date" />
+		<property name="sapOrderlineNumber" type="String" />
+		<property name="reasonForRejection" type="String" />
+		<property name="salesOrg" type="String" />
+		<property name="splProdType" type="String" />
+		<property name="newPrice" type="String" />
+		<property name="defaultPrice" type="String" />
+		<property name="salesUomCalculated" type="Boolean" />
+		<property name="scheduleLines"
+			type="java.util.List&lt;com.jnj.facades.data.JnjDeliveryScheduleData>" />
+		<property name="availabilityStatus" type="String" />
+		<property name="confirmedQty" type="Long" />
+		<property name="gtsHold" type="String" />
+	</bean>
+
+	<bean class="com.jnj.facades.data.JnjDeliveryScheduleData">
+		<property name="lineNumber" type="String" />
+		<property name="scheduledLineNumber" type="String" />
+		<property name="deliveryDate" type="java.util.Date" />
+		<property name="quantity" type="Long" />
+	</bean>
+
+
+	<bean class="com.jnj.facades.data.JnjAddressData"
+		extends="de.hybris.platform.commercefacades.user.data.AddressData">
+		<property name="jnjAddressId" type="String" />
+		<property name="phone2" type="String" />
+	</bean>
+	<!-- entry for Order Details Page -->
+	<bean class="com.jnj.facades.data.JnjOrderData"
+		extends="de.hybris.platform.commercefacades.order.data.OrderData">
+		<property name="clientOrderNumber" type="String" />
+		<property name="contractNumber" type="String" />
+		<property name="orderType" type="String" />
+		<property name="customerName" type="String" />
+		<property name="placedOn" type="String" />
+		<property name="invoice" type="String" />
+		<property name="notes" type="String" />
+		<property name="orderentrylistsize" type="Integer" />
+		<property name="salesForbidden" type="String" />
+		<property name="completeOrder" type="String" />
+		<property name="entrySize" type="Integer" />
+		<property name="sapOrderNumber" type="String" />
+		<property name="palcedInSap" type="Boolean" />
+		
+		<!-- Changes Start for CR CP003 -->
+		<property name="totalNetValue"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="totalFreightFees"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="totalExpeditedFees"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="totalHandlingFee"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="totalDropShipFee"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="totalminimumOrderFee"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="taxTotal"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="discountTotal"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="totalInsurance"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="totalGrossPrice"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<!-- Changes Done for CR CP003 -->
+	</bean>
+	<!-- ORder Details Page entry end -->
+
+	<!-- Template -->
+	<bean class="com.jnj.facades.data.JnjTemplateEntryData">
+		<property name="product" type="com.jnj.facades.data.JnjProductData" />
+		<property name="unitPrice" type="java.lang.Double" />
+		<property name="totalPrice" type="java.lang.Double" />
+		<property name="qty" type="java.lang.Long" />
+	</bean>
+
+	<bean class="com.jnj.facades.data.JnjOrderTemplateData">
+		<property name="code" type="String" />
+		<property name="b2bUnit" type="String" />
+		<property name="totalItem" type="String" />
+		<property name="creationTime" type="java.util.Date" />
+		<property name="totalQuantity" type="java.lang.Long" />
+		<property name="entryCount" type="java.lang.Integer" />
+		<property name="orderEntry"
+			type="java.util.List&lt;com.jnj.facades.data.JnjTemplateEntryData>" />
+	</bean>
+
+	<!-- Template ends -->
+	<!-- entry for JnjProductData -->
+	<bean class="com.jnj.facades.data.JnjProductData"
+		extends="de.hybris.platform.commercefacades.product.data.ProductData">
+		<property name="baseUnit" type="String" />
+		<property name="salesUnit" type="String" />
+		<property name="deliveryUnit" type="String" />
+		<property name="quantity" type="String" />
+		<property name="ean" type="String" />
+		<property name="shipWeight" type="String" />
+		<property name="stockingtype" type="String" />
+		<property name="originCountry" type="String" />
+		<property name="medicalSpeciality" type="java.util.List&lt;String>" />
+		<property name="discontinue" type="Boolean" />
+		<property name="displayPrice" type="Boolean" />
+		<property name="numeratorSUOM" type="String" />
+		<property name="numeratorDUOM" type="String" />
+		<property name="dataSheets" type="java.util.List&lt;String>" />
+		<property name="sector" type="String" />
+	</bean>
+	<!-- End of JnjProductData -->
+
+	<!-- entry for JnJInvoiceEntry -->
+	<bean class="com.jnj.facades.data.JnJInvoiceEntryData">
+		<property name="material" type="com.jnj.facades.data.JnjProductData" />
+		<property name="itemNo" type="String" />
+		<property name="qty" type="Integer" />
+		<property name="lotNo" type="String" />
+		<property name="orderReason" type="String" />
+		<property name="salesOrderItemNo" type="String" />
+	</bean>
+	<!-- End of JnJInvoiceEntry -->
+
+
+	<!-- entry for JnJInvoiceOrder -->
+	<bean class="com.jnj.facades.data.JnJInvoiceOrderData">
+		<property name="invDocNo" type="String" />
+		<property name="billType" type="String" />
+		<property name="netValue"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="creationDate" type="java.util.Date" />
+		<property name="soldTo" type="String" />
+		<property name="payer" type="String" />
+		<property name="poNumber" type="String" />
+		<property name="region" type="String" />
+		<property name="nfYear" type="String" />
+		<property name="nfMonth" type="String" />
+		<property name="stcd" type="String" />
+		<property name="model" type="String" />
+		<property name="series" type="String" />
+		<property name="nfNumber" type="String" />
+		<property name="docNumber" type="String" />
+		<property name="cdv" type="String" />
+		<property name="billingDoc" type="String" />
+		<property name="cancelledDocNo" type="String" />
+		<property name="salesOrder" type="String" />
+		<property name="entries"
+			type="java.util.List&lt;com.jnj.facades.data.JnJInvoiceEntryData>" />
+	</bean>
+	<!-- End of JnJInvoiceOrder -->
+
+	<!-- Start JnjCartData -->
+	<bean class="com.jnj.facades.data.JnjCartData"
+		extends="de.hybris.platform.commercefacades.order.data.CartData">
+		<property name="contractId" type="String" />
+		<!-- Changes Start for CR CP003 -->
+		<property name="totalNetValue"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="totalFreightFees"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="totalExpeditedFees"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="totalHandlingFee"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="totalDropShipFee"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="totalminimumOrderFee"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="taxTotal"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="discountTotal"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="totalInsurance"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="totalGrossPrice"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<!-- Changes Done for CR CP003 -->
+	</bean>
+	<!-- End JnjCartData -->
+
+	<!-- entry for JnjContentData -->
+	<bean class="com.jnj.facades.data.JnjContentData">
+		<property name="content" type="String" />
+		<property name="headline" type="String" />
+		<property name="urlLink" type="String" />
+		<property name="thumbnailUrl" type="String" />
+		<property name="newsPublishDate" type="String" />
+		<property name="businessCenter" type="String" />
+	</bean>
+	<!-- End of JnjContentData -->
+
+	<!-- Starting of JnjNewsReleasesData -->
+	<bean class="com.jnj.facades.data.JnjNewsReleasesData">
+		<property name="newsPublishDate" type="java.util.Date" />
+		<property name="businessCenter" type="String" />
+		<property name="headLine" type="String" />
+		<property name="summaryDesc" type="String" />
+		<property name="url" type="String" />
+		<property name="title" type="String" />
+	</bean>
+	<!-- End of JnjNewsReleasesData -->
+
+
+	<!-- Changes for CP002 -->
+	<bean class="com.jnj.facades.data.JnjValidateOrderData">
+		<property name="sapErrorMessages" type="java.util.List&lt;String>" />
+		<property name="validateOrderResponse" type="Boolean" />
+		<property name="sapErrorResponse" type="Boolean" />
+		<property name="removedProductCodes" type="java.util.Map&lt;String,StringBuilder>" />
+		<property name="hardStopError" type="boolean" />
+		<property name="cartEmpty" type="boolean"/>
+	</bean>
+	<!--Changes for CP002a -->
+
+	<!-- Operation Architecture: Generic Changes-->
+	<bean class="com.jnj.facades.data.JnjReadDashboardData">
+		<description>Data object to represent extract from JnjReadDashboard table.</description>
+		<property name="interfaceName" type="String" />
+		<property name="fileName" type="String" />
+		<property name="status" type="String" />
+		<property name="errorMessage" type="String" />
+		<property name="date" type="java.util.Date" />
+	</bean>
+
+	<bean class="com.jnj.facades.data.JnjWriteDashboardData">
+		<description>Data object to represent extract from JnjWriteDashboard table.</description>
+		<property name="interfaceName" type="String" />
+		<property name="fileName" type="String" />
+		<property name="idocNumber" type="String" />
+		<property name="errorMessage" type="String" />
+		<property name="date" type="java.util.Date" />
+	</bean>
+	<!-- End of Operation Architecture: Generic Changes -->
+
+	<!-- Added bean entry for secret questions data -->
+	<bean class="com.jnj.facades.data.SecretQuestionData">
+		<property name="code" type="String" />
+		<property name="question" type="String" />
+		<property name="answer" type="String" />
+	</bean>
+
+	<bean class="com.jnj.facades.data.JnjGTBackorderReportResponseData">
+		<property name="accountNumber" type="String" />
+		<property name="productName" type="String" />
+		<property name="productUrl" type="String" />
+		<property name="productCode" type="String" />
+		<property name="productGTIN" type="String" />
+		<property name="operatingCompany" type="String" />
+		<property name="customerPO" type="String" />
+		<property name="orderNumber" type="String" />
+		<property name="orderDate" type="String" />
+		<property name="estimatedAvailability" type="String" />
+		<property name="qty" type="String" />
+		<property name="unit" type="String" />
+		<property name="itemPrice" type="String" />
+		<property name="extendedPrice" type="String" />
+		<property name="status" type="String" />
+		<property name="estimatedShipDate" type="String"/>
+		<property name="estimatedDeliveryDate" type="String"/>
+		<property name="additionalComments" type="String" />
+		<property name="shipToName" type="String" />
+		<property name="currency" type="String" />
+		<property name="ShipToAccount" type="String" />
+	</bean>
+	<!-- End: back-order report data -->
+	<!-- Start JnjGTCutReportResultData -->
+	<bean class="com.jnj.facades.data.JnjGTCutReportOrderData">
+		<property name="accountNumber" type="String" />
+		<property name="pONumber" type="String" />
+		<property name="orderNumber" type="String" />
+		<property name="hybrisOrderNumber" type="String" />
+		<property name="orderDate" type="java.util.Date" />
+		<property name="operatingCompany" type="String" />
+		<property name="shipToName" type="String" />
+		<property name="value" type="String" />
+		<property name="cutReportEntries" type="java.util.List&lt;com.jnj.facades.data.JnjGTCutReportOrderEntryData>" />
+	</bean>
+
+	<bean class="com.jnj.facades.data.JnjGTCutReportOrderEntryData">
+		<property name="orderLine" type="String" />
+		<property name="cutReason" type="String" />
+		<property name="cutQuantity" type="String" />
+		<property name="orderQuantity" type="String" />
+		<property name="unitOfMeasure" type="String" />
+		<property name="productCode" type="String" />
+		<property name="productName" type="String" />
+		<property name="productUrl" type="String" />
+		<property name="upc" type="String" />
+		<property name="gtin" type="String" />
+		<property name="availabilityDate" type="java.util.Date" />
+		<property name="itemPrice" type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="extendedPrice" type="de.hybris.platform.commercefacades.product.data.PriceData" />
+	</bean>
+	<!-- Start: Single purchase-order report data -->
+	<bean
+		class="com.jnj.facades.data.JnjGTSinglePurchaseOrderReportResponseData">
+		<property name="accountNumber" type="String" />
+		<property name="periodFrom" type="String" />
+		<property name="periodTo" type="String" />
+		<property name="amountElectronic"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="amountOther"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="quantityElectronic" type="Long" />
+		<property name="quantityOther" type="Long" />
+		<property name="quantityUnit" type="String" />
+		<property name="frequencyElectronic" type="int" />
+		<property name="frequencyOther" type="int" />
+	</bean>
+	<!-- End: Single purchase-order report data -->
+	<bean
+		class="com.jnj.facades.data.JnjGTFinancePurchaseOrderReportResponseData">
+				<property name="orderType" type="String" />
+				<property name="orderNumber" type="String" />
+				<property name="invoiceNumber" type="String" />
+				<property name="lineItem" type="String" />
+				<property name="customerPONumber" type="String" />
+				<property name="salesDocNo" type="String" />
+				<property name="billingDate" type="String" />
+				<property name="franchiseDescription" type="String" />
+				<property name="reimbursementCode" type="String" />
+				<property name="receiptNumber" type="String" />
+				<property name="unitPrice" type="String" />
+				<property name="productCode" type="String" />
+				<property name="productDescription" type="String" />
+				<property name="soldToAccount" type="String" />
+				<property name="soldToName" type="String" />
+				<property name="shiptoAccount" type="String" />
+				<property name="shipToName" type="String" />
+				<property name="endUserAccount" type="String" />
+				<property name="endUserName" type="String" />
+				<property name="stockLocationAccount" type="String" />
+				<property name="stockLocationName" type="String" />
+				<property name="invoiceQty" type="Long" />
+				<property name="status" type="String" />
+				<property name="totalPrice" type="double" />
+				<property name="paidAmount" type="String" />
+				<property name="openAmount" type="String" />
+				<property name="uom" type="String" />
+				<property name="currency" type="String" />
+				
+	</bean>
+	<bean class="com.jnj.facades.data.JnjGTInvoicePastDueReportResponseData">
+		<property name="invoiceNum" type="String" />
+		<property name="billingDate" type="String" />
+		<property name="soldToAccNum" type="String" />
+		<property name="soldToAccName" type="String" />
+		<property name="receiptNumber" type="String" />
+		<property name="status" type="String" />
+		<property name="invoiceDueDate" type="String" />
+		<property name="invoiceTotalAmount" type="double" />
+		<property name="openAmount" type="String" />
+		<property name="currency" type="String" />
+		<property name="orderNum" type="String" />
+		<property name="customerPoNum" type="String" />
+	</bean>
+	<!-- Start: Multiple purchase-order report data -->
+	<bean
+		class="com.jnj.facades.data.JnjGTMultiPurchaseOrderReportResponseData">
+		<property name="accountNumber" type="String" />
+		<property name="productName" type="String" />
+		<property name="productCode" type="String" />
+		<property name="productGTIN" type="String" />
+		<property name="productUPC" type="String" />
+		<property name="amount"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="amountValue" type="double" />
+		<property name="percentageSpending" type="double" />
+		<property name="unitQuantity" type="long" />
+		<property name="uom" type="String" />
+		<property name="orderFrequency" type="int" />
+		<property name="orderWeight" type="double" />
+	</bean>
+	<!-- End: Multiple purchase-order report data -->
+	<bean
+		class="com.jnj.facades.data.JnjGTOADeliveryListReportResponseData">
+		<property name="orderType" type="String" />
+		<property name="salesDocNum" type="String" />
+		<property name="lineItem" type="String" />
+		<property name="custPONum" type="String" />
+		<property name="deliveryNum" type="String" />
+		<property name="deliveryItemNum" type="String" />
+		<property name="actualShipmentDate" type="String" />
+		<property name="franchiseDesc" type="String" />
+		<property name="productCode" type="String" />
+		<property name="productDesc" type="String" />
+		<property name="uom" type="String" />
+		<property name="deliveryQuantity" type="long" />
+		<property name="orderQuantity" type="String" />
+		<property name="batchNum" type="String" />
+		<property name="batchExpiryDate" type="String" />
+		<property name="serialNum" type="String" />
+		<property name="podDate" type="String" />
+		<property name="shipToAccount" type="String" />
+		<property name="shipToName" type="String" />
+		<property name="connote" type="String" />		
+	</bean>
+	<bean
+		class="com.jnj.facades.data.JnjGTSalesReportResponseData">
+		<property name="orderType" type="String" />
+		<property name="salesDocNo" type="String" />
+		<property name="orderDate" type="String" />
+		<property name="estDeliveryDate" type="String" />
+		<property name="status" type="String" />
+		<property name="customerPONo" type="String" />
+		<property name="deliveryBlock" type="String" />
+		<property name="creditBlock" type="String" />
+		<property name="backOrderQty" type="String" />
+		<property name="billingBlock" type="String" />
+		<property name="billingQty" type="String" />
+		<property name="orderEntryList" type="java.util.List&lt;com.jnj.facades.data.JnjGTSalesReportResponseOrderEntryData>" />
+		<property name="reimbursementCode" type="String" />
+		<property name="franchiseDescription" type="String" />
+		<property name="deliveryQty" type="String" />
+		<property name="invoicedQty" type="String" />
+		<property name="invoiceQuantity" type="java.util.List&lt;String>" />
+		<property name="totalPrice" type="String" />
+		<property name="curr" type="String" />
+		<property name="soldToAccount" type="String" />
+		<property name="soldToName" type="String" />
+		<property name="shiptoAccount" type="String" />
+		<property name="shipToName" type="String" />
+		<property name="endUserAccount" type="String" />
+		<property name="endUserName" type="String" />
+		<property name="stockLocationAccount" type="String" />
+		<property name="stockLocationName" type="String" />
+		<property name="invoiceNumber" type="String" />
+		<property name="deliveryNumber" type="String" />
+	</bean>
+	<bean
+		class="com.jnj.facades.data.JnjGTSalesReportResponseOrderEntryData">
+		<property name="lineItem" type="String" />
+		<property name="productCode" type="String" />
+		<property name="description" type="String" />
+		<property name="UOM" type="String" />
+		<property name="quantity" type="Long"/>
+		<property name="unitPrice" type="String" />
+	</bean>
+	<!-- Start: Single purchase-order report entries -->
+	<bean class="com.jnj.facades.data.JnjGTSinglePurchaseAnalysisEntriesData">
+		<property name="orderNumber" type="String" />
+		<property name="orderDate" type="String" />
+		<property name="status" type="String" />
+		<property name="amount"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="quantity" type="String" />
+		<property name="unit" type="String" />
+	</bean>
+	<!-- End: Single purchase-order report entries -->
+
+	<!-- Start JnjGTCartData -->
+	<bean class="com.jnj.facades.data.JnjGTCartData"
+		extends="de.hybris.platform.commercefacades.order.data.CartData">
+		<property name="contractId" type="String" />
+		<property name="distributorPONumber" type="String" />
+		<property name="attention" type="String" />
+		<property name="specialText" type="String" />
+		<property name="dropShipAccount" type="String" />
+		<property name="billingAddress"
+			type="de.hybris.platform.commercefacades.user.data.AddressData" />
+		<property name="totalNetValue"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="totalFreightFees"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="totalDropShipFee"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="totalminimumOrderFee"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="manualFee"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="expeditedFee"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="discountTotal"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="totalGrossPrice"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="hsaPromotion"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="orderType" type="String" />
+		<property name="reasonCode" type="String" />
+		<property name="expectedShipDate" type="java.util.Date" />
+		<property name="surgeryInfo" type="com.jnj.facades.data.SurgeryInfoData" />
+		<property name="spineSalesRepUCN" type="String" />
+		<property name="thirdPartyBilling" type="java.lang.Boolean" />
+		<property name="cordisHouseAccount" type="String" />
+		<property name="reasonCodeReturn" type="String" />
+		<property name="reasonCodeNoCharge" type="String" />
+		<property name="surgeonName" type="String" />
+		<property name="totalFees"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="attachDocURL" type="String" />
+		<property name="attachDocName" type="String"/>
+		<property name="customerPoNumber" type="String" />
+		<property name="sapOrderNumber" type="String" />
+		<property name="linkedWithDelivered" type="boolean" />
+		<property name="showCutOffTimeMessage" type="boolean" />
+		<property name="quoteStartDate" type="java.util.Date" />
+		<property name="quoteEndDate" type="java.util.Date" />
+		<property name="customShippingAddress" type="boolean" />
+		<property name="isContractCart" type="boolean" />
+		<!-- NA Delivered Order Changes -->
+		<property name="signature" type="String">
+			<description>This property is used to set the signature media model value to data.</description>
+		</property>
+	<property name="poDate" type="java.util.Date" />
+		<property name="stockUser" type="String" />
+		<property name="endUser" type="String" />
+		<property name="returnCreatedDate" type="java.util.Date" />
+		<property name="shippingInstructions" type="String" />
+	</bean>
+	<!-- End JnjGTCartData -->
+
+	<bean class="com.jnj.facades.data.JnjGTOrderEntryData"
+		extends="de.hybris.platform.commercefacades.order.data.OrderEntryData">
+		<property name="expectedDeliveryDate" type="java.util.Date" />
+		<property name="expectedShipDate" type="java.util.Date" />
+		<property name="shippingDate" type="java.util.Date" />
+		<property name="sapOrderlineNumber" type="String" />
+		<property name="scheduleLines"
+			type="java.util.List&lt;com.jnj.facades.data.JnjDeliveryScheduleData>" />
+		<property name="availabilityStatus" type="String" />
+		<property name="confirmedQty" type="Long" />
+		<property name="status" type="String" />
+		<property name="defaultRoute" type="String" />
+		<property name="selectedRoute" type="String" />
+		<property name="trackingId" type="String" />
+		<property name="salesRepDivisionCompatible" type="boolean" />
+		<property name="extendedPrice"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="contractNumber" type="String" />
+		<property name="holdCode" type="String" />
+		<property name="shippingMethod" type="String" />
+		<property name="rejectionReason" type="String" />
+		<property name="lotNumber" type="String" />
+		<property name="lotExpiration" type="String" />
+		<property name="lotComment" type="String" />
+		<property name="hazmatInd" type="String" />
+		<property name="specialStockPartner" type="String" />
+		<property name="priceOverrideReason" type="String" />
+		<property name="approver" type="String" />
+		<property name="orderWeight" type="double" />
+		<property name="cubicVolume" type="double" />
+		<property name="weightUOM" type="String" />
+		<property name="volumeUOM" type="String" />
+		<property name="poNumber" type="String" />
+		<property name="invoiceNumber" type="String" />
+		<property name="overridenPrice"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="priceOverrideApprover" type="String" />
+		<property name="returnInvNumber" type="String" />
+		<property name="validationErrorKeys" type="java.util.List&lt;String>" />
+		<property name="quoteSAPErrorMessage" type="String" />
+		<property name="shippingMethodsList"
+			type="java.util.List&lt;com.jnj.facades.data.JnjGTShippingMethodData>" />
+		<property name="shipmentLocation" type="String" />
+		<property name="expandableSchedules" type="boolean" />
+		<property name="indirectCustomer" type="String" />
+		<property name="materialNumber" type="java.lang.String">
+			<description>Corresponds to the product code for which product exists in other external systems but not in Hybris.</description>
+		</property>
+		<property name="materialEntered" type="java.lang.String">
+			<description>Corresponds to the code to be displayed in replacement of 'materialNumber'.</description>
+		</property>
+		<property name="selectableShippingMethod" type="boolean" />
+		<property name="isProposed" type="boolean" />
+		<property name="originalOrderItem" type="String" />
+		<property name="serialNumber" type="String" />
+		<property name="batchNumber" type="String" />
+		<property name="orderCode" type="String"/>
+		
+	</bean>
+
+	<bean class="com.jnj.facades.data.JnjGTShippingMethodData">
+		<property name="route" type="String" />
+		<property name="expidateRoute" type="String" />
+		<property name="dispName" type="String" />
+		<property name="sortBy" type="String" />
+		<property name="rank" type="java.lang.Integer" />
+	</bean>
+
+
+	<bean class="de.hybris.platform.commercefacades.order.data.AbstractOrderData">
+		<property name="b2bUnitGln" type="String" />
+		<property name="b2bUnitId" type="String" />
+		<property name="b2bUnitName" type="String" />
+		<property name="orderWeight" type="double" />
+		<property name="orderVolume" type="double" />
+		<property name="orderWeightUOM" type="String" />
+		<property name="orderVolumeUOM" type="String" />
+		<property name="containsOCDProduct" type="boolean" />
+	</bean>
+	<bean class="com.jnj.facades.data.JnjGTOrderData"
+		extends="de.hybris.platform.commercefacades.order.data.OrderData">
+		<property name="customerPoNumber" type="String" />
+		<property name="dealerPoNumber" type="String" />
+		<property name="orderNumber" type="String" />
+		<property name="orderStatus" type="String" />
+		<property name="distributorPONumber" type="String" />
+		<property name="attention" type="String" />
+		<property name="dropShipAccount" type="String" />
+		<property name="sapOrderNumber" type="String" />
+		<property name="salesForbidden" type="String" />
+		<property name="completeOrder" type="String" />
+		<property name="billingAddress"
+			type="de.hybris.platform.commercefacades.user.data.AddressData" />
+		<property name="shipToAddress"
+			type="de.hybris.platform.commercefacades.user.data.AddressData" />
+		<property name="totalNetValue"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="totalFreightFees"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="totalDropShipFee"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="totalminimumOrderFee"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="manualFee"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="expeditedFee"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="totalFees"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="otherCharges"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="discountTotal"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="totalGrossPrice"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="hsaPromotion"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="tempFee"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="adjustedRateAllowance"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="gln" type="String" />
+		<property name="carrier" type="java.util.List&lt;String>" />
+		<property name="billOfLading" type="java.util.List&lt;String>" />
+		<property name="trackingIdList" type="java.util.Map&lt;String,String>" />
+		<property name="accountNumber" type="String" />
+		<property name="orderType" type="String" />
+		<property name="shipToAccount" type="String" />
+		<property name="soldToAccount" type="String" />
+		<property name="totalNumberOfEntries" type="String" />
+		<property name="reasonCode" type="String" />
+		<property name="thirdPartyBilling" type="String" />
+		<property name="orderedBy" type="String" />
+		<property name="salesTerritory" type="String" />
+		<property name="stockPartnerNumber" type="String" />
+		<property name="shipmentLocation" type="String" />
+		<property name="requestedDeliveryDate" type="java.util.Date" />
+		<property name="expectedDeliveryDate" type="java.util.Date" />
+		<property name="actualShipDate" type="java.util.Date" />
+		<property name="actualDeliveryDate" type="java.util.Date" />
+		<property name="cordisHouseAccount" type="String" />
+		<property name="reasonCodeReturn" type="String" />
+		<property name="reasonCodeNoCharge" type="String" />
+		<property name="displaySurgeonInfo" type="java.lang.Boolean" />
+		<property name="spineSalesRepUCN" type="String" />
+		<property name="surgeonName" type="String" />
+		<property name="surgeryInfo" type="com.jnj.facades.data.SurgeryInfoData" />
+		<property name="attachDocURL" type="String" />
+		<property name="attachDocName" type="String"/>
+		<property name="packingListDetails" type="java.util.Map&lt;String,String>" />
+		<property name="rgaLinkURL" type="java.lang.Boolean" />
+		<property name="codLinkURL" type="java.lang.Boolean" />
+		<property name="displayDisputeOption" type="java.lang.Boolean" />
+		<property name="shippingTrackingInfo"
+			type="java.util.Map&lt;String,java.util.Set&lt;com.jnj.facades.data.JnjGTShippingTrckInfoData&gt;>">
+			<description>The Map holds order entry id as its key and list of Shipping Tracking Info as value which contains tracking id, ship date and tracking url</description>
+		</property>
+		<property name="ghxUrl" type="String">
+			<description>The GHX-E static link url to view all invoice(s).</description>
+		</property>
+		<property name="proofOfDelDetails" type="java.util.Map&lt;String,java.util.Date>" />
+		<property name="mddTempOrderPriceFlag" type="java.lang.Boolean" />
+		<property name="showCreditHold" type="java.lang.Boolean">
+			<description>This flag is used to determine whether to show a credit hold message after an order is placed.</description>
+		</property>
+		<property name="orderOnPAHold" type="java.lang.Boolean">
+			<description>This flag is used to determine whether an order is on PA hold.</description>
+		</property>	
+		<property name="poDate" type="java.util.Date" />
+		<property name="createdOn" type="java.util.Date" />
+		<property name="stockUser" type="String" />
+		<property name="endUser" type="String" />
+		<property name="shippingInstructions" type="String" />
+		<property name="invoiceStatus" type="String" />
+		<!-- Adding fields for AAOL-4341 -->
+		<property name="paymentmethod" type="String" />
+		<property name="PackingList" type="String" />
+		<property name="carrierName" type="String" />
+		<property name="proofOfDelivery" type="String" />
+		<property name="tracking" type="String" />
+		<property name="billOfLanding" type="String" />
+		<property name="signature" type="String">
+			<description>This property is used to set the signature media model value to data.</description>
+		</property>
+	</bean>
+
+	<!-- PRODUCT DATA [BROWSE & SEARCH] Changes [Author: Akash Rawat] -->
+	<bean class="com.jnj.facades.data.JnjGTProductData"
+		extends="de.hybris.platform.commercefacades.product.data.ProductData">
+		<!-- Common Data -->
+
+		<!-- Fields to be used for PDP specifically. -->
+		<property name="gtin" type="String" />
+		<property name="expiryDate"  type="java.util.Date"  />
+		<property name="status" type="String" />
+		<property name="oldProductCode" type="String" />
+		<property name="upc" type="String" />
+		<property name="siteName" type="String" />
+		<property name="saleableInd" type="java.lang.Boolean" />
+		<property name="salesRepCompatibleInd" type="java.lang.Boolean" />
+		<property name="errorMessage" type="String" />
+		<property name="numerator" type="String" />
+		<property name="firstShipEffective" type="java.util.Date" />
+		<property name="launchStatus" type="String" />
+		
+
+		<!-- Fields to be used for Cart Page specifically. -->
+		<property name="salesUnit" type="String" />
+		<property name="deliveryUnit" type="String" />
+		<property name="salesUnitQty" type="String" />
+		<property name="hazmatCode" type="String" />
+		<property name="isProdViewable" type="boolean" />
+		<property name="contract" type="String" />
+		<property name="listPrice" type="String" />
+		<property name="salesOrgCode" type="String" />
+
+		<!-- MDD Product Specific Data -->
+		<property name="mddSpecification"
+			type="com.jnj.facades.data.JnjGTMddSpecificationData" />
+		<!-- CONSUMER Product Specific Data -->
+		<property name="consumerSpecification"
+			type="com.jnj.facades.data.JnjGTConsumerSpecificationData" />
+		<!-- CONSUMER Product Specific Data -->
+		<property name="imageAvailableInd" type="java.lang.Integer" />
+		<property name="displayName" type="String" />
+
+		<!-- Unused, to be deleted once confirmed. -->
+		<property name="discontinued" type="boolean" />
+		<property name="baseMaterialNumber" type="String" />
+		<property name="productWeight" type="String" />
+		<property name="productVolume" type="String" />
+
+		<!-- Property used to maintain invalid product codes filtered out of add 
+			to cart validation. -->
+		<property name="invalidProductCodes" type="String" />
+		<property name="lastAddedProduct" type="String" />
+		<property name="lastAddedProductQuantity" type="String" />
+
+		<!-- Change for 4150 -->
+		<property name="obsolete" type="boolean" />
+
+		<!-- Change for AFFG-20805/20806-->
+		<property name="descriptionText" type="String" />
+		<property name="shortOverview" type="String" />
+		<property name="franchiseName" type="String" />
+		<property name="subBrand" type="String" />
+		<property name="brandDescription" type="String" />
+		<!-- Change for AFFG-20805/20806 end -->
+
+		<!-- Changes for AFFG-20803  -->
+		<property name="structuredClassifications" type="java.util.Map&lt;String,Map&lt;String,String>>"/>
+		<property name="classAttributeFeatureMap" type="java.util.Map&lt;String,Object>"/>
+
+		<!-- KIT ADDED  -->
+		<property name="kitType" type="String" />
+			<property name="isKitProduct" type="java.lang.Boolean" />
+	</bean>
+
+	<bean class="com.jnj.facades.data.JnjGTMddSpecificationData">
+		<property name="kitComponentNames" type="java.util.List&lt;String>" />
+		<property name="kitComponentDesc" type="java.util.List&lt;String>" />
+		<property name="kitComponentUnits" type="java.util.List&lt;String>" />
+		<property name="franchise" type="String" />
+		<property name="division" type="String" />
+		<property name="caseGtin" type="String" />
+		<property name="eachGtin" type="String" />
+		<property name="salesUom" type="com.jnj.facades.data.JnjGTUomData" />
+		<property name="deliveryUom" type="com.jnj.facades.data.JnjGTUomData" />
+		<property name="batchMgmt" type="java.lang.Boolean" />
+		<property name="inFieldInd" type="java.lang.Boolean" />
+		<!-- KIT ADDED  -->
+	 <property name="kitData" type="java.util.List&lt;de.hybris.platform.commercefacades.product.data.ProductData>" /> 
+	</bean>
+
+	<bean class="com.jnj.facades.data.JnjGTConsumerSpecificationData">
+		<property name="franchise" type="String" />
+		<property name="brand" type="String" />
+		<property name="originCountry" type="String" />
+		<property name="assemblyCountry" type="String" />
+		<property name="shippingInfo" type="com.jnj.facades.data.JnjGTShippingUomData" />
+		<property name="caseInfo" type="com.jnj.facades.data.JnjGTUomData" />
+		<property name="eachesInfo" type="com.jnj.facades.data.JnjGTUomData" />
+		<property name="globalProductCode" type="String" />
+		<property name="globalBusinessUnit" type="String" />
+		<property name="sourceSystemId" type="String" />
+		<property name="deaRegulated" type="String" />
+		<property name="shortBullets" type="String" />
+		<property name="longBullets" type="String" />
+		<property name="imageLastUpdateDate" type="java.util.Date" />
+		<property name="ingredients" type="String" />
+		<property name="indications" type="String" />
+		<property name="warnings" type="String" />
+		<property name="directions" type="String" />
+		<property name="artworkApprovalDate" type="java.util.Date" />
+		<property name="copyApprovalDate" type="java.util.Date" />
+		<property name="masterDataLastUp" type="java.util.Date" />
+		<property name="copyApprovalReference" type="String" />
+		<property name="rmcNo" type="String" />
+		<property name="artworkApprovalCrr" type="String" />
+		<property name="keywords" type="java.util.List&lt;String>" />
+		<property name="itemSizeCount" type="String" />
+		<property name="launchStatus" type="String" />
+		<property name="outerCaseCode" type="String" />
+		<property name="casePrice"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="eachPrice"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+	</bean>
+
+	<bean class="com.jnj.facades.data.JnjGTShippingUomData">
+		<property name="numerator" type="java.lang.Integer" />
+		<property name="lwrPackagingLvlUomCode" type="String" />
+		<property name="gtin" type="String" />
+		<property name="shipEffectiveDate" type="java.util.Date" />
+		<property name="shippingUom" type="String" />
+		<property name="eaPerCase" type="java.lang.Integer" />
+		<property name="ipPerCAse" type="java.lang.Integer" />
+		<property name="eaPerInnerPacks" type="java.lang.Integer" />
+		<property name="trPerPallet" type="java.lang.Double" />
+		<property name="csPerTier" type="java.lang.Double" />
+	</bean>
+
+	<bean class="com.jnj.facades.data.JnjGTUomData">
+		<property name="code" type="String" />
+		<property name="name" type="String" />
+		<property name="gtin" type="String" />
+		<property name="numerator" type="java.lang.Integer" />
+		<property name="lwrPackagingLvlUomCode" type="String" />
+		<property name="packagingLevelQty" type="java.lang.Integer" />
+		<property name="depth" type="String" />
+		<property name="height" type="String" />
+		<property name="volume" type="String" />
+		<property name="width" type="String" />
+		<property name="weight" type="String" />
+		<property name="depthLinearUom" type="String" />
+		<property name="heightLinearUom" type="String" />
+		<property name="volumeLinearUom" type="String" />
+		<property name="volumeLUomSuperscript" type="String" />
+		<property name="widthLinearUom" type="String" />
+		<property name="weightLinearUom" type="String" />
+	</bean>
+
+	<bean class="com.jnj.facades.data.JnjGTCustomerData"
+		extends="de.hybris.platform.commercefacades.user.data.CustomerData">
+		<property name="registrationDate" type="java.util.Date" />
+		<property name="userType" type="java.lang.String" />
+		<property name="status" type="java.lang.String" />
+		<property name="orgName" type="String" />
+		<!-- 4910 -->
+		<property name="preferredMobileNumber" type="String" /> 
+		<property name="department" type="String" />
+		<property name="contactAddress"
+			type="de.hybris.platform.commercefacades.user.data.AddressData" />
+		<property name="supervisorName" type="String" />
+		<property name="supervisorEmail" type="String" />
+		<property name="supervisorPhoneCode" type="String" />
+		<property name="supervisorPhone" type="String" />
+		<property name="authorizedBuyer" type="java.lang.Boolean" />
+		<property name="wwid" type="String" />
+		<property name="divison" type="String" />
+		<property name="territoryDiv" type="java.util.List&lt;String>" />
+		<property name="mddSector" type="java.lang.Boolean" />
+		<property name="pharmaSector" type="java.lang.Boolean" />
+		<property name="consumerSector" type="java.lang.Boolean" />
+		<property name="secretQuestionsAnswers"
+			type="java.util.List&lt;com.jnj.facades.data.SecretQuestionData>" />
+		<property name="emailPreferences" type="java.util.List&lt;String>" />
+		<!-- 5506 -->
+		<property name="smsPreferences" type="java.util.List&lt;String>" />
+		<property name="backorderType" type="java.lang.String"/>
+		<property name="shippedOrderType" type="java.lang.String"/>
+		<property name="salesOrg" type="java.lang.String" />
+		<property name="gateWayAccessCode" type="java.lang.String" />
+		<property name="policyVersion" type="java.lang.Long" />
+		<property name="loginDisabledFlag" type="java.lang.Boolean" />
+		<property name="groups" type="java.util.List&lt;String>" />
+		<property name="passwordChangeDate" type="java.util.Date" />
+		<property name="b2bUnits" type="java.util.List&lt;de.hybris.platform.b2bcommercefacades.company.data.B2BUnitData>" />
+		<property name="csrNotes" type="java.lang.String" />
+		<property name="noCharge" type="java.lang.Boolean" />
+		<property name="accessBy" type="java.lang.String" />
+		<property name="currentCountry" type="java.lang.String" />
+		<property name="adminUser" type="java.lang.Boolean" />
+		<property name="uid" type="java.lang.String" />
+		<property name="currentB2BUnitName" type="java.lang.String" />
+		<property name="currentB2BUnitID" type="java.lang.String" />
+		<property name="currentB2BUnitGLN" type="java.lang.String" />
+			<!-- 4659	 -->	
+		<property name="defaultB2BUnitName" type="java.lang.String" />
+		<property name="defaultB2BUnitID" type="java.lang.String" />
+			<!--  4659 -->
+		<property name="showChangeAccount" type="java.lang.String" />
+		<property name="jnjSiteName" type="java.lang.String" />
+		<!--  Start To be moved to cafacades beans xml -->
+		<property name="gln" type="java.lang.String" />
+		<property name="custSoldTo" type="java.lang.String" />
+		<property name="newShipToAddress" type="de.hybris.platform.commercefacades.user.data.AddressData" />
+		<property name="newBillToAddress" type="de.hybris.platform.commercefacades.user.data.AddressData" />
+		<property name="isResetPassword" type="java.lang.Boolean" />
+		<property name="consignmentEntryOrder" type="java.lang.Boolean" />
+		<property name="invoiceEmailPreferenceType" type="java.lang.String"/>
+		<!-- added for AAOl-2422 -->
+		<property name="financialAnalysisEnable" type="java.lang.Boolean" />
+		<!-- added for AAOl-2422 -->
+		<property name="deliveryNoteEmailPreferenceType" type="java.lang.String"/>
+		 <!--  End To be moved to cafacades beans xml -->
+		 <!-- Changes for Default Order Type AAOL-4660 -->
+		 <property name="defaultOrderType" type="java.lang.String"/>
+		 <!-- Soumitra- adding allowedFranchise as a list of categorymodel for a user AAOL-4913 -->
+		<property name="allowedFranchise" type="java.util.List&lt;de.hybris.platform.commercefacades.product.data.CategoryData>"/>
+	</bean>
+
+	<bean class="com.jnj.facades.data.JnjGTAddressData"
+		extends="de.hybris.platform.commercefacades.user.data.AddressData">
+		<property name="mobileCode" type="String" />
+		<property name="mobile" type="String" />
+		<property name="faxCode" type="String" />
+		<property name="fax" type="String" />
+		<property name="phoneCode" type="String" />
+		<property name="jnjAddressId" type="String" />
+		<property name="state" type="String" />
+		<property name="attnLine" type="String"/>
+		<!--  Start To be moved to cafacades beans xml -->
+        <property name="isPrimaryBillTo" type="boolean" />
+        <property name="taxid" type="java.lang.String" />
+        <property name="line3" type="java.lang.String" />
+        <property name="line4" type="java.lang.String" />	
+        <!--  End To be moved to cafacades beans xml -->  
+          	
+	</bean>
+
+		<!--  Start To be moved to cafacades beans xml -->
+
+	<bean class="de.hybris.platform.commerceservices.order.CommerceCartModification">
+		<property name="isEachGTINAdded" type="boolean"/>
+	</bean>
+        <!--  End To be moved to cafacades beans xml -->  
+
+	<!-- END OF PRODUCT DATA [BROWSE & SEARCH] Changes [Author: Akash Rawat] -->
+
+	<!-- START OF Contact US Facade -->
+
+	<bean class="com.jnj.facades.data.JnjGTContactUsData">
+		<property name="fromName" type="String" />
+		<property name="fromEmail" type="String" />
+		<property name="subjectSelected" type="String" />
+		<property name="detailInquiry" type="String" />
+		<property name="orderID" type="String" />
+		<property name="siteLogoURL" type="String" />
+		<property name="contactNumber" type="String" />
+		<property name="productID" type="String" />
+	</bean>
+	<!-- END OF Contact US Facade -->
+
+	<!-- START OF Template Facade -->
+	<bean class="com.jnj.facades.data.JnjGTOrderTemplateEntryData"
+		extends="com.jnj.facades.data.JnjTemplateEntryData">
+		<property name="lines" type="Integer" />
+		<property name="totalVolume" type="String" />
+		<property name="totalWeight" type="String" />
+		<property name="productUrl" type="String" />
+		<property name="refVariant" type="com.jnj.facades.data.JnjGTProductData" />
+		<property name="salesRepDivisionCompatible" type="java.lang.Boolean" />
+
+	</bean>
+	<bean class="com.jnj.facades.data.JnjGTOrderTemplateData"
+		extends="com.jnj.facades.data.JnjOrderTemplateData">
+		<property name="searchBy" type="String" />
+		<property name="sortBy" type="String" />
+		<property name="searchText" type="String" />
+		<property name="groupOf" type="Integer" />
+		<property name="totalTemplate" type="Integer" />
+		<property name="numberOfTemplateShown" type="Integer" />
+		<property name="templateName" type="String" />
+		<property name="templateNumber" type="String" />
+		<property name="author" type="String" />
+		<property name="authorId" type="String" />
+		<property name="createdOn" type="java.util.Date" />
+		<property name="shareStatus" type="String" />
+		<property name="lines" type="Integer" />
+		<property name="templateEntry"
+			type="java.util.List&lt;com.jnj.facades.data.JnjGTOrderTemplateEntryData>" />
+	</bean>
+	<!-- END OF Contact US Facade -->
+
+	<!-- START OF ORDER DATA [SITE ORDER MANAGEMENT] Changes [Authors: Akash 
+		Rawat, Tushar Sharma] -->
+
+	<bean class="com.jnj.facades.data.JnjGTInvoiceOrderData"
+		extends="com.jnj.facades.data.JnJInvoiceOrderData">
+		<property name="orderNumber" type="String" />
+		<property name="invoiceNumber " type="String" />
+		<property name="billingdate " type="java.util.Date" />
+		<property name="shippingDate " type="java.util.Date" />
+		<property name="packingList" type="java.util.List&lt;String>" />
+		<property name="carrier" type="String" />
+		<property name="billOfLading" type="String" />
+		<property name="invoiceEntries"
+			type="java.util.List&lt;com.jnj.facades.data.JnjGTInvoiceEntryData>" />
+		<property name="subTotal"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="taxAmt"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="tempFeeAndPromotion"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="invoiceTotal"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="adjustedRateAllowance"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="totalFees"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="dropShipFee"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="minimumOrderFee"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="manualFee"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="expeditedFee"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="totalFreightFees"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="hsaPromotion"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="otherCharges"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="taxTotal"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="totalGrossPrice"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="orderWeight" type="String" />
+		<property name="cubicVolume" type="String" />
+	</bean>
+
+	<bean class="com.jnj.facades.data.JnjGTOrderHistoryData"
+		extends="de.hybris.platform.commercefacades.order.data.OrderHistoryData">
+		<property name="channel" type="String" />
+		<property name="ordertype " type="String" />
+		<property name="surgeonUpdatInd" type="boolean" />
+		<property name="poNumberUpdateInd" type="boolean" />
+		<property name="sapOrderNumber" type="String" />
+		<property name="billToNumber" type="String" />
+		<property name="billToName" type="String" />
+		<property name="shipToNumber" type="String" />
+		<property name="shipToName" type="String" />
+		<property name="deliveryDate" type="String" />
+		<property name="surgeonName" type="String" />
+		<property name="orderOnPAHold" type="boolean"/>
+		<!-- NA Delivered Order Changes -->
+		<property name="signature" type="String">
+			<description>This property is used to set the signature media model value to data.</description>
+		</property><!-- Changes for AAOL-4732,4796 -->
+		<property name="patientID" type="String" />
+		<property name="caseDate" type="String" />
+		<property name="franchise" type="String" />
+	</bean>
+
+	<bean class="com.jnj.facades.data.JnjGTInvoiceEntryData">
+		<property name="product" type="com.jnj.facades.data.JnjGTProductData" />
+		<property name="qty" type="String" />
+		<property name="trackingId" type="String" />
+		<property name="status" type="String" />
+		<property name="shippingMethod" type="String" />
+		<property name="extendedPrice"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="basePrice"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="totalPrice"
+			type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="shipDate" type="java.util.Date" />
+		<property name="taxValue" type="String" />
+		<property name="lineNumber" type="String" />
+		<property name="contractNum" type="String"/>
+		<!-- This field is used to store the original ordered Qty -->
+		<property name="orderedQty" type="Long" />
+	</bean>
+
+	<bean class="com.jnj.facades.data.JnjDeliveryScheduleData">
+		<property name="shippingDate" type="java.util.Date" />
+		<property name="materialAvailabilityDate" type="java.util.Date" />
+		<property name="formattedDeliveryDate" type="java.lang.String" />
+		<property name="lineStatus" type="java.lang.String" />
+	</bean>
+	<!-- END OF ORDER DATA [SITE ORDER MANAGEMENT] Changes [Authors: Akash Rawat, 
+		Tushar Sharma] -->
+
+	<!-- Start of SurgeryInfoData changes [Author: Sakshi Kashiva] -->
+	<bean class="com.jnj.facades.data.SurgeryInfoData">
+		<property name="surgerySpecialty" type="String" />
+		<property name="orthobiologics" type="String" />
+		<property name="surgicalApproach" type="String" />
+		<property name="interbody" type="String" />
+		<property name="interbodyFusion" type="String" />
+		<property name="caseDate" type="java.util.Date" />
+		<property name="levelsInstrumented" type="String" />
+		<property name="pathology" type="String" />
+		<property name="Zone" type="String" />
+		<property name="caseNumber" type="String" />
+		<property name="procedureType" type="String" />
+		<property name="cas" type="String" />
+	</bean>
+
+	<!-- Start of SurgeryInfoData changes [Author: Sakshi Kashiva] -->
+
+	<!-- SURGEON DATA: AKASH -->
+	<bean class="com.jnj.facades.data.JnjGTSurgeonData">
+		<property name="code" type="String" />
+		<property name="specialty" type="String" />
+		<property name="orthobiologics" type="String" />
+		<property name="surgicalApproach" type="String" />
+		<property name="interbody" type="String" />
+		<property name="interbodyFusion" type="String" />
+		<property name="caseDate" type="String" />
+		<property name="levelsInstrumented" type="String" />
+		<property name="pathology" type="String" />
+		<property name="Zone" type="String" />
+		<property name="caseNumber" type="String" />
+		<property name="procedureType" type="String" />
+		<property name="firstName" type="String" />
+		<property name="lastName" type="String" />
+		<property name="middleName" type="String" />
+		<property name="city" type="String" />
+		<property name="state" type="String" />
+		<property name="country" type="String" />
+		<property name="postalCode" type="String" />
+		<property name="recNumber" type="String" />
+		<property name="recType" type="String" />
+		<property name="displayName" type="String" />
+		<property name="displayAddress" type="String" />
+		<property name="hospitalId" type="java.lang.String"/>
+	</bean>
+	<!-- END OF SURGEON DATA: AKASH -->
+	<!-- BroadCastData : Komal -->
+	<bean class="com.jnj.facades.data.JnjGTBroadCastData">
+		<property name="type" type="String" />
+		<property name="content" type="String" />
+		<property name="contentType" type="String" />
+		<property name="expandable" type="boolean" />
+		<property name="id" type="String" />
+	</bean>
+	<!--End BroadCastData : Komal -->
+
+	<!-- CPSIA DATA: AKASH -->
+	<bean class="com.jnj.facades.data.JnjGTCpsiaData">
+		<property name="productCode" type="String" />
+		<property name="upc" type="String" />
+		<property name="outercase" type="String" />
+		<property name="description" type="String" />
+		<property name="lotNumber" type="String" />
+		<property name="productName" type="String" />
+		<property name="certificateCreator" type="String" />
+		<property name="addressLotNumber" type="String" />
+		<property name="mfdDate" type="String" />
+		<property name="cpsiComments" type="String" />
+		<property name="modifiedDate" type="String" />
+		<property name="modifiedBy" type="String" />
+		<property name="certificateCreateDate" type="String" />
+		<property name="deleted" type="String" />
+		<property name="mfgCompanyCode" type="String" />
+		<property name="certificateModifiedDate" type="String" />
+		<property name="cpscTestDetailList"
+			type="java.util.List&lt;com.jnj.facades.data.JnjGTCpscTestDetailData>" />
+		<property name="CpscContactDataList"
+			type="java.util.List&lt;com.jnj.facades.data.JnjGTCpscContactData>" />
+	</bean>
+	<bean class="com.jnj.facades.data.JnjGTCpscTestDetailData">
+		<property name="addressLine2" type="String" />
+		<property name="country" type="String" />
+		<property name="studyComments" type="String" />
+		<property name="addressLine1" type="String" />
+		<property name="studyNumber" type="String" />
+		<property name="state" type="String" />
+		<property name="city" type="String" />
+		<property name="thirdPartyName" type="String" />
+		<property name="zipCode" type="String" />
+		<property name="testingDate" type="String" />
+		<property name="phoneNumber" type="String" />
+	</bean>
+	<bean class="com.jnj.facades.data.JnjGTCpscContactData">
+		<property name="state" type="String" />
+		<property name="addressline2" type="String" />
+		<property name="addressType" type="String" />
+		<property name="city" type="String" />
+		<property name="emailId" type="String" />
+		<property name="addressline1" type="String" />
+		<property name="country" type="String" />
+		<property name="phoneNumber" type="String" />
+		<property name="addressAdditionalInfo" type="String" />
+		<property name="zipCode" type="String" />
+		<property name="name" type="String" />
+	</bean>
+
+	<bean class="com.jnj.facades.data.JnjAmazonFileData">
+		<property name="creationDate" type="String" />
+		<property name="url" type="String" />
+		<property name="downloadSize" type="String" />
+		<property name="imageType" type="String" />
+		<property name="downloadTime" type="String" />
+	</bean>
+	<!--END OF CPSIA DATA -->
+	<bean class="com.jnj.facades.data.JnjPCMZonzaData">
+		<property name="assetId" type="String" />
+		<property name="url" type="String" />
+		<property name="productCode" type="String" />
+		<property name="leadCountry" type="String" />
+		<property name="agency" type="String" />
+	</bean>
+
+	<bean
+		class="de.hybris.platform.commercefacades.order.data.CartModificationData">
+		<property name="error" type="boolean" />
+	</bean>
+
+	<bean class="com.jnj.facades.data.JnjGTShippingTrckInfoData">
+		<property name="trackingId" type="String" />
+		<property name="shipDate" type="java.util.Date" />
+		<property name="deliveryDate" type="java.util.Date"/>
+		<property name="trackingUrl" type="String" />
+	</bean>
+	
+	
+	<bean class="com.jnj.facades.data.JnjBuildOrderData">
+        <property name="lineItems" type="java.util.Map&lt;String,de.hybris.platform.commercefacades.order.data.OrderEntryData>" />
+    </bean>
+<!--  started to implement for contract in GT -->
+
+<bean class="com.jnj.facades.data.JnjContractEntryData">
+		<property name="productCode" type="String">
+			<description>Product Code contains the Catalog ID of the Product.</description>
+		</property>
+		<property name="productName" type="String" />
+		<property name="productDescription" type="String" />
+		<property name="contractQty" type="Integer" />
+		<property name="consumedQty" type="Integer" />
+		<property name="status" type="String" />
+		<property name="contractBalanceQty" type="Integer" />
+		<property name="tenderLineNum" type="String" />
+		<property name="productPrice" type="String" />	
+		<property name="contractProductPrice" type="String" />
+		<property name="lineNum" type="Integer"/>
+		<property name="productUnit" type="String" />
+		<property name="prodSalesUnit" type="String"/>
+		<property name="prodDeliveryUnit" type="String"/>
+		<property name="unitOfMeasureQuantity" type="String"/>
+		<property name="active" type="Boolean"/>
+		<property name="product" type="com.jnj.facades.data.JnjGTProductData" />
+	</bean>
+	
+	
+	<bean class="com.jnj.facades.data.JnjContractData">
+		<property name="distributorCustomer" type="String" />
+		<property name="eccContractNum" type="String" />
+		<property name="crmContractNum" type="String" />
+		<property name="tenderNum" type="String" />
+		<property name="startDate" type="java.util.Date" />
+		<property name="endDate" type="java.util.Date" />
+		<property name="contractOrderReason" type="String" />
+		<property name="status" type="String" />
+		<property name="active" type="Boolean" />
+		<property name="documentType" type="String" />
+		<property name="indirectCustomer" type="String" />
+		<property name="totalAmount" type="Double" />
+		<property name="balanceAmount" type="Double" />
+		<property name="totalItem" type="String" />
+		<property name="entryCount" type="java.lang.Integer"/>
+		<property name="contractEntryList" type="java.util.List&lt;com.jnj.facades.data.JnjContractEntryData>"/>
+		<property name="consumedAmount" type="Double" />
+		<property name="lastUpdatedTime" type="java.util.Date" />
+		<property name="indirectCustomerName" type="String"/><!-- CR 35406 -->
+	</bean>
+	
+	<!-- Changes for JCC-13 to display amount details -->
+	<bean class="com.jnj.facades.data.JnjContractPriceData">
+		<property name="totalAmount" type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="balanceAmount" type="de.hybris.platform.commercefacades.product.data.PriceData" />
+		<property name="consumedAmount" type="de.hybris.platform.commercefacades.product.data.PriceData" />
+	</bean>
+	
+	<!--  End to implement for contract in GT -->
+	
+	<!-- Dropshipment Changes -->
+	<bean class="com.jnj.facades.data.JnjGTOutOrderLine" >
+			<property name="lineNumber" type="String"/>
+			<property name="materialNumber" type="String"/>
+			<property name="materialQuantity" type="String"/>
+			<property name="salesUOM" type="String"/>
+			<property name="itemCategory" type="String"/>
+			<property name="materialEntered" type="String"/>
+			<property name="higherLevelItemNumber" type="String"/>
+			<property name="reasonForRejection" type="String"/>
+			<property name="lineOverallStatus" type="String"/>
+			<property name="freightFees" type="String"/>
+			<property name="taxes" type="String"/>
+			<property name="unitValue" type="String"/>
+			<property name="grossPrice" type="String"/>
+			<property name="netValue" type="String"/>
+			<property name="discounts" type="String"/>
+			<property name="expeditedFees" type="String"/>
+			<property name="insurance" type="String"/>
+			<property name="internaitonalFreight" type="String"/>
+			<property name="handlingFee" type="String"/>
+			<property name="dropshipFee" type="String"/>
+			<property name="minimumOrderFee" type="String"/>
+			<property name="taxesLocal" type="String"/>
+			<property name="schedLinesLineNumber" type="String"/>
+			<property name="schedLinesDeliveryDate" type="String"/>
+			<property name="schedLinesRoundedQuantity" type="String"/>
+			<property name="schedLinesConfirmedQuantity" type="String"/>
+			<property name="scheduleLines" type="java.util.List&lt;com.jnj.facades.data.JnjDeliveryScheduleData>"/>
+			<property name="quantity" type="Long" />
+			<property name="confirmedQty" type="Long" />
+			<property name="availabilityStatus" type="String" />
+			<property name="orderedQuantity" type="String"/>
+	</bean>
+<!-- KIT ADDED  -->	
+	<bean class="com.jnj.facades.data.JnjGTProductKitData" extends="de.hybris.platform.commercefacades.product.data.ProductData">
+             <property name="productCode" type="String" />
+             <property name="productName" type="String" />
+             <property name="productDescription" type="String" />
+             <property name="productDesc2" type="String" />
+             <property name="productQty" type="String" />
+             <property name="productUnit" type="String" />
+             <property name="productImageUrl" type="String" />
+             <property name="isKitProduct" type="boolean" />
+    </bean>
+<!-- KIT ADDED  -->
+
+	<bean class="com.jnj.facades.data.JnjContractFormData">
+		<property name="isNonContractProductInCart" type="Boolean" />
+		<property name="isNonContractProductInSelectedList" type="Boolean" />
+		<property name="multiContractCount" type="Integer" />
+		<property name="multiProductCount" type="Integer" />
+		
+	</bean>
+	<bean class="com.jnj.facades.data.JnjGTCommonFormIOData">  
+		<property name="HybrisLineItemNo" type="String" />
+		<property name="OrderItemCd" type="String" />
+		<property name="OrderItemDesc" type="String" />
+		<property name="OrderItemQty" type="long" />
+		<!-- AAOL-6378 and 6368 start-->
+		<property name="ProposedItemCd" type="java.util.List" />
+		<property name="ProposedItemDesc" type="java.util.List" />
+		<!-- AAOL-6378 and 6368 end-->
+		<property name="ProposedItemQty" type="long" />
+		<property name="productId" type="String" />
+		<property name="qty" type="String" />
+		<property name="zzFlag" type="String" />
+		<property name="zzsubstMat" type="String" />
+		<property name="zzsubstQty" type="String" />
+		<property name="isfirstSAPCall" type="Boolean" />
+		<property name="obsoleteProductList" type="String" />
+		<property name="jnjGTReturnMessageDataList" type="java.util.List&lt;com.jnj.facades.data.JnjGTReturnMessageData>"/>
+	</bean>
+	<bean class="com.jnj.facades.data.JnjGTProposedOrderResponseData">
+		 <property name="jnjGTCommonFormIOData" type="com.jnj.facades.data.JnjGTCommonFormIOData"/> 
+		<property name="jnjGTCommonFormIODataList" type="java.util.List&lt;com.jnj.facades.data.JnjGTCommonFormIOData>"/>
+		<property name="jnjGTCommonFormIODataMap" type="java.util.Map&lt;String,java.util.List&lt;com.jnj.facades.data.JnjGTCommonFormIOData>>"/>
+	</bean>
+	<bean class="com.jnj.facades.data.JnjGTReturnMessageData">  
+		<property name="id" type="String" />
+		<property name="number" type="String" />
+		<property name="message" type="String" />
+		<property name="logno" type="String" />
+		<property name="messagev2" type="String" />
+	</bean>
+	<!-- AAOL-4357 end -->
+	
+	
+	<!-- AAOL-2417 start -->
+	<bean class="com.jnj.facades.data.JnjGTConsInventoryData">  
+		<property name="stockLocationAcc" type="String" />
+		<property name="stockLocationName" type="String" />
+		<property name="franchiseDescription" type="String" />
+		<property name="productCode" type="String" />
+		<property name="productDesc" type="String" />
+		<property name="qtyInStock" type="String" />
+		<property name="parLevelQty" type="String" />
+		<property name="availableOrderQty" type="String" />
+		<property name="batchNumbers" type="java.util.List&lt;String>" />
+		<property name="serialNumbers" type="java.util.List&lt;String>" />
+		<property name="serialManaged" type="String" />
+		<property name="batchManaged" type="String" />
+		<property name="uom" type="String" />
+		<property name="batchSerialMap" type="java.util.Map&lt;String,java.util.List&lt;String>>" />
+	</bean>
+	<!-- AAOL-2417 end -->
+<!-- AAOL-2421 start -->
+	<bean class="com.jnj.facades.data.JnjGTFinancialAccountAgingReportData">  
+		<property name="DaysinArrears" type="String" />
+		<property name="DueItem" type="String" />
+		<property name="NotDue" type="String" />
+	</bean>
+	<bean class="com.jnj.facades.data.JnjGTFinancialBalanceSummaryReportData">	
+		<property name="DueDate" type="String" />
+		<property name="AmountPaid" type="String" />
+		<property name="Total" type="String" />
+	</bean>
+	<bean class="com.jnj.facades.data.JnjGTFinancialPaymentSummaryReportData">
+		<property name="AmountInvoicedMTD" type="String" />
+		<property name="NetAmountPaidMTD" type="String" />
+		<property name="AmountInvoicedPriorMonth" type="String" />
+		<property name="NetAmountPaidPriorMonth" type="String" />
+		<property name="AmountInvoiceThisYear" type="String" />
+		<property name="NetAmountPaidThisYear" type="String" />
+		<property name="AmountInvoicedPriorYear" type="String" />
+		<property name="NetAmountPaidPrioryear" type="String" />
+		<property name="LastPaymentAmount" type="String" />
+	</bean>
+	<bean class="com.jnj.facades.data.JnjGTFinancialCreditSummaryReportData">
+		<property name="OpenOrderValue" type="String" />
+		<property name="OpenDeliveryValue" type="String" />
+		<property name="AmountDue" type="String" />
+		<property name="CreditUsed" type="String" />
+		<property name="CreditLimit" type="String" />
+		<property name="OverUnderValue" type="String" />
+		<property name="CreditLimitUsed" type="String" />
+	</bean>
+	<!-- AAOL-2421 end -->
+	<!-- Start:AAOL-2426 InvoiceClearing Report data -->
+	<bean class="com.jnj.facades.data.JnjGTInvoiceClearingReportResponseData">
+		<property name="invoiceNum" type="String" />
+		<property name="billingDate" type="String" />
+		<property name="soldToAccNum" type="String" />
+		<property name="soldToAccName" type="String" />
+		<property name="salesDocNum" type="String" />
+		<property name="receiptNumber" type="String" />
+		<property name="status" type="String" />
+		<property name="paymentDate" type="String" />
+		<property name="invoiceTotalAmount" type="double" />
+		<property name="openAmount" type="String" />
+		<property name="currency" type="String" />
+		<property name="orderNum" type="String" />
+		<property name="customerPoNum" type="String" />
+	</bean>
+	<!-- End:AAOL-2426 InvoiceClearing Report data -->
+	<!-- Start:AAOL-2426 InvoiceClearing Report data -->
+	<bean class="com.jnj.facades.data.JnjGTInventoryReportResponseData">
+		<property name="ucnNumber" type="String" />
+		<property name="productCode" type="String" />
+		<property name="productDescription" type="String" />
+		<property name="lotNumber" type="String" />
+		<property name="unRestricted" type="String" />
+		<property name="restricted" type="String" />
+		<property name="qualityStock" type="String" />
+		<property name="totalQuality" type="String" />
+		<property name="unit" type="String" />
+	</bean>
+	<!-- End:AAOL-2426 InvoiceClearing Report data -->
+	
+	<!-- Start:AAOL-2426 InvoiceClearing Report data -->
+	<!-- <bean class="com.jnj.facades.data.JnjGTInventoryReportResponseData">
+		<property name="ucnNumber" type="String" />
+		<property name="productCode" type="String" />
+		<property name="productDescription" type="String" />
+		<property name="lotNumber" type="String" />
+		<property name="unRestricted" type="String" />
+		<property name="restricted" type="String" />
+		<property name="qualityStock" type="String" />
+		<property name="totalQuality" type="String" />
+		<property name="unit" type="String" />
+	</bean> -->
+	<!-- End:AAOL-2426 InvoiceClearing Report data -->
+	
+	<!-- AAOL-5163 -->
+	<bean class="com.jnj.facades.data.JnjGTReturnOrderData">
+		<property name="sapOrderNum" type="String" />
+		<property name="returnOrderNum" type="String" />
+		<property name="poNumber" type="String" />
+		<property name="productId" type="String" />
+		<property name="lotNumber" type="String" />
+		<property name="qtyOrdered" type="String" />
+		<property name="qtyReturned" type="String" />
+		<property name="uom" type="String" />
+		<property name="reasonCode" type="String" />		
+	</bean>
+	
+	<!-- Start:AAOL-5371 UserManagement Report data -->
+	<bean class="com.jnj.facades.data.jnjGTUserManagementReportResponseData">
+		<property name="lastName" type="String" />
+		<property name="firstName" type="String" />
+		<property name="accountNumber" type="String" />
+		<property name="accountName" type="String" />
+		<property name="status" type="String" />
+		<property name="phone" type="String" />
+		<property name="email" type="String" />
+		<property name="role" type="String" />
+		<property name="sector" type="String" />
+	</bean>
+	<!-- End:AAOL-5371 UserManagement Report data -->
+
+	<!-- Changes for AFFG-1 -->
+	<bean class = "com.jnj.facades.data.JnjProductCarouselData">
+		<property name="productCode" type="String"/>
+		<property name="productName" type="String" />
+		<property name="imageURL" type="String" />
+		<property name="productURL" type="String" />
+		<property name="kitType" type="String" />
+		<property name="price" type="String" />
+	</bean>
+
+	<!-- AFFG-20804 -->
+	<bean class="de.hybris.platform.commercefacades.product.data.CategoryData">
+		<property name="isLeafCategory" type="Boolean" />
+	</bean>
+
+</beans>
+

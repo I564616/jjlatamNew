@@ -1,0 +1,119 @@
+
+package com.jnj.outboundservice.invoice;
+
+import jakarta.xml.bind.JAXBElement;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
+
+
+/**
+ * <p>
+ * Java class for ElectronicBillingRequest_In complex type.
+ *
+ * <p>
+ * The following schema fragment specifies the expected content contained within this class.
+ *
+ * <pre>
+ * &lt;complexType name="ElectronicBillingRequest_In">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="BILLING_DOC" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="FILE_TYPE" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="LANGUAGE" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
+ *
+ *
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "ElectronicBillingRequest_In", propOrder =
+{ "billingdoc", "filetype", "language" })
+@XmlRootElement(name = "ElectronicBillingRequestIn")
+public class ElectronicBillingRequestIn
+{
+
+	@XmlElement(name = "BILLING_DOC", required = true, nillable = true)
+	protected String billingdoc;
+	@XmlElementRef(name = "FILE_TYPE", type = JAXBElement.class, required = false)
+	protected JAXBElement<String> filetype;
+	@XmlElement(name = "LANGUAGE", required = true, nillable = true)
+	protected String language;
+
+	/**
+	 * Gets the value of the billingdoc property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getBILLINGDOC()
+	{
+		return billingdoc;
+	}
+
+	/**
+	 * Sets the value of the billingdoc property.
+	 * 
+	 * @param value
+	 *           allowed object is {@link String }
+	 * 
+	 */
+	public void setBILLINGDOC(final String value)
+	{
+		this.billingdoc = value;
+	}
+
+	/**
+	 * Gets the value of the filetype property.
+	 * 
+	 * @return possible object is {@link JAXBElement }{@code <}{@link String }{@code >}
+	 * 
+	 */
+	public JAXBElement<String> getFILETYPE()
+	{
+		return filetype;
+	}
+
+	/**
+	 * Sets the value of the filetype property.
+	 * 
+	 * @param value
+	 *           allowed object is {@link JAXBElement }{@code <}{@link String }{@code >}
+	 * 
+	 */
+	public void setFILETYPE(final JAXBElement<String> value)
+	{
+		this.filetype = value;
+	}
+
+	/**
+	 * Gets the value of the language property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getLANGUAGE()
+	{
+		return language;
+	}
+
+	/**
+	 * Sets the value of the language property.
+	 * 
+	 * @param value
+	 *           allowed object is {@link String }
+	 * 
+	 */
+	public void setLANGUAGE(final String value)
+	{
+		this.language = value;
+	}
+
+}

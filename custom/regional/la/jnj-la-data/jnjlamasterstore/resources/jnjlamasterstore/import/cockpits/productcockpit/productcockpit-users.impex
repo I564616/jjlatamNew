@@ -1,0 +1,46 @@
+###############################################
+##Import Users and Groups for Product Cockpit##
+############################################### 
+INSERT_UPDATE UserGroup;locname[lang=en];uid[unique=true,allownull=false];groups(uid);
+###############Level 2 Role Groups###################################### 
+;Manage Products Data Group;manageProductsDataGroup;
+;Product Data Translation Group;productDataTranslationGroup;
+;Approve Products Group;approveProductsGroup;
+;Add Product Media Group;addProductMediaGroup;
+;Create Categories Group;createCategoriesGroup;
+;Change Product Assignment Group;changeProductAssignmentGroup;
+;Approve PDP Group;approvePDPGroup;
+;Synchronize Stage To Online Group;synchronizeStageToOnlineGroup;
+;Read Product Data Group;readProductDataGroup;
+;Workflows Group;workflowsGroup;
+;Revoke Approve Products Group;revokeApproveProductsGroup;
+;Revoke Add Product Media Group;revokeAddProductMediaGroup;
+###############Level 1 Role Groups###################################### 
+;ProductWriter Group;productWriterGroup;manageProductsDataGroup,productDataTranslationGroup,revokeApproveProductsGroup,workflowsGroup,readProductDataGroup,revokeAddProductMediaGroup
+;Product Manager Group;productManagerGroup;manageProductsDataGroup,productDataTranslationGroup,approveProductsGroup,addProductMediaGroup,createCategoriesGroup,changeProductAssignmentGroup,workflowsGroup,readProductDataGroup
+;Publisher Group;publisherGroup;manageProductsDataGroup,productDataTranslationGroup,approveProductsGroup,addProductMediaGroup,createCategoriesGroup,changeProductAssignmentGroup,synchronizeStageToOnlineGroup,workflowsGroup,readProductDataGroup,revokeAddProductMediaGroup
+
+
+#################################
+###Import Product Cockpit User###
+#################################
+$passwordEncoding=md5
+$defaultPassword=1234
+$setPassword=@password[translator=de.hybris.platform.impex.jalo.translators.ConvertPlaintextToEncodedUserPasswordTranslator][default='$passwordEncoding:$defaultPassword']
+
+INSERT_UPDATE Employee;UID[unique=true];$setPassword;description;name;groups(uid)[mode=append];sessionLanguage(isocode);sessionCurrency(isocode)
+;productmanager;;Product Manager;Product Manager;productManagerGroup,employeegroup,cockpitgroup;en;BRL
+;productwriter;;ProductWriter;ProductWriter;productWriterGroup,employeegroup,cockpitgroup;en;BRL
+;publisher;;Publisher;Publisher;publisherGroup,employeegroup,cockpitgroup;en;BRL
+
+
+
+##################################################
+#Add Rights to CatalogVersion for the Role Groups#
+##################################################
+INSERT_UPDATE CatalogVersion;catalog(id)[unique=true];version[unique=true];writePrincipals(uid)[mode=append];readPrincipals(uid)[mode=append]
+;brProductCatalog;Online;publisherGroup;productWriterGroup,productManagerGroup,publisherGroup
+;brProductCatalog;Staged;productWriterGroup,productManagerGroup,publisherGroup;productWriterGroup,productManagerGroup,publisherGroup
+;mxProductCatalog;Online;publisherGroup;productWriterGroup,productManagerGroup,publisherGroup
+;mxProductCatalog;Staged;productWriterGroup,productManagerGroup,publisherGroup;productWriterGroup,productManagerGroup,publisherGroup
+;mstrProductCatalog;Staged;;productWriterGroup,productManagerGroup,publisherGroup

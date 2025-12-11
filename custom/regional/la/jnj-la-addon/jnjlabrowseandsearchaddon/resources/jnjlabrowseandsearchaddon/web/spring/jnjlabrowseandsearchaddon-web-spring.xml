@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+           
+    <context:annotation-config/>
+	<context:component-scan
+			base-package="com.jnj.la.browseandsearch.controllers.pages"
+			scope-resolver="de.hybris.platform.spring.IgnoreTenantScopeMetadataResolver" />
+
+	<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+
+	<!-- Expose /acceleratoraddon/web/webroot/WEB-INF/messages/base.js.properties  resource bundle as javascript variables -->
+	<bean id="defaultJnjlabrowseandsearchaddonJavaScriptMessageResourceAccessor" parent="abstractJavaScriptMessageResourceAccessor">
+		<property name="addOnName" value="jnjlabrowseandsearchaddon"/>
+	</bean>
+
+	<bean id="defaultJnjlabrowseandsearchaddonBeforeViewJsPropsHandlerAdaptee" parent="abstractBeforeViewJsPropsHandlerAdaptee" class="de.hybris.platform.addonsupport.interceptors.ExportJsPropertiesBeforeViewHandler">
+		<property name="messageSource" ref="defaultJnjlabrowseandsearchaddonJavaScriptMessageResourceAccessor"/>
+	</bean>
+
+	<bean id="getJnjlabrowseandsearchaddonBeforeViewHandler" parent="beforeViewHandlerAdapter">
+		<property name="adaptee">
+			<ref bean="defaultJnjlabrowseandsearchaddonBeforeViewJsPropsHandlerAdaptee"/>
+		</property>
+	</bean>
+	<bean id="JnjlabrowseandsearchaddonBeforeViewHandlerListMergeDirective" depends-on="beforeViewHandlersList" parent="listMergeDirective">
+		<property name="add" ref="getJnjlabrowseandsearchaddonBeforeViewHandler"/>
+	</bean>
+	
+	<bean id="jnjLatamCategoryPageController"
+		class="com.jnj.la.browseandsearch.controllers.pages.JnjLatamCategoryPageController" />
+	<alias alias="jnjGTCategoryPageController" name="jnjLatamCategoryPageController" />
+	
+	<bean id="jnjLatamSearchPageController"
+		class="com.jnj.la.browseandsearch.controllers.pages.JnjLatamSearchPageController" />
+	<alias alias="jnjGTSearchPageController" name="jnjLatamSearchPageController" /> 
+	
+	
+	<bean name="jnjLatamProductPageController"
+		class="com.jnj.la.browseandsearch.controllers.pages.JnjLatamProductPageController" >
+		<property name="configurationService" ref="configurationService"/>
+	</bean>
+	<alias alias="jnjGTProductPageController" name="jnjLatamProductPageController" />
+
+	<bean name="jnjLatamProductReferencesComponentController"
+		  class="com.jnj.la.browseandsearch.controllers.cms.JnjLatamProductReferencesComponentController" />
+	<alias alias="ProductReferencesComponentController" name="jnjLatamProductReferencesComponentController" />
+
+
+	<bean id="laProductDetailPdfView" class="com.jnj.la.browseandsearch.download.views.JnjLAProductDetailsPdfView">
+		<property name="jnjCommonFacadeUtil" ref="JnjCommonFacadeUtil"/>
+		<property name="i18nService" ref="i18nService"/>
+		<property name="messageSource" ref="storefrontMessageSource" />
+		<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+		<property name="siteBaseUrlResolutionService" ref="siteBaseUrlResolutionService" />
+		<property name="baseSiteService" ref="baseSiteService" />
+	</bean>
+
+
+	<bean id="jnjLatamProductHierarchyPageController"
+		  class="com.jnj.la.browseandsearch.controllers.pages.JnjLatamProductHierarchyPageController">
+		<property name="modelService" ref="modelService" />
+		<property name="userService" ref="userService" />
+		<property name="flexibleSearchService" ref="flexibleSearchService" />
+		<property name="productConverter" ref="productConverter" />
+		<property name="jnjCommonFacadeUtil" ref="JnjCommonFacadeUtil" />
+		<property name="cMSSiteService" ref="cmsSiteService" />
+		<property name="mediaService" ref="mediaService" />
+		<property name="catalogVersionService" ref="catalogVersionService" />
+		<property name="sessionService" ref="sessionService" />
+		<property name="jnjGTProductFacade" ref="jnjGTProductFacade" />
+		<property name="jnjGTB2BUnitFacade" ref="GTB2BUnitFacade" />
+		<property name="jnjGTCustomerFacade" ref="GTCustomerFacade" />
+		<property name="jnjGTProductService" ref="productService" />
+		<property name="productSearchFacade" ref="productSearchFacade" />
+		<property name="commerceCategoryService" ref="commerceCategoryService" />
+		<property name="jnjGTProductCategoryConverter" ref="jnjGTProductCategoryConverter" />
+		<property name="hierarchyBreadcrumbBuilder" ref="hierarchyBreadcrumbBuilder" />
+		<property name="hierarchyModelUrlResolver" ref="hierarchyModelUrlResolver" />
+		<property name="customerLocationService" ref="customerLocationService" />
+		<property name="customerFacade" ref="customerFacade" />
+		<property name="configurationService" ref="configurationService"/>
+	</bean>
+	<alias alias="jnjGTProductHierarchyPageController" name="jnjLatamProductHierarchyPageController" />
+</beans>

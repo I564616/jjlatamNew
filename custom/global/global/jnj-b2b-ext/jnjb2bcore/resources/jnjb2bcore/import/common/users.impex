@@ -1,0 +1,96 @@
+insert_update UserGroup;description;locname[lang=en];uid[unique=true,allow null=true];
+;This is used for displaying My Bid;BID;bidGroup
+;This is used for managing products;Product Catalog;productsGroup 
+;This is used for managing users;Administrator;useradminGroup
+;This is used for managing orders;Place Order;selfOrderGroup
+;This is used for managing orders on behalf;Other Order Group;otherOrderGroup
+;This is used for informing the expected group;Expected Price;expectedPriceGroup
+;This is used accessing the business units for order status, details and reports;Reports;reportsGroup
+;This is used accessing the business units for contract balance;Contract Balance;contractBalanceGroup
+;This is used accessing ConsignmentForm;Consignment;consingmentGroup
+;This is used accessing Synthes Form;Synthes;synthesGroup
+;This is used accessing indirect Customer Form;Insert Indirect Customer;indirectCustomerFormGroup
+;This is used accessing OCD Form;OCD;ocdGroup
+;This is used placing an order on behalf for indirect customer;Indirect Customer;indirectCustomerGroup
+;This is used for price Change;Price Change;priceChangeGroup;
+;This is used for Laudo download;Laudo User Group;laudoUserGroup;
+
+
+insert_update UserGroup;description;locname[lang=en];uid[unique=true,allow null=true];groups(uid)[mode=append];
+;This is used for Distributor;DistributorGroup;distributorGroup;useradminGroup,productsGroup,selfOrderGroup,expectedPriceGroup,bidGroup,reportsGroup,indirectCustomerFormGroup,consingmentGroup,indirectCustomerGroup,ocdGroup,synthesGroup,contractBalanceGroup,laudoUserGroup,otherOrderGroup
+;This is used for main key account Manager;KeyAccountManagerGroup;keyAccountManagerGroup;productsGroup,otherOrderGroup,priceChangeGroup,bidGroup,reportsGroup,consingmentGroup,ocdGroup,synthesGroup,selfOrderGroup,contractBalanceGroup,indirectCustomerGroup,indirectCustomerFormGroup,laudoUserGroup
+;This is used for main account Manager;AccountManagerGroup;accountManagerGroup;productsGroup,otherOrderGroup,priceChangeGroup,bidGroup,reportsGroup,consingmentGroup,ocdGroup,synthesGroup,selfOrderGroup,contractBalanceGroup,indirectCustomerGroup,indirectCustomerFormGroup,laudoUserGroup
+;This is used for main salesRep;SalesRepGroup;salesRepGroup;productsGroup,otherOrderGroup,priceChangeGroup,bidGroup,reportsGroup,consingmentGroup,ocdGroup,synthesGroup,selfOrderGroup,contractBalanceGroup,indirectCustomerGroup,indirectCustomerFormGroup,laudoUserGroup
+;This is used for main salesThirdParty;SalesThirdPartyGroup;salesThirdPartyGroup;productsGroup,otherOrderGroup,expectedPriceGroup,reportsGroup,consingmentGroup,ocdGroup,synthesGroup,selfOrderGroup,contractBalanceGroup,indirectCustomerGroup,indirectCustomerFormGroup,laudoUserGroup
+;This is used for main Government;GovernmentGroup;governmentGroup;useradminGroup,productsGroup,selfOrderGroup,reportsGroup,consingmentGroup,ocdGroup,synthesGroup,contractBalanceGroup,laudoUserGroup
+;This is used for main Retail;RetailGroup;retailGroup;useradminGroup,productsGroup,selfOrderGroup,reportsGroup,consingmentGroup,ocdGroup,synthesGroup,contractBalanceGroup,laudoUserGroup,otherOrderGroup
+;This is used for main Affiliates;AffiliatesGroup;affiliatesGroup;useradminGroup,productsGroup,selfOrderGroup,reportsGroup,consingmentGroup,ocdGroup,synthesGroup,contractBalanceGroup,laudoUserGroup,otherOrderGroup
+;This is used for main Hospital;HospitalGroup;hospitalGroup;useradminGroup,productsGroup,selfOrderGroup,reportsGroup,contractBalanceGroup,consingmentGroup,ocdGroup,synthesGroup,indirectCustomerFormGroup,laudoUserGroup,otherOrderGroup
+#;This is used for a Distributor which has child Distributors;KeyDistributorGroup;keyDistributorGroup;useradminGroup,productsGroup,selfOrderGroup,expectedPriceGroup,bidGroup,reportsGroup,indirectCustomerFormGroup,consingmentGroup,indirectCustomerGroup,ocdGroup,synthesGroup,otherOrderGroup,contractBalanceGroup,laudoUserGroup
+#;This is used for a Hospital which has child Hospitals;KeyHospitalGroup;keyHospitalGroup;useradminGroup,productsGroup,selfOrderGroup,reportsGroup,contractBalanceGroup,consingmentGroup,ocdGroup,synthesGroup,otherOrderGroup,indirectCustomerFormGroup,laudoUserGroup
+;This is used for managing Laudo;Laudo Management Group;laudoManagementGroup;laudoUserGroup
+
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+UserGroup;b2bcustomergroup;;;;;;;;
+;;;;B2BCustomer;+;+;+;-;-
+$END_USERRIGHTS;;;;;
+
+
+update SearchRestriction;code[unique=true];active
+;employee_restriction;false
+
+insert_update UserGroup;description;locname[lang=en];uid[unique=true,allow null=true];groups(uid)[mode=append];
+;This is used for Internal User - No Charge ;No Charge Internal Users;JnjGTInternalNoChargeUser;viewCatalogGroup,requestQuoteGroup,placeOrderGroup,searchOrderGroup 
+
+
+
+#changes for AAOL-2420
+INSERT_UPDATE JnjOrderCreditLimitMsg;code[unique=true];message[lang=en]																	  ;message[lang=es];message[lang=fr]
+					
+;1111				;Thank you! Your order is submitted and is subject to J&J finance department approval.;Message_es	  ;Message_fr						
+;	38	;	The credit limit has been exceeded by &1 &2	;	;
+;	39	;	The credit limit has been exceeded by &1 &2 (delivery block)	;	;
+;	124	;	Credit release: error reading document &	;	;
+;	146	;	Credit control area & does not exist	;	;
+;	147	;	Automatic credit check: info structure & does not exist	;	;
+;	148	;	Credit control area & has not been defined	;	;
+;	149	;	Order receipt/delivery not allowed; credit data not maintained	;	;
+;	150	;	Static credit check: credit limit exceeded &1 &2	;	;
+;	151	;	Static credit check: credit limit exceeded (data cannot be saved) &1 &2	;	;
+;	152	;	Dynamic credit check has been exceeded & &	;	;
+;	153	;	Dynamic credit check: credit limit exceeded (data cannot be saved) &1 &2	;	;
+;	154	;	Order receipt/delivery not possible, credit customer blocked	;	;
+;	155	;	Credit check: maximum document value exceed	;	;
+;	156	;	Credit check: maximum document value exceeded (cannot be saved)	;	;
+;	160	;	Critical credit data changed	;	;
+;	161	;	Critical credit data changed - no updating possible	;	;
+;	162	;	Credit check (next customer check date has passed)	;	;
+;	163	;	Credit: Next customer check date passed (cannot be saved)	;	;
+;	164	;	Credit check (maximum percentage for open items exceeded)	;	;
+;	165	;	Credit: Maximum percentage for open items exceeded (cannot be saved)	;	;
+;	167	;	Credit check: oldest open items overdue (cannot be saved)	;	;
+;	169	;	Credit check: Maximum dunning level exceeded (cannot be saved)	;	;
+;	170	;	Credit user check 1 unsuccessful &1 &2	;	;
+;	171	;	Credit user check 1 unsuccessful &1 &2 (cannot be saved)	;	;
+;	172	;	Credit user check 2 unsuccessful &1 &2	;	;
+;	173	;	Credit user check 2 unsuccessful  &1 &2 (cannot be saved)	;	;
+;	174	;	Credit user check 3 unsuccessful &1 &2	;	;
+;	175	;	Credit user check 3 unsuccessful &1 &2 (cannot be saved)	;	;
+;	176	;	Credit release: error during release in document &	;	;
+;	179	;	For automatic credit check, enter credit group	;	;
+;	180	;	Credit group only necessary for automatic credit check	;	;
+;	183	;	Goods issue from delivery not possible due to credit block	;	;
+;	197	;	Select either static or dynamic credit limit check	;	;
+;	454	;	Credit: Exchange rate from &1 in &2 by date &3 could not be determined	;	;
+;	498	;	Credit memo request already exists for item &1: &2 &3	;	;
+;	523	;	Credit memos already exist for item &1: &2 &3	;	;
+;	541	;	Credit check incorrect: Payer does not exist in document	;	;
+;	659	;	Cannot display credit limit as no credit management account is available	;	;
+;	677	;	Credit data will not be redetermined	;	;
+;	736	;	Credit control area for company code & is not permitted	;	;
+;	781	;	You cannot display credit insurance because no data is available	;	;
+;	849	;	Subsequent function '&' not possible due to a credit block	;	;
+;	859	;	Assembly of production order &1 is blocked due to exceeded credit limit	;	;
+
+#end changes for AAOL-2420

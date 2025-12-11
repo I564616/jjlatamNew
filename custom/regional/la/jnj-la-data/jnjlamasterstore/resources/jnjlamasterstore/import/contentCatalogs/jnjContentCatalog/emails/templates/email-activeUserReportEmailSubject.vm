@@ -1,0 +1,1 @@
+Johnson & Johnson CUSTOMER CONNECT: #if ($ctx.activeUserReport eq "true") Weekly Complete User Report LATAM #else Daily User Report LATAM #end

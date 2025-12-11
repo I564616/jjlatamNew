@@ -1,0 +1,36 @@
+$productCatalog=mddProdCatalog
+$productCatalogName=Master Product Catalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$supercategories=supercategories(code, $catalogVersion)
+$approved=approvalstatus(code)[default='approved']
+$defaultAllowedPriciapls=b2bcustomergroup
+$defaultVariantType=JnjGTVariantProduct
+$defaultCurrenlForPriceList=EUR
+$defaultUnit=BX
+$defaultSalesUnit=EA
+$defaultDeliveryGtinInd=true
+$defaultSalesGtinInd=true
+$defaultNumerator=1
+$defaultPackagingLvlCode=1
+$defaultPackagingLevelQty=1
+
+
+INSERT_UPDATE JnJProduct;code[unique=true];supercategories(code, $catalogVersion)[default='BisenseWebster'];$approved;$catalogVersion;variantType(code)[default=$defaultVariantType];variants(code, $catalogVersion)[mode=append];name[lang=en];description[lang=en];bfs;bfsDescription;catalogId
+;12365500;;;;;12365500|1;DXTEND SCREW NO LOCK D4.5X18MM;DXTEND SCREW NO LOCK D4.5X18MM;ON-VA-DT;DXTEND SCREWS;12365500
+;12365550;;;;;12365550|1;DXTEND SCREW NO LOCK D4.5X188MM;DXTEND SCREW NO LOCK D4.5X188MM;ON-VA-DT;DXTEND SCREWS;12365550
+
+INSERT_UPDATE JnjGTVariantProduct;code[unique=true];$approved;$catalogVersion;unit(code)[default=$defaultUnit];deliveryGtinInd[default=$defaultDeliveryGtinInd];salesGtinInd[default=$defaultSalesGtinInd];numerator[default=$defaultNumerator];packagingLvlCode[default=$defaultPackagingLvlCode];packagingLevelQty[default=$defaultPackagingLevelQty];lwrPackagingLvlUom(code)[default=$defaultSalesUnit];baseProduct(code, $catalogVersion)
+;12365500|1;;;;;;;;;;12365500
+;12365550|1;;;;;;;;;;12365550
+
+
+INSERT_UPDATE PriceRow; product(code, $catalogVersion)[unique=true];currency(isocode)[unique=true][default=$defaultCurrenlForPriceList];price[unique=true];$catalogVersion;unit(code)[default=$defaultUnit]
+;12365500|1;;37;;;
+;12365550|1;;37;;;
+
+
+
+
+
+
+

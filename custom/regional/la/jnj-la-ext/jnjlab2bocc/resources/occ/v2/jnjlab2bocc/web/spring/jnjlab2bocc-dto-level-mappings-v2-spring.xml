@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright (c) 2020 SAP SE or an SAP affiliate company. All rights reserved.
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+
+   <bean parent="fieldSetLevelMapping">
+        <property name="dtoClass"
+                  value="com.jnj.la.b2b.webservicescommons.dto.JnjLatamCartWsDTO"/>
+        <property name="levelMapping">
+            <map>
+                <entry key="BASIC" value="purchaseOrderNumber,code,cartReferenceNumber,sapErrorMessages(FULL),entries(FULL),hasSapErrors,shipToAccount,soldToAccount,deliveryAddress(FULL)"/>
+                <entry key="DEFAULT"
+                       value="BASIC,billingAddress,orderType,expectedShipDate"/>
+                <entry key="FULL"
+                       value="DEFAULT,totalNetValue(FULL),totalFreightFees(FULL),totalGrossPrice(FULL),discountTotal(FULL),totalFees(FULL),totalTax(FULL),totalPrice(FULL),subTotal(FULL)"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean parent="fieldSetLevelMapping">
+        <property name="dtoClass"
+                  value="com.jnj.la.b2b.webservicescommons.dto.JnJLatamOrderWsDTO"/>
+        <property name="levelMapping">
+            <map>
+                <entry key="BASIC" value="code,sapOrderNumber,cartReferenceNumber,purchaseOrderNumber,status,statusDisplay"/>
+                <entry key="DEFAULT"
+                       value="BASIC,calculated,deliveryAddress(DEFAULT),deliveryCost(DEFAULT),entries(DEFAULT),net,site,store,subTotal(DEFAULT),totalDiscounts(DEFAULT),totalPrice(DEFAULT),totalPriceWithTax(DEFAULT),totalTax(DEFAULT),cancellable,created,guestCustomer,orgCustomer(DEFAULT),returnable" />
+                <entry key="FULL"
+                       value="DEFAULT,deliveryAddress(FULL),deliveryCost(FULL),entries(FULL),subTotal(FULL),totalDiscounts(FULL),totalPrice(FULL),totalPriceWithTax(FULL),totalTax(FULL),orgCustomer(FULL)" />
+            </map>
+        </property>
+    </bean>
+
+    <bean parent="fieldSetLevelMapping" >
+        <property name="dtoClass"
+                  value="de.hybris.platform.commercewebservicescommons.dto.order.OrderHistoryWsDTO"/>
+        <property name="levelMapping">
+            <map>
+                <entry key="BASIC" value="sapOrderNumber,cartReferenceNumber,code,status,statusDisplay,purchaseOrderNumber,shipToAccount,soldToAccount,placed,total"/>
+                <entry key="DEFAULT"
+                       value="BASIC,total(DEFAULT)"/>
+                <entry key="FULL" value="DEFAULT,total(FULL)"/>
+            </map>
+        </property>
+    </bean>
+    
+    <bean parent="fieldSetLevelMapping" id="orderEntryWsDTOFieldSetLevelMapping">
+        <property name="dtoClass"
+                  value="de.hybris.platform.commercewebservicescommons.dto.order.OrderEntryWsDTO"/>
+        <property name="levelMapping">
+            <map>
+                <entry key="BASIC" value="entryNumber,quantity,deliveryPointOfService,configurationInfos,statusSummaryList,scheduledLines"/>
+                <entry key="DEFAULT"
+                       value="BASIC,totalPrice,product(DEFAULT),cancellableQuantity,cancelledItemsPrice(DEFAULT),returnableQuantity,returnedItemsPrice(DEFAULT)"/>
+                <entry key="FULL"
+                       value="product(FULL),deliveryPointOfService(FULL),entryNumber,updateable,deliveryMode(FULL),quantity,basePrice(FULL),totalPrice(FULL),configurationInfos(FULL),statusSummaryList,cancellableQuantity,cancelledItemsPrice(FULL),returnableQuantity,returnedItemsPrice(FULL),scheduledLines"/>
+            </map>
+        </property>
+    </bean>
+
+</beans>
+

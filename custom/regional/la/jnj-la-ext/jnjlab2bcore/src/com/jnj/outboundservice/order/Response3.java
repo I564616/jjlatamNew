@@ -1,0 +1,119 @@
+
+package com.jnj.outboundservice.order;
+
+import jakarta.xml.bind.JAXBElement;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementRef;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
+
+
+/**
+ * <p>
+ * Java class for Response3 complex type.
+ *
+ * <p>
+ * The following schema fragment specifies the expected content contained within this class.
+ *
+ * <pre>
+ * &lt;complexType name="Response3">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="statusCode" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="statusMessage" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="error" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
+ *
+ *
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "Response3", propOrder =
+{ "statusCode", "statusMessage", "error" })
+@XmlRootElement(name = "Response3")
+public class Response3
+{
+
+	@XmlElement(required = true, nillable = true)
+	protected String statusCode;
+	@XmlElement(required = true, nillable = true)
+	protected String statusMessage;
+	@XmlElementRef(name = "error", type = JAXBElement.class, required = false)
+	protected JAXBElement<String> error;
+
+	/**
+	 * Gets the value of the statusCode property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getStatusCode()
+	{
+		return statusCode;
+	}
+
+	/**
+	 * Sets the value of the statusCode property.
+	 * 
+	 * @param value
+	 *           allowed object is {@link String }
+	 * 
+	 */
+	public void setStatusCode(final String value)
+	{
+		this.statusCode = value;
+	}
+
+	/**
+	 * Gets the value of the statusMessage property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getStatusMessage()
+	{
+		return statusMessage;
+	}
+
+	/**
+	 * Sets the value of the statusMessage property.
+	 * 
+	 * @param value
+	 *           allowed object is {@link String }
+	 * 
+	 */
+	public void setStatusMessage(final String value)
+	{
+		this.statusMessage = value;
+	}
+
+	/**
+	 * Gets the value of the error property.
+	 * 
+	 * @return possible object is {@link JAXBElement }{@code <}{@link String }{@code >}
+	 * 
+	 */
+	public JAXBElement<String> getError()
+	{
+		return error;
+	}
+
+	/**
+	 * Sets the value of the error property.
+	 * 
+	 * @param value
+	 *           allowed object is {@link JAXBElement }{@code <}{@link String }{@code >}
+	 * 
+	 */
+	public void setError(final JAXBElement<String> value)
+	{
+		this.error = value;
+	}
+
+}

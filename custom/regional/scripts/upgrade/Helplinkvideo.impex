@@ -1,0 +1,50 @@
+$contentCatalog=mstrContentCatalog
+
+$contentCV=catalogVersion(catalog(id[default=$contentCatalog]),version[default='Staged'])
+
+ 
+
+#Language: ES                          
+
+INSERT_UPDATE JnjLinkComponent;$contentCV[unique=true];uid[unique=true];name;url;target(code)[default='sameWindow'];linkName[lang=es];shiftRight[default='false']
+
+;;selfTrainingVideo1_es;Presentación;https://players.brightcove.net/1978808502001/default_default/index.html?videoId=6249503538001;newWindow;Presentación    
+
+;;selfTrainingVideo2_es;Pedidos y Catálogo;https://players.brightcove.net/1978808502001/default_default/index.html?videoId=6249504903001;newWindow;Pedidos y Catálogo
+
+;;selfTrainingVideo3_es;Consultas y Notificaciones;https://players.brightcove.net/1978808502001/default_default/index.html?videoId=6249502213001;newWindow;Consultas y Notificaciones
+
+;;selfTrainingVideo4_es;Contractos y Licitaciones;https://players.brightcove.net/1978808502001/default_default/index.html?videoId=6249503712001;newWindow;Contractos y Licitaciones
+
+;;selfTrainingVideo5_es;Pedidos Recurrentes;https://players.brightcove.net/1978808502001/default_default/index.html?videoId=6249502214001;newWindow;Pedidos Recurrentes
+
+;;selfTrainingVideo6_es;Adjuntar Archivo;https://players.brightcove.net/1978808502001/default_default/index.html?videoId=6249504902001;newWindow;Adjuntar Archivo
+
+;;selfTrainingVideo7_es;Certificados;https://players.brightcove.net/1978808502001/default_default/index.html?videoId=6249503456001;newWindow;Certificados
+
+;;selfTrainingVideo8_es;Pedidos de Archivo;https://players.brightcove.net/1978808502001/default_default/index.html?videoId=6249504818001;newWindow;Pedidos de Archivo                      
+
+
+
+#Language: PT
+
+INSERT_UPDATE JnjLinkComponent;$contentCV[unique=true];uid[unique=true];name;url;target(code)[default='sameWindow'];linkName[lang=pt];shiftRight[default='false']
+
+;;selfTrainingVideo1_pt;Apresentacao;https://players.brightcove.net/1978808502001/default_default/index.html?videoId=6244007313001;newWindow;Apresentacao
+
+;;selfTrainingVideo2_pt;Pedidos e Catalogos;https://players.brightcove.net/1978808502001/default_default/index.html?videoId=6244013114001;newWindow;Pedidos e Catalogos
+
+;;selfTrainingVideo3_pt;Consultas e Notificacoes;https://players.brightcove.net/1978808502001/default_default/index.html?videoId=6244010109001;newWindow;Consultas e Notificacoes
+
+;;selfTrainingVideo4_pt;Contratos e Licitacoes;https://players.brightcove.net/1978808502001/default_default/index.html?videoId=6244012733001;newWindow;Contratos e Licitacoes
+
+;;selfTrainingVideo5_pt;Pedido Recorrente;https://players.brightcove.net/1978808502001/default_default/index.html?videoId=6244012526001;newWindow;Pedido Recorrente
+
+;;selfTrainingVideo6_pt;Anexar Arquivo;https://players.brightcove.net/1978808502001/default_default/index.html?videoId=6244008127001;newWindow;Anexar Arquivo
+
+;;selfTrainingVideo7_pt;Laudos;https://players.brightcove.net/1978808502001/default_default/index.html?videoId=6244008126001;newWindow;Laudos
+
+;;selfTrainingVideo8_pt;Pedido de Arquivo;https://players.brightcove.net/1978808502001/default_default/index.html?videoId=6244007943001;newWindow;Pedido de Arquivo
+
+
+ 

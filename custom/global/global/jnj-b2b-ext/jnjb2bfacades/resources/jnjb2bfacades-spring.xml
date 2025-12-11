@@ -1,0 +1,1532 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- [y] hybris Platform Copyright (c) 2000-2013 hybris AG All rights reserved. 
+	This software is the confidential and proprietary information of hybris ("Confidential 
+	Information"). You shall not disclose such Confidential Information and shall 
+	use it only in accordance with the terms of the license agreement you entered 
+	into with hybris. -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd">
+		
+<!-- 			<alias name="b2bSimpleSuggestionFacade" alias="b2bSimpleSuggestionFacade"/>
+	<bean id="b2bSimpleSuggestionFacade" parent="b2bDefaultSimpleSuggestionFacade">
+		<property name="b2bSimpleSuggestionService" ref="b2bSimpleSuggestionService" />
+		<property name="userService" ref="userService" />
+		<property name="categoryService" ref="categoryService" />
+		<property name="productPricePopulator" ref="productPricePopulator" />
+		<property name="productPrimaryImagePopulator" ref="productPrimaryImagePopulator" />
+		<property name="productConverter" ref="productConverter" />
+	</bean> -->
+	
+	
+
+	<!-- -->
+<!-- 	<alias name="b2bDefaultSimpleSuggestionFacade" alias="b2bSimpleSuggestionFacade" />
+	<bean id="b2bDefaultSimpleSuggestionFacade"
+		class="com.jnj.facades.suggestion.impl.DefaultSimpleSuggestionFacade">
+		<property name="b2bSimpleSuggestionService" ref="b2bSimpleSuggestionService" />
+		<property name="userService" ref="userService" />
+		<property name="categoryService" ref="categoryService" />
+		<property name="productPricePopulator" ref="productPricePopulator" />
+		<property name="productPrimaryImagePopulator" ref="productPrimaryImagePopulator" />
+		<property name="productConverter" ref="productConverter" />
+	</bean> -->
+
+	<bean id="b2bProductFacade" parent="defaultProductFacade">
+		<property name="productConfiguredPopulator" ref="b2bProductConfiguredPopulator" />
+	</bean>
+
+	<bean id="b2bProductConfiguredPopulator" parent="defaultProductConfiguredPopulator">
+		<property name="populators">
+			<map key-type="de.hybris.platform.commercefacades.product.ProductOption"
+				merge="true">
+				<entry key="VOLUME_PRICES" value-ref="productVolumePricesPopulator" />
+			</map>
+		</property>
+	</bean>
+	
+	<alias name="defaultB2BCommerceCostCenterFacade" alias="b2bCommerceCostCenterFacade" />
+	<bean id="defaultB2BCommerceCostCenterFacade"
+		class="de.hybris.platform.b2bacceleratorfacades.company.impl.DefaultB2BCommerceCostCenterFacade"
+		 parent="b2bCommerceFacade">
+	</bean>
+	
+	<alias name="defaultB2BCommerceBudgetFacade" alias="b2bCommerceBudgetFacade" />
+	<bean id="defaultB2BCommerceBudgetFacade"
+		class="de.hybris.platform.b2bacceleratorfacades.company.impl.DefaultB2BCommerceBudgetFacade"
+		 parent="b2bCommerceFacade">
+	</bean>
+
+	<!-- accelerator Image Format Mappings -->
+	<alias name="acceleratorImageFormatMapping" alias="imageFormatMapping" />
+	<bean id="acceleratorImageFormatMapping" parent="defaultImageFormatMapping">
+		<property name="mapping">
+			<map>
+				<entry key="superZoom" value="1200Wx1200H" />
+				<entry key="zoom" value="515Wx515H" />
+				<entry key="store" value="365Wx246H" />
+				<entry key="product" value="300Wx300H" />
+				<entry key="thumbnail" value="96Wx96H" />
+				<entry key="cartIcon" value="65Wx65H" />
+				<entry key="styleSwatch" value="30Wx30H" />
+			</map>
+		</property>
+	</bean>
+
+	<alias name="acceleratorProductPrimaryImagePopulator" alias="productPrimaryImagePopulator" />
+	<bean id="acceleratorProductPrimaryImagePopulator" parent="defaultProductPrimaryImagePopulator">
+		<property name="imageFormats">
+			<list>
+				<value>zoom</value>
+				<value>product</value>
+				<value>thumbnail</value>
+				<value>cartIcon</value>
+			</list>
+		</property>
+	</bean>
+
+	<alias name="acceleratorProductGalleryImagesPopulator" alias="productGalleryImagesPopulator" />
+	<bean id="acceleratorProductGalleryImagesPopulator" parent="defaultProductGalleryImagesPopulator">
+		<property name="imageFormats">
+			<list>
+				<value>zoom</value>
+				<value>product</value>
+				<value>thumbnail</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Email -->
+
+	<alias alias="emailContextFactory" name="acceleratorEmailContextFactory" />
+	<bean id="acceleratorEmailContextFactory" parent="defaultEmailContextFactory">
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy" />
+		<property name="emailContextVariables">
+			<map merge="true">
+				<entry key="themeResourceUrl-powertools" value="{baseUrl}/_ui/{theme}" />
+			</map>
+		</property>
+	</bean>
+
+	<bean id="customerEmailContext"
+		class="com.jnj.facades.process.email.context.CustomerEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="customerConverter" ref="customerConverter" />
+	</bean>
+
+	<bean id="b2bForgottenPasswordEmailContext"
+		class="com.jnj.facades.process.email.context.ForgottenPasswordEmailContext"
+		parent="customerEmailContext" scope="prototype">
+		<property name="customerConverter" ref="customerConverter" />
+	</bean>
+
+	<bean id="orderReplenishmentEmailContext"
+		class="com.jnj.facades.process.email.context.OrderReplenishmentEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="scheduledCartConverter" ref="scheduledCartConverter" />
+	</bean>
+
+	<bean id="b2bOrderNotificationContext"
+		class="com.jnj.facades.process.email.context.OrderNotificationEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="orderConverter" ref="orderConverter" />
+	</bean>
+
+<!-- 	<alias name="defaultB2BCheckoutFlowFacade" alias="b2bCheckoutFlowFacade" />
+	<bean id="defaultB2BCheckoutFlowFacade" class="com.jnj.facades.flow.impl.DefaultB2BCheckoutFlowFacade"
+		parent="defaultB2BCheckoutFacade">
+		<property name="checkoutFlowStrategy" ref="b2bCheckoutFlowStrategy" />
+		<property name="checkoutPciStrategy" ref="b2bCheckoutPciStrategy" />
+	</bean> -->
+
+	<alias name="b2bDefaultStoreFinderFacade" alias="b2bStoreFinderFacade" />
+	<bean id="b2bDefaultStoreFinderFacade"
+		class="de.hybris.platform.commercefacades.storefinder.impl.DefaultStoreFinderFacade">
+		<property name="baseStoreService" ref="baseStoreService" />
+		<property name="storeFinderService" ref="storeFinderService" />
+		<property name="searchPagePointOfServiceDistanceConverter"
+			ref="b2bSearchPagePointOfServiceDistanceConverter" />
+		<property name="pointOfServiceConverter" ref="pointOfServiceConverter" />
+		<property name="pointOfServiceDistanceConverter" ref="pointOfServiceDistanceConverter" />
+	</bean>
+
+	<alias name="b2bDefaultSearchPagePointOfServiceDistanceConverter"
+		alias="b2bSearchPagePointOfServiceDistanceConverter" />
+	<bean id="b2bDefaultSearchPagePointOfServiceDistanceConverter"
+		parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="storeFinderSearchPageData" />
+		<property name="populators">
+			<list>
+				<ref bean="b2bSearchPagePointOfServiceDistancePopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<alias name="yb2bacceleratorSearchPagePointOfServiceDistancePopulator"
+		alias="b2bSearchPagePointOfServiceDistancePopulator" />
+	<bean id="yb2bacceleratorSearchPagePointOfServiceDistancePopulator"
+		class="com.jnj.facades.storefinder.populators.SearchPagePointOfServiceDistancePopulator">
+		<property name="pointOfServiceDistanceConverter" ref="pointOfServiceDistanceConverter" />
+	</bean>
+
+	<!-- JnJ Changes starts -->
+
+	<alias alias="customerProductCodeSearchFacade" name="defaultCustomerProductCodeSearchFacade" />
+	<bean id="defaultCustomerProductCodeSearchFacade"
+		class="com.jnj.facades.search.impl.DefaultCustomerProductCodeSearchFacade">
+		<property name="customerProductCodeSearchService" ref="customerProductCodeSearchService" />
+		<property name="userService" ref="userService" />
+	</bean>
+
+	<bean id="jnjCustomOrderFacade" class="com.jnj.facades.order.impl.DefaultJnjOrderFacade"
+		parent="defaultB2BOrderFacade">
+		<property name="jnjOrderService" ref="jnjOrderService" />
+		<property name="orderConverter" ref="orderConverter" />
+	</bean>
+
+	<bean id="jnjOrderService" class="com.jnj.core.services.impl.DefaultJnjOrderService" />
+
+	<bean id="jnjSubmitOrderCronJob" class="com.jnj.facades.cronjobs.JnjSubmitOrderCronJob"
+		autowire="byName" scope="tenant" />
+	<bean id="jnjUserLoginCronJob" class="com.jnj.facades.cronjobs.JnjUserLoginCronJob"
+		autowire="byName" scope="tenant" />
+	<!-- <bean id="jnjPasswordExpiryEmailCronJob" class="com.jnj.facades.cronjobs.JnjPasswordExpiryEmailCronJob" 
+		autowire="byName" scope="tenant" /> -->
+
+	<!-- Start : Code added for Contact Us -->
+	<bean id="DefaultJnjContactUsFacade" class="com.jnj.facades.help.impl.DefaultJnjContactUsFacade" />
+	<bean id="jnjContactUsEmailContext"
+		class="com.jnj.facades.process.email.context.JnjContactUsEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="customerConverter" ref="customerConverter" />
+	</bean>
+
+	<bean id="jnJCartFacade" class="com.jnj.facades.cart.impl.DefaultJnjCartFacade"
+		parent="cartFacade"/>
+		
+	<bean id="jnjB2BUnitFacade" class="com.jnj.facades.company.DefaultJnjB2BUnitFacade"
+		parent="defaultB2BUnitFacade" />  <!-- removed because deprecated in hybris 6.0 parent="defaultB2BCommerceUnitFacade" -->
+		
+	<!-- End : Code added for Contact Us -->
+
+	<bean id="jnjCreateUserEmailContext"
+		class="com.jnj.facades.process.email.context.JnjCreateUserEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="customerConverter" ref="customerConverter" />
+	</bean>
+
+	<bean id="jnjRegisterEmailContext"
+		class="com.jnj.facades.process.email.context.JnjRegisterEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="customerConverter" ref="customerConverter" />
+	</bean>
+
+
+	<bean id="jnjRegisterUserEmailContext"
+		class="com.jnj.facades.process.email.context.JnjRegisterUserEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="customerConverter" ref="customerConverter" />
+	</bean>
+
+
+	<!-- COMREHENSIVE ORDER NOTIFICATION EMAIL CHANGES-->
+	<bean id="jnjComprehensiveOrderConfirmationEmailContext" class="com.jnj.facades.process.email.context.JnjGTComprehensiveOrderConfirmationEmailContext" parent="abstractEmailContext" 
+		scope="prototype" >
+	</bean>
+	
+	<!-- SHIPMENT CONFIRMATION NOTIFICATION EMAIL CHANGES-->
+	<bean id="jnjShipmentConfirmationEmailContext" class="com.jnj.facades.process.email.context.JnjGTShipmentConfirmationEmailContext" parent="abstractEmailContext" 
+		scope="prototype" >
+		<property name="customerConverter" ref="customerConverter" />
+	</bean>
+	
+	<alias name="jnjSearchResultProductPopulator" alias="commerceSearchResultProductPopulator" />
+	<bean id="jnjSearchResultProductPopulator"
+		class="com.jnj.facades.converters.populator.JnjSearchResultProductPopulator"
+		parent="defaultCommerceSearchResultProductPopulator" />
+
+
+	<alias name="jnjSearchResultProductConverter" alias="commerceSearchResultProductConverter" />
+	<bean id="jnjSearchResultProductConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="jnjProductData" />
+		<property name="populators">
+			<list>
+				<ref bean="commerceSearchResultProductPopulator" />
+				<ref bean="searchResultPickupAvailabilityPopulator" />
+			</list>
+		</property>
+	</bean>
+	<bean id="jnjProductData" class="com.jnj.facades.data.JnjProductData"
+		scope="prototype" />
+
+
+
+	<bean id="jnjTemplateFacade" class="com.jnj.facades.template.impl.DefaultJnjTemplateFacade" />
+
+
+	<!-- changes for Order History converter -->
+
+	<!--<alias name="defaultOrderHistoryConverter" alias="orderHistoryConverter" 
+		/> <bean id="defaultOrderHistoryConverter" parent="abstractPopulatingConverter"> 
+		<lookup-method name="createTarget" bean="jnjOrderHistoryData" /> <property 
+		name="populators"> <list> <ref bean="orderHistoryPopulator" /> </list> </property> 
+		</bean> -->
+	<alias name="jnjOrderHistoryPopulator" alias="orderHistoryPopulator" />
+	<bean id="jnjOrderHistoryPopulator"
+		class="com.jnj.facades.order.converters.populator.JnjOrderHistoryPopulator"
+		parent="defaultOrderHistoryPopulator">
+	</bean>
+	<bean id="jnjOrderHistoryData" class="com.jnj.facades.data.JnjOrderHistoryData"
+		scope="prototype">
+	</bean>
+
+	<!-- Changes done for converter -->
+
+	<!-- <alias name="defaultOrderEntryConverter" alias="orderEntryConverter" 
+		/> <bean id="defaultOrderEntryConverter" parent="abstractPopulatingConverter"> 
+		<lookup-method name="createTarget" bean="jnjOrderEntryData" /> <property 
+		name="populators"> <list> <ref bean="orderEntryPopulator" /> </list> </property> 
+		</bean> -->
+
+
+	<!-- <alias name="jnjOrderEntryPopulator" alias="orderEntryPopulator" /> 
+		<bean id="jnjOrderEntryPopulator" class="com.jnj.facades.order.converters.populator.JnjOrderEntryPopulator" 
+		parent="defaultOrderEntryPopulator"> </bean> -->
+
+
+	<bean id="jnjOrderEntryData" class="com.jnj.facades.data.JnjOrderEntryData"
+		scope="prototype">
+	</bean>
+
+	<!-- JnjOrderPopulator for converting Order Model to JnjOrderData -->
+
+	<!-- <alias name="defaultOrderConverter" alias="orderConverter" /> <bean 
+		id="defaultOrderConverter" parent="abstractPopulatingConverter"> <lookup-method 
+		name="createTarget" bean="jnjOrderData" /> <property name="populators"> <list> 
+		<ref bean="orderPopulator" /> </list> </property> </bean> -->
+
+	<alias name="jnjOrderPopulator" alias="orderPopulator" />
+	<bean id="jnjOrderPopulator"
+		class="com.jnj.facades.order.converters.populator.JnjOrderDataPopulator"
+		parent="defaultOrderPopulator">
+	</bean>
+
+	<bean id="jnjOrderData" class="com.jnj.facades.data.JnjOrderData"
+		scope="prototype">
+	</bean>
+
+	<!-- JnjOrderPopulator for converting Order Model to JnjOrderData changes 
+		done -->
+
+	<!-- Extend Address Converter -->
+
+
+	<!-- <alias name="defaultAddressConverter" alias="addressConverter" /> <bean 
+		id="defaultAddressConverter" parent="abstractPopulatingConverter"> <lookup-method 
+		name="createTarget" bean="jnjAddressData" /> <property name="populators"> 
+		<list> <ref bean="addressPopulator" /> </list> </property> </bean> -->
+
+
+
+	<alias name="jnjAddressPopulator" alias="addressPopulator" />
+	<bean id="jnjAddressPopulator"
+		class="com.jnj.facades.order.converters.populator.JnjAddressPopulator"
+		parent="defaultAddressPopulator">
+	</bean>
+
+	<bean id="jnjAddressData" class="com.jnj.facades.data.JnjAddressData"
+		scope="prototype">
+	</bean>
+
+	<!-- End Extend Address Converter -->
+
+	<!-- PDP Changes [Author: Akash Rawat] -->
+
+	<alias name="jnjProductBasicPopulator" alias="productBasicPopulator" />
+	<bean id="jnjProductBasicPopulator" parent="defaultProductBasicPopulator"
+		class="com.jnj.facades.product.converters.populator.JnjProductBasicPopulator">
+		<property name="commerceCategoryService" ref="commerceCategoryService" />
+	</bean>
+
+
+	<!-- <alias name="defaultProductConverter" alias="productConverter" /> <bean 
+		id="defaultProductConverter" parent="abstractPopulatingConverter"> <lookup-method 
+		name="createTarget" bean="jnjProductData" /> <property name="populators"> 
+		<list> <ref bean="productPopulator" /> </list> </property> </bean> -->
+
+	<!-- PDP Changes Ends -->
+
+	<bean id="jnjCheckoutFacade" class="com.jnj.facades.order.impl.DefaultJnjCheckoutFacade"
+		parent="checkoutFacade" />
+
+	<!-- Home Page/Account Changes [Author: Akash Rawat] Ends -->
+
+
+	<!-- Beans for NFE -->
+	<bean id="jnjNfeFacade" class="com.jnj.facades.nfe.impl.DefaultJnjNfeFacade"></bean>
+	<bean id="jnjNfeMapper" class="com.jnj.facades.nfe.mapper.JnjNfeMapper"></bean>
+	<!-- End of Beans for NFE -->
+
+
+	<!-- Beans for Invoice Entry Data Converter and Populator -->
+	<alias name="jnJInvoiceEntryDataConverter" alias="jnJInvoiceEntryDataConverter" />
+	<bean id="jnJInvoiceEntryDataConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="jnJInvoiceEntryData" />
+		<property name="populators">
+			<list>
+				<ref bean="jnJInvoiceEntryDataPopulator" />
+			</list>
+		</property>
+	</bean>
+	<alias name="jnJInvoiceEntryDataPopulator" alias="jnJInvoiceEntryDataPopulator" />
+	<bean id="jnJInvoiceEntryDataPopulator"
+		class=" com.jnj.facades.invoice.converters.populator.JnJInvoiceEntryDataPopulator">
+		<property name="jnjProductdataConverter" ref="defaultProductConverter" />
+		<property name="productPricePopulator" ref="productPricePopulator" />
+
+	</bean>
+	<bean id="jnJInvoiceEntryData" class="com.jnj.facades.data.JnJInvoiceEntryData"
+		scope="prototype" />
+	<!-- End of Beans for Invoice Entry Data Converter and Populator -->
+
+	<!-- ********** Start Bean for JnjCartConvertor -->
+
+	<!-- Over ride in NA Code base <alias name="defaultCartConverter" alias="cartConverter" 
+		/> <bean id="defaultCartConverter" parent="abstractPopulatingConverter"> 
+		<lookup-method name="createTarget" bean="jnjCartData" /> <property name="populators"> 
+		<list> <ref bean="jnjCartPopulator" /> </list> </property> </bean> <bean 
+		id="jnjCartPopulator" class="com.jnj.facades.order.converters.populator.JnjCartPopulator" 
+		parent="defaultCartPopulator"> </bean> <bean id="jnjCartData" class="com.jnj.facades.data.JnjCartData" 
+		scope="prototype" /> -->
+	<!-- End Bean for JnjCartConvertor -->
+
+
+
+	<!-- Beans for Invoice Data Converter and Populator -->
+	<alias name="jnJInvoiceOrderDataConverter" alias="jnJInvoiceOrderDataConverter" />
+	<bean id="jnJInvoiceOrderDataConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="jnJInvoiceOrderData" />
+		<property name="populators">
+			<list>
+				<ref bean="jnJInvoiceOrderDataPopulator" />
+			</list>
+		</property>
+	</bean>
+	<alias name="jnJInvoiceOrderDataPopulator" alias="jnJInvoiceOrderDataPopulator" />
+	<bean id="jnJInvoiceOrderDataPopulator"
+		class="com.jnj.facades.invoice.converters.populator.JnJInvoiceOrderDataPopulator">
+		<property name="jnJInvoiceEntryDataConverter" ref="jnJInvoiceEntryDataConverter" />
+		<property name="priceDataFactory" ref="priceDataFactory" />
+	</bean>
+	<bean id="jnJInvoiceOrderData" class="com.jnj.facades.data.JnJInvoiceOrderData"
+		scope="prototype" />
+	<!-- End of Beans for Invoice Data Converter and Populator -->
+
+
+	<!-- Beans for Invoice Facade -->
+	<bean id="jnjInvoiceFacade" class="com.jnj.facades.invoice.impl.DefaultJnjInvoiceFacade">
+		<property name="jnJInvoiceOrderDataConverter" ref="jnJInvoiceOrderDataConverter" />
+	</bean>
+	<!-- End of Beans for Invoice Facade -->
+
+	<!-- Beans for Registration Customer Facade : START -->
+	<alias name="jnjCustomerFacade" alias="jnjCustomerFacade" />
+	<bean id="jnjCustomerFacade" class="com.jnj.facades.customer.impl.DefaultJnjCustomerFacade">
+		<property name="userService" ref="userService" />
+		<property name="customerAccountService" ref="customerAccountService" />
+		<property name="commonI18NService" ref="commonI18NService" />
+		<property name="modelService" ref="modelService" />
+		<property name="cartService" ref="cartService" />
+		<property name="commerceCartService" ref="commerceCartService" />
+		<property name="sessionService" ref="sessionService" />
+		<property name="storeSessionFacade" ref="storeSessionFacade" />
+		<property name="userFacade" ref="userFacade" />
+		<property name="addressReversePopulator" ref="addressReversePopulator" />
+		<property name="customerReversePopulator" ref="customerReversePopulator" />
+		<property name="customerConverter" ref="customerConverter" />
+		<property name="addressConverter" ref="addressConverter" />
+		<property name="titleConverter" ref="titleConverter" />
+		<property name="creditCardPaymentInfoConverter" ref="creditCardPaymentInfoConverter" />
+		<property name="customerNameStrategy" ref="customerNameStrategy" />
+		<property name="passwordEncoderService" ref="passwordEncoderService" />
+		<property name="orderFacade" ref="orderFacade" />
+		<property name="b2bUnitService" ref="b2bUnitService" />
+		<property name="i18nService" ref="i18nService" />
+		<property name="secureTokenService" ref="secureTokenService" />
+		<property name="b2BUserGroupsLookUpStrategy" ref="b2bUserGroupsLookUpStrategy" />
+		<property name="tokenValiditySeconds"
+			value="#{configurationService.configuration.getProperty('jnj.na.tokenValiditySeconds.reset.password')}" />
+		<property name="cartCleanStrategy">
+			<bean name="cartCleanStrategy"
+				class="de.hybris.platform.commerceservices.strategies.impl.DefaultCartValidationStrategy">
+				<property name="modelService" ref="modelService" />
+				<property name="cartService" ref="cartService" />
+				<property name="productService" ref="productService" />
+				<property name="commerceStockService" ref="commerceStockService" />
+				<property name="baseStoreService" ref="baseStoreService" />
+				<property name="userService" ref="userService" />
+				<property name="configurationService" ref="configurationService"/>
+			</bean>
+		</property>
+		<property name="baseSiteService" ref="baseSiteService" />
+		<property name="baseStoreService" ref="baseStoreService" />
+		<property name="userMatchingService" ref="userMatchingService" />
+		<property name="eventService" ref="eventService" />
+	</bean>
+	<!-- Beans for Registration Customer Facade : END -->
+
+
+	<!-- Beans for Template EntryConverter -->
+	<alias name="jnjTemplateEntryDataConverter" alias="jnjTemplateEntryDataConverter" />
+	<bean id="jnjTemplateEntryDataConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="jnjTemplateEntryData" />
+		<property name="populators">
+			<list>
+				<ref bean="jnjTemplateEntryDataPopulator" />
+			</list>
+		</property>
+	</bean>
+	<alias name="jnjTemplateEntryDataPopulator" alias="jnjTemplateEntryDataPopulator" />
+	<bean id="jnjTemplateEntryDataPopulator"
+		class="com.jnj.facades.template.converters.populator.JnjTemplateEntryDataPopulator">
+	</bean>
+	<bean id="jnjTemplateEntryData" class="com.jnj.facades.data.JnjTemplateEntryData"
+		scope="prototype" />
+	<!-- End Beans for Template EntryConverter -->
+
+	<!-- Beans for Order Template Converter -->
+
+
+	<alias name="jnjOrderTemplateDataConverter" alias="jnjOrderTemplateDataConverter" />
+	<bean id="jnjOrderTemplateDataConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="jnjOrderTemplateData" />
+		<property name="populators">
+			<list>
+				<ref bean="jnjOrderTemplateDataPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<alias name="jnjOrderTemplateDataPopulator" alias="jnjOrderTemplateDataPopulator" />
+	<bean id="jnjOrderTemplateDataPopulator"
+		class="com.jnj.facades.template.converters.populator.JnjOrderTemplateDataPopulator">
+		<property name="jnjTemplateEntryDataConverter" ref="jnjTemplateEntryDataConverter" />
+	</bean>
+
+	<bean id="jnjOrderTemplate" class="com.jnj.facades.data.JnjOrderTemplateData"
+		scope="prototype" />
+
+	<!-- End Beans for Order Template Converter -->
+
+	<!-- Beans for Order Template Converter -->
+
+	<!-- End Beans for Order Template Converter -->
+
+	<!-- Redefine miniCartConverter for pass JnjCartData -->
+	<!-- <alias name="jnjMiniCartConverter" alias="miniCartConverter" /> <bean 
+		id="jnjMiniCartConverter" parent="abstractPopulatingConverter"> <lookup-method 
+		name="createTarget" bean="jnjCartData" /> <property name="populators"> <list> 
+		<ref bean="miniCartPopulator" /> </list> </property> </bean> -->
+
+	<bean id="jnjContentSearchFacade"
+		class="com.jnj.facades.search.solrfacetsearch.impl.JnjSolrContentSearchFacade" />
+
+
+
+
+
+	<bean id="jnjContentData" class="com.jnj.facades.data.JnjContentData"
+		scope="prototype" />
+
+	<bean id="jnjContentSearchPageConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="facetSearchPageData" />
+		<property name="populators">
+			<list>
+				<ref bean="jnjContentSearchPagePopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="jnjContentSearchPagePopulator"
+		class="com.jnj.facades.search.converters.populator.JnjContentSearchPagePopulator" />
+
+	<bean id="jnjSearchResultContentConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="jnjContentData" />
+		<property name="populators">
+			<list>
+				<ref bean="jnjSearchResultContentPopulator" />
+			</list>
+		</property>
+	</bean>
+	<bean id="jnjSearchResultContentPopulator"
+		class="com.jnj.facades.search.converters.populator.JnjSearchResultContentPopulator" />
+
+	<alias name="JnjCommonFacadeUtil" alias="JnjCommonFacadeUtil" />
+	<bean id="JnjCommonFacadeUtil" class="com.jnj.facade.util.impl.DefaultJnjCommonFacadeUtil" />
+	<alias name="jnjNewsReleasesFacade" alias="jnjNewsReleasesFacade" />
+	<bean id="jnjNewsReleasesFacade" class="com.jnj.facades.news.impl.DefaultJnjNewsReleasesFacade">
+		<property name="jnjNewsReleasesDataConverter" ref="jnjNewsReleasesDataConverter" />
+	</bean>
+
+	<!-- Bean for JnjPriceDataFactory -->
+	<alias name="jnjPriceDataFactory" alias="priceDataFactory" />
+	<bean id="jnjPriceDataFactory" class="com.jnj.facade.util.impl.JnjPriceDataFactory">
+		<property name="commonI18NService" ref="commonI18NService" />
+		<property name="i18NService" ref="i18NService" />
+		<property name="commerceCommonI18NService" ref="commerceCommonI18NService" />
+	</bean>
+
+	<!-- Bean for Custom B2bAcceleratorCartToOrderJob -->
+	<bean id="jnjB2bAcceleratorCartToOrderJob"
+		class="com.jnj.facades.order.impl.JnjB2bAcceleratorCartToOrderJob"
+		parent="abstractJobPerformable">
+	</bean>
+
+	<!-- End of Bean for Custom B2bAcceleratorCartToOrderJob -->
+
+	<!-- Bean for Custom B2BAcceleratorScheduleOrderService 
+	<alias name="jnjB2BAcceleratorScheduleOrderService" alias="b2bAcceleratorScheduleOrderService" />
+	<bean id="jnjB2BAcceleratorScheduleOrderService"
+		class="com.jnj.facades.order.impl.JnjB2BAcceleratorScheduleOrderService"
+		parent="defaultB2BAcceleratorScheduleOrderService">
+		<property name="cartToOrderJobBeanId" value="jnjB2bAcceleratorCartToOrderJob" />
+	</bean>
+	 End of Bean for Custom B2BAcceleratorScheduleOrderService -->
+	<bean id="jnjInvoiceDocMapper" class="com.jnj.facades.order.impl.DefaultJnjInvoiceDocMapper" />
+
+
+
+	<!-- Beans for JnjNewsReleasesData Converter and Populator -->
+	<alias name="jnjNewsReleasesDataConverter" alias="jnjNewsReleasesDataConverter" />
+	<bean id="jnjNewsReleasesDataConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="jnjNewsReleasesData" />
+		<property name="populators">
+			<list>
+				<ref bean="jnjNewsReleasesDataPopulator" />
+			</list>
+		</property>
+	</bean>
+	<alias name="jnjNewsReleasesDataPopulator" alias="jnjNewsReleasesDataPopulator" />
+	<bean id="jnjNewsReleasesDataPopulator"
+		class=" com.jnj.facades.news.converters.populator.JnjNewsReleasesDataPopulator">
+	</bean>
+	<bean id="jnjNewsReleasesData" class="com.jnj.facades.data.JnjNewsReleasesData"
+		scope="prototype" />
+	<!-- End of Beans for JnjNewsReleasesData Converter and Populator -->
+
+	<!-- Start of Bean for JnjProductFacade -->
+	<bean id="jnjProductFacade" class="com.jnj.facades.product.impl.DefaultJnjProductFacade" parent="productFacade"> 	
+	</bean>
+	<!-- End of Bean for JnjProductFacade -->
+
+	<!-- Start of Bean for JnjCmsComponentFacade -->
+	<bean id="jnjCmsComponentFacade"
+		class="com.jnj.facades.component.impl.DefaultJnjCmsComponentFacade"></bean>
+	<!-- End of Bean for JnjProductFacade -->
+
+	<!-- Redfine Bean In NA -->
+	<!-- <bean id="jnjScheduleLinePopulator" class="com.jnj.facades.order.converters.populator.JnjScheduleLinePopulator"></bean> -->
+
+
+	<bean id="jnjInterfaceNotificationContext"
+		class="com.jnj.facades.process.email.context.JnjInterfaceNotificationContext"
+		parent="customerEmailContext" scope="prototype">
+	</bean>
+
+	<bean id="jnjOrderStatusNotificationEmailContext"
+		class="com.jnj.facades.process.email.context.JnjOrderStatusNotificationEmailContext"
+		parent="customerEmailContext" scope="prototype">
+	</bean>
+
+	<!-- Start of Bean for jnjEmailNotification -->
+	<bean id="jnjEmailNotificationFacade"
+		class="com.jnj.core.facades.email.notification.impl.DefaultJnjEmailNotificationFacade"></bean>
+	<!-- End of Bean for jnjEmailNotification -->
+
+	<!-- NA Customer Facade -->
+        <alias name="jnjGTCustomerFacade" alias="GTCustomerFacade" />
+	<bean id="jnjGTCustomerFacade"
+		class="com.jnj.facades.customer.impl.DefaultJnjGTCustomerFacade"
+		parent="jnjCustomerFacade" scope="tenant">
+		<property ref="jnjGTCustomerBasicConverter" name="customerBasicConverter" />
+	</bean>
+	<bean id="cartCleanStrategy" name="cartCleanStrategy"
+		class="de.hybris.platform.commerceservices.strategies.impl.DefaultCartValidationStrategy">
+		<property name="modelService" ref="modelService" />
+		<property name="cartService" ref="cartService" />
+		<property name="productService" ref="productService" />
+		<property name="commerceStockService" ref="commerceStockService" />
+		<property name="baseStoreService" ref="baseStoreService" />
+		<property name="userService" ref="userService" />
+		<property name="configurationService" ref="configurationService"/>
+	</bean>
+
+	<alias name="jnJGTCartFacade" alias="GTCartFacade" />
+	<bean id="jnJGTCartFacade" class="com.jnj.facades.cart.impl.DefaultJnjGTCartFacade"
+		parent="jnJCartFacade" />
+
+	<!-- Start: Override bean for order entry populator -->
+
+	<alias name="defaultOrderEntryConverter" alias="orderEntryConverter" />
+	<bean id="defaultOrderEntryConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="jnjGTOrderEntryData" />
+		<property name="populators">
+			<list>
+				<ref bean="orderEntryPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<alias name="jnjGTOrderEntryPopulator" alias="orderEntryPopulator" />
+	<bean id="jnjGTOrderEntryPopulator"
+		class="com.jnj.facades.order.converters.populator.JnjGTOrderEntryPopulator"
+		parent="defaultOrderEntryPopulator">
+	</bean>
+
+	<!-- End : Override bean for order entry populator -->
+
+	<!-- Start of Bean for JnjScheduleLinePopulator-->
+	<!-- converter for ScheduleLinePopulator -->
+	<alias name="defaultScheduleLineConverter" alias="scheduleLineConverter" />
+	<bean id="defaultScheduleLineConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="jnjGTOrderEntryData" />
+		<property name="populators">
+			<list>
+				<ref bean="scheduleLinePopulator" />
+			</list>
+		</property>
+	</bean>
+	
+	<alias name="jnjScheduleLinePopulator" alias="scheduleLinePopulator" />
+	<bean id="jnjScheduleLinePopulator"
+		class="com.jnj.facades.order.converters.populator.JnjGTScheduleLinePopulator"></bean>
+	<!-- End of Bean for JnjScheduleLinePopulator -->
+
+
+	<bean id="jnjGTOrderEntryData" class="com.jnj.facades.data.JnjGTOrderEntryData"
+		scope="prototype">
+	</bean>
+
+	<!-- JnjGTOrderPopulator for converting Order Model to JnjGTOrderData Starts -->
+
+	<alias name="defaultOrderConverter" alias="orderConverter" />
+	<bean id="defaultOrderConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="jnjGTOrderData" />
+		<property name="populators">
+			<list>
+				<ref bean="orderPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<alias name="jnjGTOrderPopulator" alias="orderPopulator" />
+	<bean id="jnjGTOrderPopulator"
+		class="com.jnj.facades.order.converters.populator.JnjGTOrderDataPopulator"
+		parent="defaultOrderPopulator">
+		<property name="b2bPaymentTypeConverter" ref="paymentTypeDataConverter" />
+		<property name="jnjGTSurgeryPopulator" ref="jnjGTSurgeryPopulator" />
+	</bean>
+	<bean id="jnjGTOrderData" class="com.jnj.facades.data.JnjGTOrderData" scope="prototype">
+	</bean>
+<bean id="jnjGTMockOrderPopulator"
+		class="com.jnj.facades.order.converters.populator.JnjGTMockOrderDataPopulator"
+		parent="defaultOrderPopulator">
+		<property name="b2bPaymentTypeConverter" ref="paymentTypeDataConverter" />
+		<property name="jnjGTSurgeryPopulator" ref="jnjGTSurgeryPopulator" />
+	</bean> 
+ 
+
+	<!-- JnjGTOrderPopulator for converting Order Model to JnjGTOrderData changes 
+		Ends -->
+
+	<alias name="defaultCartConverter" alias="cartConverter" />
+	<bean id="defaultCartConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="jnjGTCartData" />
+		<property name="populators">
+			<list>
+				<ref bean="jnjGTCartPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="jnjGTCartPopulator"
+		class="com.jnj.facades.order.converters.populator.JnjGTCartPopulator"
+		parent="defaultCartPopulator">
+		<property name="jnjGTSurgeryPopulator" ref="jnjGTSurgeryPopulator" />
+	</bean>
+
+	<bean id="jnjGTCartData" class="com.jnj.facades.data.JnjGTCartData"
+		scope="prototype" />
+
+
+	<!-- Redefine miniCartConverter for pass JnjCartData -->
+	<alias name="jnjMiniCartConverter" alias="miniCartConverter" />
+	<bean id="jnjMiniCartConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="jnjGTCartData" />
+		<property name="populators">
+			<list>
+				<ref bean="jnjGTMiniCartPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="jnjGTMiniCartPopulator"
+		class="com.jnj.facades.order.converters.populator.JnjGTMiniCartPopulator"
+		parent="miniCartPopulator">
+	</bean>
+
+
+	<!-- PRODUCT [BROWSE & SEARCH] Changes [Author: Akash Rawat] -->
+	<alias name="jnjGTProductBasicPopulator" alias="productBasicPopulator" />
+	<bean id="jnjGTProductBasicPopulator" parent="defaultProductBasicPopulator"
+		class="com.jnj.facades.product.converters.populator.JnjGTProductBasicPopulator">
+		<property name="productPricePopulator" ref="productPricePopulator"></property>
+		<!-- KIT ADDED  -->
+		<property name="jnjGTProductKitPopulator" ref="jnjGTProductKitPopulator" />
+	</bean>
+
+	<alias name="jnjGTProductPopulator" alias="productPopulator" />
+	<bean id="jnjGTProductPopulator"
+		class="com.jnj.facades.product.converters.populator.JnjGTProductPopulator">
+		<property name="productBasicPopulator" ref="productBasicPopulator" />
+		<property name="variantSelectedPopulator" ref="variantSelectedPopulator" />
+		<property name="productPrimaryImagePopulator" ref="productPrimaryImagePopulator" />
+		<property name="productModelUrlResolver" ref="productModelUrlResolver" />
+	</bean>
+
+	<alias name="defaultProductConverter" alias="productConverter" />
+	<bean id="defaultProductConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="jnjGTProductData" />
+		<property name="populators">
+			<list>
+				<ref bean="productPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="jnjGTProductData" class="com.jnj.facades.data.JnjGTProductData"
+		scope="prototype" />
+		
+	<!--Alias name for JnjGTProductFacade- Dropshipment changes  -->
+	<alias name="jnjGTProductFacade" alias="GTProductFacade" />
+	<bean id="jnjGTProductFacade" class="com.jnj.facades.product.impl.DefaultJnjGTProductFacade" parent="jnjProductFacade">
+		<property name="jnjGtProductDataConverter" ref="productConverter" />
+		<property name="jnjGTCpsiaDataConverter" ref="jnjGTCpsiaDataConverter" />
+		<property name="jnjGTCpsiaCertificateDataConverter" ref="jnjGTCpsiaCertificateDataConverter" />
+		<property name ="jnjGTProductCarouselDataConverter" ref="jnjGTProductCarouselDataConverter"/>
+	</bean>
+
+	<alias name="JnjGTProductModelUrlResolver" alias="productModelUrlResolver" />
+	<bean id="JnjGTProductModelUrlResolver"
+		class="com.jnj.core.services.product.url.JnjGTProductModelUrlResolver"
+		parent="defaultProductModelUrlResolver">
+	</bean>
+
+	<!-- END OF PRODUCT [BROWSE & SEARCH] Changes [Author: Akash Rawat] -->
+
+	<!-- START : Customer Basic Populator / Converter / Data [Author : sanchit.a.kumar] -->
+	<bean id="jnjGTCustomerBasicPopulator"
+		class="com.jnj.facades.converters.populator.customer.JnjGTCustomerBasicPopulator" />
+	<bean id="jnjGTCustomerBasicConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="jnjGTCustomerBasicData" />
+		<property name="populators">
+			<list>
+				<ref bean="jnjGTCustomerBasicPopulator" />
+			</list>
+		</property>
+	</bean>
+	<bean id="jnjGTCustomerBasicData" class="com.jnj.facades.data.JnjGTCustomerBasicData"
+		scope="prototype" />
+	<!-- END : Customer Basic Populator / Converter / Data [Author : sanchit.a.kumar] -->
+         <alias name="jnjGTOrderFacade" alias="GTOrderFacade" />
+
+	<bean id="jnjGTOrderFacade" name="jnjGTOrderFacade"
+		class="com.jnj.facades.order.impl.DefaultJnjGTOrderFacade" parent="jnjCustomOrderFacade"
+		scope="tenant" />
+
+	<bean id="jnjGTOrderTemplateFacade" name="jnjGTOrderTemplateFacade"
+		class="com.jnj.facades.template.impl.DefaultJnjGTOrderTemplateFacade"
+		parent="jnjTemplateFacade" scope="tenant" />
+	<!-- Self Registration Flow -->
+	<alias name="jnjGTAddressReversePopulator" alias="addressReversePopulator" />
+	<bean id="jnjGTAddressReversePopulator"
+		class="com.jnj.facades.converters.populator.customer.JnjGTAddressReversePopulator"
+		parent="defaultAddressReversePopulator" scope="tenant">
+	</bean>
+	<alias name="jnjGTCompanyInfoReversePopulator" alias="companyInfoReversePopulator" />
+	<bean id="jnjGTCompanyInfoReversePopulator"
+		class="com.jnj.facades.converters.populator.customer.JnjGTCompanyInfoReversePopulator">
+	</bean>
+	<alias name="jnjGTCustomerReversePopulator" alias="customerReversePopulator" />
+	<bean id="jnjGTCustomerReversePopulator"
+		class="com.jnj.facades.converters.populator.customer.JnjGTCustomerReversePopulator"
+		scope="tenant">
+		<property name="customerNameStrategy" ref="customerNameStrategy" />
+	</bean>
+	
+	<bean parent="modifyPopulatorList">
+		<property name="list" ref="customerReverseConverter"/>
+		<property name="add" ref="jnjGTCustomerReversePopulator"/>
+	</bean>
+
+	<alias name="jnjGTB2BUnitFacade" alias="GTB2BUnitFacade" />
+	<bean id="jnjGTB2BUnitFacade" name="jnjGTUnitFacade"
+		class="com.jnj.facades.company.impl.DefaultJnjGTB2BUnitFacade" parent="jnjB2BUnitFacade"
+		scope="tenant" />
+
+	<!-- User Profile Changes  -->
+
+	<alias name="jnjGTCustomerPopulator" alias="customerPopulator" />
+	<bean id="jnjGTCustomerPopulator"
+		class="com.jnj.facades.converters.populator.customer.JnjGTCustomerPopulator"
+		parent="defaultCustomerPopulator">
+		<property name="addressConverter" ref="addressConverter" />
+	</bean>
+
+	<bean id="jnjGTCustomerData" class="com.jnj.facades.data.JnjGTCustomerData"
+		scope="prototype">
+	</bean>
+
+	<alias name="defaultCustomerConverter" alias="customerConverter" />
+	<bean id="defaultCustomerConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="jnjGTCustomerData" />
+		<property name="populators">
+			<list>
+				<ref bean="jnjGTCustomerPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="jnjGTAddressData" class="com.jnj.facades.data.JnjGTAddressData"
+		scope="prototype">
+	</bean>
+
+	<alias name="jnjGTAddressPopulator" alias="addressPopulator" />
+	<bean id="jnjGTAddressPopulator"
+		class="com.jnj.facades.converters.populator.address.JnjGTAddressPopulator"
+		parent="defaultAddressPopulator">
+	</bean>
+	<alias name="defaultAddressConverter" alias="addressConverter" />
+	<bean id="defaultAddressConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="jnjGTAddressData" />
+		<property name="populators">
+			<list>
+				<ref bean="jnjGTAddressPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- SITE ORDER MGMT. CHANGES [ORDER HISTORY] Changes [Author: Akash Rawat] -->
+	<alias name="defaultOrderHistoryConverter" alias="orderHistoryConverter" />
+	<bean id="defaultOrderHistoryConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="jnjgtOrderHistoryData" />
+		<property name="populators">
+			<list>
+				<ref bean="orderHistoryPopulator" />
+			</list>
+		</property>
+	</bean>
+	<alias name="jnjGTOrderHistoryPopulator" alias="orderHistoryPopulator" />
+	<bean id="jnjGTOrderHistoryPopulator"
+		class="com.jnj.facades.order.converters.populator.JnjGTOrderHistoryPopulator"
+		parent="defaultOrderHistoryPopulator" />
+	<bean id="jnjgtOrderHistoryData" class="com.jnj.facades.data.JnjGTOrderHistoryData"
+		scope="prototype" />
+
+	<bean id="jnjGTOrderEntryProductPopulator"
+		class="com.jnj.facades.product.converters.populator.JnjGTOrderEntryProductPopulator"
+		parent="defaultProductUrlPopulator">
+		<property name="productPrimaryImagePopulator" ref="productPrimaryImagePopulator" />
+		<property name="productPricePopulator" ref="productPricePopulator"></property>
+	</bean>
+
+
+	<!-- END OF SITE ORDER MGMT. CHANGES [ORDER HISTORY] Changes-->
+
+	<!-- Start : Successful Registration Email -->
+	<bean id="jnjGTSuccessfulRegistrationEmailContext"
+		class="com.jnj.facades.process.email.context.JnjGTSuccessfulRegistrationEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="customerConverter" ref="customerConverter" />
+	</bean>
+
+	<bean id="jnjGTSupervisorApprovalEmailContext"
+		class="com.jnj.facades.process.email.context.JnjGTSupervisorApprovalEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="customerConverter" ref="customerConverter" />
+	</bean>
+	<!-- End : Successful Registration Email -->
+	<!-- Start : Registration Confirmation Email -->
+	<bean id="jnjGTRegistrationConfirmationEmailContext"
+		class="com.jnj.facades.process.email.context.JnjGTRegistrationConfirmationEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="customerConverter" ref="customerConverter" />
+	</bean>
+	<!-- End : Registration Confirmation Email -->
+	<!-- Start : Add Account Confirmation Email -->
+
+	<bean id="jnjAddAccountEmailContext"
+		class="com.jnj.facades.process.email.context.JnjGTAddAccountEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="customerConverter" ref="customerConverter" />
+	</bean>
+	<!-- Start : Add Account Email -->
+
+	<!-- Start : Add ExistingAccount Confirmation Email -->
+	<bean id="jnjAddExistingAccountEmailContext"
+		class="com.jnj.facades.process.email.context.JnjGTAddExistingAccountEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="customerConverter" ref="customerConverter" />
+	</bean>
+
+	<!-- End : Add ExistingAccount Email -->
+	<!-- Start : Contact Us Email -->
+	<bean id="jnjGTContactUsEmailContext"
+		class="com.jnj.facades.process.email.context.JnjGTContactUsEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="customerConverter" ref="customerConverter" />
+	</bean>
+
+        <alias name="jnjGTContactUsFacade" alias="ContactUsFacade" />
+	<bean id="jnjGTContactUsFacade" class="com.jnj.facades.help.impl.DefaultJnjGTContactUsFacade"
+		parent="DefaultJnjContactUsFacade" />
+	<!-- End : Contact Us Email -->
+
+	<!-- Disable User Login email -->
+
+	<bean id="jnjGTDisableUserLoginEmailContext"
+		class="com.jnj.facades.process.email.context.JnjGTDisableUserLoginEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="customerConverter" ref="customerConverter" />
+	</bean>
+
+	<!-- END Disable User Login -->
+
+	<!-- Start : Solr Result Populator -->
+	<alias name="jnjGTSearchResultProductPopulator" alias="commerceSearchResultProductPopulator" />
+	<bean id="jnjGTSearchResultProductPopulator"
+		class="com.jnj.facades.converters.populator.JnjGTSearchResultProductPopulator"
+		parent="defaultCommerceSearchResultProductPopulator" />
+
+	<alias name="jnjGTSearchResultProductConverter" alias="commerceSearchResultProductConverter" />
+	<bean id="jnjGTSearchResultProductConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="jnjGTProductData" />
+		<property name="populators">
+			<list>
+				<ref bean="commerceSearchResultProductPopulator" />
+				<ref bean="searchResultPickupAvailabilityPopulator" />
+			</list>
+		</property>
+	</bean>
+	<!-- End : Solr Result Populator -->
+	<!-- Added for User Reports -->
+	<alias name="jnJGTReportsFacade" alias="GTReportsFacade" />
+	<bean id="jnJGTReportsFacade" class="com.jnj.facades.reports.impl.DefaultJnjGTReportsFacade">
+		<property name="jnjGTReportsService" ref="jnjGTReportsService" />
+	</bean>
+
+
+	<bean id="jnjGTShippingMethodPopulator"
+		class="com.jnj.facades.order.converters.populator.JnjGTShippingMethodPopulator" />
+
+	<bean id="jnjGTContractUsFacade" class="com.jnj.facades.help.impl.DefaultJnjGTContactUsFacade"
+		parent="DefaultJnjContactUsFacade" />
+	<!-- START: INVOICE DETAIL PAGE CHANGES -->
+
+	<bean id="jnjGTInvoiceFacade" class="com.jnj.facades.invoice.impl.DefaultJnjGTInvoiceFacade">
+		<property name="jnjGTInvoiceOrderDataConverter" ref="jnjGTInvoiceOrderDataConverter"></property>
+	</bean>
+
+	<!-- INVOICE DATA CONVERTER & POPULATOR -->
+	<alias name="jnjGTInvoiceOrderDataConverter" alias="jnjGTInvoiceOrderDataConverter" />
+	<bean id="jnjGTInvoiceOrderDataConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="jnjGTInvoiceOrderData" />
+		<property name="populators">
+			<list>
+				<ref bean="jnjGTInvoiceOrderDataPopulator" />
+			</list>
+		</property>
+	</bean>
+	<alias name="jnjGTInvoiceOrderDataPopulator" alias="jnjGTInvoiceOrderDataPopulator" />
+	<bean id="jnjGTInvoiceOrderDataPopulator"
+		class="com.jnj.facades.invoice.coverters.populator.JnjGTInvoiceOrderDataPopulator">
+		<property name="jnjGTInvoiceEntryDataConverter" ref="jnjGTInvoiceEntryDataConverter" />
+	</bean>
+	<bean id="jnjGTInvoiceOrderData" class="com.jnj.facades.data.JnjGTInvoiceOrderData"
+		scope="prototype" />
+
+
+	<!-- INVOICE ENTRY DATA CONVERTER & POPULATOR -->
+	<alias name="jnjGTInvoiceEntryDataConverter" alias="jnjGTInvoiceEntryDataConverter" />
+	<bean id="jnjGTInvoiceEntryDataConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="jnjGTInvoiceEntryData" />
+		<property name="populators">
+			<list>
+				<ref bean="jnjGTInvoiceEntryDataPopulator" />
+			</list>
+		</property>
+	</bean>
+	<alias name="jnjGTInvoiceEntryDataPopulator" alias="jnjGTInvoiceEntryDataPopulator" />
+	<bean id="jnjGTInvoiceEntryDataPopulator"
+		class=" com.jnj.facades.invoice.coverters.populator.JnjGTInvoiceEntryDataPopulator">
+		<property name="jnjGTProductDataConverter" ref="invoiceEntryProductConverter" />
+	</bean>
+	<bean id="jnjGTInvoiceEntryData" class="com.jnj.facades.data.JnjGTInvoiceEntryData"
+		scope="prototype" />
+
+	<!-- INVOICE ENTRY - PRODUCT DATA CONVERTER & POPULATOR -->
+	<alias name="invoiceEntryProductConverter" alias="invoiceEntryProductConverter" />
+	<bean id="invoiceEntryProductConverter" parent="defaultProductConverter">
+		<lookup-method name="createTarget" bean="jnjGTProductData" />
+	</bean>
+
+	<!-- END: INVOICE DATA -->
+	<alias name="jnjGTB2BCommerceUserFacade" alias="GTB2BCommerceUserFacade" />
+	<bean id="jnjGTB2BCommerceUserFacade"
+		class="com.jnj.facades.company.impl.DefaultJnjGTB2BCommerceUserFacade" 
+		parent="defaultB2BUserFacade" />  <!-- commented becasue of deprecated in 6.0 bparent="b2bCommerceUserFacade"  -->
+
+
+	<bean id="jnjGTApprovedUserEmailContext"
+		class="com.jnj.facades.process.email.context.JnjGTApprovedUserEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="customerConverter" ref="customerConverter" />
+	</bean>
+
+	<!-- Start : Password Expiration Email -->
+	<bean id="jnjPasswordExpiryEmailContext"
+		class="com.jnj.facades.process.email.context.JnjPasswordExpiryEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="customerConverter" ref="customerConverter" />
+	</bean>
+
+	<!-- End : Password Expiration Email -->
+	
+	 <!-- Start : Create User Email -->
+	 <bean id="jnjGTCreateUserEmailContext"
+		class="com.jnj.facades.process.email.context.JnjGTCreateUserEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="customerConverter" ref="customerConverter" />
+	</bean> 
+
+	<!-- End : Create User Email -->
+	
+	 <!-- Start : Create User Email -->
+	 <bean id="jnjGTTemporaryPasswordEmailContext"
+		class="com.jnj.facades.process.email.context.JnjGTTemporaryPasswordEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="customerConverter" ref="customerConverter" />
+	</bean> 
+
+	<!-- End : Create User Email -->
+	<!-- Start : Profile Password Expiration Email -->
+	<bean id="jnjGTProfilePasswordExpiryEmailContext"
+		class="com.jnj.facades.process.email.context.JnjGTProfilePasswordExpiryEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="customerConverter" ref="customerConverter" />
+	</bean>
+
+    <bean id="jnjProfilePasswordExpiryEmailContext"
+		class="com.jnj.facades.process.email.context.JnjPasswordExpiryEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="customerConverter" ref="customerConverter" />
+	</bean>
+	<!-- End : Password Expiration Email -->
+
+	<!-- Start : Cut Notification Email -->
+	<bean id="jnjGTCutNotificationEmailContext"
+		class="com.jnj.facades.process.email.context.JnjGTCutNotificationEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="customerConverter" ref="customerConverter" />
+	</bean>
+	<!-- End : Cut Notification Email -->
+
+	<!-- Start : Reject User Email -->
+	<bean id="jnjGTRejectUserEmailContext"
+		class="com.jnj.facades.process.email.context.JnjGTRejectUserEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="customerConverter" ref="customerConverter" />
+	</bean>
+	<!-- Start : Reject User Email -->
+        <alias name="jnjGTCheckoutFacade" alias="GTCheckoutFacade" />
+	<bean id="jnjGTCheckoutFacade" class="com.jnj.facades.order.impl.DefaultJnjGTCheckoutFacade"
+		parent="jnjCheckoutFacade" />
+
+	<!--Order Template Starts -->
+	<alias name="jnjGTOrderTemplateConverter" alias="jnjGTOrderTemplateConverter" />
+	<bean id="jnjGTOrderTemplateConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="jnjGTOrderTemplateData" />
+		<property name="populators">
+			<list>
+				<ref bean="jnjGTOrderTemplatePopulator" />
+			</list>
+		</property>
+	</bean>
+	<alias name="jnjGTOrderTemplatePopulator" alias="jnjGTOrderTemplatePopulator" />
+	<bean id="jnjGTOrderTemplatePopulator"
+		class=" com.jnj.facades.converters.populator.template.JnjGTOrderTemplatePopulator">
+	</bean>
+	<bean id="jnjGTOrderTemplateData" class="com.jnj.facades.data.JnjGTOrderTemplateData"
+		scope="prototype" />
+	<alias name="jnjGTOrderTemplateEntryConverter" alias="jnjGTOrderTemplateEntryConverter" />
+	<bean id="jnjGTOrderTemplateEntryConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="jnjGTOrderTemplateEntryData" />
+		<property name="populators">
+			<list>
+				<ref bean="jnjGTOrderTemplateEntryPopulator" />
+			</list>
+		</property>
+	</bean>
+	<alias name="jnjGTOrderTemplateEntryPopulator" alias="jnjGTOrderTemplateEntryPopulator" />
+	<bean id="jnjGTOrderTemplateEntryPopulator"
+		class=" com.jnj.facades.converters.populator.template.JnjGTOrderTemplateEntryPopulator">
+	</bean>
+	<bean id="jnjGTOrderTemplateEntryData" class="com.jnj.facades.data.JnjGTOrderTemplateEntryData"
+		scope="prototype" />
+	<!--Order Template Ends -->
+
+	<!-- DISPUTE INQUIRY EMAIL CHANGES: AKASH -->
+	<bean id="jnjGTDisputeInquiryEmailContext"
+		class="com.jnj.facades.process.email.context.JnjGTDisputeInquiryEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="customerConverter" ref="customerConverter" />
+	</bean>
+
+	<!-- ORDER STATUS INBOUND - VALIDATION EMAIL CHANGES: AKASH -->
+	<bean id="JnjGTOrderStatusValidationEmailcontext"
+		class="com.jnj.facades.process.email.context.JnjGTOrderStatusValidationEmailcontext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="customerConverter" ref="customerConverter" />
+	</bean>
+
+	<bean id="jnjGTSurgeryPopulator"
+		class="com.jnj.facades.order.converters.populator.JnjGTSurgeryPopulator" />
+	<!-- END OF DISPUTE INQUIRY EMAIL CHANGES: AKASH -->
+
+	<!-- SURGEON CONVERTER & POPULATOR ADDED: AKASH -->
+	<alias name="jnjgtSurgeonDataConverter" alias="jnjgtSurgeonDataConverter" />
+	<bean id="jnjgtSurgeonDataConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="jnjgtSurgeonData" />
+		<property name="populators">
+			<list>
+				<ref bean="jnjgtSurgeonDataPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<alias name="jnjgtSurgeonDataPopulator" alias="jnjgtSurgeonDataPopulator" />
+	<bean id="jnjgtSurgeonDataPopulator"
+		class="com.jnj.facades.order.converters.populator.JnjGTSurgeonDataPopulator" />
+
+	<bean id="jnjgtSurgeonData" class="com.jnj.facades.data.JnjGTSurgeonData"
+		scope="prototype" />
+
+	<!-- END OF SURGEON CONVERTER & POPULATOR CHANGES -->
+
+	<!-- BroadCast CHANGES :Komal -->
+
+	<bean id="jnjGTOperationsFacade"
+		class="com.jnj.facades.operations.impl.DefaultJnjGTOperationsFacade" />
+
+	<alias name="jnjgtBroadCastDataConverter" alias="jnjgtBroadCastDataConverter" />
+	<bean id="jnjgtBroadCastDataConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="jnjGTBroadCastData" />
+		<property name="populators">
+			<list>
+				<ref bean="jnjgtBroadCastDataPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<alias name="jnjgtBroadCastDataPopulator" alias="jnjgtBroadCastDataPopulator" />
+	<bean id="jnjgtBroadCastDataPopulator"
+		class="com.jnj.facades.order.converters.populator.JnjGTBroadCastPopulator" />
+
+	<bean id="jnjGTBroadCastData" class="com.jnj.facades.data.JnjGTBroadCastData"
+		scope="prototype" />
+	<!-- BroadCast CHANGES :Komal -->
+
+	<!-- Start : Add ExistingAccount Confirmation Email :Sakshi -->
+	<bean id="jnjGTCartOrderConfirmationEmailContext"
+		class="com.jnj.facades.process.email.context.JnjGTCartOrderConfirmationEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="customerConverter" ref="customerConverter" />
+	</bean>
+
+	<!-- End : Add ExistingAccount Email :Sakshi -->
+
+	<!-- CPSIA DATA CONVERTER & POPULATOR -->
+	<alias name="jnjGTCpsiaDataConverter" alias="jnjGTCpsiaDataConverter" />
+	<bean id="jnjGTCpsiaDataConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="jnjGTCpsiaData" />
+		<property name="populators">
+			<list>
+				<ref bean="jnjGTCpsiaDataPopulator" />
+			</list>
+		</property>
+	</bean>
+	<alias name="jnjGTCpsiaDataPopulator" alias="jnjGTCpsiaDataPopulator" />
+	<bean id="jnjGTCpsiaDataPopulator"
+		class="com.jnj.facades.converters.populators.cpsia.JnjGTCpsiaDataPopulator" />
+
+	<alias name="jnjGTCpsiaCertificateDataConverter" alias="jnjGTCpsiaCertificateDataConverter" />
+	<bean id="jnjGTCpsiaCertificateDataConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="jnjGTCpsiaData" />
+		<property name="populators">
+			<list>
+				<ref bean="jnjGTCpsiaCertificateDataPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<alias name="jnjGTCpsiaCertificateDataPopulator" alias="jnjGTCpsiaCertificateDataPopulator" />
+	<bean id="jnjGTCpsiaCertificateDataPopulator"
+		class="com.jnj.facades.converters.populators.cpsia.JnjGTCpsiaCertificateDataPopulator" />
+
+	<bean id="jnjGTCpsiaData" class="com.jnj.facades.data.JnjGTCpsiaData"
+		scope="prototype" />
+		
+			<bean id="jnjGTExportCatalogEmailContext"
+		class="com.jnj.facades.process.email.context.JnjGTExportCatalogEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+	</bean>
+
+	<!-- <bean id="jnjPCMRequestAccountEmailContext" class="com.jnj.pcm.facades.process.email.context.JnjPCMRequestAccountEmailContext" 
+		parent="abstractEmailContext" scope="prototype"> </bean> <bean id="jnjPCMProductDetailsEmailContext" 
+		class="com.jnj.pcm.facades.process.email.context.JnjPCMProductDetailsEmailContext" 
+		parent="abstractEmailContext" scope="prototype"> <property name="customerConverter" 
+		ref="customerConverter" /> </bean> <bean id="jnjPCMIncompleteActiveProductEmailContext" 
+		class="com.jnj.pcm.facades.process.email.context.JnjPCMIncompleteActiveProductEmailContext" 
+		parent="abstractEmailContext" scope="prototype"> </bean> <bean id="jnjPCMMultiImageSetsFoundEmailContext" 
+		class="com.jnj.pcm.facades.process.email.context.JnjPCMMultiImageSetsFoundEmailContext" 
+		parent="abstractEmailContext" scope="prototype"> </bean> <bean id="jnjPCMZonzaUnreachableEmailContext" 
+		class="com.jnj.pcm.facades.process.email.context.JnjPCMZonzaUnreachableEmailContext" 
+		parent="abstractEmailContext" scope="prototype"> </bean> <bean id="jnjGTExportCatalogEmailContext" 
+		class="com.jnj.facades.process.email.context.JnjGTExportCatalogEmailContext" 
+		parent="abstractEmailContext" scope="prototype"> </bean> <bean id="jnjPCMAmzonEmailContext" 
+		class="com.jnj.pcm.facades.process.email.context.JnjPCMAmzonEmailContext" 
+		parent="abstractEmailContext" scope="prototype"> </bean> <bean id="jnjAmazonUploadIntFacade" 
+		class="com.jnj.pcm.imageLoad.impl.JnjAmazonUploadIntFacadeImpl" /> -->
+
+	<!-- Start: Email Context for New Product WORKFLOW Email Notification -->
+	<!-- <bean id="jnjPCMNewProductEmailContext" class="com.jnj.pcm.facades.process.email.context.JnjPCMNewProductEmailContext" 
+		parent="abstractEmailContext" scope="prototype"> </bean> -->
+	<!-- End: Email Context for New Product WORKFLOW Email Notification -->
+	<!-- Start: Email Context for start of New Product WORKFLOW Email Notification -->
+	<!-- <bean id="jnjPCMNewProductMandatoryCheckEmailContext" class="com.jnj.pcm.facades.process.email.context.JnjPCMNewProductMandatoryCheckEmailContext" 
+		parent="abstractEmailContext" scope="prototype"> </bean> -->
+	<!-- End: Email Context for start of New Product WORKFLOW Email Notification -->
+	<!-- Start: Email Context for start of Update Product WORKFLOW Email Notification -->
+	<!-- <bean id="jnjPCMUpdateProductMandatoryCheckEmailContext" class="com.jnj.pcm.facades.process.email.context.JnjPCMUpdateProductMandatoryCheckEmailContext" 
+		parent="abstractEmailContext" scope="prototype"> </bean> -->
+	<!-- End: Email Context for start of Update Product WORKFLOW Email Notification -->
+
+	<alias name="jnjGTProductPrimaryImagePopulator" alias="productPrimaryImagePopulator" />
+	<bean id="jnjGTProductPrimaryImagePopulator" parent="defaultProductPrimaryImagePopulator"
+		class="com.jnj.facades.product.converters.populator.JnjGTProductPrimaryImagePopulator">
+		<property name="imageFormats">
+			<list>
+				<value>zoom</value>
+				<value>product</value>
+				<value>thumbnail</value>
+				<value>cartIcon</value>
+			</list>
+		</property>
+	</bean>
+
+	<alias name="jnjGTProductGalleryImagesPopulator" alias="productGalleryImagesPopulator" />
+	<bean id="jnjGTProductGalleryImagesPopulator" parent="defaultProductGalleryImagesPopulator"
+		class="com.jnj.facades.product.converters.populator.JnjGTProductGalleryImagesPopulator">
+		<property name="imageFormats">
+			<list>
+				<value>zoom</value>
+				<value>product</value>
+				<value>thumbnail</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="jnjGTTerritoryFacade"
+		class=" com.jnj.facades.territory.impl.DefaultJnjGTTerritoryFacade" />
+
+
+	<!-- ORDER SHIP NOTIFICATION EMAIL CHANGES: AKASH -->
+	<bean id="jnjGTOrderShipmentEmailContext"
+		class="com.jnj.facades.process.email.context.JnjGTOrderShipmentEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="customerConverter" ref="customerConverter" />
+	</bean>
+
+	<!-- BACKORDER NOTIFICATION EMAIL CHANGES: AKASH -->
+	<bean id="jnjGTBackorderEmailContext"
+		class="com.jnj.facades.process.email.context.JnjGTBackOrderEmailContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="customerConverter" ref="customerConverter" />
+	</bean>
+
+	<bean id="jnjExceptionMailerTask" class="com.jnj.facades.task.JNJExceptionMailerTask"></bean>
+	
+	<!-- GTR-1774 -->
+	<bean id="jnjDelivOrderUploadNotificationEmailContext"
+		class="com.jnj.facades.process.email.context.JnjDelivOrderUploadNotificationEmailContext"
+		parent="customerEmailContext" scope="prototype">
+	</bean>
+	
+	<bean id="jnjBuildOrderFacade"
+  class="com.jnj.facades.buildorder.DefaultJnjBuildOrderFacade">
+  <property name="userService" ref="userService" />
+  <property name="b2bUnitService" ref="b2bUnitService" />
+  <property name="priceService" ref="priceService"/>
+  
+  </bean>
+<bean id="jnjGTContractFacade" class="com.jnj.facades.contract.impl.DefaultJnjGTContractFacadeImpl" />
+	
+	<alias name="jnjContractDataConverter" alias="jnjContractDataConverter" />
+	<bean id="jnjContractDataConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="jnjContractDataData" />
+		<property name="populators">
+			<list>
+				<ref bean="jnjContractDataPopulator" />
+			</list>
+		</property>
+	</bean>
+	
+	<alias name="jnjContractDataPopulator" alias="jnjContractDataPopulator" />
+	<bean id="jnjContractDataPopulator"
+		class="com.jnj.facades.contract.converters.populator.JnjGTContractDataPopulator">
+		<property name="jnjContractEntryDataConverter" ref="jnjContractEntryDataConverter" />
+	</bean>
+	
+		<!-- Beans for Contract Entry Converter -->
+	<alias name="jnjContractEntryDataConverter" alias="jnjContractEntryDataConverter" />
+	<bean id="jnjContractEntryDataConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="jnjContractEntryData" />
+		<property name="populators">
+			<list>
+				<ref bean="jnjContractEntryDataPopulator" />
+			</list>
+		</property>
+	</bean>
+	
+	<alias name="jnjContractEntryDataPopulator" alias="jnjContractEntryDataPopulator" />
+	<bean id="jnjContractEntryDataPopulator"
+		class="com.jnj.facades.contract.converters.populator.JnjGTContractEntryDataPopulator">
+	</bean>
+	
+	<bean id="jnjContractEntryData" class="com.jnj.facades.data.JnjContractEntryData"	scope="prototype" />
+	<!-- KIT ADDED  -->
+	<bean id="jnjGTProductKitPopulator"
+		class="com.jnj.facades.order.converters.populator.JnjGTProductKitPopulator">
+		</bean>
+	<!-- KIT ADDED  -->
+	<bean id="jnjGTOrderSplitFacade" class="com.jnj.facades.orderSplit.impl.DefaultJnjGTOrderSplitFacade">
+	</bean>	
+	
+	<!-- Dropshipment Changes -->
+	<bean id="jnjGTSalesOrderMapper" class="com.jnj.facades.order.impl.DefaultJnjGTSalesOrderMapper" />
+	<bean id="jnjGTCreateSalesOrderMapper" class="com.jnj.facades.order.impl.DefaultJnjGTCreateSalesOrderMapper" />
+<!-- <bean id="jnjGTOutOrderLineMapper" class="com.jnj.facades.order.impl.DefaultJnjGTOutOrderLineMapper" /> -->
+	
+	<!-- NA- On demand Request -->
+	<alias name="jnjGTPoliciesFacade" alias="jnjPoliciesFacade" />
+	<bean id="jnjGTPoliciesFacade" class="com.jnj.facades.policies.impl.JnjGTPoliciesFacadeImpl"/>
+	
+	<!-- Changes for Serialization -->
+	<alias name="jnJGTSerialFacade" alias="GTSerialFacade" />
+	<bean id="jnJGTSerialFacade" class="com.jnj.facades.serialization.impl.DefaultJnjGTSerialFacade" />
+	<!-- Start AAOL-4336 -->
+	<bean id="jnjGTOrderCancelNotificationContext"
+		class="com.jnj.facades.process.email.context.JnjGTOrderCancelNotificationContext"
+		parent="abstractEmailContext" scope="prototype">
+		<property name="customerConverter" ref="customerConverter" />
+	</bean>
+	<!-- End -->
+	
+	<!--AAOL- 5163 -->
+	<bean id="jnjReturnOrderUserEmailContext"
+		class="com.jnj.facades.process.email.context.JnjGTReturnOrderUserEmailContext"
+		parent="customerEmailContext" scope="prototype">
+	</bean>
+	
+	<bean id="jnjReturnOrderCSREmailContext"
+		class="com.jnj.facades.process.email.context.JnjGTReturnOrderCSREmailContext"
+		parent="customerEmailContext" scope="prototype">
+	</bean>
+
+	<!-- Changes for AFFG-20802 Start-->
+
+	<alias name="defaultCommerceProductReferenceService" alias="jnjcommerceProductReferenceService"/>
+	<bean id="defaultCommerceProductReferenceService"
+		  class="de.hybris.platform.commerceservices.product.impl.DefaultCommerceProductReferenceService">
+		<property name="modelService" ref="modelService"/>
+		<property name="productService" ref="productService"/>
+		<property name="productReferenceTargetStrategies">
+			<map key-type="de.hybris.platform.catalog.enums.ProductReferenceTypeEnum">
+				<!-- Add a strategy for a specific reference type -->
+				<entry key="RELATED_PRODUCTS" value-ref="jnjProductReferenceTargetStrategy"/>
+			</map>
+		</property>
+		<property name="defaultProductReferenceTargetStrategy" ref="crossSellingProductReferenceTargetStrategy"/>
+	</bean>
+
+	<alias name="defaultProductReferenceTargetStrategy" alias="jnjProductReferenceTargetStrategy"/>
+	<bean id="defaultProductReferenceTargetStrategy"
+		  class="de.hybris.platform.commerceservices.strategies.impl.ChainProductReferenceTargetStrategy">
+		<property name="productReferenceTargetStrategies">
+			<list>
+				<ref bean="RelatedProductReferenceTargetStrategy"/>
+			</list>
+		</property>
+	</bean>
+
+
+	<alias name="defaultRelatedProductReferenceTargetStrategy"
+		   alias="RelatedProductReferenceTargetStrategy"/>
+	<bean id="defaultRelatedProductReferenceTargetStrategy"
+		  class="com.jnj.core.services.impl.strategies.RelatedProductReferenceTargetStrategy"/>
+
+	<!-- Changes for AFFG-20802 End-->
+
+
+	<!-- Changes for AFFG-20804 Start-->
+	<alias name="jnjGTProductCategoryConverter" alias="jnjGTProductCategoryConverter"/>
+	<bean id="jnjGTProductCategoryConverter" parent="abstractPopulatingConverter">
+		<property name="targetClass" value="de.hybris.platform.commercefacades.product.data.CategoryData"/>
+		<property name="populators">
+			<list>
+				<ref bean="jnjGTProductHierarchyPopulator"/>
+			</list>
+		</property>
+	</bean>
+
+	<alias name="jnjGTProductHierarchyPopulator" alias="productHierarchyPopulator" />
+	<bean id="jnjGTProductHierarchyPopulator" class="com.jnj.facades.converters.populator.JnjGTProductHierarchyPopulator">
+		<property name="imageConverter" ref="imageConverter"/>
+		<property name="hierarchyModelUrlResolver" ref="hierarchyModelUrlResolver" />
+	</bean>
+	<!-- Changes for AFFG-20804 End-->
+
+
+
+	<alias name="jnjGTProductCarouselDataConverter" alias="jnjGTProductCarouselDataConverter" />
+	<bean id="jnjGTProductCarouselDataConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="jnjProductCarouselData" />
+		<property name="populators">
+			<list>
+				<ref bean="jnjProductCarouselPopulator" />
+			</list>
+		</property>
+	</bean>
+	<bean id="jnjProductCarouselData" class="com.jnj.facades.data.JnjProductCarouselData"
+		  scope="prototype" />
+	<!-- Changes for AFFG-1 -->
+	<alias name="jnjProductCarouselPopulator" alias="jnjProductCarouselPopulator" />
+	<bean id="jnjProductCarouselPopulator" class="com.jnj.facades.product.converters.populator.JnjGTProductCarouselPopulator">
+		<property name="jnJGTProductService" ref="productService"/>
+		<property name="jnjGTB2BUnitFacade" ref="GTB2BUnitFacade" />
+		<property name="productPricePopulator" ref="productPricePopulator" />
+	</bean>
+</beans>
+	

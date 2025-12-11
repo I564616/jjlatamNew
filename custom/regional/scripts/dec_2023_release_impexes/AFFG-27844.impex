@@ -1,0 +1,13 @@
+$contentCatalog = mstrContentCatalog
+$contentCV = catalogVersion(catalog(id[default = $contentCatalog]), version[default = 'Staged'])
+$wideContent = CMSImageComponent, BannerComponent
+$jarResourceCms = jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/jnjlamasterstore/import/cockpits/cmscockpit
+$emailResource = jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/jnjlamasterstore/import/contentCatalogs/jnjContentCatalog/emails/templates
+
+INSERT_UPDATE RendererTemplate;code[unique=true];description[lang=en];templateScript[lang=en,translator=de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator];templateScript[lang=es,translator=de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator];templateScript[lang=pt,translator=de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]
+                       ;email_Register_User_Subject;"Register User Email Subject";$emailResource/email-registerEmailSubject_en.vm;$emailResource/email-registerEmailSubject_es.vm;$emailResource/email-registerEmailSubject_pt.vm
+                       ;email_Register_User_Body;"Register User Email Body";$emailResource/email-registerEmailBody_en.vm;$emailResource/email-registerEmailBody_es.vm;$emailResource/email-registerEmailBody_pt.vm
+
+INSERT_UPDATE RendererTemplate;code[unique=true];contextClass;rendererType(code)[default='velocity']
+                              ;email_Register_User_Body;com.jnj.facades.process.email.context.JnjLatamSuccessfulRegistrationEmailContext
+                              ;email_Register_User_Subject;com.jnj.facades.process.email.context.JnjLatamSuccessfulRegistrationEmailContext

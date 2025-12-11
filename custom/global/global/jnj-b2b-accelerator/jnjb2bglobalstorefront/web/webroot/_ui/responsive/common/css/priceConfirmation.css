@@ -1,0 +1,45 @@
+.pi-title{
+	font-family: jnjheading1font;
+    font-size: 48px;
+    margin-bottom: 15px !important;
+}
+.emeo-btn-done-gap{
+	margin-right:10px;
+}	
+.valign-middle{
+	vertical-align:middle;
+}
+#pi-bottom-message{
+	margin-top:15px;
+}
+.sNo-pad{
+	padding-left:20px !important;
+	padding-right:20px !important;
+}
+.prd-quantity-panel{
+	padding: 20px 0px;
+    border-bottom: 1px solid #f2f2f2;
+    background-color: white;
+}
+.prd-quantity-field{
+    font-size: 22px;
+}
+.download-links-area{
+	float:right;
+	margin-top:8px;
+}
+.no-margin-row{
+	margin:0px;
+}
+.links-margin{
+	margin-left:10px;
+}
+@media only screen and (max-width:480px){
+	.mobile-view-btn{
+		width:100%;
+		margin-bottom:10px;
+	}
+	.download-links-area{
+		float:none !important;
+	}
+}

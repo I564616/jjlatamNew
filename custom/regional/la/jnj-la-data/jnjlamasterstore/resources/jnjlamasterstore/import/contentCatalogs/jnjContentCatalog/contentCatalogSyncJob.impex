@@ -1,0 +1,76 @@
+### Employee
+$passwordEncoding=md5
+$defaultPassword=1234
+$setPassword=@password[translator=de.hybris.platform.impex.jalo.translators.ConvertPlaintextToEncodedUserPasswordTranslator][default='$passwordEncoding:$defaultPassword']
+
+INSERT_UPDATE Employee;UID[unique=true];$setPassword;description;name;groups(uid);sessionLanguage(isocode);sessionCurrency(isocode)
+;contentSyncUser;;Content Sync User;Content Sync User;;en;EUR
+
+### Sync Job
+$sourceVersion=sourceVersion(catalog(id),version[default='Staged'])[unique=true];
+$targetVersion=targetVersion(catalog(id),version[default='Staged'])[unique=true];
+$masterContentCatalog=mstrContentCatalog
+$brazilContentCatalog=brContentCatalog
+$mexicoContentCatalog=mxContentCatalog
+$cencaContentCatalog=cencaContentCatalog
+$ecuadorContentCatalog=ecContentCatalog
+$colombiaContentCatalog=coContentCatalog
+$peruContentCatalog=peContentCatalog
+$puertoContentCatalog=prContentCatalog
+$ARContentCatalog=arContentCatalog
+$CLContentCatalog=clContentCatalog
+$URContentCatalog=uyContentCatalog
+
+INSERT_UPDATE CatalogVersionSyncJob;code;$sourceVersion;$targetVersion;createNewItems;removeMissingItems;rootTypes(code)
+;MasterContentStaged->BrazilContentStaged;$masterContentCatalog;$brazilContentCatalog;true;false;CMSItem,CMSRelation,Media,MediaContainer
+;MasterContentStaged->MexicoContentStaged;$masterContentCatalog;$mexicoContentCatalog;true;false;CMSItem,CMSRelation,Media,MediaContainer
+;MasterContentStaged->CencaContentStaged;$masterContentCatalog;$cencaContentCatalog;true;false;CMSItem,CMSRelation,Media,MediaContainer
+;MasterContentStaged->EcuadorContentStaged;$masterContentCatalog;$ecuadorContentCatalog;true;false;CMSItem,CMSRelation,Media,MediaContainer
+;MasterContentStaged->ArgentinaContentStaged;$masterContentCatalog;$ARContentCatalog;true;false;CMSItem,CMSRelation,Media,MediaContainer
+;MasterContentStaged->ChileContentStaged;$masterContentCatalog;$CLContentCatalog;true;false;CMSItem,CMSRelation,Media,MediaContainer
+;MasterContentStaged->UruguayContentStaged;$masterContentCatalog;$URContentCatalog;true;false;CMSItem,CMSRelation,Media,MediaContainer
+;MasterContentStaged->ColombiaContentStaged;$masterContentCatalog;$colombiaContentCatalog;true;false;CMSItem,CMSRelation,Media,MediaContainer
+;MasterContentStaged->PeruContentStaged;$masterContentCatalog;$peruContentCatalog;true;false;CMSItem,CMSRelation,Media,MediaContainer
+;MasterContentStaged->PuertoContentStaged;$masterContentCatalog;$puertoContentCatalog;true;false;CMSItem,CMSRelation,Media,MediaContainer
+
+;BrazilContentStaged->BrazilContentOnline;$brazilContentCatalog;$brazilContentCatalog:Online;true;true;CMSItem,CMSRelation,Media,MediaContainer
+;MexicoContentStaged->MexicoContentOnline;$mexicoContentCatalog;$mexicoContentCatalog:Online;true;true;CMSItem,CMSRelation,Media,MediaContainer
+;CencaContentStaged->CencaContentOnline;$cencaContentCatalog;$cencaContentCatalog:Online;true;true;CMSItem,CMSRelation,Media,MediaContainer
+;EcuadorContentStaged->EcuadorContentOnline;$ecuadorContentCatalog;$ecuadorContentCatalog:Online;true;true;CMSItem,CMSRelation,Media,MediaContainer
+;ArgentinaContentStaged->ArgentinaContentOnline;$ARContentCatalog;$ARContentCatalog:Online;true;true;CMSItem,CMSRelation,Media,MediaContainer
+;ChileContentStaged->ChileContentOnline;$CLContentCatalog;$CLContentCatalog:Online;true;true;CMSItem,CMSRelation,Media,MediaContainer
+;UruguayContentStaged->UruguayContentOnline;$URContentCatalog;$URContentCatalog:Online;true;true;CMSItem,CMSRelation,Media,MediaContainer
+;ColombiaContentStaged->ColombiaContentOnline;$colombiaContentCatalog;$colombiaContentCatalog:Online;true;true;CMSItem,CMSRelation,Media,MediaContainer
+;PeruContentStaged->PeruContentOnline;$peruContentCatalog;$peruContentCatalog:Online;true;true;CMSItem,CMSRelation,Media,MediaContainer
+;PuertoContentStaged->PuertoContentOnline;$puertoContentCatalog;$puertoContentCatalog:Online;true;true;CMSItem,CMSRelation,Media,MediaContainer
+
+### Sync Cron Job
+INSERT_UPDATE CatalogVersionSyncCronJob;code[unique=true];job(code);sessionLanguage(isocode)
+;Sync-MasterContentStaged-BrazilContentStaged;MasterContentStaged->BrazilContentStaged;en
+;Sync-MasterContentStaged-MexicoContentStaged;MasterContentStaged->MexicoContentStaged;en
+;Sync-MasterContentStaged-CencaContentStaged;MasterContentStaged->CencaContentStaged;en
+;Sync-MasterContentStaged-EcuadorContentStaged;MasterContentStaged->EcuadorContentStaged;en
+;Sync-MasterContentStaged-ArgentinaContentStaged;MasterContentStaged->ArgentinaContentStaged;en
+;Sync-MasterContentStaged-ChileContentStaged;MasterContentStaged->ChileContentStaged;en
+;Sync-MasterContentStaged-UruguayContentStaged;MasterContentStaged->UruguayContentStaged;en
+;Sync-MasterContentStaged-ColombiaContentStaged;MasterContentStaged->ColombiaContentStaged;en
+;Sync-MasterContentStaged-PeruContentStaged;MasterContentStaged->PeruContentStaged;en
+;Sync-MasterContentStaged-PuertoContentStaged;MasterContentStaged->PuertoContentStaged;en
+
+;Sync-BrazilContentStaged-BrazilContentOnline;BrazilContentStaged->BrazilContentOnline;en
+;Sync-MexicoContentStaged-MexicoContentOnline;MexicoContentStaged->MexicoContentOnline;en
+;Sync-CencaContentStaged-CencaContentOnline;CencaContentStaged->CencaContentOnline;en
+;Sync-EcuadorContentStaged-EcuadorContentOnline;EcuadorContentStaged->EcuadorContentOnline;en
+;Sync-ArgentinaContentStaged-ArgentinaContentOnline;ArgentinaContentStaged->ArgentinaContentOnline;en
+;Sync-ChileContentStaged-ChileContentOnline;ChileContentStaged->ChileContentOnline;en
+;Sync-UruguayContentStaged-UruguayContentOnline;UruguayContentStaged->UruguayContentOnline;en
+;Sync-ColombiaContentStaged-ColombiaContentOnline;ColombiaContentStaged->ColombiaContentOnline;en
+;Sync-PeruContentStaged-PeruContentOnline;PeruContentStaged->PeruContentOnline;en
+;Sync-PuertoContentStaged-PuertoContentOnline;PuertoContentStaged->PuertoContentOnline;en
+
+
+INSERT_UPDATE ServicelayerJob;code[unique=true];springId;active[default='true']
+#;syncMasterContentToLocalCatalog;syncMasterContentToLocalCatalog;true
+
+INSERT_UPDATE CronJob;code[unique=true];job(code);active[default='true']
+#;syncContentCatalogCron_Job;syncMasterContentToLocalCatalog;true

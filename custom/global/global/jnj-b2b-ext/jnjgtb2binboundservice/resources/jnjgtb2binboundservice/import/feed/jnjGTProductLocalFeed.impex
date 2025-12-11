@@ -1,0 +1,22 @@
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+
+# PRODUCT LOCAL Initialization
+INSERT_UPDATE JnJGTIntProductLocal;productSkuCode[unique=true];inFieldInd;dChainStatusEffectiveDate[dateformat=yyyy-MM-dd];dChainSpecStatus;productSubType;srcSystem[unique=true];recordStatus(code)[default='LOADING']
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT MATERIAL_NUM,INFIELD_IND,DCHAIN_SPEC_STATUS_VLD_DT,DCHAIN_SPEC_STATUS,PROD_SUB_TYPE,SOURCE_SYS_ID FROM STG_PRODUCT_LOCL WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP""
+);
+"
+
+# PRODUCT LOCAL PLANT intialization
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+# Initialization
+INSERT_UPDATE JnJGTIntProductLocalPlant;productSkuCode[unique=true];plantCode[unique=true];batchMgmt;srcSystem[unique=true];recordStatus(code)[default='LOADING']
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT MATERIAL_NUM,PLANT_CD,BATCH_MGMT,SOURCE_SYS_ID FROM STG_PRODUCT_LOCL_PLNT WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP""
+);
+"
+

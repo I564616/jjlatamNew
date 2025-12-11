@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2000-2016 hybris AG
+ All rights reserved.
+
+ This software is the confidential and proprietary information of hybris
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with hybris.
+-->
+<items 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items.xsd">
+	<relations>
+		<relation code="JnjPacHiveEntryOrderEntryRelation" localized="false">
+			<sourceElement type="JnjPacHiveEntry" qualifier="jnjPacHiveEntries" cardinality="many">
+				<description>
+					JnJ PAC HIVE records with estimated delivery dates for this order entry.
+				</description>
+			</sourceElement>
+			<targetElement type="AbstractOrderEntry" qualifier="orderEntry" cardinality="one">
+				<description>
+					Link to the order entry associated with this PAC HIVE record.
+				</description>
+				<modifiers optional="true" initial="false"/>
+			</targetElement>
+		</relation>
+	</relations>
+
+	<itemtypes>
+		<itemtype code="JnjPacHiveEntry">
+			<description>
+				Stores data received from PAC HIVE AERA. This object contains estimated delivery date for some specific
+				schedule line. This data has been intentionally separated from JnjDeliveryScheduleModel to avoid data
+				clashes and conflicts. Even though JnjPacHive and JnjDeliverySchedule both store delivery dates but
+				they come from different systems and it is better to keep it separate. Data in JnjPacHive comes from
+				AERA and data in JnjDeliverySchedule comes from ERP system.
+			</description>
+			<deployment table="JnjPacHiveEntry" typecode="10300"/>
+			<attributes>
+				<!-- Original Data received from PAC HIVE AERA. -->
+				<attribute qualifier="company" type="java.lang.String">
+					<persistence type="property"/>
+					<description>The original value of "company" field received from AERA.</description>
+				</attribute>
+
+				<attribute qualifier="orderType" type="java.lang.String">
+					<persistence type="property"/>
+					<description>The original value of "orderType" field received from AERA.</description>
+				</attribute>
+
+				<attribute qualifier="orderNumber" type="java.lang.String">
+					<persistence type="property"/>
+					<description>The original value of "orderNumber" field received from AERA.</description>
+				</attribute>
+
+				<attribute qualifier="lineNumber" type="java.lang.String">
+					<persistence type="property"/>
+					<description>The original value of "lineNumber" field received from AERA.</description>
+				</attribute>
+
+				<attribute qualifier="schedLineNumber" type="java.lang.String">
+					<persistence type="property"/>
+					<description>The original value of "schedLineNumber" field received from AERA.</description>
+				</attribute>
+
+				<attribute qualifier="catalogCode" type="java.lang.String">
+					<persistence type="property"/>
+					<description>The original value of "catalogCode" field received from AERA.</description>
+				</attribute>
+
+				<attribute qualifier="dataSource" type="java.lang.String">
+					<persistence type="property"/>
+					<description>The original value of "dataSource" field received from AERA.</description>
+				</attribute>
+
+				<attribute qualifier="recommendedDeliveryDate" type="java.lang.String">
+					<persistence type="property"/>
+					<description>The original value of "recommendedDeliveryDate" field received from AERA.</description>
+				</attribute>
+
+				<!-- Transformed data for convenience. -->
+				<attribute qualifier="convertedRecommendedDeliveryDate" type="java.util.Date">
+					<persistence type="property"/>
+					<description>
+						Date created by converting the original "recommendedDeliveryDate" field received from AERA.
+					</description>
+				</attribute>
+				 <attribute qualifier="confirmedQuantity" type="java.lang.Double">
+                    <persistence type="property"/>
+                    <description>The original value of "open confirmed quantity" field received from AERA.</description>
+                </attribute>
+
+				<attribute qualifier="subFranchise" type="java.lang.String">
+					<persistence type="property"/>
+					<description>The original value of "Jnj Subfranchise Description Harmonized" field received from AERA.</description>
+				</attribute>
+
+				<attribute qualifier="requestedUnitsTotalQuantity" type="java.lang.Double">
+					<persistence type="property"/>
+					<description>The original value of "Order Qty Sales Units" field received from AERA.</description>
+				</attribute>
+
+				<attribute qualifier="amountPendingDelivery" type="java.lang.Double">
+					<persistence type="property"/>
+					<description>The original value of "Open Order Qty" field received from AERA.</description>
+				</attribute>
+
+				<attribute qualifier="quantityPendingStock" type="java.lang.Double">
+					<persistence type="property"/>
+					<description>The original value of "Current Bo Qty" field received from AERA.</description>
+				</attribute>
+			</attributes>
+		</itemtype>
+	</itemtypes>
+</items>

@@ -1,0 +1,37 @@
+### Employee
+$passwordEncoding=md5
+$defaultPassword=1234
+$setPassword=@password[translator=de.hybris.platform.impex.jalo.translators.ConvertPlaintextToEncodedUserPasswordTranslator][default='$passwordEncoding:$defaultPassword']
+
+INSERT_UPDATE Employee;UID[unique=true];$setPassword;description;name;groups(uid);sessionLanguage(isocode);sessionCurrency(isocode)
+;syncUser;;Content Sync User;Content Sync User;;en;EUR
+
+### Sync Job
+$sourceVersion=sourceVersion(catalog(id),version[default='Staged'])[unique=true];
+$targetVersion=targetVersion(catalog(id),version[default='Staged'])[unique=true];
+$masterContentCatalog=mstrContentCatalog
+$brazilContentCatalog=brContentCatalog
+$mexicoContentCatalog=mxContentCatalog
+
+INSERT_UPDATE CatalogVersionSyncJob;code;$sourceVersion;$targetVersion;createNewItems;removeMissingItems;rootTypes(code);
+;MasterContentStaged->BrazilContentStaged;$masterContentCatalog;$brazilContentCatalog;true;false;CMSItem,CMSRelation,Media,MediaContainer,BTGItem;syncUser;
+;MasterContentStaged->MexicoContentStaged;$masterContentCatalog;$mexicoContentCatalog;true;false;CMSItem,CMSRelation,Media,MediaContainer,BTGItem;syncUser;
+;BrazilContentStaged->BrazilContentOnline;$brazilContentCatalog;$brazilContentCatalog:Online;true;true;CMSItem,CMSRelation,Media,MediaContainer,BTGItem;syncUser;
+;MexicoContentStaged->MexicoContentOnline;$mexicoContentCatalog;$mexicoContentCatalog:Online;true;true;CMSItem,CMSRelation,Media,MediaContainer,BTGItem;syncUser;
+
+### Sync Cron Job
+INSERT_UPDATE CatalogVersionSyncCronJob;code[unique=true];job(code);sessionLanguage(isocode)
+;Sync-MasterContentStaged-BrazilContentStaged;MasterContentStaged->BrazilContentStaged;en
+;Sync-MasterContentStaged-MexicoContentStaged;MasterContentStaged->MexicoContentStaged;en
+
+;Sync-BrazilContentStaged-BrazilContentOnline;BrazilContentStaged->BrazilContentOnline;en
+;Sync-MexicoContentStaged-MexicoContentOnline;MexicoContentStaged->MexicoContentOnline;en
+#;Sync-MasterS-MasterO;MastercatalogStaged->Online;en
+
+
+INSERT_UPDATE ServicelayerJob;code[unique=true];springId;active[default='true']
+#;syncMasterContentToLocalCatalog;syncMasterContentToLocalCatalog;true
+
+INSERT_UPDATE CronJob;code[unique=true];job(code);active[default='true']
+#;syncContentCatalogCron_Job;syncMasterContentToLocalCatalog;true
+

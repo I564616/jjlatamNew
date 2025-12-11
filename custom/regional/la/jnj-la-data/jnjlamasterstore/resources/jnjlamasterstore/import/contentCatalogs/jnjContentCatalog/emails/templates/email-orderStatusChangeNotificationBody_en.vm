@@ -1,0 +1,107 @@
+## messageSource=classpath:/localization/email-orderDelivery_$lang.properties
+<html>
+    <head>
+        <title>Your order ${ctx.orderData.customerOrderNumber} is ${ctx.orderData.status}</title>
+    </head>
+    <body style="font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif; font-size: 75%; color: #646464;">
+        <div>
+            <h2 style="border-bottom: 1px solid #84C5D4; color: #84C5D4; line-height: 30px; margin-bottom: 0;">Your order ${ctx.orderData.customerOrderNumber} is ${ctx.orderData.status}</h2>
+        </div>
+        <div class="container_image" style="padding-top: 10; width: 620.141px;">
+            <img src="${ctx.orderStatusImageURL}" height="100"/>
+            #if(${ctx.orderData.nextDeliveryDate} && ${ctx.orderData.status.toUpperCase()} != 'DELIVERED')
+                <div class="container_date" style="top: 0px; position: relative;margin-right:130px;left: 545px;text-align: center; display: inline-block;">
+                    <span>Next Delivery Date</span>
+                    <br><span>${ctx.orderData.nextDeliveryDate}</span>
+                </div>
+            #end
+            #if(${ctx.orderData.deliveryDate} && ${ctx.orderData.status.toUpperCase()} == 'DELIVERED')
+                <div class="container_date" style="top: 0px; position: relative;margin-right:130px;left: 545px;text-align: center; display: inline-block;">
+                    <span>Delivery Date</span>
+                    <br><span>${ctx.orderData.deliveryDate}</span>
+                </div>
+            #end
+        </div>
+        <div style="padding-top: 10;">
+            <p>Dear ${ctx.orderData.customer},</p>
+            <p>The status of your purchase is provided below:</p>
+            <ul style="margin: 0; padding: 0; padding-top: 5;">
+                #if(${ctx.orderData.sapOrderNumber})
+                <li style="color: #646464; font-size: 12px; list-style-type: none;"><strong>SAP order number:</strong> ${ctx.orderData.sapOrderNumber}</li>
+                #end
+                #if(${ctx.orderData.customerOrderNumber})
+                <li style="color: #646464; font-size: 12px; list-style-type: none;"><strong>Customer order number:</strong> ${ctx.orderData.customerOrderNumber}</li>
+                #end
+                #if(${ctx.orderData.shipToName})
+                <li style="color: #646464; font-size: 12px; list-style-type: none;"><strong>Ship to:</strong> ${ctx.orderData.shipToName}</li>
+                #end
+                #if(${ctx.orderData.shipToAddress})
+                <li style="color: #646464; font-size: 12px; list-style-type: none;"><strong>Ship to address:</strong> ${ctx.orderData.shipToAddress}</li>
+                #end
+                #if(${ctx.orderData.orderTypeDescription})
+                <li style="color: #646464; font-size: 12px; list-style-type: none;"><strong>Order type:</strong> ${ctx.orderData.orderTypeDescription}</li>
+                #end
+            </ul>
+        </div>
+        <div style="padding-top: 10;">
+            #if($ctx.orderData.orderEntries.size() > 0)
+            <table style="border: 1px solid #e1e1e1;border-collapse:collapse; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit; vertical-align: baseline;" border="1" cellpadding="5">
+                <tr>
+                    <td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1; text-align: center; padding: 10; color: #646464;"><strong>Product</strong></td>
+                    <td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1; text-align: center; padding: 10; color: #646464;"><strong>Product Number</strong></td>
+                    <td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1; text-align: center; padding: 10; color: #646464;"><strong>Price</strong></td>
+                    <td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1; text-align: center; padding: 10; color: #646464;"><strong>Requested Delivery Date</strong></td>
+                    <td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1; text-align: center; padding: 10; color: #646464;"><strong>Estimated Delivery Date</strong></td>
+                    <td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1; text-align: center; padding: 10; color: #646464;"><strong>Status</strong></td>
+                </tr>
+                #foreach($entry in ${ctx.orderData.orderEntries} )
+                <tr>
+                    <td style="border: 1px solid #e1e1e1;border-collapse: collapse; text-align: center; padding-left: 5; padding-right: 5; color: #646464;">#if($entry.productCode)$entry.productCode#end</td>
+                    <td style="border: 1px solid #e1e1e1;border-collapse: collapse; text-align: left; padding-left: 5; padding-right: 5; color: #646464;">
+                        <span>#if($entry.productName)$entry.productName#end</span>
+                        <ul style="margin: 0; padding: 0;">
+                            #if(${entry.orderedQuantity})
+                            <li style="color: #646464; font-size: 80%; list-style-type: none;"><strong>Ordered Quantity: </strong>${entry.orderedQuantity}</li>
+                            #end
+                            #if(${entry.invoicedQuantity})
+                            <li style="color: #646464; font-size: 80%; list-style-type: none;"><strong>Invoiced Quantity: </strong>${entry.invoicedQuantity}</li>
+                            #end
+                            #if(${entry.openedQuantity})
+                            <li style="color: #646464; font-size: 80%; list-style-type: none;"><strong>Opened Quantity: </strong>${entry.openedQuantity}</li>
+                            #end
+                        </ul>
+                    </td>
+                    <td style="border: 1px solid #e1e1e1;border-collapse: collapse; text-align: center; padding-left: 5; padding-right: 5; color: #646464;">#if($entry.price)$entry.price#end</td>
+                    <td style="border: 1px solid #e1e1e1;border-collapse: collapse; text-align: center; padding-left: 5; padding-right: 5; color: #646464;">#if($entry.requestedDeliveryDate)$entry.requestedDeliveryDate#end</td>
+                    <td style="border: 1px solid #e1e1e1;border-collapse: collapse; text-align: left; padding-left: 5; padding-right: 5; color: #646464;">
+                        <ul style="margin: 0; padding: 0;">
+                        #if(${entry.scheduleLines.isEmpty()})
+                        <li style="color: #646464; font-size: 80%; list-style-type: none;">${ctx.messages.orderDeliveryUnavailable}</li>
+                        #else
+                            #foreach($line in ${entry.scheduleLines})
+                                 #if(${line.expectedDeliveryDate} && ${line.expectedDeliveryDate} != ${ctx.messages.orderDeliveryDefaultDate} && $line.expectedDeliveryDate != ${ctx.messages.orderDeliveryDefaultScheduleDate})
+                                    <li style="color: #646464; font-size: 80%; list-style-type: none;">${line.expectedDeliveryDate} - ${line.quantity}</li>
+                                #else
+                                    <li style="color: #646464; font-size: 80%; list-style-type: none;">${ctx.messages.orderDeliveryUnavailable}</li>
+                                #end
+                            #end
+                          #end
+                        </ul>
+                    </td>
+                    <td style="border: 1px solid #e1e1e1;border-collapse: collapse; text-align: center; padding-left: 5; padding-right: 5; color: #646464;">#if($entry.status)$entry.status#end</td>
+                </tr>
+                #end
+            </table>
+            #end
+            <p>You can view the status of our order by clicking <a href='${ctx.orderDetailUrl}'>here</a>.</p>
+        </div>
+        <div style="padding-top: 10;">
+            <span>Regards,</span>
+            <p><strong>J&amp;J Customer Connect Team</strong></p>
+            <span>Any question? Call us 0800-707-5420 (op #6)</span>
+        </div>
+        <div style="padding-top: 10">
+            <img src="${ctx.siteLogoURL}" width="250" border="0" />
+        </div>
+    </body>
+</html>

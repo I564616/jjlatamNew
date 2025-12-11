@@ -1,0 +1,9 @@
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+# Initialization
+INSERT_UPDATE JnjGTIntAffiliation;childCustNo[unique=true];delIndicator;parentCustNo[unique=true];partnerTypeCode[unique=true];partnerTypeName;sourceSysId[unique=true];recordStatus(code)[default='LOADING']
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT CHILD_CUSTOMER_NUM,DEL_IND,PARENT_CUSTOMER_NUM,PARTNER_SUB_TYPE_CD,PARTNER_TYPE_NAME,SOURCE_SYS_ID from STG_AFFILIATION WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP""
+);
+"

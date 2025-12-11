@@ -1,0 +1,8 @@
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+
+# Initialization
+INSERT_UPDATE JnjGTIntOrderLine;approverNameCd;batchNumber;contractNum;currency;deliveryStatus;gtin;gtinEntered;highLevelItemNumber;invoiceStatus;itemCategory;materialEntered;materialNumber;netValue;overAllStatus;plant;plantName;priceOverrideReasonCd;productDivision;qty;reasonForRejection;returnInvNumber;route;salesUom;sapOrderLineNumber[unique=true];sapOrderNumber[unique=true];shipToCustNum;sourceSystemId[unique=true];subTotal1;subTotal2;subTotal3;subTotal4;subTotal5;subTotal6;taxAmt;unitPrice;recordTimeStamp[dateformat='yyyy-MM-dd hh:mm:ss']
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT t.APPOVER_NAME_CD, t.BATCH_NUM, t.CONTRACT_NUM, t.CURRENCY, t.DELV_STATUS, t.GTIN, t.GTIN_ENTERED, t.HIGH_LVL_ITEM_NUM, t.INVOICE_STATUS, t.ITEM_CATEGORY, t.MATERIAL_ENTERED, t.ORDERED_MATERIAL_NUM, t.NET_VALUE, t.OVERALL_STATUS, t.PLANT, t.PLANT_NAME, t.PRICE_OVERRIDE_REASON_CD, t.PRODUCT_DIVISION, t.ORDERED_QTY, t.RSN_FOR_REJ, t.RETURN_INV_NUM, t.ROUTE, t.ORDERED_UOM, t.ORD_LINE_NUM, t.ORDER_NUM, t.SHIP_TO_CUST_NUM, t.SOURCE_SYS_ID, t.SUB_TOTAL_1, t.SUB_TOTAL_2, t.SUB_TOTAL_3, t.SUB_TOTAL_4, t.SUB_TOTAL_5, t.SUB_TOTAL_6, t.TAX_AMT, t.UNIT_PRICE, t.REC_TIMESTAMP from STG_ORDER_LINE t, STG_ORDER_CJ cj WHERE t.order_num = cj.order_num and t.REC_TIMESTAMP = cj.REC_TIMESTAMP and t.BUSINESS_SECTOR = cj.BUSINESS_SECTOR"");"

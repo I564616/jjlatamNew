@@ -1,0 +1,490 @@
+/* added for attention error 03/07/2017 */
+.attn-label{
+	display: inline-block;line-height: 40px;vertical-align: top;
+}
+.attn-field{
+	display:inline-block;
+}
+/* shipment css  start  */
+.checkoutshipping sup.supsm{
+    font-size: 10px;
+    
+    top: -4px;
+}
+.checkoutshipping .basecontainer {   
+    padding-right:34px;   
+}
+.shipmentAddressDetails{
+	padding: 30px 30px;
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 3px 11px 0 rgba(0, 0, 0, 0.19);
+	
+}
+.checkoutshipping .dropShipmentpadding {
+    padding: 20px 30px 20px 0px;
+}
+.checkoutshipping .dateselector .btn-group.bootstrap-select {
+    margin: 0 0 3px 10px !important;
+}
+.checkoutshipping .dateselector .btn-group.bootstrap-select {
+    text-align: left !important;
+    width: 136px !important;
+    float: left !important;
+}
+.checkoutshipping .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+    width: 136px;
+}
+ .checkoutshipping .btn-default,.checkoutshipping .btn-default.active,.checkoutshipping .btn-default:active,.checkoutshipping .open>.dropdown-toggle.btn-default {
+   /*  color: #828282 !important;
+    background-color: #fff !important;
+    border-color: #adadad;
+    background: url('../images/downarrow.png') no-repeat;
+    background-position: 92% 9px !important;
+    -webkit-appearance: none;
+    background-size: 15px 15px;
+    margin: 0px 6px 0px 0px;
+    height: 34px; */
+    //padding-right: 122px;  
+    width: 136px !important;
+}
+.marginleft20{
+	margin-left:20px;
+}
+.marginbtmleft{
+	margin:0 0 10px 10px !important;
+}
+.checkoutshipping td.dateselector {
+    padding-bottom: 20px !important;
+}
+.checkoutshipping .btn-default:focus, .checkoutshipping .btn-default:hover {
+    background-color: #fff;
+    background-position: 0 -15px;
+}
+.checkoutshipping .table>thead:first-child>tr:first-child>th:nth-child(2) {
+    width: 175px;
+}
+.checkoutshipping .shiptoAlternativeAddress{
+	margin-top:30px;
+}
+.checkoutshipping .shipping-row-padding{
+    padding-left:15px;padding-right:15px;
+}
+.checkoutshipping table.table-bordered.dataTable tbody td:nth-child(4) {
+    font-size: 15px;
+}
+.checkoutshipping .ship-address-pane{
+    padding:20px;
+	background-color:white;
+	border-bottom: 1px solid #f9f9f9;
+}
+.checkoutshipping .shipping-address{
+	padding-left:15px;padding-right:15px;
+}
+.checkoutshipping .shipping-address-padding
+{
+   //  padding: 29px !important;
+}
+.checkoutshipping .shipping-address-padding2
+{
+    // padding: 35px !important;
+	 font-size: 18px !important;
+     font-weight: bold;
+	 vertical-align: middle;
+}
+.checkoutshipping .fontsize18pxbld{
+	font-size: 18px !important;
+    font-weight: bold;	
+} 
+.checkoutshipping  .addresspane {
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.1), 0 1px 10px 1px rgba(0, 0, 0, 0.1);
+    /* border: 1px solid; */
+}
+.checkoutshipping .tableshadow{
+	    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.1), 0 1px 10px 1px rgba(0, 0, 0, 0.1);
+}
+.checkoutshipping .fontsize20pxbld{
+	font-size: 30px !important;
+    font-weight: bold;	
+}   
+.checkoutshipping .table>thead:first-child>tr:first-child>th:first-child {
+    width: auto;
+	//border-right: none;
+}
+.checkoutshipping div#ordersTablemobile_info{
+	float: left;
+	padding: 19px 0px 1px 20px;
+  }  
+	
+.checkoutshipping div#ordersTablemobile_paginate {
+	float: right;
+	padding: 10px 25px 0 0px;
+}
+.checkoutshipping  div#ordersTablemobile_length {
+    display: none;
+}
+#ordersTablemobile.table.table-bordered.dataTable tbody td:last-child {
+    text-align: left;
+    padding-left: 34px;
+}
+.checkoutshipping  div#ordersTablemobile_wrapper {
+    background-color: #fff;
+}
+.skyBlue {
+    color: #08a !important;
+}
+ .checkoutshipping .imgprop{
+    width: 21%;
+    height: 62px;
+    vertical-align: top;
+    margin-top: 2px;
+}
+.checkoutshipping .Tabsubtxt{
+	width:60%;
+	margin-top: 0px;
+}
+.checkoutshipping  #breadcrumbs-one li:first-child a:first-child {
+    background: #fff;
+	    font-weight: bold;
+}
+ .Tabsubtxt{
+	margin-left: 10px;
+	margin-top: 10px;
+	line-height: 10px;
+    font-size: 10px;
+    display: inline-block;
+    vertical-align: middle;	
+}
+
+span.glyphicon.glyphicon-calendar {
+    color: #08a;
+}
+.date-picker {
+    border-right: none;
+	font-size: 14px;
+   // border-color: #08a;	
+}
+label.input-group-addon.btn {
+    background: #fff;
+	//border-color: #08a;
+}
+.checkoutshipping .table-striped>tbody>tr:nth-of-type(odd)
+{
+background-color: #f9f9f9;
+    text-align: center;
+}
+.checkoutshipping .table-striped>tbody>tr:first-child {
+    background: #fff;
+}
+.checkoutshipping .table-striped>tbody>tr:first-child .selectmethod {
+    margin-bottom: 20px;
+}
+
+/* Start modified by lokesh &sumali oct10 for mobile */
+.checkoutshipping .table-striped>tbody>tr:nth-of-type(even)
+{
+background-color: #f9f9f9 !important;
+    text-align: center;
+}
+.checkoutshipping .table-striped>tbody>tr:nth-of-type(odd)
+{
+background-color: #fff;
+    text-align: center;
+}
+.checkoutshipping #ordersTablemobile .valign-top{
+	vertical-align:top !important;
+
+}
+.checkoutshipping #ordersTablemobile .valign-top,.checkoutshipping #ordersTablemobile th{
+		padding-left:20px !important;
+	padding-right:20px !important;
+}
+.checkoutshipping #ordersTablemobile .valign-top .toggle-link{
+	padding:0px !important;
+}
+.checkoutshipping #ordersTablemobile .details{
+	padding-left:0px !important;
+	padding-right:0px !important;
+}
+/* End modified by lokesh &sumali oct10 for mobile */
+.checkoutshipping .input-group {
+   width: 136px;
+}	
+.checkoutshipping table.table-bordered.dataTable tbody td:last-child {
+    /* padding-left: 45px; */
+    text-align: right;
+    padding-right: 25px;
+}
+.checkoutshipping table.table-bordered.dataTable tbody td{
+	vertical-align:middle;
+}
+.checkoutshipping .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {   
+    background-image: linear-gradient(to bottom,#08a,#08a 100%);   
+}
+.checkoutshipping .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
+    color: #fff;    
+}
+ .checkoutshipping .dropdown-menu>li>a {   
+    padding: 10px 20px;
+    
+}
+.dateselector  .input-group {
+    width: 136px;
+	float:left;
+}
+.dateselector{	
+    padding: 20px 0px 50px 100px !important;
+}
+.dateselector .form-group {
+    margin-bottom: 15px;
+    float: left;
+	margin-right: 18px;
+}
+.setshipping{
+	margin: 5px 10px;
+	float:left;
+	font-size: 14px;
+    font-weight: bold;
+    line-height:30px;
+}
+.checkoutshipping  .margintop10{
+	margin-top:10px;
+	margin-bottom:0px;
+}
+  div#ordersTable_paginate {
+		float: right;	
+		padding: 20px 30px 0 0;
+	}
+div.dataTables_wrapper div.dataTables_info {
+	float: right;
+	margin: 22px 20px 0 0;
+}
+
+.line {
+    width: 29% !important;
+    margin-right: 48px !important;
+}
+.padding0{
+	padding: 0px !important   
+   }
+.padding0 span{
+	position: relative;
+    top: -9px;
+   }	
+.pull-right.hypen {
+    margin-right: 35px;
+}
+.checkoutshipping .paddingforText{
+	    padding-left: 6px !important;
+		font-weight: bold;
+		width: 137px;
+}
+.checkoutshipping .marginright17{
+	    margin-right: 17px;
+}
+.checkoutshipping .marginright20{
+	    margin-right: 20px;
+}
+.checkoutshipping .marginright34{
+	     margin: 20px 34px 0 0;
+}
+.checkoutshipping .Subcontainer table.dataTable {   
+    margin-left: 2px;
+	    border: none;
+}
+.bordernone{
+	border-right:none;
+}
+.bordernone tbody tr td {
+   border-right: none !important;
+}
+.suplg{
+	 font-size: 18px;
+    top: -12px
+}
+
+.supmd{
+    font-size: 11px;
+	top: -6px;
+}
+.fontsize30px{
+	    font-size: 30px;
+}
+/* change address poupup */
+#selectaddresspopupBillTO .modalcls,#selectaddresspopup .modalcls{
+	top: 80px;
+}
+#selectaddresspopupBillTO .modal-body,#selectaddresspopup .modal-body{
+	padding:0px;
+}
+#selectaddresspopupBillTO .modal-header,#selectaddresspopup .modal-header{
+	padding: 15px 25px 15px 25px;
+}
+#selectaddresspopupBillTO .popup,#selectaddresspopup .popup{
+	margin: 0 auto;
+	width: 500px;
+	border-radius: 0px;
+	box-shadow: 0 0px 0px; 
+}
+#selectaddresspopupBillTO .clsBtn,#selectaddresspopup .clsBtn{
+	margin-top: 15px !important;
+	font-size: 14px;
+	color: #0a8caa;
+	opacity:1;
+}
+#selectaddresspopupBillTO .odd-row,#selectaddresspopup .odd-row{
+	padding:10px 25px;
+	background: #fff;
+	border-bottom: 1px solid #e5e5e5;
+	cursor:pointer;
+}
+#selectaddresspopupBillTO .even-row,#selectaddresspopup .even-row{
+	background: rgb(251, 251, 251);
+	padding:25px;
+	border-bottom: 1px solid #e5e5e5;
+	cursor:pointer;
+}
+#selectaddresspopupBillTO .selectTitle,#selectaddresspopup .selectTitle{
+	font-size: 30px;
+}
+#selectaddresspopupBillTO .searchArea,#selectaddresspopup .searchArea{
+	margin:0px auto;
+	padding:15px 25px;
+    border-bottom: 1px solid #e5e5e5;
+}  
+#selectaddresspopupBillTO .searchBox,#selectaddresspopup .searchBox{
+	border-radius: 15px;
+}
+#selectaddresspopupBillTO .searchBtn,#selectaddresspopup .searchBtn{
+	top: -24px;
+    right: 14px;
+	color: #0a8caa;
+}
+#selectaddresspopupBillTO .code,#selectaddresspopup .code{
+	padding-top: 20px;
+	color: #0a8caa !important;
+	font-size: 18px;
+	font-weight: bold;
+}
+#selectaddresspopupBillTO .descTxt,#selectaddresspopup .descTxt{
+	font-size: 14px;
+    //padding-left: 25px;
+    line-height: 17px;
+}
+#selectaddresspopupBillTO .anchorcls,#selectaddresspopup .anchorcls{
+	border-bottom: white;
+	padding-left: 25px;
+}
+#selectaddresspopupBillTO .listclass,#selectaddresspopup .listclass{
+	line-height: 0px;
+	margin-bottom: 0px;
+}
+#selectaddresspopupBillTO .ftrcls,#selectaddresspopup .ftrcls{
+	padding: 25px 25px 25px 25px;
+}
+#selectaddresspopupBillTO #selectAdressErr,#selectaddresspopup #selectAdressErr{
+	color:#b41601;display:none
+}
+/*AAOL-3612*/
+#selectaddresspopupBillTO #selectbillingAddressErr,#selectaddresspopup #selectbillingAddressErr{
+	color:#b41601;display:none
+}
+
+#selectaddresspopupBillTO .address-txt,#selectaddresspopup .address-txt{
+	line-height:25px;
+}
+
+/* Start - added by lokesh - sep 23 */
+#selectaddresspopupBillTO .addressSelected,#selectaddresspopup .addressSelected{
+                background: #0ac !important;
+                color:white;
+}
+
+/* End - added by lokesh - sep 23 */
+
+.checkoutshipping .table>thead:first-child>tr:first-child>th:last-child{
+	text-align:center;
+}
+.dateselectordropdown{
+	//width:250%;
+	//height:70px;
+}
+.dateselectordropdown .dateselector{
+	//position:absolute;
+}
+.product-cell{min-width:300px}
+.quantity-cell{width:100px}
+
+@media screen and (max-width: 768px) {
+	.attn-label,.attn-field{
+		width:100%;
+		display:block;
+	}
+}	
+@media screen and (max-width: 767px) {
+	 div#ordersTable_paginate {
+		float: right;	
+		padding: 17px 30px 0 0;
+	}
+	 div.dataTables_wrapper div.dataTables_info {
+		float: right;
+		margin: 0px 20px 0 0;
+	}
+	.line {
+		width: 77% !important;
+	}
+	.input-group {
+		width: 93%;
+	}
+	.checkoutshipping .textboxstyle {
+		width: 100%;		
+	}
+	.checkoutshipping .basecontainer {
+		 padding: 20px 0px 20px 50px;
+	}
+	.checkoutshipping .bgcls1 {
+		padding: 30px 0px 0px 5px;
+	}
+	.checkoutshipping .pull-right.hypen {
+		margin-right: 30px;
+	}
+	.checkoutshipping .table>thead:first-child>tr:first-child>th:first-child {
+		width: 250px !important;
+		border-right: none;
+	}
+#selectaddresspopupBillTO .popup,#selectaddresspopup .popup{
+		width: 100%;
+	}
+	#selectaddresspopupBillTO .addressSelected,#selectaddresspopup .addressSelected{
+                background: #0ac !important;
+                color:white;
+}
+	
+}
+
+@media screen and (min-width: 400px) and (max-width: 420px) { 
+	#breadcrumbs-one a {
+		
+		padding: .7em 1.2em .7em 2.1em !important;
+	}
+}
+@media screen and (max-width: 399px) {
+	#breadcrumbs-one a {
+		
+		padding: .7em 0.7em .7em 1.7em !important;
+	}
+}
+.fee-price-table .snoClass,.fee-price-table .snoData{
+	text-align:center !important;
+	width:55px !important;
+	padding-left:8px !important;
+}
+.fee-price-table .snoClassSingleCart{
+	text-align:center !important;
+	width:35px !important;
+	padding-left:8px !important;
+}
+.fee-price-table .quantitySingleCart{
+	width: 80px !important;
+}
+.singleCartQuantity{
+	width:150px !important;
+}

@@ -1,0 +1,3 @@
+INSERT_UPDATE Country;isocode[unique=true];name[lang=en];active[default=true]
+;HR1;"Haryana1"
+;GNN1;"Gurgaon1"

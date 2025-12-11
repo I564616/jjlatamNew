@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2000-2015 hybris AG
+ All rights reserved.
+
+ This software is the confidential and proprietary information of hybris
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with hybris.
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Facades -->
+
+	<alias alias="b2bSimpleSuggestionFacade" name="b2bDefaultSimpleSuggestionFacade"/>
+	<bean id="b2bDefaultSimpleSuggestionFacade"
+		  class="com.jnj.b2b.facades.suggestion.impl.DefaultSimpleSuggestionFacade">
+		<property name="b2bSimpleSuggestionService" ref="b2bSimpleSuggestionService"/>
+		<property name="userService" ref="userService"/>
+		<property name="categoryService" ref="categoryService"/>
+		<property name="productPricePopulator" ref="productPricePopulator"/>
+		<property name="productPrimaryImagePopulator" ref="productPrimaryImagePopulator"/>
+		<property name="productConverter" ref="productConverter"/>
+	</bean>
+
+	<!-- Email -->
+	<alias alias="emailContextFactory" name="acceleratorEmailContextFactory"/>
+	<bean id="acceleratorEmailContextFactory" parent="defaultEmailContextFactory">
+		<property name="contextResolutionStrategy" ref="b2bProcessContextResolutionStrategy"/>
+		<property name="emailContextVariables">
+			<map merge="true">
+				<entry key="themeResourceUrl-powertools" value="{baseUrl}/_ui/{theme}"/>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="customerEmailContext"
+		  class="com.jnj.b2b.facades.process.email.context.CustomerEmailContext"
+		  parent="abstractEmailContext" scope="prototype">
+		<property name="customerConverter" ref="customerConverter"/>
+	</bean>
+
+	<bean id="b2bForgottenPasswordEmailContext"
+		  class="com.jnj.b2b.facades.process.email.context.ForgottenPasswordEmailContext"
+		  parent="customerEmailContext" scope="prototype">
+		<property name="customerConverter" ref="customerConverter"/>
+	</bean>
+
+	<bean id="orderReplenishmentEmailContext"
+		  class="com.jnj.b2b.facades.process.email.context.OrderReplenishmentEmailContext"
+		  parent="abstractEmailContext" scope="prototype">
+		<property name="scheduledCartConverter" ref="scheduledCartConverter"/>
+	</bean>
+
+	<bean id="b2bOrderNotificationContext"
+		  class="com.jnj.b2b.facades.process.email.context.OrderNotificationEmailContext"
+		  parent="abstractEmailContext" scope="prototype">
+		<property name="orderConverter" ref="orderConverter"/>
+	</bean>
+
+	<alias name="b2bDefaultStoreFinderFacade" alias="b2bStoreFinderFacade"/>
+	<bean id="b2bDefaultStoreFinderFacade"
+		  class="de.hybris.platform.commercefacades.storefinder.impl.DefaultStoreFinderFacade">
+		<property name="baseStoreService" ref="baseStoreService"/>
+		<property name="storeFinderService" ref="storeFinderService"/>
+		<property name="searchPagePointOfServiceDistanceConverter" ref="b2bSearchPagePointOfServiceDistanceConverter"/>
+		<property name="pointOfServiceConverter" ref="pointOfServiceConverter"/>
+		<property name="pointOfServiceService" ref="pointOfServiceService"/>
+		<property name="storeCountConverter" ref="storeCountConverter"/>
+		<property name="pointOfServiceDistanceConverter" ref="pointOfServiceDistanceConverter"/>
+	</bean>
+
+	<alias name="b2bDefaultSearchPagePointOfServiceDistanceConverter"
+		   alias="b2bSearchPagePointOfServiceDistanceConverter"/>
+	<bean id="b2bDefaultSearchPagePointOfServiceDistanceConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="storeFinderSearchPageData"/>
+		<property name="populators">
+			<list>
+				<ref bean="b2bSearchPagePointOfServiceDistancePopulator"/>
+			</list>
+		</property>
+	</bean>
+
+	<alias name="yb2bacceleratorSearchPagePointOfServiceDistancePopulator"
+		   alias="b2bSearchPagePointOfServiceDistancePopulator"/>
+	<bean id="yb2bacceleratorSearchPagePointOfServiceDistancePopulator"
+		  class="com.jnj.b2b.facades.storefinder.populators.SearchPagePointOfServiceDistancePopulator">
+		<property name="pointOfServiceDistanceConverter" ref="pointOfServiceDistanceConverter"/>
+	</bean>
+
+</beans>

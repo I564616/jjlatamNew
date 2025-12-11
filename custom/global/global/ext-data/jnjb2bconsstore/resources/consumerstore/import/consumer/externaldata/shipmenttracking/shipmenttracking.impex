@@ -1,0 +1,44 @@
+###########################################################################
+#Impex For SHIPMENT TRACKING URLS #
+###########################################################################
+
+INSERT_UPDATE JnjGTShipmentTrackingURLs;freightCarrCode[unique=true,allownull=true];freightCarrName[unique=true,allownull=true];freightCarrURL;trackingName;trackingTypeCode;param1Name;param1TypeCode;param2Name;param2TypeCode
+;APAC;A-P-A TRANSPORT CORP;https://www.apatransport.com/shipment-tracking-results.asp?ttype=2;tn1;1;dz1;1;;
+;ARFW;FedEx Freight East;http://www.fedexfreight.fedex.com/protracedetail.jsp?as_type=BOL;as_pro;1;as_begindate;3;as_enddate;4
+;EXLA;ESTES EXPRESS;http://www.estes-express.com/cgi-dta/edn419.mbr/output?selection_type=BOL&date_type=P;search_criteria;1;;;;
+;FDE;FEDERAL EXPRESS PRIORITY;http://www.fedex.com/Tracking?action=track&language=english&cntry_code=us;tracknumbers;2;;;;
+;FDE1;FEDERAL EXPRESS STANDARD;http://www.fedex.com/Tracking?action=track&language=english&cntry_code=us;tracknumbers;2;;;;
+;FDE2;FEDERAL EXPRESS ECONOMY;http://www.fedex.com/Tracking?action=track&language=english&cntry_code=us;tracknumbers;2;;;;
+;FDE2D;FedEx 2 Day;http://www.fedex.com/Tracking?action=track&language=english&cntry_code=us;tracknumbers;2;;;;
+;FDE3;FEDEX 3RD DAY ES;http://www.fedex.com/Tracking?action=track&language=english&cntry_code=us;tracknumbers;2;;;;
+;FDE5;FED EXPRESS;http://www.fedex.com/Tracking?action=track&language=english&cntry_code=us;tracknumbers;2;;;;
+;FDE8;FEDERAL EXPRESS 8AM;http://www.fedex.com/Tracking?action=track&language=english&cntry_code=us;tracknumbers;2;;;;
+;FDEG;FedEx Ground;http://www.fedex.com/Tracking?action=track&language=english&cntry_code=us;tracknumbers;2;;;;
+;FDEH;FEDEX HEAVY WEIGHT;http://www.fedex.com/Tracking?action=track&language=english&cntry_code=us;tracknumbers;2;;;;
+;FDEJ;FED EXP ECON 2DAY JT;http://www.fedex.com/Tracking?action=track&language=english&cntry_code=us;tracknumbers;2;;;;
+;FDES;FEDERAL EXPRESS SATURDAY;http://www.fedex.com/Tracking?action=track&language=english&cntry_code=us;tracknumbers;2;;;;
+;FDEX;Fed Express Intl;http://www.fedex.com/Tracking?action=track&language=english&cntry_code=us;tracknumbers;2;;;;
+;FDE_2D;FEDEX 2DAY;http://www.fedex.com/Tracking?action=track&language=english&cntry_code=us;tracknumbers;2;;;;
+;FDE_GRH;FedEx Ground;http://www.fedex.com/Tracking?action=track&language=english&cntry_code=us;tracknumbers;2;;;;
+;FDSC;FEDEX SCS REFRIG.;http://www.fedex.com/Tracking?action=track&language=english&cntry_code=us;tracknumbers;2;;;;
+;FDSD;FEDEX SCS DEDICATED;http://www.fedex.com/Tracking?action=track&language=english&cntry_code=us;tracknumbers;2;;;;
+;FX8A;FEDERAL EXP 8 AM;http://www.fedex.com/Tracking?action=track&language=english&cntry_code=us;tracknumbers;2;;;;
+;FXEW;FEDEX FREIGHT;http://www.fedex.com/Tracking?action=track&language=english&cntry_code=us;tracknumbers;2;;;;
+;HMES;USF HOLLAND EXPRESS;http://www.usfc.com/shipmentStatus/shipmentStatustWS.jsp?TrackType=B;TrackNumber;4;ZipCode;1;;
+;RDWY;ROADWAY;http://www.quiktrak.roadway.com/cgi-bin/quiktrak?type=1;pro0;1;zip0;1;;
+;RETL;USF REDDAWAY INC.;http://www.usfreightways.com/tools/truckingresults.asp?Carrier=USFReddaway&TrackType=B&ZipcodeType=D;Track Number;1;Zipcode;1;;
+;SAIA;SAIA MOTOR FREIGHT;http://www.saiasecure.com/tracing/nbltrc.asp;bl;1;;;;
+;TNBW;USF BESTWAY INC.;http://www.usfreightways.com/tools/truckingresults.asp?Carrier=USFBestway&TrackType=B&Zipcode=91761&ZipcodeType=O;TrackNumber;1;;;;
+;UPS2;UPS SECOND DAY AIR;http://wwwapps.ups.com/etracking/tracking.cgi?tracknums_displayed=1&TypeOfInquiryNumber=T;InquiryNumber;2;;;;
+;UPS3;UPS THIRD DAY;http://wwwapps.ups.com/etracking/tracking.cgi?tracknums_displayed=1&TypeOfInquiryNumber=T;InquiryNumber;2;;;;
+;UPS5;UPS NEXT DAY 3:00;http://wwwapps.ups.com/etracking/tracking.cgi?tracknums_displayed=1&TypeOfInquiryNumber=T;InquiryNumber;2;;;;
+;UPS8;UPS NEXT DAY AIR EARLY AM;http://wwwapps.ups.com/etracking/tracking.cgi?tracknums_displayed=1&TypeOfInquiryNumber=T;InquiryNumber;2;;;;
+;UPSB;UPS BLUE;http://wwwapps.ups.com/etracking/tracking.cgi?tracknums_displayed=1&TypeOfInquiryNumber=T;InquiryNumber;2;;;;
+;UPSD;UPS STERILE DESIGN;http://wwwapps.ups.com/etracking/tracking.cgi?tracknums_displayed=1&TypeOfInquiryNumber=T;InquiryNumber;2;;;;
+;UPSG;UPS GROUND SERVICE;http://wwwapps.ups.com/etracking/tracking.cgi?tracknums_displayed=1&TypeOfInquiryNumber=T;InquiryNumber;2;;;;
+;UPSN;UPS NEXT DAY AIR;http://wwwapps.ups.com/etracking/tracking.cgi?tracknums_displayed=1&TypeOfInquiryNumber=T;InquiryNumber;2;;;;
+;UPSP;UNITED PARCEL SVC;http://wwwapps.ups.com/etracking/tracking.cgi?tracknums_displayed=1&TypeOfInquiryNumber=T;InquiryNumber;2;;;;
+;UPSR;UPS RED;http://wwwapps.ups.com/etracking/tracking.cgi?tracknums_displayed=1&TypeOfInquiryNumber=T;InquiryNumber;2;;;;
+;UPSS;UPS SAT - CORDIS;http://wwwapps.ups.com/etracking/tracking.cgi?tracknums_displayed=1&TypeOfInquiryNumber=T;InquiryNumber1;2;;;;
+;WWAT;WATKINS;http://www.watkins.com/AUTOSUB/A_TRAC_BOL.asp;BOL1;1;ZIP1;1;;
+;XFDEFO;EX FedEx ND Early*;http://www.fedex.com/Tracking?action=track&language=english&cntry_code=us;tracknumbers;2;;;;

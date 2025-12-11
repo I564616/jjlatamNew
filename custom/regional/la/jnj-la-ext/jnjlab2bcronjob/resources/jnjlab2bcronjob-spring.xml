@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+	
+	<bean id="customerEligibilityDataUploadJob" class="com.jnj.la.cronjobs.JnjCustomerEligibilityDataUploadJob" >
+		<property name="customerEligiblityDataLoader" ref="customerEligiblityDataLoader"/>
+		<property name="modelService" ref="modelService"/>
+		<property name="sessionService" ref="sessionService"/>
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>
+	</bean>
+	<bean id="customerEligiblityDataLoader" class="com.jnj.la.dataload.JnJCustomerEligiblityDataLoad">
+		<property name="customerEligiblityDataLoadMapper" ref="customerEligiblityDataLoadMapper"/>
+		<property name="interfaceOperationArchUtility" ref="interfaceOperationArchUtility"/>
+	</bean>
+	<bean id="customerEligiblityDataLoadMapper" class="com.jnj.la.dataload.mapper.JnjCustomerEligiblityDataLoadMapper">
+		<property name="interfaceOperationArchUtility" ref="interfaceOperationArchUtility"/>
+		<property name="customerEligibilityService" ref="customerEligibilityService"/>		
+	</bean>
+	<bean id="interfaceOperationArchUtility" class="com.jnj.la.core.util.DefaultJnjLaInterfaceOperationArchUtility">
+		<property name="modelService" ref="modelService"/>
+	</bean>	
+	
+	
+	<!-- Added for Load Invoices : Start-->
+	<alias alias="invoiceService" name="jnjInvoiceService"/>
+	<!--<bean id="jnjInvoiceService" class="com.jnj.core.services.impl.DefaultJnjInvoiceService"/>-->
+	<bean id="jnjInvoiceLoadMapper" class="com.jnj.la.dataload.mapper.JnjInvoiceLoadMapper" >
+		<property name="modelService" ref="modelService" />
+		<property name="b2bUnitService" ref="b2bUnitService" />
+	</bean>
+	<bean id="jnjInvoiceDataLoader" class="com.jnj.la.dataload.JnjInvoiceDataLoad"/>
+	<bean id="jnjLoadInvoicesJob" class="com.jnj.la.cronjobs.JnjLoadInvoicesJob" autowire="byName" scope="tenant" />
+	
+	<bean id="JnjInvoiceDao" class="com.jnj.core.dao.impl.DefaultJnjInvoiceDao">
+ 			<property name="flexibleSearchService" ref="flexibleSearchService"/>
+ 			<property name="modelService" ref="modelService"/>
+ 		</bean>
+	<!-- Added for Load Invoices : End-->
+
+	<bean id="jnjLoadContractsJob" class="com.jnj.la.job.JnjLoadContractsJob" autowire="byName" scope="tenant" />
+	
+	<bean id="jnjCheckContractCronJob" class="com.jnj.la.job.JnjCheckContractCronJob" autowire="byName" scope="tenant" />
+	<bean id="jnjLoadTranslationJob" class="com.jnj.la.job.JnjLoadTranslationJob" autowire="byName" scope="tenant" />
+	<bean id="jnjUpsertCustomerCronJob" class="com.jnj.la.job.JnjUpsertCustomerCronJob" autowire="byName"  scope="tenant" />
+	<bean id="jnjLoadDropShipmentJob" class="com.jnj.la.job.JnjLoadDropShipmentJob" autowire="byName" scope="tenant" />	
+	
+<!-- 	SyncOrder related beans -->
+	<bean id="jnjSynchronizeOrdersDataUploadJob" class="com.jnj.la.cronjobs.JnjSynchronizeOrdersDataUploadJob" autowire="byName" scope="tenant" />
+	
+	<bean id="jnjLAOrderDataService" class="com.jnj.la.core.services.order.impl.JnjLAOrderDataServiceImpl" autowire="byName"/>
+	
+	<bean id="jnjLAOrderService" class="com.jnj.la.core.services.order.impl.JnjLAOrderServiceImpl" parent="jnjGTOrderService" autowire="byName"/>
+	
+	<bean id="jnjLAOrderDataServicePrototype" class="com.jnj.la.core.services.order.impl.JnjLAOrderDataServiceImpl" scope="prototype"/>
+	
+	<bean id="jnjSAPOrderConverter" class="com.jnj.la.core.dataload.utility.JnjSAPOrderConverter" autowire="byName">
+		<property name="commonI18NService" ref="commonI18NService"/>
+		<property name="baseStoreService" ref="baseStoreService"/>
+		<property name="baseSiteService" ref="baseSiteService"/>
+		<property name="configurationService" ref="configurationService" />
+	</bean>
+	
+	<!-- 	  UpserProduct related beans -->
+	<bean id="jnjLaUpsertProductCronJob" class="com.jnj.la.cronjobs.JnjLaUpsertProductCronJob" autowire="byName" scope="tenant" />
+	
+	<!-- Service Layer Bean for JnjGenerateEncryptionKeysCronJob --> 
+	<bean id="jnjGenerateEncryptionKeysCronJob" class="com.jnj.la.job.JnjGenerateEncryptionKeysCronJob" autowire="byName" scope="tenant" />
+	<bean id="jnjInterfaceOperationEmailNotificationJob" class="com.jnj.la.job.JnjInterfaceOperationEmailNotificationJob" autowire="byName" scope="tenant" />
+
+	<!-- 	  syncProduct related beans -->
+	<bean id="syncMasterToLocalCatalog" class="com.jnj.la.cronjobs.JnjSyncMasterToLocalCatalog">
+		<property name="modelService" ref="modelService"/>
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>		
+		<property name="sessionService" ref="sessionService"/>
+	</bean>
+	
+		<!-- BR Product catalog sync Service layer job -->
+	<bean id="brProdStagedToOnline" class="com.jnj.la.cronjobs.JnjSyncBRProdStagedToOnline">
+		<property name="modelService" ref="modelService"/>
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>		
+		<property name="sessionService" ref="sessionService"/>
+	</bean>
+	
+	<!-- MX Product catalog sync Service layer job -->
+	<bean id="mxProdStagedToOnline" class="com.jnj.la.cronjobs.JnjSyncMXProdStagedToOnline">
+		<property name="modelService" ref="modelService"/>
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>		
+		<property name="sessionService" ref="sessionService"/>
+	</bean>
+	
+	<!-- CENCA Product catalog sync Service layer job -->
+	<bean id="cencaProdStagedToOnline" class="com.jnj.la.cronjobs.JnjSyncCENCAProdStagedToOnline">
+		<property name="modelService" ref="modelService"/>
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>
+		<property name="sessionService" ref="sessionService"/>
+	</bean>
+		
+	<!-- EC Product catalog sync Service layer job -->
+	<bean id="ecProdStagedToOnline" class="com.jnj.la.cronjobs.JnjSyncECProdStagedToOnline">
+		<property name="modelService" ref="modelService"/>
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>		
+		<property name="sessionService" ref="sessionService"/>
+	</bean>
+
+	<!-- AR Product catalog sync Service layer job -->
+	<bean id="arProdStagedToOnline" class="com.jnj.la.cronjobs.JnjSyncARProdStagedToOnline">
+		<property name="modelService" ref="modelService"/>
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>		
+		<property name="sessionService" ref="sessionService"/>
+	</bean>
+
+	<!-- UY Product catalog sync Service layer job -->
+	<bean id="uyProdStagedToOnline" class="com.jnj.la.cronjobs.JnjSyncUYProdStagedToOnline">
+		<property name="modelService" ref="modelService"/>
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>		
+		<property name="sessionService" ref="sessionService"/>
+	</bean>
+
+	<!-- CL Product catalog sync Service layer job -->
+	<bean id="clProdStagedToOnline" class="com.jnj.la.cronjobs.JnjSyncCLProdStagedToOnline">
+		<property name="modelService" ref="modelService"/>
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>		
+		<property name="sessionService" ref="sessionService"/>
+	</bean>
+
+	<!-- CO Product catalog sync Service layer job -->
+	<bean id="coProdStagedToOnline" class="com.jnj.la.cronjobs.JnjSyncCOProdStagedToOnline">
+		<property name="modelService" ref="modelService"/>
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>
+		<property name="sessionService" ref="sessionService"/>
+	</bean>
+
+	<!-- PE Product catalog sync Service layer job -->
+	<bean id="peProdStagedToOnline" class="com.jnj.la.cronjobs.JnjSyncPEProdStagedToOnline">
+		<property name="modelService" ref="modelService"/>
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>
+		<property name="sessionService" ref="sessionService"/>
+	</bean>
+
+	<!-- PR Product catalog sync Service layer job -->
+	<bean id="prProdStagedToOnline" class="com.jnj.la.cronjobs.JnjSyncPRProdStagedToOnline">
+		<property name="modelService" ref="modelService"/>
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>
+		<property name="sessionService" ref="sessionService"/>
+	</bean>
+
+	<bean id="jnjCategoryShowPlannedDateJob" class="com.jnj.la.cronjobs.JnjCategoryShowPlannedDateJob"  parent="abstractJobPerformable"/>
+	
+	<bean id="jnjLoadTranslationService" class="com.jnj.la.core.services.impl.JnjLoadTranslationServiceImpl"/> 
+	<bean id="jnJCrossReferenceDao" class="com.jnj.core.dao.impl.JnJCrossReferenceDaoImpl">
+		<property name="modelService" ref="modelService"/>
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>
+	</bean>
+	
+	<!-- beans for SalesOrgCustomer Interface added -->
+	<bean id="jnjSalesOrgCustomerJob" class="com.jnj.la.cronjobs.JnjLaSalesOrgCustomerJob" parent="abstractJobPerformable"/>
+	
+	<bean id="jnjLaSubmitEdiOrderFilesJob" class="com.jnj.la.cronjobs.JnjLaSubmitEdiOrderFilesJob" parent="abstractJobPerformable"/>
+
+    <bean id="jnjLaUpdateOrderStatusJob" class="com.jnj.la.cronjobs.JnjLaUpdateOrderStatusJob" parent="abstractJobPerformable">
+        <property name="orderDataService" ref="jnjLAOrderDataService" />
+    </bean>
+
+	<bean id="jnjLaUpdateOrderHeaderStatusJob" class="com.jnj.la.cronjobs.JnjLaUpdateOrderHeaderStatusJob" parent="abstractJobPerformable">
+		<property name="orderDataService" ref="jnjLAOrderDataService" />
+	</bean>
+
+	<bean id="jnjLaUpdateDeliveryDateJob" class="com.jnj.la.cronjobs.JnjLaUpdateDeliveryDateJob" parent="abstractJobPerformable">
+		<property name="invoiceService" ref="jnjUpdateInvoiceService" />
+	</bean>
+
+    <bean id="jnjLaUpdateCarrierStatusJob" class="com.jnj.la.cronjobs.JnjLaUpdateCarrierStatusJob" parent="abstractJobPerformable">
+        <property name="carrierStatusService" ref="jnjUpdateCarrierStatusService" />
+    </bean>
+
+    <bean id="jnjLaImmediateEmailOrderStatusJob" class="com.jnj.la.cronjobs.JnjLaImmediateEmailOrderStatusJob" parent="abstractJobPerformable">
+        <property name="service" ref="jnjLAEmailOrderStatusService" />
+    </bean>
+
+	<bean id="jnjLADailyEmailOrderStatusJob" class="com.jnj.la.cronjobs.JnjLADailyEmailOrderStatusJob" parent="abstractJobPerformable">
+		<property name="service" ref="jnjLAEmailOrderStatusService" />
+	</bean>
+
+    <bean id="jnjLaConsolidatedEmailOrderStatusJob" class="com.jnj.la.cronjobs.JnjLaConsolidatedEmailOrderStatusJob" parent="abstractJobPerformable">
+        <property name="service" ref="jnjLaConsolidatedEmailService" />
+    </bean>
+     
+     <!-- Cronitor Job configuration to monitor the jobs   -->
+     <bean id="jnjLaCronjobToCronitorEventListener" class="com.jnj.la.cronitorjob.JnJLaCronjobToCronitorEventListener" parent="abstractEventListener">
+		<property name="configurationService" ref="configurationService" />
+		<property name="cronitorClient" ref="cronitorClient" />
+	</bean>
+	
+	<bean id="cronitorClient" class="io.cronitor.client.CronitorClient">
+		<constructor-arg  value="caa7b1d19734444b9f4f5fe95a32e42b"/>
+	</bean>
+
+	<bean id="jnjLaCronJobMonitoringReportEmailJob" class="com.jnj.la.cronjobs.JnjLaCronJobMonitoringReportEmailJob" parent="abstractJobPerformable">
+		<property name="jobMonitoringReportsFacade" ref="jnjLaCronJobMonitoringReportsFacade" />
+	</bean>
+
+	<bean id="jnjOrderArchivalCronjob" class="com.jnj.la.job.JnjOrderArchivalCronjob"  parent="abstractJobPerformable">
+		<property name="jnjOrderArchivalFacade" ref="jnjOrderArchivalFacade"/>
+		<property name="configurationService" ref="configurationService"/>
+	</bean>
+	
+	<bean id="jnjLaActiveUsersReportJob" class="com.jnj.la.cronjobs.JnjLaActiveUsersReportJob" parent="abstractJobPerformable">
+       <property name="eventService" ref="eventService"/>
+       <property name="commonI18NService" ref="commonI18NService"/>
+       <property name="configurationService" ref="configurationService" />
+       <property name="jnjCustomerDataService" ref="jnjCustomerDataService" />
+       <property name="baseSiteService" ref="baseSiteService"/>
+       <property name="userService" ref="userService" />
+    </bean>
+    
+    <bean id="jnjLaCreateERPOrderJob" class="com.jnj.la.cronjobs.JnjLaCreateERPOrderCronJob" parent="abstractJobPerformable">
+    </bean>
+    
+    <bean id="jnjLaSAPFailedOrdersReportJob" class="com.jnj.la.cronjobs.JnjLaSAPFailedOrdersReportJob" parent="abstractJobPerformable">
+       <property name="jnjLAOrderService" ref="jnjLAOrderService" />
+    </bean>
+    
+    <bean id="jnjCDLHybrisExportJob" class="com.jnj.la.cronjobs.JnjCDLHybrisExportJob" parent="abstractJobPerformable">
+		<property name="typeDao" ref="typeDao" />
+		<property name="jnjCDLExportDao" ref="jnjCDLExportDao" />
+		<property name="commonI18NService" ref="commonI18NService" />
+		<property name="configurationService" ref="configurationService" />
+	</bean>
+    
+</beans>

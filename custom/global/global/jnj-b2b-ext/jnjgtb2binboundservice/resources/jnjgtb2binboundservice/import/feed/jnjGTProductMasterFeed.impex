@@ -1,0 +1,72 @@
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+# Product Initialization
+INSERT_UPDATE JnjGTIntProduct;materialNum[unique=true];productCode;productModCode;productStatus;minorProdGrpCd;eCatalogDesciption;eCatalogLongDesciption;ghexInd;hazmatCode;francMjrPrdGrpCd;salesOrgCode;legacyProductCode;jnjPortalInd;usaOtcReadyInd;mfgCompCode;deaRegInd;firstShipEffectDate[dateformat=yyyy-MM-dd];publishInd;materialBaseNum;baseUom;franchiseCode;franchiseName;categoryCode;categoryName;brandCode;brandName;subBrandCode;subBrandName;functionNameCd;functionName;srcSystem[unique=true];businessSector;newProductStartDate[dateformat=yyyy-MM-dd];materialStatusEffectDate[dateformat=yyyy-MM-dd];kitInd;recordTimeStamp;globalBusinessUnit;globalProductCode;netContent;recordStatus(code)[default='LOADING']
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT MATERIAL_NUM, PROD_CD, PROD_MOD_CD, MATERIAL_STATUS, MIN_PROD_GRP_CD, ECATALOG_DESC, ECATALOG_LONG_DESC, GHEX_IND,     HAZMAT_CD, FRANC_MJR_PRD_GRP_CD, DIVISION, LEGCY_PROD_CD, JNJ_PORTAL_IND, USA_OTC_READY_IND, MFG_COMP_CD, DEA_REG_IND, FIRST_SHIP_EFFECT_DT, PUBLISH_IND, MATERIAL_BASE_NUM, BASE_UNIT_CD, FRANCHISE_CD, FRANCHISE_NAME, CATEGORY_CD, CATEGORY_NAME, BRAND_CD, BRAND_NAME, SUB_BRAND_CD, SUB_BRAND_NAME, FUNC_NAME_CD, FUNC_NAME_NAME, SOURCE_SYS_ID, BUSINESS_SECTOR, NEW_PROD_START_DT, MATERIAL_STATUS_EFFECT_DT, KIT_IND, REC_TIMESTAMP, DIVISION_NAME, GPC_CD, NET_CONTENT from STG_PRODUCT WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP""
+);
+"
+
+# Product KIT Initialization
+INSERT_UPDATE JnjGTIntProductKit;productSkuCode[unique=true];componentCode[unique=true];kitFeatureCode;kitFeatureName;kitFeatureQty;componentQty;srcSystem[unique=true];businessSector
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT MATERIAL_NUM, COMP_MATERIAL_NUM,KIT_FEATR_CD,KIT_FEATR_NAME,KIT_FEATR_QTY,COMPONENT_QTY,SOURCE_SYS_ID,BUSINESS_SECTOR from STG_PRODUCT_KIT WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP""
+);
+"
+
+# Product Region Initialization
+INSERT_UPDATE JnjGTIntProductReg;productSkuCode[unique=true];regionCode;salesOrgCompCde;salesOrgDivision;srcSystem[unique=true];businessSector
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT MATERIAL_NUM, REGION_CD, SALES_ORG_COMP_CD,	SALES_ORG_DIVISION,	SOURCE_SYS_ID,	BUSINESS_SECTOR from STG_PRODUCT_REG WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP""
+);
+"
+
+# Product Description Initialization
+INSERT_UPDATE JnjGTIntProductDesc;productSkuCode[unique=true];productDesc;languageCode[unique=true];languageName;srcSystem[unique=true]
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT MATERIAL_NUM, PROD_DESC, PROD_DESC_LANG_CD, PROD_DESC_LANG_NAME, SOURCE_SYS_ID from STG_PRODUCT_DESC WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP""
+);
+"
+
+# Product sales Org Initialization
+INSERT_UPDATE JnjGTIntProductSalesOrg;salesOrg[unique=true];distChannel[unique=true];productSkuCode[unique=true];srcSystem[unique=true];businessSector
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT SALES_ORG, DIST_CHANNEL, MATERIAL_NUM,SOURCE_SYS_ID,BUSINESS_SECTOR from STG_PRODUCT_SORG WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP""
+);
+"
+
+# Product Plant Initialization
+INSERT_UPDATE JnJGTIntProductPlant;productSkuCode[unique=true];prodPlnt[unique=true];countryOriginCode;countryAssemblyCode;countryOriginName;countryAssemblyName;srcSystem[unique=true];businessSector
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT MATERIAL_NUM,PROD_PLANT,COUNTRY_ORIGIN_CD,COUNTRY_ASSEMBLY_CD,COUNTRY_ORIGIN_NAME,COUNTRY_ASSEMBLY_NAME,SOURCE_SYS_ID,BUSINESS_SECTOR from STG_PRODUCT_PLNT WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP""
+);
+"
+
+# Product Unit [CONSUMER] Initialization
+INSERT_UPDATE JnjGTIntProductUnit;productSkuCode[unique=true];unitCode[unique=true];gtin;denom;numerator;outerCaseCode;unitName;salesUomInd;shipUnitInd;lineUomCode;lineUomName;depth;height;width;volumeUomCode;volumeQty;weightUomCode;weightUomName;weightQty;innerPackPerCase;tiersPerPallet;casesPerTier;srcSystem[unique=true]
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#%  
+impex.includeSQLData( 
+""SELECT MATERIAL_NUM,ALT_UNIT_CD,GTIN,UOM_CONV_DENOM,UOM_CONV_NUMERATOR,EAN_UPC_NF,ALT_UNIT_NAME,SELL_UOM_IND,SHIP_UOM_IND,LIN_UOM_CD,	LIN_UOM_NAME,DEPTH,HEIGHT,WIDTH,VOL_UOM_CD,VOL_QTY,WEIGHT_UOM_CD,WEIGHT_UOM_NAME,GROSS_WEIGHT_QTY,INNER_PACK_PER_CASE,TIERS_PER_PALLET,CASES_PER_TIER,SOURCE_SYS_ID,BUSINESS_SECTOR from STG_PRODUCT_UNIT WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP""
+);
+"
+
+# Product Unit [MDD] Initialization
+INSERT_UPDATE JnjGTIntProductUnit;productSkuCode[unique=true];packagingLvlCode[unique=true];regionCode[unique=true];unitCode;packagingLevelQty;lwrPackagingLvlUomCode;lwrPackagingLvlQty;startDate[dateformat=yyyy-MM-dd];endDate[dateformat=yyyy-MM-dd];salesUomInd;shipUnitInd;rcvUnitInd;lineUomCode;lineUomName;depth;height;width;volumeUomCode;volumeQty;weightUomCode;weightQty;netWeightQty;gtin;srcSystem[unique=true]
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT MATERIAL_NUM,PACKGNG_LVL_CD,REGION_CD,PACKGNG_LVL_LBL_UOM_CD,PACKGNG_LVL_QTY,LWR_PACKGNG_LVL_LBL_UOM_CD,LWR_PACKGNG_LVL_QTY,UNIT_VALID_FROM,UNIT_VALID_TO,SELL_UNIT_IND,SHIP_UNIT_IND,RECV_UNIT_IND,LIN_UOM_CD,LIN_UOM_NAME,DEPTH,HEIGHT,WIDTH,VOL_UOM_CD,VOL_QTY,WEIGHT_UOM_CD,GROSS_WEIGHT_QTY,NET_WEIGHT_QTY,GTIN,SOURCE_SYS_ID,BUSINESS_SECTOR from STG_PRODUCT_UNIT_LOCL WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP""
+);
+"

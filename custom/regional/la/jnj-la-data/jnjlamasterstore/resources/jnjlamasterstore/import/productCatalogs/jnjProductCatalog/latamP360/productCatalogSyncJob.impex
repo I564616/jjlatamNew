@@ -1,0 +1,247 @@
+### Employee
+$passwordEncoding=md5
+$defaultPassword=1234
+$setPassword=@password[translator=de.hybris.platform.impex.jalo.translators.ConvertPlaintextToEncodedUserPasswordTranslator][default='$passwordEncoding:$defaultPassword']
+
+INSERT_UPDATE Employee;UID[unique=true];$setPassword;description;name;groups(uid);sessionLanguage(isocode);sessionCurrency(isocode)
+                      ;productSyncUser;;Product Sync User;;;en;EUR
+
+### Sync Job
+$sourceVersion=sourceVersion(catalog(id),version[default='Staged'])
+$targetVersion=targetVersion(catalog(id),version[default='Staged'])
+$masterProductCatalog=mstrProductCatalog
+$brazilProductCatalog=brProductCatalog
+$mexicoProductCatalog=mxProductCatalog
+$cencaProductCatalog=cencaProductCatalog
+$ecuadorProductCatalog=ecProductCatalog
+$argentinaProductCatalog=arProductCatalog
+$uruguayProductCatalog=uyProductCatalog
+$chileProductCatalog=clProductCatalog
+$colombiaProductCatalog=coProductCatalog
+$peruProductCatalog=peProductCatalog
+$puertoProductCatalog=prProductCatalog
+
+
+
+######################################################################################
+######## Including Attributes which should be synced from Master to Brazil ########
+######################################################################################
+$catalog-syncjob-name=MasterStaged->BrazilStaged
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+                                           ;Product:description;$catalog-syncjob-name;false;true;;false;false
+                                           ;Product:picture;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:thumbnail;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:galleryImages;$catalog-syncjob-name;true;true;;false;false
+######################################################################################
+
+######################################################################################
+######## Including Attributes which should be synced from Master to Mexico ########
+######################################################################################
+$catalog-syncjob-name=MasterStaged->MexicoStaged
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+                                           ;Product:description;$catalog-syncjob-name;false;true;;false;false
+                                           ;Product:picture;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:thumbnail;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:galleryImages;$catalog-syncjob-name;true;true;;false;false
+######################################################################################
+
+######################################################################################
+######## Including Attributes which should be synced from Master to Cenca ########
+######################################################################################
+$catalog-syncjob-name=MasterStaged->CencaStaged
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+                                           ;Product:description;$catalog-syncjob-name;false;true;;false;false
+                                           ;Product:picture;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:thumbnail;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:galleryImages;$catalog-syncjob-name;true;true;;false;false
+######################################################################################
+
+######################################################################################
+######## Including Attributes which should be synced from Master to Ecuador ########
+######################################################################################
+$catalog-syncjob-name=MasterStaged->EcuadorStaged
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+                                           ;Product:description;$catalog-syncjob-name;false;true;;false;false
+                                           ;Product:picture;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:thumbnail;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:galleryImages;$catalog-syncjob-name;true;true;;false;false
+######################################################################################
+
+######################################################################################
+######## Including Attributes which should be synced from Master to Argentina ########
+######################################################################################
+$catalog-syncjob-name=MasterStaged->ArgentinaStaged
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+                                           ;Product:description;$catalog-syncjob-name;false;true;;false;false
+                                           ;Product:picture;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:thumbnail;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:galleryImages;$catalog-syncjob-name;true;true;;false;false
+######################################################################################
+
+
+######################################################################################
+######## Including Attributes which should be synced from Master to Uruguay ########
+######################################################################################
+$catalog-syncjob-name=MasterStaged->UruguayStaged
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+                                           ;Product:description;$catalog-syncjob-name;false;true;;false;false
+                                           ;Product:picture;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:thumbnail;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:galleryImages;$catalog-syncjob-name;true;true;;false;false
+######################################################################################
+
+######################################################################################
+######## Including Attributes which should be synced from Master to Chile ########
+######################################################################################
+$catalog-syncjob-name=MasterStaged->ChileStaged
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+                                           ;Product:description;$catalog-syncjob-name;false;true;;false;false
+                                           ;Product:picture;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:thumbnail;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:galleryImages;$catalog-syncjob-name;true;true;;false;false
+######################################################################################
+
+######################################################################################
+######## Including Attributes which should be synced from Master to Colombia ########
+######################################################################################
+$catalog-syncjob-name=MasterStaged->ColombiaStaged
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+                                           ;Product:description;$catalog-syncjob-name;false;true;;false;false
+                                           ;Product:picture;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:thumbnail;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:galleryImages;$catalog-syncjob-name;true;true;;false;false
+######################################################################################
+
+######################################################################################
+######## Including Attributes which should be synced from Master to Peru ########
+######################################################################################
+$catalog-syncjob-name=MasterStaged->PeruStaged
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+                                           ;Product:description;$catalog-syncjob-name;false;true;;false;false
+                                           ;Product:picture;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:thumbnail;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:galleryImages;$catalog-syncjob-name;true;true;;false;false
+######################################################################################
+
+######################################################################################
+######## Including Attributes which should be synced from Master to Puerto ########
+######################################################################################
+$catalog-syncjob-name=MasterStaged->PuertoStaged
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+                                           ;Product:description;$catalog-syncjob-name;false;true;;false;false
+                                           ;Product:picture;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:thumbnail;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:galleryImages;$catalog-syncjob-name;true;true;;false;false
+######################################################################################
+
+
+######################################################################################
+######## Including Attributes which should be synced from BR STG to BR Online########
+######################################################################################
+$catalog-syncjob-name=BrazilStaged->BrazilOnline
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+                                           ;Product:description;$catalog-syncjob-name;false;true;;false;false
+                                           ;Product:picture;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:thumbnail;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:galleryImages;$catalog-syncjob-name;true;true;;false;false
+######################################################################################
+
+######################################################################################
+######## Including Attributes which should be synced from MX STG to MX Online#######
+######################################################################################
+$catalog-syncjob-name=MexicoStaged->MexicoOnline
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+                                           ;Product:description;$catalog-syncjob-name;false;true;;false;false
+                                           ;Product:picture;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:thumbnail;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:galleryImages;$catalog-syncjob-name;true;true;;false;false
+######################################################################################
+
+######################################################################################
+######## Including Attributes which should be synced from CENCA STG to CENCA Online#######
+######################################################################################
+$catalog-syncjob-name=CencaStaged->CencaOnline
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+                                           ;Product:description;$catalog-syncjob-name;false;true;;false;false
+                                           ;Product:picture;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:thumbnail;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:galleryImages;$catalog-syncjob-name;true;true;;false;false
+######################################################################################
+
+######################################################################################
+######## Including Attributes which should be synced from EC STG to EC Online#######
+######################################################################################
+$catalog-syncjob-name=EcuadorStaged->EcuadorOnline
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+                                           ;Product:description;$catalog-syncjob-name;false;true;;false;false
+                                           ;Product:picture;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:thumbnail;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:galleryImages;$catalog-syncjob-name;true;true;;false;false
+######################################################################################
+
+######################################################################################
+######## Including Attributes which should be synced from AR STG to AR Online#######
+######################################################################################
+$catalog-syncjob-name=ArgentinaStaged->ArgentinaOnline
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+                                           ;Product:description;$catalog-syncjob-name;false;true;;false;false
+                                           ;Product:picture;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:thumbnail;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:galleryImages;$catalog-syncjob-name;true;true;;false;false
+######################################################################################
+
+######################################################################################
+######## Including Attributes which should be synced from UY STG to UY Online#######
+######################################################################################
+$catalog-syncjob-name=UruguayStaged->UruguayOnline
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+                                           ;Product:description;$catalog-syncjob-name;false;true;;false;false
+                                           ;Product:picture;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:thumbnail;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:galleryImages;$catalog-syncjob-name;true;true;;false;false
+######################################################################################
+
+######################################################################################
+######## Including Attributes which should be synced from CL STG to CL Online#######
+######################################################################################
+$catalog-syncjob-name=ChileStaged->ChileOnline
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+                                           ;Product:description;$catalog-syncjob-name;false;true;;false;false
+                                           ;Product:picture;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:thumbnail;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:galleryImages;$catalog-syncjob-name;true;true;;false;false
+######################################################################################
+
+######################################################################################
+######## Including Attributes which should be synced from CO STG to CO Online#######
+######################################################################################
+$catalog-syncjob-name=ColombiaStaged->ColombiaOnline
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+                                           ;Product:description;$catalog-syncjob-name;false;true;;false;false
+                                           ;Product:picture;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:thumbnail;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:galleryImages;$catalog-syncjob-name;true;true;;false;false
+######################################################################################
+
+######################################################################################
+######## Including Attributes which should be synced from PE STG to PE Online#######
+######################################################################################
+$catalog-syncjob-name=PeruStaged->PeruOnline
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+                                           ;Product:description;$catalog-syncjob-name;false;true;;false;false
+                                           ;Product:picture;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:thumbnail;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:galleryImages;$catalog-syncjob-name;true;true;;false;false
+######################################################################################
+
+######################################################################################
+######## Including Attributes which should be synced from PR STG to PR Online#######
+######################################################################################
+$catalog-syncjob-name=PuertoStaged->PuertoOnline
+insert_update SyncAttributeDescriptorConfig;attributeDescriptor(enclosingType(code),qualifier)[unique=true];syncJob(code)[unique=true];copyByValue[allownull=true];includedInSync[allownull=true];presetValue;translateValue[allownull=true];untranslatable[allownull=true]
+                                           ;Product:description;$catalog-syncjob-name;false;true;;false;false
+                                           ;Product:picture;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:thumbnail;$catalog-syncjob-name;true;true;;false;false
+                                           ;Product:galleryImages;$catalog-syncjob-name;true;true;;false;false
+######################################################################################
+

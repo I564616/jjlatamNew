@@ -1,0 +1,22 @@
+<%@ tag body-content="empty" trimDirectiveWhitespaces="true" %>
+<%@ attribute name="product" required="true" type="de.hybris.platform.commercefacades.product.data.ProductData" %>
+<%@ attribute name="format" required="true" type="java.lang.String" %>
+
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="theme" tagdir="/WEB-INF/tags/shared/theme" %>
+<%@ taglib prefix="ycommerce" uri="http://hybris.com/tld/ycommercetags" %>
+
+<c:set value="${ycommerce:productImage(product, format)}" var="primaryImage"/>
+
+<c:choose>
+	<c:when test="${not empty primaryImage}">
+		<img src="${primaryImage.url}" alt="${product.name}" title="${product.name}"/>
+	</c:when>
+	<c:otherwise>
+	<c:if test="${product.isKitProduct eq true}">
+    	<img src="${webroot}/_ui/responsive/common/images/kit-img.png" class="kit-img-thumb">
+    	</c:if>
+		<theme:image code="img.missingProductImage.${format}" alt="${product.name}" title="${product.name}"/>
+		
+	</c:otherwise>
+</c:choose>

@@ -1,0 +1,247 @@
+$brContentCatalog=brContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$brContentCatalog]),version[default='Staged'])
+
+REMOVE NavigationBarComponent; $contentCV[unique=true]; uid[unique=true]          ; name                        ; wrapAfter; link(uid, $contentCV)      ; styleClass ; navigationNode(uid, $contentCV); dropDownLayout(code)[default=AUTO]; &componentRef
+;                        ; ChatBarComponent          ; Contracts Bar Component     ; 10       ; ChatLinkComponent          ; reportsMenu; ChatNavNode                    ;                                   ; ChatBarComponent
+
+REMOVE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(uid, $contentCV);&nodeRef;title[lang=en]
+;ChatNavNode;;Chat;JnjNavNode;;ChatNavNode;Chat
+
+REMOVE CMSUserGroupRestriction;$contentCV[unique=true];uid[unique=true];name;components(uid,$contentCV);userGroups(uid);includeSubgroups[default=true]
+;;ChatRestriction;Chat Restriction;ChatLinkComponent;chatGroup;true
+
+REMOVE JnjLinkComponent;$contentCV[unique=true];uid[unique=true];name;url;&componentRef;target(code)[default='sameWindow'];linkName[lang=en];shiftRight[default='false'];details(code,$contentCV);linkName[lang=es];linkName[lang=pt]
+;;ChatLinkComponent;Chat Link;/;ChatLinkComponent;;Chat;;;Chat;Chat
+;;ChatMedicalLinkComponent;Chat Medical Link;/chat?sector=MDD;ChatMedicalLinkComponent;;Medical;;;Medical;Medical
+;;ChatPharmaLinkComponent;Chat Pharma Link;/chat?sector=PHR;ChatPharmaLinkComponent;;Pharma;;;Pharma;Pharma
+
+REMOVE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(&componentRef);&nodeRef;title[lang=en]
+;ChatNavLinkNode;;Chat Nav Link Node;ChatNavNode;ChatMedicalLinkComponent,ChatPharmaLinkComponent;ChatNavLinkNode;
+
+UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+;;topNavigationSlot;HomeBarComponent,OrderHistoryBarComponent,InvoiceHistoryBarComponent,CatalogBarComponent,ReportBarComponent,TemplatesBarComponent,ContractsBarComponent,UserManagementBarComponent,BIDsBarComponent,ServicesBarComponent,SelloutBarComponent,UploadedFilesBarComponent,CLSBarComponent,HelpBarComponent
+
+
+
+$mxContentCatalog=mxContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$mxContentCatalog]),version[default='Staged'])
+
+REMOVE NavigationBarComponent; $contentCV[unique=true]; uid[unique=true]          ; name                        ; wrapAfter; link(uid, $contentCV)      ; styleClass ; navigationNode(uid, $contentCV); dropDownLayout(code)[default=AUTO]; &componentRef
+;                        ; ChatBarComponent          ; Contracts Bar Component     ; 10       ; ChatLinkComponent          ; reportsMenu; ChatNavNode                    ;                                   ; ChatBarComponent
+
+REMOVE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(uid, $contentCV);&nodeRef;title[lang=en]
+;ChatNavNode;;Chat;JnjNavNode;;ChatNavNode;Chat
+
+REMOVE CMSUserGroupRestriction;$contentCV[unique=true];uid[unique=true];name;components(uid,$contentCV);userGroups(uid);includeSubgroups[default=true]
+;;ChatRestriction;Chat Restriction;ChatLinkComponent;chatGroup;true
+
+REMOVE JnjLinkComponent;$contentCV[unique=true];uid[unique=true];name;url;&componentRef;target(code)[default='sameWindow'];linkName[lang=en];shiftRight[default='false'];details(code,$contentCV);linkName[lang=es];linkName[lang=pt]
+;;ChatLinkComponent;Chat Link;/;ChatLinkComponent;;Chat;;;Chat;Chat
+;;ChatMedicalLinkComponent;Chat Medical Link;/chat?sector=MDD;ChatMedicalLinkComponent;;Medical;;;Medical;Medical
+;;ChatPharmaLinkComponent;Chat Pharma Link;/chat?sector=PHR;ChatPharmaLinkComponent;;Pharma;;;Pharma;Pharma
+
+REMOVE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(&componentRef);&nodeRef;title[lang=en]
+;ChatNavLinkNode;;Chat Nav Link Node;ChatNavNode;ChatMedicalLinkComponent,ChatPharmaLinkComponent;ChatNavLinkNode;
+
+UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+;;topNavigationSlot;HomeBarComponent,OrderHistoryBarComponent,InvoiceHistoryBarComponent,CatalogBarComponent,ReportBarComponent,TemplatesBarComponent,ContractsBarComponent,UserManagementBarComponent,BIDsBarComponent,ServicesBarComponent,SelloutBarComponent,UploadedFilesBarComponent,CLSBarComponent,HelpBarComponent
+
+
+
+$arContentCatalog=arContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$arContentCatalog]),version[default='Staged'])
+
+REMOVE NavigationBarComponent; $contentCV[unique=true]; uid[unique=true]          ; name                        ; wrapAfter; link(uid, $contentCV)      ; styleClass ; navigationNode(uid, $contentCV); dropDownLayout(code)[default=AUTO]; &componentRef
+;                        ; ChatBarComponent          ; Contracts Bar Component     ; 10       ; ChatLinkComponent          ; reportsMenu; ChatNavNode                    ;                                   ; ChatBarComponent
+
+REMOVE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(uid, $contentCV);&nodeRef;title[lang=en]
+;ChatNavNode;;Chat;JnjNavNode;;ChatNavNode;Chat
+
+REMOVE CMSUserGroupRestriction;$contentCV[unique=true];uid[unique=true];name;components(uid,$contentCV);userGroups(uid);includeSubgroups[default=true]
+;;ChatRestriction;Chat Restriction;ChatLinkComponent;chatGroup;true
+
+REMOVE JnjLinkComponent;$contentCV[unique=true];uid[unique=true];name;url;&componentRef;target(code)[default='sameWindow'];linkName[lang=en];shiftRight[default='false'];details(code,$contentCV);linkName[lang=es];linkName[lang=pt]
+;;ChatLinkComponent;Chat Link;/;ChatLinkComponent;;Chat;;;Chat;Chat
+;;ChatMedicalLinkComponent;Chat Medical Link;/chat?sector=MDD;ChatMedicalLinkComponent;;Medical;;;Medical;Medical
+;;ChatPharmaLinkComponent;Chat Pharma Link;/chat?sector=PHR;ChatPharmaLinkComponent;;Pharma;;;Pharma;Pharma
+
+REMOVE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(&componentRef);&nodeRef;title[lang=en]
+;ChatNavLinkNode;;Chat Nav Link Node;ChatNavNode;ChatMedicalLinkComponent,ChatPharmaLinkComponent;ChatNavLinkNode;
+
+UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+;;topNavigationSlot;HomeBarComponent,OrderHistoryBarComponent,InvoiceHistoryBarComponent,CatalogBarComponent,ReportBarComponent,TemplatesBarComponent,ContractsBarComponent,UserManagementBarComponent,BIDsBarComponent,ServicesBarComponent,SelloutBarComponent,UploadedFilesBarComponent,CLSBarComponent,HelpBarComponent
+
+
+
+$clContentCatalog=clContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$clContentCatalog]),version[default='Staged'])
+
+REMOVE NavigationBarComponent; $contentCV[unique=true]; uid[unique=true]          ; name                        ; wrapAfter; link(uid, $contentCV)      ; styleClass ; navigationNode(uid, $contentCV); dropDownLayout(code)[default=AUTO]; &componentRef
+;                        ; ChatBarComponent          ; Contracts Bar Component     ; 10       ; ChatLinkComponent          ; reportsMenu; ChatNavNode                    ;                                   ; ChatBarComponent
+
+REMOVE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(uid, $contentCV);&nodeRef;title[lang=en]
+;ChatNavNode;;Chat;JnjNavNode;;ChatNavNode;Chat
+
+REMOVE CMSUserGroupRestriction;$contentCV[unique=true];uid[unique=true];name;components(uid,$contentCV);userGroups(uid);includeSubgroups[default=true]
+;;ChatRestriction;Chat Restriction;ChatLinkComponent;chatGroup;true
+
+REMOVE JnjLinkComponent;$contentCV[unique=true];uid[unique=true];name;url;&componentRef;target(code)[default='sameWindow'];linkName[lang=en];shiftRight[default='false'];details(code,$contentCV);linkName[lang=es];linkName[lang=pt]
+;;ChatLinkComponent;Chat Link;/;ChatLinkComponent;;Chat;;;Chat;Chat
+;;ChatMedicalLinkComponent;Chat Medical Link;/chat?sector=MDD;ChatMedicalLinkComponent;;Medical;;;Medical;Medical
+;;ChatPharmaLinkComponent;Chat Pharma Link;/chat?sector=PHR;ChatPharmaLinkComponent;;Pharma;;;Pharma;Pharma
+
+REMOVE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(&componentRef);&nodeRef;title[lang=en]
+;ChatNavLinkNode;;Chat Nav Link Node;ChatNavNode;ChatMedicalLinkComponent,ChatPharmaLinkComponent;ChatNavLinkNode;
+
+UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+;;topNavigationSlot;HomeBarComponent,OrderHistoryBarComponent,InvoiceHistoryBarComponent,CatalogBarComponent,ReportBarComponent,TemplatesBarComponent,ContractsBarComponent,UserManagementBarComponent,BIDsBarComponent,ServicesBarComponent,SelloutBarComponent,UploadedFilesBarComponent,CLSBarComponent,HelpBarComponent
+
+
+
+$coContentCatalog=coContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$coContentCatalog]),version[default='Staged'])
+
+REMOVE NavigationBarComponent; $contentCV[unique=true]; uid[unique=true]          ; name                        ; wrapAfter; link(uid, $contentCV)      ; styleClass ; navigationNode(uid, $contentCV); dropDownLayout(code)[default=AUTO]; &componentRef
+;                        ; ChatBarComponent          ; Contracts Bar Component     ; 10       ; ChatLinkComponent          ; reportsMenu; ChatNavNode                    ;                                   ; ChatBarComponent
+
+REMOVE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(uid, $contentCV);&nodeRef;title[lang=en]
+;ChatNavNode;;Chat;JnjNavNode;;ChatNavNode;Chat
+
+REMOVE CMSUserGroupRestriction;$contentCV[unique=true];uid[unique=true];name;components(uid,$contentCV);userGroups(uid);includeSubgroups[default=true]
+;;ChatRestriction;Chat Restriction;ChatLinkComponent;chatGroup;true
+
+REMOVE JnjLinkComponent;$contentCV[unique=true];uid[unique=true];name;url;&componentRef;target(code)[default='sameWindow'];linkName[lang=en];shiftRight[default='false'];details(code,$contentCV);linkName[lang=es];linkName[lang=pt]
+;;ChatLinkComponent;Chat Link;/;ChatLinkComponent;;Chat;;;Chat;Chat
+;;ChatMedicalLinkComponent;Chat Medical Link;/chat?sector=MDD;ChatMedicalLinkComponent;;Medical;;;Medical;Medical
+;;ChatPharmaLinkComponent;Chat Pharma Link;/chat?sector=PHR;ChatPharmaLinkComponent;;Pharma;;;Pharma;Pharma
+
+REMOVE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(&componentRef);&nodeRef;title[lang=en]
+;ChatNavLinkNode;;Chat Nav Link Node;ChatNavNode;ChatMedicalLinkComponent,ChatPharmaLinkComponent;ChatNavLinkNode;
+
+UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+;;topNavigationSlot;HomeBarComponent,OrderHistoryBarComponent,InvoiceHistoryBarComponent,CatalogBarComponent,ReportBarComponent,TemplatesBarComponent,ContractsBarComponent,UserManagementBarComponent,BIDsBarComponent,ServicesBarComponent,SelloutBarComponent,UploadedFilesBarComponent,CLSBarComponent,HelpBarComponent
+
+
+
+$uyContentCatalog=uyContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$uyContentCatalog]),version[default='Staged'])
+
+REMOVE NavigationBarComponent; $contentCV[unique=true]; uid[unique=true]          ; name                        ; wrapAfter; link(uid, $contentCV)      ; styleClass ; navigationNode(uid, $contentCV); dropDownLayout(code)[default=AUTO]; &componentRef
+;                        ; ChatBarComponent          ; Contracts Bar Component     ; 10       ; ChatLinkComponent          ; reportsMenu; ChatNavNode                    ;                                   ; ChatBarComponent
+
+REMOVE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(uid, $contentCV);&nodeRef;title[lang=en]
+;ChatNavNode;;Chat;JnjNavNode;;ChatNavNode;Chat
+
+REMOVE CMSUserGroupRestriction;$contentCV[unique=true];uid[unique=true];name;components(uid,$contentCV);userGroups(uid);includeSubgroups[default=true]
+;;ChatRestriction;Chat Restriction;ChatLinkComponent;chatGroup;true
+
+REMOVE JnjLinkComponent;$contentCV[unique=true];uid[unique=true];name;url;&componentRef;target(code)[default='sameWindow'];linkName[lang=en];shiftRight[default='false'];details(code,$contentCV);linkName[lang=es];linkName[lang=pt]
+;;ChatLinkComponent;Chat Link;/;ChatLinkComponent;;Chat;;;Chat;Chat
+;;ChatMedicalLinkComponent;Chat Medical Link;/chat?sector=MDD;ChatMedicalLinkComponent;;Medical;;;Medical;Medical
+;;ChatPharmaLinkComponent;Chat Pharma Link;/chat?sector=PHR;ChatPharmaLinkComponent;;Pharma;;;Pharma;Pharma
+
+REMOVE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(&componentRef);&nodeRef;title[lang=en]
+;ChatNavLinkNode;;Chat Nav Link Node;ChatNavNode;ChatMedicalLinkComponent,ChatPharmaLinkComponent;ChatNavLinkNode;
+
+UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+;;topNavigationSlot;HomeBarComponent,OrderHistoryBarComponent,InvoiceHistoryBarComponent,CatalogBarComponent,ReportBarComponent,TemplatesBarComponent,ContractsBarComponent,UserManagementBarComponent,BIDsBarComponent,ServicesBarComponent,SelloutBarComponent,UploadedFilesBarComponent,CLSBarComponent,HelpBarComponent
+
+
+
+$peContentCatalog=peContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$peContentCatalog]),version[default='Staged'])
+
+REMOVE NavigationBarComponent; $contentCV[unique=true]; uid[unique=true]          ; name                        ; wrapAfter; link(uid, $contentCV)      ; styleClass ; navigationNode(uid, $contentCV); dropDownLayout(code)[default=AUTO]; &componentRef
+;                        ; ChatBarComponent          ; Contracts Bar Component     ; 10       ; ChatLinkComponent          ; reportsMenu; ChatNavNode                    ;                                   ; ChatBarComponent
+
+REMOVE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(uid, $contentCV);&nodeRef;title[lang=en]
+;ChatNavNode;;Chat;JnjNavNode;;ChatNavNode;Chat
+
+REMOVE CMSUserGroupRestriction;$contentCV[unique=true];uid[unique=true];name;components(uid,$contentCV);userGroups(uid);includeSubgroups[default=true]
+;;ChatRestriction;Chat Restriction;ChatLinkComponent;chatGroup;true
+
+REMOVE JnjLinkComponent;$contentCV[unique=true];uid[unique=true];name;url;&componentRef;target(code)[default='sameWindow'];linkName[lang=en];shiftRight[default='false'];details(code,$contentCV);linkName[lang=es];linkName[lang=pt]
+;;ChatLinkComponent;Chat Link;/;ChatLinkComponent;;Chat;;;Chat;Chat
+;;ChatMedicalLinkComponent;Chat Medical Link;/chat?sector=MDD;ChatMedicalLinkComponent;;Medical;;;Medical;Medical
+;;ChatPharmaLinkComponent;Chat Pharma Link;/chat?sector=PHR;ChatPharmaLinkComponent;;Pharma;;;Pharma;Pharma
+
+REMOVE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(&componentRef);&nodeRef;title[lang=en]
+;ChatNavLinkNode;;Chat Nav Link Node;ChatNavNode;ChatMedicalLinkComponent,ChatPharmaLinkComponent;ChatNavLinkNode;
+
+UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+;;topNavigationSlot;HomeBarComponent,OrderHistoryBarComponent,InvoiceHistoryBarComponent,CatalogBarComponent,ReportBarComponent,TemplatesBarComponent,ContractsBarComponent,UserManagementBarComponent,BIDsBarComponent,ServicesBarComponent,SelloutBarComponent,UploadedFilesBarComponent,CLSBarComponent,HelpBarComponent
+
+
+
+$ecContentCatalog=ecContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$ecContentCatalog]),version[default='Staged'])
+
+REMOVE NavigationBarComponent; $contentCV[unique=true]; uid[unique=true]          ; name                        ; wrapAfter; link(uid, $contentCV)      ; styleClass ; navigationNode(uid, $contentCV); dropDownLayout(code)[default=AUTO]; &componentRef
+;                        ; ChatBarComponent          ; Contracts Bar Component     ; 10       ; ChatLinkComponent          ; reportsMenu; ChatNavNode                    ;                                   ; ChatBarComponent
+
+REMOVE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(uid, $contentCV);&nodeRef;title[lang=en]
+;ChatNavNode;;Chat;JnjNavNode;;ChatNavNode;Chat
+
+REMOVE CMSUserGroupRestriction;$contentCV[unique=true];uid[unique=true];name;components(uid,$contentCV);userGroups(uid);includeSubgroups[default=true]
+;;ChatRestriction;Chat Restriction;ChatLinkComponent;chatGroup;true
+
+REMOVE JnjLinkComponent;$contentCV[unique=true];uid[unique=true];name;url;&componentRef;target(code)[default='sameWindow'];linkName[lang=en];shiftRight[default='false'];details(code,$contentCV);linkName[lang=es];linkName[lang=pt]
+;;ChatLinkComponent;Chat Link;/;ChatLinkComponent;;Chat;;;Chat;Chat
+;;ChatMedicalLinkComponent;Chat Medical Link;/chat?sector=MDD;ChatMedicalLinkComponent;;Medical;;;Medical;Medical
+;;ChatPharmaLinkComponent;Chat Pharma Link;/chat?sector=PHR;ChatPharmaLinkComponent;;Pharma;;;Pharma;Pharma
+
+REMOVE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(&componentRef);&nodeRef;title[lang=en]
+;ChatNavLinkNode;;Chat Nav Link Node;ChatNavNode;ChatMedicalLinkComponent,ChatPharmaLinkComponent;ChatNavLinkNode;
+
+UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+;;topNavigationSlot;HomeBarComponent,OrderHistoryBarComponent,InvoiceHistoryBarComponent,CatalogBarComponent,ReportBarComponent,TemplatesBarComponent,ContractsBarComponent,UserManagementBarComponent,BIDsBarComponent,ServicesBarComponent,SelloutBarComponent,UploadedFilesBarComponent,CLSBarComponent,HelpBarComponent
+
+
+
+$prContentCatalog=prContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$prContentCatalog]),version[default='Staged'])
+
+REMOVE NavigationBarComponent; $contentCV[unique=true]; uid[unique=true]          ; name                        ; wrapAfter; link(uid, $contentCV)      ; styleClass ; navigationNode(uid, $contentCV); dropDownLayout(code)[default=AUTO]; &componentRef
+;                        ; ChatBarComponent          ; Contracts Bar Component     ; 10       ; ChatLinkComponent          ; reportsMenu; ChatNavNode                    ;                                   ; ChatBarComponent
+
+REMOVE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(uid, $contentCV);&nodeRef;title[lang=en]
+;ChatNavNode;;Chat;JnjNavNode;;ChatNavNode;Chat
+
+REMOVE CMSUserGroupRestriction;$contentCV[unique=true];uid[unique=true];name;components(uid,$contentCV);userGroups(uid);includeSubgroups[default=true]
+;;ChatRestriction;Chat Restriction;ChatLinkComponent;chatGroup;true
+
+REMOVE JnjLinkComponent;$contentCV[unique=true];uid[unique=true];name;url;&componentRef;target(code)[default='sameWindow'];linkName[lang=en];shiftRight[default='false'];details(code,$contentCV);linkName[lang=es];linkName[lang=pt]
+;;ChatLinkComponent;Chat Link;/;ChatLinkComponent;;Chat;;;Chat;Chat
+;;ChatMedicalLinkComponent;Chat Medical Link;/chat?sector=MDD;ChatMedicalLinkComponent;;Medical;;;Medical;Medical
+;;ChatPharmaLinkComponent;Chat Pharma Link;/chat?sector=PHR;ChatPharmaLinkComponent;;Pharma;;;Pharma;Pharma
+
+REMOVE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(&componentRef);&nodeRef;title[lang=en]
+;ChatNavLinkNode;;Chat Nav Link Node;ChatNavNode;ChatMedicalLinkComponent,ChatPharmaLinkComponent;ChatNavLinkNode;
+
+UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+;;topNavigationSlot;HomeBarComponent,OrderHistoryBarComponent,InvoiceHistoryBarComponent,CatalogBarComponent,ReportBarComponent,TemplatesBarComponent,ContractsBarComponent,UserManagementBarComponent,BIDsBarComponent,ServicesBarComponent,SelloutBarComponent,UploadedFilesBarComponent,CLSBarComponent,HelpBarComponent
+
+
+
+$cencaContentCatalog=cencaContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$cencaContentCatalog]),version[default='Staged'])
+
+REMOVE NavigationBarComponent; $contentCV[unique=true]; uid[unique=true]          ; name                        ; wrapAfter; link(uid, $contentCV)      ; styleClass ; navigationNode(uid, $contentCV); dropDownLayout(code)[default=AUTO]; &componentRef
+;                        ; ChatBarComponent          ; Contracts Bar Component     ; 10       ; ChatLinkComponent          ; reportsMenu; ChatNavNode                    ;                                   ; ChatBarComponent
+
+REMOVE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(uid, $contentCV);&nodeRef;title[lang=en]
+;ChatNavNode;;Chat;JnjNavNode;;ChatNavNode;Chat
+
+REMOVE CMSUserGroupRestriction;$contentCV[unique=true];uid[unique=true];name;components(uid,$contentCV);userGroups(uid);includeSubgroups[default=true]
+;;ChatRestriction;Chat Restriction;ChatLinkComponent;chatGroup;true
+
+REMOVE JnjLinkComponent;$contentCV[unique=true];uid[unique=true];name;url;&componentRef;target(code)[default='sameWindow'];linkName[lang=en];shiftRight[default='false'];details(code,$contentCV);linkName[lang=es];linkName[lang=pt]
+;;ChatLinkComponent;Chat Link;/;ChatLinkComponent;;Chat;;;Chat;Chat
+;;ChatMedicalLinkComponent;Chat Medical Link;/chat?sector=MDD;ChatMedicalLinkComponent;;Medical;;;Medical;Medical
+;;ChatPharmaLinkComponent;Chat Pharma Link;/chat?sector=PHR;ChatPharmaLinkComponent;;Pharma;;;Pharma;Pharma
+
+REMOVE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(&componentRef);&nodeRef;title[lang=en]
+;ChatNavLinkNode;;Chat Nav Link Node;ChatNavNode;ChatMedicalLinkComponent,ChatPharmaLinkComponent;ChatNavLinkNode;
+
+UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+;;topNavigationSlot;HomeBarComponent,OrderHistoryBarComponent,InvoiceHistoryBarComponent,CatalogBarComponent,ReportBarComponent,TemplatesBarComponent,ContractsBarComponent,UserManagementBarComponent,BIDsBarComponent,ServicesBarComponent,SelloutBarComponent,UploadedFilesBarComponent,CLSBarComponent,HelpBarComponent

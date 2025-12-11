@@ -1,0 +1,64 @@
+#
+# Import the CMS Site configuration for EC JNJ Store
+#
+$ECproductCatalog=ecProductCatalog
+$ECcontentCatalog=ecContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$ECcontentCatalog]),CatalogVersion.version[default=Staged])[default=$ECcontentCatalog:Staged]
+$languages=en,pt,es
+$defaultLanguage=es
+$defaultCountry=EC
+$ECstoreUid=ecBaseStore
+$ECsiteUid=ecCMSsite
+
+# Import config properties into impex macros
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+
+# Load the storefront context root config param
+$storefrontContextRoot=$config-b2bStorefrontContextRoot
+
+#% final String configValue = Config.getParameter("deployment.env");
+#% if: configValue.equals("local");
+
+INSERT_UPDATE CMSSite;uid[unique=true];name[lang=en];theme(code);channel(code);stores(uid);contentCatalogs(id);defaultCatalog(id);defaultLanguage(isoCode);defaultCountry(isoCode);urlPatterns;active;previewURL;urlEncodingAttributes;languages(isoCode);jnjWebSiteType(code)
+;$ECsiteUid;J&J CUSTOMER CONNECT;jnj;B2B;$ECstoreUid;$ECcontentCatalog;$ECproductCatalog;$defaultLanguage;$defaultCountry;(?i)^https?://ec-local\.jjcustomerconnect\.[^/]+(|/.*|\?.*)$;true;$storefrontContextRoot/?site=$ECsiteUid;language;$languages;MDD
+
+
+#% endif:
+
+#% if: configValue.equals("dev");
+INSERT_UPDATE CMSSite;uid[unique=true];name[lang=en];theme(code);channel(code);stores(uid);contentCatalogs(id);defaultCatalog(id);defaultLanguage(isoCode);defaultCountry(isoCode);urlPatterns;active;previewURL;urlEncodingAttributes;languages(isoCode);jnjWebSiteType(code)
+;$ECsiteUid;J&J CUSTOMER CONNECT;jnj;B2B;$ECstoreUid;$ECcontentCatalog;$ECproductCatalog;$defaultLanguage;$defaultCountry;(?i)^https?://ec-dev\.jjcustomerconnect\.[^/]+(|/.*|\?.*)$;true;$storefrontContextRoot/?site=$ECsiteUid;language;$languages;MDD
+
+#% endif:
+
+#% if: configValue.equals("dev2");
+INSERT_UPDATE CMSSite;uid[unique=true];name[lang=en];theme(code);channel(code);stores(uid);contentCatalogs(id);defaultCatalog(id);defaultLanguage(isoCode);defaultCountry(isoCode);urlPatterns;active;previewURL;urlEncodingAttributes;languages(isoCode);jnjWebSiteType(code)
+;$ECsiteUid;J&J CUSTOMER CONNECT;jnj;B2B;$ECstoreUid;$ECcontentCatalog;$ECproductCatalog;$defaultLanguage;$defaultCountry;(?i)^https?://ec-dev2\.jjcustomerconnect\.[^/]+(|/.*|\?.*)$;true;$storefrontContextRoot/?site=$ECsiteUid;language;$languages;MDD
+
+#% endif:
+
+#% if: configValue.equals("qa");
+INSERT_UPDATE CMSSite;uid[unique=true];name[lang=en];theme(code);channel(code);stores(uid);contentCatalogs(id);defaultCatalog(id);defaultLanguage(isoCode);defaultCountry(isoCode);urlPatterns;active;previewURL;urlEncodingAttributes;languages(isoCode);jnjWebSiteType(code)
+;$ECsiteUid;J&J CUSTOMER CONNECT;jnj;B2B;$ECstoreUid;$ECcontentCatalog;$ECproductCatalog;$defaultLanguage;$defaultCountry;(?i)^https?://ec-qa\.jjcustomerconnect\.[^/]+(|/.*|\?.*)$;true;$storefrontContextRoot/?site=$ECsiteUid;language;$languages;MDD
+
+#% endif:
+
+#% if: configValue.equals("stg");
+INSERT_UPDATE CMSSite;uid[unique=true];name[lang=en];theme(code);channel(code);stores(uid);contentCatalogs(id);defaultCatalog(id);defaultLanguage(isoCode);defaultCountry(isoCode);urlPatterns;active;previewURL;urlEncodingAttributes;languages(isoCode);jnjWebSiteType(code)
+;$ECsiteUid;J&J CUSTOMER CONNECT;jnj;B2B;$ECstoreUid;$ECcontentCatalog;$ECproductCatalog;$defaultLanguage;$defaultCountry;(?i)^https?://ec-stg\.jjcustomerconnect\.[^/]+(|/.*|\?.*)$;true;$storefrontContextRoot/?site=$ECsiteUid;language;$languages;MDD
+
+#% endif:
+
+#% if: configValue.equals("prod");
+INSERT_UPDATE CMSSite;uid[unique=true];name[lang=en];theme(code);channel(code);stores(uid);contentCatalogs(id);defaultCatalog(id);defaultLanguage(isoCode);defaultCountry(isoCode);urlPatterns;active;previewURL;urlEncodingAttributes;languages(isoCode);jnjWebSiteType(code)
+;$ECsiteUid;J&J CUSTOMER CONNECT;jnj;B2B;$ECstoreUid;$ECcontentCatalog;$ECproductCatalog;$defaultLanguage;$defaultCountry;(?i)^https?://ec-prod\.jjcustomerconnect\.[^/]+(|/.*|\?.*)$;true;$storefrontContextRoot/?site=$ECsiteUid;language;$languages;MDD
+
+#% endif:
+
+
+# Cart Cleanup CronJobs
+#INSERT_UPDATE CartRemovalCronJob;code[unique=true];job(code)[default=cartRemovalJob];sites(uid)[default=$ECstoreUid];sessionLanguage(isoCode)[default=en]
+#;$ECstoreUid-CartRemovalJob
+
+#INSERT_UPDATE Trigger;cronJob(code)[unique=true];second;minute;hour;day;month;year;relative;active;maxAcceptableDelay
+#;$ECstoreUid-CartRemovalJob;0;5;4;-1;-1;-1;false;true;-1

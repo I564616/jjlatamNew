@@ -1,0 +1,99 @@
+$contentCatalog=mstrContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$contentCatalog]),version[default='Staged'])
+$wideContent=CMSImageComponent,BannerComponent
+$jarResourceCms=jar:com.jnj.core.setup.CoreSystemSetup&/jnjb2bcore/import/cockpits/cmscockpit
+$emailResource=jar:com.jnj.core.setup.CoreSystemSetup&/jnjb2bcore/import/contentCatalogs/jnjContentCatalog/emails
+
+	INSERT_UPDATE EmailPageTemplate;$contentCV[unique=true];uid[unique=true];name;active;frontendTemplateName;subject(code);htmlTemplate(code);restrictedPageTypes(code)
+	;;JnjOrderStatusNotificationEmailTemplate;Sync Order Notification Email Template;true;JnjOrderStatusNotificationEmailTemplate;email-orderStatusNotificationSubject;email-orderStatusNotificationBody;EmailPage
+	;;CreateUserNotificationEmailTemplate;Create User Email Template;true;createUserNotificationEmailTemplate;email_Create_User_Subject;email_Create_User_Body;EmailPage
+	;;InterfaceNotificationEmailTemplate;Interface Notification Email Template;true;InterfaceNotificationEmailTemplate;email_InterfaceNotification_Subject;email_InterfaceNotification_Body;EmailPage
+	;;RegisterEmailTemplate;Register Email Template;true;registerEmailTemplate;email_Register_Subject;email_Register_Body;EmailPage
+	;;RegisterUserEmailTemplate;Register User Email Template;true;registerUserEmailTemplate;email_Register_User_Subject;email_Register_User_Body;EmailPage
+	;;PasswordExpiryNotificationEmailTemplate;Password Expiry Email Template;true;passwordExpiryNotificationEmailTemplate;email_Password_Expiry_Subject;email_Password_Expiry_Body;EmailPage
+	
+	# Media
+	INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];mime;realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];altText
+	#;;structure_createUserEmailTemplate;text/vm;structure_createUserEmailTemplate;$jarResourceCms/structure-view/structure_createUserEmailTemplate.vm;structure_createUserEmailTemplate
+	
+	UPDATE EmailPageTemplate;$contentCV[unique=true];uid[unique=true];velocityTemplate[translator=de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]
+    ;;CreateUserNotificationEmailTemplate;$jarResourceCms/structure-view/structure_CreateUserEmailTemplate.vm
+    ;;RegisterEmailTemplate;$jarResourceCms/structure-view/structure_RegisterEmailTemplate.vm
+    ;;RegisterUserEmailTemplate;$jarResourceCms/structure-view/structure_RegisterUserEmailTemplate.vm
+    ;;PasswordExpiryNotificationEmailTemplate;$jarResourceCms/structure-view/structure_passwordExpiryEmailTemplate.vm
+	
+	INSERT_UPDATE EmailPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);defaultPage;approvalStatus(code)[default='approved'];fromEmail[lang=en];fromName[lang=en]
+	
+	;;CreateUserNotificationEmailPage;Create User Email;CreateUserNotificationEmailTemplate;true;;customerservices@jnj.com;Customer Services Team
+	;;InterfaceNotificationEmailPage; Interface Notification Email Page;InterfaceNotificationEmailTemplate;true;;;
+	;;RegisterEmailPage;Register Email Page;RegisterEmailTemplate;true;;;
+	;;RegisterUserEmailPage;Register User Email Page;RegisterUserEmailTemplate;true;;;
+	;;JnjOrderStatusNotificationEmailPage;Sync Order Notification Email Page;JnjOrderStatusNotificationEmailTemplate;true;;customerservices@jnj.com;Customer Services Team
+	;;PasswordExpiryNotificationEmailPage;Password Expiration Email Page;PasswordExpiryNotificationEmailTemplate;true;;customerservices@jnj.com;Customer Services Team
+	
+	#
+	# Import the German CMS content for the Apparel Site DE
+	#
+
+	$emailResource=jar:com.jnj.core.setup.CoreSystemSetup&/jnjb2bcore/import/contentCatalogs/jnjContentCatalog/emails
+
+	# Language
+	$lang=de
+
+
+	# Media
+	INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];mime;realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];altText
+	;;email-createUserEmailSubject;text/vm;email-createUserEmailSubject;$emailResource/email-createUserEmailSubject.vm;email-createUserEmailSubject
+	;;email-interfaceNotificationEmailSubject;text/vm;email-interfaceNotificationEmailSubject;$emailResource/email-interfaceNotificationEmailSubject.vm;email-interfaceNotificationEmailSubject
+	;;email-interfaceNotificationEmailBody;text/vm;email-interfaceNotificationEmailBody;$emailResource/email-interfaceNotificationEmailBody.vm;email-interfaceNotificationEmailBody
+	;;email-passwordExpiryEmailSubject;text/vm;email-passwordExpiryEmailSubject;$emailResource/email-passwordExpiryEmailSubject.vm;email-passwordExpiryEmailSubject
+
+	INSERT_UPDATE RendererTemplate;code[unique=true];contextClass;rendererType(code)[default='velocity']
+	;email-orderStatusNotificationSubject;com.jnj.facades.process.email.context.JnjOrderStatusNotificationEmailContext
+	;email-orderStatusNotificationBody;com.jnj.facades.process.email.context.JnjOrderStatusNotificationEmailContext
+	;email_Create_User_Subject;com.jnj.facades.process.email.context.JnjCreateUserEmailContext
+	;email_Create_User_Body;com.jnj.facades.process.email.context.JnjCreateUserEmailContext
+	;email_InterfaceNotification_Subject;com.jnj.facades.process.email.context.JnjInterfaceNotificationContext
+	;email_InterfaceNotification_Body;com.jnj.facades.process.email.context.JnjInterfaceNotificationContext
+	;email_Register_Body;com.jnj.facades.process.email.context.JnjRegisterEmailContext
+	;email_Register_Subject;com.jnj.facades.process.email.context.JnjRegisterEmailContext
+	;email_Register_User_Body;com.jnj.facades.process.email.context.JnjRegisterUserEmailContext
+	;email_Register_User_Subject;com.jnj.facades.process.email.context.JnjRegisterUserEmailContext
+	;email_Password_Expiry_Subject;com.jnj.facades.process.email.context.JnjPasswordExpiryEmailContext
+	;email_Password_Expiry_Body;com.jnj.facades.process.email.context.JnjPasswordExpiryEmailContext
+
+	UPDATE RendererTemplate;code[unique=true];description[lang=en];templateScript[lang=en,translator=de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]
+	;email-orderStatusNotificationSubject;"Order Status Notification Email Subject";$emailResource/email-orderStatusNotificationSubject.vm
+	;email-orderStatusNotificationBody;"Order Status Notification Email Body";$emailResource/email-orderStatusNotificationBody.vm
+	;email_Create_User_Subject;"Create User Email Subject";$emailResource/email-createUserEmailSubject.vm
+	;email_Create_User_Body;"Create User Email Body";$emailResource/email-createUserEmailBody.vm
+	;email_InterfaceNotification_Subject;"Interface Notification Email Subject";$emailResource/email-interfaceNotificationEmailSubject.vm
+	;email_InterfaceNotification_Body;"Interface Notification Email Body";$emailResource/email-interfaceNotificationEmailBody.vm
+	;email_Register_Subject;"Register User Email Subject";$emailResource/email-registerEmailSubject.vm
+	;email_Register_Body;"Register User Email Body";$emailResource/email-registerEmailBody.vm
+	;email_Register_User_Subject;"Register User Email Subject";$emailResource/email-registerUserEmailSubject.vm
+	;email_Register_User_Body;"Register User Email Body";$emailResource/email-registerUserEmailBody.vm
+	;email_Password_Expiry_Subject;"Create User Email Subject";$emailResource/email-passwordExpiryEmailSubject.vm
+	;email_Password_Expiry_Body;"Create User Email Body";$emailResource/email-passwordExpiryEmailBody.vm
+	
+	INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='CreateUserNotificationEmailTemplate'];validComponentTypes(code)
+	;SiteLogo;;;logo
+	;TopContent;;$wideContent;
+	;BottomContent;;$wideContent;
+	
+	INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='RegisterEmailTemplate'];validComponentTypes(code)
+	;SiteLogo;;;logo
+	;TopContent;;$wideContent;
+	;BottomContent;;$wideContent;
+	
+    INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='PasswordExpiryNotificationEmailTemplate'];validComponentTypes(code)
+	;SiteLogo;;;logo
+	;TopContent;;$wideContent;
+	;BottomContent;;$wideContent;
+	
+	INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+	;;SiteLogo-CreateUserNotificationEmailTemplate;SiteLogoForCreateUser;CreateUserNotificationEmailTemplate;SiteLogoSlot;true
+	;;SiteLogo-RegisterEmailTemplate;SiteLogo;RegisterEmailTemplate;SiteLogoSlot;true
+	;;SiteLogo-RegisterUserEmailTemplate;SiteLogo;RegisterUserEmailTemplate;SiteLogoSlot;true
+	;;SiteLogo-PasswordExpiryNotificationEmailTemplate;SiteLogoForPasswordExpiry;PasswordExpiryNotificationEmailTemplate;SiteLogoSlot;true
+	

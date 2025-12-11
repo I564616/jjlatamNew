@@ -1,0 +1,55 @@
+#contractPopuppage .info-text{
+	padding-left:15px;
+}
+#contractPopuppage .tickmarktext{
+	font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+#contractPopuppage .contract-popup-table{
+	width: 100%;
+}
+#contractPopuppage .selectTitle{
+	font-size:30px;
+}
+#contractpopup{
+    padding: 0px;
+    overflow-y: auto;
+    width: 100%;
+   // height: 200px;
+}
+#contractPopuppage .modalcls{
+	top: 80px;
+}
+#contractPopuppage .modal-body{
+	padding: 15px 25px 15px 25px;
+}
+#contractPopuppage .modal-header{
+	padding: 15px 25px 15px 25px;
+}
+#contractPopuppage .popup{
+	margin: 0 auto;
+	width: 500px;
+	border-radius: 0px;
+	box-shadow: 0 0px 0px; 
+}
+#contractPopuppage .clsBtn{
+	margin-top: 15px !important;
+	font-size: 14px;
+	color: #0a8caa;
+	opacity:1;
+}
+#contractPopuppage .ftrcls{
+	padding: 25px;
+}
+#contractPopuppage .canceltxt{
+	margin-top: 8px;
+}
+#contractPopuppage  .continueques{
+	margin-top: 15px;
+}
+@media screen and (max-width:480px){
+	#contractPopuppage .popup{
+		width:100% !important;
+	}
+}

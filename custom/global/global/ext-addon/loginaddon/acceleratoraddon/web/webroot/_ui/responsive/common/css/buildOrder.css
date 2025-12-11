@@ -1,0 +1,117 @@
+#buildorderpage .breadcrumb {
+	background-color: rgb(249, 249, 249);
+	padding: 0px 2px;
+	margin-bottom: 15px;
+}
+#buildorderpage .content{
+	font-size: 30px;
+}
+#buildorderpage .canceltxt{
+	font-size: 12px;
+	color: #0a8caa;
+    padding: 10px 20px 0px 0px;
+}
+#buildorderpage .quescls{
+	padding: 2px 4px;
+    font-size: 9px;
+    background-color: #0a8caa;
+}
+#buildorderpage .table-padding{
+	margin-top: 30px;
+	margin-left: 0px;
+    width: 100%;
+	background-color: #fff;
+	box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 0px 1px 0 rgba(0, 0, 0, 0.19); 
+}
+#buildorderpage  .subcontent1{
+    font-size: 20px;
+    padding: 18px 0px 18px 5px;
+}
+#buildorderpage .subcontent2{
+    font-size: 15px;
+	padding: 25px 10px 10px 10px;
+	border-top: 1px solid #f2f2f2;
+}
+#buildorderpage .subtxt{
+	font-size: 12px;
+}
+#buildorderpage .btnclsactive {
+	padding: 10px 30px;
+}
+#buildorderpage .btnclsnormal {
+	padding: 10px 30px;
+}
+/*  hiding bootsrap show items, search and pagination  */
+#buildorderpage div.dataTables_wrapper div.dataTables_filter, #buildorderpage  #ordersTable_length, #buildorderpage  div#ordersTable_wrapper .row:nth-child(3)
+{
+ display:none; 
+}
+#buildorderpage .subcontent3{
+	padding: 30px 0px 18px 0px;
+}
+#buildorderpage .boxprop{
+	width: 50%;
+    display: inline;
+	margin-left: 10px;
+}
+#buildorderpage .txtWidth{
+	width: 98px;
+}
+#buildorderpage .tabdata{
+	font-size: 10px;
+}
+#buildorderpage table.dataTable{
+	margin-bottom: 0px !important;
+}
+#buildorderpage table.table-bordered.dataTable tbody td:last-child {
+    padding-left: 10px;
+	text-align: center;
+    vertical-align: middle;
+}
+#buildorderpage table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td:first-child, table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td:nth-child(2), .table>thead:first-child>tr:first-child>th:first-child, .table>thead:first-child>tr:first-child>th:nth-child(2){
+	text-align: left;
+    padding-left: 25px;
+}
+#buildorderpage table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td{
+	font-size: 12px;
+}
+@media screen and (max-width: 768px){
+	#buildorderpage .btnclsnormal{
+		width: 100%
+	}
+	.mobile-no-pad{
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	/* #buildorderpage .Subcontainer{
+		margin-right: 4px;
+		margin-left: -7px;
+	} */
+	#buildorderpage .subcontent2{
+		padding: 25px 0px 10px 0px;
+	}
+	#buildorderpage .subcontent3{
+		padding: 5px 0px 18px 0px;
+	}
+	#buildorderpage .table-padding{
+		margin-top: 25px;
+	}
+	#buildorderpage .quantitybox{
+		margin-left: 54px;
+		width: 30%
+	}
+	#buildorderpage table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td:first-child, table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td:nth-child(2), .table>thead:first-child>tr:first-child>th:first-child, .table>thead:first-child>tr:first-child>th:nth-child(2){
+		padding-left: 12px;
+	}
+	#buildorderpage .quantitymbox{
+		padding-bottom: 25px;
+		border-bottom: 1px solid #f2f2f2;
+	}
+	#buildorderpage  .cartbtn{
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+	#buildorderpage table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td:first-child, table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td:nth-child(2), .table>thead:first-child>tr:first-child>th:first-child, .table>thead:first-child>tr:first-child>th:nth-child(2){
+		padding-left: 20px;
+	}
+}

@@ -1,0 +1,88 @@
+#
+# Import the CMS Site configuration for the JNJ store
+#
+$BRsiteUid=brCMSite
+$MXsiteUid=mxCMSite
+$BRproductCatalog=brProductCatalog
+$MXproductCatalog=mxProductCatalog
+$BRContentCatalog=brContentCatalog
+$MXContentCatalog=mxContentCatalog
+$BRstoreUid=brBaseStore
+$MXstoreUid=mxBaseStore
+
+$languages=en,pt,es
+$defaultLanguage=en
+$storefrontContextRoot=JnJStore
+$BRcontentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$BRContentCatalog]),CatalogVersion.version[default=Staged])[default=$BRContentCatalog:Staged]
+$MXcontentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$MXContentCatalog]),CatalogVersion.version[default=Staged])[default=$MXContentCatalog:Staged]
+
+# Import config properties into impex macros
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+
+# Load the storefront context root config param
+$storefrontContextRoot=$config-b2bStorefrontContextRoot
+
+
+
+# CMS Site - need to add loginpage when the page is build
+
+
+
+#% final String configValue = Config.getParameter("deployment.env");
+#% if: configValue.equals("local"); 
+
+INSERT_UPDATE CMSSite;uid[unique=true];name[lang=en];theme(code);channel(code);stores(uid);contentCatalogs(id);defaultCatalog(id);defaultLanguage(isoCode);urlPatterns;active;previewURL;urlEncodingAttributes
+;$BRsiteUid;Brazil site;jnj;B2B;$BRstoreUid;$BRContentCatalog;$BRproductCatalog;$defaultLanguage;(?i)^https?://b2blocal-br\.jnj\.[^/]+(|/.*|\?.*)$;true;$storefrontContextRoot/?site=$BRsiteUid;language
+INSERT_UPDATE CMSSite;uid[unique=true];name[lang=en];theme(code);channel(code);stores(uid);contentCatalogs(id);defaultCatalog(id);defaultLanguage(isoCode);urlPatterns;active;previewURL;urlEncodingAttributes
+;$MXsiteUid;Mexico site;jnj;B2B;$MXstoreUid;$MXContentCatalog;$MXproductCatalog;$defaultLanguage;(?i)^https?://b2blocal-mx\.jnj\.[^/]+(|/.*|\?.*)$;true;$storefrontContextRoot/?site=$MXsiteUid;language
+
+#% endif:
+
+#% if: configValue.equals("dev"); 
+INSERT_UPDATE CMSSite;uid[unique=true];name[lang=en];theme(code);channel(code);stores(uid);contentCatalogs(id);defaultCatalog(id);defaultLanguage(isoCode);urlPatterns;active;previewURL;urlEncodingAttributes
+;$BRsiteUid;Brazil site;jnj;B2B;$BRstoreUid;$BRContentCatalog;$BRproductCatalog;$defaultLanguage;(?i)^https?://b2bdev-br\.jnj\.[^/]+(|/.*|\?.*)$;true;$storefrontContextRoot/?site=$BRsiteUid;language
+INSERT_UPDATE CMSSite;uid[unique=true];name[lang=en];theme(code);channel(code);stores(uid);contentCatalogs(id);defaultCatalog(id);defaultLanguage(isoCode);urlPatterns;active;previewURL;urlEncodingAttributes
+;$MXsiteUid;Mexico site;jnj;B2B;$MXstoreUid;$MXContentCatalog;$MXproductCatalog;$defaultLanguage;(?i)^https?://b2bdev-mx\.jnj\.[^/]+(|/.*|\?.*)$;true;$storefrontContextRoot/?site=$MXsiteUid;language
+
+
+#% endif:
+
+
+#% if: configValue.equals("stg");
+
+INSERT_UPDATE CMSSite;uid[unique=true];name[lang=en];theme(code);channel(code);stores(uid);contentCatalogs(id);defaultCatalog(id);defaultLanguage(isoCode);urlPatterns;active;previewURL;urlEncodingAttributes
+;$BRsiteUid;Brazil site;jnj;B2B;$BRstoreUid;$BRContentCatalog;$BRproductCatalog;$defaultLanguage;(?i)^https?://b2bstg-br\.jnj\.[^/]+(|/.*|\?.*)$;true;$storefrontContextRoot/?site=$BRsiteUid;language
+INSERT_UPDATE CMSSite;uid[unique=true];name[lang=en];theme(code);channel(code);stores(uid);contentCatalogs(id);defaultCatalog(id);defaultLanguage(isoCode);urlPatterns;active;previewURL;urlEncodingAttributes
+;$MXsiteUid;Mexico site;jnj;B2B;$MXstoreUid;$MXContentCatalog;$MXproductCatalog;$defaultLanguage;(?i)^https?://b2bstg-mx\.jnj\.[^/]+(|/.*|\?.*)$;true;$storefrontContextRoot/?site=$MXsiteUid;language
+
+#% endif:
+
+#% if: configValue.equals("stg_2");
+
+INSERT_UPDATE CMSSite;uid[unique=true];name[lang=en];theme(code);channel(code);stores(uid);contentCatalogs(id);defaultCatalog(id);defaultLanguage(isoCode);urlPatterns;active;previewURL;urlEncodingAttributes
+;$BRsiteUid;Brazil site;jnj;B2B;$BRstoreUid;$BRContentCatalog;$BRproductCatalog;$defaultLanguage;(?i)^https?://b2bstg2-br\.jnj\.[^/]+(|/.*|\?.*)$;true;$storefrontContextRoot/?site=$BRsiteUid;language
+INSERT_UPDATE CMSSite;uid[unique=true];name[lang=en];theme(code);channel(code);stores(uid);contentCatalogs(id);defaultCatalog(id);defaultLanguage(isoCode);urlPatterns;active;previewURL;urlEncodingAttributes
+;$MXsiteUid;Mexico site;jnj;B2B;$MXstoreUid;$MXContentCatalog;$MXproductCatalog;$defaultLanguage;(?i)^https?://b2bstg2-mx\.jnj\.[^/]+(|/.*|\?.*)$;true;$storefrontContextRoot/?site=$MXsiteUid;language
+
+#% endif:
+
+#% if: configValue.equals("prod");
+
+INSERT_UPDATE CMSSite;uid[unique=true];name[lang=en];theme(code);channel(code);stores(uid);contentCatalogs(id);defaultCatalog(id);defaultLanguage(isoCode);urlPatterns;active;previewURL;urlEncodingAttributes
+;$BRsiteUid;Brazil site;jnj;B2B;$BRstoreUid;$BRContentCatalog;$BRproductCatalog;$defaultLanguage;(?i)^https?://b2bprod-br\.jnj\.[^/]+(|/.*|\?.*)$;true;$storefrontContextRoot/?site=$BRsiteUid;language
+INSERT_UPDATE CMSSite;uid[unique=true];name[lang=en];theme(code);channel(code);stores(uid);contentCatalogs(id);defaultCatalog(id);defaultLanguage(isoCode);urlPatterns;active;previewURL;urlEncodingAttributes
+;$MXsiteUid;Mexico site;jnj;B2B;$MXstoreUid;$MXContentCatalog;$MXproductCatalog;$defaultLanguage;(?i)^https?://b2bprod-mx\.jnj\.[^/]+(|/.*|\?.*)$;true;$storefrontContextRoot/?site=$MXsiteUid;language
+
+
+#% endif:
+
+
+# Cart Cleanup CronJobs
+#INSERT_UPDATE CartRemovalCronJob;code[unique=true];job(code)[default=cartRemovalJob];sites(uid)[default=$siteUid];sessionLanguage(isoCode)[default=en]
+#;$BRsiteUid-CartRemovalJob
+
+#INSERT_UPDATE Trigger;cronJob(code)[unique=true];second;minute;hour;day;month;year;relative;active;maxAcceptableDelay
+#;$siteUid-CartRemovalJob;0;5;4;-1;-1;-1;false;true;-1
+
+
+

@@ -1,0 +1,9 @@
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+# Initialization
+INSERT_UPDATE JnjGTIntOrdLinePriceLocal;currency;currencyForCv;currencyForUp;pricingConditionName;pricingConditionType[unique=true];sapOrderLineNumber[unique=true];sapOrderNumber[unique=true];sourceSystemId[unique=true];unitPrice;value;recordTimeStamp[dateformat='yyyy-MM-dd hh:mm:ss']
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT t.CURRENCY, t.CURRENCY_FOR_CV, t.CURRENCY_FOR_UP, t.PRICING_CONDITION_NAME, t.PRICING_CONDITION_TYPE, t.ORD_LINE_NUM, t.ORDER_NUM, t.SOURCE_SYS_ID, t.UNIT_PRICE,VALUE, t.REC_TIMESTAMP from STG_ORDER_LINE_PRICE_LOCL t, STG_ORDER_CJ cj WHERE t.order_num = cj.order_num and t.REC_TIMESTAMP = cj.REC_TIMESTAMP and t.BUSINESS_SECTOR = cj.BUSINESS_SECTOR"");"
+
+

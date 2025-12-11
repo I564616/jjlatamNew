@@ -1,0 +1,249 @@
+.relatedProdSection .swiper-container {
+	width: 97% !important;
+	height: auto !important; 
+	max-height: 318px !important;
+	display: block;
+	min-height : 230px;
+}
+
+.relatedProdSection .addToCartBtn {
+	letter-spacing: 0.5px;
+	font-family: jnjbodyfont,sans-serif;
+	font-weight: bold;
+	font-size: 10px;
+	color: #fff;
+	border-radius: 27px;
+	background-color: #b41601;
+	text-align: center;
+	padding: 10px 12px;
+	margin-bottom: 9px;
+}
+
+.relatedProdSection .addToCartBtn.focus, .relatedProdSection .addToCartBtn:focus
+	{
+	color: #fff;
+	background-color: #b41601;
+	border-color: #8c8c8c
+}
+
+.relatedProdSection .addToCartBtn:hover {
+	color: #fff;
+	background-color: #901201;
+	border-color: #adadad
+}
+
+.relatedProdSection .relatedProductLabel {
+	font-size: 18px;
+	margin-top: 30px;
+}
+
+.relatedProdSection .hrLine {
+	background-color: #ccc;
+	height: 3px;
+	width: 86%;
+	margin-left: 15px;
+	margin-top: 5px;
+	opacity: 0.5;
+	margin-bottom: 20px;
+}
+
+.relatedProdSection .swipePageHolder {
+	padding-left: 10px;
+	padding-right: 0px;
+	margin-top: -4px;
+	width: 10%;
+}
+
+.relatedProdSection .swiper-pagination-bullets {
+	width: 100%;
+}
+
+.relatedProdSection .swiper-pagination-bullet {
+	padding: 5px;
+	margin: 5px 7px 0px 7px;
+}
+
+.relatedProdSection .swiper-pagination-bullet-active {
+	background: #b41601
+}
+
+.relatedProdSection .productHolder {
+	border: 1px solid #ccc;
+	width: 24%;
+	display: inline;
+	float: left;
+	margin-right: 1%;
+	padding: 5px;
+}
+
+.relatedProdSection .productHolder.productHolderMobile {
+	width: 100%;
+	padding: 20px;
+	margin-right: 0;
+}
+
+.relatedProdSection .productSwiperHolder {
+	margin: 0px;
+	padding: 15px 0px;
+	padding-left: 1%;
+	width: 100%;
+}
+
+.relatedProdSection .productSwiperHolder.productSwiperHolderMob {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.relatedProdSection .swiper-container.s3, .relatedProdSection  .swiper-container.s4
+	{
+	width: 90% !important;
+	height: auto !important;
+	margin: 20px;
+}
+
+.relatedProdSection .imgPlaceHolder {
+	margin: 0px 0px 5px 0px;
+}
+
+.relatedProdSection  .imgProductProp {
+	width: 150px;
+	height: 150px;
+	margin: 0 auto;
+	display: block;
+}
+
+.relatedProdSection .quickViewBtn {
+	text-transform: capitalize !important;
+	padding: 10px 8px !important;
+	font-size: 10px !important;
+	margin-bottom: 9px;
+}
+
+.relatedProdSection .imgProductDescrp {
+	text-align: center;
+	clear: both;
+	border-bottom: 1px solid #ccc; 
+	height: 81px;
+	line-height: 15px;
+	font-size: 15px;
+}
+
+.relatedProdSection .imgProductDescrp p.prodName {
+	height: 30px;
+}
+
+.relatedProdSection .imgProductDescrp p.productCode {
+	margin: 0 0 5px 0;
+	font-weight: bold
+}
+
+.relatedProdSection .likeProductHold {
+	padding-top: 15px;
+}
+
+.relatedProdSection .productPrice {
+	float: right;
+	line-height: 35px;
+	color: #828282;
+	padding: 0 0 0 10px;
+	margin-bottom: 10px;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.relatedProdSection .backward, .relatedProdSection .forward {
+	height: 62.129px;
+	font-size: 20px;
+	text-align: center;
+}
+
+.relatedProdSection .backward button, .relatedProdSection .forward button
+	{
+	color: #12c2e9;
+	opacity: 0.8;
+	border: none;
+	background: none;
+	box-shadow: none;
+	display: inline-block;
+	margin: 16px 0;
+}
+
+.relatedProdSection .backward button:disabled, .relatedProdSection .forward button:disabled
+	{
+	opacity: 0.5;
+}
+
+.relatedProdSection .backward button:focus, .relatedProdSection .forward button:focus,
+	.relatedProdSection .backward button:active:focus, .relatedProdSection .forward button:active:focus
+	{
+	outline: none;
+}
+
+.relatedProdSection .swiper-button-prev, .relatedProdSection .swiper-container-rtl .swiper-button-next
+	{
+	background-image: none;
+	left: 0;
+	right: auto;
+}
+
+.relatedProdSection .swiper-button-next, .relatedProdSection .swiper-container-rtl .swiper-button-prev
+	{
+	background-image: none;
+	right: 0;
+	left: auto;
+}
+
+.relatedProdSection .swiper-button-next, .relatedProdSection .swiper-button-prev
+	{
+	position: absolute;
+	opacity: 0.8;
+	top: 50%;
+	width: 35px;
+	height: 44px;
+	margin-top: -22px;
+	z-index: 10;
+	cursor: pointer;
+	-moz-background-size: 27px 44px;
+	-webkit-background-size: 27px 44px;
+	background-size: 27px 44px;
+	background-position: center;
+	background-repeat: no-repeat;
+	font-weight: bold;
+	font-size: 28px;
+	padding-top: 3px;
+	color: #fff;
+	background-color: #ccc;
+	text-align:center;
+}
+
+.relatedProdSection {
+	clear: both;
+}
+.relatedProdSection .swiper-button-prev.swiper-button-disabled, .relatedProdSection .swiper-button-next.swiper-button-disabled {
+    opacity: 0.35 !important;
+    cursor: none;
+    pointer-events: auto;
+}
+.relatedProdSection a .productdetail-img, .relatedProdSection .productPrimaryImg{
+	width: 96px;
+    height: 96px;
+}
+.priceRule {
+    line-height: 34px;
+}
+@media screen and (min-width: 768px) and (max-width: 850px) {
+	.relatedProdSection .quickViewBtn {
+		font-size: 8px !important;
+	}
+	.relatedProdSection .addToCartBtn {
+		font-size: 8px;
+	}
+	
+	.relatedProdSection .hrLine {
+	    width: 83%;
+	 }
+	
+	.relatedProdSection .swipePageHolder {
+	    width: 13%;
+	}
+}

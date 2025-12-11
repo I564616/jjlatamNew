@@ -1,0 +1,60 @@
+$contentCatalog = mstrContentCatalog
+$contentCV = catalogVersion(catalog(id[default = $contentCatalog]), version[default = 'Staged'])
+$wideContent = CMSImageComponent, BannerComponent
+$jarResourceCms = jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/jnjlamasterstore/import/cockpits/cmscockpit
+$emailResource = jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/jnjlamasterstore/import/contentCatalogs/jnjContentCatalog/emails/templates
+$mediaResource = jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/jnjlamasterstore/import/contentCatalogs/jnjContentCatalog/media
+
+
+INSERT_UPDATE EmailPageTemplate;$contentCV[unique=true];uid[unique=true];name;active;frontendTemplateName;subject(code);htmlTemplate(code);restrictedPageTypes(code)
+                               ;;JnjLaInvoiceNotificationEmailTemplate;Invoice notification Email Template;true;JnjLaInvoiceNotificationEmailTemplate;email-invoiceNotificationEmailSubject;email-invoiceNotificationEmailBody;;EmailPage
+
+INSERT_UPDATE EmailPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);defaultPage;approvalStatus(code)[default='approved'];fromEmail[lang=en];fromName[lang=en]
+                       ;;JnjLaInvoiceNotificationEmailPage;Invoice Notification Email Page;JnjLaInvoiceNotificationEmailTemplate;true;
+
+INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+                                    ;;EmailImageLogoOne-JnjLaInvoiceNotificationEmailTemplate;EmailImageLogoOne;JnjLaInvoiceNotificationEmailTemplate;EpicEmailSiteLogoSlotOne;true
+                                    ;;EmailImageLogoTwo-JnjLaInvoiceNotificationEmailTemplate;EmailImageLogoTwo;JnjLaInvoiceNotificationEmailTemplate;EpicEmailSiteLogoSlotTwo;true
+                                    ;;EpicEmailFooter-JnjLaInvoiceNotificationEmailTemplate;EpicEmailFooter;JnjLaInvoiceNotificationEmailTemplate;EpicEmailFooterSlot;true
+
+
+INSERT_UPDATE ContentSlotForTemplate;$contentCV;pageTemplate(uid,$contentCV)[unique=true];uid[unique=true];position[unique=true];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+                                    ;;JnjLaInvoiceNotificationEmailTemplate;NewEmailTopLogo1-JnjLaInvoiceNotificationEmailTemplate;TopContentLogo1;NewEmailTopLogoSlot1;true
+                                    ;;JnjLaInvoiceNotificationEmailTemplate;NewEmailTopLogo2-JnjLaInvoiceNotificationEmailTemplate;TopContentLogo2;NewEmailTopLogoSlot2;true
+
+
+INSERT_UPDATE RendererTemplate;code[unique=true];contextClass;rendererType(code)[default='velocity']
+                              ;email-invoiceNotificationEmailSubject;com.jnj.facades.process.email.context.JnjLaInvoiceNotificationEmailProcessContext
+                              ;email-invoiceNotificationEmailBody;com.jnj.facades.process.email.context.JnjLaInvoiceNotificationEmailProcessContext
+
+
+INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]       ; cmsComponents(uid, $contentCV); name; active[default = true]
+                         ;                          ; EmailSiteLogoSlot        ; EmailSiteLogoComponent
+                         ;                          ; EpicEmailFooterSlot      ; footerContentForEpicEmail
+                         ;                          ; EpicEmailSiteLogoSlotOne ; EpicEmailSiteLogoComponentOne
+                         ;                          ; EpicEmailSiteLogoSlotTwo ; EpicEmailSiteLogoComponentTwo
+                         ;                          ; NewEmailTopLogoSlot1     ; NewEmailSiteLogoComponent1
+                         ;                          ; NewEmailTopLogoSlot2     ; NewEmailSiteLogoComponent2
+
+INSERT_UPDATE JnjEpicEmailFooterComponent; $contentCV[unique = true]; uid[unique = true]        ; name                ; &componentRef; content[lang = en]                                                                                                                                                                                                                                                       ; footerLinkComponentList(uid, $contentCV)             ; footerParagraph
+                                         ;                          ; footerContentForEpicEmail ; Epic Footer Content ;              ; "<p>&nbsp;&nbsp;Johnson & Johnson Gateway, LLC | 425 Hoes Lane | Piscataway, NJ 008854<br> &nbsp;&nbsp;&nbsp;@Johnson & Johnson Gateway, LLC 2015 All Rights Reserved<br>Capitalized product names are trademarks of Johnson & Johnson or its affiliated companies.</P>" ; ContactUsLinkForEmail,UpdateNotificationLinkForEmail ; ;
+
+INSERT_UPDATE CMSLinkComponent; $contentCV[unique = true]; uid[unique = true]             ; name                                 ; url                            ; target(code)[default = 'newWindow']; linkName[lang = en]             ; shiftRight[default = 'false']
+                              ;                          ; UpdateNotificationLinkForEmail ; Update Notification Preferences Link ; "/my-account/personalInformation" ;                                    ; Update Notification Preferences ;
+                              ;                          ; ContactUsLinkForEmail          ; Contact Us Link                      ; "/login?contactUs=true"        ;                                    ; Contact Us                      ;
+
+INSERT_UPDATE SimpleBannerComponent; $contentCV[unique = true]; uid[unique = true]            ; name                               ; &componentRef              ; urlLink  ; media(code, $contentCV)[lang = en];
+                                   ;                          ; NewEmailSiteLogoComponent1    ; Email Site Logo Component          ; NewEmailSiteLogoComponent1 ; "/login" ; newSiteLogoImage1                 ;
+                                   ;                          ; NewEmailSiteLogoComponent2    ; Email Site Logo Component          ; NewEmailSiteLogoComponent2 ; "/login" ; newSiteLogoImage2                 ;
+                                   ;                          ; EmailSiteLogoComponent        ; Email Site Logo Component          ; SiteLogoComponent          ; "/login" ; siteLogoImage                     ;
+                                   ;                          ; EpicEmailSiteLogoComponentOne ; Epic Email Site Logo Component One ; EpicSiteLogoComponentOne   ; "/home"  ; epicEmailLogoImageOne             ;
+                                   ;                          ; EpicEmailSiteLogoComponentTwo ; Epic Email Site Logo Component Two ; EpicSiteLogoComponentTwo   ; "/home"  ; epicEmailLogoImageTwo             ;
+
+INSERT_UPDATE RendererTemplate; code[unique = true]                        ; description[lang = en]                     ; templateScript[lang = en, translator = de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]; templateScript[lang = es, translator = de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]; templateScript[lang = pt, translator = de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]
+                              ; email-invoiceNotificationEmailBody    ; "Invoice Notification Email Notification Body"    ; $emailResource/email-invoiceNotificationEmailBody_en.vm                                                   ; $emailResource/email-invoiceNotificationEmailBody_es.vm                                                    ; $emailResource/email-invoiceNotificationEmailBody_pt.vm
+                              ; email-invoiceNotificationEmailSubject    ; "Invoice Notification Email Notification Subject"    ; $emailResource/email-invoiceNotificationEmailSubject_en.vm                                                   ; $emailResource/email-invoiceNotificationEmailSubject_es.vm                                                   ; $emailResource/email-invoiceNotificationEmailSubject_pt.vm
+
+
+INSERT_UPDATE JnjConfig;id[unique=true]                            ;value                           ;description
+                       ;"invoice.notification.from.email"            ;"no-reply@its.jnj.com";"Service email account from invoice notification emails are sent"
+                       ;"invoice.notification.from.email.displayname";"JJ Customer Connect"           ;"Order invoice notification email display name"

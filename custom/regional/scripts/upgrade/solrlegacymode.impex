@@ -1,0 +1,111 @@
+INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];ftsQuery;ftsQueryBoost;ftsFuzzyQuery; ftsFuzzyQueryBoost;ftsWildcardQuery; ftsWildcardQueryBoost
+;jnjARProductType; code;true;30.0;true;15.0;true;7.5;
+;jnjARProductType; name;true;200.0;true;100.0;true;50.0;
+;jnjARProductType; description;true;100.0;true;50.0;true;25.0;
+;jnjARProductType; keywords;true;6.0;true;3.0;true;1.5;
+;jnjARProductType; baseMaterialNumber;true;180.0;true;90.0;true;45.0;
+
+INSERT_UPDATE SolrSearchConfig;description[unique=true];legacyMode
+;jnjARPageSize;false
+
+
+
+INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];ftsQuery;ftsQueryBoost;ftsFuzzyQuery;ftsWildcardQueryBoost;ftsWildcardQuery;ftsFuzzyQueryBoost
+;jnjBRProductType; code;true;30.0;true;15.0;true;7.5;
+;jnjBRProductType; name;true;200.0;true;100.0;true;50.0;
+;jnjBRProductType; description;true;100.0;true;50.0;true;25.0;
+;jnjBRProductType; keywords;true;6.0;true;3.0;true;1.5;
+;jnjBRProductType; baseMaterialNumber;true;180.0;true;90.0;true;45.0;
+
+INSERT_UPDATE SolrSearchConfig;description[unique=true];legacyMode
+;jnjBRPageSize;false
+
+INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];ftsQuery;ftsQueryBoost;ftsFuzzyQuery;ftsWildcardQueryBoost;ftsWildcardQuery;ftsFuzzyQueryBoost
+;jnjMXProductType; code;true;30.0;true;15.0;true;7.5;
+;jnjMXProductType; name;true;200.0;true;100.0;true;50.0;
+;jnjMXProductType; description;true;100.0;true;50.0;true;25.0;
+;jnjMXProductType; keywords;true;6.0;true;3.0;true;1.5;
+;jnjMXProductType; baseMaterialNumber;true;180.0;true;90.0;true;45.0;
+
+
+INSERT_UPDATE SolrSearchConfig;description[unique=true];legacyMode
+;jnjMXPageSize;false
+
+INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];ftsQuery;ftsQueryBoost;ftsFuzzyQuery;ftsWildcardQueryBoost;ftsWildcardQuery;ftsFuzzyQueryBoost
+;jnjCENCAProductType; code;true;30.0;true;15.0;true;7.5;
+;jnjCENCAProductType; name;true;200.0;true;100.0;true;50.0;
+;jnjCENCAProductType; description;true;100.0;true;50.0;true;25.0;
+;jnjCENCAProductType; keywords;true;6.0;true;3.0;true;1.5;
+;jnjCENCAProductType; baseMaterialNumber;true;180.0;true;90.0;true;45.0;
+
+
+INSERT_UPDATE SolrSearchConfig;description[unique=true];legacyMode
+;jnjCENCAPageSize;false
+
+INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];ftsQuery;ftsQueryBoost;ftsFuzzyQuery;ftsWildcardQueryBoost;ftsWildcardQuery;ftsFuzzyQueryBoost
+;jnjCLProductType; code;true;30.0;true;15.0;true;7.5;
+;jnjCLProductType; name;true;200.0;true;100.0;true;50.0;
+;jnjCLProductType; description;true;100.0;true;50.0;true;25.0;
+;jnjCLProductType; keywords;true;6.0;true;3.0;true;1.5;
+;jnjCLProductType; baseMaterialNumber;true;180.0;true;90.0;true;45.0;
+
+INSERT_UPDATE SolrSearchConfig;description[unique=true];legacyMode
+;jnjCLPageSize;false
+
+INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];ftsQuery;ftsQueryBoost;ftsFuzzyQuery;ftsWildcardQueryBoost;ftsWildcardQuery;ftsFuzzyQueryBoost
+;jnjCOProductType; code;true;30.0;true;15.0;true;7.5;
+;jnjCOProductType; name;true;200.0;true;100.0;true;50.0;
+;jnjCOProductType; description;true;100.0;true;50.0;true;25.0;
+;jnjCOProductType; keywords;true;6.0;true;3.0;true;1.5;
+;jnjCOProductType; baseMaterialNumber;true;180.0;true;90.0;true;45.0;
+
+INSERT_UPDATE SolrSearchConfig;description[unique=true];legacyMode
+;jnjCOPageSize;false
+
+
+INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];ftsQuery;ftsQueryBoost;ftsFuzzyQuery;ftsWildcardQueryBoost;ftsWildcardQuery;ftsFuzzyQueryBoost
+;jnjECProductType; code;true;30.0;true;15.0;true;7.5;
+;jnjECProductType; name;true;200.0;true;100.0;true;50.0;
+;jnjECProductType; description;true;100.0;true;50.0;true;25.0;
+;jnjECProductType; keywords;true;6.0;true;3.0;true;1.5;
+;jnjECProductType; baseMaterialNumber;true;180.0;true;90.0;true;45.0;
+
+
+INSERT_UPDATE SolrSearchConfig;description[unique=true];legacyMode
+;jnjECPageSize;false
+
+
+
+INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];ftsQuery;ftsQueryBoost;ftsFuzzyQuery;ftsWildcardQueryBoost;ftsWildcardQuery;ftsFuzzyQueryBoost
+;jnjPEProductType; code;true;30.0;true;15.0;true;7.5;
+;jnjPEProductType; name;true;200.0;true;100.0;true;50.0;
+;jnjPEProductType; description;true;100.0;true;50.0;true;25.0;
+;jnjPEProductType; keywords;true;6.0;true;3.0;true;1.5;
+;jnjPEProductType; baseMaterialNumber;true;180.0;true;90.0;true;45.0;
+
+
+INSERT_UPDATE SolrSearchConfig;description[unique=true];legacyMode
+;jnjPEPageSize;false
+
+
+INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];ftsQuery;ftsQueryBoost;ftsFuzzyQuery;ftsWildcardQueryBoost;ftsWildcardQuery;ftsFuzzyQueryBoost
+;jnjPRProductType; code;true;30.0;true;15.0;true;7.5;
+;jnjPRProductType; name;true;200.0;true;100.0;true;50.0;
+;jnjPRProductType; description;true;100.0;true;50.0;true;25.0;
+;jnjPRProductType; keywords;true;6.0;true;3.0;true;1.5;
+;jnjPRProductType; baseMaterialNumber;true;180.0;true;90.0;true;45.0;
+
+
+INSERT_UPDATE SolrSearchConfig;description[unique=true];legacyMode
+;jnjPRPageSize;false
+
+
+INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];ftsQuery;ftsQueryBoost;ftsFuzzyQuery;ftsWildcardQueryBoost;ftsWildcardQuery;ftsFuzzyQueryBoost
+;jnjUYProductType; code;true;30.0;true;15.0;true;7.5;
+;jnjUYProductType; name;true;200.0;true;100.0;true;50.0;
+;jnjUYProductType; description;true;100.0;true;50.0;true;25.0;
+;jnjUYProductType; keywords;true;6.0;true;3.0;true;1.5;
+;jnjUYProductType; baseMaterialNumber;true;180.0;true;90.0;true;45.0;
+
+INSERT_UPDATE SolrSearchConfig;description[unique=true];legacyMode
+;jnjUYPageSize;false

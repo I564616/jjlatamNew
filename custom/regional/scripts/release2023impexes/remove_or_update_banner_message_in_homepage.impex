@@ -1,0 +1,378 @@
+## REMOVE
+$contentCatalog=brContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$contentCatalog]),version[default='Online'])
+$jarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/cockpits/cmscockpit
+$jnjJarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/contentCatalogs/jnjContentCatalog
+
+REMOVE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;content[lang=en]
+                            ;;PleaseReadParagraphComponent;Please Read Paragraph Component;PleaseReadParagraphComponent;"<div class=""modal fade jnj-popup"" id=""os-pls-read-popup"" role=""dialog""><div class=""modal-dialog modalcls modal-sm""><div class=""modal-content popup""><div class=""modal-header""><button type=""button"" class=""close clsBtn"" data-dismiss=""modal"">Close</button></div><div class=""modal-body""><div class=""os-more-popup-header"">Notice: Attention Government Customers</div><div class=""os-more-popup-content"">Please click <a href=""#"">here</a> for a list of products with a ""no additional shipping charge expedited service level"" as the default delivery option.</div><div class=""os-more-popup-content"">If the current default delivery option meets your requirements, DO NOT EXPEDITE your order.</div>	<div class=""os-more-popup-content"">Your order will bot be subject to Expedited order fees when using the default delivery option. If the current default delivery option does not meet your requirements, you may opt to Expedite your order. Your order will be subject to Expedited order fees.</div></div> </div></div></div>"
+
+REMOVE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='HomePageTemplate'];validComponentTypes(code);compTypeGroup(code)
+                      ;BroadCast;;BroadcastMessage ;narrow
+
+REMOVE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+                  ;;BroadCastContentContentSlot;PleaseReadParagraphComponent
+
+REMOVE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='HomePageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+                             ;;BroadCastContent-homePage;BroadCastContent;;BroadCastContentContentSlot;true
+
+
+## UPDATE
+$contentCatalog=brContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$contentCatalog]),version[default='Online'])
+$jarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/cockpits/cmscockpit
+$jnjJarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/contentCatalogs/jnjContentCatalog
+
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef(uid,$contentCV);content[lang=en];content[lang=es];content[lang=pt]
+                                   ;;PleaseReadParagraphComponent;Please Read Paragraph Component;PleaseReadParagraphComponent;"<h4><div style=""color:rgb(252,209,22)""><p>Announcement: Dear valued customer, the Consolidated email report under your communication preferences has new personalization features. Please access your +Communication Preferences under ”My profile” option to set-up an automated report. Additionally, we have implemented a new Open Orders Report. Please access Reports on your left hand side panel and select Open Orders Report to personalize and download your report.</p></div></h4>";"<h4><div style=""color:rgb(252,209,22)""><p>Anuncio: Estimado cliente, el informe de correo electrónico consolidado en sus preferencias de comunicación tiene nuevas características de personalización. Por favor, acceda a su +Preferencias de Comunicación en la opción ”Mi perfil” para configurar un informe automatizado. Además, hemos implementado un nuevo Informe de Pedidos Abiertos. Por favor, acceda a Informes en su panel lateral izquierdo y seleccione Informe de Pedidos Abiertos para personalizar y descargar su informe.</p></div></h4>";"<h4><div style=""color:rgb(252,209,22)""><p>Anúncio: Prezado cliente, o relatório consolidado de e-mail sob suas preferências de comunicação tem novas características de personalização. Favor acessar suas +Preferências de Comunicação na opção ”Meu perfil” para configurar um relatório automatizado. Além disso, implementamos um novo Relatório de Pedidos Abertos. Por favor, acesse Relatórios em seu painel lateral esquerdo e selecione Relatório de Ordens Abertas para personalizar e baixar seu relatório</p></div></h4>"
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+                         ;;BroadCastContentContentSlot;PleaseReadParagraphComponent
+
+INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='HomePageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+                                    ;;BroadCastContent-homePage;BroadCastContent;;BroadCastContentContentSlot;true
+
+INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='HomePageTemplate'];validComponentTypes(code);compTypeGroup(code)
+                             ;BroadCast;;BroadcastMessage ;narrow
+
+
+## REMOVE
+$contentCatalog=mxContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$contentCatalog]),version[default='Online'])
+$jarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/cockpits/cmscockpit
+$jnjJarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/contentCatalogs/jnjContentCatalog
+
+REMOVE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;content[lang=en]
+                            ;;PleaseReadParagraphComponent;Please Read Paragraph Component;PleaseReadParagraphComponent;"<div class=""modal fade jnj-popup"" id=""os-pls-read-popup"" role=""dialog""><div class=""modal-dialog modalcls modal-sm""><div class=""modal-content popup""><div class=""modal-header""><button type=""button"" class=""close clsBtn"" data-dismiss=""modal"">Close</button></div><div class=""modal-body""><div class=""os-more-popup-header"">Notice: Attention Government Customers</div><div class=""os-more-popup-content"">Please click <a href=""#"">here</a> for a list of products with a ""no additional shipping charge expedited service level"" as the default delivery option.</div><div class=""os-more-popup-content"">If the current default delivery option meets your requirements, DO NOT EXPEDITE your order.</div>	<div class=""os-more-popup-content"">Your order will bot be subject to Expedited order fees when using the default delivery option. If the current default delivery option does not meet your requirements, you may opt to Expedite your order. Your order will be subject to Expedited order fees.</div></div> </div></div></div>"
+
+REMOVE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='HomePageTemplate'];validComponentTypes(code);compTypeGroup(code)
+                      ;BroadCast;;BroadcastMessage ;narrow
+
+REMOVE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+                  ;;BroadCastContentContentSlot;PleaseReadParagraphComponent
+
+REMOVE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='HomePageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+                             ;;BroadCastContent-homePage;BroadCastContent;;BroadCastContentContentSlot;true
+
+
+## UPDATE
+$contentCatalog=mxContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$contentCatalog]),version[default='Online'])
+$jarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/cockpits/cmscockpit
+$jnjJarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/contentCatalogs/jnjContentCatalog
+
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef(uid,$contentCV);content[lang=en];content[lang=es];content[lang=pt]
+                                   ;;PleaseReadParagraphComponent;Please Read Paragraph Component;PleaseReadParagraphComponent;"<h4><div style=""color:rgb(252,209,22)""><p>Announcement: Dear valued customer, the Consolidated email report under your communication preferences has new personalization features. Please access your +Communication Preferences under ”My profile” option to set-up an automated report. Additionally, we have implemented a new Open Orders Report. Please access Reports on your left hand side panel and select Open Orders Report to personalize and download your report.</p></div></h4>";"<h4><div style=""color:rgb(252,209,22)""><p>Anuncio: Estimado cliente, el informe de correo electrónico consolidado en sus preferencias de comunicación tiene nuevas características de personalización. Por favor, acceda a su +Preferencias de Comunicación en la opción ”Mi perfil” para configurar un informe automatizado. Además, hemos implementado un nuevo Informe de Pedidos Abiertos. Por favor, acceda a Informes en su panel lateral izquierdo y seleccione Informe de Pedidos Abiertos para personalizar y descargar su informe.</p></div></h4>";"<h4><div style=""color:rgb(252,209,22)""><p>Anúncio: Prezado cliente, o relatório consolidado de e-mail sob suas preferências de comunicação tem novas características de personalização. Favor acessar suas +Preferências de Comunicação na opção ”Meu perfil” para configurar um relatório automatizado. Além disso, implementamos um novo Relatório de Pedidos Abertos. Por favor, acesse Relatórios em seu painel lateral esquerdo e selecione Relatório de Ordens Abertas para personalizar e baixar seu relatório</p></div></h4>"
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+                         ;;BroadCastContentContentSlot;PleaseReadParagraphComponent
+
+INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='HomePageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+                                    ;;BroadCastContent-homePage;BroadCastContent;;BroadCastContentContentSlot;true
+
+INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='HomePageTemplate'];validComponentTypes(code);compTypeGroup(code)
+                             ;BroadCast;;BroadcastMessage ;narrow
+
+
+## REMOVE
+$contentCatalog=cencaContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$contentCatalog]),version[default='Online'])
+$jarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/cockpits/cmscockpit
+$jnjJarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/contentCatalogs/jnjContentCatalog
+
+REMOVE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;content[lang=en]
+                            ;;PleaseReadParagraphComponent;Please Read Paragraph Component;PleaseReadParagraphComponent;"<div class=""modal fade jnj-popup"" id=""os-pls-read-popup"" role=""dialog""><div class=""modal-dialog modalcls modal-sm""><div class=""modal-content popup""><div class=""modal-header""><button type=""button"" class=""close clsBtn"" data-dismiss=""modal"">Close</button></div><div class=""modal-body""><div class=""os-more-popup-header"">Notice: Attention Government Customers</div><div class=""os-more-popup-content"">Please click <a href=""#"">here</a> for a list of products with a ""no additional shipping charge expedited service level"" as the default delivery option.</div><div class=""os-more-popup-content"">If the current default delivery option meets your requirements, DO NOT EXPEDITE your order.</div>	<div class=""os-more-popup-content"">Your order will bot be subject to Expedited order fees when using the default delivery option. If the current default delivery option does not meet your requirements, you may opt to Expedite your order. Your order will be subject to Expedited order fees.</div></div> </div></div></div>"
+
+REMOVE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='HomePageTemplate'];validComponentTypes(code);compTypeGroup(code)
+                      ;BroadCast;;BroadcastMessage ;narrow
+
+REMOVE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+                  ;;BroadCastContentContentSlot;PleaseReadParagraphComponent
+
+REMOVE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='HomePageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+                             ;;BroadCastContent-homePage;BroadCastContent;;BroadCastContentContentSlot;true
+
+
+## UPDATE
+$contentCatalog=cencaContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$contentCatalog]),version[default='Online'])
+$jarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/cockpits/cmscockpit
+$jnjJarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/contentCatalogs/jnjContentCatalog
+
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef(uid,$contentCV);content[lang=en];content[lang=es];content[lang=pt]
+                                   ;;PleaseReadParagraphComponent;Please Read Paragraph Component;PleaseReadParagraphComponent;"<h4><div style=""color:rgb(252,209,22)""><p>Announcement: Dear valued customer, the Consolidated email report under your communication preferences has new personalization features. Please access your +Communication Preferences under ”My profile” option to set-up an automated report. Additionally, we have implemented a new Open Orders Report. Please access Reports on your left hand side panel and select Open Orders Report to personalize and download your report.</p></div></h4>";"<h4><div style=""color:rgb(252,209,22)""><p>Anuncio: Estimado cliente, el informe de correo electrónico consolidado en sus preferencias de comunicación tiene nuevas características de personalización. Por favor, acceda a su +Preferencias de Comunicación en la opción ”Mi perfil” para configurar un informe automatizado. Además, hemos implementado un nuevo Informe de Pedidos Abiertos. Por favor, acceda a Informes en su panel lateral izquierdo y seleccione Informe de Pedidos Abiertos para personalizar y descargar su informe.</p></div></h4>";"<h4><div style=""color:rgb(252,209,22)""><p>Anúncio: Prezado cliente, o relatório consolidado de e-mail sob suas preferências de comunicação tem novas características de personalização. Favor acessar suas +Preferências de Comunicação na opção ”Meu perfil” para configurar um relatório automatizado. Além disso, implementamos um novo Relatório de Pedidos Abertos. Por favor, acesse Relatórios em seu painel lateral esquerdo e selecione Relatório de Ordens Abertas para personalizar e baixar seu relatório</p></div></h4>"
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+                         ;;BroadCastContentContentSlot;PleaseReadParagraphComponent
+
+INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='HomePageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+                                    ;;BroadCastContent-homePage;BroadCastContent;;BroadCastContentContentSlot;true
+
+INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='HomePageTemplate'];validComponentTypes(code);compTypeGroup(code)
+                             ;BroadCast;;BroadcastMessage ;narrow
+
+
+## REMOVE
+$contentCatalog=ecContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$contentCatalog]),version[default='Online'])
+$jarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/cockpits/cmscockpit
+$jnjJarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/contentCatalogs/jnjContentCatalog
+
+REMOVE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;content[lang=en]
+                            ;;PleaseReadParagraphComponent;Please Read Paragraph Component;PleaseReadParagraphComponent;"<div class=""modal fade jnj-popup"" id=""os-pls-read-popup"" role=""dialog""><div class=""modal-dialog modalcls modal-sm""><div class=""modal-content popup""><div class=""modal-header""><button type=""button"" class=""close clsBtn"" data-dismiss=""modal"">Close</button></div><div class=""modal-body""><div class=""os-more-popup-header"">Notice: Attention Government Customers</div><div class=""os-more-popup-content"">Please click <a href=""#"">here</a> for a list of products with a ""no additional shipping charge expedited service level"" as the default delivery option.</div><div class=""os-more-popup-content"">If the current default delivery option meets your requirements, DO NOT EXPEDITE your order.</div>	<div class=""os-more-popup-content"">Your order will bot be subject to Expedited order fees when using the default delivery option. If the current default delivery option does not meet your requirements, you may opt to Expedite your order. Your order will be subject to Expedited order fees.</div></div> </div></div></div>"
+
+REMOVE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='HomePageTemplate'];validComponentTypes(code);compTypeGroup(code)
+                      ;BroadCast;;BroadcastMessage ;narrow
+
+REMOVE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+                  ;;BroadCastContentContentSlot;PleaseReadParagraphComponent
+
+REMOVE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='HomePageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+                             ;;BroadCastContent-homePage;BroadCastContent;;BroadCastContentContentSlot;true
+
+
+## UPDATE
+$contentCatalog=ecContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$contentCatalog]),version[default='Online'])
+$jarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/cockpits/cmscockpit
+$jnjJarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/contentCatalogs/jnjContentCatalog
+
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef(uid,$contentCV);content[lang=en];content[lang=es];content[lang=pt]
+                                   ;;PleaseReadParagraphComponent;Please Read Paragraph Component;PleaseReadParagraphComponent;"<h4><div style=""color:rgb(252,209,22)""><p>Announcement: Dear valued customer, the Consolidated email report under your communication preferences has new personalization features. Please access your +Communication Preferences under ”My profile” option to set-up an automated report. Additionally, we have implemented a new Open Orders Report. Please access Reports on your left hand side panel and select Open Orders Report to personalize and download your report.</p></div></h4>";"<h4><div style=""color:rgb(252,209,22)""><p>Anuncio: Estimado cliente, el informe de correo electrónico consolidado en sus preferencias de comunicación tiene nuevas características de personalización. Por favor, acceda a su +Preferencias de Comunicación en la opción ”Mi perfil” para configurar un informe automatizado. Además, hemos implementado un nuevo Informe de Pedidos Abiertos. Por favor, acceda a Informes en su panel lateral izquierdo y seleccione Informe de Pedidos Abiertos para personalizar y descargar su informe.</p></div></h4>";"<h4><div style=""color:rgb(252,209,22)""><p>Anúncio: Prezado cliente, o relatório consolidado de e-mail sob suas preferências de comunicação tem novas características de personalização. Favor acessar suas +Preferências de Comunicação na opção ”Meu perfil” para configurar um relatório automatizado. Além disso, implementamos um novo Relatório de Pedidos Abertos. Por favor, acesse Relatórios em seu painel lateral esquerdo e selecione Relatório de Ordens Abertas para personalizar e baixar seu relatório</p></div></h4>"
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+                         ;;BroadCastContentContentSlot;PleaseReadParagraphComponent
+
+INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='HomePageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+                                    ;;BroadCastContent-homePage;BroadCastContent;;BroadCastContentContentSlot;true
+
+INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='HomePageTemplate'];validComponentTypes(code);compTypeGroup(code)
+                             ;BroadCast;;BroadcastMessage ;narrow
+
+
+## REMOVE
+$contentCatalog=arContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$contentCatalog]),version[default='Online'])
+$jarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/cockpits/cmscockpit
+$jnjJarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/contentCatalogs/jnjContentCatalog
+
+REMOVE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;content[lang=en]
+                            ;;PleaseReadParagraphComponent;Please Read Paragraph Component;PleaseReadParagraphComponent;"<div class=""modal fade jnj-popup"" id=""os-pls-read-popup"" role=""dialog""><div class=""modal-dialog modalcls modal-sm""><div class=""modal-content popup""><div class=""modal-header""><button type=""button"" class=""close clsBtn"" data-dismiss=""modal"">Close</button></div><div class=""modal-body""><div class=""os-more-popup-header"">Notice: Attention Government Customers</div><div class=""os-more-popup-content"">Please click <a href=""#"">here</a> for a list of products with a ""no additional shipping charge expedited service level"" as the default delivery option.</div><div class=""os-more-popup-content"">If the current default delivery option meets your requirements, DO NOT EXPEDITE your order.</div>	<div class=""os-more-popup-content"">Your order will bot be subject to Expedited order fees when using the default delivery option. If the current default delivery option does not meet your requirements, you may opt to Expedite your order. Your order will be subject to Expedited order fees.</div></div> </div></div></div>"
+
+REMOVE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='HomePageTemplate'];validComponentTypes(code);compTypeGroup(code)
+                      ;BroadCast;;BroadcastMessage ;narrow
+
+REMOVE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+                  ;;BroadCastContentContentSlot;PleaseReadParagraphComponent
+
+REMOVE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='HomePageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+                             ;;BroadCastContent-homePage;BroadCastContent;;BroadCastContentContentSlot;true
+
+
+## UPDATE
+$contentCatalog=arContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$contentCatalog]),version[default='Online'])
+$jarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/cockpits/cmscockpit
+$jnjJarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/contentCatalogs/jnjContentCatalog
+
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef(uid,$contentCV);content[lang=en];content[lang=es];content[lang=pt]
+                                   ;;PleaseReadParagraphComponent;Please Read Paragraph Component;PleaseReadParagraphComponent;"<h4><div style=""color:rgb(252,209,22)""><p>Announcement: Dear valued customer, the Consolidated email report under your communication preferences has new personalization features. Please access your +Communication Preferences under ”My profile” option to set-up an automated report. Additionally, we have implemented a new Open Orders Report. Please access Reports on your left hand side panel and select Open Orders Report to personalize and download your report.</p></div></h4>";"<h4><div style=""color:rgb(252,209,22)""><p>Anuncio: Estimado cliente, el informe de correo electrónico consolidado en sus preferencias de comunicación tiene nuevas características de personalización. Por favor, acceda a su +Preferencias de Comunicación en la opción ”Mi perfil” para configurar un informe automatizado. Además, hemos implementado un nuevo Informe de Pedidos Abiertos. Por favor, acceda a Informes en su panel lateral izquierdo y seleccione Informe de Pedidos Abiertos para personalizar y descargar su informe.</p></div></h4>";"<h4><div style=""color:rgb(252,209,22)""><p>Anúncio: Prezado cliente, o relatório consolidado de e-mail sob suas preferências de comunicação tem novas características de personalização. Favor acessar suas +Preferências de Comunicação na opção ”Meu perfil” para configurar um relatório automatizado. Além disso, implementamos um novo Relatório de Pedidos Abertos. Por favor, acesse Relatórios em seu painel lateral esquerdo e selecione Relatório de Ordens Abertas para personalizar e baixar seu relatório</p></div></h4>"
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+                         ;;BroadCastContentContentSlot;PleaseReadParagraphComponent
+
+INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='HomePageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+                                    ;;BroadCastContent-homePage;BroadCastContent;;BroadCastContentContentSlot;true
+
+INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='HomePageTemplate'];validComponentTypes(code);compTypeGroup(code)
+                             ;BroadCast;;BroadcastMessage ;narrow
+
+
+## REMOVE
+$contentCatalog=clContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$contentCatalog]),version[default='Online'])
+$jarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/cockpits/cmscockpit
+$jnjJarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/contentCatalogs/jnjContentCatalog
+
+REMOVE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;content[lang=en]
+                            ;;PleaseReadParagraphComponent;Please Read Paragraph Component;PleaseReadParagraphComponent;"<div class=""modal fade jnj-popup"" id=""os-pls-read-popup"" role=""dialog""><div class=""modal-dialog modalcls modal-sm""><div class=""modal-content popup""><div class=""modal-header""><button type=""button"" class=""close clsBtn"" data-dismiss=""modal"">Close</button></div><div class=""modal-body""><div class=""os-more-popup-header"">Notice: Attention Government Customers</div><div class=""os-more-popup-content"">Please click <a href=""#"">here</a> for a list of products with a ""no additional shipping charge expedited service level"" as the default delivery option.</div><div class=""os-more-popup-content"">If the current default delivery option meets your requirements, DO NOT EXPEDITE your order.</div>	<div class=""os-more-popup-content"">Your order will bot be subject to Expedited order fees when using the default delivery option. If the current default delivery option does not meet your requirements, you may opt to Expedite your order. Your order will be subject to Expedited order fees.</div></div> </div></div></div>"
+
+REMOVE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='HomePageTemplate'];validComponentTypes(code);compTypeGroup(code)
+                      ;BroadCast;;BroadcastMessage ;narrow
+
+REMOVE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+                  ;;BroadCastContentContentSlot;PleaseReadParagraphComponent
+
+REMOVE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='HomePageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+                             ;;BroadCastContent-homePage;BroadCastContent;;BroadCastContentContentSlot;true
+
+
+## UPDATE
+$contentCatalog=clContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$contentCatalog]),version[default='Online'])
+$jarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/cockpits/cmscockpit
+$jnjJarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/contentCatalogs/jnjContentCatalog
+
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef(uid,$contentCV);content[lang=en];content[lang=es];content[lang=pt]
+                                   ;;PleaseReadParagraphComponent;Please Read Paragraph Component;PleaseReadParagraphComponent;"<h4><div style=""color:rgb(252,209,22)""><p>Announcement: Dear valued customer, the Consolidated email report under your communication preferences has new personalization features. Please access your +Communication Preferences under ”My profile” option to set-up an automated report. Additionally, we have implemented a new Open Orders Report. Please access Reports on your left hand side panel and select Open Orders Report to personalize and download your report.</p></div></h4>";"<h4><div style=""color:rgb(252,209,22)""><p>Anuncio: Estimado cliente, el informe de correo electrónico consolidado en sus preferencias de comunicación tiene nuevas características de personalización. Por favor, acceda a su +Preferencias de Comunicación en la opción ”Mi perfil” para configurar un informe automatizado. Además, hemos implementado un nuevo Informe de Pedidos Abiertos. Por favor, acceda a Informes en su panel lateral izquierdo y seleccione Informe de Pedidos Abiertos para personalizar y descargar su informe.</p></div></h4>";"<h4><div style=""color:rgb(252,209,22)""><p>Anúncio: Prezado cliente, o relatório consolidado de e-mail sob suas preferências de comunicação tem novas características de personalização. Favor acessar suas +Preferências de Comunicação na opção ”Meu perfil” para configurar um relatório automatizado. Além disso, implementamos um novo Relatório de Pedidos Abertos. Por favor, acesse Relatórios em seu painel lateral esquerdo e selecione Relatório de Ordens Abertas para personalizar e baixar seu relatório</p></div></h4>"
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+                         ;;BroadCastContentContentSlot;PleaseReadParagraphComponent
+
+INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='HomePageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+                                    ;;BroadCastContent-homePage;BroadCastContent;;BroadCastContentContentSlot;true
+
+INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='HomePageTemplate'];validComponentTypes(code);compTypeGroup(code)
+                             ;BroadCast;;BroadcastMessage ;narrow
+
+
+## REMOVE
+$contentCatalog=uyContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$contentCatalog]),version[default='Online'])
+$jarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/cockpits/cmscockpit
+$jnjJarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/contentCatalogs/jnjContentCatalog
+
+REMOVE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;content[lang=en]
+                            ;;PleaseReadParagraphComponent;Please Read Paragraph Component;PleaseReadParagraphComponent;"<div class=""modal fade jnj-popup"" id=""os-pls-read-popup"" role=""dialog""><div class=""modal-dialog modalcls modal-sm""><div class=""modal-content popup""><div class=""modal-header""><button type=""button"" class=""close clsBtn"" data-dismiss=""modal"">Close</button></div><div class=""modal-body""><div class=""os-more-popup-header"">Notice: Attention Government Customers</div><div class=""os-more-popup-content"">Please click <a href=""#"">here</a> for a list of products with a ""no additional shipping charge expedited service level"" as the default delivery option.</div><div class=""os-more-popup-content"">If the current default delivery option meets your requirements, DO NOT EXPEDITE your order.</div>	<div class=""os-more-popup-content"">Your order will bot be subject to Expedited order fees when using the default delivery option. If the current default delivery option does not meet your requirements, you may opt to Expedite your order. Your order will be subject to Expedited order fees.</div></div> </div></div></div>"
+
+REMOVE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='HomePageTemplate'];validComponentTypes(code);compTypeGroup(code)
+                      ;BroadCast;;BroadcastMessage ;narrow
+
+REMOVE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+                  ;;BroadCastContentContentSlot;PleaseReadParagraphComponent
+
+REMOVE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='HomePageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+                             ;;BroadCastContent-homePage;BroadCastContent;;BroadCastContentContentSlot;true
+
+
+## UPDATE
+$contentCatalog=uyContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$contentCatalog]),version[default='Online'])
+$jarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/cockpits/cmscockpit
+$jnjJarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/contentCatalogs/jnjContentCatalog
+
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef(uid,$contentCV);content[lang=en];content[lang=es];content[lang=pt]
+                                   ;;PleaseReadParagraphComponent;Please Read Paragraph Component;PleaseReadParagraphComponent;"<h4><div style=""color:rgb(252,209,22)""><p>Announcement: Dear valued customer, the Consolidated email report under your communication preferences has new personalization features. Please access your +Communication Preferences under ”My profile” option to set-up an automated report. Additionally, we have implemented a new Open Orders Report. Please access Reports on your left hand side panel and select Open Orders Report to personalize and download your report.</p></div></h4>";"<h4><div style=""color:rgb(252,209,22)""><p>Anuncio: Estimado cliente, el informe de correo electrónico consolidado en sus preferencias de comunicación tiene nuevas características de personalización. Por favor, acceda a su +Preferencias de Comunicación en la opción ”Mi perfil” para configurar un informe automatizado. Además, hemos implementado un nuevo Informe de Pedidos Abiertos. Por favor, acceda a Informes en su panel lateral izquierdo y seleccione Informe de Pedidos Abiertos para personalizar y descargar su informe.</p></div></h4>";"<h4><div style=""color:rgb(252,209,22)""><p>Anúncio: Prezado cliente, o relatório consolidado de e-mail sob suas preferências de comunicação tem novas características de personalização. Favor acessar suas +Preferências de Comunicação na opção ”Meu perfil” para configurar um relatório automatizado. Além disso, implementamos um novo Relatório de Pedidos Abertos. Por favor, acesse Relatórios em seu painel lateral esquerdo e selecione Relatório de Ordens Abertas para personalizar e baixar seu relatório</p></div></h4>"
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+                         ;;BroadCastContentContentSlot;PleaseReadParagraphComponent
+
+INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='HomePageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+                                    ;;BroadCastContent-homePage;BroadCastContent;;BroadCastContentContentSlot;true
+
+INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='HomePageTemplate'];validComponentTypes(code);compTypeGroup(code)
+                             ;BroadCast;;BroadcastMessage ;narrow
+
+
+## REMOVE
+$contentCatalog=coContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$contentCatalog]),version[default='Online'])
+$jarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/cockpits/cmscockpit
+$jnjJarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/contentCatalogs/jnjContentCatalog
+
+REMOVE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;content[lang=en]
+                            ;;PleaseReadParagraphComponent;Please Read Paragraph Component;PleaseReadParagraphComponent;"<div class=""modal fade jnj-popup"" id=""os-pls-read-popup"" role=""dialog""><div class=""modal-dialog modalcls modal-sm""><div class=""modal-content popup""><div class=""modal-header""><button type=""button"" class=""close clsBtn"" data-dismiss=""modal"">Close</button></div><div class=""modal-body""><div class=""os-more-popup-header"">Notice: Attention Government Customers</div><div class=""os-more-popup-content"">Please click <a href=""#"">here</a> for a list of products with a ""no additional shipping charge expedited service level"" as the default delivery option.</div><div class=""os-more-popup-content"">If the current default delivery option meets your requirements, DO NOT EXPEDITE your order.</div>	<div class=""os-more-popup-content"">Your order will bot be subject to Expedited order fees when using the default delivery option. If the current default delivery option does not meet your requirements, you may opt to Expedite your order. Your order will be subject to Expedited order fees.</div></div> </div></div></div>"
+
+REMOVE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='HomePageTemplate'];validComponentTypes(code);compTypeGroup(code)
+                      ;BroadCast;;BroadcastMessage ;narrow
+
+REMOVE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+                  ;;BroadCastContentContentSlot;PleaseReadParagraphComponent
+
+REMOVE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='HomePageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+                             ;;BroadCastContent-homePage;BroadCastContent;;BroadCastContentContentSlot;true
+
+
+## UPDATE
+$contentCatalog=coContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$contentCatalog]),version[default='Online'])
+$jarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/cockpits/cmscockpit
+$jnjJarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/contentCatalogs/jnjContentCatalog
+
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef(uid,$contentCV);content[lang=en];content[lang=es];content[lang=pt]
+                                   ;;PleaseReadParagraphComponent;Please Read Paragraph Component;PleaseReadParagraphComponent;"<h4><div style=""color:rgb(252,209,22)""><p>Announcement: Dear valued customer, the Consolidated email report under your communication preferences has new personalization features. Please access your +Communication Preferences under ”My profile” option to set-up an automated report. Additionally, we have implemented a new Open Orders Report. Please access Reports on your left hand side panel and select Open Orders Report to personalize and download your report.</p></div></h4>";"<h4><div style=""color:rgb(252,209,22)""><p>Anuncio: Estimado cliente, el informe de correo electrónico consolidado en sus preferencias de comunicación tiene nuevas características de personalización. Por favor, acceda a su +Preferencias de Comunicación en la opción ”Mi perfil” para configurar un informe automatizado. Además, hemos implementado un nuevo Informe de Pedidos Abiertos. Por favor, acceda a Informes en su panel lateral izquierdo y seleccione Informe de Pedidos Abiertos para personalizar y descargar su informe.</p></div></h4>";"<h4><div style=""color:rgb(252,209,22)""><p>Anúncio: Prezado cliente, o relatório consolidado de e-mail sob suas preferências de comunicação tem novas características de personalização. Favor acessar suas +Preferências de Comunicação na opção ”Meu perfil” para configurar um relatório automatizado. Além disso, implementamos um novo Relatório de Pedidos Abertos. Por favor, acesse Relatórios em seu painel lateral esquerdo e selecione Relatório de Ordens Abertas para personalizar e baixar seu relatório</p></div></h4>"
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+                         ;;BroadCastContentContentSlot;PleaseReadParagraphComponent
+
+INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='HomePageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+                                    ;;BroadCastContent-homePage;BroadCastContent;;BroadCastContentContentSlot;true
+
+INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='HomePageTemplate'];validComponentTypes(code);compTypeGroup(code)
+                             ;BroadCast;;BroadcastMessage ;narrow
+
+
+## REMOVE
+$contentCatalog=peContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$contentCatalog]),version[default='Online'])
+$jarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/cockpits/cmscockpit
+$jnjJarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/contentCatalogs/jnjContentCatalog
+
+REMOVE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;content[lang=en]
+                            ;;PleaseReadParagraphComponent;Please Read Paragraph Component;PleaseReadParagraphComponent;"<div class=""modal fade jnj-popup"" id=""os-pls-read-popup"" role=""dialog""><div class=""modal-dialog modalcls modal-sm""><div class=""modal-content popup""><div class=""modal-header""><button type=""button"" class=""close clsBtn"" data-dismiss=""modal"">Close</button></div><div class=""modal-body""><div class=""os-more-popup-header"">Notice: Attention Government Customers</div><div class=""os-more-popup-content"">Please click <a href=""#"">here</a> for a list of products with a ""no additional shipping charge expedited service level"" as the default delivery option.</div><div class=""os-more-popup-content"">If the current default delivery option meets your requirements, DO NOT EXPEDITE your order.</div>	<div class=""os-more-popup-content"">Your order will bot be subject to Expedited order fees when using the default delivery option. If the current default delivery option does not meet your requirements, you may opt to Expedite your order. Your order will be subject to Expedited order fees.</div></div> </div></div></div>"
+
+REMOVE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='HomePageTemplate'];validComponentTypes(code);compTypeGroup(code)
+                      ;BroadCast;;BroadcastMessage ;narrow
+
+REMOVE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+                  ;;BroadCastContentContentSlot;PleaseReadParagraphComponent
+
+REMOVE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='HomePageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+                             ;;BroadCastContent-homePage;BroadCastContent;;BroadCastContentContentSlot;true
+
+
+## UPDATE
+$contentCatalog=peContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$contentCatalog]),version[default='Online'])
+$jarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/cockpits/cmscockpit
+$jnjJarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/contentCatalogs/jnjContentCatalog
+
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef(uid,$contentCV);content[lang=en];content[lang=es];content[lang=pt]
+                                   ;;PleaseReadParagraphComponent;Please Read Paragraph Component;PleaseReadParagraphComponent;"<h4><div style=""color:rgb(252,209,22)""><p>Announcement: Dear valued customer, the Consolidated email report under your communication preferences has new personalization features. Please access your +Communication Preferences under ”My profile” option to set-up an automated report. Additionally, we have implemented a new Open Orders Report. Please access Reports on your left hand side panel and select Open Orders Report to personalize and download your report.</p></div></h4>";"<h4><div style=""color:rgb(252,209,22)""><p>Anuncio: Estimado cliente, el informe de correo electrónico consolidado en sus preferencias de comunicación tiene nuevas características de personalización. Por favor, acceda a su +Preferencias de Comunicación en la opción ”Mi perfil” para configurar un informe automatizado. Además, hemos implementado un nuevo Informe de Pedidos Abiertos. Por favor, acceda a Informes en su panel lateral izquierdo y seleccione Informe de Pedidos Abiertos para personalizar y descargar su informe.</p></div></h4>";"<h4><div style=""color:rgb(252,209,22)""><p>Anúncio: Prezado cliente, o relatório consolidado de e-mail sob suas preferências de comunicação tem novas características de personalização. Favor acessar suas +Preferências de Comunicação na opção ”Meu perfil” para configurar um relatório automatizado. Além disso, implementamos um novo Relatório de Pedidos Abertos. Por favor, acesse Relatórios em seu painel lateral esquerdo e selecione Relatório de Ordens Abertas para personalizar e baixar seu relatório</p></div></h4>"
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+                         ;;BroadCastContentContentSlot;PleaseReadParagraphComponent
+
+INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='HomePageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+                                    ;;BroadCastContent-homePage;BroadCastContent;;BroadCastContentContentSlot;true
+
+INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='HomePageTemplate'];validComponentTypes(code);compTypeGroup(code)
+                             ;BroadCast;;BroadcastMessage ;narrow
+
+
+## REMOVE
+$contentCatalog=prContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$contentCatalog]),version[default='Online'])
+$jarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/cockpits/cmscockpit
+$jnjJarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/contentCatalogs/jnjContentCatalog
+
+REMOVE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;content[lang=en]
+                            ;;PleaseReadParagraphComponent;Please Read Paragraph Component;PleaseReadParagraphComponent;"<div class=""modal fade jnj-popup"" id=""os-pls-read-popup"" role=""dialog""><div class=""modal-dialog modalcls modal-sm""><div class=""modal-content popup""><div class=""modal-header""><button type=""button"" class=""close clsBtn"" data-dismiss=""modal"">Close</button></div><div class=""modal-body""><div class=""os-more-popup-header"">Notice: Attention Government Customers</div><div class=""os-more-popup-content"">Please click <a href=""#"">here</a> for a list of products with a ""no additional shipping charge expedited service level"" as the default delivery option.</div><div class=""os-more-popup-content"">If the current default delivery option meets your requirements, DO NOT EXPEDITE your order.</div>	<div class=""os-more-popup-content"">Your order will bot be subject to Expedited order fees when using the default delivery option. If the current default delivery option does not meet your requirements, you may opt to Expedite your order. Your order will be subject to Expedited order fees.</div></div> </div></div></div>"
+
+REMOVE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='HomePageTemplate'];validComponentTypes(code);compTypeGroup(code)
+                      ;BroadCast;;BroadcastMessage ;narrow
+
+REMOVE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+                  ;;BroadCastContentContentSlot;PleaseReadParagraphComponent
+
+REMOVE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='HomePageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+                             ;;BroadCastContent-homePage;BroadCastContent;;BroadCastContentContentSlot;true
+
+
+## UPDATE
+$contentCatalog=prContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$contentCatalog]),version[default='Online'])
+$jarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/cockpits/cmscockpit
+$jnjJarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/contentCatalogs/jnjContentCatalog
+
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef(uid,$contentCV);content[lang=en];content[lang=es];content[lang=pt]
+                                   ;;PleaseReadParagraphComponent;Please Read Paragraph Component;PleaseReadParagraphComponent;"<h4><div style=""color:rgb(252,209,22)""><p>Announcement: Dear valued customer, the Consolidated email report under your communication preferences has new personalization features. Please access your +Communication Preferences under ”My profile” option to set-up an automated report. Additionally, we have implemented a new Open Orders Report. Please access Reports on your left hand side panel and select Open Orders Report to personalize and download your report.</p></div></h4>";"<h4><div style=""color:rgb(252,209,22)""><p>Anuncio: Estimado cliente, el informe de correo electrónico consolidado en sus preferencias de comunicación tiene nuevas características de personalización. Por favor, acceda a su +Preferencias de Comunicación en la opción ”Mi perfil” para configurar un informe automatizado. Además, hemos implementado un nuevo Informe de Pedidos Abiertos. Por favor, acceda a Informes en su panel lateral izquierdo y seleccione Informe de Pedidos Abiertos para personalizar y descargar su informe.</p></div></h4>";"<h4><div style=""color:rgb(252,209,22)""><p>Anúncio: Prezado cliente, o relatório consolidado de e-mail sob suas preferências de comunicação tem novas características de personalização. Favor acessar suas +Preferências de Comunicação na opção ”Meu perfil” para configurar um relatório automatizado. Além disso, implementamos um novo Relatório de Pedidos Abertos. Por favor, acesse Relatórios em seu painel lateral esquerdo e selecione Relatório de Ordens Abertas para personalizar e baixar seu relatório</p></div></h4>"
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+                         ;;BroadCastContentContentSlot;PleaseReadParagraphComponent
+
+INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='HomePageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+                                    ;;BroadCastContent-homePage;BroadCastContent;;BroadCastContentContentSlot;true
+
+INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='HomePageTemplate'];validComponentTypes(code);compTypeGroup(code)
+                             ;BroadCast;;BroadcastMessage ;narrow

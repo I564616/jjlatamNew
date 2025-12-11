@@ -1,0 +1,77 @@
+.orderReviewpage .placeorder{
+	/* margin-top: 12px; */
+	/* padding: 10px 20px; */
+	/* width: 100% */
+}
+.orderReviewpage #breadcrumbs-one li>a{
+	background: #fff !important;
+}
+.orderReviewpage .bottomrightbuttons{
+	padding: 20px 0px 20px 0px;
+}
+.orderReviewpage .savetemplate{
+	//margin-top: 12px;
+	/* margin-right//: 10px; */
+	/* width: 100% */
+}
+.orderReviewpage #datatab-mobile td.text-left p{
+	text-align:left !important;
+}
+//Added by lokesh
+.orderReviewpage #datatab-mobile td:first-child,.orderReviewpage #datatab-mobile th:first-child{
+	padding-left:20px !important;
+}
+.orderReviewpage  #breadcrumbs-one li:nth-child(2) a:first-child:after {
+    border-left-color: #fff !important;
+}
+.orderReviewpage  #breadcrumbs-one  li:nth-child(1)  a:before{
+	border-left-color: #ddd !important;
+} 
+.orderReviewpage  #breadcrumbs-one  li:nth-child(2) a:before{
+	border-left-color: #eee !important;
+} 
+.orderReviewpage .orderreviewtxt{
+	margin-top: -15px;
+}
+.textright {
+    text-align: right !important;
+}
+@media screen and (max-width: 480px){
+	.orderReviewpage .savetemplate{
+	margin-top: 10px;
+	/* margin-right: 10px; */
+	 width: 100% 
+}
+	.orderReviewpage .placeorder{
+	margin-top: 10px;
+	/* padding: 10px 20px; */
+	 width: 100% 
+	}
+	.orderReviewpage .placeorder-btn-holder{
+		margin-top:20px;
+		margin-bottom:20px;
+	}
+	.orderReviewpage .placeorder-btn-holder .btn{
+		width:100%;
+	}
+	.orderReviewpage  .breadcumalignmobile{
+		float: left !important;
+		margin-bottom: 10px;
+	}
+	.totalrps {    
+		//padding-right: 30px !important;
+		padding-top: 5px;
+		padding-bottom: 5px;
+	}
+	 .fee-toggle-container .total-summary-cost{
+		padding-right: 0px !important;
+		min-width:130px;	
+	} 
+}
+.orderReviewpage .table>thead:first-child>tr:first-child>th:last-child {
+    //text-align: center !important;
+}
+.orderReviewpage table tbody td:last-child {
+    //text-align: center !important;
+}
+

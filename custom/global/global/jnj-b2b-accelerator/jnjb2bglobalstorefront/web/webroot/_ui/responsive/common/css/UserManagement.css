@@ -1,0 +1,215 @@
+.checbox-btn-row-usm{
+	border-bottom: 1px solid #f2f2f2;
+    padding: 15px 15px 10px 10px;
+    margin: 0px;
+}
+.sub-details-row{
+	margin-bottom:10px;
+}
+#userManagement div#DataTables_Table_0_wrapper .row:first-child {
+    /* display: none; */
+}
+
+.userManagementheading {
+    font-family: jnjbodyfont;
+}
+#userManagement .table>thead>tr>th
+{
+	text-align: left !important;
+	padding-left: 30px;
+}
+#userManagement table.table-bordered.dataTable tbody td {
+	text-align: left;	
+    padding: 20px 0 30px 30px;
+
+}
+#userManagement .dataTables_wrapper  .row:nth-of-type(3){
+	/* display:none; */
+}
+#userManagement .validateprice {
+    margin-top: 25px;
+}
+@media screen and (max-width: 480px){
+	.userManagementheading {		
+		font-size: 37px;
+		margin-bottom: 14px;
+	}
+}
+
+/* userManagement-EditUser  css starts here --siva*/
+#userManagement-EditUser .headingTxt{
+	font-family: jnjbodyfont;
+}
+#userManagement-EditUser .canceltxt{
+	font-size: 14px;
+    color: #0a8caa;
+    padding: 12px 20px 0px 0px;
+}
+#userManagement-EditUser .subcontent1 {
+    font-size: 30px;
+    padding: 20px 0px 20px 5px;
+	border-bottom: 1px solid #ddd;
+}
+.formmargin{
+	margin-top:25px;
+}
+#userManagement-EditUser label{
+	font-weight:normal;
+}
+#userManagement-EditUser .formPanel .form-group {
+    margin-bottom: 20px;
+}
+#userManagement-EditUser .rolesPanel .checkboxmargin {
+    margin-top: 0px !important;
+}
+#userManagement-EditUser .formPanel{
+	    padding-left: 23px;
+}
+#userManagement-EditUser .roleTxt{
+	margin:18px 0 5px 0;
+	font-size:17px;	
+}
+#userManagement-EditUser .whiteBg{
+	background:#fff;
+}
+.buttonMargin{
+	 margin-right: 15px;
+}
+#userManagement-EditUser .checkbox label::before{
+	top:0.5px;
+}
+#userManagement-EditUser .btn-group.bootstrap-select {
+    width: 100% !important;
+}
+#userManagement-EditUser .form-control, #userManagement-EditUser .bootstrap-select>.dropdown-toggle{
+	    height: 40px;
+		background-position: 95% 12px !important;
+}
+
+/* userManagement-EditUser  css ends here --siva*/
+#userManagement-EditUser .contentpanel{
+	    padding-bottom: 15px;
+}
+
+.changeAccountUnit{
+	padding:5px;
+}
+
+.changeAccountUnit .accountGroupText{
+	font-weight: bold;
+	color:#087891;
+}
+
+			/* Newly Added for changes */
+
+.um-header{
+	margin-left: 0px;
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid #f2f2f2;
+}
+.panel-header-title{
+	padding-top:20px;
+	padding-bottom:20px;
+}
+.panel-toggle-signholder{
+	width: 50px;
+    padding-top: 23px;
+    padding-bottom: 20px;
+    padding-left: 25px;
+}	
+.um-toggle-seracharea{
+	margin: 0px;
+	background-color: #fff;
+	padding-top:20px;padding-bottom:20px;
+    border-bottom: 1px solid #f2f2f2;
+	padding-left:15px;
+}
+.um-toggle-footerarea{
+	margin: 0px;
+	background-color: #fff;
+	padding-top:15px;padding-bottom:15px;
+    border-bottom: 1px solid #f2f2f2;
+	padding-left:15px;
+}
+.usm-label-md{
+	width: 35%;
+	line-height: 30px;
+}
+.usm-formElem{
+	width: 65%;
+}
+.um-bottom-field{
+	margin-bottom:10px;
+}
+#um-search-holder{
+	margin-bottom:20px;
+}
+.um-reset-btn{
+	margin-right:5px;
+}
+.panel-header-title{
+	font-size:18px;
+}
+
+#emeo-userManagement div#DataTables_Table_0_wrapper .row:first-child {
+    display: none;
+}
+
+.userManagementheading {
+    font-family: jnjbodyfont;
+}
+.um-sortBy-label{
+	padding-right:15px;
+	line-height: 33px;
+}
+
+.um-sortBy-select{
+	width:148px;
+}
+.um-create-usr-btn{
+	margin-top:20px;
+}
+.um-user-count{
+	font-size:22px;
+}
+.SortingTable button.btn.dropdown-toggle.btn-default {
+    height: 40px;
+    background-position: 92% 12px !important;
+}
+#emeo-userManagement .table>thead>tr>th
+{
+	text-align: left !important;
+	padding-left: 30px;
+}
+#emeo-userManagement table.table-bordered.dataTable tbody td {
+	text-align: left;	
+    padding: 20px 0 30px 30px;
+
+}
+
+@media screen and (max-width: 767px){
+	#select-profile .checkbox-inline{
+		margin-left:0px;width:100%;
+	}
+	.usm-create-subHead{display:block}
+	.userManagementheading {		
+		font-size: 37px;
+		margin-bottom: 14px;
+	}
+	#emeo-userManagement table.table-bordered.dataTable tbody td {
+	    text-align: left;
+	    padding: 20px 0 15px 15px !important
+	}
+	.status-dropdown{
+		margin-top:10px;
+	}
+	.passInfo-mobile{padding-left:23px;margin-bottom:10px;width:100%}
+	.secondarybtn{width:100%;padding-left:23px;margin-bottom:10px;}
+	#usm-access-row{margin-bottom:0px !important}	
+	.text-right-to-left{text-align:left}
+	.access-content{margin-bottom:0px}
+	#addToNotesButton{width:100%;margin-bottom:20px}
+}
+
+/* Newly Added for changes */

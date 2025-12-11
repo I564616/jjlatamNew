@@ -1,0 +1,5 @@
+INSERT_UPDATE Region;isocode[unique=true];name[lang=en];country(isocode)[unique=true];active[default=true]
+;09;09;SV
+;01;01;NI
+;01;01;AW
+;01;01;KY

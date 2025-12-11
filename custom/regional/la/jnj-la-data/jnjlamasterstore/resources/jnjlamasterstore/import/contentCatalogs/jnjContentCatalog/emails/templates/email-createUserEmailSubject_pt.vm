@@ -1,0 +1,7 @@
+#if($ctx.enableUser == "enableUser") 
+[eCareShop] Acesso Habilitado
+#elseif ($ctx.enableUser == "createUser")
+[eCareShop] Bem vindo ao eCareShop
+#elseif ($ctx.enableUser == "createUserPassword")
+[eCareShop] Bem vindo ao eCareShop - Mais Instruções
+#end    

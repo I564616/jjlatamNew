@@ -1,0 +1,342 @@
+.login-disclaimer{
+	font-size: 11px;margin-bottom:10px
+}
+
+.password-forgotten{
+	color: #0c8caa;font-size: 12px;cursor:pointer;
+}
+
+
+#contactUsMessage{height:150px}
+.btn-disabled-style{
+ background-color:#ccc !important;  
+ color:white !important;  
+}
+/* added by lokesh nov 9 */
+.forgot-popup-form{
+	margin: -2px 6px 0 0px !important;
+}
+#loginContainer{
+    //background-color:#fff;
+/* 	background:url('../images/bg_img.png') no-repeat;
+	background-size:100% 100%;
+ */	width:100%;
+	height:768px;
+	display: table;
+    position: absolute;
+    z-index:1;
+}
+/* privacy popup  rizwan */
+#privacypopupNew .modal-body, #legalnoticepopupNew .modal-body, #tncpopupNew .modal-body{
+ height: 385px;
+    overflow-y: auto;
+   
+}
+#cboxOverlay,#colorbox{
+	display:none !important;
+}
+#jnj-bg-img-holder img{
+	position:absolute;top: 0;left: 0;width: 100%;z-index:-1;
+}
+#loginContainer form {
+    font-size: 14px;
+}
+#loginContainer .form-group {  
+    margin-top: 15px;
+}
+#contactuspopup .dropdown-menu>li>a {
+    display: block;
+    padding: 8px 20px;
+}
+.margintop10{
+	margin-top:10px;
+}
+#contactuspopup .dropdown-menu {
+    min-width: 145px !important;
+	margin-left:0px;
+}
+#contactuspopup sup{
+	font-size: 12px;
+    top: 0px;
+    left: 2px;
+    color: red;	
+} 
+.contactUsSubmitBtn{
+	border: none;
+    //padding: 5px;    
+}  
+.jnjlogo {
+    margin-bottom: 20px;
+}
+.jnjlogo img{
+   width:180px;
+}
+#loginContainer .main{
+	 margin: 0 auto;
+    width: 440px;
+   
+}
+.login-disc-container{
+	width: 543px !important;
+}
+.displayinlineblk{
+	display:inline-block;	
+}
+.formContent{
+	//padding: 25px 25px;	
+	padding: 45px;
+    background: #fff; 
+}
+.loginTxt {
+    font-size: 30px;
+    font-family: jnjheading1font;
+    margin-bottom: 0px;
+}
+.formContent h2{
+   font-size: 22px;
+		}
+.redBgcolor p{
+	font-size:12px;	
+	font-family: jnjheading1font;
+	
+}
+.submitBtn,.submitBtn:hover ,.submitBtn:active {
+	border-radius: 20px;
+	font-size: 10px;
+    padding: 7px 16px;
+    border: 1px solid #0c8caa;
+    background: #0c8caa !important;
+    color: #fff  !important;
+    letter-spacing: 1.5px;
+	margin-top: 8px;
+	text-transform:capitalize;
+	text-transform:uppercase;
+}
+.submitBtn:hover {
+	 background: #087891;
+}
+#loginContainer .checkbox label::before{
+	top: 0px;
+}
+#loginContainer input.form-control{
+	height:42px;
+	border-radius:2px;
+}
+
+.login-margintop10{
+margin-top:10px;
+}
+.redBgcolor {
+    background-color: #b41601;
+	color:#fff;
+	padding: 30px 65px 30px 80px;
+	font-weight:normal;	
+}
+ .tourText{
+	 font-size:30px !important;
+	 font-family:jnjheading1font;
+ }
+ .tourDesc{
+		 font-family:jnjbodyfont !important;
+ }
+.rememberMe{
+   font-size: 12px;
+   margin:15px 22px 30px 40px;
+}
+.rememberMe input[type="checkbox"] {
+    width: 14px;
+    top: -3px;
+}
+.videoIcon{
+	padding-top: 20px;
+}
+.videoIcon img{
+	height:60px;
+	width:60px;
+}
+.privacyLinks.pull-right {
+    font-size: 11px !important;  
+    margin-top: 0px;	
+}
+.privacyLinks.pull-right .content{
+	display:inline-block;
+}
+.privacyLinks a,.privacyLinks a:hover{
+    font-size: 11px !important;  
+	cursor: pointer;
+}
+
+.signUp, .signUp:hover{
+	border-radius: 20px;
+    color: #0c8caa;
+    padding: 9px 26px;
+    border: 1px solid #ccc;
+	margin-top: 7px;
+	letter-spacing: 1.5px;
+	font-weight: bold;
+	background: #fff;
+	font-size: 10px;
+	text-transform:capitalize;
+	text-transform:uppercase
+}
+.newLink {
+    margin: 16px 14px 0 0;
+    font-size: 12px;
+}
+#contactuspopup .dropdown-toggle {
+    background: url('../images/downarrow.png') no-repeat;
+    background-position: 121px 9px !important;
+    width: 148px !important;
+	background-size: 15px 15px;
+	margin: 0px 6px 0px 0px;
+    height: 34px;
+    width: 121px;
+    color: #828282;
+    font-size: 14px;   
+}
+.strongtextpopup{
+	font-weight:bold;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+#loginContainer  .form-group label{
+	font-size:12px;
+}
+#loginContainer  .form-group a{
+	font-size:12px;
+}
+#loginContainer  .form-group a:hover{
+	font-size:12px;
+}
+#video-popup .modalcls{
+	top: 0px !important;
+}
+#video-popup .modal-body{
+	padding: 15px 25px 15px 25px;
+}
+#video-popup.modal-header{
+	padding: 15px 25px 15px 25px;
+}
+#video-popup .modal-content{
+	margin: 0 auto;
+	border-radius: 0px;
+	box-shadow: 0 0px 0px; 
+}
+#video-popup .clsBtn{
+	margin-top: 15px !important;
+	font-size: 14px;
+	color: #0a8caa;
+	opacity:1;
+}
+@media screen and (max-width: 992px) {
+	.main{		
+		width: 60%;
+	}
+	.rememberMe{		
+		margin:13px 22px 34px 60px;
+	}
+	#loginContainer {    
+		height: 100%;   
+	
+	}
+	
+	#jnj-bg-img-holder img{
+		
+		height: 100% !important;
+		width:100% !important;
+	}
+	.formContent{
+		padding: 55px 50px 20px 50px;
+		background: #fff; 
+	}
+	.redBgcolor {
+	    padding: 45px 30px 44px 40px;
+	}	
+}
+@media screen and (max-width: 767px) {
+	.main{		
+		width: 80%;
+	}
+	.redBgcolor {
+		background-color: #b41601;
+		color:#fff;
+		//position:absolute;
+		bottom:0px;
+		//max-width:100%;
+		//padding: 12px 32px 17px 32px;
+	}	
+	/* .main{		
+		width: 100%;
+		padding-top: 0;		
+	} */
+	#loginContainer {		
+		padding: 0px;
+		background:none;
+		height: auto;
+		width: 100%;		
+	}
+	.rememberMe{
+		font-size:14px;
+		margin: 15px 12px 50px 0;
+		float: none !important;
+	}	
+	/* .formContent{
+		padding: 55px 65px 142px 65px;
+	} */
+	#loginContainer,.main{
+		display:block;
+		height:auto !important;
+	}
+	
+}
+
+.bootstrap-select{
+    border-radius: 5px;
+    width: 100%;
+    border: 1px solid #e1dbdb;
+}
+.filter-option-inner-inner{
+	color: gray;
+}
+
+@media screen and (max-width: 480px){
+/* 	.formContent {
+		padding:55px 50px 116px 50px
+	} */
+	#jnj-bg-img-holder img{
+		display:none !important;
+	}
+	.main{		
+		width: 100% !important;
+		margin-top:0px  !important;
+	}
+	.privacyLinks.pull-right {		
+		margin-top: 10px;
+	}
+	.formContent{
+		padding: 55px 50px 50px 50px;
+		background: #fff; 
+	}
+	.redBgcolor {
+	    padding: 45px 30px 44px 40px;
+	}	
+	.videoIcon img  {
+		height:40px;
+		width:40px;
+	}
+}
+
+.dropdown-menu ul li .active{
+	background:#0c8caa !important;
+	color:white !important;
+}
+.dropdown-toggle::after {
+  border: none!important;
+  font: normal normal normal 25px/1 FontAwesome;
+  content: "\f107"!important; /* the desired FontAwesome icon */
+  vertical-align: 0;
+  color: #b7d2d8;
+}
+input.form-control:focus{
+box-shadow: #b7d2d8 0px 3px 10px 0px;
+}

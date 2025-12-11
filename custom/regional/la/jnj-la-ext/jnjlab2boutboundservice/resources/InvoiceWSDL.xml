@@ -1,0 +1,100 @@
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapjms="http://www.w3.org/2010/soapjms/" xmlns:tns="http://itsusmpl00082.jnj.com/SG910_BtB_IN0504_ElectronicBilling_Hybris_Source_v1.webservices:receiveElectronicBillingWS" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" name="receiveElectronicBillingWS" targetNamespace="http://itsusmpl00082.jnj.com/SG910_BtB_IN0504_ElectronicBilling_Hybris_Source_v1.webservices:receiveElectronicBillingWS">
+<wsdl:types>
+<xsd:schema xmlns:tns="http://itsusmpl00082.jnj.com/SG910_BtB_IN0504_ElectronicBilling_Hybris_Source_v1.webservices:receiveElectronicBillingWS" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://itsusmpl00082.jnj.com/SG910_BtB_IN0504_ElectronicBilling_Hybris_Source_v1.webservices:receiveElectronicBillingWS">
+<xsd:element name="receiveElectronicBillingFromHybrisWrapper" type="tns:receiveElectronicBillingFromHybrisWrapper"/>
+<xsd:element name="receiveElectronicBillingFromHybrisWrapperResponse" type="tns:receiveElectronicBillingFromHybrisWrapperResponse"/>
+<xsd:complexType name="receiveElectronicBillingFromHybrisWrapper">
+<xsd:sequence>
+<xsd:element name="ElectronicBillingRequest" nillable="true" type="tns:ElectronicBillingRequest"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="ElectronicBillingRequest">
+<xsd:sequence>
+<xsd:element name="ElectronicBillingRequest_In" nillable="true" type="tns:ElectronicBillingRequest_In"/>
+<xsd:element minOccurs="0" name="Header" nillable="true" type="tns:BTBControlArea"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="ElectronicBillingRequest_In">
+<xsd:sequence>
+<xsd:element name="BILLING_DOC" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="FILE_TYPE" nillable="true" type="xsd:string"/>
+<xsd:element name="LANGUAGE" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="BTBControlArea">
+<xsd:sequence>
+<xsd:element name="InterfaceNumber" nillable="true" type="xsd:string"/>
+<xsd:element name="UniqueTransactionID" nillable="true" type="xsd:string"/>
+<xsd:element name="BusinessObjectName" nillable="true" type="xsd:string"/>
+<xsd:element name="TransactionDateTime" nillable="true" type="xsd:string"/>
+<xsd:element name="SourceSystem" nillable="true" type="xsd:string"/>
+<xsd:element maxOccurs="unbounded" minOccurs="0" name="TargetSystem" nillable="true" type="xsd:string"/>
+<xsd:element name="TotalRecordCount" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="CustomName01" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="CustomName02" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="CustomName03" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="CustomName04" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="CustomName05" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="CustomValue01" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="CustomValue02" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="CustomValue03" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="CustomValue04" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="CustomValue05" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="receiveElectronicBillingFromHybrisWrapperResponse">
+<xsd:sequence>
+<xsd:element name="ElectronicBillingResponse" nillable="true" type="tns:ElectronicBillingResponse"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="ElectronicBillingResponse">
+<xsd:sequence>
+<xsd:element name="ElectronicBillingRequest_Out" nillable="true" type="tns:ElectronicBillingRequest_Out"/>
+<xsd:element name="Response" nillable="true" type="tns:Response"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="ElectronicBillingRequest_Out">
+<xsd:sequence>
+<xsd:element maxOccurs="unbounded" minOccurs="0" name="URL" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="ERROR" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="Response">
+<xsd:sequence>
+<xsd:element name="statusCode" nillable="true" type="xsd:string"/>
+<xsd:element name="statusMessage" nillable="true" type="xsd:string"/>
+<xsd:element minOccurs="0" name="error" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:schema>
+</wsdl:types>
+<wsdl:message name="receiveElectronicBillingWS_PortType_receiveElectronicBillingFromHybrisWrapperResponse">
+<wsdl:part name="parameters" element="tns:receiveElectronicBillingFromHybrisWrapperResponse"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="receiveElectronicBillingWS_PortType_receiveElectronicBillingFromHybrisWrapper">
+<wsdl:part name="parameters" element="tns:receiveElectronicBillingFromHybrisWrapper"></wsdl:part>
+</wsdl:message>
+<wsdl:portType name="receiveElectronicBillingWS_PortType">
+<wsdl:operation name="receiveElectronicBillingFromHybrisWrapper">
+<wsdl:input message="tns:receiveElectronicBillingWS_PortType_receiveElectronicBillingFromHybrisWrapper"></wsdl:input>
+<wsdl:output message="tns:receiveElectronicBillingWS_PortType_receiveElectronicBillingFromHybrisWrapperResponse"></wsdl:output>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="SG910_BtB_IN0504_ElectronicBilling_Hybris_Source_v1_webservices_receiveElectronicBillingWS_Binder" type="tns:receiveElectronicBillingWS_PortType">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="receiveElectronicBillingFromHybrisWrapper">
+<soap:operation soapAction="SG910_BtB_IN0504_ElectronicBilling_Hybris_Source_v1_webservices_receiveElectronicBillingWS_Binder_receiveElectronicBillingFromHybrisWrapper" style="document"/>
+<wsdl:input>
+<soap:body parts="parameters" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body parts="parameters" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="SG910_BtB_IN0504_ElectronicBilling_Hybris_Source_v1.webservices.receiveElectronicBillingWS">
+<wsdl:port name="SG910_BtB_IN0504_ElectronicBilling_Hybris_Source_v1_webservices_receiveElectronicBillingWS_Port" binding="tns:SG910_BtB_IN0504_ElectronicBilling_Hybris_Source_v1_webservices_receiveElectronicBillingWS_Binder">
+<soap:address location="http://itsusral00434.jnj.com:5500/ws/SG910_BtB_IN0504_ElectronicBilling_Hybris_Source_v1.webservices.receiveElectronicBillingWS/SG910_BtB_IN0504_ElectronicBilling_Hybris_Source_v1_webservices_receiveElectronicBillingWS_Port"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

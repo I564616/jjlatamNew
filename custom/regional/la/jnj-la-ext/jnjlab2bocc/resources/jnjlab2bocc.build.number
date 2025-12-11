@@ -1,0 +1,11 @@
+#Ant properties
+#Wed Aug 02 14:23:39 CEST 2023
+version.api=2211
+vendor=hybris
+group.id=de.hybris.platform
+name=jnjlab2bocc
+description=jnjlab2bocc
+builddate=20230802 1416
+releasedate=20230615 1237
+version=2211.10
+module.name=platform-module

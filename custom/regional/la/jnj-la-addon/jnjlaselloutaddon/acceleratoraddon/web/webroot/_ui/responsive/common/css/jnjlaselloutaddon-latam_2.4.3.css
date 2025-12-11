@@ -1,0 +1,172 @@
+/* sellout report poupup */
+#uploadSelloutPopup .modalcls{
+                top: 80px;
+}
+#uploadSelloutPopup .modal-body{
+                padding:0px;
+}
+#uploadSelloutPopup .modal-header{
+                padding: 15px 25px 15px 25px;
+}
+#uploadSelloutPopup .popup{
+                margin: 0 auto;
+                width: 500px;
+                border-radius: 0px;
+                box-shadow: 0 0px 0px; 
+}
+#uploadSelloutPopup .clsBtn{
+                margin-top: 15px !important;
+                font-size: 14px;
+                color: #0a8caa;
+                opacity:1;
+}
+#uploadSelloutPopup .odd-row{
+                padding:25px;
+                background: #fff;             
+}
+#uploadSelloutPopup .browse-filebtn{
+                margin-right: 15px;
+}
+#uploadSelloutPopup .even-row{
+                background: rgb(251, 251, 251);
+                padding:25px;
+                border-bottom: 1px solid #e5e5e5;
+                cursor:pointer;
+}
+#uploadSelloutPopup .selectTitle{
+                font-size: 30px;
+}
+#uploadSelloutPopup .searchArea{
+                margin:0px auto;
+                padding: 25px;
+    border-bottom: 1px solid #e5e5e5;
+}  
+#uploadSelloutPopup .company-name{
+                width:20%;
+                line-height: 30px;
+}
+#uploadSelloutPopup .code{
+                padding-top: 20px;
+                color: #0a8caa !important;
+                font-size: 18px;
+                font-weight: bold;
+}
+#uploadSelloutPopup .descTxt{
+                font-size: 14px;
+    //padding-left: 25px;
+    line-height: 17px;
+}
+#uploadSelloutPopup .anchorcls{
+                border-bottom: white;
+                padding-left: 25px;
+}
+#uploadSelloutPopup .listclass{
+                line-height: 0px;
+                margin-bottom: 0px;
+}
+#uploadSelloutPopup .ftrcls{
+                padding: 25px 190px 25px 190px;
+}
+#uploadSelloutPopup .row {
+    flex-wrap: nowrap !important;
+}
+#uploadSelloutPopup .address-txt{
+                line-height:25px;
+}
+#uploadSelloutPopup .addressSelected{
+                background: #0ac !important;
+                color:white;
+}
+#uploadSelloutPopup .btnAlign{
+	margin-left:125px;
+}
+#uploadSelloutPopup .btnstyle{
+	margin-right:15px;
+}
+#Orderhistorypage .sellout-button-bottom,#Orderhistorypage .sellout-button{
+	margin-right:0px;
+}
+
+
+#uploadFilePage #datatab-desktop td, th {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+#uploadFilePage .table>thead>tr>th{
+	font-size:12px !important;
+}
+#uploadFilePage table>tbody>tr>td {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    vertical-align: top !important;
+}
+#uploadFilePage .SortingTable button.btn.dropdown-toggle.btn-default{
+	height: 40px;
+    background-position: 92% 12px !important;
+    margin-left: 10px;    	
+}
+#uploadFilePage table>thead>tr>th:last-child {
+    padding-right: 30px;
+}
+#uploadFilePage .downloadlinks{
+	font-family: jnjbodyfont;
+    font-size: 14px;
+}
+#uploadFilePage .downloadText{
+	margin-top:25px;
+}
+#uploadOrderDetail .error-panel{
+	margin-top: 25px;
+}
+#uploadOrderDetail .margintop20px{
+	margin-top:20px;
+}
+#uploadOrderDetail .paddingLeft10px{
+	padding-left:10px;
+}
+#uploadOrderDetail .ship-address-pane {
+    padding: 20px 30px;
+    background-color: white;
+    border-bottom: 1px solid #f9f9f9;
+}
+#uploadOrderDetail .label-lineHeight {
+    line-height: 18px;
+}
+#uploadOrderDetail .form-consignment-label-select {
+    margin-right: 20px;
+}
+#uploadOrderDetail .form-consignment-input-select {
+    width: 60%;
+    overflow-wrap: break-word;
+}
+.download-pdf{
+	margin-top:30px;
+	font-size:14px;
+	font-family: jnjbodyfont;
+}
+.dataTables_wrapper .row:nth-of-type(3) {
+    background-color: #fff !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    padding: 20px 15px 50px 15px !important;
+    box-shadow: 0 0 0px 2px #f2f2f2 !important;    
+}
+#filterForm {
+	padding-top: 10px;	
+}
+@media screen and (max-width: 912px) {
+    #uploadSelloutPopup .ftrcls{
+                   padding: 25px 190px 25px 180px;
+   }
+   }
+   
+   @media screen and (max-width: 420px) {
+    #uploadSelloutPopup .ftrcls{
+                   padding: 25px 175px 25px 50px;
+   }
+   }
+   @media screen and (max-width: 290px) {
+    #uploadSelloutPopup .ftrcls{
+                   padding: 25px 190px 25px 50px;
+   }
+   }

@@ -1,0 +1,143 @@
+
+package com.jnj.outboundservice.order;
+
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
+
+
+/**
+ * <p>
+ * Java class for ScheduledLines3 complex type.
+ *
+ * <p>
+ * The following schema fragment specifies the expected content contained within this class.
+ *
+ * <pre>
+ * &lt;complexType name="ScheduledLines3">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="LineNumber" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="DeliveryDate" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="RoundedQuantity" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="ConfirmedQuantity" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
+ *
+ *
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "ScheduledLines3", propOrder =
+{ "lineNumber", "deliveryDate", "roundedQuantity", "confirmedQuantity" })
+@XmlRootElement(name = "ScheduledLines3")
+public class ScheduledLines3
+{
+
+	@XmlElement(name = "LineNumber", required = true)
+	protected String lineNumber;
+	@XmlElement(name = "DeliveryDate", required = true)
+	protected String deliveryDate;
+	@XmlElement(name = "RoundedQuantity", required = true)
+	protected String roundedQuantity;
+	@XmlElement(name = "ConfirmedQuantity", required = true)
+	protected String confirmedQuantity;
+
+	/**
+	 * Gets the value of the lineNumber property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getLineNumber()
+	{
+		return lineNumber;
+	}
+
+	/**
+	 * Sets the value of the lineNumber property.
+	 * 
+	 * @param value
+	 *           allowed object is {@link String }
+	 * 
+	 */
+	public void setLineNumber(final String value)
+	{
+		this.lineNumber = value;
+	}
+
+	/**
+	 * Gets the value of the deliveryDate property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getDeliveryDate()
+	{
+		return deliveryDate;
+	}
+
+	/**
+	 * Sets the value of the deliveryDate property.
+	 * 
+	 * @param value
+	 *           allowed object is {@link String }
+	 * 
+	 */
+	public void setDeliveryDate(final String value)
+	{
+		this.deliveryDate = value;
+	}
+
+	/**
+	 * Gets the value of the roundedQuantity property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getRoundedQuantity()
+	{
+		return roundedQuantity;
+	}
+
+	/**
+	 * Sets the value of the roundedQuantity property.
+	 * 
+	 * @param value
+	 *           allowed object is {@link String }
+	 * 
+	 */
+	public void setRoundedQuantity(final String value)
+	{
+		this.roundedQuantity = value;
+	}
+
+	/**
+	 * Gets the value of the confirmedQuantity property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getConfirmedQuantity()
+	{
+		return confirmedQuantity;
+	}
+
+	/**
+	 * Sets the value of the confirmedQuantity property.
+	 * 
+	 * @param value
+	 *           allowed object is {@link String }
+	 * 
+	 */
+	public void setConfirmedQuantity(final String value)
+	{
+		this.confirmedQuantity = value;
+	}
+
+}

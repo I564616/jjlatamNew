@@ -1,0 +1,372 @@
+/* Added for prefer mobile number */
+.hyerlink{
+   color: #0c8caa;
+   cursor:pointer;
+}
+.inline-block{
+	display:inline-block;
+}
+.pad-right-gap-8{padding-right:8px}
+
+#prefer-mobile-label{
+	    margin-top: 8px;
+		white-space: nowrap;
+}
+#prefer-mobi-number-code{
+	
+	display: inline-block;
+    float: left;
+    width: 70px;
+    padding-right: 5px;
+}
+#prefer-mobi-number{
+	display: inline-block;
+    float: left;
+    width: 200px
+}
+#prefmob-edit-link{
+	    margin-top: 8px;
+    padding-left: 5px;
+}
+#signuppage .submit-approval,#signuppage .cancel-register{
+	margin-top:0px !important;
+}
+/* Added for prefer mobile number */
+
+.checkBoxAlignment{display:inline-block;width:50px;font-weight:bold;}
+
+.resetpassowrd-Close{
+	    border: none;
+	}
+	
+#signuppage .marginGap10{
+	margin-top:10px;
+}
+#signuppage #checkpass2{
+	width:225px !important;
+}
+
+#signuppage .marginGap20{
+	margin-top:20px;
+}
+#signuppage .marginGap30{
+	margin-top:30px;
+}
+.signup-chk-1{
+	margin-right:5px !important;
+}
+.signup-label-1{
+	margin-right:10px;
+}
+
+.signup-success-content h4{
+	font-family: jnjheading1font !important;
+    font-size: 24px !important;
+    margin-bottom:15px !important;
+}
+.signup-success-content p{
+	font-family: jnjbodyfont !important;
+    font-size: 16px !important;
+}
+#signuppage #signuppwd_showdiv,#signuppwd_show_anch,#signuppwd_gen_anch,#signuppwd_gendiv,#signuppwd_strength_str{
+	display:none !important;
+}
+#signuppage .signup-secret-quest-text-label label{
+	margin-top:10px;
+	font-weight:normal;
+}
+.simple_disp-img img{
+	height:55px;
+	margin-top:12.5px;
+}
+.jnj-signup-container{
+	width: 90%;
+    margin-left: 5%;
+    background: #828282;
+}
+.jnj-signup-container #content-area{
+	
+	width:100%;
+}
+#signuppage .pwdwidgetdiv{
+	width:225px !important;
+}
+#signuppage .pwdfield{
+	width:225px !important;
+	display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color:#828282;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+#signuppage .pwdstrengthbar{
+	float: left !important;
+	//width:225px !important;
+	height: 12px !important;
+}
+#signuppage .pwdstrength{
+	float: left !important;
+	width:225px !important;
+	margin-top:5px;
+}
+#signuppage .reEnter{
+	margin-top: 25px;
+}
+#signuppage  .pwdWidth{
+	width:27.5%;
+}
+#signuppage .intro-content{
+	border-bottom: 1px solid #f2f2f2;
+	padding: 25px 25px 25px 30px;
+}
+#signuppage .collapseblock{
+	width: 100%;
+	background-color: #fff;
+}
+#signuppage .clickontext{
+	font-size: 23px;
+	color:#0a8caa;
+}
+#signuppage  .plusicon{
+    font-size: 12px;
+    top: -2px;
+    padding-right: 5px;
+}
+#signuppage .panel-title{
+	padding: 25px 30px;
+	border-bottom: 1px solid #f2f2f2;
+}
+#signuppage .btnclsactive{
+	padding: 10px 18px;
+    margin-top: 20px;
+}
+#signuppage  .margintop{
+	margin-top:20px;
+}
+#signuppage  .margintop10{
+	margin-top:10px;
+	list-style-type: none;
+}
+#signuppage  .margintop5{
+	margin-top:5px;
+}
+#signuppage .star{
+	font-size: 12px;
+	color:#b41601;
+}
+#signuppage .savechange{
+	margin-top: 30px;
+}
+#signuppage .profile-accordian-header{
+	padding: 20px 30px;
+    border-bottom: 1px solid #f2f2f2;
+}
+#signuppage .profile-accordian-body{
+	padding: 25px 50px;
+	background-color:rgb(251,251,251);
+	border-bottom: 1px solid #f2f2f2;
+}
+#signuppage .boxshadow {
+    background-color: white;
+    margin-bottom: 20px;
+}
+#signuppage .boxtext1{
+	width: 18%;
+	display: inline-block;
+	float:left;
+}
+#signuppage .boxtext2{
+	width:82%;
+	display: inline-block;
+	float:left;
+	padding-left:10px;
+}
+#signuppage .content {
+   /*  font-family: jnjheading1font;
+    font-size: 48px;
+    margin-bottom: 30px !important; */
+}
+ #signup-title-holder{
+  	margin-bottom: 30px !important;
+ }
+ #signup-title{
+ 	font-family: jnjheading1font;
+    font-size: 48px;
+ }
+#signuppage .fontweightnormal{
+	font-weight:normal;
+}
+#signuppage .security{
+	margin-top:10px;
+}
+#signuppage .signup-security-ques{
+	margin-bottom: 20px;
+}
+#signuppage .enter-txt{
+	margin-top: 6px;
+   margin-left: 10px;
+}
+#signuppage .txtwidth50{
+	width:50%;
+}
+#signuppage .permission-block{
+	border-bottom: 1px solid #f2f2f2;
+    padding-bottom: 25px;
+	padding-left: 15px;
+}
+#signuppage  .Company-Information-block1{
+	border-bottom:1px solid #f2f2f2;
+	padding-bottom: 30px;
+}
+#signuppage  .Company-Information-block2{
+	border-bottom:1px solid #f2f2f2;
+	padding-bottom: 30px;
+	padding-top:30px;
+}
+#signuppage .Company-Information-block3{
+	padding-bottom: 30px;
+	padding-top:30px;
+}
+#signuppage .ship-to-check{
+	margin-top:0px;
+	margin-bottom:0px;
+	padding-left: 32px;
+}
+#signuppage .signup-note{
+	padding-top:8px;
+}
+#signuppage .req-text{
+	font-size:14px;
+	color:#0a8caa;
+	margin-top: 28px;
+	margin-left: 25px;
+}
+#signuppage  .product-block{
+	border: 1px solid #f2f2f2;
+    padding: 20px;
+    margin-left: 0px;
+    margin-top: 5px;	
+}
+#signuppage  .conclusion{
+	padding: 0px 25px 25px 30px;
+}
+.prodtopurchase li{
+	list-style:none;
+}
+#signuppage  .thanks-message-block{
+	border: 1px solid #f2f2f2;
+	padding: 25px 25px 25px 30px;
+}
+#signuppage .thanks-message{
+	font-size:18px;
+	color:#0a8caa;
+	margin-bottom: 20px;
+}
+#signuppage .addprofile-block{
+	margin-left:55px;
+}
+#signuppage  #add-signup{
+	margin-left:15px;
+}
+#signuppage .your-information-note{
+	/* margin-top:-20px; */
+}
+#signuppage .margintop30px{
+	margin-top:30px;
+}
+#signuppage .submit-approval{
+	width: auto;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+@media screen and (max-width: 968px){
+	#signuppage .req-text{
+		margin-left: -20px;
+	}
+	#signuppage  .pwdWidth{
+		width: 36.2%;
+	}
+}
+@media screen and (max-width: 480px){
+	.jnj-signup-container{
+		width:100%;
+		margin-left:0%;
+	}
+	#signuppage .req-text{
+		margin-left: 0px;
+		float:left;
+	}
+	#signuppage .checkbox-inline+.checkbox-inline, .radio-inline+.radio-inline,#signuppage #add-signup{
+		margin-left: 0px;
+	}
+	#signuppage .addprofile-block{
+		margin-left: 25px;
+	}
+	#signuppage .ship-to-check{
+		margin-top: 10px;
+		margin-left: 15px;	
+	}
+	#signuppage .company-name-txtbox,#signuppage  .margintop,#signuppage .margintop30px,#signuppage #signup-phno1,#signuppage #signup-phno2{
+		margin-top:10px;
+	}
+	#signuppage  .product-block{
+		padding:5px;
+	}
+	#signuppage .your-information-note{
+		margin-top: 5px;
+		padding-left: 0px;
+	}
+	#signuppage .pwdwidgetdiv,#signuppage  .pwdWidth,#signuppage .pwdfield{
+		width: 100% !important;
+	}
+	#signuppage .permission-block{
+		margin-left:0px;
+		margin-right:0px;
+		padding-left: 0px;
+	}
+	#signuppage .fname-mobile{
+		margin-top:20px;
+	}
+	#signuppage .submit-approval{
+		width:100%;
+		margin-right:0px !important;
+	}
+	#signuppage .cancel-register{
+		width:100%;
+	}
+	
+	#signuppage #checkpass2{
+		width:100% !important;
+	}
+	
+	.resetpassowrd-Close{
+	    border: none;
+   	 margin-top: 30px  !important;
+	}
+}
+
+<!-- Success page css  -->
+
+#successmessagesignup .success-content{
+    background-color: rgb(249,249,249);
+}
+#successmessagesignup .success-bodycontent{
+	padding: 25px 25px 25px 30px;
+	background-color: white;
+    margin-bottom: 20px;
+    box-shadow: 0px 1px 8px #ccc, 0px 0px 0px #ccc;
+}
+#tab2NextButtonText,#tab3NextButtonText,#tab5NextButtonText,#tab7NextButtonText{
+width:auto;
+}

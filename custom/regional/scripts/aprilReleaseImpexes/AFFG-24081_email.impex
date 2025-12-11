@@ -1,0 +1,28 @@
+
+$contentCatalog=brContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$contentCatalog]),version[default='Staged'])
+$emailResource = jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/jnjlamasterstore/import/contentCatalogs/jnjContentCatalog/emails/templates
+
+INSERT_UPDATE EmailPageTemplate;$contentCV[unique=true];uid[unique=true];name;active;frontendTemplateName;subject(code);htmlTemplate(code);restrictedPageTypes(code)
+;;JnjLaActiveUserReportEmailTemplate; Active User Report Email Template;true;JnjLaActiveUserReportEmailTemplate;email_activeUserReportEmail_Subject;email_activeUserReportEmail_Body;;EmailPage
+
+INSERT_UPDATE EmailPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);defaultPage;approvalStatus(code)[default='approved'];fromEmail[lang=en];fromName[lang=en]
+;;JnjLaActiveUserReportEmailPage;Active User Report Email Page;JnjLaActiveUserReportEmailTemplate;true;
+
+INSERT_UPDATE RendererTemplate;code[unique=true];contextClass;rendererType(code)[default='velocity']
+;email_activeUserReportEmail_Subject;com.jnj.facades.process.email.context.JnjLaActiveUsersReportEmailContext
+;email_activeUserReportEmail_Body;com.jnj.facades.process.email.context.JnjLaActiveUsersReportEmailContext
+
+UPDATE RendererTemplate;code[unique=true];description[lang=en];templateScript[lang=en,translator=de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]
+;email_activeUserReportEmail_Subject;"Active User Report Email Subject";$emailResource/email-activeUserReportEmailSubject.vm
+;email_activeUserReportEmail_Body;"Active User Report Email Body";$emailResource/email-activeUserReportEmailBody.vm
+
+INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                         ; position[unique = true]   ; pageTemplate(uid, $contentCV)[unique = true]  ; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
+						;						   ; TopContentLogo1-ActiveUserReportEmail					; TopContentLogo1			; JnjLaActiveUserReportEmailTemplate			; NewEmailTopLogoSlot1  					 ; true
+						;						   ; TopContentLogo2-ActiveUserReportEmail				    ; TopContentLogo2			; JnjLaActiveUserReportEmailTemplate			; NewEmailTopLogoSlot2  					 ; true
+	
+
+
+
+
+

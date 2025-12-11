@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ [y] hybris Platform
+  ~ 
+  ~ Copyright (c) 2000-2016 SAP SE
+  ~ All rights reserved.
+  ~ 
+  ~ This software is the confidential and proprietary information of SAP 
+  ~ Hybris ("Confidential Information"). You shall not disclose such 
+  ~ Confidential Information and shall use it only in accordance with the 
+  ~ terms of the license agreement you entered into with SAP Hybris.
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<bean id="jnjGTFeedService" class="com.jnj.gt.service.common.impl.DefaultJnjGTFeedService"/>
+	<bean id="jnjGTFeedDao" class="com.jnj.gt.dao.common.impl.DefaultJnjGTFeedDao">
+	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+	
+<!-- COMMON INTERFACE FEED CHANGES ENDS [Author: Akash] -->
+
+
+<!-- PRODUCT EXCLUSION INTERFACE FEED BEAN DEFINITIONS [Author: Akash] -->
+	
+	<bean id="jnjAbstractMapper" class="com.jnj.gt.mapper.JnjAbstractMapper"  abstract="true"/>
+	
+	<bean id="jnjGTProductExclusionMapper" class="com.jnj.gt.mapper.product.JnjGTProductExclusionMapper" parent="jnjAbstractMapper"/>
+	
+	<bean id="jnjGTProductExclusionFeedService" class="com.jnj.gt.service.product.impl.DefaultJnjGTProductExclusionFeedService" />
+	
+	<bean id="jnjGTProductExclusionFeedDao" class="com.jnj.gt.dao.product.impl.DefaultJnjGTProductExclusionFeedDao" parent="abstractItemDao"/>
+	
+	<bean id="jnjGTUsPcmPrdExclService" class="com.jnj.gt.service.product.impl.DefaultJnjGTUsPcmPrdExclService" />
+	
+	<bean id="jnjGTUsPcmPrdExclDao" class="com.jnj.gt.dao.exclusions.impl.DefaultJnjGTUsPcmPrdExclDao" parent="abstractItemDao"/>
+			
+	<!-- END OF PRODUCT EXCLUSION INTERFACE FEED BEAN DEFINITIONS -->
+
+	<!-- Start of Bean for Customer Feed -->
+	<bean id="jnjGTB2BUnitFeedService"	class="com.jnj.gt.service.b2bunit.impl.DefaultJnjGTB2BUnitFeedService"/>
+	<bean id="jnjGTB2BUnitFeedDao"	class="com.jnj.gt.dao.b2bunit.impl.DefaultJnjGTB2BUnitFeedDao" parent="abstractItemDao"/>
+	
+	<!-- End of Bean for Customer Feed -->
+	
+	<!-- Start of Bean for Sales Alignment & Territory Feed -->
+	<bean id="jnjGTIntSalesRepAlignmentFacade" class="com.jnj.gt.facades.impl.DefaultJnjGTIntSalesRepAlignmentFacade"/>
+	<bean id="jnjGTSalesAlignmentDataLoadMapper" class="com.jnj.gt.mapper.b2bunit.JnjGTSalesAlignmentDataLoadMapper"/>
+	<bean id="jnjGTIntTerritoryFacade" class="com.jnj.gt.facades.impl.DefaultJnjGTIntTerritoryFacade"/>	
+	<bean id="jnjGTTerritoryDataLoadMapper" class="com.jnj.gt.mapper.b2bunit.JnjGTTerritoryDataLoadMapper"/>
+	<!-- Start of Bean for Sales Alignment & Territory Feed -->
+
+	<!-- Start of Bean for Order Feed -->
+	<bean id="jnjGTOrderFeedDao"	class="com.jnj.gt.dao.order.impl.DefaultJnjGTOrderFeedDao" parent="abstractItemDao"/>
+	<bean id="jnjGTIntOrderFacade" class="com.jnj.gt.facades.impl.DefaultJnjGTIntOrderFeedFacade"/>
+	<bean id="jnjGTOrderFeedService" class="com.jnj.gt.service.order.DefaultJnjGTOrderFeedService" />
+	<bean id="jnjGTOrderSyncDataLoadMapper" class="com.jnj.gt.mapper.order.JnjGTOrderSyncDataLoadMapper"/>
+	<!-- End of Bean for Order Feed -->
+	
+	<bean id="jnjGTCreditCardDataLoadMapper" class="com.jnj.gt.mapper.creditcard.JnjGTCreditCardDataLoadMapper"/>
+
+	<!-- Sample implementation bean - To be deleted -->
+	<bean id="tempImplementaion" class="com.jnj.gt.facades.impl.DefaultTempJnjGTIntFacade"/>
+	
+	<!-- bean for STG-INT feed impl -->
+	<bean id="jnjGTStgSerivce" class="com.jnj.gt.service.common.impl.DefaultJnjGTStgSerivce"/>
+
+	<bean id="jnjGTUserFeedDao" class="com.jnj.gt.dao.user.impl.DefaultJnjGTUserFeedDao" parent="abstractItemDao"/>
+	<!-- Beans for CPSIA Feed (START)-->
+	<bean id="jnjGTProductCPSIAMapper" class="com.jnj.gt.mapper.product.JnjGTProductCPSIAMapper" parent="jnjAbstractMapper"/>
+	<bean id="jnjGTCpscFeedService"	class="com.jnj.gt.service.product.impl.DefaultJnjGTCpscFeedService"/>
+	<bean id="jnjGTCpscFeedDao"	class="com.jnj.gt.dao.product.impl.DefaultJnjGTCpscFeedDao"/>
+	<!-- Beans for CPSIA Feed (END)-->
+	
+	<!-- Beans for LOT MASTER Feed (START)-->
+	<bean id="JnjGTProductLotMasterMapper" class="com.jnj.gt.mapper.product.JnjGTProductLotMasterMapper" parent="jnjAbstractMapper">
+		<property name="jnjGTFeedService" ref="jnjGTFeedService" />
+		<property name="jnjGTLotMasterFeedService" ref="jnjGTLotMasterFeedService" />
+	</bean>
+	
+	<bean id="jnjGTLotMasterFeedService" class="com.jnj.gt.service.product.impl.DefaultJnjGTLotMasterFeedService" >
+		<property name="jnJProductService" ref="productService" />
+		<property name="modelService" ref="modelService" />
+	</bean>
+	<!-- Beans for LOT MASTER Feed (END)-->
+	
+	<!-- CATEGORY, CATEGORY DESCRIPTION -->
+	<!-- <bean id="jnjEMEAIntCategoryMasterFacade" class="com.jnj.na.facades.impl.JnjEMEAIntCategoryFacadeImpl">
+		<property name="jnjGTFeedService" ref="jnjGTFeedService" />
+		<property name="jnjEMEACategoryFeedService" ref="jnjEMEACategoryFeedService" />	
+		<property name="jnjEMEACategoryMasterMapper" ref="jnjEMEACategoryMasterMapper" />
+	</bean> -->
+	
+	<!-- PRODUCT MASTER ,PRODUCT LOCAL AND LISTPRICE CHANGES [Author: Akash , Dheeraj] -->
+	<!-- INT Facades beans for carrying out feed operations. -->
+	<bean id="jnjGTIntProductMasterFacade" class="com.jnj.gt.facades.impl.DefaultJnjGTIntProductMasterFacade">
+		<property name="jnjGTProductMasterMapper" ref="jnjGTProductMasterMapper" />
+	</bean>
+	<bean id="jnjGTIntProductLocalFacade" class="com.jnj.gt.facades.impl.DefaultJnjGTIntProductLocalFacade"/>
+	<bean id="jnjGTIntProductListPriceFacade" class="com.jnj.gt.facades.impl.DefaultJnjGTIntProductListPriceFacade"/>
+	<bean id="jnjGTIntCpsiaFacade" class="com.jnj.gt.facades.impl.DefaultJnjGTIntCpsiaFacade"/>
+	<bean id="jnjGTIntProductLotMasterFacade" class="com.jnj.gt.facades.impl.DefaultJnjGTIntLotMasterFacade"/>
+	<!-- <bean id="jnjEMEACategoryService" class="com.jnj.core.services.category.JnjEMEACategoryFeedService"/>   -->
+	
+	<bean id="jnjGTProductMasterMapper" class="com.jnj.gt.mapper.product.JnjGTProductMasterMapper" parent="jnjAbstractMapper">
+		<property name="jnjGTFeedService" ref="jnjGTFeedService" />
+		<property name="jnjGTProductFeedService" ref="jnjGTProductFeedService" />
+		<property name="catalogVersionService" ref="catalogVersionService" />
+		<property name="categoryService" ref="categoryService" />
+	</bean>
+	
+	<!-- EMEA Category Mapper -->
+	<!-- <bean id="jnjEMEACategoryMasterMapper" class="com.jnj.na.mapper.category.JnjEMEACategoryMasterMapper" parent="jnjAbstractMapper">
+		<property name="jnjGTFeedService" ref="jnjGTFeedService" />
+		<property name="jnjEMEACategoryFeedService" ref="jnjEMEACategoryFeedService" />
+		<property name="modelService" ref="modelService" />
+		<property name="commonI18NService" ref="commonI18NService" />
+		<property name="catalogVersionService" ref="catalogVersionService" />
+		<property name="categoryService" ref="categoryService" />
+	</bean> -->
+	
+	<bean id="jnjGTProductLocalMapper" class="com.jnj.gt.mapper.product.JnjGTProductLocalMapper" parent="jnjAbstractMapper">
+		<property name="jnjGTFeedService" ref="jnjGTFeedService" />
+		<property name="jnjGTProductFeedService" ref="jnjGTProductFeedService" />
+	</bean>
+	
+	<bean id="jnjGTProductListPriceMapper" class="com.jnj.gt.mapper.product.JnjGTProductListPriceMapper">
+		<property name="jnjGTFeedService" ref="jnjGTFeedService" />
+		<property name="jnjGTListPriceFeedService" ref="jnjGTListPriceFeedService" />
+	</bean>
+	
+	<!-- <bean id="jnjEMEACategoryFeedService" class="com.jnj.core.services.category.impl.JnjEMEACategoryFeedServiceImpl">
+		<property name="jnjEMEACategoryService" ref="jnjEMEACategoryService" />
+		<property name="jnjEMEACategoryFeedDao" ref="jnjEMEACategoryFeedDao" />
+	</bean> -->
+	
+	<bean id="jnjGTProductFeedService" class="com.jnj.gt.service.product.impl.DefaultJnjGTProductFeedService" />
+	<bean id="jnjGTListPriceFeedService" class="com.jnj.gt.service.product.impl.DefaultJnjGTListPriceFeedService" >
+		<property name="JnjGTListPriceFeedDao" ref="JnjGTListPriceFeedDao" />
+	</bean>
+	
+	<!-- <bean id="jnjEMEACategoryFeedDao" class="com.jnj.core.dao.company.category.impl.JnjEMEACategoryFeedDaoImpl" parent="abstractItemDao"/> -->
+	
+	<bean id="jnjGTProductFeedDao" class="com.jnj.gt.dao.product.impl.DefaultJnjGTProductFeedDao" >
+	<property name="jnjCommonUtil" ref="jnjCommonUtil"/>
+	</bean>
+
+<!-- END OF PRODUCT MASTER ,PRODUCT LOCAL AND LISTPRICE CHANGES [Author: Akash, Dheeraj ] -->
+	
+	<bean id="JnjGTListPriceFeedDao" class="com.jnj.gt.dao.product.impl.DefaultJnjGTListPriceFeedDao" />
+
+	<bean id="jnjGTUserProfileDataLoadMapper"   class="com.jnj.gt.mapper.user.JnjGTUserProfileDataLoadMapper"/>
+	<bean id="jnjGTUserFeedService"   class="com.jnj.gt.service.user.impl.DefaultJnjGTUserFeedService"/>
+
+	
+	<!-- bean id  - customer master -->
+	<bean id="jnjGTIntB2BUnitFacade" class="com.jnj.gt.facades.impl.DefaultJnjGTIntB2BUnitFacade"/>
+	<bean id="jnjGTIntB2BUnitLocalFacade" class="com.jnj.gt.facades.impl.DefaultJnjGTIntB2BUnitLocalFacade"/>
+	<bean id="jnjGTIntAffiliationFacade" class="com.jnj.gt.facades.impl.DefaultJnjGTIntAffiliationFacade"/>
+	<bean id="jnjGTB2BUnitDataLoadMapper" class="com.jnj.gt.mapper.b2bunit.JnjGTB2BUnitDataLoadMapper"/>
+
+	<bean id="jnjGTListPriceFeedFacade" class="com.jnj.gt.facades.impl.DefaultJnjGTIntProductListPriceFacade"/>
+	
+	<bean id="jnjGTIntUserProfileFacade" class="com.jnj.gt.facades.impl.DefaultJnjGTIntUserProfileFacade"/>
+	<bean id="jnjGTOrderTemplateDataLoadMapper" class="com.jnj.gt.mapper.ordertemplate.JnjGTOrderTemplateDataLoadMapper"/>
+	<bean id="jnjGTIntOrderTemplateFacade" class="com.jnj.gt.facades.impl.DefaultJnjGTIntOrderTemplateFacade"/>
+	<bean id="jnjGTIntCreditCardFacade" class="com.jnj.gt.facades.impl.DefaultJnjGTIntCreditCardFacade"/>
+	<bean id="jnjGTIntProductExclusionFacade" class="com.jnj.gt.facades.impl.DefaultJnjGTIntProductExclusionFacade"/>
+	
+	
+	<bean id="jnjGTInvoiceFeedDao" class="com.jnj.gt.dao.invoice.impl.DefaultJnjGTInvoiceFeedDao"/>
+	<bean id="jnjGTInvoiceFeedService" class="com.jnj.gt.service.invoice.impl.DefaultJnjGTInvoiceFeedService"/>
+	<bean id="jnjGTInvoiceDataLoadMapper" class="com.jnj.gt.mapper.invoicedata.JnjGTLoadInvoiceDataLoadMapper"/>
+	<bean id="jnjGTIntInvoiceFacade" class="com.jnj.gt.facades.impl.DefaultJnjGTIntInvoiceFeedFacade"/>
+	
+	<bean id="jnjGTEarlyZipCodeService"	class="com.jnj.gt.service.zipcode.impl.DefaultJnjGTEarlyZipCodeService"/>
+	<bean id="jnjGTEarlyZipCodeMapper"	class="com.jnj.gt.mapper.zipcode.impl.DefaultJnjGTEarlyZipCodeMapper"/>
+	<bean id="jnjGTIntShipmentFacade" class="com.jnj.gt.facades.impl.DefaultJnjGTIntShipmentFacade"/>
+	<bean id="jnjGTShipmentDataLoadMapper" class="com.jnj.gt.mapper.shipment.JnjGTShipmentDataLoadMapper"/>
+	<bean id="jnjGTShipmentFeedService"	class="com.jnj.gt.service.shipment.impl.DefaultJnjGTShipmentFeedService"/>
+	<bean id="jnjGTShipmentFeedDao"	class="com.jnj.gt.dao.shipment.impl.DefaultJnjGTShipmentFeedDao" parent="abstractItemDao"/>
+	<bean id="jnjGTSurgeonDataLoadMapper" class="com.jnj.gt.mapper.surgeon.JnjGTSurgeonDataLoadMapper" parent="jnjAbstractMapper"/>	
+	
+	<bean id="jnjGTOrderTemplateFeedService" class="com.jnj.gt.service.ordertemplate.impl.DefaultJnjGTOrderTemplateFeedService"/>
+	<bean id="jnjGTOrderTemplateFeedDao"	 class="com.jnj.gt.dao.ordertemplate.impl.DefaultJnjGTOrderTemplateFeedDao"   parent="abstractItemDao"/>
+
+	<bean id="productEligibilityFacade" class="com.jnj.gt.facades.impl.DefaultProductEligibilityFacade"/>	
+</beans>

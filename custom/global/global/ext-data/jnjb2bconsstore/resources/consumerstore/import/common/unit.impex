@@ -1,0 +1,306 @@
+INSERT_UPDATE Unit;unitType[unique=true];code[unique=true];name[lang=fr];name[lang=es];name[lang=en]
+;jnjUnit;1;Porcentagem;Porcentaje;Percentage
+;jnjUnit;10;Permilagem;Tanto por mil;Per mille
+;jnjUnit;26;% Solid;% Solid;% Solid
+;jnjUnit;%;Um;Lim.;One
+;jnjUnit;%O;Dias;Días;Days
+;jnjUnit;%S;Milímetros quadrados/segundo;Milímetro cuadrado/Segundo;Square millimeter/second
+;jnjUnit;22S;ACTUAL TONS;ACTUAL TONS;ACTUAL TONS
+;jnjUnit;2M;Centímetros/segundo;Centímetro/Segundo;Centimeter/second
+;jnjUnit;2P;Pouch;Pouch;Pouch
+;jnjUnit;2X;Metros/minuto;Metro/Minuto;Meter/Minute
+;jnjUnit;4O;Microfarad;Microfaradio;Microfarad
+;jnjUnit;4T;Picofarad;Picofaradio;Pikofarad
+;jnjUnit;A;Ampère;Amperio;Ampere
+;jnjUnit;A87;Gigaohm;Gigaohmio;Gigaohm
+;jnjUnit;A93;Gramas/metro cúbico;Gramo/Metro cúbico;Gram/Cubic meter
+;jnjUnit;AA;BALL;BALL;BALL
+;jnjUnit;ACR;Acre;Acre;Acre
+;jnjUnit;B34;Quilogramas/decímetro cúbico;Kilogramo/Decímetro cúbico;Kilogram/cubic decimeter
+;jnjUnit;B45;Kilomol;Kilomol;Kilomol
+;jnjUnit;B47;Kilonewton;Kilonewton;Kilonewton
+;jnjUnit;B73;Meganewton;Meganewton;Meganewton
+;jnjUnit;B75;Megaohm;Megaohmio;Megohm
+;jnjUnit;B78;Megavolt;Megavoltio;Megavolt
+;jnjUnit;B84;Microampère;Microamperio;Microampere
+;jnjUnit;BAG;Bag;Bag;Bag
+;jnjUnit;BAR;bar;bar;bar
+;jnjUnit;BG;BAG;BAG;BAG
+;jnjUnit;BI;BAR;BAR;BAR
+;jnjUnit;BO;Bottle;Bottle;Bottle
+;jnjUnit;BOT;Bottle;Bottle;Bottle
+;jnjUnit;BQK;Becquereis/quilograma;Becquerel/Kilogramo;Becquerel/kilogram
+;jnjUnit;BX;Box;Box;Box
+;jnjUnit;C10;Milifarad;Milifaradio;Millifarad
+;jnjUnit;C36;Mol por metro cúbico;Mol por metro cúbico;Mol per cubic meter
+;jnjUnit;C38;Mol por litro;Mol por litro;Mol per liter
+;jnjUnit;C39;Nanoampere;Nanoamperio;Nanoampere
+;jnjUnit;C3S;Centímetros cúbicos/segundo;Centímetro cúbico/Segundo;Cubic centimeter/second
+;jnjUnit;C41;Nanofarad;Nanofaradio;Nanofarad
+;jnjUnit;C56;Newton/milímetro quadrado;Newton/Milímetro cuadrado;Newton/Square millimeter
+;jnjUnit;C8;Cubic decimeter;Cubic decimeter;Cubic decimeter
+;jnjUnit;CA;Case;Case;Case
+;jnjUnit;CC;Cubic centimeter;Cubic centimeter;Cubic centimeter
+;jnjUnit;CCM;Cubic centimeter;Cubic centimeter;Cubic centimeter
+;jnjUnit;CD;Candela;Candela;Candela
+;jnjUnit;CDM;Cubic decimeter;Cubic decimeter;Cubic decimeter
+;jnjUnit;CF;CUBIC FEET;CUBIC FEET;CUBIC FEET
+;jnjUnit;CI;Cubic inch;Cubic inch;Cubic inch
+;jnjUnit;CM;Centímetro;Centímetros;Centimeter
+;jnjUnit;CM2;Centímetro quadrado;Centímetro cuadrado;Square centimeter
+;jnjUnit;CMH;Centímetros/hora;Centímetro/Hora;Centimeter/hour
+;jnjUnit;CN;CAN;CAN;CAN
+;jnjUnit;CR;Cubic meter;Cubic meter;Cubic meter
+;jnjUnit;CS;Case;Case;Case
+;jnjUnit;CT;CARTON;CARTON;CARTON
+;jnjUnit;CTL;Centilitro;Centilitro;Centiliter
+;jnjUnit;D10;Siemens por metro;Siemens por metro;Siemens per meter
+;jnjUnit;D41;Toneladas/metro cúbico;Tonelada/Metro cúbico;Ton/Cubic meter
+;jnjUnit;D46;Voltampere;Voltioamperio;Voltampere
+;jnjUnit;DEG;Graus;Grado;Degree
+;jnjUnit;DI;DISPENSER;DISPENSER;DISPENSER
+;jnjUnit;DL;Deciliter;Deciliter;Deciliter
+;jnjUnit;DM;Decímetro;Decímetro;Decimeter
+;jnjUnit;DR;Tambor;Tambor;Drum
+;jnjUnit;DZ;Dúzia;Docena;Dozen
+;jnjUnit;EA;Cada;cada uno;each
+;jnjUnit;EE;Unidades enzima;Unidades enzimas;Enzyme Units
+;jnjUnit;EML;Unidades enzima/mililitro;Unidades enzimas/Milímetro;Enzyme Units / Milliliter
+;jnjUnit;EV;ENVELOPE;ENVELOPE;ENVELOPE
+;jnjUnit;F;Farad;Faradio;Farad
+;jnjUnit;FA;Fahrenheit;Fahrenheit;Fahrenheit
+;jnjUnit;FT;Pés;Pie;Foot
+;jnjUnit;FT2;Pés quadrados;Pie cuadrado;Square foot
+;jnjUnit;FT3;Pé cúbico;Pie cúbico;Cubic foot
+;jnjUnit;G;Gram;Gram;Gram
+;jnjUnit;G/L;Grama IngrAtivo / litro;Gramo aditivo/Litro;gram act.ingrd / liter
+;jnjUnit;GA;Gallon;Gallon;Gallon
+;jnjUnit;GAU;Grama ouro;Gramo oro;Gram Gold
+;jnjUnit;GC;Grau centígrado;Grado centígrado;Degrees Celsius
+;jnjUnit;GDL;Gram per Deciliter;Gram per Deciliter;Gram per Deciliter
+;jnjUnit;GHG;Gramas/hectograma;Gramo/Hectogramo;Gram/hectogram
+;jnjUnit;GJ;Gigajoule;Gigajulio;Gigajoule
+;jnjUnit;GKG;Gramas/quilogramas;Gramo/Kilogramo;Gram/kilogram
+;jnjUnit;GLI;Gramas/litros;Gramo/Litro;Gram/liter
+;jnjUnit;GLL;Galão EUA;Galón (EE.UU.);US gallon
+;jnjUnit;GLM;Galões por milha (US);Galones por milla (EE.UU);Gallons per mile (US)
+;jnjUnit;GLT;Gram Act. Ingredient/Liter;Gram Act. Ingredient/Liter;Gram Act. Ingredient/Liter
+;jnjUnit;GM;Gramas/mol;Gramo/Mol;Gram/Mol
+;jnjUnit;GM2;Gramas/metro quadrado;Gramo/Metro cuadrado;Gram/square meter
+;jnjUnit;GPH;Galões por hora (US);Galones por hora (EE.UU);Gallons per hour (US)
+;jnjUnit;GQ;Microgramas/metro cúbico;Microgramo/Metro cúbico;Microgram/cubic meter
+;jnjUnit;GR;Gram;Gram;Gram
+;jnjUnit;GRL;Grams / Litre;Grams / Litre;Grams / Litre
+;jnjUnit;GRO;Gross;Gross;Gross
+;jnjUnit;GS;Gross;Gross;Gross
+;jnjUnit;GW;Grama - ingrediente ativo;Gramo principio activo;Gram act. ingrd.
+;jnjUnit;H;Hora;Hora;Hour
+;jnjUnit;HAR;Hectares;Hectárea;Hectare
+;jnjUnit;HL;Hectolitro;Hectolitro;Hectoliter
+;jnjUnit;HPA;Hectopascal;Hectopascal;Hectopascal
+;jnjUnit;HY;HUNDRED YARDS;HUNDRED YARDS;HUNDRED YARDS
+;jnjUnit;HZ;Hertz (1/segundo);Hercio (1/segundo);Hertz (1/second)
+;jnjUnit;IN;Inch;Inch;Inch
+;jnjUnit;IN2;Polegadas cúbicas;Pulgada cúbica;Cubic inch
+;jnjUnit;J;Joule;Julio;Joule
+;jnjUnit;JHR;Anos (annum);Años (annum);Years
+;jnjUnit;JKG;Joules/quilograma;Julio/Kilogramo;Joule/Kilogram
+;jnjUnit;JKK;Capacidade térmica específica;Capac.térmica espec.;Spec. Heat Capacity
+;jnjUnit;JMO;Joule/mole;Julio/Mol;Joule/Mol
+;jnjUnit;JR;JAR;JAR;JAR
+;jnjUnit;K;Kelvin;Kelvin;Kelvin
+;jnjUnit;KA;Kiloampere;Kiloamperio;Kiloampere
+;jnjUnit;KAN;Recipiente;Bidón;Canister
+;jnjUnit;KAR;Carton;Carton;Carton
+;jnjUnit;KBK;Quilobecquereis/quilograma;Kilobecquerel/Kilogramo;Kilobecquerel/kilogram
+;jnjUnit;KG;Quilograma;Kilogramo;Kilogram
+;jnjUnit;KGF;Quilogramas/metro quadrado;Kilogramo/Metro cuadrado;Kilogram/Square meter
+;jnjUnit;KGK;Quilogramas/quilogramas;Kilogramo/Kilogramo;Kilogram/Kilogram
+;jnjUnit;KGM;Quilogramas/mol;Kilogramo/Mol;Kilogram/Mol
+;jnjUnit;KGS;Quilogramas/segundo;Kilogramo/Segundo;Kilogram/second
+;jnjUnit;KGV;Quilogramas/metro cúbico;Kilogramo/Metro cúbico;Kilogram/cubic meter
+;jnjUnit;KGW;Quilograma - ingrediente ativo;Kilogramo principio activo;Kilogram act. ingrd.
+;jnjUnit;KHZ;Quilohertz;Kilohercio;Kilohertz
+;jnjUnit;KI;Caixa;Caja;Crate
+;jnjUnit;KJ;Quilojoule;Kilojulio;Kilojoule
+;jnjUnit;KJK;Quilojoules/quilograma;Kilojulio/Kilogramo;Kilojoule/kilogram
+;jnjUnit;KJM;Quilojoule/mole;Kilojulio/Mol;Kilojoule/Mol
+;jnjUnit;KM;Quilômetro;Kilómetro;Kilometer
+;jnjUnit;KM2;Quilômetro quadrado;Kilómetro cuadrado;Square kilometer
+;jnjUnit;KME;Kilo Units per MilligramKU/ME;Kilo Units per MilligramKU/ME;Kilo Units per MilligramKU/ME
+;jnjUnit;KMH;Quilômetros/hora;Kilómetro/Hora;Kilometer/hour
+;jnjUnit;KMK;Metro cúbico/metro cúbico;Metro cúbico/Metro cúbico;Cubic meter/Cubic meter
+;jnjUnit;KMN;Kelvin/minuto;Kelvin/Minuto;Kelvin/Minute
+;jnjUnit;KMS;Kelvin/segundo;Kelvin/Segundo;Kelvin/Second
+;jnjUnit;KOH;Quilo-ohm;Kiloohmio;Kiloohm
+;jnjUnit;KPA;Kilopascal;Kilopascal;Kilopascal
+;jnjUnit;KT;Kit;Kit;Kit
+;jnjUnit;KU;Kilo Unit;Kilo Unit;Kilo Unit
+;jnjUnit;KUR;Kilo Units per Gram KU/GR;Kilo Units per Gram KU/GR;Kilo Units per Gram KU/GR
+;jnjUnit;KV;Quilovolts;Kilovoltio;Kilovolt
+;jnjUnit;KVA;Kilovoltampere;Kilovoltioamperio;Kilovoltampere
+;jnjUnit;KW;Quilowatt;Kilovatio;Kilowatt
+;jnjUnit;KWH;Quilowatts/hora;Kilovatio-hora;Kilowatt hours
+;jnjUnit;KWK;kg ingrediente ativo / kg;Kg principio activo/kg;kg act.ingrd. / kg
+;jnjUnit;L;Liter;Liter;Liter
+;jnjUnit;L/L;L/L;L/L;L/L
+;jnjUnit;L2;Litros/minuto;Litro/Minuto;Liter/Minute
+;jnjUnit;LB;Libra EUA;Libra (pound);US pound
+;jnjUnit;LE;Unidade de atividade;Unidad de potencia;Activity unit
+;jnjUnit;LHK;Litros por 100 km;Litro por 100 km;Liter per 100 km
+;jnjUnit;LKG;L/KG;L/KG;L/KG
+;jnjUnit;LMS;Litros/molsegundo;Litro/Molécula-segundo;Liter/Molsecond
+;jnjUnit;LO;LOT;LOT;LOT
+;jnjUnit;LPH;Litros por hora;Litro por hora;Liter per hour
+;jnjUnit;LT;Liter;Liter;Liter
+;jnjUnit;M;Meter;Meter;Meter
+;jnjUnit;M%;Porcentagem (massa);Porcentaje-masa;Percent mass
+;jnjUnit;M%O;Proporção por mil (massa);Tanto por mil-masa;Permille mass
+;jnjUnit;M/S;Metro/segundo;Metro/Segundo;Meter/second
+;jnjUnit;M2;Metro quadrado;Metro cuadrado;Square meter
+;jnjUnit;M2I;1 / metro quadrado;1 / Metro cuadrado;1 / square meter
+;jnjUnit;M2S;Metros quadrados/segundo;Metro cuadrado/Segundo;Square meter/second
+;jnjUnit;M3;Cubic meter;Cubic meter;Cubic meter
+;jnjUnit;M3S;Metro cúbico/segundo;Metro cúbico/Segundo;Cubic meter/second
+;jnjUnit;MA;Miliampère;Miliamperio;Milliampere
+;jnjUnit;MBA;Milibares;Milibar;Millibar
+;jnjUnit;MBZ;Metro-bar/segundo;Metrobaro/Segundo;Meterbar/second
+;jnjUnit;MC;MICROGRAM;MICROGRAM;MICROGRAM
+;jnjUnit;MDL;Milligram per DL;Milligram per DL;Milligram per DL
+;jnjUnit;ME;Milligram;Milligram;Milligram
+;jnjUnit;MEI;Milligram Active Ing;Milligram Active Ing;Milligram Active Ing
+;jnjUnit;MEJ;Megajoule;Megajulio;Megajoule
+;jnjUnit;MG;Milligram;Milligram;Milligram
+;jnjUnit;MGF;Miligrama/centímetro quadrado;Miligramo/Centímetro cuadrado;Milligram/Square centimeter
+;jnjUnit;MGG;Miligrama/grama;Miligramo/Gramo;Milligram/gram
+;jnjUnit;MGK;Miligramas/quilograma;Miligramo/Kilogramo;Milligram/kilogram
+;jnjUnit;MGL;Miligrama/litro;Miligramo/Litro;Milligram/liter
+;jnjUnit;MGM;mg/mL;mg/mL;mg/mL
+;jnjUnit;MGQ;Miligramas/metro cúbico;Miligramo/Metro cúbico;Milligram/cubic meter
+;jnjUnit;MGR;Percentage solid;Percentage solid;Percentage solid
+;jnjUnit;MGW;Megawatts;Megavatio;Megawatt
+;jnjUnit;MHZ;Megahertz;Megahercio;Megahertz
+;jnjUnit;MI;Milha;Milla;Mile
+;jnjUnit;MI2;Milhas quadradas;Milla cuadrada;Square mile
+;jnjUnit;MIM;Micrometro;Micrometro;Micrometer
+;jnjUnit;MIN;Minuto;Minuto;Minute
+;jnjUnit;MIS;Microsegundos;Microsegundo;Microsecond
+;jnjUnit;MJ;Milijoules;Milijulio;Millijoule
+;jnjUnit;ML;Mililitro;Mililitro;Milliliter
+;jnjUnit;MLK;Mililitro/metro cúbico;Mililitro/Metro cúbico;Milliliter/cubic meter
+;jnjUnit;MLL;mL/L;mL/L;mL/L
+;jnjUnit;MLT;ME Act. Ingredient/Liter;ME Act. Ingredient/Liter;ME Act. Ingredient/Liter
+;jnjUnit;MLW;Mililitro - ingrediente ativo;Milílitro principio activo;Milliliter act. ingr.
+;jnjUnit;MM;Milímetro;Milímetro;Millimeter
+;jnjUnit;MM2;Milímetros quadrados;Milímetro cuadrado;Square millimeter
+;jnjUnit;MMA;Milímetro/ano;Milímetro/Año;Millimeter/year
+;jnjUnit;MME;Million Units per MilligramKU/;Million Units per MilligramKU/;Million Units per MilligramKU/
+;jnjUnit;MMG;Milimol/grama;Milimol/Gramo;Millimol/gram
+;jnjUnit;MMH;Milímetro/hora;Milímetro/Hora;Millimeter/hour
+;jnjUnit;MMK;Milimoles/quilograma;Milimol/Kilogramo;Millimol/kilogram
+;jnjUnit;MML;Milligram per Milliliter;Milligram per Milliliter;Milligram per Milliliter
+;jnjUnit;MMO;Milimole;Milimol;Millimol
+;jnjUnit;MMQ;Milímetro cúbico;Milímetro cúbico;Cubic millimeter
+;jnjUnit;MMS;Milímetros/segundos;Milímetro/Segundo;Millimeter/second
+;jnjUnit;MNM;Milinewton/metro;Milinewton/Metro;Millinewton/meter
+;jnjUnit;MOK;Moles/quilograma;Mol/Kilogramo;Mol/kilogram
+;jnjUnit;MOL;Mole;Mol;Mol
+;jnjUnit;MON;Meses;Meses;Months
+;jnjUnit;MPA;Megapascal;Megapascal;Megapascal
+;jnjUnit;MPB;Partes por bilhão (massa);Partes por billón (masa);Mass parts per billion
+;jnjUnit;MPG;Milhas por galão (US);Millas por galón (EEUU);Miles per gallon (US)
+;jnjUnit;MPM;Partes por milhão (massa);Partes por millón (masa);Mass parts per million
+;jnjUnit;MPS;Milipascal/segundos;Milipascal por segundo;Millipascal seconds
+;jnjUnit;MPT;Parts per trillion (massa);Partes por trillón (masa);Mass parts per trillion
+;jnjUnit;MPZ;Metropascal/segundo;Metropascal/Segundo;Meterpascal/second
+;jnjUnit;MQH;Metro cúbico/hora;Metro cúbico/Hora;Cubic meter/Hour
+;jnjUnit;MR;Meter;Meter;Meter
+;jnjUnit;MS;Milisegundos;Milisegundo;Millisecond
+;jnjUnit;MS2;Metro/segundo quadrado;Metro/Segundo al cuadrado;Meter/second squared
+;jnjUnit;MT;METRIC TON;METRIC TON;METRIC TON
+;jnjUnit;MTE;Mili-tesla;Militesla;Millitesla
+;jnjUnit;MTS;Metros/hora;Metro/Hora;Meter/Hour
+;jnjUnit;MU;Million Unit;Million Unit;Million Unit
+;jnjUnit;MUR;Million Units per Gram MU/GR;Million Units per Gram MU/GR;Million Units per Gram MU/GR
+;jnjUnit;MV;Milivolts;Milivoltio;Millivolt
+;jnjUnit;MVA;Megavoltampere;Megavoltioamperio;Megavoltampere
+;jnjUnit;MW;Miliwatts;Milivatio;Milliwatt
+;jnjUnit;MWH;Megawatt hora;Megavatio/Hora;Megawatt hour
+;jnjUnit;N;Newton;Newton;Newton
+;jnjUnit;NAM;Nanômetro;Nanometro;Nanometer
+;jnjUnit;NM;Newton/metro;Newton/Metro;Newton/meter
+;jnjUnit;NS;Nano-segundos;Nanosegundo;Nanosecond
+;jnjUnit;OCM;Resistência elétrica espec.;Resistencia eléctrica espec.;Spec. Elec. Resistance
+;jnjUnit;OHM;Ohm;Ohmio;Ohm
+;jnjUnit;OM;Resistência elétrica espec.;Resistencia eléctrica espec.;Spec. Elec. Resistance
+;jnjUnit;OZ;Onça;Onza;Ounce
+;jnjUnit;OZA;Onça líquida EUA;Onza líquida EE.UU.;Fluid Ounce US
+;jnjUnit;P;Pontos;Puntos;Points
+;jnjUnit;PA;Pascal;Pascal;Pascal
+;jnjUnit;PAA;Pair;Pair;Pair
+;jnjUnit;PAK;Pack;Pack;Pack
+;jnjUnit;PAL;Palete;Paleta;Pallet
+;jnjUnit;PAS;Pascal-segundo;Pascal-segundo;Pascal second
+;jnjUnit;PCT;Quota grp.empresas em %;Participación en grupo en %;Group proportion
+;jnjUnit;PD;PAD;PAD;PAD
+;jnjUnit;PK;PACKAGE;PACKAGE;PACKAGE
+;jnjUnit;PL;PALLET/UNIT LOAD;PALLET/UNIT LOAD;PALLET/UNIT LOAD
+;jnjUnit;PMI;1/Minute;1/minuto;1/minute
+;jnjUnit;PMR;Taxa de permeação SI;Grado de permeación SI;Permeation Rate SI
+;jnjUnit;PPB;Partes por bilhões;Partes por billón;Parts per billion
+;jnjUnit;PPM;Partes por milhão;Parts per million;Parts per million
+;jnjUnit;PPT;Parts per trilhão;Partes por trillón;Parts per trillion
+;jnjUnit;PR;PAIR;PAIR;PAIR
+;jnjUnit;PRM;Taxa de permeação;Grado de permeación;Permeation Rate
+;jnjUnit;PRS;Nº de pessoas;Número de personas;Number of Persons
+;jnjUnit;PS;Picosegundo;Picosegundo;Picosecond
+;jnjUnit;PT;Pinta líquida EUA;"Pinta EE.UU.; líquido";"Pint; US liquid"
+;jnjUnit;QT;"Quarto; líquido EUA";"Cuarto galón; EE.UU.; líquido";"Quart; US liquid"
+;jnjUnit;RA;RACK;RACK;RACK
+;jnjUnit;RE;REEL;REEL;REEL
+;jnjUnit;RG;RING;RING;RING
+;jnjUnit;RHO;Grama/centímetro cúbico;Gramos/Centímetro cúbico;Gram/cubic centimeter
+;jnjUnit;RL;ROLL;ROLL;ROLL
+;jnjUnit;ROL;Função;Rollos;Role
+;jnjUnit;S;Segundo;Segundo;Second
+;jnjUnit;SF;Square Feet;Square Feet;Square Feet
+;jnjUnit;SH;SHEET;SHEET;SHEET
+;jnjUnit;SI;Square inch;Square inch;Square inch
+;jnjUnit;SO;SPOOL;SPOOL;SPOOL
+;jnjUnit;ST;items;items;items
+;jnjUnit;STD;Horas;Horas;Hours
+;jnjUnit;SY;Square Yard;Square Yard;Square Yard
+;jnjUnit;T3;Thousand Pieces;Thousand Pieces;Thousand Pieces
+;jnjUnit;TAG;Dias;Días;Days
+;jnjUnit;TB;TUBE;TUBE;TUBE
+;jnjUnit;TC3;1/centímetro cúbico;1/centímetro cúbico;1/cubic centimeter
+;jnjUnit;TE;TOTE;TOTE;TOTE
+;jnjUnit;TES;Tesla;Tesla;Tesla
+;jnjUnit;TH;Milhares;Miles;Thousands
+;jnjUnit;TM3;1/metro cúbico;1/metro cúbico;1/cubic meter
+;jnjUnit;TO;Troy Ounce;Troy Ounce;Troy Ounce
+;jnjUnit;TON;Toneladas EUA;Tonelada EE.UU.;US ton
+;jnjUnit;TST;;;
+;jnjUnit;TY;Tray;Tray;Tray
+;jnjUnit;UGL;Micrograma/litro;Microgramo/Litro;Microgram/liter
+;jnjUnit;UGR;Units per Gram;Units per Gram;Units per Gram
+;jnjUnit;UME;Units per Milligram;Units per Milligram;Units per Milligram
+;jnjUnit;UML;Units per Milliliter;Units per Milliliter;Units per Milliliter
+;jnjUnit;UN;Unit;Unit;Unit
+;jnjUnit;V;Volt;Voltio;Volt
+;jnjUnit;V%;Porcentagem (volume);Porcentaje en volumen;Percent volume
+;jnjUnit;V%O;Propç.por mil (volume);Volumen por mil;Permille volume
+;jnjUnit;V01;Microsiemens por centímetro;Microsiemens por centímetro;Microsiemens per centimeter
+;jnjUnit;V02;Millimol por litro;Millimol por litro;Millimol per liter
+;jnjUnit;VAL;Artigo de valor;Artículo de valor;Value-only material
+;jnjUnit;VI;VIAL;VIAL;VIAL
+;jnjUnit;VPB;Parts per billion (volume);Partes de volumen por billón;Volume parts per billion
+;jnjUnit;VPM;Partes por milhão (volume);Partes de volumen por millón;Volume parts per million
+;jnjUnit;VPT;Partes por trilhão (volume);Partes de volumen por trillón;Volume parts per trillion
+;jnjUnit;W;Watt;Vatios;Watt
+;jnjUnit;WCH;Semanas;Semanas;Weeks
+;jnjUnit;WMK;Condutibilidade térmica;Conductibilidad del calor;Heat Conductivity
+;jnjUnit;WTL;Velocidade de evaporação;Velocidad de evaporación;Evaporation Rate
+;jnjUnit;YD;Jardas;Yarda;Yards
+;jnjUnit;YD2;Square Yard;Square Yard;Square Yard
+;jnjUnit;YD3;Jardas cúbicas;Yarda cúbica;Cubic yard

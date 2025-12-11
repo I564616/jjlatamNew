@@ -1,0 +1,44 @@
+#Tue, 16 Aug 2016 13:55:00 +0530
+# -----------------------------------------------------------------------
+# [y] hybris Platform 
+# 
+# Copyright (c) 2000-2016 hybris AG
+# All rights reserved.
+#  
+# This software is the confidential and proprietary information of hybris 
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with hybris.
+#
+#  
+# -----------------------------------------------------------------------
+
+# you can put key/value pairs here.
+# Use Config.getParameter(..) to retrieve the values during runtime.
+
+jnjlacartandcheckoutaddon.key=value
+
+# Specifies the location of the spring context file added automatically to the global platform application context.
+jnjlacartandcheckoutaddon.application-context=jnjlacartandcheckoutaddon-spring.xml
+
+yacceleratorstorefront.additionalWebSpringConfigs.jnjlacartandcheckoutaddon=classpath:/jnjlacartandcheckoutaddon/web/spring/jnjlacartandcheckoutaddon-web-spring.xml
+
+jnjlacartandcheckoutaddon.javascript.paths.responsive=/responsive/common/js/jnjlacartandcheckoutaddon-3.0.1.js;\
+  /responsive/common/js/acc.autocompleteIndirectCustomer-latam_2.0.0.js;\
+  /responsive/common/js/acc.indirectCustomerAndPayer-4.0.1.js;\
+  /responsive/common/js/acc.laAddToCart.js;\
+  /responsive/common/js/acc.laContractDownload-3.0.0.js;\
+  /responsive/common/js/acc.empenho-6.1.0.js;\
+  /responsive/common/js/acc.laAddToCartSearchResult.js;\
+  /responsive/common/js/acc.laContractDetail.js
+
+jnjlacartandcheckoutaddon.css.paths.responsive=/responsive/common/css/jnjlacartandcheckoutaddon.css
+
+yb2bacceleratorstorefront.wro4jconfigscan.jnjlacartandcheckoutaddon=true
+
+
+jnjb2bglobalstorefront.additionalWebSpringConfigs.jnjlacartandcheckoutaddon=classpath:/jnjlacartandcheckoutaddon/web/spring/jnjlacartandcheckoutaddon-web-spring.xml
+standard.order.vm.path= /jnjlamasterstore/import/contentCatalogs/jnjContentCatalog/emails/templates/email-orderStatusNotificationBody_en.vm
+
+#Changes to use quantity Check
+min.quantity.popup.check = 1000

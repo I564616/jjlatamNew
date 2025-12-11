@@ -1,0 +1,88 @@
+# Impex ImportProcessor that injects all config properties as impex definitions.
+# All defined configuration properties are added as impex macro definitions with the prefix of "config-".
+# For example the config key mail.smtp.server can be accessed via the macro <tt>$config-mail.smtp.server
+# In order to use this import processor and to load the configuration properties the following must be added to the top of the impex file:
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+
+
+# Import the Solr configuration for the brCMSite store
+#
+
+$serverConfigName=jnjICSolrServerConfig
+$indexConfigName=jnjICSolrIndexConfig
+$searchConfigName=jnjICPageSize
+
+
+$facetSearchConfigName=jnjICIndex
+$facetSearchConfigDescription=jnj Indirect Cutomer Index
+$searchIndexNamePrefix=jnj
+$solrIndexedType=JnjICType
+
+
+
+#
+# Setup the Solr server, indexer, and search configs
+#
+
+REMOVE SolrServerConfig;name[unique=true] 
+;$serverConfigName
+
+# Create the solr server configuration
+INSERT_UPDATE SolrServerConfig;name[unique=true];mode(code);embeddedMaster;aliveCheckInterval;connectionTimeout;readTimeout
+;$serverConfigName;$config-solr.mode;$config-solr.embeddedMaster;1000;1000;1000
+
+# Create the solr indexer configuration
+INSERT_UPDATE SolrIndexConfig;name[unique=true];batchSize;numberOfThreads;indexMode(code);
+;$indexConfigName;100;1;DIRECT;
+
+#% final String configValue = Config.getParameter("solr.replication");
+#% if: configValue.equals("true"); 
+INSERT_UPDATE SolrEndpointUrl;master[allownull=true][unique=true];solrServerConfig(name)[unique=true];url[allownull=true]
+;true;$serverConfigName;$config-solr.master.config.url
+;false;$serverConfigName;$config-solr.slave.config.url
+#% endif:
+
+#% if: configValue.equals("false");
+INSERT_UPDATE SolrEndpointUrl;master[allownull=true][unique=true];solrServerConfig(name)[unique=true];url[allownull=true]
+;true;$serverConfigName;$config-solr.config.url
+#% endif:
+
+# Create the faceted search configuration
+INSERT_UPDATE SolrSearchConfig;description[unique=true];pageSize
+;$searchConfigName;20
+
+#
+# Setup the indexed types, their properties, and the update queries
+#
+
+# Declare the indexed type Product
+INSERT_UPDATE SolrIndexedType;identifier[unique=true];type(code);variant;sorts(&sortRefID);identityProvider
+;$solrIndexedType;JnjIndirectCustomer;false;;jnjIndirectCustomerProvider
+
+
+INSERT_UPDATE SolrFacetSearchConfig;name[unique=true];description;indexNamePrefix;languages(isocode);currencies(isocode);solrServerConfig(name);solrSearchConfig(description);solrIndexConfig(name);solrIndexedTypes(identifier);enabledLanguageFallbackMechanism
+;$facetSearchConfigName;$facetSearchConfigDescription;$searchIndexNamePrefix;;;$serverConfigName;$searchConfigName;$indexConfigName;$solrIndexedType;true;
+
+
+    
+
+
+# Non-facet properties
+INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];type(code);sortableType(code);currency[default=false];localized[default=false];multiValue[default=false];useForSpellchecking[default=false];useForAutocomplete[default=false];fieldValueProvider;valueProviderParameter
+;$solrIndexedType;indirectCustomer;text;;;;;true;true;jnjIndirectCustomerCountryProvider;
+;$solrIndexedType;indirectCustomerName;text;;;;;true;true;jnjIndirectCustomerNameProvider;
+
+
+# Create the queries that will be used to extract data for Solr
+INSERT_UPDATE SolrIndexerQuery;solrIndexedType(identifier)[unique=true];identifier[unique=true];type(code);injectCurrentDate[default=true];injectCurrentTime[default=true];injectLastIndexTime[default=true];query;user(uid)
+
+;$solrIndexedType;$searchIndexNamePrefix-fullQuery;full;;;false;"
+select {IC:pk} from {JnjIndirectCustomer as IC}
+";anonymous
+
+;$solrIndexedType;$searchIndexNamePrefix-updateQuery;update;;;;"
+select {IC:pk} from {JnjIndirectCustomer as IC} 
+where 
+{IC:modifiedtime} >= ?lastIndexTime
+";anonymous
+

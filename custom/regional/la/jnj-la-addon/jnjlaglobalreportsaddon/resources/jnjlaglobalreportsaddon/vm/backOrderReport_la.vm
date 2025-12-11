@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    </head>
+    <body>
+		#if(${backOrderExcelorPdf} == "OpenItemExcel")
+			<table width="600" border="0" cellpadding="8" cellspacing="1" align="center">
+				<tr align="center"><td align="center"><img  src="${mediaBaseUrl}${siteLogoPath}" /></td></tr>
+			</table>
+		
+			<br/>
+			<br/>
+			<br/>
+			<table style="width:600;" border="1" cellspacing="0" cellpadding="8">
+				<tr>
+					<td valign="top" style="font-family:Arial;font-size:13px;line-height:16px;background-color:#ccc" align="left"><b>${docDetails}</b></td>
+				</tr>
+				<tr>
+					<td style="font-family:Arial;font-size:13px" valign="top"><b>${docName}:</b></td>
+					<td style="font-family:Arial;font-size:13px">${sheetName1}</td>
+					</br>
+				</tr>
+				<tr>
+					<td style="font-family:Arial;font-size:13px"><b>${account}:</b></td>
+					<td style="font-family:Arial;font-size:13px">#if(${selectedAccounts} == "Multiple")${selectedAccounts}#else
+ 					 #if(${selectedAccounts})${selectedAccounts}#end,#if(${selectedAccountName})${selectedAccountName}#end #end</td>
+					</br>
+				</tr>
+				<tr>
+					<td style="font-family:Arial;font-size:13px"><b>${downloadDate}:</b></td>
+					<td style="font-family:Arial;font-size:13px">${date}</td>
+				</tr>
+			</table>
+			<br/>
+			<table style="width:600;" border="1" cellspacing="0" cellpadding="8">
+				<tr>
+					<td  style="font-family:Arial;font-size:13px;line-height:16px;background-color:#ccc" align="left"><b>${searchcriteria}</b></td>
+				</tr>
+				<tr style="font-family:Arial;font-size:13px"><td><b>${start}:</b></td><td align="left">#if(${searchCriteria.fromDate})${searchCriteria.fromDate} #end </td></tr>
+				<tr style="font-family:Arial;font-size:13px"><td><b>${end}:</b></td><td align="left"> #if(${searchCriteria.toDate})${searchCriteria.toDate} #end </td></tr>
+			</table>
+			<br/>
+			<table style="width:600;font-family:Calibri" border="1" cellspacing="0" cellpadding="8" >
+				<tr style="font-family:jnjbodyfont;font-size:13px;background-color:#ccc">
+					<td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${account}</b></td>
+					<td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${orderNum}</b></td>
+					<td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${customerPO}</b></td>
+					<td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${orderDate}</b></td>
+					<td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${productCode}</b></td>
+					<td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${productName}</b></td>
+					<td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${qty}</b></td>
+					<td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${uom}</b></td>
+					<td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${unitPrice}</b></td>
+					<td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${totalPrice}</b></td>
+					<td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${lineStatus}</b></td>
+					<td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${estDelDate}</b></td>
+				</tr>
+				#foreach($entry in $jnjGTBackorderReportResponseData)
+					<tr style="font-family:Arial;font-size:13px" valign="top">
+						<td align="left">#if(${entry.AccountNumber})&#8203;${entry.AccountNumber} #end</input></td>
+						<td align="left">#if(${entry.SapOrderNum})&#8203;${entry.SapOrderNum} #end</td>
+						<td align="left">#if(${entry.CustomerPO})${entry.CustomerPO} #end</td>
+						<td align="left">#if(${entry.OrderDate})${entry.OrderDate} #end</td>
+						<td align="left">#if(${entry.ProductCode})${entry.ProductCode} #end</td>
+						<td align="left">#if(${entry.ProductName})${entry.ProductName} #end</td>
+						<td style="width:43px;" align="left">#if(${entry.Qty})${entry.Qty} #end</td>
+						<td align="left">#if(${entry.Unit})${entry.Unit} #end</td>
+						<td style="width:45px;">#if(${entry.itemPrice})${entry.Currency} ${entry.itemPrice} #end</td>
+						<td align="left">#if(${entry.extendedPrice})${entry.Currency} ${entry.extendedPrice} #end</td>
+						<td align="left">#if(${entry.Status})${entry.Status} #end</td>
+						<td align="left">
+							#if(${entry.scheduleLines}) 
+								#foreach($scheduleLine in ${entry.scheduleLines})
+									#if(${scheduleLine.formattedDeliveryDate})${scheduleLine.formattedDeliveryDate} #end #if(${scheduleLine.quantity}) - ${scheduleLine.quantity} ${entry.unit}#end
+								#end
+							#end
+						</td>
+					</tr>
+				#end
+			</table>
+			<br/>
+		#elseif(${backOrderExcelorPdf} == "OpenItemPdf")
+			<table style="width:600;font-family:Calibri;padding-bottom:20px" border="0" cellspacing="0" cellpadding="0">
+				<tr><td><img  src="${mediaBaseUrl}${siteLogoPath}" /></td></tr>
+			</table>
+			<br/>
+			<table style="width:600;font-family:Calibri" border="1" cellspacing="0" cellpadding="8">
+				<tr>
+					<th colspan="3" bgcolor="rgb(165,165,165)" valign="top" style="color:white;font-family:Calibri;font-size:14px;line-height:14px;" align="left">${docDetails}</th>
+				</tr>
+				<tr>
+					<td valign="top"><b>${docName}:</b> ${sheetName1}</td>
+					<td><b>${account}: </b>#if(${selectedAccounts} == "Multiple")${selectedAccounts}#else
+ 					 #if(${selectedAccounts})${selectedAccounts}#end,#if(${selectedAccountName})${selectedAccountName}#end #end</td>
+					<td><b>${downloadDate}:</b> ${date}</td>
+				</tr>
+			</table>
+			<br/>
+			<table style="width:600;" border="1" cellspacing="0" cellpadding="8">
+				<tr>
+					<th colspan="2" bgcolor="rgb(165,165,165)" style="color:white;font-family:Calibri;font-size:14px;line-height:14px;" align="left">${searchcriteria}</th>
+				</tr>
+				<tr style="font-family:Calibri;font-size:12px">
+					<td><b>${start}:</b>#if(${searchCriteria.fromDate})${searchCriteria.fromDate} #end </td>
+					<td><b>${end}:</b>#if(${searchCriteria.toDate})${searchCriteria.toDate} #end </td>
+				</tr>
+			</table>
+			
+			<br/>
+			<table style="width:600;font-family:Calibri" border="1" cellspacing="0" cellpadding="8" >
+				<tr style="color:white;font-family:Calibri;font-size:12px">
+					<th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:50px;"  align="left" >${account}</th>
+					<th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:50px;"  align="left" >${orderNum}</th>
+					<th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:43px;"  align="left" >${customerPO}</th>
+					<th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:44px;"  align="left">${orderDate}</th>
+					<th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:44px;"  align="left">${productCode}</th>
+					<th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:44px;"  align="left">${productName}</th>
+					<th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:47px;"  align="left" >${qty}</th>
+					<th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:45px;" align="left" >${uom}</th>
+					<th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:44px;"  align="left" >${unitPrice}</th>
+					<th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:45px;"  align="left" >${totalPrice}</th>
+					<th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:45px;" align="left" >${lineStatus}</th>
+					<th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:47px;" align="left" >${estDelDate}</th>
+				</tr>
+				
+				#foreach($entry in $jnjGTBackorderReportResponseData)
+					<tr style="font-family:Calibri;font-size:12px" valign="top">
+						<td style="width:45px;">#if(${entry.AccountNumber})${entry.AccountNumber} #end</td>
+						<td style="width:45px;">#if(${entry.SapOrderNum})${entry.SapOrderNum} #end</td>
+						<td style="width:47px;">#if(${entry.CustomerPO})${entry.CustomerPO} #end</td>
+						<td style="width:44px;">#if(${entry.OrderDate})${entry.OrderDate} #end</td>
+						<td style="width:50px;">#if(${entry.ProductCode})${entry.ProductCode}#end </td>
+						<td style="width:50px;">#if(${entry.ProductName})${entry.ProductName} #end</td>
+						<td style="width:43px;">#if(${entry.Qty})${entry.Qty}#end </td>
+						<td style="width:43px;">#if(${entry.Unit})${entry.Unit} #end </td>
+						<td style="width:45px;">#if(${entry.itemPrice})${entry.Currency} ${entry.itemPrice} #end</td> 
+						<td style="width:45px;">#if(${entry.extendedPrice})${entry.Currency} ${entry.extendedPrice} #end</td> 
+						<td style="width:47px;">#if(${entry.Status})${entry.Status} #end</td>
+						<td align="left">
+							#if(${entry.scheduleLines}) 
+								#foreach($scheduleLine in ${entry.scheduleLines})
+									#if(${scheduleLine.formattedDeliveryDate})${scheduleLine.formattedDeliveryDate} #end #if(${scheduleLine.quantity}) - ${scheduleLine.quantity} ${entry.unit}#end
+								#end
+							#end
+						</td>
+					</tr>
+				#end
+				</table>
+				<br/>
+		#end
+</body>
+</html>

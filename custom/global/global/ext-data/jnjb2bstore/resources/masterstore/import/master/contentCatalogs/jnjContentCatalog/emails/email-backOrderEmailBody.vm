@@ -1,0 +1,286 @@
+## messageSource=classpath:/jnjb2bcore/messages/email-backOrder_$lang.properties
+#macro( genHtmlBoldFont $text )
+<font color="#414a4f" size="2" face="Arial, Helvetica, sans-serif"><b>$text</b></font>
+#end
+#macro(genHtmlLinkStartTag $url)
+<a href="$url"><font color="#666666">
+#end
+#macro(genHtmlLinkEndTag)
+</font></a>
+#end
+#macro(genHtmlLink $url $textColor $bodyContent)
+<a href="$url"><font color="$textColor">$bodyContent</font></a>
+#end
+<style>
+input.span-18 {
+	border-left-width: 1px;
+    border-right-width: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+	width: 698px;
+}
+.blank_row
+{
+    height: 20px
+    background-color: #FFFFFF;
+}	
+.last {
+    margin-right: 0;
+    padding-right: 0;
+}
+.interfaceNotificationBody h2.arrowHeader span {
+    float: right;
+}
+.interfaceNotificationBody ul {
+    margin: 10px 0 20px;
+    padding-bottom: 10px;
+}
+.interfaceNotificationBody ul li {
+    clear: both;
+    margin-top: 10px;
+}
+.interfaceNotificationBody label {
+    display: block;
+}
+.interfaceNotificationBody label span {
+    color: #B41601;
+}
+.interfaceNotificationBody input[type="text"], .interfaceNotificationBody select {
+    color: #646464;
+    padding-left: 2px;
+    width: 420px;
+}
+.interfaceNotificationBody select {
+    color: #646464;
+    float: none;
+    margin-bottom: 0;
+    width: 230px;
+}
+.radioPanel label {
+    display: inline;
+}
+.radioPanel input[type="text"] {
+    display: block;
+    margin: 4px 0;
+}
+.radioPanel input[type="radio"] {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    margin-bottom: 0;
+}
+.interfaceNotificationBody input, .interfaceNotificationBody select {
+    padding: 0;
+}
+.interfaceNotificationBody select {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid #E5E5E5;
+    padding-bottom: 0;
+    padding-right: 0;
+    padding-top: 0;
+}
+.interfaceNotificationBody .buttonWrapper > input {
+    padding: 5px 15px;
+}
+h2.arrowHeader {
+    border-bottom: 1px solid #84C5D4;
+    color: #0A8CAA;
+    font-size: 16px;
+    line-height: 30px;
+    margin-bottom: 0;
+}
+.priceSmall {
+    color: #B41601;
+    font-size: 12px;
+}
+.instructiontxt {
+    color: #828282;
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+body {
+    line-height: 1.5;
+}
+body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section {
+    border: 0 none;
+    font-family: inherit;
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+body {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #222222;
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    font-size: 75%;
+}
+ul li {
+    color: #646464;
+    font-size: 12px;
+    list-style-type: none;
+}
+td {
+	color: #646464;
+}
+table.readDashboard
+{
+	background:#EEE;
+	color:#333;
+	font-size:12px;
+	font: 'Arial';
+	text-align:center;
+}
+table.readDashboard th
+{
+	background:#CCC;
+	font-weight:bold;
+}
+.inlineClass{display:inline;}
+.inlineClass div{display:inline;}
+</style>
+<html>
+<head>
+	<title>Confirmation Email</title>
+</head>
+<body id="containerBody" style="font-size:10px;">
+	<table style="background-color:#ffffff" width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+		<tr>
+			<td style="vertical-align:top;">
+				<table bgcolor="#ffffff" width="900" border="0" cellspacing="0" cellpadding="0" align="center">
+					<tr>
+							<td style="color: red;" width="600" height="5" colspan="3" style="background-color:red;">
+								<div style="width:11;height:11" >&nbsp;
+							</td>
+						</tr>
+					
+						<tr bgcolor="#ffffff">
+						  <td style="color: #646464;" width="11" height="11">
+						  <div style="width:11;height:11" />
+						  </td>
+						  <td style="color: #646464;" height="11">
+								<table width="800">
+									<tr>
+										<td> ${ctx.cmsSlotContents.TopContentLogo1}</td>
+									 <td style="color: #646464;" width="690" height="11">
+										  <div style="width:690;height:11" >&nbsp;<div>
+									  </td>
+									<td> ${ctx.cmsSlotContents.TopContentLogo2}</td>
+									</tr>
+								</table>
+						  </td>
+		                  <td style="color: #646464;" width="1" height="11">
+		                         <div style="width:1;height:11" />
+		                   </td>
+		                 </tr>
+					<tr class="blank_row">	
+						<td colspan="3">&nbsp;</td>
+					</tr>
+						
+					<br>
+					
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						
+						
+						<td style="color: #646464;max-width:578px;width:578px;" width="780" colspan="2">
+							<br /><br />
+							${ctx.messages.salutation} ${ctx.displayName},
+							<br /><br />
+							${ctx.messages.reqNotification}
+							<br/><br/>
+							
+							#set ($orderHistoryUrl = $ctx.secureBaseUrl+'/order-history')
+							#set ($backorderReportUrl = $ctx.secureBaseUrl+'/reports/backorder')
+							
+							${ctx.messages.orderFound} <a href="$orderHistoryUrl">${ctx.messages.orderHistory}</a> ${ctx.messages.sectionOrder}<sup>${ctx.messages.tm}</sup>. ${ctx.messages.addDetails}
+							<a href="$backorderReportUrl">${ctx.messages.backOrdered}</a>.
+							<br/><br/>  
+							<table bgcolor="#ffffff" width="500px" border="0" cellspacing="0" cellpadding="0" align="left" style="border: 1px solid D0D0D0;  border-collapse: collapse;">
+								<th height="30" bgcolor="#E0E0E0" style="border: 1px solid #D0D0D0; border-collapse: collapse;font-weight: bold; text-align: left; padding:5px 10px 0px 10px;">${ctx.messages.orderNumber}</th>
+								<th height="30" bgcolor="#E0E0E0" style="border: 1px solid #D0D0D0; border-collapse: collapse;font-weight: bold; text-align: left; padding:5px 10px 0px 10px;">${ctx.messages.prodName}</th>
+								<th height="30" bgcolor="#E0E0E0" style="border: 1px solid #D0D0D0; border-collapse: collapse;font-weight: bold; text-align: left; padding:5px 10px 0px 10px;">${ctx.messages.prodId}</th>
+								<th height="30" bgcolor="#E0E0E0" style="border: 1px solid #D0D0D0; border-collapse: collapse;font-weight: bold; text-align: left; padding:5px 10px 0px 10px;">${ctx.messages.availDate}</th>
+								
+								#foreach ($data in ${ctx.backorderEmailData})
+								<tr bgcolor="#ffffff">
+									<td height="30" style="border: 1px solid #D0D0D0; border-collapse: collapse; padding:5px 10px 0px 10px;">$data.orderNumber</td>
+									<td height="30" style="border: 1px solid #D0D0D0; border-collapse: collapse; padding:5px 10px 0px 10px;">#if($data.productName)$data.productName#end</td>
+									<td height="30" style="border: 1px solid #D0D0D0; border-collapse: collapse; padding:5px 10px 0px 10px;">$data.productCode</td>
+									<td height="30" style="border: 1px solid #D0D0D0; border-collapse: collapse; padding:5px 10px 0px 10px;">$data.availabilityDate</td>
+								</tr>
+								#end
+							</table>
+							</td>
+							</tr>
+							<tr>
+							</td>
+							<br /><br />
+							${ctx.messages.thankyou}<br/>
+							${ctx.messages.custService}<br/>
+							${ctx.messages.jnjcust}
+							
+							<p style="margin:5px 0; padding-left: 10px; font-size: 10px;"><font color="#666666" face="Arial, Helvetica, sans-serif">${ctx.messages.en_company}<br />
+			                     ${ctx.messages.en_addressLine1}<br />
+			                     ${ctx.messages.en_addressLine2}<br />
+			                      #if('ctx.messages.en_country'!="")
+			                    	${ctx.messages.en_country}<br />
+			                    #end
+			                    #if('ctx.messages.en_contact'!="")
+			                    	${ctx.messages.en_contact}<br />
+			                    #end</font>
+			                    </p><br />
+						</td>
+						<td width="11" height="11">
+						
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					
+					
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td>
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td style="color: #646464;" width="900">
+							${ctx.cmsSlotContents.EpicEmailFooter}
+						</td>
+								</tr>
+							</table>
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+				</table>
+			</td>
+			
+		</tr>
+	</table>
+</body>
+</html>

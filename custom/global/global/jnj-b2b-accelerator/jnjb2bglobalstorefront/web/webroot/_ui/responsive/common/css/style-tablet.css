@@ -1,0 +1,223 @@
+@media screen and (max-width: 768px) {
+	/* .table-bordered {
+		border: 1px solid #ddd;
+	} */
+	.orderDetailsTable div#ordersTable_wrapper .row:first-child .col-sm-6{
+		    background: none !important;
+	}
+	.textboxstyle {
+		width:100%;
+	}
+	/* added by lokesh oct 18 */
+	.shadow-header{
+		padding:0px 20px !important;
+	}
+	.jnj-body-padding {
+		padding: 20px !important;
+	}
+	
+	.catalogLanding .dataTables_length{
+		display:block !important;		
+	}
+	/* Added for Push menu */
+	
+	#jnj-main-header #hamburg-btn {
+	
+		margin-left: 15px !important;
+		display:block;
+	}
+	
+	/* added by lokesh oct 18 */
+	/* #jnj-main-header #header-right-holder{
+		//padding-right:15px !important;
+	} */
+	
+	#jnj-main-header .shadow-header{	
+		height: 140px;	
+	}
+	.jnj-container{
+		width:100%;
+		margin-left:0%;
+	}
+	.setshipping {
+	    margin: 2px 5px 0px;
+	    line-height:18px;
+	    width: 76px;
+	}
+	
+}
+
+
+@media only screen and (max-width:1024px){
+	.product-cell {
+	    min-width: 200px;
+	}	
+	.anchor-img img {
+	    width: 40px;
+	    margin-right: 10px;
+	}	
+	.product-cell{
+		width:150px !important;
+	}
+	.jnj-signup-container {
+	    width: 100%;
+	    margin-left: 0%;
+	    //background: #828282;
+	}
+	#signup-title {
+	    font-size: 36px;
+	    margin-top: 15px;
+	}
+
+	#datatab-tablet_length strong{padding-right:15px;}
+    #content-area{
+        width:100%;
+       }
+    #jnj-usr-details-menu{
+                                width:350px;
+                }
+	.breadcrumb .content,.breadcrumb + .content{
+		font-size: 36px;
+		margin-bottom: 20px !important;
+	}
+	.breadcrumb +.row.content, .breadcrumb +.row .content, .headingTxt.content {
+		font-size: 36px;
+		margin-bottom: 20px !important;
+	}
+	.jnj-popup-container .modal-title,.jnj-popup  .modal-title,.popup .modal-title{
+	    font-size: 24px
+	}	
+
+	/* added by lokesh 18-oct */
+	.padding-0-tablet{
+		padding:0px 15px 0px 15px;
+	}
+	.table>thead>tr>th{
+		border-right: 1px solid rgb(230,230,230);
+	}
+	#jnj-main-header .no-padding,#jnj-usr-details-menu .no-padding-menu{
+		padding:0px 15px 0px 15px;
+	}
+	.jnj-container{
+		width:100% !important;
+		margin-left:0% !important;
+		overflow-x: hidden;
+	}
+	#jnj-main-header #logo,#jnj-logo-holder img{
+		height:50px;
+		margin-left:50px;
+	}
+	#jnj-usr-details-menu #Menu{
+		padding:0px;
+	}
+	#jnj-usr-details-menu #usr-details-row{
+		padding:0px 15px 0px 15px;
+	}
+	#jnj-usr-details-menu #usr-details-menu-row{
+		position:absolute;
+		z-index:100;
+		width:100%;
+		//margin-top:85px;
+	}
+	.full-height{
+		height:auto;
+	}
+	#jnj-main-header #hamburg-btn {
+		margin-top: 21px;
+		width: 40px;
+		position: absolute;
+		z-index: 101;
+		margin-left: 20px;
+		display:block;
+	}
+	#jnj-usr-details-menu #jnj-menu{
+		display:none;
+		
+	}
+	/* added by lokesh 18-oct */
+	#global-search-txt{
+		padding-left:34px;
+	}
+	#jnj-main-header #global-search-txt-holder{
+		width:100%;
+		margin-top:25px;
+	}
+	/* added by lokesh 18-oct */
+	#jnj-main-header #search-icon{
+		left: 0px;
+	}
+	/* added by lokesh 18-oct */
+	#jnj-main-header #clear-txt-icon{
+		display:block
+	}
+	#menu-pointer{
+		display:block;
+	}
+	#jnj-main-header #global-search-mobile  .glyphicon-search{
+		margin-top:3px;
+	}
+	#jnj-main-header #global-search-mobile{
+		display:block;
+		margin-top:22px;
+	}
+	#jnj-main-header #cart-btn-holder{
+		margin-top:22px;
+	}
+	#jnj-usr-details-menu .usr-name-padding {
+		padding: 19px 0px 20px 25px;
+	}
+	#jnj-usr-details-menu .usr-address-padding{
+		padding:20px 0px 35px 25px;
+	}
+	#jnj-menu-list{
+		padding-left: 45px !important;
+	}
+	/* .usr-name-padding{
+		padding:5px 20px 20px 15px;
+	}
+	.usr-address-padding{
+		padding:20px 35px 35px 35px;
+	} */
+	/* Added for Push menu */
+	#jnj-usr-details-menu #usr-details {
+		padding-left: 0px !important;
+	}
+	#jnj-menu-list {
+		padding-left: 0px !important;
+	}
+	.pushmenu { 
+	  width: 350px;
+	  top: 0;
+	  z-index: 102;
+	  position: fixed;
+	  float:left;
+	}
+	.pushmenu-left { left: -350px; }
+
+	.pushmenu-left.pushmenu-open { left: 0!important; }
+	.pushmenu-push-toright { left: 350px; }
+	
+	#jnj-main-header #items-msg{
+		margin-left: 40px;
+		bottom: -9px;
+		padding:0px 5px;
+		font-size: 8px;
+		line-height: 18px;
+		margin-top: -15px
+	} 
+	/*Transition*/
+	.pushmenu, .pushmenu-push {
+	  -webkit-transition: all 0.5s ease;
+	  -moz-transition: all 0.5s ease;
+	  transition: all 0.5s ease;
+	}
+	#jnj-main-header #header-right-holder{
+		margin-top:0px;
+	}
+	#jnj-menu-list .menu-item{
+		padding:10px 10px 10px 20px  !important;
+	}
+} 
+
+
+ 

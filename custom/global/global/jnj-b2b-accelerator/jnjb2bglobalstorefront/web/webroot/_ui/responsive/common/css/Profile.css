@@ -1,0 +1,305 @@
+
+/* 4659 */
+#orderType-savemsg{display:none;margin-top:15px;color:#339966;font-weight:bold}
+.label-middle{line-height:35px} 
+/* start - added by lokesh nov 14 */
+.profile-accordian.panel{
+ margin-bottom: 0px !important;
+}
+.errorPosition{
+	margin-top:8px
+}
+.errorPosition-profile{
+	margin-top:48px;
+}
+
+#error-msg-chck label::before{
+	display:none;	
+}
+
+/* start - added by lokesh nov 7 */
+.jnj-content-hidden{
+	display:none;
+}
+.jnj-content-show{
+	display:block;
+}
+#profilepage .liststyle li{
+    list-style: none;
+    padding-bottom: 5px;
+}
+#profilepage label {   
+     font-weight: normal; 
+}
+.error {
+    color: #B41601;
+    font-weight:bold;
+}
+.correctAnswer {
+    color: #339966;
+}
+/* end - added by lokesh nov 7 */
+
+
+
+/* added by lokesh nov 4 */
+.secret-quest-dropdown-label label{
+	width:100%;
+	font-weight:normal;
+	margin-bottom:10px;
+	margin-top:10px;
+}
+.secret-quest-dropdown-label .bootstrap-select{
+	width:100%;
+}
+.secret-quest-text-label label{
+	display:none;
+}
+#profilepage #regpwd_showdiv,#regpwd_show_anch,#regpwd_gen_anch,#regpwd_gendiv,#regpwd_strength_str{
+	display:none !important;
+}
+#profilepage .pwdwidgetdiv{
+	width:225px !important;
+}
+#profilepage .pwdfield{
+	width:225px !important;
+	display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color:#828282;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+#profilepage .pwdstrengthbar{
+	float: left !important;
+	 width:225px !important;
+	height: 12px !important;
+}
+#profilepage .pwdstrength{
+	float: left !important;
+	width:225px !important;
+	margin-top:5px;
+}
+#profilepage .reEnter{
+	margin-top: 10px;
+}
+#profilepage  .pwdWidth{
+	width:30%;
+}
+#profilepage .quescls{
+    margin-top: 8px;
+    margin-left: 5px;
+    padding: 1px 4px;
+    font-family: jnjlabelfont;
+    font-size: 12px;
+    background-color: #0a8caa;
+}
+#profilepage .margintop20px{
+	margin-top:20px;
+}
+#profilepage .collapseblock{
+	width: 100%;
+	background-color: #fff;
+}
+#profilepage .clickontext{
+	font-size: 23px;
+	color:#0a8caa;
+}
+#profilepage button.clickontext{
+	border: none;
+	background: transparent;
+}
+#profilepage  .plusicon{
+    font-size: 12px;
+    top: -2px;
+    padding-right: 5px;
+}
+#profilepage .panel-title{
+	padding: 25px 30px;
+	border-bottom: 1px solid #f2f2f2;
+}
+#profilepage .btnclsactive{
+	padding: 10px 28px;
+    margin-top: 20px;
+}
+#profilepage  #counter{
+	padding-right:5px;
+}
+#profilepage  .selectiontxt{
+	margin-top: 5px;
+}
+#profilepage  .margintop{
+	margin-top:20px;
+}
+#profilepage  .margintop10{
+	margin-top:10px;
+	margin-bottom:0px;
+}
+#profilepage  .margintop5{
+	margin-top:5px;
+}
+#profilepage  #profile-ok-btn{
+    margin-top: 0px;
+}
+#profilepage   #securityQuestionAjax{
+	width: 50%;
+}
+#profilepage  .tootipcls{
+	background-color:#f2f2f2;
+}
+#profilepage .bordertop{
+	border-top: 1px solid #f2f2f2;
+}
+#profilepage .boxtext1{
+	width: 18%;
+	display: inline-block;
+	float:left;
+	
+
+	
+}
+
+#profilepage .accnobox{
+	width:50%;
+}
+#profilepage .boxtext2{
+	width:82%;
+	display: inline-block;
+	float:left;
+	padding-left:10px;
+}
+#profilepage .star{
+	font-size: 12px;
+	color:#b41601;
+}
+#profilepage .savechange{
+	margin-top: 30px;
+}
+#profilepage .profile-accordian-header{
+	padding: 20px 30px;
+    border-bottom: 1px solid #f2f2f2;
+}
+#profilepage .profile-accordian-body{
+	padding: 25px 50px;
+	background-color:rgb(251,251,251);
+	border-bottom: 1px solid #f2f2f2;
+}
+#profilepage .boxshadow {
+    background-color: white;
+    margin-bottom: 20px;
+}
+#profilepage  .Company-Information-block1{
+	border-top:1px solid #f2f2f2;
+	padding-bottom: 30px;
+	padding-top:30px;
+}
+#profilepage .profile-note{
+	padding-top:8px;
+}
+#profilepage  .product-block{
+	border: 1px solid #f2f2f2;
+    padding: 20px;
+    margin-left: 0px;
+    margin-top: 5px;	
+}
+#profilepage .choose-product{
+	padding-bottom:20px;
+}
+#profilepage  .account-number-block{
+	padding: 15px 25px 15px 25px;
+	display:none;
+}
+#profilepage .ship-to-check{
+	margin-top:0px;
+	margin-bottom:0px;
+	padding-left: 34px;
+}
+#profilepage .select-security-ques{
+    margin-bottom: 15px;
+}
+#profilepage .security{
+	margin-top:10px;
+	margin-bottom:10px;
+}
+#security-check-close{
+	margin-top: 15px !important;
+    font-size: 14px;
+    color: #0a8caa;
+    opacity: 1;
+}
+#securitycheckpopup  .security-check-cancel-btn{
+	margin-top: 8px;
+}
+#securitycheckpopup .security-popup{
+	margin: 0 auto;
+    width: 500px;
+    border-radius: 0px;
+    box-shadow: 0 0px 0px;
+}
+#securitycheckpopup  .selectTitle{
+	font-size:30px;
+}
+#securitycheckpopup .passowrd-text{
+	text-align: center;
+	margin-bottom: 5px;
+}
+#securitycheckpopup #securityQuestionAjax{
+    margin: 0 auto;
+}
+#securitycheckpopup .modal-body{
+	padding: 15px 15px 15px 15px;
+}
+#securitycheckpopup .modalcls {
+    top: 80px;
+}
+@media screen and (max-width: 968px){
+	#profilepage  .pwdWidth{
+		width: 36.2%;
+	}
+}
+@media screen and (max-width: 767px){
+	.errorPosition-profile{
+	margin-top:0px;
+		margin-bottom:5px;
+	}
+	.no-margin .select-security-ques{margin-bottom:0px !important}
+}
+@media screen and (max-width: 480px){
+	#profilepage .marginleft15{
+		margin-left: 0px;
+	}
+	
+	#profilepage .margin-all-top{
+		margin-top: 10px;
+	}
+	#profilepage  .selectiontxt{
+		margin-top: 10px;
+	}
+	#profilepage .pwdfield,#profilepage .pwdwidgetdiv,#profilepage .accnobox,#profilepage  .pwdWidth{
+		width: 100% !important;
+	}
+	#securitycheckpopup .security-popup{
+		width:100% !important;
+	}
+	#profilepage .save-change{
+		width:100%;
+	}
+	#profilepage .checkbox-inline+.checkbox-inline, .radio-inline+.radio-inline{
+		margin-left: 0px;
+	}
+	#profilepage .ship-to-check{
+		margin-top: 10px;
+	}
+	
+
+}

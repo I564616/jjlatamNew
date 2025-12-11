@@ -1,0 +1,24 @@
+# 
+# Create the JNJ NA BaseStore
+#
+
+$submitOrderProcessCode=order-process
+
+$MDDEpicSiteUid=mdd-deCMSsite
+
+$MDDproductCatalog=mddProdCatalog
+
+$MDDContentCatalog=mddDEContCatalog
+
+$MDDNAStoreUid=mdd-deBaseStore
+
+$MDDdefaultCurrency=EUR
+
+$languages=en,de,es,fr
+$defaultLanguage=en
+$MDDdeliveryCountries=DE
+
+
+# Base Store 
+INSERT_UPDATE BaseStore;uid[unique=true];catalogs(id);currencies(isocode);defaultCurrency(isocode);languages(isocode);defaultLanguage(isocode);deliveryCountries(isocode);submitOrderProcessCode
+;$MDDNAStoreUid;$MDDproductCatalog;$MDDdefaultCurrency;$MDDdefaultCurrency;$languages;$defaultLanguage;$MDDdeliveryCountries;$submitOrderProcessCode

@@ -1,0 +1,161 @@
+# Import essential data for the JNJ
+#
+# Includes:
+# * Languages
+# * Currencies
+# * Titles
+# * Vendors
+# * Warehouses
+# * Supported Credit/Debit cards
+# * User Groups
+# * DistanceUnits for Storelocator
+# * MediaFolders
+# * Media Formats
+# * Tax & Tax Groups
+# * Checkout Payment Types
+# * B2BPermission Types
+
+
+
+#
+# Import Language
+# 
+insert_update Language;fallbackLanguages(isocode);isocode[unique=true,allownull=true];name[lang=en]
+;;en;English
+;en;es;Spanish
+;en;fr;French
+;en;de;German
+
+
+# Currencies
+INSERT_UPDATE Currency;isocode[unique=true];conversion;digits;symbol;name[lang=en]
+;USD;1;2;$;USD
+;GBP;1;2;£;GBP
+;EUR;1;2;€;EUR
+;JPY;120;0;¥:JPY
+
+
+
+# Vendor
+INSERT_UPDATE Vendor;code[unique=true];name
+;default;Default Vendor
+
+# Warehouse
+INSERT_UPDATE Warehouse;code[unique=true];name;vendor(code)[default=default];default[default=true]
+;default;Default Warehouse;;true
+
+# Disable preview for email pages
+UPDATE CMSPageType;code[unique=true];previewDisabled
+;EmailPage;true
+
+# Titles
+INSERT_UPDATE Title;code[unique=true]
+;mr
+;mrs
+;miss
+;ms
+;dr
+;rev
+
+#Media Folders
+INSERT_UPDATE MediaFolder;qualifier[unique=true];path[unique=true]
+;images;images
+;email-body;email-body
+;email-attachments;email-attachments
+;cartAttachments;cartAttachments
+;zonzaImages;zonzaImages
+
+#Required Media formats for product images
+insert_update MediaFormat;qualifier[unique=true];externalId;name
+;300Wx300H;300Wx300H;300Wx300H
+;30Wx30H;30Wx30H;30Wx30H
+;515Wx515H;515Wx515H;515Wx515H 
+;65Wx65H;65Wx65H;65Wx65H
+;96Wx96H;96Wx96H;96Wx96H
+
+#TODO Needs to be revisited
+INSERT_UPDATE ServicelayerJob; code[unique=true];springId[unique=true]
+;cartRemovalJob;cartRemovalJob
+
+
+
+# Product - Personalization Rule
+$principal=b2bcustomergroup
+$query= ({materialBaseProduct} IS NULL and ?session.JNJ_SITE_NAME = 'MDD') OR  (?session.JNJ_SITE_NAME = 'CONS' AND {MODSTATUS} IN ({{ 	SELECT {PK} from {jnjGTModStatus AS STATUS} WHERE {STATUS:CODE} = 'DISCONTINUED' OR ({STATUS:CODE} = 'ACTIVE' AND {item:PK} IN	({{		SELECT {target} FROM {JnjB2bUnitToIncludedProducts}  WHERE {SOURCE} IN		({{			SELECT {unit:pk} from {jnjB2BUnit as unit JOIN jnjB2bCustomer as cust on {cust:currentB2BUnit}={unit:pk}}  where {cust:uid} =(?session.user.uid)		}})}})) }})) OR (?session.JNJ_SITE_NAME = 'PCM' AND {invalidInPrcieList} != '1' AND {PCMMODSTATUS} NOT IN ({{ 	SELECT {PK} from {jnjGTModStatus AS STATUS} WHERE {STATUS:CODE} = 'NOTAPPLICABLE' }}))
+INSERT_UPDATE SearchRestriction;code[unique=true];name;query;restrictedType(code);principal(uid);active[default=true];generate[default=true]
+;frontend_jnjProduct;Jnj NA Product Restriction;$query;JnJProduct;$principal
+#;blockModProductsinProdCockpit;Product Cockpit Restriction for Mod Products;({materialBaseProduct} IS NULL);JnJProduct;productmanagergroupUS-restricted;
+
+UPDATE SearchRestriction;code[unique=true];name;query;restrictedType(code)[unique=true];principal(uid);active[default=false];generate[default=true]
+;Backend_visibility;;{pk} IN ( ?session.catalogversions );CatalogVersion;employeegroup;
+
+
+
+# Variant Product - Personalization Rule
+$principal=customergroup
+$query= ({BASEPRODUCT} IN ({{	SELECT {PROD1:PK} FROM {jnjProduct AS PROD1} WHERE {PROD1:MATERIALBASEPRODUCT} IS NULL AND ?session.JNJ_SITE_NAME = 'MDD'	}}) AND ?session.JNJ_SITE_NAME = 'MDD')	OR	(?session.JNJ_SITE_NAME = 'CONS' AND {BASEPRODUCT} IN	({{		SELECT {PROD2:PK} FROM {jnjProduct AS PROD2} WHERE {PROD2:MODSTATUS} IN			({{				SELECT {STATUS:PK} from {jnjGTModStatus AS STATUS} WHERE {STATUS:CODE} = 'DISCONTINUED' OR ({STATUS:CODE} = 'ACTIVE' AND {PROD2:PK} IN				({{					SELECT {target} FROM {JnjB2bUnitToIncludedProducts}  WHERE {SOURCE} IN						({{							select {unit:pk} from {jnjB2BUnit as unit JOIN jnjB2bCustomer as cust on {cust:currentB2BUnit}={unit:pk}}  where {cust:uid} =(?session.user.uid)						}})				}})) }})}})) OR (?session.JNJ_SITE_NAME = 'PCM' AND {BASEPRODUCT} IN	({{		SELECT {PROD2:PK} FROM {jnjProduct AS PROD2} WHERE {PROD2:PCMMODSTATUS} NOT IN ({{ SELECT {STATUS:PK} from {jnjGTModStatus AS STATUS} WHERE {STATUS:CODE} = 'NOTAPPLICABLE'}})}}))
+INSERT_UPDATE SearchRestriction;code[unique=true];name;query;restrictedType(code);principal(uid);active[default=true];generate[default=true]
+;frontend_jnjVariantProduct;Jnj NA Variant Product Restriction;$query;JnjGTVariantProduct;$principal
+
+
+$principal=b2bcustomergroup
+$query= {item:catalogVersion} IN (?session.catalogversions)
+INSERT_UPDATE SearchRestriction;code[unique=true];name;query;restrictedType(code);principal(uid);active[default=true];generate[default=true]
+;Frontend_CMSItem;Frontend_CMSItem;$query;CMSItem;$principal
+
+
+
+# JNJ Na B2b unit - Personalization Rule
+$principal=customergroup
+$query= {active}=1
+
+INSERT_UPDATE SearchRestriction;code[unique=true];name;query;restrictedType(code);principal(uid);active[default=false];generate[default=true]
+;frontend_jnjB2BUnit;JnJB2BUnit Active Restriction;$query;JnJB2BUnit;$principal
+
+# JNJ Na B2b unit - Personalization Rule
+$principal=customergroup
+$query= {active}=1
+
+INSERT_UPDATE SearchRestriction;code[unique=true];name;query;restrictedType(code);principal(uid);active[default=true];generate[default=true]
+;frontend_jnjB2BUnit;JnJB2BUnit Active Restriction;$query;JnJB2BUnit;$principal
+
+
+#Default B2BUnit
+INSERT_UPDATE jnjB2BUnit;uid[unique=true];locName[lang=en];name;country(isocode);sourceSysId;
+;JnJDummyUnit;JnJDummyUnit;JnJDummyUnit
+;JnjGlobalUnit;Global account;Global account;;CONSUMER
+
+INSERT_UPDATE jnjB2BUnit;uid[unique=true];locName[lang=en];name;indicator;classOfTrade;active[allownull=true];sourceSysId;
+;JnjConsumerUnit;JnjConsumerUnit;JnjConsumerUnit;House;Y47;false;CONSUMER
+
+$b2bUnitId=JnjGlobalUnit
+INSERT_UPDATE Address; owner(jnjB2BUnit.uid)[unique=true]; streetname[unique=true]; streetnumber[unique=true]; postalcode[unique=true]; town; country(isocode); billingAddress; contactAddress; shippingAddress; phone1;phone2;fax
+;$b2bUnitId;Birnington Street;34;90058; my town; US; true; true; true;+55|126367778;+55|126367778;+55|126367778
+
+# Dummy User, which will be used to be associated to orders placed via SAP
+$userid=dummy@sapuser.com
+INSERT_UPDATE jnjB2bCustomer;uid[unique=true,allownull=true];email;name;groups(uid)[mode=append]
+;$userid;$userid;Dummy SAP User;JnJDummyUnit
+
+
+
+#Disable branch restriction and Order restriction so that SAP originated orders could be viewed in the portal. 
+
+Update SearchRestriction;code[unique=true];active
+;branch_restriction;false
+;b2border_restriction;false
+;costcenter_restriction;false
+;b2bpermission_restriction;false
+;b2busergroup_restriction;false
+;employee_restriction;false
+
+
+# Currencies to process feeds having currency other than USD.
+INSERT_UPDATE Currency;isocode[unique=true];conversion;digits;symbol;name[lang=en]
+;CAD;1,4;2;C$;Canadian Dollar
+;JPY;1;2;¥;Japanese Yen
+;SGD;1,4;2;S$;Singapore Dollar
+;AUD;1,4;2;A$;Australia Dollar
+;INR;1;2;Rs;India Rupee
+
+

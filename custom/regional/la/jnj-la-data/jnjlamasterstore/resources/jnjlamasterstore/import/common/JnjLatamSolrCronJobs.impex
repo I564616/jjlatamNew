@@ -1,0 +1,73 @@
+INSERT_UPDATE SolrIndexerCronJob; code[unique = true]        ; job(code)      ; facetSearchConfig(name)[unique = true]; indexerOperation(code); sessionLanguage(isocode); active[default = 'true']; nodeID[default = '0']
+                                ; JnjBRFullIndexCronJob      ; solrIndexerJob ; jnjBRIndex                            ; full                  ; en                      ;                         ; 1
+                                ; JnjBRUpdateIndexCronJob    ; solrIndexerJob ; jnjBRIndex                            ; update                ; en                      ;                         ; 1
+                                ; JnjBRDeleteIndexCronJob    ; solrIndexerJob ; jnjBRIndex                            ; delete                ; en                      ;                         ; 1
+                                ; JnjMXFullIndexCronJob      ; solrIndexerJob ; jnjMXIndex                            ; full                  ; en                      ;                         ; 1
+                                ; JnjMXUpdateIndexCronJob    ; solrIndexerJob ; jnjMXIndex                            ; update                ; en                      ;                         ; 1
+                                ; JnjMXDeleteIndexCronJob    ; solrIndexerJob ; jnjMXIndex                            ; delete                ; en                      ;                         ; 1
+                                ; JnjCENCAFullIndexCronJob   ; solrIndexerJob ; jnjCENCAIndex                         ; full                  ; en                      ;                         ; 1
+                                ; JnjCENCAUpdateIndexCronJob ; solrIndexerJob ; jnjCENCAIndex                         ; update                ; en                      ;                         ; 1
+                                ; JnjCENCADeleteIndexCronJob ; solrIndexerJob ; jnjCENCAIndex                         ; delete                ; en                      ;                         ; 1
+                                ; JnjECFullIndexCronJob      ; solrIndexerJob ; jnjECIndex                            ; full                  ; en                      ;                         ; 1
+                                ; JnjECUpdateIndexCronJob    ; solrIndexerJob ; jnjECIndex                            ; update                ; en                      ;                         ; 1
+                                ; JnjECDeleteIndexCronJob    ; solrIndexerJob ; jnjECIndex                            ; delete                ; en                      ;                         ; 1
+                                ; JnjARFullIndexCronJob      ; solrIndexerJob ; jnjARIndex                            ; full                  ; en                      ;                         ; 1
+                                ; JnjARUpdateIndexCronJob    ; solrIndexerJob ; jnjARIndex                            ; update                ; en                      ;                         ; 1
+                                ; JnjARDeleteIndexCronJob    ; solrIndexerJob ; jnjARIndex                            ; delete                ; en                      ;                         ; 1
+                                ; JnjUYFullIndexCronJob      ; solrIndexerJob ; jnjUYIndex                            ; full                  ; en                      ;                         ; 1
+                                ; JnjUYUpdateIndexCronJob    ; solrIndexerJob ; jnjUYIndex                            ; update                ; en                      ;                         ; 1
+                                ; JnjUYDeleteIndexCronJob    ; solrIndexerJob ; jnjUYIndex                            ; delete                ; en                      ;                         ; 1
+                                ; JnjCLFullIndexCronJob      ; solrIndexerJob ; jnjCLIndex                            ; full                  ; en                      ;                         ; 1
+                                ; JnjCLUpdateIndexCronJob    ; solrIndexerJob ; jnjCLIndex                            ; update                ; en                      ;                         ; 1
+                                ; JnjCLDeleteIndexCronJob    ; solrIndexerJob ; jnjCLIndex                            ; delete                ; en                      ;                         ; 1
+                                ; JnjCOFullIndexCronJob      ; solrIndexerJob ; jnjCOIndex                            ; full                  ; en                      ;                         ; 1
+                                ; JnjCOUpdateIndexCronJob    ; solrIndexerJob ; jnjCOIndex                            ; update                ; en                      ;                         ; 1
+                                ; JnjCODeleteIndexCronJob    ; solrIndexerJob ; jnjCOIndex                            ; delete                ; en                      ;                         ; 1
+                                ; JnjPEFullIndexCronJob      ; solrIndexerJob ; jnjPEIndex                            ; full                  ; en                      ;                         ; 1
+                                ; JnjPEUpdateIndexCronJob    ; solrIndexerJob ; jnjPEIndex                            ; update                ; en                      ;                         ; 1
+                                ; JnjPEDeleteIndexCronJob    ; solrIndexerJob ; jnjPEIndex                            ; delete                ; en                      ;                         ; 1
+                                ; JnjPRFullIndexCronJob      ; solrIndexerJob ; jnjPRIndex                            ; full                  ; en                      ;                         ; 1
+                                ; JnjPRUpdateIndexCronJob    ; solrIndexerJob ; jnjPRIndex                            ; update                ; en                      ;                         ; 1
+                                ; JnjPRDeleteIndexCronJob    ; solrIndexerJob ; jnjPRIndex                            ; delete                ; en                      ;                         ; 1
+
+REMOVE CompositeCronJob; code[unique = true]          ; job(code);
+                       ; jnjProductFullIndexerCronJob ;
+
+INSERT_UPDATE CompositeCronJob; code[unique = true]          ; job(code)               ; sessionLanguage(isocode); active[default = 'true']
+                              ; jnjProductFullIndexerCronJob ; compositeJobPerformable ; en                      ;
+
+INSERT_UPDATE CompositeEntry; code[unique = true] ; compositeCronJob(code)       ; compositeCronJobPOS[unique = true]; executableCronJob(code)[unique = true]; triggerableJob(code)[unique = true]
+                            ; BRDeleteIndexJob    ; JnjUpsertProductCompositeJob ; 13                                ; JnjBRDeleteIndexCronJob               ;
+                            ; BRUpdateIndexJob    ; JnjUpsertProductCompositeJob ; 14                                ; JnjBRUpdateIndexCronJob               ;
+                            ; MXDeleteIndexJob    ; JnjUpsertProductCompositeJob ; 15                                ; JnjMXDeleteIndexCronJob               ;
+                            ; MXUpdateIndexJob    ; JnjUpsertProductCompositeJob ; 16                                ; JnjMXUpdateIndexCronJob               ;
+                            ; CENCADeleteIndexJob ; JnjUpsertProductCompositeJob ; 17                                ; JnjCENCADeleteIndexCronJob            ;
+                            ; CENCAUpdateIndexJob ; JnjUpsertProductCompositeJob ; 18                                ; JnjCENCAUpdateIndexCronJob            ;
+                            ; ECDeleteIndexJob    ; JnjUpsertProductCompositeJob ; 19                                ; JnjECDeleteIndexCronJob               ;
+                            ; ECUpdateIndexJob    ; JnjUpsertProductCompositeJob ; 20                                ; JnjECUpdateIndexCronJob               ;
+                            ; ARDeleteIndexJob    ; JnjUpsertProductCompositeJob ; 21                                ; JnjARDeleteIndexCronJob               ;
+                            ; ARUpdateIndexJob    ; JnjUpsertProductCompositeJob ; 22                                ; JnjARUpdateIndexCronJob               ;
+                            ; UYDeleteIndexJob    ; JnjUpsertProductCompositeJob ; 23                                ; JnjUYDeleteIndexCronJob               ;
+                            ; UYUpdateIndexJob    ; JnjUpsertProductCompositeJob ; 24                                ; JnjUYUpdateIndexCronJob               ;
+                            ; CLDeleteIndexJob    ; JnjUpsertProductCompositeJob ; 25                                ; JnjCLDeleteIndexCronJob               ;
+                            ; CLUpdateIndexJob    ; JnjUpsertProductCompositeJob ; 26                                ; JnjCLUpdateIndexCronJob               ;
+                            ; CODeleteIndexJob    ; JnjUpsertProductCompositeJob ; 27                                ; JnjCODeleteIndexCronJob               ;
+                            ; COUpdateIndexJob    ; JnjUpsertProductCompositeJob ; 28                                ; JnjCOUpdateIndexCronJob               ;
+                            ; PEDeleteIndexJob    ; JnjUpsertProductCompositeJob ; 29                                ; JnjPEDeleteIndexCronJob               ;
+                            ; PEUpdateIndexJob    ; JnjUpsertProductCompositeJob ; 30                                ; JnjPEUpdateIndexCronJob               ;
+                            ; PRDeleteIndexJob    ; JnjUpsertProductCompositeJob ; 31                                ; JnjPRDeleteIndexCronJob               ;
+                            ; PRUpdateIndexJob    ; JnjUpsertProductCompositeJob ; 32                                ; JnjPRUpdateIndexCronJob               ;
+                            ; BRFullIndexJob      ; jnjProductFullIndexerCronJob ; 0                                 ; JnjBRFullIndexCronJob                 ;
+                            ; MXFullIndexJob      ; jnjProductFullIndexerCronJob ; 1                                 ; JnjMXFullIndexCronJob                 ;
+                            ; CENCAFullIndexJob   ; jnjProductFullIndexerCronJob ; 2                                 ; JnjCENCAFullIndexCronJob              ;
+                            ; ECFullIndexJob      ; jnjProductFullIndexerCronJob ; 3                                 ; JnjECFullIndexCronJob                 ;
+                            ; ARFullIndexJob      ; jnjProductFullIndexerCronJob ; 4                                 ; JnjARFullIndexCronJob                 ;
+                            ; UYFullIndexJob      ; jnjProductFullIndexerCronJob ; 5                                 ; JnjUYFullIndexCronJob                 ;
+                            ; CLFullIndexJob      ; jnjProductFullIndexerCronJob ; 6                                 ; JnjCLFullIndexCronJob                 ;
+                            ; COFullIndexJob      ; jnjProductFullIndexerCronJob ; 7                                 ; JnjCOFullIndexCronJob                 ;
+                            ; PEFullIndexJob      ; jnjProductFullIndexerCronJob ; 8                                 ; JnjPEFullIndexCronJob                 ;
+                            ; PRFullIndexJob      ; jnjProductFullIndexerCronJob ; 9                                 ; JnjPRFullIndexCronJob                 ;
+
+INSERT_UPDATE Trigger; cronjob(code)[unique = true]         ; cronExpression
+# Every Sunday at 0200 AM
+                     ; jnjProductFullIndexerCronJob         ; 0 0 2 ? * 1 *

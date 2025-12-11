@@ -1,0 +1,24 @@
+INSERT_UPDATE DynamicProcessDefinition;code[unique=true];active;content
+;jnjGTContactUsEmailProcess;true;"<process xmlns='http://www.hybris.de/xsd/processdefinition' start='generateContactUsEmail' name='jnjGTContactUsEmailProcess'
+		processClass='com.jnj.core.model.JnjGTContactUsEmailProcessModel' onError='error'>
+
+	<action id='generateContactUsEmail' bean='generateContactUsEmail'>
+		<transition name='OK' to='sendEmail'/>
+		<transition name='NOK' to='error'/>
+	</action>
+
+	<action id='sendEmail' bean='sendEmail'>
+		<transition name='OK' to='removeSentEmail'/>
+		<transition name='NOK' to='failed'/>
+	</action>
+
+	<action id='removeSentEmail' bean='removeSentEmail'>
+		<transition name='OK' to='success'/>
+		<transition name='NOK' to='error'/>
+	</action>
+	
+	<end id='error' state='ERROR'>Something went wrong sending Contact Us email.</end>
+	<end id='failed' state='FAILED'>Could not send contact us email at this time. Please contact administrator</end>
+	<end id='success' state='SUCCEEDED'>Sent Contact Us email.</end>
+
+</process>"

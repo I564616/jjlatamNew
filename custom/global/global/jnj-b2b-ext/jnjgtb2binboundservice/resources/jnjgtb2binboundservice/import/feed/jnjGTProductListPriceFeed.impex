@@ -1,0 +1,38 @@
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+# Initialization
+
+
+#STG_LISTPRICE_LOCLM
+INSERT_UPDATE JnjGTIntListPrice;productSkuCode;validFrom[dateformat=yyyy-MM-dd];validTo[dateformat=yyyy-MM-dd];division;listPriceID[unique=true];priceTypeCode;priceBook;srcSysId[unique=true];businessSector;recordStatus(code)[default='LOADING']		
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT MATERIAL_NUM ,  VALID_FROM , VALID_TO ,	DIVISION ,	LIST_PRICE_ID , PRICE_TYPE_CD , PRICE_BOOK ,  SOURCE_SYS_ID ,  	BUSINESS_SECTOR   FROM STG_LISTPRICE_LOCLM WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP""
+);"
+
+# STG_LISTPRICE_LOCLC 
+INSERT_UPDATE JnjGTIntListPrice;productSkuCode[unique=true];validFrom[dateformat=yyyy-MM-dd];validTo[dateformat=yyyy-MM-dd][unique=true];priceBook[unique=true];customerGroup[unique=true];listPriceID;distChannel[unique=true];salesOrg[unique=true];srcSysId[unique=true];businessSector;recordStatus(code)[default='LOADING']
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT MATERIAL_NUM , VALID_FROM, VALID_TO, PRICE_LIST, CUSTOMER_GROUP,	COND_REC_NUM, DIST_CHANNEL,	SALES_ORG,	SOURCE_SYS_ID,	BUSINESS_SECTOR FROM STG_LISTPRICE_LOCLC WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP""
+);"
+
+
+# STG_LISTPRICE_AMT_LOCLM
+INSERT_UPDATE JnjGTIntListPriceAmt;productSkuCode;listPriceAmt;currencyCode[unique=true];listPriceID[unique=true];priceUomCode;srcSysId[unique=true];businessSector
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT MATERIAL_NUM , LIST_PRICE_AMT , LIST_PRICE_AMT_CURR_CD ,  LIST_PRICE_ID ,  PRICE_UOM_CD ,   SOURCE_SYS_ID ,  BUSINESS_SECTOR FROM STG_LISTPRICE_AMT_LOCLM WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP""
+);"
+
+
+# STG_LISTPRICE_AMT_LOCLC
+INSERT_UPDATE JnjGTIntListPriceAmt;listPriceID[unique=true];priceUomCode;listPriceAmt;currencyCode;srcSysId[unique=true];businessSector
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT COND_REC_NUM ,  PRICE_UOM_CD ,  LIST_PRICE_AMT ,LIST_PRICE_AMT_CURR_CD ,SOURCE_SYS_ID ,BUSINESS_SECTOR  FROM STG_LISTPRICE_AMT_LOCLC WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP""
+);"
+

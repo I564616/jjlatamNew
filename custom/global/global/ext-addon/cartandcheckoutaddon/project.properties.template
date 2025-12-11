@@ -1,0 +1,36 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform 
+# 
+# Copyright (c) 2000-2015 hybris AG
+# All rights reserved.
+#  
+# This software is the confidential and proprietary information of hybris 
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with hybris.
+#
+#  
+# -----------------------------------------------------------------------
+
+# you can put key/value pairs here.
+# Use Config.getParameter(..) to retrieve the values during runtime.
+
+cartandcheckoutaddon.key=value
+
+# Specifies the location of the spring context file added automatically to the global platform application context.
+cartandcheckoutaddon.application-context=cartandcheckoutaddon-spring.xml
+
+yacceleratorstorefront.additionalWebSpringConfigs.cartandcheckoutaddon=classpath:/cartandcheckoutaddon/web/spring/cartandcheckoutaddon-web-spring.xml
+yb2bacceleratorstorefront.additionalWebSpringConfigs.cartandcheckoutaddon=classpath:/cartandcheckoutaddon/web/spring/cartandcheckoutaddon-web-spring.xml
+
+storefront.supportedUiExperienceLevels.electronics=DESKTOP,MOBILE
+storefront.supportedUiExperienceLevels.apparel-uk=DESKTOP,MOBILE
+storefront.supportedUiExperienceLevels.apparel-de=DESKTOP,MOBILE
+storefront.supportedUiExperienceLevels.powertools=DESKTOP
+
+
+cartandcheckoutaddon.javascript.paths.desktop=/desktop/common/js/cartandcheckoutaddon.js;/desktop/common/js/acc.cartpopup.js;/desktop/common/js/acc.cartremoveitem.js;/desktop/common/js/acc.cartPage.js;/desktop/common/js/acc.cartCheckoutPage.js;/desktop/common/js/acc.cartValidationPage.js;/desktop/common/js/acc.saveorderastemplate.js;/desktop/common/js/acc.lightBoxPopup.js;/desktop/common/js/acc.editCreditCardPopup.js;/desktop/common/js/acc.orderTemplate.js;/desktop/common/js/acc.cartAddTocart.js;/desktop/common/js/acc.changeAddressPopup.js;/desktop/common/js/acc.cartCommon.js;/desktop/common/js/acc.contractCommon.js;/desktop/common/js/acc.contractDownload.js;/desktop/common/js/acc.contractdetail.js
+cartandcheckoutaddon.javascript.paths.mobile=/desktop/common/js/cartandcheckoutaddon.js
+cartandcheckoutaddon.css.paths.desktop=/desktop/common/css/cartandcheckoutaddon.css
+cartandcheckoutaddon.css.paths.mobile=/mobile/common/css/cartandcheckoutaddon.css
+cartandcheckoutaddon.javascript.paths.responsive=/responsive/common/js/acc.cartAddTocart.js;/responsive/common/js/cartandcheckoutaddon.js;/responsive/common/js/acc.cartpopup.js;/responsive/common/js/acc.cartValidationPage.js;/responsive/common/js/acc.saveorderastemplate.js;/responsive/common/js/acc.editCreditCardPopup.js;/responsive/common/js/acc.orderTemplate.js;/responsive/common/js/acc.cartCommon.js;/responsive/common/js/acc.contractCommon.js;/responsive/common/js/acc.contractDownload.js;/responsive/common/js/acc.contractdetail.js

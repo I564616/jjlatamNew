@@ -1,0 +1,189 @@
+// All lightboxs used in EPIC Project
+
+//termconditionpopup START----------------------------------------------------------------------
+var ACC4={}
+ACC4.termconditionpop = {
+
+	bindAll: function()
+	{
+		this.bindprivacypolicypopupLink($('.termconditionpopup_hn'));
+	
+	},
+
+	bindprivacypolicypopupLink: function(link)
+	{
+		link.click(function()
+				{
+			$.get(ACC.config.contextPath + "/termsAndConditions").done(function(data) {
+				/*$.colorbox({
+				html:data,
+					height: '510px',
+					width: '600px',
+					overlayClose: false,
+					onComplete: function(){
+						$("#closePop").click(function(){
+							$.colorbox.close();
+						});
+					}
+
+				});*/
+			});
+		});
+	}
+};
+
+$(document).ready(function()
+{
+	ACC4.termconditionpop.bindAll();
+});
+//termconditionpopup END----------------------------------------------------------------------
+
+//privacypolicypop START----------------------------------------------------------------------
+/*var ACC7 = {  };
+ACC7.privacypolicypop = {
+
+	bindAll: function()
+	{
+		this.bindprivacypolicypopupLink($('.privacypolicypopup_hn'));
+	
+	},
+
+	bindprivacypolicypopupLink: function(link)
+	{
+		link.click(function()
+		{
+			$.get(link.data('url')).done(function(data) {
+				$.colorbox({
+				html:"<div class='lightboxtemplate'><h2>Privacy Policy</h2><div class='lightboxbody'><div class='privacyPolicyDiv marTop20'><h4>Welcome</h4><p>Welcome to [portal URL]. This site is property of <strong>Johnson and Johnson - Latin America, L.L.C.</strong>.. The Privacy Policy is designed to let you know on our practices on gathering, usage, and disclosure of information provided through this web site.   Please make sure you read the Privacy Policy thoroughly before using or sending information to this site. This site is designed for the use of the Johnson & Johnson family of companies employees and customers in Latin America .</p><h4>Your Consent</h4><p>By using this site, you are accepting the terms of the Privacy Policy.  When sending the information via this site, you are aware that the gathering, usage and disclosure of such information will be used according to this Privacy Policy. </p><h4>Information Provided by You</h4><p>Some areas of this site may ask you to send personally identifiable information so that you may benefit with specific characteristics (such as newsletter subscription, suggestions/indicators, processing of orders, or delivery of summaries) or that you participate in a particular activity (like bets or other promotions).  You will be informed of which information is required and which is optional.</p><h4>Passive Information Gathering</h4><p>While you navigate through this site, certain anonymous information may be gathered in a passive manner (that is, taken without you providing this information actively) using several technologies, like cookies, Internet etiquettes or web beacon and navigation data gathering (registration files, server files, click flows).  Your Internet explorer automatically transfers this site part of such anonymous information, as URL web site from which you come and the (IP) Protocol Internet Address, and the explorer version that your computer is currently using.  This site may also gather anonymous information from your computer through cookies and Internet etiquettes or web beacons.  You may configure your explorer so that it notifies you when a cookie is sent or to reject all the cookies, but certain characteristics of this site may not properly function without cookies.</p><p>This site can use or combine such anonymous information gathered in a passive manner to offer a better service to the site visitors, personalize the site based on your preferences, to compile and analyze statistics and tendencies, and administrate in a better way and improve the site for your use.  Such information is not combined with your personally identifiable information that is gathered in any other part of the site, unless that you have consented it.</p><h4>Usage and Disclosure of Information</h4><p>Except if it were stated in a different way, we can use the information gathered through this site to improve the content of our site, personalize the site according to your preferences, and to communicate information (if you have requested it), for own commercial and research purposes and for any other purpose stated.  We can make full use of all the information gathered through this site that is not personally identifiable.</p><p>If you provide personally identifiable information to this site, we can combine such information with other information actively collected unless otherwise stated in the point of collection.  We can disclose information personally identifiable that you provide through this site to other Johnson & Johnson affiliates around the world, that accept to manage it according to the Privacy Policy and use it for the same purposes.  We can also disclose personally identifiable information that you provide through this site to third parties that are non Johnson & Johnson affiliates, but exclusively:</p><p>To contractors that we use to support our business (such as fulfillment services, technical support, mail services, and financial institutions), in which the case, we would require that such third parties accept to manage it according to the Privacy Policy and use it for the same purposes;</p><p>In relation to the sale, assignation or any other transference of the business of this site to which the information is related, in which the case, we would require that any purchaser agree to manage it according to the Privacy Policy and use it for the same purposes.To answer to requests of fulfillment of the law or where the applicable laws require it, court orders or government regulations.</p><p>The gathering, use and disclosure of the information stated in the Privacy Policy may involve transference of information to jurisdictions located outside your country of residence, which may not have equivalent norms or laws in reference to personally identifiable information.  In these cases, you will be requested for consent to make such transfers and disclosures in accordance to this Privacy Policy.</p><h4>Usage and Disclosure of Information</h4><p>We can use your information collected through this site for a diversity of purposes, including improving the content of our own site, communicate you on information (if you have requested it), for own commercial and research purposes as specified in the Privacy Policy.</p><h4>Security</h4><p>This site takes reasonable actions to protect the personally identifiable information meanwhile you transfer it to our site, and to protect such information from loss, improper use and not authorized access, disclosure, alteration or destruction.  You must have in mind that no transmission through Internet is totally free of errors.  Especially, e-mails sent to or from this site may not be safe. Even if we provide an e-mail address so that you can contact us, keep in mind that no Internet transmission is totally safe or free of errors and that e-mails send to or from this site may not be safe.  Because of this, you should be especially careful when deciding what information to send via e-mail.</p><h4>How to contact us</h4><p>If you have questions, comments, requests or preoccupations related to the Privacy Policy or the information practices in this site, or if you do not want to receive future communications, please contact us in the following way:</p><p>By Letter:</p><p>Johnson and Johnson Medical Devices and Diagnostics - Latin America, L.L.C. </br> To whom concern:   Customer Logistics</br>Rua Gerivatiba, nº  207, 15º andar - Bairro Butantã</br>São Paulo – SP – Brasil</br> CEP 05501-900</p><p>By e-mail: <a href='mailto:contatocorporativo@its.jnj.com'>contatocorporativo@its.jnj.com</a></p><p>By Phone: <strong> 0800-7075440</strong></p><h4>Modifications to this Privacy Policy</h4><p>If this Privacy Policy changes, the revised policy will be put in this site.  Please check it periodically and especially before providing any personally identifiable information.  This Privacy Policy was updated for the last time on March 2012.</p><p class='privacyFooter'>This site is published by Johnson and Johnson Medical Devices and Diagnostics - Latin America, L.L.C. which is solely responsible for its contents and is destined for the use of the Johnson & Johnson family of companies employees and customers in Latin America.</br>All Contents ©Johnson and Johnson Medical Devices and Diagnostics - Latin America, L.L.C. 2009 - 2013. All Rights Reserved.</p><div class='buttonWrapperWithBG txtCenter'><a href='javascript:;' id='closePop' class='tertiarybtn'>CLOSE</a></div></div></div></div>",
+					height: '510px',
+					width: '600px',
+					overlayClose: false,
+					onComplete: function(){
+						$("#closePop").click(function(){
+							$.colorbox.close();
+						});
+					}
+
+				});
+			});
+		});
+	}
+};*/
+/*
+$(document).ready(function()
+{
+	ACC7.privacypolicypop.bindAll();
+});*/
+//privacypolicypop END----------------------------------------------------------------------
+
+
+//legalnoticepop START----------------------------------------------------------------------
+var ACC3 = {  };
+ACC3.legalnoticepop = {
+
+		bindAll: function()
+		{
+			this.bindlegalnoticepopupLink($('.legalnoticepopup_hn'));
+		
+		},
+
+		bindlegalnoticepopupLink: function(link)
+		{
+			link.click(function()
+			{
+				$.get(ACC.config.contextPath + "/legalNotice").done(function(data) {
+					/*$.colorbox({
+					html:data,
+						height: '510px',
+						width: '600px',
+						overlayClose: false,
+						onComplete: function(){
+							$("#closePop").click(function(){
+								$.colorbox.close();
+							});
+						}
+
+					});*/
+					
+				});
+			});
+		}
+};
+
+$(document).ready(function()
+{
+	ACC3.legalnoticepop.bindAll();
+});
+//legalnoticepop END----------------------------------------------------------------------
+
+//contactus popup START----------------------------------------------------------------------
+var ACC6 = {  };
+
+ACC6.contactUs = {
+
+bindAll: function()
+{
+	this.bindContactUsLightBoxLink($('.contactUsLightBoxLink'));
+},
+
+bindContactUsLightBoxLink: function(link)
+{
+	link.click(function()
+			{
+				var data=$('#contactUsLightBox').html();
+				$.colorbox({
+					html: data,
+					height: 'auto',
+					width: '498px',
+					overlayClose: false,
+
+					onComplete: function(){
+
+						$(".contactUsSubjectLb").on("click", showLightBoxInputBox);
+
+						function showLightBoxInputBox(e){
+							e.preventDefault();
+							var contactUsSubjectVal = $(".contactUsSubjectLb option:selected").val();
+							if(contactUsSubjectVal == "Placing Order")
+								$("#contactUsOrderNumberLb").closest("li").css("display","block");
+							else
+								$("#contactUsOrderNumberLb").closest("li").css("display","none");
+						}
+
+						$(".contactUsFormLb").validate({
+				
+							errorPlacement: function(error, element) { 
+								error.appendTo(element.parent().parent().parent().find('div.registerError'));
+							},
+							onfocusout: false,
+							focusCleanup: false
+							
+						});
+
+						$(".contactUsFormSubmitLb").click(function(e){ 
+							
+							if($(".contactUsFormLb").valid()){
+								$('.contactUsFormPage1Lb').hide();
+								$('.contactUsFormPage2Lb').show();		
+							}
+						});
+
+						$(".backToContactUsForm").click(function(e){
+							$('.contactUsFormPage1Lb').show();
+							$('.contactUsFormPage2Lb').hide();
+						}); 
+					}
+
+				});
+			});
+}
+};
+
+$(document).ready(function()
+{
+	ACC6.contactUs.bindAll();
+	$('.closePopup').click(function(){					
+		$.colorbox.close();
+	});	
+});
+//contactus popup END----------------------------------------------------------------------

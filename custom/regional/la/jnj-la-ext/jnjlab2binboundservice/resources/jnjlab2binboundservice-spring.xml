@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+           
+	<!-- Beans for DAO layer LoadTranslation --> 
+	       <bean id="jnjLoadTranslationDao" class="com.jnj.la.dataload.dao.impl.JnjLoadTranslationDaoImpl">
+			   <property name="rsaDBConnector" ref="rsaDBConnector"/>
+			   <property name="configurationService" ref="configurationService"/>
+			   <property name="jnjLaCronjobUtil" ref="jnjLaCronjobUtil"/>
+		   </bean>
+			<bean id="jnjLoadTranslationDataLoadService" class="com.jnj.la.dataload.services.impl.JnjLoadTranslationDataLoadServiceImpl"></bean> 
+
+	<!-- Beans for LoadTranslation -->  
+		<bean id="jnjTranslationDataLoad" class="com.jnj.la.dataload.JnjTranslationDataLoad"></bean> 
+       <bean id="jnjTranslationMapper" class="com.jnj.la.dataload.mapper.JnjTranslationMapper"></bean>
+	
+	
+  	 	<!-- START Beans for LoadContract -->         
+        <bean id="jnjContractDataLoad" class="com.jnj.la.dataload.JnjContractDataLoad"></bean> 
+        <bean id="jnjContractMapper" class="com.jnj.la.dataload.mapper.JnjContractMapper"></bean> 
+		<bean id="jnjContractDataLoadDao" class="com.jnj.la.dataload.dao.impl.JnjContractDataLoadDaoImpl">
+			<property name="rsaDBConnector" ref="rsaDBConnector"/>
+			<property name="configurationService" ref="configurationService"/>
+			<property name="jnjLaCronjobUtil" ref="jnjLaCronjobUtil"/>
+		</bean>
+        <bean id="jnjContractDataLoadService" class="com.jnj.la.dataload.services.impl.JnjContractDataLoadServiceImpl"/>	  
+        <!-- END Beans for LoadContract --> 
+        
+        <!-- START Beans for Upsert Customer -->         
+        <bean id="jnjCustomerDataLoad" class="com.jnj.la.dataload.JnjCustomerDataLoad"/>
+ 
+        <alias name="jnjLatamCustomerDataLoadMapper" alias="jnjCustomerDataLoadMapper"/> 
+		<bean id="jnjLatamCustomerDataLoadMapper" class="com.jnj.la.dataload.mapper.JnjLatamRSACustomerDataLoadMapper"/>
+        
+        <bean id="jnjCustomerDataLoadService" class="com.jnj.la.dataload.services.impl.JnjCustomerDataLoadServiceImpl"/>
+        
+        <bean id="jnjCustomerDataLoadDao" class="com.jnj.la.dataload.dao.impl.JnjCustomerDataLoadDaoImpl"/>
+        <!-- END  Beans for Upsert Customer --> 
+		
+		<!-- START Beans for Dropshipment -->  
+		       
+        <bean id="jnjDropshipmentDataLoad" class="com.jnj.la.dataload.JnjDropshipmentDataLoad"/>
+  
+		<bean id="jnjDropshipmentLoadMapper" class="com.jnj.la.dataload.mapper.JnjDropshipmentLoadMapper"/>
+        
+        <bean id="jnjDropshipmentDataLoadService" class="com.jnj.la.dataload.services.impl.JnjDropshipmentDataLoadServiceImpl"/>
+        
+        <bean id="jnjDropshipmentDataLoadDao" class="com.jnj.la.dataload.dao.impl.JnjDropshipmentDataLoadDaoImpl">
+			<property name="rsaDBConnector" ref="rsaDBConnector"/>
+			<property name="configurationService" ref="configurationService"/>
+			<property name="jnjLaCronjobUtil" ref="jnjLaCronjobUtil"/>
+		</bean>
+        
+        <!-- END  Beans for Dropshipment -->
+		
+    <!-- beans for SalesOrgCustomer Interface added -->
+	<bean id="JnjLASalesOrgCustomerService" class="com.jnj.la.dataload.services.impl.JnjLASalesOrgCustomerServiceImpl"/>
+	
+	<bean id="jnjRSASalesOrgCustDataService" class="com.jnj.la.dataload.services.impl.JnjRSASalesOrgCustDataServiceImpl"/>
+	
+	<bean id="jnjRSASalesOrgCustDao" class="com.jnj.la.dataload.dao.impl.JnjRSASalesOrgCustDaoImpl"/>
+	
+	<bean id="JnjLASalesOrgCustomerMapper" class="com.jnj.la.dataload.mapper.JnjLASalesOrgCustomerMapper"/>
+	
+	<bean id="JnjLASalesOrgCustomerDataload" class="com.jnj.la.dataload.JnjLASalesOrgCustomerDataload"/>
+	
+	<!-- 	  UpserProduct related beans -->
+	<bean id="jnjLAProductDataService" class="com.jnj.la.dataload.services.impl.JnjLAProductDataServiceImpl" autowire="byName" />	
+			
+</beans>

@@ -1,0 +1,37 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform 
+# 
+# Copyright (c) 2000-2015 hybris AG
+# All rights reserved.
+#  
+# This software is the confidential and proprietary information of hybris 
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with hybris.
+#
+#  
+# -----------------------------------------------------------------------
+
+# you can put key/value pairs here.
+# Use Config.getParameter(..) to retrieve the values during runtime.
+
+loginaddon.key=value
+
+# Specifies the location of the spring context file added automatically to the global platform application context.
+loginaddon.application-context=loginaddon-spring.xml
+
+yacceleratorstorefront.additionalWebSpringConfigs.loginaddon=classpath:/loginaddon/web/spring/loginaddon-web-spring.xml
+yb2bacceleratorstorefront.additionalWebSpringConfigs.loginaddon=classpath:/loginaddon/web/spring/loginaddon-web-spring.xml
+
+storefront.supportedUiExperienceLevels.electronics=DESKTOP,MOBILE
+storefront.supportedUiExperienceLevels.apparel-uk=DESKTOP,MOBILE
+storefront.supportedUiExperienceLevels.apparel-de=DESKTOP,MOBILE
+storefront.supportedUiExperienceLevels.powertools=DESKTOP
+
+
+#loginaddon.javascript.paths.desktop=/desktop/common/js/loginaddon.js;/desktop/common/js/jquery.validate.js;/desktop/common/js/jquery.steps.js;/desktop/common/js/jqueryStepCustom.js;/desktop/common/js/acc.register.js;/desktop/common/js/additional-methods.min.js;/desktop/common/js/acc.passwordstrength.js;/desktop/common/js/acc.passwordstrengthValidator.js;/desktop/common/js/acc.passwordExpireUserManagement.js;/desktop/common/js/acc.langselector.js;/desktop/common/js/acc.langcurrencyselector.js;/desktop/common/js/acc.helpContacUs.js;/desktop/common/js/acc.privacypolicypopup.js;/desktop/common/js/acc.termconditionpopup.js;/desktop/common/js/acc.addToCartHome.js;/desktop/common/js/acc.changeaccountpopup.js;/desktop/common/js/common.js;/desktop/common/js/acc.legalnoticepopup.js;/desktop/common/js/acc.firstTimeResetPassword.js
+#loginaddon.javascript.paths.mobile=/desktop/common/js/loginaddon.js
+#loginaddon.css.paths.desktop=/desktop/common/css/loginaddon.css
+#loginaddon.css.paths.mobile=/mobile/common/css/loginaddon.css
+
+loginaddon.javascript.paths.responsive=/responsive/common/js/loginaddon.js;/responsive/common/js/acc.firstTimeResetPassword.js;

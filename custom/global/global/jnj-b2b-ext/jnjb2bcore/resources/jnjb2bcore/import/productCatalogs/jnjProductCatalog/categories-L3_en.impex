@@ -1,0 +1,1229 @@
+# ImpEx for Importing Categories into J&J Store
+
+# Macros / Replacement Parameter definitions
+$productCatalog=mstrProductCatalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$supercategories=supercategories(code[unique=true], $catalogVersion)
+
+# Insert Categories at Level 3
+UPDATE Category;code[unique=true];name[lang=en];$catalogVersion
+#############################################################################MD&D#############################################################################################
+;000110100100;Instruments and Cases for DC (LF);
+;000110100200;DC Plates and Special Implants;
+;000110100300;Instr.and Cases f/ LCP (LF) and LISS;
+;000110100400;LCP Generic Plates;
+;000110100500;LCP Metaphyseal Plate (LF);
+;000110100600;LCP Proximal Tibia Plates / LISS PLT;
+;000110100700;LCP Distal Femur Plates / LISS DF;
+;000110100800;LCP Proximal Femur Plates;
+;000110100850;VA-LCP Proximal Femur Plates;
+;000110100900;VA-LCP Distal Femur Plates;
+;000110101000;Periprosthetics;
+;000110101100;LCP TomoFix;
+;000110101200;4.5 mm Cortex Screws;
+;000110101300;5.0 mm Locking Screws;
+;000110101400;5.0 mm Variable Angle Locking Screws;
+;000110101500;5.0 mm Dynamic Locking Screws;
+;000110101600;6.5mm Cancellous Screws;
+;000110101700;7.3mm Locking Screws;
+;000110200104;DHS-DCS;
+;000110200106;Angled Blade Plates;
+;000110200109;DHHS;
+;000110200110;Angled Blade Plates Hip and Condyles;
+;000110200111;DHS Blade;
+;000110200112;LCP DHS;
+;000110200113;LCP DHS with collar;
+;000110200120;Trochanter Stabilizing Plates;
+;000110200121;Modular Blade Plates;
+;000110300108;Instruments and Cases for DC (SF);
+;000110300109;DC (SF) Clavicle Hook Plates;
+;000110300110;Instruments and Cases for LCP (SF);
+;000110300111;Humerus Block + Button Fix;
+;000110300112;PHILOS;
+;000110300113;LCP Elbow Plates;
+;000110300114;LCP 1/3 Tubular Plates;
+;000110300115;LCP Clavicle Plates;
+;000110300116;Angled Blade Plates Humerus;
+;000110300117;Periarticular Proximal Humerus Plates;
+;000110300118;VA-LCP Elbow Plates;
+;000110300119;LCP (SF) Clavicle Hook Plates;
+;000110300120;LCP Metaphyseal Plate (SF);
+;000110300121;DC Generic Plates (SF);
+;000110300122;DC Form Plates (SF);
+;000110300123;LCP Generic Plates (SF);
+;000110300125;LCP 3.5 Proximal Tibia Plate;
+;000110300126;VA-LCP ProxTibia 3.5;
+;000110300130;LCP Distal Tibia Plates;
+;000110300132;LCP Pilon Plate;
+;000110300134;VA LCP Distal Tibia Plates;
+;000110300140;LCP Hook Plate 3.5mm;
+;000110300150;LCP Distal Fibula Plates;
+;000110300151;VA LCP Distal Fibula Plates;
+;000110300500;3.5 Cortex Screws;
+;000110300510;4.0 Cancel Screws;
+;000110300520;3.5 Conical Head Screws;
+;000110300550;3.5 Locking Screws;
+;000110300560;3.7 Dynamic Locking Screws;
+;000110300570;3.5 VA Locking Screws;
+;000110300580;3.5 Perforated Locking Screws;
+;000110300590;2.7 Locking Screw (head LCP 3.5);
+;000110400110;4.5 CSS;
+;000110400111;4.0 CSS;
+;000110400112;7.0 CSS;
+;000110400113;7.3 CSS;
+;000110400114;6.5 CSS;
+;000110400115;2.4 CSS;
+;000110400116;3.0 CSS;
+;000110400117;3.5 CSS;
+;000110400120;Spherical Washer;
+;000110500110;TFNA;
+;000110500115;PFN;
+;000110500116;PFNA;
+;000110500117;TFN;
+;000110500118;PFNA-II;
+;000110500119;Elastic Nail (TEN);
+;000110500120;Reaming (SynReam + RIA);
+;000110500122;Universal Nails;
+;000110500123;"UTN; CTN";
+;000110500124;"UFN; CFN; AFN";
+;000110500125;DFN;
+;000110500126;"UHN; PHN; SBHN; FlexNailHumerus";
+;000110500128;ASLS - Angular Stable Locking System;
+;000110500129;Locking Bolts and Screws;
+;000110500130;Expert Tibial Nail;
+;000110500131;ModAD;
+;000110500132;EXPERT RAFN;
+;000110500133;EXPERT Humeral Nail;
+;000110500134;EXPERT Hindfoot Arthodesis Nail / HAN;
+;000110500135;EXPERT� Ulnar Nail/Radial Nail (UN/RN);
+;000110500136;Olecranon Osteotomy Nail;
+;000110500137;Synsonic;
+;000110500140;ModAD for Expert� Nailing system;
+;000110500161;EXPERT LFN;
+;000110500162;Expert Adolescent Lateral Femoral Nail;
+;000110500163;Expert A2FN;
+;000110500164;Locking Plate for Humeral Nail;
+;000110500165;MultiLoc Humeral Nailing System;
+;000110500166;Clavicle Nail System;
+;000110500167;Expert SSFN Femur;
+;000110500200;CNS - Compact Nailing System;
+;000110500250;SureLock;
+;000110508127;ASLS Resorbable;
+;000110508300;Coated Nails;
+;000110600120;Single Use Ex Fix;
+;000110600130;Large Ex-Fix;
+;000110600132;Hybrid Ring Fixator;
+;000110600133;DO Ring Fixator;
+;000110600134;Monolateral Systems;
+;000110600135;DO Monolateral Fixator;
+;000110600136;DO Ring Hexapod;
+;000110600137;Medium External Fixator;
+;000110600138;Mini Fix Hand;
+;000110600139;Distal Radius External Fixation+ADRF;
+;000110600140;Ex Fix various;
+;000110600141;Small External Fixator;
+;000110700140;DC (Pelvic);
+;000110700143;Pelvic various;
+;000110700146;Pelvic System;
+;000110700148;Pelvic C-Clamp;
+;000110700149;Pelvic Cable System;
+;000110700150;OsseLign;
+;000110800105;Angled Blade Plates orthopaed./paediatr.;
+;000110800110;LCP Pediatric Hip Plate;
+;000110800111;LCP Pediatric Condylar Plate;
+;000110800115;Ligamentoplasty;
+;000110800120;Osteotomy Guiding Device;
+;000110800125;Locking Attachment Plate;
+;000110800130;SCFE Screw System;
+;000110900151;Bone Forceps;
+;000110900152;General Instruments;
+;000110900153;Wires;
+;000110900154;OPERACE;
+;000110900158;Veterinary;
+;000110900159;Cable System;
+;000110900160;MIO Instruments;
+;000111000100;1.5 HCS;
+;000111000110;2.0 HCS;
+;000111000120;2.4 HCS;
+;000111000130;3.0 HCS;
+;000111000140;4.0 HCS;
+;000111000150;4.5 HCS;
+;000111000160;6.5 HCS;
+;000111300100;MiniSet 1.5/2.0/2.7;
+;000111300200;Compact Hand 1.0 - 2.4;
+;000111300300;LCP Hand Modules;
+;000111300350;VA Hand Modules;
+;000111300400;Hand Speciality Plates;
+;000111300500;Wrist Arthrodesis Plates;
+;000111300550;Forearm Osteotomy;
+;000111300600;Non LCP Distal Radius Plates / Pi-Plates;
+;000111300700;LCP Volar Distal Radius Plates;
+;000111300800;LCP Volar Column Plate;
+;000111300900;LCP Dorsal Distal Radius Plates;
+;000111301000;VA-LCP Volar Distal Radius Plates;
+;000111301100;VA-LCP Dorsal Distal Radius Plates;
+;000111301200;LCP Radial Head Plates;
+;000111301300;2.4mm Locking Screws;
+;000111301400;2.4mm Variable Angle Locking Screws;
+;000111301500;2.4mm Cortex Screws;
+;000111301600;VA-LCP Radial Shaft Plates;
+;000111301700;VA-LCP Distal Ulna Plates;
+;000111308172;Polypin 2.0;
+;000111400187;Locking Calcaneal Plate;
+;000111400188;LCP Foot Modules;
+;000111400189;LCP Pilon Plate;
+;000111400190;Midfoot Fusion Bolt;
+;000111400191;Hallux Valgus;
+;000111400192;Orthopaedic Foot instruments;
+;000111400193;VA Foot Module;
+;000111400194;VA Ankle Trauma System;
+;000111400195;VA LCP Medial Column Plate;
+;000111400196;VA Locking Calcaneal Plate;
+;000111400197;Calcaneal Plate;
+;000111400210;2.7mm ProStitch Instruments;
+;000111400500;2.7 Cortex Screws;
+;000111400510;2.7 LowProf Metaphys-Compr Screws;
+;000111400520;2.7 Locking Screws (head LCP 2.4);
+;000111400530;2.7 VA Locking Screws (head LCP 2.4);
+;000111400550;4.0 Cortex Screws;
+;000111500110;EPOCA Implants;
+;000111500111;Epoca Reverse Implants;
+;000111500120;Epoca Instruments;
+;000111500130;Epoca Demo Implants;
+;000111550110;Radial Head Prosthesis Implants;
+;000111550120;Radial Head Prosthesis Instruments;
+;000111550130;Radial Head Prosthesis Demo Implants;
+;000111550140;Radial Head Prosthesis Cases;
+;000111608002;HA Coated Screws;
+;000111608050;PCL Augmentation;
+;000111608100;Augmentation;
+;000111608190;Bone Graft Harvesting Set;
+;000111608191;Diamond Trephine;
+;000111608192;chronOS in Trauma;
+;000111608193;Norian;
+;000111608194;chronOS Inject;
+;000111608195;chronOS Granules in Trauma;
+;000111608196;Cancellous Allografts;
+;000111608197;Demineralized Bone Matrixes;
+;000111608200;RapidSorb;
+;000111608300;Norian Drillable;
+;000111608400;chronOS Contour;
+;000111608500;chronOs Putty;
+;000111608501;Hemostatic Bone Putty;
+;000111608600;Forsteo;
+;000111700100;Veterinary Orthopedics;
+;000111700200;Veterinary Large Fragments;
+;000111700300;Veterinary Small & Mini Fragments;
+;000180000000;Group Interpore;
+;000190005000;Mediation Charge;
+;000190009100;Repair charge;
+;000190009150;AO-Course charge;
+;000190009200;Loan charge;
+;000190009250;Loan PT;
+;000190009300;Working time charge;
+;000190009400;Shipping charge / freight charge;
+;000190009500;Charge for cleaning and sterilisation;
+;000190009600;Surcharge;
+;000190009700;Discount;
+;000190009800;SIMS Trauma;
+;000195007000;Custom-made device;
+;000197000000;Prototypes & Semi-/Finished Products;
+;000197000100;Veterinary Products (USA);
+;000199000000;PreOPlan Trauma;
+;000199000001;PreOPlan Osteotomies;
+;000199000002;PreOPlan Trauma & Osteotomies;
+;000199000003;PreOPlan Trial;
+;000199980001;Standard Nails;
+;000199980002;Humeral Claw Nail;
+;000199980003;LIF;
+;000199986000;Remaining stock Promo material;
+;000199995000;Remaining stock Course;
+;000199995010;Remaining stock Synthetic Models;
+;000199995011;Remaining stock Synthetic Bones;
+;000199996000;Remaining stock Promo material;
+;000199997000;New Products (Trauma);
+;000199998000;New Biomaterial (Trauma);
+;000199999000;Remaining stock SYNTHES;
+;000199999996;set TRAUMA (ONLY JAPAN);
+;000199999998;Prothetics (ONLY FOR RUSSIA);
+;000199999999;Remaining stock not assigned;
+;000220100202;CSLP;
+;000220100205;Vectra;
+;000220100206;Dens Sets;
+;000220100216;CASPAR instruments;
+;000220100217;Cervical Retractor;
+;000220100218;ACF Instruments;
+;000220100220;SynCage Small;
+;000220100230;ECD - Expandable Corpectomy Device;
+;000220100239;SynMesh cervical;
+;000220100240;Vectra-T;
+;000220100245;Zero-P;
+;000220100246;Zero-P VA;
+;000220100251;SynCage-C;
+;000220100252;SynCage-C short;
+;000220100253;Cervios;
+;000220100254;ACIS Integrate;
+;000220100260;Synex Small;
+;000220100265;ACIS;
+;000220100266;ACIS Ti-coated;
+;000220108000;Advanced ACF Spacer;
+;000220108001;Cervios prefilled cages;
+;000220108002;Zero-P Allograft;
+;000220108003;Zero-P chronOS;
+;000220108005;Zero-P VA Allograft;
+;000220108006;Zero-P VA PROmotive;
+;000220108007;ACIS Integrate ChronOs;
+;000220150201;Posterior Cervical Basic Implants;
+;000220150202;ExoPlate;
+;000220150203;CerviFix;
+;000220150204;Posterior & Hook Plates;
+;000220150205;StarLock;
+;000220150206;Synapse;
+;000220150207;Axon;
+;000220150208;Occipital Cervical Fusion;
+;000220150209;Synapse 4.0;
+;000220150212;C1/C2;
+;000220150213;Arch Fixation System;
+;000220150215;Spine Cable;
+;000220158000;ODL Spacer;
+;000220170201;PRODISC C;
+;000220170202;PRODISC C Nova;
+;000220170204;Prodisc-C Vivo;
+;000220200231;VentroFix;
+;000220200232;TeleFix;
+;000220200236;Synex RL;
+;000220200237;synexTM;
+;000220200238;synex II;
+;000220200239;SynMesh thoracic/lumbar;
+;000220200241;ArcoFix;
+;000220200242;synex II New;
+;000220200243;TSLP;
+;000220200270;SynFrame;
+;000220200271;SynFrame RL;
+;000220200272;MiniSynFrame;
+;000220250214;Jacobs System;
+;000220250224;Spine Fix;
+;000220250235;USS Deformity Set;
+;000220250240;USS Paediatric;
+;000220250245;USS II Deformity Set;
+;000220250246;USS LP Deformity Set;
+;000220250250;VEPTR;
+;000220250251;USS II Ilio-Sacral;
+;000220250252;VEPTR II;
+;000220250260;Pangea Monoaxial & Hooks;
+;000220250265;Trolley;
+;000220250270;Crosslinks;
+;000220250280;Pangea Anterior;
+;000220250285;Universal Reduction Screws;
+;000220250290;URS Degen;
+;000220250300;Matrix Deformity;
+;000220250500;Non-Fusion Scoliosis System;
+;000220300216;Spondylolysis Hook Screw;
+;000220300233;Click'X;
+;000220300240;USS Degenerative;
+;000220300250;USS II Degenerative;
+;000220300260;USS II Polyaxial;
+;000220300270;Pangea Polyaxial Degen;
+;000220300280;MIS Rod Insertion;
+;000220300295;USS Fracture MIS;
+;000220300300;USS Fracture;
+;000220300400;Matrix Degen;
+;000220300450;Matrix MIS;
+;000220300460;Matrix Perforated;
+;000220350210;In-Space;
+;000220350250;Nflex;
+;000220350260;StenoFix;
+;000220350270;AdvancedPS;
+;000220350280;ISPF;
+;000220350290;Peek Rods;
+;000220350300;Facet Wedge;
+;000220400228;Access / General Instruments;
+;000220400230;MIPI Minimal Invasive Posterior Instr.;
+;000220400240;Lumbar Retractor;
+;000220400245;Insight Access System;
+;000220400250;TLS Crosslinks;
+;000220400260;TLS Rods;
+;000220400270;TLS Misc. Implants;
+;000220400280;MIS MIRA;
+;000220400290;Navigable Pedicle Prep;
+;000220408000;Allograft Bone Plug;
+;000220500201;ProPrep;
+;000220500232;CONTACT Fusion Cage;
+;000220500234;SynCage;
+;000220500235;SynCage-LR;
+;000220500238;VISIOS;
+;000220500239;T-PAL;
+;000220500240;TRAVIOS;
+;000220500242;PLIVIOS;
+;000220500243;OPAL;
+;000220500245;Lateral SynCage / Oracle Cage;
+;000220500247;Lateral SynFix;
+;000220500248;Allograft PLIF Instruments;
+;000220500257;#N/A;
+;000220500258;#N/A;
+;000220500259;SynFix-LR;
+;000220500300;PLIVIOS Revolution;
+;000220500408;ATB;
+;000220500409;Antegra/ Antegra-T;
+;000220500500;Synfix Evolution;
+;000220500501;Lateral Access Instruments;
+;000220500502;Syncage Evolution;
+;000220508256;PlivioPore;
+;000220508402;SynCage PROmotive;
+;000220508403;Plivios chronOS;
+;000220508407;Allograft Cages Lumbar;
+;000220508409;PLIVIOS Revolution chronOS;
+;000220508410;Luminary TLIF;
+;000220600201;VBS (Vertebral Body Stenting);
+;000220600202;PCO (Porous Containement);
+;000220600203;SynFlate (Vertebral Augmentat. Balloon);
+;000230008010;Various;
+;000230008025;permanOS Inject;
+;000230008030;chronOS Preforms in Spine;
+;000230008040;chronOS� Granules in Spine;
+;000230008050;chronOS Composite;
+;000230008070;chronOS Putty;
+;000230008100;DBX;
+;000230008110;Allograft Cages&Spacers (Serv Fee);
+;000230008200;Augmentation;
+;000230008300;DBM;
+;000238000010;Total Hemostatic Bone Putty;
+;000250002000;PRODISC L;
+;000250002010;PRODISC L Revision;
+;000250003000;PRODISC O;
+;000290009100;Repair charge;
+;000290009150;Spine-Course charge;
+;000290009200;Loan charge;
+;000290009250;Loan PT;
+;000290009300;Working time charge;
+;000290009400;Shipping charge / freight charge;
+;000290009500;Charge for cleaning and sterilisation;
+;000290009600;Surcharge;
+;000290009700;Discount;
+;000290009800;SIMS Spine;
+;000295007000;Custom-made device;
+;000297000000;Prototypes & Semi-/Finished Products;
+;000297000002;Demo material;
+;000299980201;Scout;
+;000299980203;DR C;
+;000299980204;ACLP (not used items);
+;000299980205;Vectra-R (not used items);
+;000299980206;Cavitoplasty (not used items);
+;000299980208;H Plate & Others (CS);
+;000299980210;Allo PLIF Instruments (not used items);
+;000299980215;Old Plates & Fixators;
+;000299980220;Soft Fixation / ADJ;
+;000299980230;Vamos System;
+;000299980235;Lotus;
+;000299980240;"VamosFlex; System";
+;000299980244;LIVIOS;
+;000299980246;ORACLE Plate;
+;000299980249;Click'X Top Loading Def (not used items);
+;000299980250;SynCage Open;
+;000299980252;SynCage Narrow;
+;000299980255;Vectra-One;
+;000299980260;Facet Interference Screw;
+;000299980280;Pangea Anterior (not used items);
+;000299980290;ClampFix;
+;000299980291;ClampFix MIS;
+;000299980400;Matrix 6.0 Deformity;
+;000299980404;MIS Translaminar Screws;
+;000299980500;Matrix 6.0 Degen;
+;000299981000;APF Disc;
+;000299984000;FDR L;
+;000299984020;FDR-E;
+;000299984030;Oracle Disc;
+;000299986000;Remaining stock Promo material;
+;000299988410;Luminary TLIF;
+;000299995000;Remaining stock Course;
+;000299995010;Remaining stock Synthetic Models;
+;000299995011;Remaining stock Synthetic Bones;
+;000299996000;Remaining stock Promo material;
+;000299997000;New Products (Spine);
+;000299998000;New Biomaterial (Spine);
+;000299999000;Remaining stock SYNTHES;
+;000299999996;Total set SPINE (ONLY JAPAN);
+;000299999997;DePuy Spine;
+;000299999999;Remaining stock not assigned;
+;000330100200;General Midface;
+;000330100302;1.0 Midface;
+;000330100304;1.3 Midface;
+;000330100306;1.5 Midface;
+;000330100307;Stardrive;
+;000330100308;2.0 Midface;
+;000330100309;Others Midface;
+;000330100310;General Orbit;
+;000330100311;Matrix Midface / Matrix Orbital;
+;000330100312;Matrix Orthognatics;
+;000330100313;Matrix Orthognatics LOCK;
+;000330150001;Patient Specific Implant (PSI);
+;000330150004;CSS Anatomical bone models;
+;000330150005;CSS Planning Service and Surgical Guides;
+;000330150006;CSS Planning Services;
+;000330150007;Patient Specific Mandible Plate;
+;000330150008;Patient Specific Orthognathic Plate;
+;000330150009;Patient Specific Plate Contouring;
+;000330200310;2.0 Mandible;
+;000330200311;UniLOCK 2.0;
+;000330200312;2.4 Mandible;
+;000330200314;2.7 Mandible;
+;000330200315;UniLOCK 2.4;
+;000330200316;THORP;
+;000330200317;FixBridge;
+;000330200318;Transbuccal;
+;000330200319;Others Mandible;
+;000330200320;Mandible IMF;
+;000330200321;90� Screwdriver;
+;000330200322;Endoscopy;
+;000330200323;Mandible External Fixator;
+;000330200324;Matrix Mandible;
+;000330200330;Orthodontic Bone Anchors;
+;000330200331;Rapid IMF;
+;000330308000;RapidSorb;
+;000330358100;RapidSorb PLUS;
+;000330400370;1.0 Neuro;
+;000330400372;1.3 Neuro;
+;000330400374;1.5 Neuro;
+;000330400375;1.6 Neuro;
+;000330400377;MatrixNeuro;
+;000330400380;FlapFix;
+;000330400381;Next Generation Cranial Clamp;
+;000330400382;SyntheCel;
+;000330500390;TSFS Secondary;
+;000330500391;Sternum General SST;
+;000330500392;MatrixRIB Fixation System;
+;000330500393;Sternal Tie  System;
+;000330500395;TSFS Primary;
+;000330500397;Thoracoscopic Rib;
+;000330508394;XCM Biologic Tissue Matrix;
+;000330508396;Hemostatic Bone Putty;
+;000330600200;Distraction General;
+;000330600310;Single Vector Distractor;
+;000330600311;Multivector Distractor;
+;000330600312;Maxillary Distractor;
+;000330600313;Alveolar Distractor;
+;000330600320;Ext.Midface Distr.;
+;000330600325;Int.Midface Distr.;
+;000330600330;Transpalatal Distr.;
+;000330600335;Craniomaxillofacial Distr.;
+;000330600340;Curvilinear Distr.;
+;000330708100;SynPOR;
+;000330708200;SynPOR Ocular Spheres;
+;000330708300;SynPOR Facial Shapes;
+;000330808305;Norian CRS;
+;000330808306;Norian Reinforced;
+;000330808340;chronOS Preforms in CMF;
+;000330808350;chronOS� Granules in CMF;
+;000330808360;chronOS Putty;
+;000330808400;DBX;
+;000330808500;Allograft CMF;
+;000330900100;1.3 Dental;
+;000330900101;1.5 Dental;
+;000330900102;2.0 Dental;
+;000331008100;DermaMatrix;
+;000332000000;Sterilizable Skull Model;
+;000340000100;Screw Removal;
+;000390005000;Mediation Charge;
+;000390009100;Repair charge;
+;000390009150;CMF-Course charge;
+;000390009200;Loan charge;
+;000390009250;Loan PT;
+;000390009300;Working time charge;
+;000390009400;Shipping charge / freight charge;
+;000390009500;Charge for cleaning and sterilisation;
+;000390009600;Surcharge;
+;000390009700;Discount;
+;000390009800;SIMS CMF;
+;000395007000;Custom-made device;
+;000397000000;Prototypes & Semi-/Finished Products;
+;000399980376;2.0 Neuro (not used items);
+;000399986000;Remaining stock Promo material;
+;000399988330;Resorbable Membranes 0.2 mm perforated;
+;000399988331;PolyMax General;
+;000399988350;Resorbable Membranes 0.6 mm perforated;
+;000399988355;PolyMax 1.5;
+;000399988357;PolyMax 2.0;
+;000399988359;Poly FlapFix;
+;000399988360;Resorbable Cranial Clamp;
+;000399988361;RapidSorb 1.5;
+;000399988362;RapidSorb 2.0;
+;000399995000;Remaining stock Course;
+;000399995010;Remaining stock Synthetic Models;
+;000399995011;Remaining stock Synthetic Bones;
+;000399996000;Remaining stock Promo material;
+;000399997000;New Products (CMF);
+;000399998000;New Biomaterial (CMF);
+;000399999000;Remaining stock SYNTHES;
+;000399999996;set CMF (ONLY JAPAN);
+;000399999999;Remaining stock not assigned;
+;000440050402;Uni;
+;000440050404;Small;
+;000440100403;Battery Power Line;
+;000440100404;Battery Power Line II;
+;000440100405;Air Power Line;
+;000440110406;CAD;
+;000440110407;PD;
+;000440110408;Attachm. CAD/PD;
+;000440120001;Trauma Recon System Battery;
+;000440120002;Trauma Recon System Air;
+;000440120003;Attachments for Trauma Recon System;
+;000440150401;COLIBRI;
+;000440150402;COLIBRI II;
+;000440150403;COLIBRI/Att.;
+;000440150405;COLIBRI/Cases;
+;000440200412;Mini Drill/Micro Drive Plus;
+;000440200413;Electric Pen Drive;
+;000440200414;Air Pen Drive;
+;000440200415;Attachments for EPD / APD;
+;000440200416;Accessories for EPD / APD;
+;000440200417;Small Electric Drive;
+;000440200418;Attachments for SED;
+;000440200419;Accessories for SED;
+;000440210010;EMax System;
+;000440210020;XMax System;
+;000440210030;Attachments for EMax/XMax;
+;000440210040;BlackMax System;
+;000440210050;Accessories for XMax/BlackMax;
+;000440210060;IMRI System;
+;000440210070;Irrigation/Suction;
+;000440210080;Cutting Tools;
+;000440210090;Instruments;
+;000440210100;Miscellaneous;
+;000440210110;G1 Electric System;
+;000440210120;G1 Attachments;
+;000440210130;G1 Accessories;
+;000440220010;Battery Extremity System;
+;000440250001;Piezo Electric System;
+;000440300414;Oscillating Saw;
+;000440300415;Saws/Tuke;
+;000440350416;Imp./Air Pulse;
+;000440350417;Imp./Rasp Driver;
+;000440400418;Air;
+;000440400419;Electric;
+;000440400420;Others;
+;000440500420;Osc. Saw Blades;
+;000440500421;Reciproc. Saw Blades;
+;000440500422;Drills;
+;000440500423;Burrs;
+;000440500424;Mini Rasps;
+;000440500425;Piezo Tips;
+;000440600425;Trays (Cases old);
+;000440600426;Graphic Cases (Cases old);
+;000440600427;Vario Case;
+;000440600428;Syncase;
+;000440700430;Spare Uni;
+;000440700431;Spare Battery Power Line;
+;000440700432;Spare Small;
+;000440700433;Air Power Line;
+;000440700434;Spare CAD;
+;000440700435;Spare POWER DRIVE;
+;000440700436;Spare Attachm. CAD/PD;
+;000440700437;Spare Colibri & Attachm.;
+;000440700438;Spare Hand Drill;
+;000440700439;Spare Trauma Recon System;
+;000440700440;Spare Mini;
+;000440700441;Spare Electric Pen Drive;
+;000440700442;Spare Osc. Saws;
+;000440700443;Spare Air Pen Drive;
+;000440700444;Spare Impact Machines;
+;000440700445;Spare Piezoelectric System;
+;000440700446;Spare Energy Supply;
+;000440700448;Spare Powertools rest;
+;000440700450;Spare VARIO Case;
+;000440700460;Repair Supply;
+;000440700480;Product Units;
+;000440700490;Spare Anspach Systems;
+;000441004010;Loan Sets Ortho & Trauma;
+;000441004015;Loan Sets Colibri;
+;000441004020;Loan Sets M&H;
+;000441004444;Loan Sets Rest;
+;000445000000;Service Contracts Basic;
+;000445000001;Service Contracts Standard;
+;000445000005;Service Contracts Standard plus;
+;000490009100;Repair charge;
+;000490009200;Loan charge;
+;000490009300;Working time charge;
+;000490009400;Shipping charge / freight charge;
+;000490009500;Charge for cleaning and sterilisation;
+;000490009600;Surcharge;
+;000490009700;Discount;
+;000495007000;Custom-made device;
+;000497000000;Prototypes & Semi-/Finished Products;
+;000499995000;Remaining stock Course;
+;000499995010;Remaining stock Synthetic Models;
+;000499995011;Remaining stock Synthetic Bones;
+;000499996000;Remaining stock Promo material;
+;000499997000;New Products (PT);
+;000499999000;Remaining stock SYNTHES;
+;000499999996;set Other (ONLY JAPAN);
+;000499999999;Remaining stock not assigned;
+;000660100600;UKS Unicondylar;
+;000660100601;UNICIA Unicondylar;
+;000660100602;CKS/Bicondylar;
+;000660100604;MAEVA-Bicondylar;
+;000660100801;Trephines Draenert;
+;000660100802;Trephines Cartilage Repair;
+;000660200608;Instruments / Cases;
+;000660200610;Unc Primary Stem;
+;000660200612;Uncemented Primary Cup;
+;000660200614;Cemented Hip Stem;
+;000660200616;Cemented Hip Cup;
+;000660200618;Acetabulum Reinforcement;
+;000660200620;Uncemented Revision Hip Stem;
+;000660200622;Cemented Revision Hip Stem;
+;000660200624;Uncemented Revision Cup;
+;000660200626;Cemented Revision Cup;
+;000660200628;Insert;
+;000660200630;Heads THP;
+;000660200632;Hemi Heads / Bipolar Heads;
+;000660200634;Other;
+;000660200636;Samples;
+;000660200638;Rest H�fte;
+;000660250000;MAB Products;
+;000660251000;IQL Products;
+;000660252000;Johnson&Johnson Products;
+;000660253000;Martin S.A. Products;
+;000660254000;Stryker Howmedica Products;
+;000660255000;Zimmer Products;
+;000660300640;Instruments/Cases;
+;000660300646;Cemented Humeral Stem;
+;000660300650;Heads;
+;000660500678;Bone Shapes;
+;000660500680;Fusion Tools;
+;000660500683;Hedrocel Samples;
+;000660600684;Reamer;
+;000660600686;Osc. Saw;
+;000660600688;Recip. Saw;
+;000660600690;Rasp Driver;
+;000660600692;Cases;
+;000660600694;Cutting Tools;
+;000660600696;Energy Supply;
+;000660600698;Spare;
+;000669000699;Rest Prothetik;
+;000690009100;Repair charge;
+;000690009200;Loan charge;
+;000690009300;Working time charge;
+;000690009400;Shipping charge / freight charge;
+;000690009500;Charge for cleaning and sterilisation;
+;000690009600;Surcharge;
+;000690009700;Discount;
+;000695007000;Custom-made device;
+;000699995000;Remaining stock Course;
+;000699995010;Remaining stock Synthetic Models;
+;000699995011;Remaining stock Synthetic Bones;
+;000699996000;Remaining stock Promo material;
+;000699999999;Remaining stock not assigned;
+;000770100700;Hardware;
+;000770100705;General;
+;000770100710;Spine;
+;000770100715;Trauma;
+;000770100720;Osteotomy;
+;000770100725;HEAD;
+;000770100730;Prosthetics Hip;
+;000770100735;Prosthetics Knee;
+;000770100740;Knee ACL;
+;000770100745;Maxillofacial;
+;000770100780;ELEKTA;
+;000770100790;Maintenance;
+;000779000799;Rest Medivision;
+;000790009100;Repair charge;
+;000790009200;Loan charge;
+;000790009300;Working time charge;
+;000790009400;Shipping charge / freight charge;
+;000790009500;Charge for cleaning and sterilisation;
+;000790009600;Surcharge;
+;000790009700;Discount;
+;000790009900;Additional Services;
+;000795007000;Custom-made device;
+;000799986000;Remaining stock Promo material;
+;000799995000;Remaining stock Course;
+;000799996000;Remaining stock Promo material;
+;000799999999;Remaining stock not assigned;
+;000880100801;Synthacer;
+;000880100899;Rest Biomaterialien;
+;000890009100;Repair charge;
+;000890009200;Loan charge;
+;000890009300;Working time charge;
+;000890009400;Shipping charge / freight charge;
+;000890009500;Charge for cleaning and sterilisation;
+;000890009600;Surcharge;
+;000890009700;Discount;
+;000895007000;Custom-made device;
+;000899996000;Remaining stock Promo material;
+;000899999999;Remaining stock not assigned;
+;001010100000;FMS;
+;001010300000;Knee;
+;001010500000;Mitek others;
+;001010600000;Shoulder;
+;001010700000;Small Joint;
+;001010900000;Tissue Management;
+;001090009200;Loan charge Mitek;
+;001110100000;Knees;
+;001110300000;Trauma;
+;001110500000;Hips;
+;001110700000;Extremities;
+;001110900000;"Castings; Braces and Supports";
+;001111100000;Cement;
+;001111300000;Navigation;
+;001111500000;Biomaterial - Joints Recon;
+;001111700000;Other Products;
+;001190009200;Loan charge joint recontstruction;
+;001290009200;Loan charge Codman;
+;001290100000;Drug delivery;
+;001290300000;Hydrocephalus;
+;001290500000;Instruments;
+;001290700000;Neuro critical care;
+;001290900000;Neuroradiology;
+;001291100000;Other Codman;
+;001291300000;Operative Neurosurgery;
+;001310100000;Other Products;
+;055005040504;MITEK;
+;055005660566;Neurosurgery;
+;055005667856;Neurovascular;
+;055007030567;Joint Reconstruction;
+;055007037843;Trauma Products;
+;055078237823;DePuy Spine;
+;055078307830;Synthes Other;
+;055078317831;Synthes Spine;
+;055078337833;Synthes CMF;
+;055078357835;Synthes Power Tools;
+;055078377837;Synthes Trauma;
+
+
+#############################################################################New MD&D#############################################################################################
+
+;051003240329;PROTECTIV* Catheters;
+;051003240330;PROTECTIV* Acuvance;
+;051003240331;Conventional Catheters;
+;051003240332;Long Line Catheters;
+;051012781206;Breast Care Products;
+;051012790400;Advant Emerging Market;
+;051012790601;Gastric Band;
+;051012790836;Hemostasis Products;
+;051012790838;Dilation Products;
+;051012790840;GI Foundation Products;
+;051012797117;Endo Products;
+;051012797187;Mechanical  Products;
+;051012797406;Esophageal Capsule;
+;051079730500;Sutures;
+;051079730512;Total Topical Skin Adhesives;
+;051079737903;Total Hernia Repair;
+;051079737974;Closed Wnd Drains;
+;051079170581;Adhesion Prevention;
+;051079171315;Continence;
+;051079177911;Thermachoice;
+;051079177983;Uterine Surgery;
+;051079178006;Pelvic Floor Repair;
+;052003230323;Advanced Wnd Care;
+;052003230324;BioPatch Products;
+;052005250525;Wound Mangement - Other;
+;052005257578;Immunotherapy;
+;052075757575;Topical Absorbable Hemostasis;
+;052075757576;Biologics;
+;052075757577;Synthetics;
+;052075757579;Combination Products;
+;052003430343;RF Energy Products;
+;052003430374;SurgRx Enseal;
+;052003437113;Harmonic Scalpel;
+;052004700470;Breast Aesthetics;
+;052004700475;Body Contouring;
+;052004700477;Facial Aesthetics;
+;052004700480;Other Aesthetics;
+;052004890460;Endoscopy;
+;052004890489;Balloon Sinuplasty;
+;052004890495;Stratus;
+;052004890497;All Other Acclarent;
+;052012511251;Non-Invasive;
+;052012511252;GI Lab;
+;052012511253;Catheter Lab;
+;052012511254;OR - General/GYN;
+;052012511255;OR - Ortho & ENT;
+;052012511256;Other;
+;052012511257;Repair;
+;053004040404;Sedasys;
+;053012660298;Consumables Products & Accessories;
+;053012660513;Disinfection Consumables;
+;053012660514;Hand Hygiene;
+;053012660515;Disinfection Capital;
+;053012660520;TerminalSterilizationProd;
+;053012660529;Technical Service Fees;
+;053012660545;Area Decontamination;
+;053087808780;Other Comprehensive Care;
+;058512321236;Other Cardiology;
+;058512331233;Cypher;
+;058512367859;Endovascular;
+;058513221347;Navigation Ablation Catheters;
+;058513221351;NOGA;
+;058513221545;Biosense Webster Other;
+;058513227761;Non-Navigation Ablation Catheters;
+;058513227762;Navigation HW/SW/SVC;
+;058513227858;Diagnostic Catheters;
+;123600410045;ACUVUE Disposable Spheres;
+;123600410046;ACUVUE 2*;
+;123600410047;SUREVUE*DisposableSpheres;
+;123600410049;1 Day ACUVUE*;
+;123600410051;ACUVUE ADVANCE with CARESENSE;
+;123600410053;ACUVUE ADVANCE Plus;
+;123600410847;ACUVUE TruEye;
+;123600410849;1 Day ACUVUE*MOIST;
+;123600410950;1-Day ACUVUE EasyGO;
+;123600411234;VISTAVUE*;
+;123600411522;ACUVUE* ADVANCE;
+;123600411523;ACUVUE* CLEAR;
+;123600411524;ACUVUE*OASYS;
+;123600430044;OASYS FOR ASTIGMATISM;
+;123600430048;1 DAY ACUVUE MOIST FOR ASTIGMATISM;
+;123600430848;1 DAY ACUVUE* FOR ASTIGMATISM;
+;123600430851;ACUVUE* ADVANCE FOR ASTIGMATISM;
+;123600431416;ACUVUE* TORIC;
+;123603700052;Other Lens  Products;
+;123603700369;ACUVUE* Colours;
+;123603700577;Ttl Combo Other;
+;123603700856;Apollo;
+;123603701521;1 Day ACUVUE* Colours;
+;123614720059;ACUVUE Oasys for Presbyopia;
+;123614721471;ACUVUE* BIFOCAL;
+;123614721472;1 Day ACUVUE Moist for Presbyopia;
+;123615310050;AV2 DEFINE;
+;123615311525;1 DAY ACUVUE*DEFINE;
+;123615311530;1 DAY DEFINE with LACREON;
+;123615311531;1 Day ACUVUE DEFINE with LACREON Natural Shine B;
+;123605760576;Neptune;
+;067005950595;Health Care Systems;
+;067006700670;All Oth Prof Prod Surgical Care;
+;067077897791;Ossix;
+;067078177813;Ind Tech Products;
+;029502890289;Traditional IH;
+;029502890985;BioVue;
+;029502890986;IDMTS;
+;029502898335;Oth Transfusion Medicine;
+;029506750673;Bayer;
+;029506750675;Clinical Chemistry;
+;029506750676;Immunodiagnostics;
+;029506751318;Other Clinical Labs;
+;029506758163;HCV Diagnostics;
+;029506770677;Ttl Other Revenue;
+;029506778604;IDEXX;
+;029580548054;Total RhoGAM;
+;029582068206;Donor Screening;
+;029505900590;Therakos;
+;029581758175;Veridex;
+;063006300630;Lifescan;
+;063024002400;Animas;
+
+#############################################################################Pharma#############################################################################################
+
+;G034T037P360;Vaccines
+;G001T001P001;Other Ex-Sourcing H
+;G001T001P002;Denoral
+;G001T001P003;Reasec
+;G001T001P004;Stugeron
+;G001T001P005;Haldol 
+;G001T001P006;Orap
+;G001T001P007;Decaris
+;G001T001P008;Sibelium
+;G001T001P009;Vermox
+;G002T002P372;Nariclear
+;G002T002P010;Bronchosedal
+;G002T002P011;Mizollen
+;G002T002P012;Tylenol With Pseud.
+;G002T002P013;Levotuss
+;G002T002P014;Rinomar
+;G002T002P015;Tinset
+;G002T002P016;Hismanal
+;G002T002P017;Hismanal D
+;G002T002P018;Livostin
+;G002T002P350;Tylenol With Phen
+;G003T003P019;Levaquin / Floxin
+;G003T003P266;Cefzon
+;G003T003P308;Omnicef
+;G003T003P340;Zeftera
+;G003T003P341;Doribax
+;G003T003P344;Tmc 207
+;G003T003P353;Cetraxal
+;G004T004P023;Pevaryl
+;G004T004P024;Pevisone
+;G004T004P025;Acnidazil
+;G004T004P029;Travogen
+;G004T004P030;Nizoral
+;G004T004P032;Gyno-Pevaryl
+;G004T004P033;Daktarin / Gyno-Daktarin
+;G004T004P035;Terazol
+;G004T004P038;Sporanox
+;G004T004P279;Retinol
+;G004T004P332;Sporanox Generic
+;G005T007P359;Canagliflozin
+;G005T007P366;Reopro All.Mgmt.
+;G005T007P039;Reopro
+;G005T007P040;Retavase
+;G005T007P041;Sufrexal
+;G005T007P042;Sufrexal Iv
+;G005T007P043;Nebilet
+;G005T007P301;Natrecor
+;G005T007P354;Xarelto
+;G006T008P363;Nucynta Er
+;G006T008P044;Ciloprin
+;G006T008P045;Thalamonal
+;G006T008P046;Hypnomidate
+;G006T008P048;Rapifen
+;G006T008P307;Ultiva
+;G006T008P351;Nucynta
+;G006T010P074;Topamax
+;G006T010P075;Stugeron
+;G006T010P076;Sibelium
+;G006T010P077;Razadyne / Reminyl
+;G006T010P283;Cipramil
+;G006T010P302;Vascor
+;G006T010P348;Carisbamate
+;G006T011P078;Remeron
+;G006T011P079;Concerta
+;G006T011P080;Toledomin
+;G006T011P081;Haldol
+;G006T011P082;Triperidol
+;G006T011P083;Dipiperon
+;G006T011P084;Frenactil
+;G006T011P085;Spiropitan
+;G006T011P086;Imap
+;G006T011P087;Orap
+;G006T011P088;Impromen
+;G006T011P089;Haldol Decanoas
+;G006T011P090;Semap
+;G006T011P092;Tremblex
+;G006T011P093;Impromen Decanoas
+;G006T011P094;Risperdal
+;G006T011P095;Risperdal Consta
+;G006T011P310;Lexapro
+;G006T011P333;Invega
+;G006T011P334;Invega Sustenna -Xeplion
+;G006T011P143;Tagonis
+;G007T012P367;Consumer Band-Aids
+;G007T012P374;Consumer Vietnam
+;G007T012P096;Masse
+;G007T012P097;Purpose
+;G007T012P098;Delfen
+;G007T012P099;Gynol Ii
+;G007T012P100;Ortho-Gynol
+;G007T012P318;Adult Ur / Seasonal Cpn
+;G007T012P319;Childrens Motrin Cpn
+;G007T012P320;Childrens Tylenol Cpn
+;G007T012P321;Other Nutritionals Cpn
+;G007T012P322;Other Otc'S Cpn
+;G007T012P324;Pediatric Seasonal Cpn
+;G007T012P325;Splenda Table Top Cpn
+;G007T012P326;St Joseph Aspirin Cpn
+;G007T012P327;Adult Motrin Cpn
+;G007T012P328;Adult Tylenol Cpn
+;G007T012P330;Benecol
+;G007T012P331;Viactiv
+;G008T013P101;Other Acne
+;G008T013P102;Renova
+;G008T013P103;Retin-A
+;G008T013P104;Erycette
+;G008T013P105;Elubiol
+;G008T014P106;Pramlintide
+;G010T015P371;Resolor
+;G010T015P107;Mylanta
+;G010T015P108;Titanoreine
+;G010T015P109;Pancrease
+;G010T015P110;Priamide
+;G010T015P111;Bilagol
+;G010T015P112;Reasec
+;G010T015P113;Vesadol
+;G010T015P114;Vesalium
+;G010T015P115;Decaris
+;G010T015P116;Vermox
+;G010T015P117;Fluvermal
+;G010T015P118;Imodium
+;G010T015P119;Imodium Plus
+;G010T015P120;Motilium
+;G010T015P121;Prepulsid
+;G010T015P122;Arestal
+;G010T015P123;Aciphex/ Pariet
+;G010T015P274;Norbiline
+;G010T015P151;Touristil
+;G014T019P362;Veridex Products
+;G014T019P375;Mdd Vietnam
+;G014T019P144;Various Alza
+;G014T019P145;Various Human Products
+;G014T019P147;Vision Products
+;G014T019P148;Vitamines
+;G014T019P323;Other Speciality Pharma Cpn
+;G014T019P150;Coldrin
+;G015T020P152;Micronor Hrt
+;G015T020P153;Prefest
+;G015T020P154;Systen Conti/Sequi
+;G015T020P155;Systen/Evorel
+;G015T020P156;Ortho Dienoestrol
+;G015T020P157;Ortho Gynest
+;G015T020P158;Ortho-Est
+;G015T020P159;Progestasert
+;G015T021P162;Other Oc'S
+;G015T021P166;Oral Contraceptives
+;G015T021P174;Ortho-Cept
+;G015T021P336;Ortho Tricyclen Lo
+;G015T022P175;Diaphragms
+;G015T022P176;Evra
+;G015T022P177;Gyne-T 200
+;G015T022P178;Gyne-T 380
+;G015T022P179;Universal Introducer
+;G015T022P180;Vaginal Applicators
+;G015T024P184;Protostat
+;G015T024P185;Sultrin
+;G015T024P186;Aci-Jel
+;G016T023P181;Muse
+;G016T023P182;Ditropan
+;G016T023P183;Testoderm
+;G016T023P309;Priligy
+;G016T025P187;Citra
+;G016T025P188;Neutraphos
+;G016T025P189;Elmiron
+;G016T025P190;Macrobid
+;G016T025P191;Macrodantin
+;G016T025P192;Mycelex
+;G016T025P193;Urispas
+;G017T034P194;Regranex
+;G017T034P195;Sufrexal Ointment
+;G018T027P196;Cash Discount - P
+;G018T027P198;Various Plant Prot.
+;G018T027P199;Century
+;G018T027P200;Imazalil
+;G018T027P201;Imazalil Sulfate
+;G018T027P202;Rodewod
+;G018T027P203;Propiconazole
+;G018T027P204;Cyproconazole
+;G018T027P205;Flurox
+;G018T027P206;Af033
+;G018T027P207;Norbloc
+;G018T027P272;Lurox
+;G018T027P306;Terminox
+;G018T028P208;Adequan
+;G018T028P209;Ear Cleaner
+;G018T028P210;Eiw Acc. & Adj.- V
+;G018T028P211;Fludomin
+;G018T028P212;Furexel
+;G018T028P213;Galastop
+;G018T028P215;Synbiotics Diagnostic
+;G018T028P217;Vet Kem
+;G018T028P218;Hypnorm
+;G018T028P219;Dehydrobenzperidol Vet
+;G018T028P220;Fentanyl Vet
+;G018T028P221;L-Spartakon
+;G018T028P222;Conofite
+;G018T028P223;Daktarin Vet
+;G018T028P224;Surolan
+;G018T028P225;Telmin
+;G018T028P226;Telmin + Trichlorfon
+;G018T028P227;Telmin Kh
+;G018T028P228;Flubenol Easy Dog
+;G018T028P229;Flubenol Kh
+;G018T028P230;Spartrix
+;G018T028P231;Motilium Vet
+;G018T028P232;Nizoral-Vet
+;G018T028P233;Vulketan
+;G018T028P234;Appertex
+;G018T028P267;Clinagel
+;G018T028P269;Flubenon Easy Cat
+;G018T028P271;Itrafungol
+;G018T028P275;Palfium
+;G018T028P276;Pevet
+;G018T028P278;Prepulsid Vet.
+;G018T028P313;Felimazole
+;G018T028P314;Vetoryl
+;G018T028P346;Yarvitan
+;G018T029P235;Albendazole
+;G018T029P236;Bayer Products
+;G018T029P238;Enzec
+;G018T029P239;Fertagyl
+;G018T029P241;Qualimec
+;G018T029P242;Qualimec Pour_On
+;G018T029P243;Spasmentral
+;G018T029P244;L-Ripercol
+;G018T029P245;Ovitelmin
+;G018T029P246;Seponver Plus
+;G018T029P247;Imaverol
+;G018T029P249;L-Ripercol Pour On
+;G018T029P251;Flukiver
+;G018T029P252;Vecoxan
+;G018T030P240;Various Veterinary
+;G018T030P253;Cash Discount - V
+;G018T030P254;Discounts - V
+;G018T031P256;Decimite
+;G018T031P257;Regumate
+;G018T031P259;Stresnil
+;G018T031P260;Mebenvet
+;G018T031P261;Flubenol
+;G018T031P262;Clinafarm
+;G018T031P263;Parconazole
+;G018T031P264;Clinacox
+;G018T031P312;Solubenol
+;G018T032P268;Diazinon Sheep Dip
+;G018T032P270;Flukiver Plus
+;G024T009P356;Other Pain Management
+;G024T009P047;Sufenta
+;G024T009P049;Hydrocodone
+;G024T009P050;Noscapine
+;G024T009P051;Parafon
+;G024T009P052;Thebaine
+;G024T009P053;Perdogrip
+;G024T009P054;Perdolan (Mono)
+;G024T009P055;Perdolan Codeine
+;G024T009P056;Perdolan Compositum
+;G024T009P057;Perdolan Mono C
+;G024T009P058;Tylenol
+;G024T009P059;Tylenol With Codeine
+;G024T009P060;Tylox
+;G024T009P061;Tolectin
+;G024T009P062;Naprosyn
+;G024T009P063;Ultracet
+;G024T009P064;Ultram
+;G024T009P065;Ms-Long
+;G024T009P066;Ibuprofen
+;G024T009P067;Clonix
+;G024T009P068;Flexeril
+;G024T009P069;Dipidolor
+;G024T009P070;Durogesic
+;G024T009P071;Dehydrobenzperidol
+;G024T009P072;Burgodin
+;G024T009P073;Fentanyl
+;G024T009P273;Neomeritine
+;G024T009P303;Axert
+;G024T009P305;Oripavine
+;G024T009P311;Jurnista
+;G024T009P315;Ionsys
+;G024T009P317;Fentanyl Transdermal
+;G024T009P337;Ultram Er
+;G024T009P352;Fentanyl Taifun
+;G011T016P124;Raricap
+;G011T016P125;Eprex
+;G011T016P126;Pletaal
+;G011T016P265;Procrit
+;G011T016P281;Venoferrum
+;G012T017P357;Other Centocor
+;G012T017P365;Simponi All.Mgmt.
+;G012T017P364;Remicade All.Mgmt.
+;G012T017P127;Okt*3
+;G012T017P128;Cilferon A
+;G012T017P129;Prograf
+;G012T017P130;Remicade
+;G012T017P300;Orthovisc
+;G012T017P339;Stelara
+;G012T017P345;Kiacta
+;G012T017P349;Simponi
+;G013T018P358;Zytiga
+;G013T018P368;Ibrutinib
+;G013T018P370;Bendamustine
+;G013T018P131;Leustatin
+;G013T018P132;Doxil
+;G013T018P133;Ergamisol
+;G013T018P282;Caelyx
+;G013T018P304;Velcade
+;G013T018P316;Zarnestra
+;G013T018P329;Yondelis
+;G013T018P343;Dacogen
+;G033T036P361;Gilead-Complera
+;G033T036P369;Darunavir Fdc
+;G033T036P373;Tmc 435
+;G033T036P335;Prezista
+;G033T036P338;Edurant
+;G033T036P342;Intelence
+;G033T036P347;Incivo

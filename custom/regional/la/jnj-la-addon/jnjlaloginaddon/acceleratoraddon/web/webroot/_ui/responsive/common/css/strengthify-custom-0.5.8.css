@@ -1,0 +1,65 @@
+/**
+ * Strengthify - show the weakness of a password
+ * https://github.com/MorrisJobke/strengthify
+ * Version: 0.5.8
+ * License: The MIT License (MIT)
+ * Copyright (c) 2013-2019 Morris Jobke <morris.jobke@gmail.com>
+ */
+
+.strengthify-wrapper {
+	position: relative;
+	padding: 10px 0 14px
+}
+
+.strengthify-wrapper>* {
+	-ms-filter: "alpha(opacity=0)";
+	opacity: 0;
+	-webkit-transition: all .5s ease-in-out;
+	-moz-transition: all .5s ease-in-out;
+	transition: all .5s ease-in-out
+}
+
+.strengthify-bg,
+.strengthify-container,
+.strengthify-separator {
+	height: 12px
+}
+
+.strengthify-bg,
+.strengthify-container {
+	display: block;
+	position: absolute;
+	width: 100%
+}
+
+.strengthify-bg {
+	background-color: #bbb
+}
+
+.strengthify-separator {
+	display: none;
+	position: absolute;
+	background-color: #fff;
+	width: 1px;
+	z-index: 10
+}
+
+.password-bad {
+	background-color: #c33
+}
+
+.password-medium {
+	background-color: #f80
+}
+
+.password-good {
+	background-color: #3c3
+}
+
+div[data-strengthifyMessage] {
+	padding: 3px 8px
+}
+
+.strengthify-tiles {
+	float: right
+}

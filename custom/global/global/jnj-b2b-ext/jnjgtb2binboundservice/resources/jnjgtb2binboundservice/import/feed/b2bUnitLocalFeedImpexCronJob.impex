@@ -1,0 +1,5 @@
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+# Initialization
+INSERT_UPDATE JnjGTIntB2BUnitLocal;customerNumber[unique=true];division[unique=true];priceBook;sourceSysId[unique=true];recordStatus(code)[default='LOADING']
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% impex.includeSQLData(""SELECT CUSTOMER_NUM,DIVISION,PRICE_BOOK,SOURCE_SYS_ID from STG_CUSTOMER_LOCAL WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP"");"

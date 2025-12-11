@@ -1,0 +1,17 @@
+
+# Import the JNJ Content Catalog
+#
+# Localization en
+#
+
+$CONSContentCatalog=consContCatalog
+
+
+$MstrContentCatalog=mstrContCatalog
+$languages=en
+
+
+
+UPDATE ContentCatalog;id[unique=true];name[lang=$languages];
+;$MstrContentCatalog;"Master Content Catalog";
+;$CONSContentCatalog;"CONS Content Catalog"; 

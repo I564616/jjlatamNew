@@ -1,0 +1,3 @@
+$catalogVersion = catalogVersion(catalog(id[default = mstrContentCatalog]), version[default = Staged])[default = mstrContentCatalog:Staged][unique = true]	
+insert_update MessageItem; messageCategory(code)[allownull = true]; uid[unique = true]; $catalogVersion; messageText[lang = en]; messageText[lang = pt]; messageText[lang = es]; messageText[lang = es_CO]
+; Label ; order.history.estimatedDeliveryDate;; Estimated delivery date ; Data estimada de entrega ; Data estimada de entrega

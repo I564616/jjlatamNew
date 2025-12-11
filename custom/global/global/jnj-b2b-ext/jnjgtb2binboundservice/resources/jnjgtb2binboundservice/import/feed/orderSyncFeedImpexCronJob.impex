@@ -1,0 +1,58 @@
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+
+# Initialization
+INSERT_UPDATE JnjGTIntOrdHdrNote;hdrNoteCode[unique=true];hdrNotes;sapOrderNumber[unique=true];sourceSystemId[unique=true]
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT HDR_NOTE_CD,HDR_NOTES,ORDER_NUM,SOURCE_SYS_ID from STG_ORDER_HEADER_NOTE WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP"");"
+
+# Initialization
+INSERT_UPDATE JnjGTIntOrderLine;approverNameCd;batchNumber;contractNum;currency;deliveryStatus;gtin;gtinEntered;highLevelItemNumber;invoiceStatus;itemCategory;materialEntered;materialNumber;netValue;overAllStatus;plant;plantName;priceOverrideReasonCd;productDivision;qty;reasonForRejection;returnInvNumber;route;salesUom;sapOrderLineNumber[unique=true];sapOrderNumber[unique=true];shipToCustNum;sourceSystemId[unique=true];subTotal1;subTotal2;subTotal3;subTotal4;subTotal5;subTotal6;taxAmt;unitPrice
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT APPOVER_NAME_CD,BATCH_NUM,CONTRACT_NUM,CURRENCY,DELV_STATUS,GTIN,GTIN_ENTERED,HIGH_LVL_ITEM_NUM,INVOICE_STATUS,ITEM_CATEGORY,MATERIAL_ENTERED,ORDERED_MATERIAL_NUM,NET_VALUE,OVERALL_STATUS,PLANT,PLANT_NAME,PRICE_OVERRIDE_REASON_CD,PRODUCT_DIVISION,ORDERED_QTY,RSN_FOR_REJ,RETURN_INV_NUM,ROUTE,ORDERED_UOM,ORD_LINE_NUM,ORDER_NUM,SHIP_TO_CUST_NUM,SOURCE_SYS_ID,SUB_TOTAL_1,SUB_TOTAL_2,SUB_TOTAL_3,SUB_TOTAL_4,SUB_TOTAL_5,SUB_TOTAL_6,TAX_AMT,UNIT_PRICE from STG_ORDER_LINE WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP"");"
+
+# Initialization
+INSERT_UPDATE JnjGTIntOrdLineHoldLocal;holdCode;reasonForRejection;sapOrderLineNumber[unique=true];sapOrderNumber[unique=true];sourceSystemId[unique=true]
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT HOLD_CD,RSN_FOR_REJ,ORD_LINE_NUM,ORDER_NUM,SOURCE_SYS_ID from STG_ORDER_LINE_HOLD_LOCL WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP"");"
+
+# Initialization
+INSERT_UPDATE JnjGTIntOrdLinePriceLocal;currency;currencyForCv;currencyForUp;pricingConditionName;pricingConditionType[unique=true];sapOrderLineNumber[unique=true];sapOrderNumber[unique=true];sourceSystemId[unique=true];unitPrice;value
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT CURRENCY,CURRENCY_FOR_CV,CURRENCY_FOR_UP,PRICING_CONDITION_NAME,PRICING_CONDITION_TYPE,ORD_LINE_NUM,ORDER_NUM,SOURCE_SYS_ID,UNIT_PRICE,VALUE from STG_ORDER_LINE_PRICE_LOCL WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP"");"
+
+# Initialization
+INSERT_UPDATE JnjGTIntOrderSchLine;confirmedQty;deliveryDate;deliveryLineBlock;lineStatus;sapOrderLineNumber[unique=true];sapOrderNumber[unique=true];schLineNumber[unique=true];schedShipDate;sourceSystemId[unique=true]
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT CONFIRMED_QTY,SCHED_DELIVERY_DT,DELIVERY_LINE_BLOCK,LINE_STATUS,ORD_LINE_NUM,ORDER_NUM,SCHEDULE_LINE_NUM,SCHED_SHIP_DT,SOURCE_SYS_ID from STG_ORDER_LINE_SCH WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP"");"
+
+# Initialization
+INSERT_UPDATE JnjGTIntOrderLineTxt;sapOrderLineNumber[unique=true];sapOrderNumber[unique=true];sourceSystemId[unique=true];txtCd;txtDesc
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT ORD_LINE_NUM,ORDER_NUM,SOURCE_SYS_ID,TXT_CD,TXT_DESC from STG_ORDER_LINE_TEXT WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP"");"
+
+# Initialization
+INSERT_UPDATE JnjGTIntOrderLinePart;customerNum;partFunc[unique=true];sapOrderLineNumber[unique=true];sapOrderNumber[unique=true];sourceSystemId[unique=true]
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT CUSTOMER_NUM,PART_FUNC,ORD_LINE_NUM,ORDER_NUM,SOURCE_SYS_ID from STG_ORDER_LINE_PART WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP"");"
+
+# Initialization
+INSERT_UPDATE JnjGTIntOrderHeader;billBlock;billToAccount;caseDate;classOfTrade;creationDate;creditRepCode;creditStatus;currency;deliveryBlock;deliveryStatus;distributionChannel;division;dropShipInd;invoiceStatus;orderIncompleteStatus;sapOrderNumber[unique=true];orderReasonCode;orderType;overAllStatus;patientName;poType;priceDate;purchaseOrder;refCustNum;rejectionStatus;reqDeliveryDate;retDistDebitMemo;salesOrg;shipAttention;shipCity;shipCountry;shipPostalCode;shipState;shipStreet1;shipStreet2;shipToCustomerNumber;shipToGLN;shipToName;shipToPoNum;soldToAccount;sourceSystemId[unique=true];surgeonName;surgeonType;surgeryNumber;totalNetValue;webOrderNumber;recordStatus(code)[default='PENDING']
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT BILL_BLOCK,BILL_TO_CUST_NUM,CASE_DT,CLASS_OF_TRADE,ORDER_CREATE_DT,CREDIT_REP_CD,CREDIT_STATUS,CURRENCY,DELIVERY_BLOCK,DELIVERY_STATUS,DIST_CHANNEL,DIVISION,DROP_SHIP_IND,INVOICE_STATUS,ORD_INCOMPLETE_STATUS,ORDER_NUM,ORD_REASON_CD,ORDER_TYPE,OVERALL_STATUS,PATIENT_NAME,ORDER_CHANNEL,PRICE_DT,PO_NUM,REF_CUST_NUM,REJECTION_STATUS,REQ_DELV_DT,RET_DIST_DEBIT_MEMO,SALES_ORG,SHIP_ATTENTION,SHIP_CITY,SHIP_COUNTRY,SHIP_POSTAL_CD,SHIP_STATE,SHIP_STREET_1,SHIP_STREET_2,SHIP_TO_CUST_NUM,SHIP_TO_GLN,SHIP_TO_CUST_NAME,SHIP_TO_PO_NUM,SOLD_TO_CUST_NUM,SOURCE_SYS_ID,SURGEON_NAME,SURGERY_TYPE,SURGERY_NUM,NET_VAL_ORD_TOT,ALT_CHANNEL_ORDER_NUM from STG_ORDER_HEADER WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP"");"
+

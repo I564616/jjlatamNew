@@ -1,0 +1,5 @@
+$contentCatalog=mstrContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$contentCatalog]),version[default='Staged'])
+
+INSERT_UPDATE NavigationBarComponent; $contentCV[unique=true]; uid[unique=true]          ; name                        ; wrapAfter; link(uid, $contentCV)      ; styleClass ; navigationNode(uid, $contentCV); dropDownLayout(code)[default=AUTO]; &componentRef  ;visible 
+                                    ;                        ; BIDsBarComponent          ; BIDs Bar Component          ; 10       ; BIDsLinkComponent          ; menu-item  ; BIDsNavNode                    ;                                   ; BIDsBarComponent;false

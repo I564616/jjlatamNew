@@ -1,0 +1,60 @@
+#no-address-result-holder,#bill-no-address-result-holder{
+	padding: 0px 25px 30px 25px;border-bottom: 1px solid #ddd;
+}
+#no-address-result,#bill-no-address-result{
+	font-size:16px;
+	text-align:center;
+	display:none;
+	word-wrap:break-word;
+	padding-top:25px;
+}
+#selectaddresspage .modalcls{
+	top: 80px;
+}
+#selectaddresspage .popup{
+	margin: 0 auto;
+	border-radius: 0px;
+	box-shadow: 0 0px 0px; 
+}
+#selectaddresspage .clsBtn{
+	margin-top: 15px !important;
+	font-size: 12px;
+	color: #0a8caa;
+	opacity:1;
+}
+#selectaddresspage .selectTitle{
+	font-size: 30px;
+}
+#selectaddresspage .searchArea{
+	margin: 0 auto;	
+}  
+#selectaddresspage .searchBox{
+	border-radius: 15px;
+}
+#selectaddresspage .searchBtn{
+	top: -24px;
+    right: 14px;
+	color: #0a8caa;
+}
+#selectaddresspage .code{
+	padding-top: 20px;
+	color: #0a8caa !important;
+	font-size: 18px;
+	font-weight: bold;
+}
+#selectaddresspage .descTxt{
+	font-size: 14px;
+    padding-left: 15px;
+	padding-bottom: 20px;
+    line-height: 17px;
+}
+#selectaddresspage .anchorcls{
+	border-bottom: white;
+}
+#selectaddresspage .listclass{
+	line-height: 0px;
+	margin-bottom: 0px;
+}
+#selectaddresspage .ftrcls{
+	padding: 25px;
+}

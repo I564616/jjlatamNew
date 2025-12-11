@@ -1,0 +1,50 @@
+.prod-serial-label{
+	width:40%;padding-left:10px;
+}
+.prod-serial-elem{
+	width:60%;
+}
+
+.prod-serial-date-label{
+	width:40%;padding-left:10px;
+}
+
+.prod-serial-elem-date{
+	width:60%;
+	
+}
+.date-select-css{
+	width:80%;margin:0px !important;
+}
+.prod-serial-date-format{
+	margin-top:5px;
+}
+.star{
+	color:red;
+	}
+.result-head-label{
+	font-size:16px !important;
+	font-weight:bold !important;
+	border:none !important
+	}
+.verify-serial-table td{
+	padding-left:30px !important;
+	text-align:left !important
+	}
+	
+/*Changes for AAOL-6197*/
+.known{
+	background-color:#dff0d8;color:#3c763d
+}
+.unknown{
+	background-color:#ebccd1;color:#a94442
+}
+
+@media screen and (max-width: 768px) {
+	.prod-serial-label{
+		width:100% !important;padding-left:0px;margin-bottom:5px;
+	}
+	.prod-serial-elem{
+		width:100% !important;margin-bottom:10px;
+	}
+}

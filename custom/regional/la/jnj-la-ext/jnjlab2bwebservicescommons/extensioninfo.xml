@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+ Copyright (c) 2021 SAP SE or an SAP affiliate company. All rights reserved.
+--><extensioninfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extensioninfo.xsd">
+           
+    
+    <extension abstractclassprefix="Generated" classprefix="Jnjlab2bwebservicescommons" jaloLogicFree="true" managername="Jnjlab2bwebservicescommonsManager" managersuperclass="de.hybris.platform.jalo.extension.Extension" name="jnjlab2bwebservicescommons" usemaven="false">
+                  
+
+      
+        
+        <coremodule generated="true" manager="com.jnj.la.b2b.webservicescommons.dto.jalo.Jnjlab2bwebservicescommonsManager" packageroot="com.jnj.la.b2b.webservicescommons.dto"/>
+                	
+        
+           
+    
+    </extension>
+        
+
+</extensioninfo>

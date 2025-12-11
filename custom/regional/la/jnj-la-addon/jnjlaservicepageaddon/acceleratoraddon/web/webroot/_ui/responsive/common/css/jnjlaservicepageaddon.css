@@ -1,0 +1,571 @@
+#ServicesPage .add-customer-icon{
+	color: #12c2e9;
+    font-size: 75px;
+	opacity:1;
+}
+#ServicesPage .block-a{
+	border: 1px solid #f2f2f2;
+	padding: 0px 0px 0px 0px;
+	margin:0px 0px 0px 0px;
+}
+#ServicesPage .icon-prop{
+	padding:15px;
+	text-align:center;
+}
+#ServicesPage .text-prop{
+	padding: 20px 15px 20px 0px;
+    margin-top: 0px;
+    vertical-align: top;
+}
+#ServicesPage .image-prop{
+	width: auto;
+    height: 100px;
+    vertical-align: middle;
+}
+#ServicesPage .service-panel{
+	padding:0px 0px 25px 25px;
+}
+#ServicesPage .service-container{
+	padding: 25px 25px 0px 0px;
+	margin-top: 15px;
+}
+#ServicesPage .service-panel-row{
+	margin:0px;
+}
+
+#indirectCustomerSend {
+    border:none;
+}
+
+.indirectDropdown{
+    width: 200px !important;
+}
+
+.padding20px {
+    padding: 20px 20px 20px 20px !important;
+}
+
+/* Services Page */
+
+#ServicesPage .add-customer-icon{
+	color: #12c2e9;
+    font-size: 75px;
+	opacity:1;
+}
+#ServicesPage .block-a{
+	border: 1px solid #f2f2f2;
+	padding: 0px 0px 0px 0px;
+	margin:0px 0px 0px 0px;
+}
+#ServicesPage .icon-prop{
+	padding:15px;
+	text-align:center;
+}
+#ServicesPage .text-prop{
+	padding: 20px 15px 20px 0px;
+    margin-top: 0px;
+    vertical-align: top;
+}
+#ServicesPage .image-prop{
+	width: auto;
+    height: 100px;
+    vertical-align: middle;
+}
+#ServicesPage .service-panel{
+	padding:0px 0px 25px 25px;
+}
+#ServicesPage .service-container{
+	padding: 25px 25px 0px 0px;
+}
+#ServicesPage .req-text {
+    font-size: 14px;
+    color: #0a8caa;
+    margin-top: 15px;
+   float:right;
+}
+#ServicesPage .paddingbottom25px{
+	padding-bottom: 25px;
+}
+#ServicesPage .paddingbottom10px{
+	padding-bottom: 10px;
+}
+#ServicesPage .margintop20px , #ManageLaudo-popup .margintop20px{
+	margin-top:20px;
+}
+#ServicesPage .paddingleft10px{
+	padding-left:10px;
+}
+#ServicesPage .paddingleft25px{
+	padding-left: 25px;
+}
+.star {
+    font-size: 12px;
+    color: #b41601;
+}
+#ServicesPage .addindirectbtns{
+	padding: 10px 30px;
+}
+#ServicesPage .select-date-box{
+	width: 210px;
+    padding-left: 15px;
+}
+#ServicesPage  .acknowledge-text{
+	padding: 25px;	
+}
+#ServicesPage .clickontext {
+    font-size: 23px;
+    color: #0a8caa;
+}
+#ServicesPage .plusicon {
+    font-size: 12px;
+    top: -2px;
+    padding-right: 5px;
+}
+#ServicesPage .more-plusicon{
+	font-size: 12px;
+}
+#ServicesPage .removeTableData{
+	padding-left: 20px;
+	display:none;
+}
+#ServicesPage .inline-block{
+	display:inline-block;
+}
+#ConsignmentIssuePage .autowidth{
+	width:99px;
+}
+#consignmentTable.table th{
+	text-align: left;
+    padding-left: 20px;
+}
+#ConsignmentIssuePage .table-striped>tbody>tr:nth-of-type(even),#OrthopedicsPage .table-striped>tbody>tr:nth-of-type(even),#IntegralServicesPage .table-striped>tbody>tr:nth-of-type(even){
+	background-color: #fff;
+}
+#ServiceFormOCDPage .service-intro-content,#OrthopedicsPage .Orthopedics-intro-content{
+	border-bottom: 1px solid #f2f2f2;
+    padding: 0px 25px 25px 25px;
+}
+#ServiceFormOCDPage .serviceForm-accordian-header,#OrthopedicsPage .Orthopedics-accordian-header {
+	padding: 25px;
+    border-bottom: 1px solid #f2f2f2;
+}
+#ServiceFormOCDPage .serviceForm-accordian-body,#OrthopedicsPage .Orthopedics-accordian-body {
+	padding: 25px 50px;
+    background-color: rgb(251,251,251);
+    border-bottom: 1px solid #f2f2f2;
+}
+#ServiceFormOCDPage .service-container,#OrthopedicsPage .Orthopedics-container{
+	padding:0px;
+}
+#OrthopedicsPage .informational-text{
+    font-size: 15px;
+    padding-left: 5px;
+    color: #828282;
+    display: table-cell;
+}
+#OrthopedicsPage .time-width{
+	width: 54%;
+}
+#DownloadLaudoPage .dwld-inputbox,#ManageLaudoPage .dwld-inputbox-manage{
+	width: 60%;
+    display: inline;
+    margin-left: 10px;
+}
+#DownloadLaudoPage .info-icon , #ManageLaudoPage .info-icon{
+	font-style: italic;
+    font-size: 15px;
+    color: #a94442;
+    opacity: 1;
+    margin-right: 10px;
+}
+#DownloadLaudoPage .downloadLaudo-block{
+	padding: 25px 20px 25px 20px;
+}
+#IntegralServicesPage .table>thead:first-child>tr:first-child>th:first-child{
+	text-align: left;
+    padding-left: 10px;
+}
+#IntegralServicesPage  .select-date-group{
+	padding: 6px 9px;
+	width: 50%;
+}
+#IntegralServicesPage .to-text,#ManageLaudoPage .to-text{	
+	text-align:center;
+	margin-top: 8px;
+    padding-left: 0px;
+    padding-right: 0px;	
+	float:left;	
+	width: 10%;
+	font-weight:700;
+}
+#IntegralServicesPage .fromDate{
+	width: 45%;
+	float:left;
+}
+#IntegralServicesPage .toDate{
+	width: 45%;
+	float:left;
+}
+#IntegralServicesPage .paddingright30px{
+	padding-right: 30px;
+}
+#CrossReferencePage #search-txt-holder-crossReference {
+    position: relative;	
+}
+#CrossReferencePage .search-box-crossReference{
+	width:75%;
+	display:inline-block;
+}
+#CrossReferencePage #search-txt-crossReference {
+    border-radius: 20px;
+    font-size: 14px;	
+}
+#CrossReferencePage .search-icon {
+    position: absolute;
+    top: 0;
+    right: 30px;
+    z-index: 2;
+    display: block;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    color: #0a8caa;
+    background: none !important;
+    border: none !important;
+}
+#CrossReferencePage .downloadlinks {
+    text-align: right;
+    padding: 25px 30px 0 0;
+}
+#CrossReferencePage .searchBy-label{
+	padding-left: 12px;
+    padding-right: 10px;
+	display: inline;
+	width:30%;
+}
+#CrossReferencePage .cross-panel{
+	border-bottom: 1px solid #f2f2f2;
+    background-color: #fff;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 25px 0px;
+    box-shadow: none !important;
+}
+
+#CrossReferencePage .crossReference-body{
+	margin-bottom:0px;
+	padding-top:20px;
+	padding-bottom:20px;
+}
+
+#CrossReferencePage .crossReference-mainBody{
+	padding-top: 0px;
+}
+
+.crossReferenceTable.table>thead:first-child>tr:first-child>th:last-child{
+	padding-left: 45px;
+}
+#ManageLaudoPage .marginRight10px{
+	margin-right:10px;
+}
+#ManageLaudoPage .manage-secondRow{
+	border-top:1px solid #f2f2f2;
+}
+#ManageLaudoPage .manage-secondRow{
+	padding: 25px 0px 25px 0px;
+}
+#ManageLaudoPage .manage-block{
+	padding: 25px 20px 0px 20px;
+}
+#ManageLaudoPage .newToOld{
+	margin-left: 5px;
+}
+#ManageLaudoPage .manage-fromDate{
+	width: 30%;
+	float:left;
+}
+#ManageLaudoPage .manage-toDate{
+	width: 30%;
+	float:left;
+}
+#ManageLaudoPage .manage-sortBy{
+	padding-top: 6px;
+	font-weight:700;
+}
+#ManageLaudoPage .expdate-label{
+	float: left;
+    padding-right: 15px;
+    padding-top: 6px;
+	font-weight:700;
+}
+#ManageLaudoPage .trash-icon{
+	color:#828282;
+    font-size: 20px;
+	padding-right: 15px;
+}
+#ManageLaudoPage .add-btn{
+	padding: 10px 25px;
+}
+#ManageLaudoPage .dataTable .checkbox {
+    padding-left: 0px !important;
+}
+#ManageLaudoPage .manageTable-firstdata{
+	padding-left: 35px;
+}
+#ManageLaudoPage .table>thead>tr>th{
+	font-size:12px;
+}
+#ManageLaudoPage .table>tbody>tr>td{
+	vertical-align:middle;
+}
+#ManageLaudoPage #manageLaudoTable{
+	margin-bottom:0px;
+}
+#ManageLaudoPage .table>thead:first-child>tr:first-child>th:last-child{
+	text-align:center;
+	padding-left:0px;
+}
+@media screen and (max-width: 480px){
+	#OrthopedicsPage .informational-text{
+		display: block;
+	}
+	#CrossReferencePage .search-box-crossReference{
+		width:70%;
+	}
+}
+
+#ManageLaudo-popup{
+    padding: 0px;
+    width: 100%;
+}
+#ManageLaudo-popup .modalcls{
+	top: 80px;
+	width: 522px;
+}
+#ManageLaudo-popup .modal-body{
+	padding: 15px 25px 15px 25px;
+}
+#ManageLaudo-popup .modal-header{
+	padding: 15px 25px 15px 25px;
+}
+#ManageLaudo-popup .popup{
+	margin: 0 auto;
+	border-radius: 0px;
+	box-shadow: 0 0px 0px;
+}
+#ManageLaudo-popup .clsBtn{
+	margin-top: 15px !important;
+	font-size: 14px;
+	color: #0a8caa;
+	opacity:1;
+}
+#ManageLaudo-popup .selectTitle{
+	font-size: 30px;
+}
+#ManageLaudo-popup .ftrcls{
+	padding: 25px;
+}
+#ManageLaudo-popup .return-order-cancel{
+	margin-top:8px;
+}
+#ManageLaudo-popup  #returnOrder-ok-btn{
+	padding: 10px 25px;
+}
+#ManageLaudo-popup .modalcls {
+    top: 80px;
+    width: 675px;
+}
+.manage-Text-width{
+	width:65% !important;
+	display:table-cell;
+}
+.manage-select-width{
+	//display:table-cell;
+	width:62%;
+}
+.manage-label-width{
+	width:35%;
+	display:table-cell;
+	max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+.manage-Display-row{
+	display:table;
+	width:100%
+}
+.laudotoppanel
+{
+margin-top: -35px;
+padding-right: 15px;
+}
+
+
+.margintop40
+{
+	margin-top: 40px;
+	padding-left: 10px;
+}
+
+.fileUploadDivFloat
+{
+float: none !important;
+display: inline-block;
+}
+
+.errorconsignment{
+	padding-left:280px;
+}
+
+@media screen and (max-width: 767px) {
+	#ManageLaudo-popup .modalcls{
+		width: auto;
+	}
+}
+
+.manageRegulatory {
+	padding-bottom: 25px;
+}
+
+@media (max-width: 1000px){
+    #ServicesPage .service-panel .block-a {
+        text-align: center;
+    }
+}
+.addIndirectCustomerPanel input{
+    margin: 5px 0px;
+}
+.addIndirectCustomerPanel .form-group label{
+    font-weight: 700;
+    margin: 5px 0px;
+}
+#addIndirectCustomerValidate .form-group, #addIndirectPayerValidate .form-group{
+    margin: -5px 0px;
+}
+.addIndirectCustomerPanel label {
+    font-weight: normal;
+}
+.panel-success>.panel-heading {
+    color: #3c763d;
+}
+.indirectDropdown label{
+    position: absolute;
+    top: 32px;
+}
+#addIndirectCustomerValidate .indirectDropdown{
+    margin: 10px 5px
+}
+#addIndirectPayerValidate .indirectDropdown{
+    margin: 10px 5px
+}
+
+.bi-calendar3{
+    color: #0a8caa;
+}
+.manage-fromDate label{
+    border: 1px solid #ced4da;
+    border-left: none;
+}
+.manage-toDate label{
+   border: 1px solid #ced4da;
+   border-left: none;
+}
+#manageLaudoHddnLightBox .modal-content{
+    width: 550px;
+}
+#manageLaudoHddnLightBox .modal-footer{
+    display: flex;
+    justify-content: space-between;
+}
+#manageLaudoHddnLightBox .modal-header {
+    display: flex;
+    flex-flow: row-reverse;
+}
+#manageLaudoHddnLightBox #select-accnt-close{
+    border: none;
+    background-color: transparent;
+}
+.form-element-date label{
+     border: 1px solid #ced4da;
+     border-left: none;
+}
+.lightboxtemplate .modal-body .checkbox-info input{
+    position: relative;
+    top: 0px;
+}
+.lightboxtemplate .modal-body .checkbox-info{
+    padding-left: 0px;
+}
+.singleLaudoUploadError .panel-title{
+    font-size: initial;
+}
+#manageLaudoTable tr .checkbox-info{
+    position: relative;
+    right: 10px;
+    bottom: 10px;
+}
+#manageLaudoTable th .checkbox-info{
+    position: relative;
+    right: 0px;
+    bottom: 0px;
+}
+table th{
+    color: grey;
+}
+table .odd{
+    color: grey;
+}
+.table{
+    --bs-table-striped-color: grey;
+    color: transparent;
+}
+.table-bordered {
+    border: transparent;
+}
+#consignmentIssuePage .margintop40{
+    margin: 0px !important;
+}
+#consignmentIssueValidate .select-date-box label {
+    border: 1px solid #ced4da;
+}
+#jnjLaProductReplacementForm .table .substituteTr {
+    color: gray !important;
+}
+#successMessage span{
+    font-size: initial;
+}
+#downloadLaudoNoSearchInfo span{
+    font-size: initial;
+    color: #a94442;
+}
+#DownloadLaudoPage .margintop40{
+    margin: 0px !important;
+}
+#ManageLaudoPage .panel-danger span{
+    font-size: initial;
+    color: #a94442;
+}
+#ManageLaudoPage h4 span{
+    font-size: initial;
+}
+#consignmentIssuePage #consignmentIssueValidate label {
+    display: inline-block;
+    max-width: 100%;
+    font-weight: 700;
+}
+#consignmentIssuePage #consignmentIssueValidate .checkbox label {
+	font-weight: 100;
+}
+#addIndirectCustomerFormPage #breadcrumb, #addIndirectPayerFormPage #breadcrumb{
+	margin-bottom: -10px;
+}
+#addIndirectPayerValidate .indirectDropdown .dropdown-menu,
+#addIndirectCustomerValidate .indirectDropdown .dropdown-menu{
+	max-width: 100%;
+}
+#consignmentIssuePage #consignmentIssueValidate .bootstrap-select{
+    width: 150px;
+}
+#consignmentIssuePage #consignmentIssueValidate .select-date-box{
+    width: 220px;
+}

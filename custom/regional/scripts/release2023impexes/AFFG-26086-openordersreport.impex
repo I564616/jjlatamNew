@@ -1,0 +1,27 @@
+$contentCatalog=mstrContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$contentCatalog]),version[default='Staged'])
+
+INSERT_UPDATE JnjLinkComponent;$contentCV[unique=true];uid[unique=true];name;url;&componentRef;target(code)[default='sameWindow'];linkName[lang=en];shiftRight[default='false'];details(code,$contentCV);linkName[lang=es];linkName[lang=pt]
+                              ;;InventoryAnalysisLink;Inventory Analysis;/reports/inventoryAnalysis/backorder;InventoryAnalysisLink;;Inventory Analysis;;;Análisis de Inventario;Análise de Inventário
+
+INSERT_UPDATE PageTemplate; $contentCV[unique=true]; uid[unique=true]                  ; name                                ; frontendTemplateName            ; restrictedPageTypes(code); active[default=true]
+    ;                                              ; OpenOrdersReportPageTemplate          ; Open Orders Reports Page Template         ;                                 ; ContentPage              ;
+		
+INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='OpenOrdersReportPageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+                                    ;;SiteLogo-OpenOrdersReportPage;SiteLogo;;SiteLogoSlot;true
+                                    ;;NavigationBar-OpenOrdersReportPage;TopNavigation;;topNavigationSlot;true
+                                    ;;SideNavigation-OpenOrdersReportPage;SideContent;;OpenOrdersReportSideContentSlot;true
+                                    ;;MiniCart-OpenOrdersReportPage;MiniCart;;MiniCartSlot;true
+                                    ;;Footer-OpenOrdersReportPage;Footer;;footerContentSlot;true
+									
+INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);label;defaultPage[default='true'];approvalStatus(code)[default='approved'];homepage[default='false']
+;;openOrdersReportPage;Open Orders Report Page;OpenOrdersReportPageTemplate;Open Orders Report Page
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+;;OpenOrdersReportSideContentSlot;
+
+INSERT_UPDATE JnjLinkComponent;$contentCV[unique=true];uid[unique=true];name;url;&componentRef;target(code)[default='sameWindow'];linkName[lang=en];shiftRight[default='false'];details(code,$contentCV);linkName[lang=es];linkName[lang=pt]
+                              ;;OpenOrdersReportLink;Open Orders Report;/reports/openordersreport;OpenOrdersReportLink;;Open Orders Report;;;Pedidos abiertos;Pedidos em aberto
+
+INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(&componentRef);&nodeRef;title[lang=en]
+                               ;ReportNavLinkNode;;Report Nav Link Node;ReportNavNode;InventoryAnalysisLink,OpenOrdersReportLink;ReportNavLinkNode;

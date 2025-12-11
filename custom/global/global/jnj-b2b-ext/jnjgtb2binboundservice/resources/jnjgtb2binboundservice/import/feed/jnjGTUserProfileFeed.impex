@@ -1,0 +1,26 @@
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+
+# Initialization
+insert_update JnjGTIntB2bCustomer;Source[unique=true];address1;address2;authorizedBuyer;billToId;buisnessSector;city;companyName;country;email[unique=true];fax;firstName;gateWayAccessCode;id;lastName;mobile;phone;phoneType1;phoneType2;phoneType3;postalCode;registrationDate[dateformat=yyyy-MM-dd];salesOrg;state;superVisorFirstName;superVisorLastName;suuperVisorNumber;userType;status;wwid;recordStatus(code)[default='LOADING']
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#%
+impex.includeSQLData(""SELECT SOURCE_SYS_ID,ADDRESS1,ADDRESS2,AUTH_BUYER,BILL_TO_ID,BUSINESS_SECTOR,CITY,COMPANY_NAME,COUNTRY,EMAIL,PHONE_NUM_2,FIRST_NAME,GTWY_ACCESS_CODE,USER_ID,LAST_NAME,PHONE_NUM_3,PHONE_NUM_1,PHONE_TYPE_1,PHONE_TYPE_2,PHONE_TYPE_3,POSTAL_CODE,REGISTRATION_DATE,SALES_ORG,STATE,SUPV_NAME,SUPV_LAST_NAME,SUPV_PHONE_NUM,USER_TYPE,ACTIVE_INDICATOR,WWID from STG_USER WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP"");"
+
+
+# Initialization
+insert_update JnjGTIntUserPermission;Source[unique=true];buisnessSector;email[unique=true];permissionCode[unique=true];userId[unique=true]
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#%
+impex.includeSQLData(""SELECT SOURCE_SYS_ID,BUSINESS_SECTOR,EMAIL,PERMISSION,USER_ID from STG_USER_PERMISSIONS WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP"");"
+
+# Initialization
+insert_update JnjGTIntUserB2bUnit;Source[unique=true];buisnessSector;customerNumber[unique=true];email[unique=true];userId[unique=true]
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#%
+impex.includeSQLData(""SELECT SOURCE_SYS_ID,BUSINESS_SECTOR,CUST_NUM,EMAIL,USER_ID from STG_USER_CUSTOMERS WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP"");"
+
+# Initialization
+insert_update JnjGTIntUserSalesOrg;Source[unique=true];buisnessSector;orgId[unique=true];salesOrgDivCdId[unique=true];userId[unique=true]
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#%
+impex.includeSQLData(""SELECT SOURCE_SYS_ID,BUSINESS_SECTOR,ORG_ID,SLS_ORG_DIV_CD,USER_ID from STG_USER_ORGS WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP"");"

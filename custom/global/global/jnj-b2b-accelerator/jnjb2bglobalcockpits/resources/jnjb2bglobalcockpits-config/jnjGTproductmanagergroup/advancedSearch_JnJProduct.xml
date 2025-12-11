@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<advanced-search xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="advanced-search.xsd">
+	
+	<group name="root" type="JnJProduct" excludeRootType="false">
+		<label key="config.general.bmecat" />
+		<group name="general">
+			<label key="cockpit.config.label.General" />
+			<property qualifier="product.catalogversion"/>
+			<property qualifier="product.approvalStatus"/>
+			<property qualifier="JnJProduct.invalidInPrcieList" />
+		</group>
+		<group name="MDDAttr" >
+			<label key="config.general.MDMAttr" />
+			<property qualifier="product.code" sort-enabled="true">
+				<conditions mode="append">
+					<condition operator="between" index="1"/>
+				</conditions>
+			</property>
+			<property qualifier="JnJProduct.upcCode" />
+			<property qualifier="JnJProduct.materialBaseProduct" />
+			<property qualifier="JnJProduct.mdmDescription" />
+			<property qualifier="JnJProduct.launchStatus" />
+			<property qualifier="JnJProduct.productStatus" />
+			<property qualifier="JnJProduct.newProductStartDate"/>
+			<property qualifier="JnJProduct.firstShipEffectDate" />
+			
+			
+		</group>
+		<group name="RichContent">
+			<label key="config.general.richContent" />
+			<property qualifier="product.name" sort-enabled="true"/>
+		</group>
+		<group name="Category">
+			<label key="config.general.categorysystem" />
+			<property qualifier="product.supercategories"/>
+		</group>
+	</group>
+	
+	<related-types includeSubTypes="false">
+		<type code="VariantProduct" />
+	</related-types>
+	
+	 
+</advanced-search>

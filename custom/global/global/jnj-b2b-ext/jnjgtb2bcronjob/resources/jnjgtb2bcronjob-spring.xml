@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ [y] hybris Platform
+  ~ 
+  ~ Copyright (c) 2000-2016 SAP SE
+  ~ All rights reserved.
+  ~ 
+  ~ This software is the confidential and proprietary information of SAP 
+  ~ Hybris ("Confidential Information"). You shall not disclose such 
+  ~ Confidential Information and shall use it only in accordance with the 
+  ~ terms of the license agreement you entered into with SAP Hybris.
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<bean id="jnjGTCutNotificationEmailJob" class="com.jnj.gt.job.JnjGTCutNotificationEmailJob">
+		<property ref="jnjGTUserService" name="customerService" />
+		<property name="modelService" ref="modelService"/>
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>		
+		<property name="sessionService" ref="sessionService"/>
+	</bean>
+	
+	<bean id="jnjGTFeedJob" class="com.jnj.gt.job.JnjGTFeedJob">
+		<property name="modelService" ref="modelService"/>
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>		
+		<property name="sessionService" ref="sessionService"/>
+		
+		<property name="intFacadeMap">
+			<map>
+				<entry key="tempImplementaion" value-ref="tempImplementaion"/>
+				<entry key="jnjGTIntB2BUnitFacade" value-ref="jnjGTIntB2BUnitFacade"/>
+				<entry key="b2bUnitLocalFacade" value-ref="jnjGTIntB2BUnitLocalFacade"/>
+				<entry key="affiliationFacade" value-ref="jnjGTIntAffiliationFacade"/>
+				<entry key="territoryFacade" value-ref="jnjGTIntTerritoryFacade"/>
+				<entry key="salesRepFacade" value-ref="jnjGTIntSalesRepAlignmentFacade"/>
+				<!-- <entry key="jnjEMEAIntCategoryMasterFacade" value-ref="jnjEMEAIntCategoryMasterFacade"/> -->
+				<entry key="jnjGTIntProductMasterFacade" value-ref="jnjGTIntProductMasterFacade"/>
+				<entry key="jnjGTIntProductLocalFacade" value-ref="jnjGTIntProductLocalFacade"/>
+				<entry key="jnjGTIntProductListPriceFacade" value-ref="jnjGTIntProductListPriceFacade"/>
+				<entry key="jnjGTIntCpsiaFacade" value-ref="jnjGTIntCpsiaFacade"/>
+				<entry key="jnjGTIntUserProfileFacade" value-ref="jnjGTIntUserProfileFacade"/>
+				<entry key="jnjGTIntProductLotMasterFacade" value-ref="jnjGTIntProductLotMasterFacade"/>
+				<entry key="jnjGTIntOrderTemplateFacade" value-ref="jnjGTIntOrderTemplateFacade"/>
+				<entry key="jnjGTIntCreditCardFacade" value-ref="jnjGTIntCreditCardFacade"/>
+				<entry key="productExclusionFacade" value-ref="jnjGTIntProductExclusionFacade"/>
+				<entry key="jnjGTIntInvoiceFacade" value-ref="jnjGTIntInvoiceFacade"/>
+				<entry key="orderFacade" value-ref="jnjGTIntOrderFacade"/>
+				<entry key="shipmentFacade" value-ref="jnjGTIntShipmentFacade"/>
+			</map>
+		</property>
+	</bean>
+
+
+	<bean id="b2bUnitStageCleanupConfig" class="java.util.ArrayList">
+	    <constructor-arg>
+	        <list>
+	            <value>STG_CUSTOMER</value>
+	            <value>STG_CUSTOMER_SORG</value>
+	            <value>STG_PARTNER_FUNC</value>
+	            <value>STG_AFFILIATION</value>
+	        </list>
+	    </constructor-arg>
+	</bean>
+	
+	<!-- <bean id="jnjEMEAIntCategoryCleanupConfig" class="java.util.ArrayList">
+	    <constructor-arg>
+	        <list>
+	            <value>STG_CATEGORIES</value>
+	            <value>STG_CATEGORIES_DESC</value>
+	        </list>
+	    </constructor-arg>
+	</bean> -->
+	
+	<bean id="b2bUnitLocalStageCleanupConfig" class="java.util.ArrayList">
+	    <constructor-arg>
+	        <list>
+	            <value>STG_CUSTOMER_LOCAL</value>
+	        </list>
+	    </constructor-arg>
+	</bean>
+	<bean id="affiliationStageCleanupConfig" class="java.util.ArrayList">
+	    <constructor-arg>
+	        <list>
+	            <value>STG_AFFILIATION</value>
+	        </list>
+	    </constructor-arg>
+	</bean>
+	<bean id="salesRepStageCleanupConfig" class="java.util.ArrayList">
+	    <constructor-arg>
+	        <list>
+	            <value>STG_ALGN_ORG_AFFLN_EXTR_FF</value>
+	            <value>STG_ALGN_CUST_AFFLN_EXTR_FF</value>
+	            <value>STG_ALGN_SREP_AFFLN_EXTR_FF</value>
+	            <value>STG_ALGN_PROD_AFFLN_EXTR_FF</value>
+	        </list>
+	    </constructor-arg>
+	</bean>
+	<bean id="territoryStageCleanupConfig" class="java.util.ArrayList">
+	    <constructor-arg>
+	        <list>
+	            <value>STG_TERRITORY</value>
+	        </list>
+	    </constructor-arg>
+	</bean>
+	<bean id="jnjGTIntProductListPriceStageCleanupConfig" class="java.util.ArrayList">
+	    <constructor-arg>
+	        <list>
+	            <value>STG_LISTPRICE_LOCLM</value>
+	            <value>STG_LISTPRICE_LOCLC</value>
+	            <value>STG_LISTPRICE_AMT_LOCLM</value>
+	            <value>STG_LISTPRICE_AMT_LOCLC</value>
+	        </list>
+	    </constructor-arg>
+	</bean>
+	<bean id="jnjGTIntProductMasterStageCleanupConfig" class="java.util.ArrayList">
+	    <constructor-arg>
+	        <list>
+	            <value>STG_PRODUCT</value>
+	            <value>STG_PRODUCT_KIT</value>
+	            <value>STG_PRODUCT_REG</value>
+	            <value>STG_PRODUCT_DESC</value>
+	            <value>STG_PRODUCT_SORG</value>
+	            <value>STG_PRODUCT_PLNT</value>
+	            <value>STG_PRODUCT_UNIT</value>
+	            <value>STG_PRODUCT_UNIT_LOCL</value>
+	        </list>
+	    </constructor-arg>
+	</bean>
+	<bean id="jnjGTIntProductLocalStageCleanupConfig" class="java.util.ArrayList">
+	    <constructor-arg>
+	        <list>
+	            <value>STG_PRODUCT_LOCL</value>
+	            <value>STG_PRODUCT_LOCL_PLNT</value>
+	        </list>
+	    </constructor-arg>
+	</bean>
+	<bean id="jnjGTIntCpsiaStageCleanupConfig" class="java.util.ArrayList">
+	    <constructor-arg>
+	        <list>
+	            <value>STG_CPSIA</value>
+	        </list>
+	    </constructor-arg>
+	</bean>
+	<bean id="jnjGTIntProductLotMasterStageCleanupConfig" class="java.util.ArrayList">
+	    <constructor-arg>
+	        <list>
+	            <value>STG_LOT_MASTER</value>
+	        </list>
+	    </constructor-arg>
+	</bean>
+	<bean id="jnjGTIntUserProfileStageCleanupConfig" class="java.util.ArrayList">
+	    <constructor-arg>
+	        <list>
+	            <value>STG_USER</value>
+	            <value>STG_USER_PERMISSIONS</value>
+	            <value>STG_USER_CUSTOMERS</value>
+	            <value>STG_USER_ORGS</value>
+	        </list>
+	    </constructor-arg>
+	</bean>
+	<bean id="jnjGTIntOrderTemplateStageCleanupConfig" class="java.util.ArrayList">
+	    <constructor-arg>
+	        <list>
+	            <value>STG_ORDER_TEMPLATE</value>
+	            <value>STG_ORDER_LINES</value>
+	        </list>
+	    </constructor-arg>
+	</bean>
+	<bean id="jnjGTIntCreditCardStageCleanupConfig" class="java.util.ArrayList">
+	    <constructor-arg>
+	        <list>
+	            <value>STG_CREDIT_CARD_TOKEN</value>
+	        </list>
+	    </constructor-arg>
+	</bean>
+	<bean id="productExclusionStageCleanupConfig" class="java.util.ArrayList">
+	    <constructor-arg>
+	        <list>
+	            <value>STG_PRODUCT_EXCLUSIONS</value>
+	        </list>
+	    </constructor-arg>
+	</bean>
+	<bean id="jnjGTIntInvoiceStageCleanupConfig" class="java.util.ArrayList">
+	    <constructor-arg>
+	        <list>
+	            <value>STG_INVOICE_HEADER</value>
+	            <value>STG_INVOICE_HEADER_PRICE</value>
+	            <value>STG_INVOICE_LINE</value>
+	            <value>STG_INVOICE_LINE_LOT</value>
+	        </list>
+	    </constructor-arg>
+	</bean>
+	<bean id="orderStageCleanupConfig" class="java.util.ArrayList">
+	    <constructor-arg>
+	        <list>
+	            <value>STG_ORDER_HEADER</value>
+	            <value>STG_ORDER_HEADER_NOTE</value>
+	            <value>STG_ORDER_LINE</value>
+	            <value>STG_ORDER_LINE_HOLD_LOCL</value>
+	            <value>STG_ORDER_LINE_PRICE_LOCL</value>
+	            <value>STG_ORDER_LINE_SCH</value>
+	            <value>STG_ORDER_LINE_TEXT</value>
+	            <value>STG_ORDER_LINE_PART</value>
+	        </list>
+	    </constructor-arg>
+	</bean>
+	<bean id="shipmentStageCleanupConfig" class="java.util.ArrayList">
+	    <constructor-arg>
+	        <list>
+	            <value>STG_SHIP_TRACK_HEADER_LOCL</value>
+	            <value>STG_SHIP_TRACK_LINE_LOCL</value>
+	            <value>STG_SHIP_TRACK_HEADER</value>
+	            <value>STG_SHIP_TRACK_LINE</value>
+	        </list>
+	    </constructor-arg>
+	</bean>
+
+	<bean id="jnjGTFeedStageCleanupMap" class="java.util.HashMap">
+	    <constructor-arg>
+			<map merge="false">
+				<entry key="jnjGTIntProductMasterStageCleanupConfig" value-ref="jnjGTIntProductMasterStageCleanupConfig"/>
+				<entry key="b2bUnitStageCleanupConfig" value-ref="b2bUnitStageCleanupConfig"/>
+				<entry key="b2bUnitLocalStageCleanupConfig" value-ref="b2bUnitLocalStageCleanupConfig"/>
+				<entry key="salesRepStageCleanupConfig" value-ref="salesRepStageCleanupConfig"/>
+				<entry key="affiliationStageCleanupConfig" value-ref="affiliationStageCleanupConfig"/>
+				<!-- <entry key="jnjEMEAIntCategoryCleanupConfig" value-ref="jnjEMEAIntCategoryCleanupConfig"/> -->
+				<entry key="jnjGTIntProductLocalStageCleanupConfig" value-ref="jnjGTIntProductLocalStageCleanupConfig"/>
+				<entry key="jnjGTIntProductListPriceStageCleanupConfig" value-ref="jnjGTIntProductListPriceStageCleanupConfig"/>
+				<entry key="territoryStageCleanupConfig" value-ref="territoryStageCleanupConfig"/>
+				<entry key="jnjGTIntCpsiaStageCleanupConfig" value-ref="jnjGTIntCpsiaStageCleanupConfig"/>
+				<entry key="jnjGTIntUserProfileStageCleanupConfig" value-ref="jnjGTIntUserProfileStageCleanupConfig"/>
+				<entry key="jnjGTIntProductLotMasterStageCleanupConfig" value-ref="jnjGTIntProductLotMasterStageCleanupConfig"/>
+				<entry key="jnjGTIntOrderTemplateStageCleanupConfig" value-ref="jnjGTIntOrderTemplateStageCleanupConfig"/>
+				<entry key="jnjGTIntCreditCardStageCleanupConfig" value-ref="jnjGTIntCreditCardStageCleanupConfig"/>
+				<entry key="productExclusionStageCleanupConfig" value-ref="productExclusionStageCleanupConfig"/>
+				<entry key="jnjGTIntInvoiceStageCleanupConfig" value-ref="jnjGTIntInvoiceStageCleanupConfig"/>
+				<entry key="orderStageCleanupConfig" value-ref="orderStageCleanupConfig"/>
+				<entry key="shipmentStageCleanupConfig" value-ref="shipmentStageCleanupConfig"/>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<bean id="jnjGTFeedStageCleanupJob" class="com.jnj.gt.job.JnjGTFeedStageCleanupJob">
+		<property name="modelService" ref="modelService"/>
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>		
+		<property name="sessionService" ref="sessionService"/>
+		<property name="jnjCommonUtil" ref="jnjCommonUtil"/>	
+	</bean>
+
+	<bean id="jnjGTFeedIntermediateCleanupJob" class="com.jnj.gt.job.JnjGTFeedIntermediateCleanupJob">
+		<property name="modelService" ref="modelService"/>
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>		
+		<property name="sessionService" ref="sessionService"/>	
+		<property name="cleanupFacades" ref="jnjGTFeedIntermediateCleanupFacades" />
+	</bean>
+
+		<bean id="jnjGTFeedIntermediateCleanupFacades" class="java.util.ArrayList">
+			<constructor-arg>
+				<list>
+					<ref bean="jnjGTIntB2BUnitFacade"/>
+					<ref bean="jnjGTIntB2BUnitLocalFacade"/>
+					<ref bean="jnjGTIntAffiliationFacade"/>
+					<ref bean="jnjGTIntTerritoryFacade"/>
+					<ref bean="jnjGTIntSalesRepAlignmentFacade"/>
+					<!-- <ref bean="jnjEMEAIntCategoryMasterFacade"/> -->
+					<ref bean="jnjGTIntProductMasterFacade"/>
+					<ref bean="jnjGTIntProductLocalFacade"/>
+					<ref bean="jnjGTIntProductListPriceFacade"/>
+					<ref bean="jnjGTIntCpsiaFacade"/>
+					<ref bean="jnjGTIntUserProfileFacade"/>
+					<ref bean="jnjGTIntProductLotMasterFacade"/>
+					<ref bean="jnjGTIntOrderTemplateFacade"/>
+					<ref bean="jnjGTIntCreditCardFacade"/>
+					<ref bean="jnjGTIntProductExclusionFacade"/>
+					<ref bean="jnjGTIntInvoiceFacade"/>
+					<ref bean="jnjGTIntOrderFacade"/>
+					<ref bean="jnjGTIntShipmentFacade"/>
+				</list>
+			</constructor-arg>
+	</bean>
+
+	
+	<bean id="jnjGTSalesAlignmentRemovalJob" class="com.jnj.gt.job.JnjGTSalesAlignmentRemoval"
+		autowire="byName" scope="tenant" />	
+		
+	<bean id="jnjGTGenerateResetPasswordDetailsJob" class="com.jnj.gt.job.JnjGTGenerateResetPasswordDetailsJob"
+		parent="abstractJobPerformable" />	
+		
+	<bean id="jnjGTCustomerAlignment" class="com.jnj.gt.job.JnjGTCustomerAlignment"
+		autowire="byName" scope="tenant" />
+	
+	<bean id="jnjGTCreateOrderJob" class="com.jnj.gt.job.JnjGTCreateOrderCronJob"
+		autowire="byName" scope="tenant" />	
+	
+	<bean id="jnjGTEarlyZipCodeJob" class="com.jnj.gt.job.JnjGTEarlyZipCodeCronJob"
+		autowire="byName" scope="tenant" />	
+		<bean id="JnjGTDisableUserloginJob" class="com.jnj.gt.job.JnjGTDisableUserloginJob" parent="abstractJobPerformable"></bean>
+			
+		<bean id="jnjGTAuditTrailCleanupDataJob" class="com.jnj.gt.job.JnjGTAuditTrailCleanupDataJob"
+		autowire="byName" scope="tenant" />	
+		
+	<bean id="jnjGTUpdateDeliverySalesGtinJob" class="com.jnj.gt.job.JnjGTUpdateDeliverySalesGtinJob" >
+		<property name="modelService" ref="modelService"/>
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>		
+		<property name="sessionService" ref="sessionService"/>
+	</bean>
+	
+	<bean id="jnjGTReadSurgeonDataJob" class="com.jnj.gt.job.JnjGTReadSurgeonDataJob" autowire="byName"  scope="tenant" />
+	<bean id="jnjGTProcessSurgeonIntDataJob" class="com.jnj.gt.job.JnjGTProcessSurgeonIntDataJob" autowire="byName"  scope="tenant" />
+	<bean id="jnjGTReadOrderStatusInboundJob" class="com.jnj.gt.job.JnjGTReadOrderStatusInboundJob" autowire="byName"  scope="tenant" />
+	<bean id="jnjGTProcesOrderStatusInboundJob" class="com.jnj.gt.job.JnjGTProcessOrderStatusInboundJob" autowire="byName"  scope="tenant" />
+	
+	<!-- BEAN DEFINITIONS FOR SHUP & TRACKING INBOUND FEED JOB [CONSUMER] -->		
+	<bean id="jnjGTReadShipTrackingDataJob" class="com.jnj.gt.job.JnjGTReadShipTrackingInboundJob" autowire="byName"  scope="tenant" />
+	<bean id="jnjGTProcessShipTrackingIntDataJob" class="com.jnj.gt.job.JnjGTProcessShipTrackingIntDataJob" autowire="byName"  scope="tenant" />
+	<bean id="jnjGTMDDExportCatalogJob" class="com.jnj.gt.job.JnjGTMDDExportCatalogJob" parent="abstractJobPerformable"/>
+	<bean id="jnjGTQuoteOrderDeletionJob" class="com.jnj.gt.job.JnjGTQuoteOrderDeletionJob" parent="abstractJobPerformable"/>	
+	
+	<!-- <bean id="jnjAmazonRetryAndFullUploadCronJob" class="com.jnj.pcm.job.JnjAmazonRetryAndFullUploadCronJob" parent="abstractJobPerformable"/>
+    <bean id="jnjAmazonRetryAndOrderCatalogUploadCronJob" class="com.jnj.pcm.job.JnjAmazonRetryAndOrderCatalogUploadCronJob" parent="abstractJobPerformable"/>
+    <bean id="jnjAmazonDeleteAmazonExpiredFilesCronJob" class="com.jnj.pcm.job.JnjAmazonDeleteAmazonExpiredFilesCronJob" parent="abstractJobPerformable"/>  -->
+    <!-- BEAN DEFINITION For Request Account Password Reset [PCM] -->
+    <!-- <bean id="jnjPCMRequestAccountPasswordResetCronJob" class="com.jnj.pcm.job.JnjPCMRequestAccountPasswordResetCronJob" parent="abstractJobPerformable"/> -->
+
+	<!-- BEAN DEFINITION For Completeness indicator population [PCM] -->
+    <!-- <bean id="jnjPCMCompletenessIndicatorPopulationCronJob" class="com.jnj.pcm.job.JnjPCMCompletenessIndicatorPopulationCronJob" parent="abstractJobPerformable"/>
+	<bean id="jnjPCMHideCategoryCronJob" class="com.jnj.pcm.job.JnjPCMHideCategoryCronJob" autowire="byName"/> -->
+  <!-- BEAN DEFINITION For ZONZA Cronjob -->
+    <!-- <bean id="jnjZonzaFetchImageDataCronJob" class="com.jnj.pcm.job.JnjZonzaFetchImageDataCronJob" parent="abstractJobPerformable"/>
+    <bean id="jnjZonzaConvertImagesCronjob" class="com.jnj.pcm.job.JnjZonzaConvertImagesCronjob" parent="abstractJobPerformable"/>
+    <bean id="jnjPCMIncompleteProductDetailsAlertCronJob" class="com.jnj.pcm.job.JnjPCMIncompleteProductDetailsAlertCronJob" parent="abstractJobPerformable"/>
+	<bean id="jnjPCMNewProductWorkflowEmailCronJob" class="com.jnj.pcm.job.JnjPCMNewProductWorkflowEmailCronJob" parent="abstractJobPerformable"/>
+   	<bean id="jnjZonzaRetryAndCreateMediaCronJob" class="com.jnj.pcm.job.JnjZonzaRetryAndCreateMediaCronJob" parent="abstractJobPerformable"/>
+    <bean id="jnjPcmProductHTMLAttributesConversionJob" class="com.jnj.pcm.job.JnjPcmProductHTMLAttributesConversionJob" parent="abstractJobPerformable"/> -->
+    
+    <bean id="jnjGTCaPcmProdExclJob" class="com.jnj.gt.job.JnjGTCaPcmProdExclCronJob"
+		autowire="byName" scope="tenant" />
+		
+		<bean id="jnjGTUsPcmProdExclJob" class="com.jnj.gt.job.JnjGTUsPcmProdExclJob"
+		autowire="byName" scope="tenant" />
+ 
+ 	<!-- ORDER SHIP NOTIFICATION EMAIL CHANGES: AKASH -->
+ 	<bean id="jnjGTOrderShipEmailNotificationJob" class="com.jnj.gt.job.JnjGTOrderShipEmailNotificationJob" autowire="byName"  scope="tenant" />
+ 	
+ 	<!-- BACKORDER NOTIFICATION EMAIL CHANGES: AKASH -->
+ 	<bean id="jnjGTBackorderEmailNotificationJob" class="com.jnj.gt.job.JnjGTBackOrderEmailNotificationJob" autowire="byName"  scope="tenant" />
+
+	<bean id="jnjGTActiveUserListExtractJob" class="com.jnj.gt.job.JnjGTActiveUserListExtractJob" autowire="byName">
+		<property name="jnjGTCustomerService" ref="GTCustomerService"/>
+	</bean>
+			
+			
+</beans>

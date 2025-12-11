@@ -1,0 +1,23 @@
+INSERT_UPDATE JnjOrderChannel;code[unique=true];description;name[lang=en];name[lang=pt];name[lang=es];
+;DFUE;By telecommunication;Phone;Telefone;Telefono;
+;E001;EDI;EDI;EDI;EDI;
+;E002;XML;EDI;EDI;EDI;
+;E003;Application File;General;General;General;
+;E004;E-Commerce Portal;J&J Customer Connect;J&J Customer Connect;J&J Customer Connect;
+;E005;E-Com Port OrdUpload;J&J Customer Connect;J&J Customer Connect;J&J Customer Connect;
+;E006;MXP Servc/Contr Bill;Service;Serviço;Servicio;
+;E007;PDS Promotional Sale;Service;Serviço;Servicio;
+;E008;Ethicon Orders;Other;Outros;Otro;
+;E009;Patient First Orders;Service;Serviço;Servicio;
+;M001;Phone;Phone;Telefone;Telefono;
+;M002;Fax;Fax;Fax;Fax;
+;M003;Fax No-Confirmation;Fax;Fax;Fax;
+;M004;E-Mail;Email;Email;Email;
+;M005;E-Mail No-Confirmati;Email;Email;Email;
+;M006;Mail;Other;Outros;Otro;
+;MUEN;Orally;Other;Outros;Otro;
+;SCHR;Written;Other;Outros;Otro;
+;TELE;By telephone;Phone;Telefone;Telefono;
+;NULL;Other;Other;Outros;Otro;
+
+

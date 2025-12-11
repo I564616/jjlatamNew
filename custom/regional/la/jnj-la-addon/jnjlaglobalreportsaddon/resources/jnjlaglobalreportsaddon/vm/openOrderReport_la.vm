@@ -1,0 +1,302 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    </head>
+    <body>
+		#if(${openOrdersExcelorPdf} == "OpenOrdersExcel")
+			<table width="600" border="0" cellpadding="8" cellspacing="1" align="center">
+				<tr align="center"><td align="center"><img  src="${mediaBaseUrl}${siteLogoPath}" /></td></tr>
+			</table>
+
+			<br/>
+			<br/>
+			<br/>
+			<table style="width:600;" border="1" cellspacing="0" cellpadding="8">
+				<tr>
+					<td valign="top" style="font-family:Arial;font-size:13px;line-height:16px;background-color:#ccc" align="left"><b>${docDetails}</b></td>
+				</tr>
+				<tr>
+					<td style="font-family:Arial;font-size:13px" valign="top"><b>${docName}:</b></td>
+					<td style="font-family:Arial;font-size:13px">${sheetName1}</td>
+					</br>
+				</tr>
+				<tr>
+					<td style="font-family:Arial;font-size:13px"><b>${account}:</b></td>
+					#if(${selectedAccounts.size()} > '1')<td style="font-family:Arial;font-size:13px" align="left">${multipleAccounts}
+					</td>#end
+					#if(${selectedAccounts.size()} == '1')<td style="font-family:Arial;font-size:13px" align="left">#foreach($entry in $selectedAccounts)
+					${entry}#end
+					</td>#end
+					</br>
+				</tr>
+				<tr>
+					<td style="font-family:Arial;font-size:13px"><b>${downloadDate}:</b></td>
+					<td style="font-family:Arial;font-size:13px">${date}</td>
+				</tr>
+			</table>
+			<br/>
+			<table style="width:600;" border="1" cellspacing="0" cellpadding="8">
+				<tr>
+					<td  style="font-family:Arial;font-size:13px;line-height:16px;background-color:#ccc" align="left"><b>${searchcriteria}</b></td>
+				</tr>
+				<tr style="font-family:Arial;font-size:13px"><td><b>${start}:</b></td><td align="left">#if(${searchCriteria.fromDate})${searchCriteria.fromDate} #end </td></tr>
+				<tr style="font-family:Arial;font-size:13px"><td><b>${end}:</b></td><td align="left"> #if(${searchCriteria.toDate})${searchCriteria.toDate} #end </td></tr>
+			</table>
+			<br/>
+			<table style="width:600;font-family:Calibri" border="1" cellspacing="0" cellpadding="8" >
+				<tr style="font-family:jnjbodyfont;font-size:13px;background-color:#ccc">
+                    <td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${soldTo}</b></td>
+                     #if(${soldToName_col_vm} == 'Y')
+                    <td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${soldToName}</b></td>#end
+					<td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${shipTo}</b></td>
+					<td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${shipToName}</b></td>
+                     #if(${orderReference_col_vm} == 'Y')
+                    <td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${orderReference}</b></td>#end
+					<td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${jnjOrderNumber}</b></td>
+					<td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${orderType}</b></td>
+					<td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${productCode}</b></td>
+					 #if(${ean_col_vm} == 'Y')
+                    <td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${ean}</b></td>#end
+                    <td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${productDescription}</b></td>
+                    #if(${subFranchise_col_vm} == 'Y')
+                    <td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${subFranchise}</b></td>#end
+                    #if(${totalUnitsQuantity_col_vm} == 'Y')
+                    <td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${totalUnitsQuantity}</b></td>#end
+                     #if(${unitOfMeasure_col_vm} == 'Y')
+                    <td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${unitOfMeasure}</b></td>#end
+                    #if(${orderQtySalesUnits_col_vm} == 'Y')
+                    <td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${orderQtySalesUnits}</b></td>#end
+                     #if(${openOrder_col_vm} == 'Y')
+                    <td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${openOrder}</b></td>#end
+					<td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${lineNumber}</b></td>
+					<td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${scheduleLine}</b></td>
+					 #if(${orderCreationDate_col_vm} == 'Y')
+					<td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${orderCreationDate}</b></td>#end
+					 #if(${dateReqDate_col_vm} == 'Y')
+					<td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${dateReqDate}</b></td>#end
+					<td style="font-family:Arial;font-size:13px;line-height:14px;" align="left" ><b>${estiDeliveryDate}</b></td>
+				</tr>
+				
+				#foreach($entry in $jnjOpenOrdersReportResponseData)
+                 #if(${entry.scheduleLines.size()} > '0')
+                   #foreach($scheduleLinesEntry in ${entry.scheduleLines})
+					<tr style="font-family:Arial;font-size:13px" valign="top">
+                        <td align="left">#if(${entry.accountNumber})${entry.accountNumber} #end </td>
+                         #if(${soldToName_col_vm} == 'Y')
+                        <td align="left">#if(${entry.accountName})${entry.accountName} #end </td>#end
+						<td align="left">#if(${entry.shipToAccount})&#8203;${entry.shipToAccount} #end</input>  </td>
+						<td align="left">#if(${entry.shipToName})&#8203;${entry.shipToName} #end</input>  </td>
+                        #if(${orderReference_col_vm} == 'Y')
+                        <td align="left">#if(${entry.customerPO})${entry.customerPO} #end </td>#end
+						 <td style="width:45px;">#if(${entry.sapOrderNum})${entry.sapOrderNum}
+						          #end
+						          </input>  </td>
+						<td align="left">#if(${entry.orderType})&#8203;${entry.orderType}#end</input>  </td>
+						<td align="left">#if(${entry.productCode})${entry.productCode} #end </td>
+						#if(${ean_col_vm} == 'Y')											
+                        <td align="left">#if(${entry.productGTIN})${entry.productGTIN} #end </td>#end
+                        <td align="left">#if(${entry.productName})&#8203;${entry.productName} #end</input>  </td>
+                        #if(${subFranchise_col_vm} == 'Y')
+                        <td align="left">#if(${scheduleLinesEntry.subFranchise})${scheduleLinesEntry.subFranchise} #end </td>#end
+                        #if(${totalUnitsQuantity_col_vm} == 'Y')
+                        <td align="left">${scheduleLinesEntry.requestedUnitsTotalQuantity}</td>#end
+                         #if(${unitOfMeasure_col_vm} == 'Y')
+                        <td align="left">#if(${entry.unit})${entry.unit} #end </td>#end
+                         #if(${orderQtySalesUnits_col_vm} == 'Y')
+                        <td align="left">${scheduleLinesEntry.amountPendingDelivery}</td>#end
+                         #if(${openOrder_col_vm} == 'Y')
+                        <td align="left">${scheduleLinesEntry.quantityPendingStock}</td>#end
+						<td align="left">#if(${entry.lineNumber})&#8203;${entry.lineNumber} #end</input>  </td>
+						<td align="left">#if(${scheduleLinesEntry.lineNumber})&#8203;${scheduleLinesEntry.lineNumber} #end</input>  </td>
+                         #if(${orderCreationDate_col_vm} == 'Y')
+                        <td align="left">#if(${entry.orderDate})${entry.orderDate} #end </td>#end
+                         #if(${dateReqDate_col_vm} == 'Y')
+                        <td align="left">#if(${entry.requestedDeliveryDate})${entry.requestedDeliveryDate} #end </td>#end
+                        <td align="left">#if(${scheduleLinesEntry.formattedDeliveryDate})&#8203;${scheduleLinesEntry.formattedDeliveryDate} #end</input>  </td>
+					</tr>
+                     #end
+                   #end
+                    #if(${entry.scheduleLines.size()} == '0')
+					<tr style="font-family:Arial;font-size:13px" valign="top">
+                             <td align="left">#if(${entry.accountNumber})${entry.accountNumber} #end </td>
+                         #if(${soldToName_col_vm} == 'Y')
+                        <td align="left">#if(${entry.accountName})${entry.accountName} #end </td>#end
+						<td align="left">#if(${entry.shipToAccount})&#8203;${entry.shipToAccount} #end</input>  </td>
+						<td align="left">#if(${entry.shipToName})&#8203;${entry.shipToName} #end</input>  </td>
+                        #if(${orderReference_col_vm} == 'Y')
+                        <td align="left">#if(${entry.customerPO})${entry.customerPO} #end </td>#end
+						 <td style="width:45px;">#if(${entry.sapOrderNum})${entry.sapOrderNum}
+						          #end
+						          </input>  </td>
+						<td align="left">#if(${entry.orderType})&#8203;${entry.orderType}#end</input>  </td>
+						<td align="left">#if(${entry.productCode})${entry.productCode} #end </td>
+						#if(${ean_col_vm} == 'Y')											
+                        <td align="left">#if(${entry.productGTIN})${entry.productGTIN} #end </td>#end
+                        <td align="left">#if(${entry.productName})&#8203;${entry.productName} #end</input>  </td>
+                        #if(${subFranchise_col_vm} == 'Y')
+                        <td align="left"> </td>#end
+                        #if(${totalUnitsQuantity_col_vm} == 'Y')
+                        <td align="left"></td>#end
+                         #if(${unitOfMeasure_col_vm} == 'Y')
+                        <td align="left">#if(${entry.unit})${entry.unit} #end </td>#end
+                         #if(${orderQtySalesUnits_col_vm} == 'Y')
+                        <td align="left"></td>#end
+                         #if(${openOrder_col_vm} == 'Y')
+                        <td align="left"></td>#end
+						<td align="left">#if(${entry.lineNumber})&#8203;${entry.lineNumber} #end</input>  </td>
+						<td align="left"></input>  </td>
+                         #if(${orderCreationDate_col_vm} == 'Y')
+                        <td align="left">#if(${entry.orderDate})${entry.orderDate} #end </td>#end
+                         #if(${dateReqDate_col_vm} == 'Y')
+                        <td align="left">#if(${entry.requestedDeliveryDate})${entry.requestedDeliveryDate} #end </td>#end
+                        <td align="left">#if(${entry.estimatedDeliveryDate})&#8203;${entry.estimatedDeliveryDate} #end</input>  </td>
+                        </tr>
+                   #end
+				#end
+			</table>
+			<br/>
+		#elseif(${openOrdersExcelorPdf} == "OpenOrdersPdf")
+			<table style="width:600;font-family:Calibri;padding-bottom:20px" border="0" cellspacing="0" cellpadding="0">
+				<tr><td><img  src="${mediaBaseUrl}${siteLogoPath}" /></td></tr>
+			</table>
+			<br/>
+			<table style="width:600;font-family:Calibri" border="1" cellspacing="0" cellpadding="8">
+				<tr>
+					<th colspan="3" bgcolor="rgb(165,165,165)" valign="top" style="color:white;font-family:Calibri;font-size:14px;line-height:14px;" align="left">${docDetails}</th>
+				</tr>
+				<tr>
+					<td valign="top"><b>${docName}:</b> ${sheetName1}</td>
+					<td><b>${account}: </b> #if(${selectedAccounts.size()} > '1')${multipleAccounts}
+					#end
+					#if(${selectedAccounts.size()} == '1')#foreach($entry in $selectedAccounts)
+					${entry}#end#end</td>
+					<td><b>${downloadDate}:</b> ${date}</td>
+				</tr>
+			</table>
+			<br/>
+			<table style="width:600;" border="1" cellspacing="0" cellpadding="8">
+				<tr>
+					<th colspan="2" bgcolor="rgb(165,165,165)" style="color:white;font-family:Calibri;font-size:14px;line-height:14px;" align="left">${searchcriteria}</th>
+				</tr>
+				<tr style="font-family:Calibri;font-size:12px">
+					<td><b>${start}:</b>#if(${searchCriteria.fromDate})${searchCriteria.fromDate} #end </td>
+					<td><b>${end}:</b>#if(${searchCriteria.toDate})${searchCriteria.toDate} #end </td>
+				</tr>
+			</table>
+
+			<br/>
+			<table style="width:600;font-family:Calibri" border="1" cellspacing="0" cellpadding="8" >
+				<tr style="color:white;font-family:Calibri;font-size:12px">
+                    <th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:50px;"  align="left" >${soldTo} </th>
+                     #if(${soldToName_col_vm} == 'Y')
+                    <th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:50px;"  align="left" >${soldToName} </th>#end
+					<th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:50px;"  align="left" >${shipTo} </th>
+					<th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:50px;"  align="left" >${shipToName} </th>
+                     #if(${orderReference_col_vm} == 'Y')
+                    <th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:50px;"  align="left" >${orderReference} </th>#end
+					<th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:50px;"  align="left" >${jnjOrderNumber} </th>
+					<th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:50px;"  align="left" >${orderType} </th>
+					<th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:50px;"  align="left" >${productCode} </th>
+					 #if(${ean_col_vm} == 'Y')
+                    <th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:50px;"  align="left" >${ean} </th>#end
+                    <th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:50px;"  align="left" >${productDescription} </th>
+                     #if(${subFranchise_col_vm} == 'Y')
+                    <th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:50px;"  align="left" >${subFranchise} </th>#end
+                    #if(${totalUnitsQuantity_col_vm} == 'Y')
+                    <th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:50px;"  align="left" >${totalUnitsQuantity} </th>#end
+                     #if(${unitOfMeasure_col_vm} == 'Y')
+                    <th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:50px;"  align="left" >${unitOfMeasure} </th>#end
+                     #if(${orderQtySalesUnits_col_vm} == 'Y')
+                    <th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:50px;"  align="left" >${orderQtySalesUnits} </th>#end
+                     #if(${openOrder_col_vm} == 'Y')
+                    <th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:50px;"  align="left" >${openOrder} </th>#end
+					<th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:50px;"  align="left" >${lineNumber} </th>
+					<th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:50px;"  align="left" >${scheduleLine} </th>
+					 #if(${orderCreationDate_col_vm} == 'Y')
+					<th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:50px;"  align="left" >${orderCreationDate} </th>#end
+					 #if(${dateReqDate_col_vm} == 'Y')
+					<th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:50px;"  align="left" >${dateReqDate} </th>#end
+					<th  bgcolor="rgb(165,165,165)"  style="color:white;font-family:Calibri;font-size:12px;line-height:14px;width:50px;"  align="left" >${estiDeliveryDate} </th>
+
+				</tr>
+
+				#foreach($entry in $jnjOpenOrdersReportResponseData)
+				   #if(${entry.scheduleLines.size()} > '0')
+                     #foreach($scheduleLinesEntry in ${entry.scheduleLines})
+					<tr style="font-family:Calibri;font-size:12px" valign="top">
+                        <td style="width:45px;">#if(${entry.accountNumber})${entry.accountNumber} #end</td>
+                        #if(${soldToName_col_vm} == 'Y')
+                        <td style="width:45px;">#if(${entry.accountName})${entry.accountName} #end</td>#end
+						<td style="width:45px;">#if(${entry.shipToAccount})${entry.shipToAccount} #end</td>
+						<td style="width:45px;">#if(${entry.shipToName})${entry.shipToName} #end</td>
+                         #if(${orderReference_col_vm} == 'Y')
+                        <td style="width:45px;">#if(${entry.customerPO})${entry.customerPO} #end</td>#end
+						 <td style="width:45px;">#if(${entry.sapOrderNum})${entry.sapOrderNum}
+                                                						          #end</td>
+						<td style="width:45px;">#if(${entry.orderType})${entry.orderType} #end</td>
+						<td style="width:45px;">#if(${entry.productCode})${entry.productCode} #end</td>
+						#if(${ean_col_vm} == 'Y')
+                        <td style="width:45px;">#if(${entry.productGTIN})${entry.productGTIN} #end</td>#end
+                        <td style="width:45px;">#if(${entry.productName})${entry.productName} #end</td>
+                         #if(${subFranchise_col_vm} == 'Y')
+                        <td style="width:45px;">#if(${scheduleLinesEntry.subFranchise})${scheduleLinesEntry.subFranchise} #end</td>#end
+                        #if(${totalUnitsQuantity_col_vm} == 'Y')
+                        <td style="width:45px;">#if(${scheduleLinesEntry.requestedUnitsTotalQuantity})${scheduleLinesEntry.requestedUnitsTotalQuantity} #end </td>#end
+                         #if(${unitOfMeasure_col_vm} == 'Y')
+                        <td style="width:45px;">#if(${entry.unit})${entry.unit} #end</td>#end
+                         #if(${orderQtySalesUnits_col_vm} == 'Y')
+                        <td style="width:45px;">#if(${scheduleLinesEntry.amountPendingDelivery})${scheduleLinesEntry.amountPendingDelivery} #end</td>#end
+                        #if(${openOrder_col_vm} == 'Y')
+                        <td style="width:45px;">#if(${scheduleLinesEntry.quantityPendingStock})${scheduleLinesEntry.quantityPendingStock} #end</td>#end
+                        <td style="width:45px;">#if(${entry.lineNumber})${entry.lineNumber} #end</td>
+                        <td style="width:45px;">#if(${scheduleLinesEntry.lineNumber})${scheduleLinesEntry.lineNumber} #end</td>
+                         #if(${orderCreationDate_col_vm} == 'Y')
+                        <td style="width:45px;">#if(${entry.orderDate})${entry.orderDate} #end</td>#end
+                         #if(${dateReqDate_col_vm} == 'Y')
+                        <td style="width:45px;">#if(${entry.requestedDeliveryDate})${entry.requestedDeliveryDate} #end</td>#end
+                        <td style="width:45px;">#if(${scheduleLinesEntry.formattedDeliveryDate})${scheduleLinesEntry.formattedDeliveryDate} #end</td>
+					</tr>
+                     #end
+                    #end
+                    #if(${entry.scheduleLines.size()} == '0')
+					<tr style="font-family:Calibri;font-size:12px" valign="top">
+                         <td style="width:45px;">#if(${entry.accountNumber})${entry.accountNumber} #end</td>
+                        #if(${soldToName_col_vm} == 'Y')
+                        <td style="width:45px;">#if(${entry.accountName})${entry.accountName} #end</td>#end
+						<td style="width:45px;">#if(${entry.shipToAccount})${entry.shipToAccount} #end</td>
+						<td style="width:45px;">#if(${entry.shipToName})${entry.shipToName} #end</td>
+                         #if(${orderReference_col_vm} == 'Y')
+                        <td style="width:45px;">#if(${entry.customerPO})${entry.customerPO} #end</td>#end
+						 <td style="width:45px;">#if(${entry.sapOrderNum})${entry.sapOrderNum}
+                                                						          #end</td>
+						<td style="width:45px;">#if(${entry.orderType})${entry.orderType} #end</td>
+						<td style="width:45px;">#if(${entry.productCode})${entry.productCode} #end</td>
+						#if(${ean_col_vm} == 'Y')
+                        <td style="width:45px;">#if(${entry.productGTIN})${entry.productGTIN} #end</td>#end
+                        <td style="width:45px;">#if(${entry.productName})${entry.productName} #end</td>
+                         #if(${subFranchise_col_vm} == 'Y')
+                        <td style="width:45px;"></td>#end
+                        #if(${totalUnitsQuantity_col_vm} == 'Y')
+                        <td style="width:45px;"></td>#end
+                         #if(${unitOfMeasure_col_vm} == 'Y')
+                        <td style="width:45px;">#if(${entry.unit})${entry.unit} #end</td>#end
+                         #if(${orderQtySalesUnits_col_vm} == 'Y')
+                        <td style="width:45px;"></td>#end
+                        #if(${openOrder_col_vm} == 'Y')
+                        <td style="width:45px;"></td>#end
+                        <td style="width:45px;">#if(${entry.lineNumber})${entry.lineNumber} #end</td>
+                        <td style="width:45px;"></td>
+                         #if(${orderCreationDate_col_vm} == 'Y')
+                        <td style="width:45px;">#if(${entry.orderDate})${entry.orderDate} #end</td>#end
+                         #if(${dateReqDate_col_vm} == 'Y')
+                        <td style="width:45px;">#if(${entry.requestedDeliveryDate})${entry.requestedDeliveryDate} #end</td>#end
+                        <td style="width:45px;">#if(${entry.estimatedDeliveryDate})${entry.estimatedDeliveryDate} #end</td>
+                    </tr>
+                  #end
+				#end
+				</table>
+				<br/>
+		#end
+</body>
+</html>

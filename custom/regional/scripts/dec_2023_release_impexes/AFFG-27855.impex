@@ -1,0 +1,6 @@
+INSERT_UPDATE JnjOrderType; code[unique = true]; description;name[lang = es]
+; ZINS  ; Government Order                                    ; Venta Institucional
+
+
+INSERT_UPDATE JnjOrderType; code[unique = true]; description; name[lang = en]; name[lang = es]
+; ZINS  ; Government Order; Government Order                                    ; Venta Institucional

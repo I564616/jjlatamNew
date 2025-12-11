@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2000-2013 hybris AG
+ All rights reserved.
+
+ This software is the confidential and proprietary information of hybris
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with hybris.
+
+  
+-->
+<!--
+	ATTENTION: This is just an example file. You have to edit it according to your needs.
+-->
+
+<items 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+			xsi:noNamespaceSchemaLocation="items.xsd">
+
+
+
+		<!-- 	<enumtypes>
+		<enumtype generate="true" code="MessageCategory" autocreate="true"
+			jaloclass="de.hybris.platform.jalo.enumeration.EnumerationValue">
+			<value code="Exception" />
+			<value code="Label" />
+			<value code="Validation" />
+			<value code="Generic" />
+		</enumtype>
+		
+	</enumtypes>
+	<itemtypes>
+<itemtype generate="true" code="MessageItem" extends="CMSItem"
+			jaloclass="com.accenture.jalo.Message" autocreate="true">
+			<attributes>
+				<attribute qualifier="messageText" type="localized:java.lang.String">
+					<description>The text of a message</description>
+					<modifiers dontOptimize="true"/>
+					<persistence type="property" />
+				</attribute>
+				<attribute qualifier="messageCategory" type="MessageCategory">
+					<description>The text of a message</description>
+					<modifiers read="true" write="true" search="true"
+						optional="false" />
+					<persistence type="property" />
+				</attribute>
+			</attributes>
+			<indexes>
+				<index name="uid">
+					<key attribute="uid" />
+				</index>
+			</indexes> 
+            </itemtype>		
+	</itemtypes> -->
+</items>

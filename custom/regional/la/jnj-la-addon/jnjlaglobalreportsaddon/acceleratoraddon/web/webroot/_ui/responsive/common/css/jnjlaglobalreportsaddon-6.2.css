@@ -1,0 +1,179 @@
+#Reportspage .BOR-qucikSelectionDateContainer .form-element-select {
+    width: 65% !important;
+}
+#Reportspage .BOR-qucikSelectionDateContainer .form-label-select {
+    width: 35% !important;
+}
+
+ .accountSelectionCancel{
+    font-weight:bold;
+    cursor:pointer;
+}
+ .placeholder{
+    background:#fff;
+}
+ #Reportspage table>tbody>tr>td{
+     padding-top:0 !important;
+     padding-bottom:0 !important;
+     vertical-align: top !important;
+     background:#fff;
+     color:#828282;
+     height: 110px;
+}
+ @media screen and (max-width: 767px) {
+     div.dataTables_wrapper div.dataTables_paginate{
+         float:right;
+    }
+     .checkbox{
+         padding-left:0;
+    }
+     .checkbox label{
+         position: relative;
+         padding-left: 5px;
+         top: 0;
+         vertical-align: top;
+    }
+     #ContractDetailsPage .selectchkbox{
+         display: inline-block;
+         float: left;
+    }
+     #changeAcntPopup .accountsMargin{
+         float: left;
+         width: 90%;
+    }
+     .contract-check-content.display-table-cell{
+         display:inline-block !important;
+         float: left;
+         width: 90%;
+         padding-top: 0;
+    }
+     .checkbox input[type="checkbox"]{
+         position: relative;
+    }
+     .form-group{
+         margin-bottom:15px;
+    }
+     .collapseBtn i {
+        font-size: 24px;
+    }
+}
+ div.dataTables_wrapper div.dataTables_info {
+     top:44px;
+     position:relative;
+}
+ div#datatab-desktop_paginate {
+     top:50px;
+     position:relative;
+}
+#templateLanding div#datatab-desktop_paginate{
+ top:5px !important;
+}
+#templateLanding div.dataTables_wrapper div.dataTables_info{
+top:5px !important;
+}
+
+ .table-striped>tbody>tr:nth-of-type(odd),.table-striped>tbody>tr:nth-of-type(odd)>*{
+     background-color: #fff !important;
+     --bs-table-accent-bg: #fff !important;
+}
+ .table-striped>tbody>tr:nth-of-type(even),.table-striped>tbody>tr:nth-of-type(even)>* {
+     background-color: #f9f9f9;
+     text-align: center;
+     --bs-table-accent-bg: #f9f9f9 !important;
+}
+#openOrdersReportPage{
+    background-color: #fff;
+}
+#openOrdersReportPage .form-label-select, #openOrdersReportPage .form-label-date {
+    width: 40%;
+}
+#openOrdersReportPage .form-element-select, #openOrdersReportPage .form-element-date {
+    width: 60% !important;
+}
+#openOrdersReportPage #reportTamplate{
+    text-align: center;
+    border-radius: 20px;
+    color: rgb(204, 204, 204);
+}
+#openOrdersReportPage .reportTestSearch{
+    display: flex;
+    flex-flow: column;
+}
+#openOrdersReportPage .templatebutton{
+    height: 36px;
+    padding: 4px 30px !important;
+}
+#openOrdersReportPage .downloadButton{
+    margin-top: 30px !important;
+}
+#openOrdersReportPage #openOrdersPageButton{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+#openOrdersReportPage .openOrderFormFotter{
+    padding: 20px 15px 25px 10px;
+}
+.radiousButton{
+    border: 1px solid gray;
+    border-radius: 30px;
+    margin: 10px 0px;
+    padding: 5px 15px;
+    display: block;
+    background-color: #e6e6e6;
+    text-align: left;
+}
+#openOrdersReportPage #jnj-usr-details-menu{
+    height: 100% !important;
+}
+#openOrdersReportPage .OpenOrderRepurtButton .btnclsactive {
+    margin: 0px 5px !important;
+    padding: 0px 10px !important;
+}
+#openOrdersReportPage #runReport{
+    padding: 10px 15px !important;
+}
+.OpenOrderRepurtButton{
+    display: flex;
+}
+#openOrdersReportTable .bottomBorder{
+    width: fit-content;
+    cursor: pointer;
+}
+.openOrdersReportTable #datatab-desktop_length .bootstrap-select .dropdown-menu{
+    top: 100% !important;
+    min-height: fit-content !important;
+    overflow: auto !important;
+}
+
+#Reportspage #openOrdersReportTable .columnButtons label{
+    display: flex;
+    justify-content: space-between;
+    color: gray;
+    font-size: 14px;
+}
+#Reportspage #openOrdersReportTable .columnButtons label:hover{
+    color: #333;
+}
+#Reportspage #openOrdersReportTable #columnSearch{
+    cursor: auto;
+}
+#openOrdersTemplate .modal-content{
+    width: 600px;
+}
+#openOrdersTemplate .modal-header{
+    display: flex;
+    flex-direction: row-reverse;
+}
+#openOrdersReportPage #openOrdersPageButton .btnclsnormal{
+    padding: 10px 30px;
+}
+#singlePurchaseReportForm .orderedfromdropdown .form-element-select{
+    width: 64%;
+}
+#Reportspage #openOrdersReportPage{
+  margin-bottom: 50px;
+}
+#openOrdersReportTable .columnButtons .columeCloseIcon{
+ -webkit-text-stroke: 2px;
+}

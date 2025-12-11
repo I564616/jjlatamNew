@@ -1,0 +1,6 @@
+$contentCatalogBR=brContentCatalog
+$contentCVBR=catalogVersion(catalog(id[default=$contentCatalogBR]),version[default='Staged'])
+
+# Component Added for the BR users on Invoice Details Page
+INSERT_UPDATE CMSParagraphComponent;$contentCVBR[unique=true];uid[unique=true];name;&componentRef(uid,contentCVBR);content[lang=en]
+;;InvoiceDocComponent;BR Invoice Doc Component;InvoiceDocComponent;"<div><a class=""tertiarybtn marginRight invoiceBRXMLButton"">XML</a><a class=""tertiarybtn invoicePDFButton"">PDF</a></div>"

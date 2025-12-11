@@ -1,0 +1,16 @@
+UPDATE SolrServerConfig ; name[unique=true] ;mode(code); solrquerymethod(code)
+                              ; Default           ;cloud; POST
+							  
+UPDATE SolrFacetSearchConfig;name[unique=true];solrServerConfig(name)[default='Default']
+;jnjBRIndex;
+;jnjARIndex;
+;jnjCENCAIndex;
+;jnjCLIndex;
+;jnjCOIndex;
+;jnjContentIndex;
+;jnjECIndex;
+;jnjICIndex;
+;jnjMXIndex;
+;jnjPEIndex;
+;jnjPRIndex;
+;jnjUYIndex;

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company. All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<alias name="jnjCCP360IntegrationDao" alias="GTP360IntegrationDao"/>
+    <bean id="jnjCCP360IntegrationDao" class="com.jnj.gt.pcm.integration.core.job.dao.impl.DefaultJnjCCP360IntegrationDAO">
+    	<property name="sessionService" ref="sessionService"/>
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+        <property name="userService" ref="userService"/>
+    </bean>
+    
+    <alias name="jnjCCP360IntegrationService" alias="GTP360IntegrationService"/>
+    <bean id="jnjCCP360IntegrationService" class="com.jnj.gt.pcm.integration.core.job.service.impl.DefaultJnjCCP360IntegrationService">
+        <property name="jnjCCP360IntegrationDao" ref="GTP360IntegrationDao"/>
+        <property name="configurationService" ref="configurationService"/>
+        <property name="jnjGTP360CountryNameStrategy" ref="GTP360CountryNameStrategy"/>
+    </bean>
+    
+    <alias name="jnjGTP360CountryNameStrategy" alias="GTP360CountryNameStrategy"/>
+    <bean id="jnjGTP360CountryNameStrategy" class="com.jnj.gt.pcm.integration.core.job.service.strategy.impl.DefaultJnjGTP360CountryNameStrategy">
+    </bean>
+			
+</beans>

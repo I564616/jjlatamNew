@@ -1,0 +1,290 @@
+# Import essential data for the JNJ
+#
+# Includes:
+# * Languages
+# * Currencies
+# * Titles
+# * Vendors
+# * Warehouses
+# * Supported Credit/Debit cards
+# * User Groups
+# * DistanceUnits for Storelocator
+# * MediaFolders
+# * Media Formats
+# * Tax & Tax Groups
+# * Checkout Payment Types
+# * B2BPermission Types
+$BRdefaultCurrency = BRL
+$MXdefaultCurrency = MXN
+$CENCAdefaultCurrency = USD
+$ECdefaultCurrency = USD
+$ARdefaultCurrency = USD
+$CLdefaultCurrency = USD
+$UYdefaultCurrency = USD
+$COdefaultCurrency = USD
+$PEdefaultCurrency = USD
+$PRdefaultCurrency = USD
+
+$userid=dummy@sapuser.com
+
+#
+# Import Language
+#
+insert_update Language; fallbackLanguages(isocode); isocode[unique = true, allownull = true]; name[lang = en]; name[lang = pt]; name[lang = es]
+; en ; English ; Inglês     ; Inglés
+; en ; es      ; Spanish    ; Espanhol  ; Español
+; en ; pt      ; Portuguese ; Português ; Portugués
+; en ; de      ; German     ; Alemão    ; Alemán
+
+
+# Currencies
+INSERT_UPDATE Currency; isocode[unique = true]; conversion; digits; symbol; name[lang = en]
+; $BRdefaultCurrency    ; 1 ; 2 ; R$ ; $BRdefaultCurrency
+; $MXdefaultCurrency    ; 1 ; 2 ; $  ; $MXdefaultCurrency
+; $CENCAdefaultCurrency ; 1 ; 2 ; $  ; $CENCAdefaultCurrency
+; $ECdefaultCurrency    ; 1 ; 2 ; $  ; $ECdefaultCurrency
+; $ARdefaultCurrency    ; 1 ; 2 ; $  ; $ARdefaultCurrency
+; $CLdefaultCurrency    ; 1 ; 2 ; $  ; $CLdefaultCurrency
+; $UYdefaultCurrency    ; 1 ; 2 ; $  ; $UYdefaultCurrency
+; $COdefaultCurrency    ; 1 ; 2 ; $  ; $COdefaultCurrency
+; $PEdefaultCurrency    ; 1 ; 2 ; $  ; $PEdefaultCurrency
+; $PRdefaultCurrency    ; 1 ; 2 ; $  ; $PRdefaultCurrency
+; USD                   ; 1 ; 2 ; $  ; USD
+
+
+
+# Vendor
+INSERT_UPDATE Vendor; code[unique = true]; name
+; default ; Default Vendor
+
+# Warehouse
+INSERT_UPDATE Warehouse; code[unique = true]; name; vendor(code)[default = default]; default[default = true]
+; default ; Default Warehouse ; ; true
+
+# Disable preview for email pages
+UPDATE CMSPageType; code[unique = true]; previewDisabled
+; EmailPage ; true
+
+# Titles
+INSERT_UPDATE Title; code[unique = true]
+; mr
+; mrs
+; miss
+; ms
+; dr
+; rev
+
+#Media Folders
+INSERT_UPDATE MediaFolder; qualifier[unique = true]; path[unique = true]
+; images            ; images
+; email-body        ; email-body
+; email-attachments ; email-attachments
+
+#Required Media formats for product images
+insert_update MediaFormat; qualifier[unique = true]; externalId; name
+; 300Wx300H ; 300Wx300H ; 300Wx300H
+; 30Wx30H   ; 30Wx30H   ; 30Wx30H
+; 515Wx515H ; 515Wx515H ; 515Wx515H
+; 65Wx65H   ; 65Wx65H   ; 65Wx65H
+; 96Wx96H   ; 96Wx96H   ; 96Wx96H
+
+#TODO Needs to be revisited
+INSERT_UPDATE ServicelayerJob; code[unique = true]; springId[unique = true]
+; cartRemovalJob ; cartRemovalJob
+
+
+#Master B2BUnit
+INSERT_UPDATE JnJB2BUnit; uid[unique = true]; locName[lang = en]; name; country(isocode)
+; JnJDummyUnit  ; JnJDummyUnit  ; JnJDummyUnit
+; JnJLaudoBR    ; JnJLaudoBR    ; JnJLaudoBR    ; BR
+; JnJLaudoMX    ; JnJLaudoMX    ; JnJLaudoMX    ; MX
+; JnJLaudoCENCA ; JnJLaudoCENCA ; JnJLaudoCENCA ; PA
+; JnJLaudoEC    ; JnJLaudoEC    ; JnJLaudoEC    ; EC
+; JnJLaudoAR    ; JnJLaudoAR    ; JnJLaudoAR    ; AR
+; JnJLaudoCL    ; JnJLaudoCL    ; JnJLaudoCL    ; CL
+; JnJLaudoUY    ; JnJLaudoUY    ; JnJLaudoUY    ; UY
+; JnJLaudoCO    ; JnJLaudoCO    ; JnJLaudoCO    ; CO
+; JnJLaudoPE    ; JnJLaudoPE    ; JnJLaudoPE    ; PE
+; JnJLaudoPR    ; JnJLaudoPR    ; JnJLaudoPR    ; PR
+
+INSERT_UPDATE JnJLaB2BUnit; uid[unique = true]; locName[lang = en]; name; country(isocode)
+; JnJLaDummyUnit ; JnJLaDummyUnit ; JnJLaDummyUnit
+
+#Master Company
+INSERT_UPDATE JnJCompany; uid[unique = true]; locName[lang = en]; locName[lang = pt]; locName[lang = es]; name; country(isocode); masterCompany[default = 'true']
+; JnJMasterBR    ; JnJMasterBR         ; JnJMasterBR         ; JnJMasterBR         ; JnJMasterBR         ; BR ; true
+; JnJMasterMX    ; JnJMasterMX         ; JnJMasterMX         ; JnJMasterMX         ; JnJMasterMX         ; MX ; true
+; JnJMasterCENCA ; JnJMasterCENCA      ; JnJMasterCENCA      ; JnJMasterCENCA      ; JnJMasterCENCA      ; PA ; true
+; JnJMasterEC    ; JnJMasterEC         ; JnJMasterEC         ; JnJMasterEC         ; JnJMasterEC         ; EC ; true
+; JnJMasterDO    ; JnJMasterDominicana ; JnJMasterDominicana ; JnJMasterDominicana ; JnJMasterDominicana ; DO ; true
+; JnJMasterAR    ; JnJMasterAR         ; JnJMasterAR         ; JnJMasterAR         ; JnJMasterAR         ; AR ; true
+; JnJMasterBO    ; JnJMasterBO         ; JnJMasterBO         ; JnJMasterBO         ; JnJMasterBO         ; BO ; true
+; JnJMasterCL    ; JnJMasterCL         ; JnJMasterCL         ; JnJMasterCL         ; JnJMasterCL         ; CL ; true
+; JnJMasterUY    ; JnJMasterUY         ; JnJMasterUY         ; JnJMasterUY         ; JnJMasterUY         ; UY ; true
+; JnJMasterCO    ; JnJMasterCO         ; JnJMasterCO         ; JnJMasterCO         ; JnJMasterCO         ; CO ; true
+; JnJMasterPE    ; JnJMasterPE         ; JnJMasterPE         ; JnJMasterPE         ; JnJMasterPE         ; PE ; true
+; JnJMasterPR    ; JnJMasterPR         ; JnJMasterPR         ; JnJMasterPR         ; JnJMasterPR         ; PR ; true
+
+; PANARELLO      ; PANARELLO           ; PANARELLO           ; PANARELLO           ; PANARELLO           ;    ; true
+; PHRBRGroup     ; PHRBRGroup          ; PHRBRGroup          ; PHRBRGroup          ; PHRBRGroup          ; BR ; true
+; MDDBRGroup     ; MDDBRGroup          ; MDDBRGroup          ; MDDBRGroup          ; MDDBRGroup          ; BR ; true
+; MDDMXGroup     ; MDDMXGroup          ; MDDMXGroup          ; MDDMXGroup          ; MDDMXGroup          ; MX ; true
+; PHRMXGroup     ; PHRMXGroup          ; PHRMXGroup          ; PHRMXGroup          ; PHRMXGroup          ; MX ; true
+; MDDCENCAGroup  ; MDDCENCAGroup       ; MDDCENCAGroup       ; MDDCENCAGroup       ; MDDCENCAGroup       ; PA ; true
+; PHRCENCAGroup  ; PHRCENCAGroup       ; PHRCENCAGroup       ; PHRCENCAGroup       ; PHRCENCAGroup       ; PA ; true
+; MDDECGroup     ; MDDECGroup          ; MDDECGroup          ; MDDECGroup          ; MDDECGroup          ; EC ; true
+; PHRECGroup     ; PHRECGroup          ; PHRECGroup          ; PHRECGroup          ; PHRECGroup          ; EC ; true
+
+; MDDPAGroup     ; JnJMDDPanama        ; JnJMDDPanama        ; JnJMDDPanama        ; JnJMDDPanama        ; PA ; true
+; PHRPAGroup     ; JnJPHRPanama        ; JnJPHRPanama        ; JnJPHRPanama        ; JnJPHRPanama        ; PA ; true
+
+; PHRDOGroup     ; PHRDOGroup          ; PHRDOGroup          ; PHRDOGroup          ; PHRDOGroup          ; DO ; true
+; MDDDOGroup     ; MDDDOGroup          ; MDDDOGroup          ; MDDDOGroup          ; MDDDOGroup          ; DO ; true
+
+; PHRARGroup     ; PHRARGroup          ; PHRARGroup          ; PHRARGroup          ; PHRARGroup          ; AR ; true
+; MDDARGroup     ; MDDARGroup          ; MDDARGroup          ; MDDARGroup          ; MDDARGroup          ; AR ; true
+
+; PHRCLGroup     ; PHRCLGroup          ; PHRCLGroup          ; PHRCLGroup          ; PHRCLGroup          ; CL ; true
+; MDDCLGroup     ; MDDCLGroup          ; MDDCLGroup          ; MDDCLGroup          ; MDDCLGroup          ; CL ; true
+
+; PHRUYGroup     ; PHRUYGroup          ; PHRUYGroup          ; PHRUYGroup          ; PHRUYGroup          ; UY ; true
+; MDDUYGroup     ; MDDUYGroup          ; MDDUYGroup          ; MDDUYGroup          ; MDDUYGroup          ; UY ; true
+
+; MDDCOGroup     ; MDDCOGroup          ; MDDCOGroup          ; MDDCOGroup          ; MDDCOGroup          ; CO ; true
+; PHRCOGroup     ; PHRCOGroup          ; PHRCOGroup          ; PHRCOGroup          ; PHRCOGroup          ; CO ; true
+
+; MDDPAGroup     ; MDDPAGroup          ; MDDPAGroup          ; MDDPAGroup          ; MDDPAGroup          ; PA ; true
+; PHRPAGroup     ; PHRPAGroup          ; PHRPAGroup          ; PHRPAGroup          ; PHRPAGroup          ; PA ; true
+
+; MDDPEGroup     ; MDDPEGroup          ; MDDPEGroup          ; MDDPEGroup          ; MDDPEGroup          ; PE ; true
+; PHRPEGroup     ; PHRPEGroup          ; PHRPEGroup          ; PHRPEGroup          ; PHRPEGroup          ; PE ; true
+
+; MDDPRGroup     ; MDDPRGroup          ; MDDPRGroup          ; MDDPRGroup          ; MDDPRGroup          ; PR ; true
+; PHRPRGroup     ; PHRPRGroup          ; PHRPRGroup          ; PHRPRGroup          ; PHRPRGroup          ; PR ; true
+
+; MDDBOGroup     ; JnJMDDBO            ; JnJMDDBO            ; JnJMDDBO            ; JnJMDDBO            ; BO ; true
+; PHRBOGroup     ; JnJPHRBO            ; JnJPHRBO            ; JnJPHRBO            ; JnJPHRBO            ; BO ; true
+; PHRCRGroup     ; PHRCRGroup          ; PHRCRGroup          ; PHRCRGroup          ; PHRCRGroup          ; CR ; true
+; MDDCRGroup     ; MDDCRGroup          ; MDDCRGroup          ; MDDCRGroup          ; MDDCRGroup          ; CR ; true
+
+# Customer Eligibility - Personalization Rule
+$principal = customergroup
+$query = NOT EXISTS ({{SELECT {pk} FROM {CustomerEligibilityRelation} WHERE {target} = {item:pk} AND {source} IN ({{    select {unit:pk} from {JnjB2BUnit as unit JOIN B2BCustomer as cust on {cust:defaultB2BUnit} = {unit:pk}} where {cust:uid} = (?session.user.uid) }}) }})
+INSERT_UPDATE SearchRestriction; code[unique = true]; name; query; restrictedType(code); principal(uid); active[default = true]; generate[default = false]
+; Customer_Eligiblitty_Restriction ; Customer Eligiblitty Category Restriction ; $query ; Category ; $principal
+
+# News Releases - Personalization Rule
+$principal = customergroup
+$query = {visible} = '1'
+INSERT_UPDATE SearchRestriction; code[unique = true]; name; query; restrictedType(code); principal(uid); active[default = true]; generate[default = true]
+; frontend_newsBannerComponet ; News Banner Component Restriction ; $query ; JnjNewsBannerComponent ; $principal
+
+# Contracts - Personalization Rule
+$principal = b2bcustomergroup
+$query = {active} = '1'
+INSERT_UPDATE SearchRestriction; code[unique = true]; name; query; restrictedType(code); principal(uid); active[default = true]; generate[default = true]
+; frontend_jnjContract ; Jnj Contract Restriction ; $query ; JnjContract ; $principal
+
+# Ecommerce flag - Personalization Rule
+$principal = b2bcustomergroup
+$query = {ecommerceFlag} = '1'
+INSERT_UPDATE SearchRestriction; code[unique = true]; name; query; restrictedType(code); principal(uid); active[default = true]; generate[default = true]
+; frontend_jnjEcommerce ; Jnj Ecommerce Restriction ; $query ; JnJProduct ; $principal
+
+# Overriding the default Impex which caused several issues due to restriction
+INSERT_UPDATE SearchRestriction; code[unique = true]; name[lang = en]; query; principal(UID); restrictedType(code); active; generate
+; employee_restriction ; Restrict employees visibility               ; EXISTS ({{ SELECT {pk} FROM {PrincipalGroupRelation} WHERE {source}={item:pk} AND {target} IN ( ?session.branch ) }} ) AND ( {item:active} = 1 OR EXISTS ( {{ select {ug:PK} from {UserGroup as ug} where {ug:PK} IN (?session.user.groups) and {ug:uid} = 'b2badmingroup' }} )) ; b2bgroup ; B2BCustomer ; false ; true
+; b2border_restriction ; Restrict B2BUserGroup visibility for orders ; ({item:Unit} IN (?session.branch) OR ({item:Unit} is NULL AND {item:User}=?session.user))                                                                                                                                                                                        ; b2bgroup ; Order       ; false ; true ;
+
+#Media Folder For Laudo
+INSERT_UPDATE MediaFolder; qualifier[unique = true]; path[unique = true]
+; laudo       ; laudo
+#Media Folder For Uploaded Invoice files
+; invoiceFile ; invoiceFile
+
+INSERT_UPDATE jnjB2bCustomer;uid[unique=true,allownull=true];email;name;groups(uid)[mode=append];sessionLanguage(isocode);sessionCurrency(isocode);
+;$userid;$userid;Dummy SAP User;JnJDummyUnit;es;BRL
+
+
+INSERT_UPDATE JnjLaCronJobMonitoring;jobCode[unique=true];country;frequency;serviceLevelStartTime;serviceLevelEndTime;monitoringCode;monitored[default=true]
+                                    ;jnjProductFullIndexerCronJob;LATAM;Every Sunday;7:30 AM;8:45 AM;06wGdj;
+                                    ;JnjARFullIndexCronJob;LATAM;Every Sunday;7:30 AM;8:45 AM;yU0GNZ;
+                                    ;JnjBRFullIndexCronJob;LATAM;Every Sunday;7:30 AM;8:45 AM;nJyGSf;
+                                    ;JnjCENCAFullIndexCronJob;LATAM;Every Sunday;7:30 AM;8:45 AM;LKhCtD;
+                                    ;JnjCLFullIndexCronJob;LATAM;Every Sunday;7:30 AM;8:45 AM;Xa90bx;
+                                    ;JnjCOFullIndexCronJob;LATAM;Every Sunday;7:30 AM;8:45 AM;QDnp9d;
+                                    ;JnjECFullIndexCronJob;LATAM;Every Sunday;7:30 AM;8:45 AM;8560p8;
+                                    ;JnjMXFullIndexCronJob;LATAM;Every Sunday;7:30 AM;8:45 AM;v25pWq;
+                                    ;JnjPEFullIndexCronJob;LATAM;Every Sunday;7:30 AM;8:45 AM;LdaCN9;
+                                    ;JnjPRFullIndexCronJob;LATAM;Every Sunday;7:30 AM;8:45 AM;uGHpJ4;
+                                    ;JnjUYFullIndexCronJob;LATAM;Every Sunday;7:30 AM;8:45 AM;aJOCpS;
+                                    ;JnjSynchronizeOrderWriteCompositeJob;LATAM;Every 15 mins;12:00 AM;12:15 AM;HXnIbX;
+                                    ;jnjLoadInvoicesJob;LATAM;Every 15 mins;12:00 AM;12:15 AM;HwHInh;
+                                    ;jnjSynchronizeOrdersDataUploadJob;LATAM;Every 15 mins;12:00 AM;12:15 AM;cWhCSk;
+                                    ;JnjUpsertCustomerCompositeJob;LATAM;Daily Once;10:20 AM;10:30 AM;WChCUL;
+                                    ;jnjSalesOrgCustomerJob;LATAM;Daily Once;10:20 AM;10:30 AM;Rh0pS1;
+                                    ;jnjUpsertCustomerCronJob;LATAM;Daily Once;10:20 AM;10:30 AM;lwbpnb;
+                                    ;JnjUpsertProductCompositeJob;LATAM;Daily Once;8:30 AM;10:30 PM;yIRIAP;
+                                    ;jnjHideCategoryCronJob;LATAM;Daily Once;8:30 AM;11:30 AM;Jg5pam;
+                                    ;jnjLaUpsertProductCronJob;LATAM;Daily Once;8:30 AM;11:30 AM;ckjCbW;
+                                    ;JnjCheckContractCronJob;LATAM;Daily Once;1:30 PM;1:31 PM;IrAIj9;
+                                    ;jnjCustomerEligibilityCronJob;LATAM;Daily Once;11:30 AM;11:31 AM;4EfpBf;
+                                    ;jnjLABRDailyEmailOrderStatusJob;LATAM;Daily Once;2:35 AM;2:36 AM;UZypHM;
+                                    ;jnjLaBRConsolidatedEmailOrderStatusJob;LATAM;Daily Once;1:35 AM;1:36 AM;I3uprS;
+                                    ;jnjLaSubmitEdiOrderFilesJob;LATAM;Every 5 mins;12:00 AM;12:05 AM;t6hCgm;
+                                    ;jnjLoadContractsJob;LATAM;Every 30 mins;12:00 AM;12:05 AM;lTXIBp;
+                                    ;jnjLoadDropShipmentJob;LATAM;Every 1 hour;12:30 AM;12:35 AM;rdCG9f;
+                                    ;jnjLoadTranslationJob;LATAM;Daily Once;11:30 AM;11:31 AM;nNQI2M;
+                                    ;jnjCategoryShowPlannedDateJob;LATAM;Daily Once;2:30 PM;2:40 PM;B0lIvK;
+                                    ;JnJGTPACDateDailyUpdateJob;LATAM;Daily Once;10:30 AM;11:30 AM;90GpOu;
+                                    ;JnJGTPACDateRealTimeUpdateJob;LATAM;Every 15 mins;12:00 AM;12:10 AM;016GTw;
+									;jnjLAARDailyEmailOrderStatusJob;LATAM;Daily Once;21:00 PM;21:10 PM;Kk5p1d;
+									;jnjLACENCADailyEmailOrderStatusJob;LATAM;Daily Once;21:10 PM;21:20 PM;G2Jpeq;
+									;jnjLACLDailyEmailOrderStatusJob;LATAM;Daily Once;21:15 PM;21:25 PM;BuFINH;
+									;jnjLACODailyEmailOrderStatusJob;LATAM;Daily Once;21:20 PM;21:30 PM;JSpGtP;
+									;jnjLAECDailyEmailOrderStatusJob;LATAM;Daily Once;21:25 PM;21:35 PM;jHyG3l;
+									;jnjLAMXDailyEmailOrderStatusJob;LATAM;Daily Once;21:30 PM;21:40 PM;0BdIYs;
+									;jnjLAPEDailyEmailOrderStatusJob;LATAM;Daily Once;21:35 PM;21:45 PM;LwspWF;
+									;jnjLAPRDailyEmailOrderStatusJob;LATAM;Daily Once;21:40 PM;21:50 PM;3Tm0sn;
+									;jnjLAUYDailyEmailOrderStatusJob;LATAM;Daily Once;21:45 PM;21:55 PM;sAxI7e;
+									;jnjLaARConsolidatedEmailOrderStatusJob;LATAM;Daily Once;20:00 PM;20:10 PM;vSiGuo;
+									;jnjLaCENCAConsolidatedEmailOrderStatusJob;LATAM;Daily Once;20:10 PM;20:20 PM;lXoGUp;
+									;jnjLaCLConsolidatedEmailOrderStatusJob;LATAM;Daily Once;20:15 PM;20:25 PM;5VVGE0;
+									;jnjLaCOConsolidatedEmailOrderStatusJob;LATAM;Daily Once;20:20 PM;20:30 PM;TazGfq;
+									;jnjLaECConsolidatedEmailOrderStatusJob;LATAM;Daily Once;20:25 PM;20:35 PM;oxhpyC;
+									;jnjLaMXConsolidatedEmailOrderStatusJob;LATAM;Daily Once;20:30 PM;20:40 PM;s9JpRA;	
+									;jnjLaPEConsolidatedEmailOrderStatusJob;LATAM;Daily Once;20:35 PM;20:45 PM;yzyIDd;
+									;jnjLaPRConsolidatedEmailOrderStatusJob;LATAM;Daily Once;20:40 PM;20:50 PM;8Ripno;
+									;jnjLaUYConsolidatedEmailOrderStatusJob;LATAM;Daily Once;20:45 PM;20:55 PM;hGlGRy;
+									;syncCatalogCron_Job;LATAM;Daily Once;3:00 AM;11:00 AM;jfmCf2;
+									;syncBRProdStgToOnline;LATAM;Daily Once;3:00 AM;12:00 PM;jhs0hj;
+									;syncMXProdStgToOnline;LATAM;Daily Once;3:00 AM;12:30 PM;gnJC9l;
+									;syncCENCAProdStgToOnline;LATAM;Daily Once;3:00 AM;13:00 PM;hqSGSp;
+									;syncECProdStgToOnline;LATAM;Daily Once;3:00 AM;13:30 PM;p060M2;
+									;syncARProdStgToOnline;LATAM;Daily Once;3:00 AM;14:00 PM;yhaGkb;
+									;syncUYProdStgToOnline;LATAM;Daily Once;3:00 AM;14:30 PM;KCfpzB;
+									;syncCLProdStgToOnline;LATAM;Daily Once;3:00 AM;15:00 PM;tT90hi;
+									;syncCOProdStgToOnline;LATAM;Daily Once;3:00 AM;15:30 PM;wkBGT9;
+									;syncPEProdStgToOnline;LATAM;Daily Once;3:00 AM;16:00 PM;KGM0SP;
+									;syncPRProdStgToOnline;LATAM;Daily Once;3:00 AM;16:30 PM;vEdpW8;
+									;jnjARRegulatoryExpireDocumentCronJob;LATAM;Daily Once;12:05 AM;12:35 AM;4jlCfI;
+									;jnjBRRegulatoryExpireDocumentCronJob;LATAM;Daily Once;12:05 AM;12:35 AM;b7MGUN;
+									;jnjCERegulatoryExpireDocumentCronJob;LATAM;Daily Once;12:05 AM;12:35 AM;eZpG6l;
+									;jnjCLRegulatoryExpireDocumentCronJob;LATAM;Daily Once;12:05 AM;12:35 AM;LApGEw;
+									;jnjCORegulatoryExpireDocumentCronJob;LATAM;Daily Once;12:05 AM;12:35 AM;xX8GM7;
+									;jnjECRegulatoryExpireDocumentCronJob;LATAM;Daily Once;12:05 AM;12:35 AM;7LKpmG;
+									;jnjMXRegulatoryExpireDocumentCronJob;LATAM;Daily Once;12:05 AM;12:35 AM;9czInq;
+									;jnjPERegulatoryExpireDocumentCronJob;LATAM;Daily Once;12:05 AM;12:35 AM;F69pl4;
+									;jnjPRRegulatoryExpireDocumentCronJob;LATAM;Daily Once;12:05 AM;12:35 AM;hBLGCR;
+									;jnjUYRegulatoryExpireDocumentCronJob;LATAM;Daily Once;12:05 AM;12:35 AM;xp1GS7;
+									;jnjLaUpdateCarrierStatusJob;LATAM;Every 15 mins;12:00 AM;12:30 AM;Giuprt;
+									;jnjLaUpdateDeliveryDateJob;LATAM;Every 15 mins;12:00 AM;12:15 AM;B6DIrj;
+									;jnjLaUpdateOrderHeaderStatusJob;LATAM;Every 15 mins;12:00 AM;12:15 AM;Vdup2t;
+									;jnjLaUpdateOrderStatusJob;LATAM;Every 15 mins;12:00 AM;12:15 AM;Y8TC39;
+									;jnjLaActiveUserReportCronJob;LATAM;Every 2 hours;12:00 AM;12:30 AM;zsQCWG;
+									;jnjLaCronJobMonitoringReportEmailJob;LATAM;Every 2 hours;12:05 AM;12:15 AM;RUnpuh;
+									;jnjOrderArchivalCronjob;LATAM;Daily Once;5:30 AM;5:45 AM;dml0TF;
+									;jnjLaCreateERPOrderCronJob;LATAM;Every 2 hours;12:00 AM;12:30 AM;aJZps5;
+									;jnjLATAMActiveUserListExtractCronJob;LATAM;Daily Once;5:30 PM;05:40 AM;zjrCGW;
+									;exportHybrisCDLCronJob;Daily Once;23:00 PM;05:00 AM;cdljob;
+									;jnjLAMediaDeletionScriptCronJob;Daily Once;12:00 AM;12:00 AM;1xdCEX;

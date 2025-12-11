@@ -1,0 +1,192 @@
+/**
+ *
+ */
+package com.jnj.gt.outbound.services.impl;
+
+import de.hybris.platform.util.Config;
+
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBElement;
+import jakarta.xml.bind.Marshaller;
+
+import org.apache.commons.httpclient.Credentials;
+import org.apache.commons.httpclient.UsernamePasswordCredentials;
+import org.apache.commons.httpclient.auth.AuthScope;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ws.WebServiceMessage;
+import org.springframework.ws.client.WebServiceClientException;
+import org.springframework.ws.client.core.WebServiceMessageCallback;
+import org.springframework.ws.client.core.WebServiceTemplate;
+import org.springframework.ws.soap.SoapMessage;
+import org.springframework.ws.transport.http.CommonsHttpMessageSender;
+
+import com.jnj.core.services.impl.JnjConfigServiceImpl;
+import com.jnj.core.util.JnJCommonUtil;
+import com.jnj.exceptions.IntegrationException;
+import com.jnj.gt.aspac_epic_simulate_v1.simulatewebservice.TestBackOrderItemFromGatewayInput;
+import com.jnj.gt.aspac_epic_simulate_v1.simulatewebservice.TestBackOrderItemFromGatewayOutput;
+import com.jnj.gt.constants.Jnjgtb2boutboundserviceConstants;
+import com.jnj.gt.constants.Jnjgtb2boutboundserviceConstants.Logging;
+import com.jnj.gt.outbound.services.JnjGTConsignmentSimulateOrder;
+import com.jnj.gt.outbound.services.JnjGTConsignmentStockService;
+
+
+/**
+ * @author ujjwal.negi
+ *
+ */
+public class DefaultJnjGTConsignmentSimulateOrder implements JnjGTConsignmentSimulateOrder {
+	private static final Logger LOGGER = Logger.getLogger(DefaultJnjGTConsignmentStockService.class);
+	@Autowired
+	private WebServiceTemplate webserviceTemplateForConsignmentStock;
+	@Autowired
+	private JnjConfigServiceImpl jnjConfigServiceImpl;
+
+	public WebServiceTemplate getWebserviceTemplateForConsignmentStock() {
+		return webserviceTemplateForConsignmentStock;
+	}
+
+	public JnjConfigServiceImpl getJnjConfigServiceImpl() {
+		return jnjConfigServiceImpl;
+	}
+
+	@Override
+	public TestBackOrderItemFromGatewayOutput getBackorderProducts(final TestBackOrderItemFromGatewayInput testBackOrderItemFromGatewayInput)
+			throws IntegrationException {
+		final String MEHTOD_NAME = "getBackorderProducts()";
+		if (LOGGER.isDebugEnabled()) {
+
+			LOGGER.debug(Logging.CONSIGNMENT_STOCK + Logging.HYPHEN + MEHTOD_NAME + Logging.HYPHEN + Logging.BEGIN_OF_METHOD
+					+ Logging.HYPHEN + Logging.START_TIME + JnJCommonUtil.getCurrentDateTime());
+		}
+		TestBackOrderItemFromGatewayOutput viewConsignmentStockOutput = null;
+		try
+		{
+			// Remove after testing and used for printing the xml.
+			JAXBContext jaxbContext;
+			Marshaller marshaller;
+
+			jaxbContext = JAXBContext.newInstance(TestBackOrderItemFromGatewayInput.class);
+			marshaller = jaxbContext.createMarshaller();
+			marshaller.marshal(testBackOrderItemFromGatewayInput, System.out);
+
+			if (StringUtils.equalsIgnoreCase(Jnjgtb2boutboundserviceConstants.Y_STRING,
+					jnjConfigServiceImpl.getConfigValueById(Jnjgtb2boutboundserviceConstants.STOP_SAP_OUTBOUND_CALLING)))
+
+			{
+				// Code for testing the response logic through mocking the response xml.
+				
+				/* * final File oldfile = new File(
+				 * Config.getParameter(Jnjgtb2boutboundserviceConstants.ConsignmentStock.MOCK_XML_CLASS_PATH)); final
+				 * Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller(); viewConsignmentStockOutput =
+				 * (TestBackOrderItemFromGatewayOutput) jaxbUnmarshaller.unmarshal(oldfile);
+				 */
+				throw new IntegrationException();
+			}// Else block executes always when data would be required from the SAP.
+			else
+			{
+				loadConnectionParamsFromProp(webserviceTemplateForConsignmentStock);
+				viewConsignmentStockOutput = (TestBackOrderItemFromGatewayOutput) ((JAXBElement) webserviceTemplateForConsignmentStock
+						.marshalSendAndReceive(testBackOrderItemFromGatewayInput, new WebServiceMessageCallback()
+						{
+							@Override
+							public void doWithMessage(final WebServiceMessage arg0)
+							{
+								((SoapMessage) arg0)
+										.setSoapAction("MU007_EPIC_ViewConsStock_v1_viewConsignmentStockWebservice_Binder_viewConsignmentStock");
+							}
+						})).getValue();
+
+			}
+
+			jaxbContext = JAXBContext.newInstance(TestBackOrderItemFromGatewayOutput.class);
+			marshaller = jaxbContext.createMarshaller();
+			marshaller.marshal(viewConsignmentStockOutput, System.out);
+		}
+		catch (final IllegalArgumentException illegalArgumentException)
+		{
+			LOGGER.error(
+					Logging.CONSIGNMENT_STOCK + Logging.HYPHEN + MEHTOD_NAME + Logging.HYPHEN
+							+ "Illegal Argument Exception Occured in JnjGTConsignmentStockServiceImpl class"
+							+ illegalArgumentException.getMessage(), illegalArgumentException);
+			throw new IntegrationException();
+		}
+
+		catch (final WebServiceClientException webServiceClientException)
+		{
+			LOGGER.error(
+					Logging.CONSIGNMENT_STOCK + Logging.HYPHEN + MEHTOD_NAME + Logging.HYPHEN
+							+ "Web Service Client Exception Occured in JnjGTConsignmentStockServiceImpl class"
+							+ webServiceClientException.getMessage(), webServiceClientException);
+			throw new IntegrationException();
+		}
+		catch (final Throwable throwable)
+		{
+			LOGGER.error(Logging.CONSIGNMENT_STOCK + Logging.HYPHEN + MEHTOD_NAME + Logging.HYPHEN
+					+ "Exception caught in Throwable block of JnjGTConsignmentStockServiceImpl class" + throwable.getMessage(),
+					throwable);
+			throw new IntegrationException();
+		}
+
+		if (LOGGER.isDebugEnabled())
+		{
+			LOGGER.debug(Logging.CONSIGNMENT_STOCK + Logging.HYPHEN + MEHTOD_NAME + Logging.HYPHEN + Logging.END_OF_METHOD
+					+ Logging.HYPHEN + Logging.END_TIME + JnJCommonUtil.getCurrentDateTime());
+		}
+		return viewConsignmentStockOutput;
+	}
+	
+	/*@Override
+	public TestBackOrderItemFromGatewayOutput viewConsignmentStocks(final TestBackOrderItemFromGatewayInput viewConsignmentStockInput)
+			throws IntegrationException
+	{}*/
+
+	/**
+	 * Load connection params from property file.
+	 *
+	 * @param webServiceTemplate
+	 *           the web service template
+	 * @throws Exception
+	 *            the exception
+	 */
+	@SuppressWarnings("deprecation")
+	protected void loadConnectionParamsFromProp(final WebServiceTemplate webserviceTemplateForConsignmentStock) throws Exception
+	{
+		if (LOGGER.isDebugEnabled())
+		{
+			LOGGER.debug(Logging.CONSIGNMENT_STOCK + Logging.HYPHEN + "loadConnectionParamsFromProp()" + Logging.HYPHEN
+					+ Logging.BEGIN_OF_METHOD + Logging.HYPHEN + Logging.START_TIME + JnJCommonUtil.getCurrentDateTime());
+		}
+		final CommonsHttpMessageSender messageSender = new CommonsHttpMessageSender();
+		LOGGER.debug("User= " + Config.getParameter(Jnjgtb2boutboundserviceConstants.WebServiceConnection.WEBSERVICE_ORDER_USER));
+		LOGGER.debug("Password= " + Config.getParameter(Jnjgtb2boutboundserviceConstants.WebServiceConnection.WEBSERVICE_ORDER_PWD));
+		LOGGER.debug("URL= " + Config.getParameter(Jnjgtb2boutboundserviceConstants.ConsignmentStock.WEBSERVICE_ORDER_URL));
+
+		final Credentials credentials = new UsernamePasswordCredentials(
+				Config.getParameter(Jnjgtb2boutboundserviceConstants.WebServiceConnection.WEBSERVICE_ORDER_USER),
+				Config.getParameter(Jnjgtb2boutboundserviceConstants.WebServiceConnection.WEBSERVICE_ORDER_PWD));
+		messageSender.setCredentials(credentials);
+		messageSender.setAuthScope(AuthScope.ANY);
+		messageSender.setConnectionTimeout(Integer.parseInt(Config
+				.getParameter(Jnjgtb2boutboundserviceConstants.WebServiceConnection.WEBSERVICE_CONNECTION_TIME_OUT)));
+		messageSender.setReadTimeout(Integer.parseInt(Config
+				.getParameter(Jnjgtb2boutboundserviceConstants.WebServiceConnection.WEBSERVICE_READ_TIME_OUT)));
+		messageSender.getHttpClient().getParams().setAuthenticationPreemptive(true);
+		webserviceTemplateForConsignmentStock.setDefaultUri(Config
+				.getParameter(Jnjgtb2boutboundserviceConstants.ConsignmentStock.WEBSERVICE_ORDER_URL));
+		messageSender.afterPropertiesSet();
+		webserviceTemplateForConsignmentStock.setMessageSender(messageSender);
+		if (LOGGER.isDebugEnabled())
+		{
+			LOGGER.debug(Logging.CONSIGNMENT_STOCK + Logging.HYPHEN + "loadConnectionParamsFromProp()" + Logging.HYPHEN
+					+ Logging.END_OF_METHOD + Logging.HYPHEN + Logging.END_TIME + JnJCommonUtil.getCurrentDateTime());
+		}
+	}
+
+	
+	
+	
+
+}

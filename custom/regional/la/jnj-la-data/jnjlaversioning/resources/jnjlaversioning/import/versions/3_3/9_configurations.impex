@@ -1,0 +1,12 @@
+INSERT_UPDATE JnjConfig; id[unique = true]       ; value
+                       ; BR_automaticEmailSender ; "ra-jnjbr-contatocorp@its.jnj.com"
+                       ; MX_automaticEmailSender ; "rra-mddbr-casc@its.jnj.com"
+                       ; PA_automaticEmailSender ; "rra-mddbr-casc@its.jnj.com"
+                       ; EC_automaticEmailSender ; "rra-mddbr-casc@its.jnj.com"
+                       ; CO_automaticEmailSender ; "customerservicecol@its.jnj.com"
+                       ; PE_automaticEmailSender ; "rra-mddbr-casc@its.jnj.com"
+                       ; PR_automaticEmailSender ; "rra-mddbr-casc@its.jnj.com"
+                       ; CL_automaticEmailSender ; "rra-mddbr-casc@its.jnj.com"
+                       ; UY_automaticEmailSender ; "rra-mddbr-casc@its.jnj.com"
+                       ; AR_automaticEmailSender ; "rra-mddbr-casc@its.jnj.com"
+                       ; jnjLaVersionLabel       ; "3.3"

@@ -1,0 +1,68 @@
+.jnj-popup-container .info-text{
+	padding-left:15px;
+}
+.jnj-popup-container .tickmarktext{
+	font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.jnj-popup-container .contract-popup-table{
+	width: 100%;
+}
+.jnj-popup-container .selectTitle{
+	font-size:30px;
+}
+#contractpopup{
+    padding: 0px;
+    overflow-y: auto;
+    width: 100%;
+}
+.jnj-popup-container .modalcls{
+	top: 80px;
+}
+/**Update PO AAOL - 3084*/
+.jnj-popup-container .updatePo{
+	width:575px !important;
+}
+.jnj-popup-container .modal-body{
+	padding: 15px 25px 15px 25px;
+}
+.jnj-popup-container .modal-header{
+	padding: 15px 25px 15px 25px;
+}
+.jnj-popup-container .popup{
+	margin: 0 auto;
+	width: 500px;
+	border-radius: 0px;
+	box-shadow: 0 0px 0px; 
+}
+.jnj-popup-container .clsBtn{
+	margin-top: 15px !important;
+	font-size: 14px;
+	color: #0a8caa;
+	opacity:1;
+}
+.jnj-popup-container .ftrcls{
+	padding: 25px;
+}
+.jnj-popup-container .canceltxt{
+	margin-top: 8px;
+}
+.jnj-popup-container  .continueques{
+	margin-top: 15px;
+}
+
+
+@media screen and (max-width: 480px){
+	
+	.jnj-popup-container .updatePo,.popup,.modal-dialog{
+		width:340px !important;
+	}
+}
+@media screen and (min-width: 481px) and (max-width: 767px){
+	
+	.jnj-popup-container .updatePo,.popup,.modal-dialog{
+		width:480px !important;
+	}
+} 
+

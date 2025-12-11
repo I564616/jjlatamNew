@@ -1,0 +1,23 @@
+$emailResource=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/jnjlamasterstore/import/contentCatalogs/jnjContentCatalog/emails/templates
+
+INSERT_UPDATE RendererTemplate; code[unique = true]; description[lang = en]; templateScript[lang = en, translator = de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]; rendererType(code)[default = 'velocity']; contextClass
+; arCMSsite-JnjEpicEmailFooterComponent-template    ; JnjEpicEmailFooterComponentTemplate ; $emailResource/email-jnjEpicEmailFooterComponentTemplate.vm ; ; java.util.Map
+; arCMSsite-SimpleBannerComponent-template          ; CMSSimpleBannerComponent Template   ; $emailResource/email-bannerComponentTemplate.vm             ; ; java.util.Map
+; brCMSsite-JnjEpicEmailFooterComponent-template    ; JnjEpicEmailFooterComponentTemplate ; $emailResource/email-jnjEpicEmailFooterComponentTemplate.vm ; ; java.util.Map
+; brCMSsite-SimpleBannerComponent-template          ; CMSSimpleBannerComponent Template   ; $emailResource/email-bannerComponentTemplate.vm             ; ; java.util.Map
+; cencaCMSsite-JnjEpicEmailFooterComponent-template ; JnjEpicEmailFooterComponentTemplate ; $emailResource/email-jnjEpicEmailFooterComponentTemplate.vm ; ; java.util.Map
+; cencaCMSsite-SimpleBannerComponent-template       ; CMSSimpleBannerComponent Template   ; $emailResource/email-bannerComponentTemplate.vm             ; ; java.util.Map
+; clCMSsite-JnjEpicEmailFooterComponent-template    ; JnjEpicEmailFooterComponentTemplate ; $emailResource/email-jnjEpicEmailFooterComponentTemplate.vm ; ; java.util.Map
+; clCMSsite-SimpleBannerComponent-template          ; CMSSimpleBannerComponent Template   ; $emailResource/email-bannerComponentTemplate.vm             ; ; java.util.Map
+; coCMSsite-JnjEpicEmailFooterComponent-template    ; JnjEpicEmailFooterComponentTemplate ; $emailResource/email-jnjEpicEmailFooterComponentTemplate.vm ; ; java.util.Map
+; coCMSsite-SimpleBannerComponent-template          ; CMSSimpleBannerComponent Template   ; $emailResource/email-bannerComponentTemplate.vm             ; ; java.util.Map
+; ecCMSsite-JnjEpicEmailFooterComponent-template    ; JnjEpicEmailFooterComponentTemplate ; $emailResource/email-jnjEpicEmailFooterComponentTemplate.vm ; ; java.util.Map
+; ecCMSsite-SimpleBannerComponent-template          ; CMSSimpleBannerComponent Template   ; $emailResource/email-bannerComponentTemplate.vm             ; ; java.util.Map
+; mxCMSsite-JnjEpicEmailFooterComponent-template    ; JnjEpicEmailFooterComponentTemplate ; $emailResource/email-jnjEpicEmailFooterComponentTemplate.vm ; ; java.util.Map
+; mxCMSsite-SimpleBannerComponent-template          ; CMSSimpleBannerComponent Template   ; $emailResource/email-bannerComponentTemplate.vm             ; ; java.util.Map
+; peCMSsite-JnjEpicEmailFooterComponent-template    ; JnjEpicEmailFooterComponentTemplate ; $emailResource/email-jnjEpicEmailFooterComponentTemplate.vm ; ; java.util.Map
+; peCMSsite-SimpleBannerComponent-template          ; CMSSimpleBannerComponent Template   ; $emailResource/email-bannerComponentTemplate.vm             ; ; java.util.Map
+; prCMSsite-JnjEpicEmailFooterComponent-template    ; JnjEpicEmailFooterComponentTemplate ; $emailResource/email-jnjEpicEmailFooterComponentTemplate.vm ; ; java.util.Map
+; prCMSsite-SimpleBannerComponent-template          ; CMSSimpleBannerComponent Template   ; $emailResource/email-bannerComponentTemplate.vm             ; ; java.util.Map
+; uyCMSsite-JnjEpicEmailFooterComponent-template    ; JnjEpicEmailFooterComponentTemplate ; $emailResource/email-jnjEpicEmailFooterComponentTemplate.vm ; ; java.util.Map
+; uyCMSsite-SimpleBannerComponent-template          ; CMSSimpleBannerComponent Template   ; $emailResource/email-bannerComponentTemplate.vm             ; ; java.util.Map

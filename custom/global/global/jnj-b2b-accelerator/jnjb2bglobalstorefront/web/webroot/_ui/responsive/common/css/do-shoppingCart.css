@@ -1,0 +1,263 @@
+.modal-cancel-btn{margin-top:10px;}
+.product-numbers{width: 16%;float: left;line-height: 30px;}
+.price-txt-width{width:75%;padding-right:5px;float:left}
+.price-quantity{width:24%;float:left}
+.margin-top-row-gap{margin-top:20px}
+.tablecell-content{margin-bottom:5px;}
+.nowrap-txt{white-space:nowrap;}
+.nowrap-txt.cell-value{font-weight:bold}
+.valign-top{vertical-align:top;}
+.marginbottom15{margin-bottom:15px;}
+.table-shadow{
+	background-color: #fff;
+    webkit-box-shadow: 0 0 5px 2px #eee;
+    -moz-box-shadow: 0 0 5px 2px #eee;
+    box-shadow: 0 0 5px 2px #eee;
+}
+.bottom-addcartbtn{margin-top:10px}
+.marginTop10{margin-top:10px}
+/* 
+#ordersTable.table.table-bordered.dataTable tbody td:last-child,#ordersTable.table.table-bordered.dataTable tbody th:last-child{
+	padding-left:8px  !important;
+	padding-right: 15px !important;
+	text-align:right;
+}
+#ordersTable.table>thead:first-child>tr:first-child>th:last-child{
+	padding-left:8px  !important;
+	padding-right: 15px !important;
+	text-align:right;
+} */
+#ordersTable{
+    border-bottom: 1px solid #f2f2f2;
+}
+
+/* No charge order page */
+.no-charge-reason{padding-right:20px;width:35%}
+.no-charge-select{width:270px;} /*Sprint 3 NAGT Demo comment fix*/
+.dropshipAccntLabel{padding-right:20pxpx;width:35%}
+.vertical-align-top{vertical-align:top !important}
+.drop-ship-account-list-icon{border:none;background:white;color:#0a8caa;opacity:1}
+#dropship-account-popup .modal-body{padding:0px;}
+#dropship-account-popup  .modal-header{border-bottom:none}
+.account-ul-list{margin-bottom:0px}
+.table-cell-to-block{display:table-cell}
+.full-width{width:100%}
+.po-padding{padding-right:25px}
+/* End No charge order page */
+
+.distributor-po-holder{margin-top:5px}
+.thirdparty-bill-label{width:30%; font-weight:bold;line-height:32px}
+.thirdparty-bill-txtbox{width:46%;}
+.thirdparty-bill-icon{width:24%;line-height:32px}
+#errorMsgDiv{font-weight:bold}
+
+
+.do-thirdparty-label{display:inline-block;float:left;padding-right:10px;width:35%;line-height:30px;font-weight:bold}
+.do-thirdparty-txt{display:inline-block;float:left;width:55%;padding-right:10px;line-height:30px;}
+.do-thirdparty-icon{display:inline-block;float:left;width:10%;line-height:30px;}
+
+.orderType-holder{display:inline-block;font-size:14px;font-family:jnjbodyfont;vertical-align:middle;margin-right:10px}
+.orderType-label{display:inline-block;font-weight:bold;padding-right:5px;}
+.orderType-dropdown{display:inline-block;width:150px}
+.address-bottom-row{margin-top:10px}
+.address-txt-label{font-size:14px;}
+.address-txt-box{width:200px;}
+.address-row-container{margin-top:15px}
+.surgeon-info{font-size:14px;margin-top:5px}
+.change-order-link{padding-left:5px}
+.payment2-details{padding-left:35px}
+.txt-label-inline{display:table-cell;font-weight:bold;vertical-align:middle}
+.txt-box-inline{display:table-cell;vertical-align:middle}
+.valignTop{vertical-align:top;padding-top: 10px;}
+.sales-rep-label{display:inline-block;float:left;padding-right:10px;width:46%;line-height:30px;font-weight:bold}
+.sales-rep-txt{display:inline-block;float:left;width:50%;padding-right:10px;line-height:30px;}
+.surgeon-name-label{width:45%;padding-right:10px}
+.surgeon-name-txt,.special-instr-txt{width:68%}
+.btn-gap{margin-right:10px}
+.full-width-txt{width:100%  !important}
+#card-type-select{width:200px;display:inline-block;margin-left:5px}
+#upload-deliverd-btn{padding:15px 15px 15px 35px}
+.botton-right-gap{margin-right:10px}
+.special-stock{width:100%;margin-top:15px;width:100%}
+.special-stockrow{margin-bottom:5px;}
+.quanity-cell{padding-left:15px !important;padding-right:15px !important}
+.product-code{    
+	background-color: white;
+    border-bottom: 1px solid #f2f2f2;
+    margin: 0px;
+    padding: 15px;
+}
+.special-instruction-label{
+	width: 40%;
+    padding-right: 10px;
+}
+.request-delivery-label{
+	vertical-align: middle;
+    padding-right: 10px;
+}
+.revisebtn{
+	margin-right:15px;
+}
+
+/* Review css */
+ .order-column50 {width: 50%;padding-right:15px;float: left;}
+ .order-column100 {width: 100%;float: left;}
+ .order-column-x-100 {
+    width: 100%;
+	float:none !important;
+    padding-top: 4px;
+    clear:both
+}
+.btn-gap-desk{margin-right:10px}
+
+.clear-both{clear:both}
+ .ok-icon{margin-right:5px}
+.btn-right-gap5{margin-right:5px}
+.shipmethod-dropdown-holder{
+	margin-bottom:10px;
+}
+#international-reviewTable .table>thead:first-child>tr:first-child>th:last-child{
+	text-align:center;
+	padding-left:0px;
+} 
+#international-reviewTable .table>thead:first-child>tr:first-child>th:last-child,.order-review-desktop-table .table>thead:first-child>tr:first-child>th:last-child{
+	text-align:right !important;
+}
+.lastrow-text{
+	text-align:center;
+	padding-bottom:10px;
+}
+
+/* Popup code */
+.freight-charge-row span {
+	font-weight: bold;
+}
+
+.freight-charge-row input {
+	width: 50%;
+	display: inline-block;
+	margin-left: 10px;
+}
+
+/* .required {
+	color: red;
+} */
+
+.surgery-info-row {
+	margin-bottom: 10px;
+}
+
+.surgery-info-text {
+	font-weight: bold;
+}
+
+.ftrcls #accept-btn {
+	float: right;
+}
+
+#btn_clearsign {
+	display: block;
+	margin: 0 auto;
+}
+
+.ack_row {
+	margin: 20px 0;
+}
+
+.ack_row > div:first-of-type {
+	padding-left: 0;
+}
+
+.ack_row > div:last-of-type {
+	padding-right: 0;
+}
+
+.ack_row_text {
+	font-weight: bold;
+}
+
+#txt_sign {
+	max-width: 100%;
+}
+
+/* Delivered order */
+.third-party-content{display:none}
+
+/* validate-order-popup */
+#validate-order-popup .modalcls{
+	width:630px;
+}
+
+#uploadDeliveredOrder .input-group{width:100%}
+
+@media screen and (max-width:480px){
+	.thirdparty-bill-label {
+	    line-height:18px;
+	}
+	.do-thirdparty-label{line-height:30px !important;width:40% !important}
+	.do-thirdparty-txt{line-height:30px !important;width:50% !important}
+	.do-thirdparty-icon{line-height:30px !important;width:10% !important}
+}    
+@media screen and (max-width:767px){
+	.do-thirdparty-label{line-height:18px;}
+	.do-thirdparty-txt{line-height:18px;}
+	
+	.btn-gap-desk{margin-right:0px}
+	.ack_row > div:first-of-type {
+		padding-right: 0;
+		padding-left: 0;
+		margin-bottom:20px;
+	}
+
+	.ack_row > div:last-of-type {
+		padding-right: 0;
+		padding-left: 0;
+	}
+	.order-column50 {width: 100%;padding-right:0px;}
+	
+	.surgeon-name-label{
+		width:48%;
+	}
+	.surgeon-name-holder {
+		margin-top:10px;
+	}
+	.no-charge-select{width:100% !important}
+	.txt-label-inline,.txt-box-inline {display:block;margin-bottom:15px;width:100%}
+	.special-instruction-label,.special-instr-txt,.request-delivery-textbox,.width100percent{
+		width:100% !important
+	}
+	#international-reviewTable .lastrow-text{
+		text-align:left;
+	}
+	#international-reviewTable .table>thead:first-child>tr:first-child>th:last-child{
+		text-align:center;
+		padding-left:25px;
+	}
+	.revisebtn{
+		margin-right:0px;
+		margin-top:15px;
+	}	
+	.product-numbers{width: 100%;float: left;line-height: 30px;margin-left: 0%;}
+	.price-txt-width{width:100%;float:left;padding-right:0px;}
+	.price-quantity{width:100%;float:left;margin-top:8px;margin-bottom:8px}
+	.margin-top-row-gap{margin-top:10px}
+	
+	.table-cell-to-block{display:block}
+	.po-padding{padding-right:0px}
+	#submitChangeDropShipAdd{width:auto !important}
+	#validatePOButtonPopUP{width:auto !important}
+}
+@media screen  and (max-width:768px) and  (max-width:1024px){
+	.do-thirdparty-label{width:55%;}
+	.do-thirdparty-txt{width:35%;}
+	.do-thirdparty-icon{width:10%;}
+	.sales-rep-label,.surgeon-name-label,.sales-rep-txt,.surgeon-name-txt,.special-instr-txt{line-height:18px;padding-top:0px}
+
+}	
+@media screen and (max-width:1024px){
+	.orderType-dropdown {
+	    display: inline-block;
+	    width: 120px;
+	}
+	.sales-rep-label{white-space:normal}
+}

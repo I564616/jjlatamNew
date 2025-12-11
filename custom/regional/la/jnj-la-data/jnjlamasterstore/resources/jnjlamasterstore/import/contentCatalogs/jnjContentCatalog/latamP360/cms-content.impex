@@ -1,0 +1,28 @@
+$contentCatalog=mstrContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$contentCatalog]),version[default='Staged'])
+INSERT_UPDATE JnjLinkComponent;$contentCV[unique=true];uid[unique=true];name;url;&componentRef;target(code)[default='sameWindow'];linkName[lang=en];shiftRight[default='false'];details(code,$contentCV);linkName[lang=es];linkName[lang=pt]
+;;CatalogLinkComponent;Catalog Link;/Categories/ProductHierarchy/Categories;CatalogLinkComponent;;Catalog;;;Catálogo;Catálogo
+
+
+#Carousel of related Products START
+INSERT_UPDATE ProductReferencesComponent ; $contentCV[unique=true] ; uid[unique=true]       ; name                   ; productReferenceTypes(code) ; maximumNumberProducts ; &componentRef          ;  title[lang=en];title[lang=es];title[lang=pt]
+                                         ;                         ; RelatedProducts        ; RelatedProducts        ; RELATED_PRODUCTS            ; 16                    ; RelatedProducts        ;  Related Products;Productos Relacionados;Produtos relacionados
+
+INSERT_UPDATE ContentSlotName ; name[unique=true]      ; template(uid,$contentCV)[unique=true][default='ProductDetailsPageTemplate'] ; validComponentTypes(code)  ; compTypeGroup(code)
+                              ; SiteLogo               ;                                                                             ;                            ; logo
+                              ; MiniCart               ;                                                                             ;                            ; minicart
+                              ; TopNavigation          ;                                                                             ;                            ; navigation
+                              ; RelatedProducts        ;                                                                             ; ProductReferencesComponent ; wide
+                              ; Footer                 ;                                                                             ;                            ; footer
+
+# Common Content Slots for LATAM
+INSERT_UPDATE ContentSlot ; $contentCV[unique=true] ; uid[unique=true]           ; cmsComponents(uid,$contentCV) ; name                            ; active[default=true]
+                          ;                         ; RelatedProductsSlot        ; RelatedProducts               ; related products carousel
+
+INSERT_UPDATE ContentSlotForTemplate ; $contentCV[unique=true] ; uid[unique=true]                      ; position[unique=true]  ; pageTemplate(uid,$contentCV)[unique=true] ; contentSlot(uid,$contentCV)[unique=true] ; allowOverwrite
+                                     ;                         ; SiteLogo-ProductPage                  ; SiteLogo               ; ProductDetailsPageTemplate                ; SiteLogoSlot                             ; true
+                                     ;                         ; MiniCart-ProductPage                  ; MiniCart               ; ProductDetailsPageTemplate                ; MiniCartSlot                             ; true
+                                     ;                         ; TopNavigation-ProductPage             ; TopNavigation          ; ProductDetailsPageTemplate                ; topNavigationSlot                        ; true
+                                     ;                         ; RelatedProducts-ProductDetails        ; RelatedProducts        ; ProductDetailsPageTemplate                ; RelatedProductsSlot                      ; true
+                                     ;                         ; Footer-ProductPage                    ; Footer                 ; ProductDetailsPageTemplate                ; footerContentSlot                        ; true
+#Carousel of related Products END

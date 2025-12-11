@@ -1,0 +1,305 @@
+## messageSource=classpath:/jnjcore/messages/email-orderApprovalRejection_$lang.properties
+#macro( genHtmlBoldFont $text )
+<font color="#414a4f" size="2" face="Arial, Helvetica, sans-serif"><b>$text</b></font>
+#end
+#macro(genHtmlLinkStartTag $url)
+<a href="$url"><font color="#666666">
+#end
+#macro(genHtmlLinkEndTag)
+</font></a>
+#end
+#macro(genHtmlLink $url $textColor $bodyContent)
+<a href="$url"><font color="$textColor">$bodyContent</font></a>
+#end
+
+<style>
+input.span-18 {
+	border-left-width: 1px;
+    border-right-width: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+	width: 698px;
+}
+.blank_row
+{
+    height: 20px
+    background-color: #FFFFFF;
+}	
+.last {
+    margin-right: 0;
+    padding-right: 0;
+}
+.interfaceNotificationBody h2.arrowHeader span {
+    float: right;
+}
+.interfaceNotificationBody ul {
+    margin: 10px 0 20px;
+    padding-bottom: 10px;
+}
+.interfaceNotificationBody ul li {
+    clear: both;
+    margin-top: 10px;
+}
+.interfaceNotificationBody label {
+    display: block;
+}
+.interfaceNotificationBody label span {
+    color: #B41601;
+}
+.interfaceNotificationBody input[type="text"], .interfaceNotificationBody select {
+    color: #646464;
+    padding-left: 2px;
+    width: 420px;
+}
+.interfaceNotificationBody select {
+    color: #646464;
+    float: none;
+    margin-bottom: 0;
+    width: 230px;
+}
+.radioPanel label {
+    display: inline;
+}
+.radioPanel input[type="text"] {
+    display: block;
+    margin: 4px 0;
+}
+.radioPanel input[type="radio"] {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    margin-bottom: 0;
+}
+.interfaceNotificationBody input, .interfaceNotificationBody select {
+    padding: 0;
+}
+.interfaceNotificationBody select {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid #E5E5E5;
+    padding-bottom: 0;
+    padding-right: 0;
+    padding-top: 0;
+}
+.interfaceNotificationBody .buttonWrapper > input {
+    padding: 5px 15px;
+}
+h2.arrowHeader {
+    border-bottom: 1px solid #84C5D4;
+    color: #0A8CAA;
+    font-size: 16px;
+    line-height: 30px;
+    margin-bottom: 0;
+}
+.priceSmall {
+    color: #B41601;
+    font-size: 12px;
+}
+.instructiontxt {
+    color: #828282;
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+
+body {
+    line-height: 1.5;
+}
+body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section {
+    border: 0 none;
+    font-family: inherit;
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+body {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #222222;
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    font-size: 75%;
+}
+ul li {
+    color: #646464;
+    font-size: 12px;
+    list-style-type: none;
+}
+td {
+	color: #646464;
+}
+
+table.readDashboard
+{
+	background:#EEE;
+	color:#333;
+	font-size:12px;
+	font: 'Arial';
+	text-align:center;
+}
+
+table.readDashboard th
+{
+	background:#CCC;
+	font-weight:bold;
+}
+.inlineClass{display:inline;}
+.inlineClass div{display:inline;}
+</style>
+<html>
+<head>
+	<title>Confirmation Email</title>
+</head>
+<body id="containerBody" style="font-size:10px;">
+	<table style="background-color:#ffffff" width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+		<tr>
+			<td style="vertical-align:top;">
+				<table bgcolor="#ffffff" width="900" border="0" cellspacing="0" cellpadding="0" align="center">
+					<tr bgcolor="#ffffff">
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr bgcolor="#ffffff">
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td>
+						</td>
+						<td>
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+
+					<tr class="blank_row">	
+						<td colspan="3">&nbsp;</td>
+					</tr>
+						
+					<br>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td>
+							<h2 class="arrowHeader">
+								$ctx.messages.myAccount	
+							</h2>
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<!-- INSERT HERE -->
+						#set ($orderDetailUrl = $ctx.messages.baseUrl+'/order-history/order/'+${ctx.orderData.code})
+						<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+							<div class="span-18 last" id="addindirectcustomer" style="display:block">
+								<div class="interfaceNotificationBody ">
+									Dear Valued Customer,<br/><br/>
+									Thank you for your recent order ${ctx.orderData.sapOrderNumber}. If you have enabled order confirmations for your accounts, this order may have been placed by another user of your company. You can view the status of our order by clicking  <a href='$orderDetailUrl'>here</a>. 
+									If you have enabled invoice notifications, you will receive an email once an invoice is generated for your order.<br/><br/>
+									A summary of your purchase is provided below.<br/>
+										<ul>
+											#if(${ctx.orderData.sapOrderNumber})
+											<li><strong>SAP Order Number -</strong> ${ctx.orderData.sapOrderNumber}</li>
+											#end
+											#if(${ctx.orderData.statusDisplay})
+											<li><strong>Order Status -</strong> ${ctx.orderData.statusDisplay}</li>
+											#end
+											#if(${ctx.orderData.orderType})
+											<li><strong>Order Type -</strong> Standard Order</li>
+											#end
+											#if(${ctx.orderData.soldToNumber})
+											<li><strong>Account Number -</strong> ${ctx.orderData.soldToNumber}</li>
+											#end
+											#if($ctx.orderData.soldToAccountName)
+												<li><strong>Billing Name - </strong>
+												$ctx.orderData.soldToAccountName
+												</li>
+											#end
+										</ul>
+										#if($ctx.orderData.entries.size() > 0)
+											<table class="productDetailsTable" style="border: 1px solid #e1e1e1;border-collapse:collapse;" border="1" cellpadding="5">
+												<tr>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>Line Status</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>Product Name</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>J&J ID</strong></td>
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>Quantity</strong></td>										
+													<td style="border: 1px solid #e1e1e1;border-collapse: collapse;background-color: #e1e1e1;"><strong>Estimated Delivery Date</strong></td>
+												</tr>
+												#foreach($entry in ${ctx.orderData.entries} )
+													<tr>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.status)$entry.status#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.product.name)$entry.product.name#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.product.catalogId)$entry.product.catalogId#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.quantity)$entry.quantity#end</td>
+														<td style="border: 1px solid #e1e1e1;border-collapse: collapse;">#if($entry.expectedDeliveryDate)$entry.expectedDeliveryDate#end</td>
+													</tr>
+												#end
+											</table>
+										#end
+									<br /><br />
+									Thank You,<br />
+									J&J Customer Connect Team
+								</div>
+							</div>
+							<!-- Content Ends -->
+						</td>
+						<td width="11" height="11">
+						
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td width="900" style="color: #646464;max-width:780px;width:780px;">
+							<div>
+							</div>
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td>
+				<div class="inlineClass">
+				</div>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

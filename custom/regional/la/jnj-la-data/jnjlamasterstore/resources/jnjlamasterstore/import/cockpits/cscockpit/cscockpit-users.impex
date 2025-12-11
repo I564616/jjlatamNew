@@ -1,0 +1,27 @@
+#
+# Import Users and Groups for CS Cockpit
+# 
+INSERT_UPDATE UserGroup;UID[unique=true];groups(uid)[mode=append];locname[lang=en]
+;customerservicegroup;employeegroup;"Customer Service Group"
+
+INSERT_UPDATE UserGroup;UID[unique=true];groups(uid)[mode=append];locname[lang=en]
+;csagentgroup;cockpitgroup,customerservicegroup;"Customer Service Agent Group"
+
+#
+# Import Sample CS Cockpit User
+#
+
+$passwordEncoding=md5
+$defaultPassword=1234
+$setPassword=@password[translator=de.hybris.platform.impex.jalo.translators.ConvertPlaintextToEncodedUserPasswordTranslator][default='$passwordEncoding:$defaultPassword']
+
+
+INSERT_UPDATE Employee;UID[unique=true];$setPassword;description;name;groups(uid);sessionLanguage(isocode);sessionCurrency(isocode)
+;csagent;;"Customer service agent. Can edit order and customer data. Can read product data.";"Customer Service Agent";csagentgroup;en;USD
+
+UPDATE CatalogVersion;catalog(id)[unique=true];version[unique=true];writePrincipals(uid)[mode=append];
+;brProductCatalog;Online;csagentgroup,csagent;
+;brProductCatalog;Staged;csagentgroup,csagent;
+;mxProductCatalog;Online;csagentgroup,csagent;
+;mxProductCatalog;Staged;csagentgroup,csagent;
+;mstrProductCatalog;Staged;csagentgroup,csagent;

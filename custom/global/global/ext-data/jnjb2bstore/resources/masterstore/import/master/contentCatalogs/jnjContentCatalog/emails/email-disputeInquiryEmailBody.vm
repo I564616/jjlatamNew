@@ -1,0 +1,752 @@
+## messageSource=classpath:/jnjb2bcore/messages/email-disputeInquiry_$lang.properties
+<style>
+input.span-18 {
+	border-left-width: 1px;
+    border-right-width: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+	width: 698px;
+}
+.blank_row
+{
+    height: 20px
+    background-color: #FFFFFF;
+}	
+.last {
+    margin-right: 0;
+    padding-right: 0;
+}
+.disputeInquiryBody h2.arrowHeader span {
+    float: right;
+}
+.disputeInquiryBody ul {
+    margin: 10px 0 20px;
+    padding-bottom: 10px;
+}
+.disputeInquiryBody ul li {
+    clear: both;
+    margin-top: 10px;
+    min-height: 58px;
+}
+.disputeInquiryBody label {
+    display: block;
+}
+.disputeInquiryBody label span {
+    color: #B41601;
+}
+.disputeInquiryBody input[type="text"], .disputeInquiryBody select {
+    color: #646464;
+    padding-left: 2px;
+    width: 420px;
+}
+.disputeInquiryBody select {
+    color: #646464;
+    float: none;
+    margin-bottom: 0;
+    width: 230px;
+}
+.radioPanel label {
+    display: inline;
+}
+.radioPanel input[type="text"] {
+    display: block;
+    margin: 4px 0;
+}
+.radioPanel input[type="radio"] {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    margin-bottom: 0;
+}
+.disputeInquiryBody input, .disputeInquiryBody select {
+    padding: 0;
+}
+.disputeInquiryBody select {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid #E5E5E5;
+    padding-bottom: 0;
+    padding-right: 0;
+    padding-top: 0;
+}
+.disputeInquiryBody .buttonWrapper > input {
+    padding: 5px 15px;
+}
+h2.arrowHeader {
+    border-bottom: 1px solid #84C5D4;
+    color: #0A8CAA;
+    font-size: 16px;
+    line-height: 30px;
+    margin-bottom: 0;
+}
+.priceSmall {
+    color: #B41601;
+    font-size: 12px;
+}
+.instructiontxt {
+    color: #828282;
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+
+body {
+    line-height: 1.5;
+}
+body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section {
+    border: 0 none;
+    font-family: inherit;
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+body {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #222222;
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    font-size: 75%;
+}
+ul li {
+    color: #646464;
+    font-size: 12px;
+    list-style-type: none;
+}
+td {
+	color: #646464;
+}
+
+table.readDashboard
+{
+	background:#EEE;
+	color:#333;
+	font-size:12px;
+	font: 'Arial';
+	text-align:center;
+}
+
+table.readDashboard th
+{
+	background:#CCC;
+	font-weight:bold;
+}
+
+<html>
+<head>
+	<title>Dispute Inquiry Email</title>
+</head>
+<body id="containerBody">
+	<table style="background-color:#ffffff" width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+		<tr>
+			<td align="center">
+				<table bgcolor="#ffffff" width="1200" border="0" cellspacing="0" cellpadding="0" align="center">
+					<tr>
+							<td style="color: red;" width="600" height="5" colspan="3" style="background-color:red;">
+								<div style="width:11;height:11" >&nbsp;
+							</td>
+						</tr>
+					
+						<tr bgcolor="#ffffff">
+						  <td style="color: #646464;" width="11" height="11">
+						  <div style="width:11;height:11" />
+						  </td>
+						  <td style="color: #646464;" height="11">
+								<table width="600">
+									<tr>
+										<td> ${ctx.cmsSlotContents.TopContentLogo1}</td>
+									 <td style="color: #646464;" width="290" height="11">
+										  <div style="width:290;height:11" >&nbsp;<div>
+									  </td>
+									<td> ${ctx.cmsSlotContents.TopContentLogo2}</td>
+									</tr>
+								</table>
+						  </td>
+		                  <td style="color: #646464;" width="1" height="11">
+		                         <div style="width:1;height:11" />
+		                   </td>
+		                 </tr>
+
+					<tr class="blank_row">	
+						<td colspan="3"> &nbsp</td>
+					</tr>
+						
+					<br>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td>
+							<h2 class="arrowHeader">
+							#if(${ctx.disputeOrder})
+								${ctx.messages.inqSub}
+							#else
+							${ctx.messages.itmSub}
+							#end
+							</h2>
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+							<div class="span-18 last" id="addindirectcustomer" style="display:block">
+								<div class="disputeInquiryBody ">
+									<table width="100%" cellspacing="0" cellpadding="0" style="border: 1px solid grey;">
+										<tr>
+											<td align="left">${ctx.messages.salutation}</td>
+										</tr>
+										<tr>
+											<td></td>
+										</tr>
+										#if(${ctx.disputeOrder})
+											<tr>
+												<span>${ctx.messages.dispute}#if(${ctx.disputeOrder}) ${ctx.messages.order} #else ${ctx.messages.item} #end ${ctx.messages.inquiryForm}</span>
+											</tr>
+											<tr>
+												<td></td>
+											</tr>
+											<tr>
+												<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+													${ctx.messages.accNum}
+												</td>
+												<td>
+													#if(${ctx.disputeOrderData.accountNumber})
+														${ctx.disputeOrderData.accountNumber}
+													#end
+												</td>
+											</tr>
+											<tr>	
+												<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+													${ctx.messages.name}
+													</td>
+												<td>
+													#if(${ctx.fromDisplayName})
+														${ctx.fromDisplayName}
+													#end
+												</td>
+											</tr>
+<tr>	
+												<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+													${ctx.messages.busAddress}
+												</td>
+												<td>
+													#if(${ctx.fromEmail})
+														${ctx.fromEmail}
+													#end
+												</td>
+											</tr>
+											<tr>	
+												<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+													${ctx.messages.poNum}
+												</td>
+												<td>
+													#if(${ctx.disputeOrderData.purchaseOrderNumber})
+														${ctx.disputeOrderData.purchaseOrderNumber}
+													#end
+												</td>
+											</tr>
+											#if(!${ctx.disputeOrderData.invoiceNumber.isEmpty()})
+												<tr>
+													<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+														${ctx.messages.invoiceNo}
+													</td>
+													<td>
+														#foreach($invoiceNumber in $ctx.disputeOrderData.invoiceNumber)
+															<p><font color="#414a4f" size="2" face="Arial, Helvetica, sans-serif"><b>${invoiceNumber}</b></font></p>
+															</br>
+														#end
+													</td>
+												</tr>
+											#end
+											</br></br>
+											
+											#if(!${ctx.disputeOrderData.productsAndQuantity.isEmpty()})
+												<tr>
+													<td></td>
+												</tr>
+												<tr>
+													<h5><span>${ctx.messages.overShipped}</span></h5>
+												</tr>
+												<tr>
+													<td><b>${ctx.messages.prodCode}</b></td>
+													<td><b>${ctx.messages.lot}</b></td>
+													<td><b>${ctx.messages.qtyRec}</b></td>
+												</tr>
+												#set ($lotMap = $ctx.disputeOrderData.productsAndlotInfo)
+												#set ($map = $ctx.disputeOrderData.productsAndQuantity)
+												#foreach ($mapEntry in $map.entrySet())
+													<tr>
+														<td align="top">
+															$mapEntry.key
+														</td>
+														<td align="top">
+															$lotMap.getValue($mapEntry.key)	
+														</td>
+														<td align="top">
+															$mapEntry.value
+														</td>
+													</tr>
+												#end
+												<tr>
+													<td></td>
+												</tr>											
+												<tr>	
+													<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+														<b><span>${ctx.messages.shippedProducts}</span></b>
+													</td>
+													<td>
+														#if(${ctx.disputeOrderData.keepProductsShipped})
+															${ctx.messages.yes}
+														#else
+															${ctx.messages.no}
+														#end
+													</td>
+												</tr>
+												<tr>
+													<td></td>
+												</tr>
+												#if(${ctx.disputeOrderData.keepProductsShipped})
+													<tr>	
+														<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+															<b>${ctx.messages.newPONum}</b>
+														</td>
+														<td>
+															${ctx.disputeOrderData.newPurchaseOrderNumber}
+														</td>
+													</tr>
+												#end
+												<tr>
+													<td></td>
+												</tr>
+												
+												#if(!${ctx.disputeOrderData.disputedFees.isEmpty()})
+													<tr>
+														<h5><span>${ctx.messages.disputeFee}</span></h5>
+													</tr>
+													<tr>
+														#foreach($disputeFee in $ctx.disputeOrderData.disputedFees)
+														<td>
+															<font color="#414a4f" size="2" face="Arial, Helvetica, sans-serif">${disputeFee}</font>
+														</td>
+														#end
+													</tr>
+												#end
+												<tr>
+													<td></td>
+												</tr>
+												
+												#if(!${ctx.disputeOrderData.correctPurchaseOrderNumber})
+													<tr>
+														<h5><span>${ctx.messages.incorPONum}</span></h5>
+													</tr>
+													<tr>
+														<td><b>${ctx.messages.corPONum}</b></td>
+														<td>${ctx.disputeOrderData.correctPurchaseOrderNumber}</td>
+													</tr>
+												#end
+												<tr>
+													<td></td>
+												</tr>
+												
+												#if(!${ctx.disputeOrderData.correctAddress})
+													<th>
+														<h5><span>${ctx.messages.inAddress}</span></h5>
+													</th>
+													<tr>
+														<td><b>${ctx.messages.country}</b></td>
+														<td>${ctx.disputeOrderData.correctAddress.country.name}</td>
+													</tr>
+													<tr>
+														<td><b>${ctx.messages.addLine1}</b></td>
+														<td>${ctx.disputeOrderData.correctAddress.line1}</td>
+													</tr>
+													<tr>
+														<td><b>${ctx.messages.addLine2}</b></td>
+														<td>${ctx.disputeOrderData.correctAddress.line2}</td>
+													</tr>
+													<tr>
+														<td><b>${ctx.messages.city}</b></td>
+														<td>${ctx.disputeOrderData.correctAddress.town}</td>
+													</tr>
+													<tr>
+														<td><b>${ctx.messages.state}</b></td>
+														<td>${ctx.disputeOrderData.correctAddress.region.isocode}</td>
+													</tr>
+													<tr>
+														<td><b>${ctx.messages.zip}</b></td>
+														<td>${ctx.disputeOrderData.correctAddress.postalCode}</td>
+													</tr>
+												#end
+												<tr>
+													<td></td>
+												</tr>
+											#end
+										#else
+											<tr>
+												<td></td>
+											</tr>
+											<tr>
+												<span>${ctx.messages.dispute} #if(${ctx.disputeOrder}) ${ctx.messages.order} #else ${ctx.messages.item} #end ${ctx.messages.inqForm}</span>
+											</tr>
+											<tr>
+												<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+													${ctx.messages.accNum}
+												</td>
+												<td>
+													#if(${ctx.disputeItemData.accountNumber})
+														${ctx.disputeItemData.accountNumber}
+													#end
+												</td>
+											</tr>
+											<tr>	
+												<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+													${ctx.messages.name}
+												</td>
+												<td>
+													#if(${ctx.fromDisplayName})
+														${ctx.fromDisplayName}
+													#end
+												</td>
+											</tr>
+<tr>	
+												<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+													${ctx.messages.busEAddr}
+												</td>
+												<td>
+													#if(${ctx.email})
+														${ctx.email}
+													#end
+												</td>
+											</tr>
+											<tr>	
+												<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+													${ctx.messages.PONum}
+												</td>
+												<td>
+													#if(${ctx.disputeItemData.purchaseOrderNumber})
+														${ctx.disputeItemData.purchaseOrderNumber}
+													#end
+												</td>
+											</tr>
+											#if(!${ctx.disputeOrderData.invoiceNumber.isEmpty()})
+												<tr>
+													<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+														${ctx.messages.inNum}
+													</td>
+													<td>
+														#foreach($invoiceNumber in $ctx.disputeOrderData.invoiceNumber)
+															<p><font color="#414a4f" size="2" face="Arial, Helvetica, sans-serif"><b>${invoiceNumber}</b></font></p>
+															</br>
+														#end
+													</td>
+												</tr>
+											#end
+											<tr>
+												<td></td>
+											</tr>
+											
+											#if(${ctx.disputeItemData.totalDisputedAmount})
+												<tr>
+													<h5><span>${ctx.messages.priceDis}</span></h5>
+												</tr>
+												<tr>	
+													<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+														${ctx.messages.totalDis}
+													</td>
+													<td>
+														${ctx.disputeItemData.totalDisputedAmount}
+													</td>
+												</tr>
+												<tr>	
+													<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+														${ctx.messages.expPrice}
+													</td>
+													<td>
+														${ctx.disputeItemData.expectedPrice}
+													</td>
+												</tr>
+												<tr>	
+													<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+														${ctx.messages.conNum}
+													</td>
+													<td>
+														#if('ctx.disputeItemData.contractNumber'!="")
+                       										${ctx.disputeItemData.contractNumber}<br />
+                     									 #end
+													</td>
+												</tr>
+											#end	
+											<tr>
+												<td></td>
+											</tr>
+											
+											#if(${ctx.disputeItemData.shortShippedProductCode})
+												<tr>
+													<h5><span>${ctx.messages.shortShip}</span></h5>
+												</tr>
+												<tr>	
+													<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+														${ctx.messages.prodCode}
+													</td>
+													<td>
+														${ctx.disputeItemData.shortShippedProductCode}
+													</td>
+												</tr>
+												<tr>	
+													<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+														${ctx.messages.qtyOrder}
+													</td>
+													<td>
+														${ctx.disputeItemData.shortShippedOrderedQuantity}
+													</td>
+												</tr>
+												<tr>	
+													<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+														${ctx.messages.qtyRec}
+													</td>
+													<td>
+														${ctx.disputeItemData.shortShippedReceivedQuantity}
+													</td>
+												</tr>
+												<tr>	
+													<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+														${ctx.messages.replNeeded}
+													</td>
+													<td>
+														#if(${ctx.disputeItemData.replacementRequired})
+															${ctx.messages.yes}
+														#else
+															${ctx.messages.no}
+														#end
+													</td>
+												</tr>
+													#if(${ctx.disputeItemData.replacementRequired})
+														<tr>	
+															<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+																${ctx.messages.repPONum}
+															</td>
+															<td>
+																${ctx.disputeItemData.purchaseOrderNumber}
+															</td>
+														</tr>
+													#end
+												#end	
+											<tr>
+												<td></td>
+											</tr>
+											
+											#if(${ctx.disputeItemData.overShippedProductCode})
+												<tr>
+													<h5><span>${ctx.messages.overShipped}</span></h5>
+												</tr>
+												<tr>	
+													<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+														${ctx.messages.prodCode}
+													</td>
+													<td>
+														${ctx.disputeItemData.overShippedProductCode}
+													</td>
+												</tr>
+												<tr>	
+													<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+														${ctx.messages.qtyOrder}
+													</td>
+													<td>
+														${ctx.disputeItemData.overShippedOrderedQuantity}
+													</td>
+												</tr>
+												<tr>	
+													<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+														${ctx.messages.qtyRec}
+													</td>
+													<td>
+														${ctx.disputeItemData.overShippedReceivedQuantity}
+													</td>
+												</tr>
+												
+													<tr>	
+														<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+															${ctx.messages.lotNum}
+														</td>
+														<td>
+															#foreach( $lotNumber in $ctx.disputeItemData.lotNumbers)
+																<p><font color="#414a4f" size="2" face="Arial, Helvetica, sans-serif"><b>${lotNumber}</b></font></p>
+															#end
+														</td>
+													</tr>
+											
+												<tr>	
+													<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+														${ctx.messages.likeShipped}
+													</td>
+													<td>
+														#if(${ctx.disputeItemData.keepProductsShipped})${ctx.messages.yes}
+														#else ${ctx.messages.no}
+														#end
+													</td>
+												</tr>
+												#if(${ctx.disputeItemData.keepProductsShipped})
+													<tr>	
+														<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+															${ctx.messages.newPONum}
+														</td>
+														<td>
+															${ctx.disputeItemData.newPurchaseOrderNumber}
+														</td>
+													</tr>
+												#end
+											#end
+										#end
+									</table>
+									<br>
+								<br /><br />
+								<p style="margin:5px 0; padding-left: 10px; font-size: 10px;"><font color="#666666" face="Arial, Helvetica, sans-serif">${ctx.messages.en_company}<br />
+			                     ${ctx.messages.en_addressLine1}<br />
+			                     ${ctx.messages.en_addressLine2}<br />
+			                      #if('ctx.messages.en_country'!="")
+			                    	${ctx.messages.en_country}<br />
+			                    #end
+			                    #if('ctx.messages.en_contact'!="")
+			                    	${ctx.messages.en_contact}<br />
+			                    #end</font>
+			                    </p><br />
+								</div>
+							</div>
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr bgcolor="#fafafa">
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="5">
+							<div style="width:11;height:5" />
+						</td>
+						<td height="5">
+							<div style="width:578;height:5" />
+						</td>
+						<td width="11" height="5">
+							<div style="width:11;height:5" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td>
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td style="color: #646464;" width="900">
+							${ctx.cmsSlotContents.EpicEmailFooter}
+						</td>
+								</tr>
+							</table>
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

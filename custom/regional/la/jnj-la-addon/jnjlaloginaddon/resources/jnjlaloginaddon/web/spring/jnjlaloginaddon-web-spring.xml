@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+           
+    <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+
+    <context:annotation-config/>
+
+	<bean id="defaultJnjlaloginaddonJavaScriptMessageResourceAccessor" parent="abstractJavaScriptMessageResourceAccessor">
+		<property name="addOnName" value="jnjlaloginaddon"/>
+	</bean>
+
+	<bean id="defaultJnjlaloginaddonBeforeViewJsPropsHandlerAdaptee" parent="abstractBeforeViewJsPropsHandlerAdaptee" class="de.hybris.platform.addonsupport.interceptors.ExportJsPropertiesBeforeViewHandler">
+		<property name="messageSource" ref="defaultJnjlaloginaddonJavaScriptMessageResourceAccessor"/>
+	</bean>
+
+	<bean id="getJnjlaloginaddonBeforeViewHandler" parent="beforeViewHandlerAdapter">
+		<property name="adaptee">
+			<ref bean="defaultJnjlaloginaddonBeforeViewJsPropsHandlerAdaptee"/>
+		</property>
+	</bean>
+	<bean id="JnjlaloginaddonBeforeViewHandlerListMergeDirective" depends-on="beforeViewHandlersList" parent="listMergeDirective">
+		<property name="add" ref="getJnjlaloginaddonBeforeViewHandler"/>
+	</bean>
+	
+	<bean name="latamLoginPageController" class="com.jnj.b2b.la.loginaddon.controllers.pages.JnjLatamLoginPageController" />
+	<alias alias="myLoginPageController" name="latamLoginPageController" />
+
+	<bean name="laConsumerChatController" class="com.jnj.b2b.la.loginaddon.controllers.pages.JnjLAConsumerChatController" />
+
+	<bean name="jnjLACookiePolicyController" class="com.jnj.b2b.la.loginaddon.controllers.pages.JnjLACookiePolicyController" />
+
+	<bean id="latamHomePageController" class="com.jnj.b2b.la.loginaddon.controllers.pages.JnjLatamHomePageController" />
+	<alias alias="JnJGTHomePageController" name="latamHomePageController" />
+
+	<bean id="bidPageController" class="com.jnj.b2b.la.loginaddon.controllers.pages.JnjLatamBidPageController" />
+
+	<bean id="chatController" class="com.jnj.b2b.la.loginaddon.controllers.pages.JnjLatamChatController" />
+
+	<bean id="laB2bUserGroupProvider" class="com.jnj.b2b.la.loginaddon.security.impl.LaB2BUserGroupProviderImpl" >
+		<property name="userService" ref="userService" />
+		<property name="authorizedGroupsToBid">
+			<set value-type="java.lang.String">
+				<value>bidGroup</value>
+			</set>
+		</property>
+	</bean>
+	
+	 <alias name="latamCartRestorationFilter" alias="regionalCartRestorationFilter" />
+     <bean id="latamCartRestorationFilter" class="com.jnj.b2b.la.loginaddon.filters.JnjLatamCartRestorationFilter" parent="cartRestorationFilter" >
+ </bean>    
+
+	<alias alias="jnjGTLegalNoticeController" name="latamLegalNoticeController" />
+	<bean id="latamLegalNoticeController" class="com.jnj.b2b.la.loginaddon.controllers.pages.JnjLaLegalNoticeController" />
+
+	<alias alias="jnjGTPrivacyPolicyController" name="latamPrivacyPolicyController" />
+	<bean id="latamPrivacyPolicyController" class="com.jnj.b2b.la.loginaddon.controllers.pages.JnjLaPrivacyPolicyController" />
+
+<bean name="JnjLatamRegistrationPageController" class="com.jnj.b2b.la.loginaddon.controllers.pages.JnjLatamRegistrationPageController" />
+	<alias alias="JnJGTRegistrationPageController" name="JnjLatamRegistrationPageController" /> 
+	
+	<alias alias="JnJGTHelpPageController" name="jnjLatamHelpPageController" />
+	<bean id="jnjLatamHelpPageController" class="com.jnj.b2b.la.loginaddon.controllers.pages.JnJLatamHelpPageController" />
+	
+	<alias alias="JnJGTForgotPasswordController" name="jnjLatamForgotPasswordController" />
+	<bean id="jnjLatamForgotPasswordController" class="com.jnj.b2b.la.loginaddon.controllers.pages.JnJLatamForgotPasswordController">
+		<property name="restServiceUtil" ref="restServiceUtil"/>
+		<property name="jwtService" ref="jwtService"/>
+		<property name="configurationService" ref="configurationService"/> 
+	</bean>
+
+	<bean id="latamUtilsController" class="com.jnj.b2b.la.loginaddon.controllers.JnjLatamUtilsController" />
+	
+	<alias name="jnjlatamdefaultLoginAuthenticationSuccessHandler" alias="loginAuthenticationSuccessHandler" />
+	<bean id="jnjlatamdefaultLoginAuthenticationSuccessHandler"
+		class="com.jnj.b2b.la.loginaddon.security.JnJLatamStorefrontAuthenticationSuccessHandler">
+		<property name="customerFacade" ref="customerFacade" />
+		<property name="defaultTargetUrl" value="/home" />
+		<property name="useReferer" value="true" />
+		<property name="requestCache" ref="httpSessionRequestCache" />
+		<property name="uiExperienceService" ref="uiExperienceService" />
+		<property name="sessionService" ref="sessionService" />
+		<property name="cartFacade" ref="cartFacade" />
+		<property name="forceDefaultTargetForUiExperienceLevel">
+			<map key-type="de.hybris.platform.commerceservices.enums.UiExperienceLevel"
+				value-type="java.lang.Boolean">
+				<entry key="DESKTOP" value="false" />
+				<entry key="MOBILE" value="false" />
+			</map>
+		</property>
+		<property name="bruteForceAttackCounter" ref="bruteForceAttackCounter" />
+        <property name="baseSiteService" ref="baseSiteService" />
+        <property name="requestUtil" ref="requestUtil" />
+	</bean>
+
+    <bean name="latamStoreSessionController"
+          class="com.jnj.b2b.la.loginaddon.controllers.misc.LatamStoreSessionController" />
+    <alias alias="storeSessionController" name="latamLoginPageController" />
+
+	<alias name="jnjLACmsSiteFilter" alias="cmsSiteFilter"/>
+	<bean id="jnjLACmsSiteFilter" class="com.jnj.b2b.la.loginaddon.filters.JnjLACMSSiteFilter">
+		<property name="previewDataModelUrlResolver" ref="previewDataModelUrlResolver"/>
+		<property name="cmsSiteService" ref="cmsSiteService"/>
+		<property name="cmsPreviewService" ref="cmsPreviewService"/>
+		<property name="baseSiteService" ref="baseSiteService"/>
+		<property name="commerceCommonI18NService" ref="commerceCommonI18NService"/>
+		<property name="sessionService" ref="sessionService"/>
+		<property name="contextInformationLoader" ref="contextInformationLoader"/>
+		<property name="cmsPageContextService" ref="cmsPageContextService"/>
+		<property name="userService" ref="userService"/>
+        <property name="b2bCommerceUnitService" ref="b2bCommerceUnitService" />
+		<property name="includeUrls">
+			<set>
+				<value>/order-history</value>
+				<value>/home</value>
+			</set>
+		</property>
+	</bean>
+
+	<alias name="jnjLAAcceleratorAuthenticationProvider" alias="acceleratorAuthenticationProvider" />
+	<bean id="jnjLAAcceleratorAuthenticationProvider" class="com.jnj.b2b.la.loginaddon.security.JnjLAAcceleratorAuthenticationProvider">
+		<property name="cmsSiteService" ref="cmsSiteService" />
+		<property name="messageFacade" ref="messageFacade" />
+        <property name="userService" ref="userService" />
+        <property name="modelService" ref="modelService" />
+        <property name="preAuthenticationChecks" ref="rejectUserPreAuthenticationChecks" />
+        <property name="userDetailsService" ref="originalUidUserDetailsService" />
+		<property name="customerService" ref="jnjLatamCustomerService" />
+        <aop:scoped-proxy />
+	</bean>
+
+</beans>

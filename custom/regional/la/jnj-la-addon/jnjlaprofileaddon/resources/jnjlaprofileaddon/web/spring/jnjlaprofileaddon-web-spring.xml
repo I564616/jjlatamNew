@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+
+	<context:component-scan
+			base-package="com.jnj.b2b.la.jnjlaprofileaddon.controllers.pages"
+			scope-resolver="de.hybris.platform.spring.IgnoreTenantScopeMetadataResolver" />
+
+	<bean id="defaultJnjlaprofileaddonJavaScriptMessageResourceAccessor" parent="abstractJavaScriptMessageResourceAccessor">
+		<property name="addOnName" value="jnjlaprofileaddon"/>
+	</bean>
+
+	<bean id="defaultJnjlaprofileaddonBeforeViewJsPropsHandlerAdaptee" parent="abstractBeforeViewJsPropsHandlerAdaptee" class="de.hybris.platform.addonsupport.interceptors.ExportJsPropertiesBeforeViewHandler">
+		<property name="messageSource" ref="defaultJnjlaprofileaddonJavaScriptMessageResourceAccessor"/>
+	</bean>
+
+	<bean id="getJnjlaprofileaddonBeforeViewHandler" parent="beforeViewHandlerAdapter">
+		<property name="adaptee">
+			<ref bean="defaultJnjlaprofileaddonBeforeViewJsPropsHandlerAdaptee"/>
+		</property>
+	</bean>
+	<bean id="JnjlaprofileaddonBeforeViewHandlerListMergeDirective" depends-on="beforeViewHandlersList" parent="listMergeDirective">
+		<property name="add" ref="getJnjlaprofileaddonBeforeViewHandler"/>
+	</bean>
+	
+	<bean name="jnjAccountPageController"
+		class="com.jnj.b2b.la.jnjlaprofileaddon.controllers.pages.JnjLatamAccountPageController" />
+	<alias alias="accountPageController" name="jnjAccountPageController" />
+
+
+</beans>

@@ -1,0 +1,91 @@
+
+package com.jnj.outboundservice.order;
+
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
+
+
+/**
+ * <p>
+ * Java class for salesOrderPricingResponse complex type.
+ *
+ * <p>
+ * The following schema fragment specifies the expected content contained within this class.
+ *
+ * <pre>
+ * &lt;complexType name="salesOrderPricingResponse">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="SalesOrder_Out" type="{http://itsusmpl00082.jnj.com/SG910_BtB_IN0498_SalesOrder_Global_Source_v1.webService:salesOrderWS}SalesOrder_Out2"/>
+ *         &lt;element name="Response" type="{http://itsusmpl00082.jnj.com/SG910_BtB_IN0498_SalesOrder_Global_Source_v1.webService:salesOrderWS}Response2"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
+ *
+ *
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "salesOrderPricingResponse", propOrder =
+{ "salesOrderOut", "response" })
+@XmlRootElement(name = "SalesOrderPricingResponse")
+public class SalesOrderPricingResponse
+{
+
+	@XmlElement(name = "SalesOrder_Out", required = true, nillable = true)
+	protected SalesOrderOut2 salesOrderOut;
+	@XmlElement(name = "Response", required = true, nillable = true)
+	protected Response2 response;
+
+	/**
+	 * Gets the value of the salesOrderOut property.
+	 * 
+	 * @return possible object is {@link SalesOrderOut2 }
+	 * 
+	 */
+	public SalesOrderOut2 getSalesOrderOut()
+	{
+		return salesOrderOut;
+	}
+
+	/**
+	 * Sets the value of the salesOrderOut property.
+	 * 
+	 * @param value
+	 *           allowed object is {@link SalesOrderOut2 }
+	 * 
+	 */
+	public void setSalesOrderOut(final SalesOrderOut2 value)
+	{
+		this.salesOrderOut = value;
+	}
+
+	/**
+	 * Gets the value of the response property.
+	 * 
+	 * @return possible object is {@link Response2 }
+	 * 
+	 */
+	public Response2 getResponse()
+	{
+		return response;
+	}
+
+	/**
+	 * Sets the value of the response property.
+	 * 
+	 * @param value
+	 *           allowed object is {@link Response2 }
+	 * 
+	 */
+	public void setResponse(final Response2 value)
+	{
+		this.response = value;
+	}
+
+}

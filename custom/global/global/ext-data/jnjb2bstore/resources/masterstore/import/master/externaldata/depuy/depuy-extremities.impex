@@ -1,0 +1,172 @@
+###########################################################################
+#Impex For DEPUY MDD - Extremities #
+###########################################################################
+
+##############################################
+# Macros / Replacement Parameter definitions #
+##############################################
+$productCatalog=mddProdCatalog
+#$productCatalogName=Master Product Catalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$supercategories=supercategories(code, $catalogVersion)
+$approved=approvalstatus(code)[default='approved']
+$defaultAllowedPriciapls=b2bcustomergroup
+$defaultVariantType=JnjGTVariantProduct
+$defaultCurrenlForPriceList=EUR
+$defaultUnit=BX
+$defaultSalesUnit=EA
+$defaultDeliveryGtinInd=true
+$defaultSalesGtinInd=true
+$defaultNumerator=1
+$defaultPackagingLvlCode=1
+$defaultPackagingLevelQty=1
+
+#####################################################
+# Level 2 Category #
+#####################################################
+INSERT_UPDATE Category;code[unique=true];name;$supercategories;$catalogVersion;allowedPrincipals(uid)[default='b2bcustomergroup'];displayProducts[default='true']
+;EXTREMITIES;EXTREMITIES;DepuyOrthopedics;;
+
+
+###########################################################################
+# Header For JnjGTVariantProductModel #
+###########################################################################
+# code  			:JnJProduct|1
+# unit 				:Unit with code 'EA'
+###########################################################################
+INSERT_UPDATE JnjGTVariantProduct;code[unique=true];$approved;$catalogVersion;unit(code)[default=$defaultUnit];deliveryGtinInd[default=$defaultDeliveryGtinInd];salesGtinInd[default=$defaultSalesGtinInd];numerator[default=$defaultNumerator];packagingLvlCode[default=$defaultPackagingLvlCode];packagingLevelQty[default=$defaultPackagingLevelQty];lwrPackagingLvlUom(code)[default=$defaultSalesUnit];baseProduct(code, $catalogVersion)
+;123400000|1;;;;;;;;;;123400000
+;123410000|1;;;;;;;;;;123410000
+;123420000|1;;;;;;;;;;123420000
+;123430000|1;;;;;;;;;;123430000
+;123440000|1;;;;;;;;;;123440000
+;123450000|1;;;;;;;;;;123450000
+;123460000|1;;;;;;;;;;123460000
+;123310000|1;;;;;;;;;;123310000
+;123320000|1;;;;;;;;;;123320000
+;123330000|1;;;;;;;;;;123330000
+;123340000|1;;;;;;;;;;123340000
+;123350000|1;;;;;;;;;;123350000
+;140431000|1;;;;;;;;;;140431000
+;140431010|1;;;;;;;;;;140431010
+;140432000|1;;;;;;;;;;140432000
+;140432010|1;;;;;;;;;;140432010
+;140433000|1;;;;;;;;;;140433000
+;140433010|1;;;;;;;;;;140433010
+;140434000|1;;;;;;;;;;140434000
+;140434010|1;;;;;;;;;;140434010
+;140435000|1;;;;;;;;;;140435000
+;140435010|1;;;;;;;;;;140435010
+;140436000|1;;;;;;;;;;140436000
+;140436010|1;;;;;;;;;;140436010
+;140401000|1;;;;;;;;;;140401000
+;140401050|1;;;;;;;;;;140401050
+;140402000|1;;;;;;;;;;140402000
+;140402050|1;;;;;;;;;;140402050
+;140403000|1;;;;;;;;;;140403000
+;140403050|1;;;;;;;;;;140403050
+;140404000|1;;;;;;;;;;140404000
+;140404050|1;;;;;;;;;;140404050
+;140405000|1;;;;;;;;;;140405000
+;140405050|1;;;;;;;;;;140405050
+;140406000|1;;;;;;;;;;140406000
+;140406050|1;;;;;;;;;;140406050
+
+
+###########################################################################
+#Impex For DEPUY MDD - EXTREMITIES #
+###########################################################################
+
+# code               :Catalog Number(in xls)
+# name,Description   :Catalog Description(in xls)
+# bfs 				 :BFS(in xls)
+# bfsDescription	 :BFS Description(in xls)
+###########################################################################
+INSERT_UPDATE JnJProduct;code[unique=true];supercategories(code, $catalogVersion)[default='EXTREMITIES'];$approved;$catalogVersion;variantType(code)[default=$defaultVariantType];variants(code, $catalogVersion)[mode=append];name[lang=en];description[lang=en];bfs;bfsDescription
+;123400000;;;;;123400000|1;NEUFLEX MCP IMPLANT SZ 0;NEUFLEX MCP IMPLANT SZ 0;O-H-C;NEUFLEX FINGER IMPLANTS
+;123410000;;;;;123410000|1;NEUFLEX MCP IMPLANT SZ 10;NEUFLEX MCP IMPLANT SZ 10;O-H-C;NEUFLEX FINGER IMPLANTS
+;123420000;;;;;123420000|1;NEUFLEX MCP IMPLANT SZ 20;NEUFLEX MCP IMPLANT SZ 20;O-H-C;NEUFLEX FINGER IMPLANTS
+;123430000;;;;;123430000|1;NEUFLEX MCP IMPLANT SZ 30;NEUFLEX MCP IMPLANT SZ 30;O-H-C;NEUFLEX FINGER IMPLANTS
+;123440000;;;;;123440000|1;NEUFLEX MCP IMPLANT SZ 40;NEUFLEX MCP IMPLANT SZ 40;O-H-C;NEUFLEX FINGER IMPLANTS
+;123450000;;;;;123450000|1;NEUFLEX MCP IMPLANT SZ 50;NEUFLEX MCP IMPLANT SZ 50;O-H-C;NEUFLEX FINGER IMPLANTS
+;123460000;;;;;123460000|1;NEUFLEX MCP IMPLANT SZ 60;NEUFLEX MCP IMPLANT SZ 60;O-H-C;NEUFLEX FINGER IMPLANTS
+;123310000;;;;;123310000|1;NEUFLEX PIP IMPLANT SZ 1;NEUFLEX PIP IMPLANT SZ 1;O-H-P;NEUFLEX PIP IMPLANT
+;123320000;;;;;123320000|1;NEUFLEX PIP IMPLANT SZ 2;NEUFLEX PIP IMPLANT SZ 2;O-H-P;NEUFLEX PIP IMPLANT
+;123330000;;;;;123330000|1;NEUFLEX PIP IMPLANT SZ 3;NEUFLEX PIP IMPLANT SZ 3;O-H-P;NEUFLEX PIP IMPLANT
+;123340000;;;;;123340000|1;NEUFLEX PIP IMPLANT SZ 4;NEUFLEX PIP IMPLANT SZ 4;O-H-P;NEUFLEX PIP IMPLANT
+;123350000;;;;;123350000|1;NEUFLEX PIP IMPLANT SZ 5;NEUFLEX PIP IMPLANT SZ 5;O-H-P;NEUFLEX PIP IMPLANT
+;140431000;;;;;140431000|1;AGILITY LP TIBIAL INSERT SZ1;AGILITY LP TIBIAL INSERT SZ1;O-A-KB;AGILITY ANKLE POLY INSERT LP
+;140431010;;;;;140431010|1;AGILITY LP +1 POLY SIZE 1;AGILITY LP +1 POLY SIZE 1;O-A-KB;AGILITY ANKLE POLY INSERT LP
+;140432000;;;;;140432000|1;AGILITY LP TIBIAL INSERT SZ2;AGILITY LP TIBIAL INSERT SZ2;O-A-KB;AGILITY ANKLE POLY INSERT LP
+;140432010;;;;;140432010|1;AGILITY LP +1 POLY SIZE 2;AGILITY LP +1 POLY SIZE 2;O-A-KB;AGILITY ANKLE POLY INSERT LP
+;140433000;;;;;140433000|1;AGILITY LP TIBIAL INSERT SZ3;AGILITY LP TIBIAL INSERT SZ3;O-A-KB;AGILITY ANKLE POLY INSERT LP
+;140433010;;;;;140433010|1;AGILITY LP +1 POLY SIZE 3;AGILITY LP +1 POLY SIZE 3;O-A-KB;AGILITY ANKLE POLY INSERT LP
+;140434000;;;;;140434000|1;AGILITY LP TIBIAL INSERT SZ4;AGILITY LP TIBIAL INSERT SZ4;O-A-KB;AGILITY ANKLE POLY INSERT LP
+;140434010;;;;;140434010|1;AGILITY LP +1 POLY SIZE 4;AGILITY LP +1 POLY SIZE 4;O-A-KB;AGILITY ANKLE POLY INSERT LP
+;140435000;;;;;140435000|1;AGILITY LP TIBIAL INSERT SZ5;AGILITY LP TIBIAL INSERT SZ5;O-A-KB;AGILITY ANKLE POLY INSERT LP
+;140435010;;;;;140435010|1;AGILITY LP +1 POLY SIZE 5;AGILITY LP +1 POLY SIZE 5;O-A-KB;AGILITY ANKLE POLY INSERT LP
+;140436000;;;;;140436000|1;AGILITY LP TIBIAL INSERT SZ6;AGILITY LP TIBIAL INSERT SZ6;O-A-KB;AGILITY ANKLE POLY INSERT LP
+;140436010;;;;;140436010|1;AGILITY LP +1 POLY SIZE 6;AGILITY LP +1 POLY SIZE 6;O-A-KB;AGILITY ANKLE POLY INSERT LP
+;140401000;;;;;140401000|1;AGILITY LP TALAR SZ1 RT;AGILITY LP TALAR SZ1 RT;O-A-JC;AGILITY ANKLE TALAR LP
+;140401050;;;;;140401050|1;AGILITY LP TALAR SZ 1LT;AGILITY LP TALAR SZ 1LT;O-A-JC;AGILITY ANKLE TALAR LP
+;140402000;;;;;140402000|1;AGILITY LP TALAR SZ2 RT;AGILITY LP TALAR SZ2 RT;O-A-JC;AGILITY ANKLE TALAR LP
+;140402050;;;;;140402050|1;AGILITY LP TALAR SZ 2LT;AGILITY LP TALAR SZ 2LT;O-A-JC;AGILITY ANKLE TALAR LP
+;140403000;;;;;140403000|1;AGILITY LP TALAR SZ3 RT;AGILITY LP TALAR SZ3 RT;O-A-JC;AGILITY ANKLE TALAR LP
+;140403050;;;;;140403050|1;AGILITY LP TALAR SZ 3LT;AGILITY LP TALAR SZ 3LT;O-A-JC;AGILITY ANKLE TALAR LP
+;140404000;;;;;140404000|1;AGILITY LP TALAR SZ4 RT;AGILITY LP TALAR SZ4 RT;O-A-JC;AGILITY ANKLE TALAR LP
+;140404050;;;;;140404050|1;AGILITY LP TALAR SZ 4LT;AGILITY LP TALAR SZ 4LT;O-A-JC;AGILITY ANKLE TALAR LP
+;140405000;;;;;140405000|1;AGILITY LP TALAR SZ5 RT;AGILITY LP TALAR SZ5 RT;O-A-JC;AGILITY ANKLE TALAR LP
+;140405050;;;;;140405050|1;AGILITY LP TALAR SZ 5LT;AGILITY LP TALAR SZ 5LT;O-A-JC;AGILITY ANKLE TALAR LP
+;140406000;;;;;140406000|1;AGILITY LP TALAR SZ6 RT;AGILITY LP TALAR SZ6 RT;O-A-JC;AGILITY ANKLE TALAR LP
+;140406050;;;;;140406050|1;AGILITY LP TALAR SZ 6LT;AGILITY LP TALAR SZ 6LT;O-A-JC;AGILITY ANKLE TALAR LP
+
+
+
+
+
+
+##############################################################################
+# Header For Price Row
+##############################################################################
+# product 			:Varitant Product Code
+# currency			:USD(Default)
+# price				:Commercial List Price(in xls)
+# unit				:Unit with code 'EA'(Default)
+##############################################################################
+INSERT_UPDATE PriceRow; product(code, $catalogVersion)[unique=true];currency(isocode)[unique=true][default=$defaultCurrenlForPriceList];price[unique=true];$catalogVersion;unit(code)[default=$defaultUnit]
+;123400000|1;;1474;;;
+;123410000|1;;1474;;;
+;123420000|1;;1474;;;
+;123430000|1;;1474;;;
+;123440000|1;;1474;;;
+;123450000|1;;1474;;;
+;123460000|1;;1474;;;
+;123310000|1;;1474;;;
+;123320000|1;;1474;;;
+;123330000|1;;1474;;;
+;123340000|1;;1474;;;
+;123350000|1;;1474;;;
+;140431000|1;;1675;;;
+;140431010|1;;1675;;;
+;140432000|1;;1675;;;
+;140432010|1;;1675;;;
+;140433000|1;;1675;;;
+;140433010|1;;1675;;;
+;140434000|1;;1675;;;
+;140434010|1;;1675;;;
+;140435000|1;;1675;;;
+;140435010|1;;1675;;;
+;140436000|1;;1675;;;
+;140436010|1;;1675;;;
+;140401000|1;;5892;;;
+;140401050|1;;5892;;;
+;140402000|1;;5892;;;
+;140402050|1;;5892;;;
+;140403000|1;;5892;;;
+;140403050|1;;5892;;;
+;140404000|1;;5892;;;
+;140404050|1;;5892;;;
+;140405000|1;;5892;;;
+;140405050|1;;5892;;;
+;140406000|1;;5892;;;
+;140406050|1;;5892;;;

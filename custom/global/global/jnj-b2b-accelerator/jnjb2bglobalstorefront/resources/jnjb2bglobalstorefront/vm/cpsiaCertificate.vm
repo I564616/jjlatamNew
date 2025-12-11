@@ -1,0 +1,357 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body width="700px" style="padding:10px;font-size: 9px;">
+<table border="1" align="center" cellpadding="4" cellspacing="0">
+    <tr>
+      
+      <td colspan="2" align="center" bgcolor="#CCCCCC" ><h3><strong>CPSIA General Conformity Certificate</strong></h3></td>
+  </tr>
+    <tr>
+      <td colspan="2" ><em>Pursuant to 15 U.S.C. 2063(a), this certifies on a reasonable testing program and third party testing, as applicable, that the product identified complies with the applicable        regulations, rules, bans, and/or standards identified.</em></td>
+  </tr>
+    <tr>
+      <td colspan="2" height="10"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left;" colspan="2" height="10"></td>
+  </tr>
+    <tr>
+      <td style="text-align:left;"><strong>Product Information:</strong></td>
+      <td style="text-align:left;"></td>
+  </tr>
+    <tr>
+      <td style="text-align:left;">Name</td>
+      <td style="text-align:left;">#if(${productName}) ${productName} #else N/A #end</td>
+    </tr>
+    <tr>
+      <td style="text-align:left;">J&amp;J Product Code</td>
+      <td style="text-align:left;">#if(${productCode}) ${productCode} #else N/A #end</td>
+    </tr>
+    <tr>
+      <td style="text-align:left;">Lot Number</td>
+      <td style="text-align:left;">
+      	#if(${lotNumber})
+      		${lotNumber}
+      	#else
+      		N/A
+      	#end
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left;">UPC Number</td>
+      <td style="text-align:left;">#if(${upcNumber}) ${upcNumber} #else N/A #end</td>
+    </tr>
+    <tr>
+      <td style="text-align:left;" colspan="2" height="10"></td>
+  </tr>
+    <tr>
+      <td style="text-align:left;" height="10" colspan="2" bgcolor="#CCCCCC"></td>
+  </tr>
+    <tr>
+      <td style="text-align:left;" colspan="2" height="10"></td>
+  </tr>
+    <tr>
+      <td style="text-align:left;"><strong>Manufacturer:</strong></td>
+      <td style="text-align:left;"></td>
+    </tr>
+    #foreach($manufacturerAddress in ${manufacturerData})
+    	<tr>
+	      <td style="text-align:left;" colspan="2" height="10"></td>
+	  	</tr>
+	    <tr>
+	      <td style="text-align:left;">Manufacture Date</td>
+	      <td style="text-align:left;">
+		      #if(${manufacturerDate})
+		      	${manufacturerDate}
+		      #else
+      			N/A
+      		  #end
+	      </td>
+	    </tr>
+	    <tr>
+	      <td style="text-align:left;">Manufacturer Name</td>
+	      <td style="text-align:left;">
+	      	#if(${manufacturerAddress.name})
+	      		${manufacturerAddress.name}
+	      	#else
+      			N/A
+      		  #end
+	      </td>
+	    </tr>
+	    <tr>
+	      <td style="text-align:left;">Address</td>
+	      <td style="text-align:left;">
+			${manufacturerAddress.addressline1},<br />
+			#if(${manufacturerAddress.addressline2})
+				${manufacturerAddress.addressline2},<br />
+			#end
+			#if(${manufacturerAddress.city})
+				${manufacturerAddress.city}, 
+			#end
+			#if(${manufacturerAddress.state})	
+				${manufacturerAddress.state}, 
+			#end
+			#if(${manufacturerAddress.zipCode})
+				${manufacturerAddress.zipCode}<br />
+			#end
+			#if(${manufacturerAddress.country})
+				${manufacturerAddress.country}
+			#else
+      			N/A
+      		  #end
+	      </td>
+	    </tr>
+	    <tr>
+	      <td style="text-align:left;">Phone</td>
+	      <td style="text-align:left;">
+	      	#if(${manufacturerAddress.phoneNumber})
+	      		${manufacturerAddress.phoneNumber}
+	      	#else
+      			N/A
+      		  #end
+	      </td>
+	    </tr>
+	    <tr>
+	      <td style="text-align:left;" colspan="2" height="10"></td>
+	  </tr>
+  #end
+    <tr>
+      <td style="text-align:left;" height="10" colspan="2" bgcolor="#CCCCCC"></td>
+  </tr>
+    <tr>
+      <td style="text-align:left;" colspan="2">Applicable CPSC Regulation(s), Rule(s), Ban(s) or Standard(s) for which this product is being certified:<br />
+		#if(${description})
+			${description}
+		#else
+      		N/A
+      	#end
+	  </td>
+  </tr>
+    <tr>
+      <td style="text-align:left;" height="10" colspan="2" bgcolor="#CCCCCC"></td>
+    </tr>
+    
+    <tr>
+      <td style="text-align:left;" colspan="2" height="10"></td>
+  </tr>
+    <tr>
+      <td style="text-align:left;"><strong>Company Certifying:</strong></td>
+      <td style="text-align:left;"></td>
+    </tr>
+    #foreach($companyCertifyingAddress in ${companyCertifyingData})
+    	<tr>
+	      <td style="text-align:left;" colspan="2" height="10"></td>
+	  	</tr>
+	    <tr>
+	      <td style="text-align:left;">Manufacturer Name </td>
+	      <td style="text-align:left;">
+	      	#if(${companyCertifyingAddress.name})
+	      		${companyCertifyingAddress.name}
+	      	#else
+      			N/A
+      		#end
+	      </td>
+	    </tr>
+	    <tr>
+	      <td style="text-align:left;">Address</td>
+	      <td style="text-align:left;">
+			${companyCertifyingAddress.addressline1},<br />
+			#if(${companyCertifyingAddress.addressline2})
+				${companyCertifyingAddress.addressline2},<br />
+			#end
+			#if(${companyCertifyingAddress.city})
+				${companyCertifyingAddress.city},
+			#end
+			#if(${companyCertifyingAddress.state})
+				${companyCertifyingAddress.state},
+			#end
+			#if(${companyCertifyingAddress.zipCode})
+				${companyCertifyingAddress.zipCode}<br />
+			#end
+			#if(${companyCertifyingAddress.country})
+				${companyCertifyingAddress.country}
+			#else
+      			N/A
+      		#end
+	      </td>
+	    </tr>
+	    <tr>
+	      <td style="text-align:left;">Phone</td>
+	      <td style="text-align:left;">
+	      	#if(${companyCertifyingAddress.phoneNumber})
+	      		${companyCertifyingAddress.phoneNumber}
+	      	#else
+      			N/A
+      		#end
+	      </td>
+	    </tr>
+	    <tr>
+	      <td style="text-align:left;" colspan="2" height="10"></td>
+	    </tr>
+    #end
+    <tr>
+      <td style="text-align:left;" height="10" colspan="2" bgcolor="#CCCCCC"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left;" colspan="2" height="10"></td>
+  </tr>
+    <tr>
+      <td style="text-align:left;"><strong>Individual Maintaining Test Results:</strong></td>
+      <td style="text-align:left;"></td>
+    </tr>
+	#foreach($testResultHolderAddress in ${testResultHolderData})
+		<tr>
+	      <td style="text-align:left;" colspan="2" height="10"></td>
+	  	</tr>
+	    <tr>
+	      <td style="text-align:left;">Contact Person Name </td>
+	      <td style="text-align:left;">#if(${testResultHolderAddress.name})${testResultHolderAddress.name} #else N/A #end</td>
+	    </tr>
+	    <tr>
+	      <td style="text-align:left;">Company Name </td>
+	      <td style="text-align:left;">#if(${testResultHolderAddress.addressline1})${testResultHolderAddress.addressline1} #else N/A #end</td>
+	    </tr>
+	    <tr>
+	      <td style="text-align:left;">Address</td>
+	      <td style="text-align:left;">
+			#if(${testResultHolderAddress.addressline2})
+				${testResultHolderAddress.addressline2},<br />
+			#end
+			#if(${testResultHolderAddress.city})
+				${testResultHolderAddress.city},
+			#end
+			#if(${testResultHolderAddress.state})
+				${testResultHolderAddress.state}
+			#end	
+			#if(${testResultHolderAddress.zipCode})
+				${testResultHolderAddress.zipCode}
+			#end	
+	      </td>
+	    </tr>
+	    <tr>
+	      <td style="text-align:left;">Country</td>
+	      <td style="text-align:left;">#if(${testResultHolderAddress.country})${testResultHolderAddress.country} #else N/A #end</td>
+	    </tr>
+	    <tr>
+	      <td style="text-align:left;">E-mail</td>
+	      <td style="text-align:left;">#if(${testResultHolderAddress.emailId})${testResultHolderAddress.emailId} #else N/A #end</td>
+	    </tr>
+	    <tr>
+	      <td style="text-align:left;">Phone</td>
+	      <td style="text-align:left;">#if(${testResultHolderAddress.phoneNumber})${testResultHolderAddress.phoneNumber} #else N/A #end</td>
+	    </tr>
+	#end
+	#if (!$importerRecordData.isEmpty())
+    <tr>
+      <td style="text-align:left;" colspan="2" height="10"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left;" height="10" colspan="2" bgcolor="#CCCCCC"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left;" colspan="2" height="10"></td>
+  </tr>
+  <tr>
+      <td style="text-align:left;"><strong>Importer of Record:</strong></td>
+      <td style="text-align:left;"></td>
+    </tr>
+  #end
+	#foreach($importerRecordAddress in ${importerRecordData})
+		<tr>
+	      <td style="text-align:left;" colspan="2" height="10"></td>
+	  	</tr>
+	    <tr>
+	      <td style="text-align:left;">Importer Name </td>
+	      <td style="text-align:left;">#if(${importerRecordAddress.name})${importerRecordAddress.name} #else N/A #end</td>
+	    </tr>
+	    <tr>
+	      <td style="text-align:left;">Address</td>
+	      <td style="text-align:left;">
+			${importerRecordAddress.addressline1},<br />
+			#if(${importerRecordAddress.addressline2})
+				${importerRecordAddress.addressline2},<br />
+			#end
+			#if(${importerRecordAddress.city})
+				${importerRecordAddress.city},
+			#end
+			#if(${importerRecordAddress.state})
+				${importerRecordAddress.state},
+			#end
+			#if(${importerRecordAddress.zipCode})
+				${importerRecordAddress.zipCode}<br />
+			#end
+			#if(${importerRecordAddress.country})
+				${importerRecordAddress.country}
+			#else N/A #end
+	      </td>
+	    </tr>
+	    <tr>
+	      <td style="text-align:left;">Phone</td>
+	      <td style="text-align:left;">#if(${importerRecordAddress.phoneNumber})${importerRecordAddress.phoneNumber} #else N/A #end</td>
+	    </tr>
+	#end
+   	<tr>
+      <td style="text-align:left;" colspan="2" height="10"></td>
+  	</tr>
+  	<tr>
+      <td style="text-align:left;" height="10" colspan="2" bgcolor="#CCCCCC"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left;" colspan="2" height="10"></td>
+  	</tr>
+    <tr>
+      <td style="text-align:left;"><strong>Testing Information:</strong></td>
+      <td style="text-align:left;"></td>
+    </tr>
+	#foreach($jnjNACpscTestDetailData in ${testing})
+	    <tr>
+	      <td style="text-align:left;"><strong>Test Report</strong></td>
+	      <td style="text-align:left;"><strong>#if(${jnjNACpscTestDetailData.studyNumber})${jnjNACpscTestDetailData.studyNumber} #else N/A #end</strong></td>
+	    </tr>
+	    <tr>
+	      <td style="text-align:left;">Date of Testing/Date of Test Results</td>
+	      <td style="text-align:left;">#if(${jnjNACpscTestDetailData.testingDate})${jnjNACpscTestDetailData.testingDate} #else N/A #end</td>
+	    </tr>
+	    <tr>
+	      <td style="text-align:left;">Name of Testing Laboratory(ies)</td>
+	      <td style="text-align:left;">#if(${jnjNACpscTestDetailData.testingDate})${jnjNACpscTestDetailData.thirdPartyName} #else N/A #end</td>
+	    </tr>
+	    <tr>
+	      <td style="text-align:left;">Address</td>
+	      <td style="text-align:left;">
+	      	#if(${jnjNACpscTestDetailData.addressLine1})${jnjNACpscTestDetailData.addressLine1}<br />  #end
+	      	#if(${jnjNACpscTestDetailData.addressLine2})${jnjNACpscTestDetailData.addressLine2}<br />  #end
+	      	#if(${jnjNACpscTestDetailData.city})${jnjNACpscTestDetailData.city},  #end 
+	      	#if(${jnjNACpscTestDetailData.state})${jnjNACpscTestDetailData.state},  #end 
+	      	#if(${jnjNACpscTestDetailData.zipCode})${jnjNACpscTestDetailData.zipCode}<br />  #end
+	      	#if(${jnjNACpscTestDetailData.country})${jnjNACpscTestDetailData.country}  #end
+	      </td>
+	    </tr>
+	    <tr>
+	      <td style="text-align:left;">Phone</td>
+	      <td style="text-align:left;">${jnjNACpscTestDetailData.phoneNumber}</td>
+	    </tr>
+	    <tr>
+	      <td style="text-align:left;" colspan="2" bgcolor="#CCCCCC" >
+	      Comments: 
+	      #if(${jnjNACpscTestDetailData.studyComments})
+	      	${jnjNACpscTestDetailData.studyComments}
+	      #else
+      		N/A
+      	  #end	
+	      </td>
+	  </tr>
+	#end
+   <tr>
+      <td style="text-align:left;" colspan="2" height="10"></td>
+  </tr>
+    <tr>
+      <td colspan="2" align="center" >Date Certificate last revised: ${modifiedDate}</td>
+  </tr>
+    <tr>
+      <td colspan="2"></td>
+  </tr>
+    
+</table>
+</body>
+</html>

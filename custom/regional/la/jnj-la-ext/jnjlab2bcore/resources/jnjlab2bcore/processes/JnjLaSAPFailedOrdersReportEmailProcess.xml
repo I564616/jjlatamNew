@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<process xmlns="http://www.hybris.de/xsd/processdefinition"
+         start="generateSAPFailedOrdersReportEmail" name="JnjLaSAPFailedOrdersReportEmailProcess"
+         processClass="com.jnj.la.core.model.JnjLaSAPFailedOrdersReportEmailProcessModel"
+         onError="error">
+
+    <action id="generateSAPFailedOrdersReportEmail" bean="generateSAPFailedOrdersReportEmail">
+		<transition name="OK" to="sendEmail"/>
+		<transition name="NOK" to="error"/>
+	</action>
+
+	<action id="sendEmail" bean="sendEmail">
+		<transition name="OK" to="updateSAPFailedOrdersReportEmailStatus"/>
+		<transition name="NOK" to="failed"/>
+	</action>
+	
+	<action id="updateSAPFailedOrdersReportEmailStatus" bean="sapFailedOrdersReportEmailStatusUpdateAction">
+		<transition name="OK" to="removeSentEmail"/>
+		<transition name="NOK" to="failed"/>
+	</action>
+
+	<action id="removeSentEmail" bean="removeSentEmail">
+		<transition name="OK" to="success"/>
+		<transition name="NOK" to="error"/>
+	</action>
+	
+	<end id="error" state="ERROR">Something went wrong.</end>
+	<end id="failed" state="FAILED">Could not send sap failed orders report email.</end>
+	<end id="success" state="SUCCEEDED">Sent sap failed orders report email.</end>
+
+
+</process>
+

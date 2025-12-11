@@ -1,0 +1,8 @@
+# ImpEx for Importing JnjSalesOrgAndSplProdMap into jnj Store
+
+INSERT_UPDATE JnjSalesOrgAndSplProdMap;salesOrg[unique=true];handleColdChain
+;BR01;true
+;BR02;true
+;MX01;false
+;MX02;false
+;MX03;false

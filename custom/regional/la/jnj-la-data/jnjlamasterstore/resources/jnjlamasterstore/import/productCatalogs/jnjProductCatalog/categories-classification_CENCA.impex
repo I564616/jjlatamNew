@@ -1,0 +1,9 @@
+$productCatalog=cencaProductCatalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$classificationSystem=pcmMedicalClassCatalog
+$version=1.0
+$classificationSystemVersion=catalogVersion(catalog(id[default=$classificationSystem]),version[default=$version])
+$supercategories=source(code, $classificationSystemVersion)[unique=true]
+$categories=target(code, $catalogVersion)[unique=true]
+
+INSERT_UPDATE CategoryCategoryRelation;$categories;$supercategories

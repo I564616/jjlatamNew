@@ -1,0 +1,36 @@
+#
+# Import the JNJ Content Catalog
+#
+# Localization en
+#
+
+
+$MstrContentCatalog=mstrContentCatalog
+$BRContentCatalog=brContentCatalog
+$MXContentCatalog=mxContentCatalog
+
+$CENCAContentCatalog=cencaContentCatalog
+$ECContentCatalog=ecContentCatalog
+
+$ARContentCatalog=arContentCatalog
+$CLContentCatalog=clContentCatalog
+$URContentCatalog=uyContentCatalog
+$COContentCatalog=coContentCatalog
+$PEContentCatalog=peContentCatalog
+$PRContentCatalog=prContentCatalog
+
+
+$lang=en
+
+UPDATE ContentCatalog;id[unique=true];name[lang=$lang];
+;$MstrContentCatalog;"Master Content Catalog";
+;$BRContentCatalog;"Brazil Content Catalog"; 
+;$MXContentCatalog;"Mexico Content Catalog";
+;$CENCAContentCatalog;"Cenca Content Catalog";
+;$ECContentCatalog;"Ecuador Content Catalog";
+;$ARContentCatalog;"Argentina Content Catalog";
+;$CLContentCatalog;"Chile Content Catalog";
+;$URContentCatalog;"Uruguay Content Catalog";
+;$COContentCatalog;"Colombia Content Catalog";
+;$PEContentCatalog;"Peru Content Catalog";
+;$PRContentCatalog;"Puerto Rico Content Catalog";

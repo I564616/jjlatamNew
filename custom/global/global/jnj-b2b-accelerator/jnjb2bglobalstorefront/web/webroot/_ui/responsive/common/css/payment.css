@@ -1,0 +1,217 @@
+/* Start - added by lokesh sep-22 */
+.DataIntercept td{
+	padding-bottom:15px;
+	font-size:17px;
+}
+/* Added by siva */
+.paymenttwo {
+    border-bottom: 1px solid #f2f2f2;
+    border-top: 1px solid #f2f2f2;
+}
+.DataInterceptCreditCardType .dropdown-toggle{
+	width:220px !important;
+}
+#editCreditCard td input{
+	width: 220px !important;
+	height: 34px;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+	-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+#editCreditCard .DataInterceptExpirationDate input,#editCreditCard .DataInterceptCVV input{
+   width:60px !important;
+}
+#editCreditCard #PayNowButton{
+	letter-spacing: 1.5px;
+	font-family: jnjbodyfont;
+	font-weight: bold;
+	font-size: 10px;
+	color: #fff;
+	border-radius: 27px;
+	background-color: #0a8caa;
+	text-align: center;
+	padding: 10px 15px;
+	text-transform: capitalize;
+	text-transform: uppercase;
+	float:right;
+	border:none;
+	background-image:none;
+	width:auto !important;
+}
+#editCreditCard #credit-card-remem{
+	font-size:14px;
+	width:auto !important;
+}
+/* End - added by lokesh sep-22 */
+
+#paymentpage .addresspane{
+    background: #fff;
+    padding: 20px;
+}
+#paymentpage #datatab-mobile td:first-child,#paymentpage #datatab-mobile th:first-child{
+	padding-left:20px  !important;
+}
+
+#paymentpage label {
+    font-size: 14px;
+}
+#paymentpage .ref_no {    
+    font-size: 22px;
+    color: #0a8caa !important;
+    font-weight: bold;
+}
+#paymentpage  .subcontent3 {
+    margin: 20px 0px 20px 0px;
+}
+#paymentpage .Tablesubtxt {
+    //margin-top: 5px;
+    margin-left: 10px;
+    line-height: 22px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 50%;
+}
+#paymentpage  .table>thead:first-child>tr:first-child>th:nth-child(2), #paymentpage .table.table-bordered.dataTable tbody td:nth-child(2) {
+    text-align: left;
+	padding-left:20px
+}
+#paymentpage #AddItemsCartpage .table>thead:first-child>tr:first-child>th:first-child{
+	    //width: 300px !important;
+}
+.table-sNo{	width:40px !important ;}
+#paymentpage .firstline{
+	    margin-bottom: 0px; 
+}
+#paymentpage .glyphicon{
+	font-size: 12px;
+    /* top: -2px; */
+}
+#paymentpage #breadcrumbs-one li:nth-child(2) a:first-child {
+    background: #fff;
+}
+#paymentpage .breadcrumb {
+    padding-left: 0px;
+} 
+#paymentpage #editCreditCardDetails{
+	font-size:14px;
+	padding-left:15px;
+}
+/*  .creditcardDetails input{
+	width:50%
+} */
+ .expireDateWidth {
+	width:15% !important;
+	    float: left;
+}
+.cardslash{
+	float: left;
+	display: block;
+	font-size: 30px;
+	position: relative;
+	top: -2px;
+	padding-left: 8px;
+	padding-right: 8px;
+	margin-bottom: 0px;
+}
+ .creditcardDetails label {
+    float: left;
+    width: 40%;
+    font-size: 17px;
+    font-weight: normal;
+}
+#editCreditCard .modal-dialog {
+    //width: 35%;
+	width:480px;
+}
+.creditcardDetails  .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+    width: 207px;
+}
+.creditcardDetails .margintop10 {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+#editCreditCard .checkbox {
+    padding-left: 20px !important;
+}
+#editCreditCard .checkbox label::before{
+	top:1px;
+}
+#editCreditCard .modal-title {
+    font-size: 26px;
+    font-family: jnjlabelfont;
+}
+#paymentpage #breadcrumbs-one li:nth-child(2) a {
+    background-image: linear-gradient(to right, #fff, #fff);
+    font-weight: bold;
+}
+.paymentdropShipment {
+    padding-top: 28px;
+}
+/* added by siva */
+i.fa.fa-circle-o,.fa.fa-circle  {
+    color: #0a8caa;
+	float: right;
+	opacity:1;
+}
+#paymentpage #accordion .panel-heading {
+    padding: 25px 25px;
+	border: 1px solid #ddd;
+	background-image: -webkit-linear-gradient(top,#fff 0,#fff 100%);
+	border-color: transparent;
+}
+#paymentpage  #accordion  .panel{
+	margin-bottom:0px;
+	border: none;
+    border-radius: 0;
+}
+#paymentType2, #paymentType3{
+	display:none;
+}
+/* added by siva */
+@media screen and (max-width: 786px){
+	#editCreditCard .modal-dialog {
+		//width: 65%;
+	}
+}
+@media screen and (max-width: 767px){
+	#paymentpage .Tablesubtxt {
+	    margin-top: 0px;
+	  
+	    width: 100%;
+	}
+	.continueToreviewBtn{
+		width:100%;
+	}
+	.DataIntercept td{
+		font-size:14px;
+	}
+	#editCreditCard .modal-dialog {
+		width: 95%;
+	}
+	.paymentdropShipment {
+		padding-top: 0;
+	}
+	#paymentpage .breadcrumb +.row.content,#paymentpage .breadcrumb +.row .content, #paymentpage .headingTxt.content {		
+		margin-bottom: 10px !important;
+	}
+}
+
+.redStar {color: #B41601; font-weight:bold;}
+.registerError>.error { padding: 0; font-weight:bold;  color: #B41601; }
+.registerError>label.error{ color: #B41601;font-weight:bold; }
+/* Siva */
+.DataInterceptCreditCardType .dropdown-menu.open {
+    width: 220px;
+}
+
+

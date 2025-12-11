@@ -1,0 +1,24 @@
+$contentCatalog = mstrContentCatalog
+$contentCV = catalogVersion(catalog(id[default = $contentCatalog]), version[default = 'Staged'])
+$wideContent = CMSImageComponent, BannerComponent
+$jarResourceCms = jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/jnjlamasterstore/import/cockpits/cmscockpit
+$emailResource = jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/jnjlamasterstore/import/contentCatalogs/jnjContentCatalog/emails/templates
+$mediaResource = jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/jnjlamasterstore/import/contentCatalogs/jnjContentCatalog/media
+
+INSERT_UPDATE EmailPageTemplate; $contentCV[unique = true]; uid[unique = true]                            ; name                                                 ; active; frontendTemplateName                          ; subject(code)                              ; htmlTemplate(code)                      ; restrictedPageTypes(code)
+;                          ; JnjConsolidatedOpenedOrdersEmailTemplate      ; Consolidated Opened Orders Email Template            ; true  ; JnjConsolidatedOpenedOrdersEmailTemplate      ; email-consolidatedOpenedOrdersSubject      ; email-consolidatedOpenedOrdersBody      ; EmailPage
+
+INSERT_UPDATE EmailPage; $contentCV[unique = true]; uid[unique = true]                        ; name                                             ; masterTemplate(uid, $contentCV)               ; defaultPage; approvalStatus(code)[default = 'approved']; fromEmail[lang = en]     ; fromEmail[lang = es]     ; fromEmail[lang = pt]     ; fromName[lang = en]    ; fromName[lang = es]            ; fromName[lang = pt]
+                       ;                          ; JnjConsolidatedOpenedOrdersEmailPage      ; Consolidated Opened Orders Email Page            ; JnjConsolidatedOpenedOrdersEmailTemplate      ; true       ;                                           ;                          ;                          ;                          ;                        ;                                ;
+
+
+INSERT_UPDATE RendererTemplate; code[unique = true]                        ; contextClass; rendererType(code)[default = 'velocity']
+; email-consolidatedOpenedOrdersSubject      ; com.jnj.facades.process.email.context.JnjLaConsolidatedEmailContext
+; email-consolidatedOpenedOrdersBody         ; com.jnj.facades.process.email.context.JnjLaConsolidatedEmailContext
+
+INSERT_UPDATE RendererTemplate; code[unique = true]                        ; description[lang = en]                     ; templateScript[lang = en, translator = de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]; templateScript[lang = es, translator = de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]; templateScript[lang = pt, translator = de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]
+; email-consolidatedOpenedOrdersSubject      ; "Consolidated Opened Orders Subject"       ; $emailResource/email-consolidatedOpenedOrdersSubject_en.vm                                                ; $emailResource/email-consolidatedOpenedOrdersSubject_es.vm                                                      ; $emailResource/email-consolidatedOpenedOrdersSubject_pt.vm
+; email-consolidatedOpenedOrdersBody         ; "Consolidated Opened Orders Body"          ; $emailResource/email-consolidatedOpenedOrdersBody_en.vm                                                   ; $emailResource/email-consolidatedOpenedOrdersBody_es.vm                                                         ; $emailResource/email-consolidatedOpenedOrdersBody_pt.vm
+
+INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                                     ; position[unique = true]   ; pageTemplate(uid, $contentCV)[unique = true]  ; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
+                                    ;                          ; SiteLogo-JnjConsolidatedOpenedOrdersEmailTemplate      ; SiteLogo                  ; JnjConsolidatedOpenedOrdersEmailTemplate      ; SiteLogoSlot                               ; true

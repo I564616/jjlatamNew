@@ -1,0 +1,365 @@
+<style>
+input.span-18 {
+	border-left-width: 1px;
+    border-right-width: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+	width: 698px;
+}
+.last {
+    margin-right: 0;
+    padding-right: 0;
+}
+.addIndirectCustomerPanel h2.arrowHeader span {
+    float: right;
+}
+.addIndirectCustomerPanel ul {
+    margin: 10px 0 20px;
+    padding-bottom: 10px;
+}
+.addIndirectCustomerPanel ul li {
+    clear: both;
+    margin-top: 10px;
+    min-height: 58px;
+}
+.addIndirectCustomerPanel label {
+    display: block;
+}
+.addIndirectCustomerPanel label span {
+    color: #B41601;
+}
+.addIndirectCustomerPanel input[type="text"], .addIndirectCustomerPanel select {
+    color: #646464;
+    padding-left: 2px;
+    width: 420px;
+}
+.addIndirectCustomerPanel select {
+    color: #646464;
+    float: none;
+    margin-bottom: 0;
+    width: 230px;
+}
+.radioPanel label {
+    display: inline;
+}
+.radioPanel input[type="text"] {
+    display: block;
+    margin: 4px 0;
+}
+.radioPanel input[type="radio"] {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    margin-bottom: 0;
+}
+.addIndirectCustomerPanel input, .addIndirectCustomerPanel select {
+    padding: 0;
+}
+.addIndirectCustomerPanel select {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid #E5E5E5;
+    padding-bottom: 0;
+    padding-right: 0;
+    padding-top: 0;
+}
+.addIndirectCustomerPanel .buttonWrapper > input {
+    padding: 5px 15px;
+}
+h2.arrowHeader {
+    border-bottom: 1px solid #84C5D4;
+    color: #0A8CAA;
+    font-size: 16px;
+    line-height: 30px;
+    margin-bottom: 0;
+}
+.priceSmall {
+    color: #B41601;
+    font-size: 12px;
+}
+.instructiontxt {
+    color: #828282;
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+body {
+    line-height: 1.5;
+}
+body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section {
+    border: 0 none;
+    font-family: inherit;
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+body {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #222222;
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    font-size: 75%;
+}
+ul li {
+    color: #646464;
+    font-size: 12px;
+    list-style-type: none;
+}
+td {
+	color: #646464;
+}
+.size1of4 { width: 25%; }
+.size3of4 { width: 75%; }
+.cell{width: 100%;}
+.cell { float: left; }
+.cell .lastCell { width: auto; }
+</style>
+<html>
+<head>
+	<title>E-mail de confirmação</title>
+</head>
+<body id="containerBody">
+	<table style="background-color:#ffffff" width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+		<tr>
+			<td align="center">
+				<table bgcolor="#ffffff" width="600" border="0" cellspacing="0" cellpadding="0" align="center">
+					<tr bgcolor="#ffffff">
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr bgcolor="#ffffff">
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td>
+							<a href="#logo">
+								<img src="${ctx.logoURL}" width="333" height="84" border="0" />
+							</a>
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr bgcolor="#ffffff">
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					#if($ctx.enableUser == "enableUser") 
+					    <tr>
+					        <td width="11" height="11">
+					            <div style="width:11;height:11" />
+					        </td>
+					        <td style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#828282;">Prezado(a) ${ctx.customer.name},<br/><br/></td>
+					        <td width="11" height="11">
+					            <div style="width:11;height:11" />
+					        </td>
+					    </tr>
+                        <tr>
+                        <td width="11" height="11">
+                            <div style="width:11;height:11" />
+                        </td>
+                        <td style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#828282;">Seu acesso foi habilitado e você pode acessar o eCareShop clicando em ${ctx.secureBaseUrl} e usando as informações fornecidas durante seu registro.<br/><br/></td>
+                        <td width="11" height="11">
+                            <div style="width:11;height:11" />
+                         </td>   
+                         </tr>
+                         <tr>
+                         <td width="11" height="11">
+                             <div style="width:11;height:11" />
+                         </td>
+                         <td>
+                             <span><b>Equipe eCareShop</b></span> <br/><br/>
+                         </td>
+                         <td width="11" height="11">
+                             <div style="width:11;height:11" />
+                         </td>
+                      </tr>
+                      #elseif ($ctx.enableUser == "createUser")
+                         <tr>
+                            <td width="11" height="11">
+                                <div style="width:11;height:11" />
+                            </td>
+                            <td style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#828282;">Prezado(a) ${ctx.customer.name},<br/><br/></td>
+                            <td width="11" height="11">
+                                <div style="width:11;height:11" />
+                            </td>
+                        </tr>
+                        <tr>
+					        <td width="11" height="11">
+							    <div style="width:11;height:11" />
+							</td>
+							<td style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#828282;">Bem vindo ao eCareShop. Seu acesso foi fornecido por um administrador. Por favor finalize seu registro acessando ${ctx.secureBaseUrl} .Em alguns instantes você receberá um e-mail com mais informações.<br/><br/></td>
+							<td width="11" height="11">
+							    <div style="width:11;height:11" />
+							</td>
+						</tr>
+						<tr>
+						    <td width="11" height="11">
+							    <div style="width:11;height:11" />
+							</td>
+							<td>
+							    <span><b>Equipe eCareShop</b></span> <br/><br/>
+							</td>
+							<td width="11" height="11">
+							    <div style="width:11;height:11" />
+							</td>
+						</tr>
+						<tr>
+						    <td width="11" height="11">
+							    <div style="width:11;height:11" />
+							</td>
+							<td height="11">
+							    <div style="width:578;height:11" />
+							</td>
+							<td width="11" height="11">
+							    <div style="width:11;height:11" />
+							</td>
+						</tr>
+						<tr>
+						    <td width="11" height="11">
+							    <div style="width:11;height:11" />
+							</td>
+							<!-- INSERT HERE -->
+							<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+							    <div class="span-18 last">
+							    <div id="userprofile">
+							    <div class="userProfilePanel sectionBlock">
+							    <table width="100%" cellspacing="0" cellpadding="0">
+									<tr>
+									    <td align="left">
+										    <h2 class="arrowHeader">Perfil do usuário </h2>
+										</td>
+									</tr>
+								</table>
+								<div class="userProfileInfo floatLeft">
+								<Table>
+								    <tr>
+								        <TD><b>Nome:</b></td>
+								        <td>
+								            <span>${ctx.userFirstName}</span>
+								        </td>
+								    </tr>
+								    <tr>
+								        <TD><b>Sobrenome:</b></td><td>
+								            <span>${ctx.userLastName}</span>
+								        </td>
+								    </tr>
+								    <tr>
+								        <TD><b>Grupos:</b></td>
+								        #foreach( $role in $ctx.userRoles)
+								        <tr><td/>
+								        <td>
+								            ${role}
+								        </td>
+								        </tr>
+								        #end
+								        <tr/>
+								   </tr>
+								   <tr>
+								       <TD><b>Idiomas:</b></td>
+								       <td>
+								           <span>${ctx.userLanguage}</span>
+								       </td>
+								   </tr>
+								   <tr>
+						</table>
+						</div>
+						</div>
+						</div>           
+						</div>
+						<!-- Content Ends -->
+						</td>
+						    <td width="11" height="11">
+						        <div style="width:11;height:11" />
+						        </td>
+				</tr>
+				#elseif ($ctx.enableUser == "createUserPassword")
+                <tr>
+                  <td width="11" height="11">
+                      <div style="width:11;height:11" />
+                  </td>
+                  <td style="font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#828282;">Utilize a senha temporária ${ctx.tempPassword} .Você deve alterá-la em seu primeiro acesso.<br/><br/></td>
+                  <td width="11" height="11">
+                      <div style="width:11;height:11" />
+                  </td>   
+                </tr>
+                <tr>
+                    <td width="11" height="11">
+                        <div style="width:11;height:11" />
+                    </td>
+                    <td>
+                        <span><b>Equipe eCareShop</b></span> <br/><br/>
+                    </td>
+                    <td width="11" height="11">
+                        <div style="width:11;height:11" />
+                    </td>
+               </tr>
+               #end
+		</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

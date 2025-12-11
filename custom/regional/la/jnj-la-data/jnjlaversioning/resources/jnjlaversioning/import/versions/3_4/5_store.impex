@@ -1,0 +1,27 @@
+$defaultLanguageEN=en
+$defaultLanguageES=es
+$defaultLanguagePT=pt
+
+$BRstoreUid=brBaseStore
+$MXstoreUid=mxBaseStore
+$CENCAstoreUid=cencaBaseStore
+$ECstoreUid=ecBaseStore
+$ARstoreUid=arBaseStore
+$CLstoreUid=clBaseStore
+$UYstoreUid=uyBaseStore
+$COstoreUid=coBaseStore
+$PEstoreUid=peBaseStore
+$PRstoreUid=prBaseStore
+
+# Base Store
+INSERT_UPDATE BaseStore;uid[unique=true];defaultLanguage(isocode)
+                       ;$BRstoreUid;$defaultLanguagePT
+                       ;$MXstoreUid;$defaultLanguageES
+                       ;$CENCAstoreUid;$defaultLanguageES
+                       ;$ECstoreUid;$defaultLanguageES
+                       ;$ARstoreUid;$defaultLanguageES
+                       ;$CLstoreUid;$defaultLanguageES
+                       ;$UYstoreUid;$defaultLanguageES
+                       ;$COstoreUid;$defaultLanguageES
+                       ;$PEstoreUid;$defaultLanguageES
+                       ;$PRstoreUid;$defaultLanguageEN

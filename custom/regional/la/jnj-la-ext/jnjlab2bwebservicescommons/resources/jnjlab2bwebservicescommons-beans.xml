@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ Copyright (c) 2020 SAP SE or an SAP affiliate company. All rights reserved.
+-->
+<!--
+	ATTENTION: This is just an example file. You have to edit it according to your needs.
+-->
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="beans.xsd">
+
+	<!--
+		Example Data POJO
+	
+	<bean class="yemptypackage.data.MyPojo">
+		<property name="id" type="String"/>
+		<property name="flag" type="boolean"/>
+	</bean>
+	-->
+	<bean class="com.jnj.la.b2b.webservicescommons.dto.JnJLatamOrderWsDTO" extends="de.hybris.platform.commercewebservicescommons.dto.order.OrderWsDTO">
+		<hints>
+			<hint name="wsRelated"/>
+			<hint name="alias">JnJLatamOrder</hint>
+		</hints>
+		<property name="sapOrderNumber" type="String" />
+		<property name="purchaseOrderNumber" type="String"/>
+		<property name="orderType" type="String"/>
+		<property name="orderedBy" type="String"/>
+		<!--<property name="paymentType" type="de.hybris.platform.b2bacceleratorfacades.order.data.B2BPaymentTypeData"/>-->
+		<property name="billingAddress" type="com.jnj.la.b2b.webservicescommons.dto.JnJLatamAddressWsDTO" />
+		<property name="shipToAddress" type="com.jnj.la.b2b.webservicescommons.dto.JnJLatamAddressWsDTO" />
+		<property name="totalNetValue" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+		<property name="totalFreightFees" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+		<property name="expeditedFee" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+		<property name="totalFees" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+		<property name="discountTotal" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+		<property name="totalGrossPrice" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+		<property name="hsaPromotion" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+		<property name="shipToAccount" type="String" />
+		<property name="soldToAccount" type="String" />
+		<property name="totalNumberOfEntries" type="String" />
+		<property name="cartReferenceNumber" type="String"/>
+	</bean>
+
+	<bean class="com.jnj.la.b2b.webservicescommons.dto.JnJLatamAddressWsDTO" extends="de.hybris.platform.commercewebservicescommons.dto.user.AddressWsDTO">
+		<description>JnJLatamAddressWsDTO which extends AddressWsDTO of commercewebservicescommons with additional attributes related to JnJ</description>
+		<property name="mobile" type="String" />
+		<property name="mobileCode" type="String" />
+		<property name="faxCode" type="String" />
+		<property name="fax" type="String" />
+		<property name="phoneCode" type="String" />
+		<property name="accountId" type="String" />
+		<property name="state" type="String" />
+		<property name="attnLine" type="String" />
+		<property name="isPrimaryBillTo" type="boolean" />
+		<property name="taxid" type="String" />
+		<property name="line3" type="String" />
+		<property name="line4" type="String" />
+	</bean>
+
+	<bean class="com.jnj.la.b2b.webservicescommons.dto.JnjLatamCartWsDTO" extends="de.hybris.platform.commercewebservicescommons.dto.order.CartWsDTO">
+		<hints>
+			<hint name="wsRelated"/>
+			<hint name="alias">JnjLatamCart</hint>
+		</hints>
+		<property name="billingAddress" type="de.hybris.platform.commercewebservicescommons.dto.user.AddressWsDTO" />
+		<property name="totalNetValue" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+		<property name="totalFreightFees" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+		<property name="discountTotal" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+		<property name="totalGrossPrice" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+		<property name="orderType" type="String" />
+		<property name="expectedShipDate" type="java.util.Date" />
+		<property name="totalFees" type="de.hybris.platform.commercewebservicescommons.dto.product.PriceWsDTO" />
+		<property name="sapOrderNumber" type="String" />
+		<property name="shipToAccount" type="String" />
+		<property name="soldToAccount" type="String" />
+		<property name="hasSapErrors" type="boolean"/>
+		<property name="cartReferenceNumber" type="String"/>
+		<property name="sapErrorMessages" type="de.hybris.platform.commercewebservicescommons.dto.SapErrorMessagesWsDTO"/>
+	</bean>
+	
+	<bean class="de.hybris.platform.commercewebservicescommons.dto.SapErrorMessagesWsDTO">
+		<property name="errorMessages" type="java.util.List&lt;de.hybris.platform.commercewebservicescommons.dto.SapErrorMessageWsDTO>"/>
+	</bean>
+
+	<bean class="de.hybris.platform.commercewebservicescommons.dto.order.OrderHistoryWsDTO">
+		<hints>
+			<hint name="wsRelated"/>
+			<hint name="alias">OrderHistory</hint>
+		</hints>
+		<property name="sapOrderNumber" type="String"/>
+		<property name="cartReferenceNumber" type="String"/>
+		<property name="shipToAccount" type="String" />
+		<property name="soldToAccount" type="String" />
+	</bean>
+
+	<bean class="com.jnj.la.b2b.webservicescommons.dto.JnjLatamOrderRequestWsDTO">
+		<hints>
+			<hint name="wsRelated"/>
+			<hint name="alias">JnjLatamOrderRequest</hint>
+		</hints>
+		<property name="cartReferenceNumber" type="String"/>
+		<property name="orderType" type="String"/>
+		<property name="purchaseOrderNumber" type="String"/>
+		<property name="soldToAccount" type="String"/>
+		<property name="shipToAccount" type="String"/>
+		<property name="entries" type="java.util.List&lt;com.jnj.la.b2b.webservicescommons.dto.JnjLatamOrderEntriesRequestWsDTO>" />
+		<property name="orderChannel" type="String"/>
+		<property name="paymentToken" type="String"/>
+	</bean>
+	<bean class="com.jnj.la.b2b.webservicescommons.dto.JnjLatamOrderEntriesRequestWsDTO">
+		<property name="materialNumber" type="String"/>
+		<property name="quantity" type="Long"/>
+		<property name="indirectCustomerAccount" type="String"/>
+	</bean>
+
+     <bean class="de.hybris.platform.commercewebservicescommons.dto.SapErrorMessageWsDTO" >
+          <property name="message" type="String"/>
+     </bean>
+
+	<bean class="com.jnj.la.b2b.webservicescommons.dto.JnjLatamOrdersListWsDTO">
+		<hints>
+			<hint name="wsRelated"/>
+			<hint name="alias">JnjLatamOrdersList</hint>
+		</hints>
+		<property name="ordersList" type="java.util.List&lt;com.jnj.la.b2b.webservicescommons.dto.JnjLatamOrdersWsDTO>" />
+	</bean>
+	<bean class="com.jnj.la.b2b.webservicescommons.dto.JnjLatamOrdersWsDTO">
+		<property name="code" type="String"/>
+	</bean>
+	
+	<bean class="de.hybris.platform.commercewebservicescommons.dto.order.OrderEntryWsDTO">
+        <property name="scheduledLines" type="java.util.List&lt;com.jnj.la.b2b.webservicescommons.dto.JnjScheduledLineWsDTO>"/>
+    </bean>   
+	
+    <bean class="com.jnj.la.b2b.webservicescommons.dto.JnjScheduledLineWsDTO" >
+        <property name="lineNumber" type="java.lang.String"/>
+        <property name="deliveryDate" type="java.lang.String"/>
+        <property name="confirmedQuantity" type="java.lang.String"/>
+    </bean>
+
+</beans>

@@ -1,0 +1,11 @@
+#Thu, 06 Jun 2013 15:01:30 +0200
+#Ant properties
+#Thu Jun 06 15:01:30 CEST 2013
+builddate=20130606 1500
+description=jnjutil
+name=jnjutil
+vendor=hybris
+version=5.0.1.0
+
+revision=69260
+svnurl=https\://svn.hybris.de/ebusiness/tags/5.0.1.0/bin/ext-template/jnjutil

@@ -1,0 +1,26 @@
+# 
+# Create the JNJ BaseStore
+#
+
+$submitOrderProcessCode=order-process
+
+
+
+$BRproductCatalog=brProductCatalog
+$MXproductCatalog=mxProductCatalog
+$BRstoreUid=brBaseStore
+$MXstoreUid=mxBaseStore
+$BRdefaultCurrency=BRL
+$MXdefaultCurrency=MXN
+$languages=en,pt,es
+$defaultLanguage=en
+$BRdeliveryCountries=BR
+$MXdeliveryCountries=MX
+
+
+
+
+# Base Store 
+INSERT_UPDATE BaseStore;uid[unique=true];catalogs(id);currencies(isocode);defaultCurrency(isocode);languages(isocode);defaultLanguage(isocode);deliveryCountries(isocode);submitOrderProcessCode
+;$BRstoreUid;$BRproductCatalog;$BRdefaultCurrency;$BRdefaultCurrency;$languages;$defaultLanguage;$BRdeliveryCountries;$submitOrderProcessCode
+;$MXstoreUid;$MXproductCatalog;$MXdefaultCurrency;$MXdefaultCurrency;$languages;$defaultLanguage;$MXdeliveryCountries;$submitOrderProcessCode

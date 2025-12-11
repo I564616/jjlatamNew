@@ -1,0 +1,10 @@
+
+#Triggers for CronJobs
+INSERT_UPDATE Trigger;cronJob(code)[unique=true];active[default='true']
+;jnJUpsertCustomerCronJob;
+;JnjUpsertProductCompositeJob;
+;jnjSalesOrgCustomerJob;
+;jnjLoadInvoicesJob;
+;jnjCustomerEligibilityCronJob;
+;jnjLoadTranslationJob;
+;jnjLoadContractsJob;

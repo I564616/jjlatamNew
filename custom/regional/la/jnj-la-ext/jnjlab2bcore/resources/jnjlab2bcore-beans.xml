@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="beans.xsd">
+
+	<bean class="com.jnj.la.core.data.JnJLaInvoiceRowError">
+		<property name="invoice" type="java.lang.String"/>
+		<property name="estDeliveryDate" type="java.lang.String"/>
+		<property name="actualDeliveryDate" type="java.lang.String"/>
+		<property name="errorMessage" type="java.lang.String"/>
+	</bean>
+
+	<bean class="com.jnj.la.core.data.order.JnjLAEmailScheduleLineData">
+		<property name="expectedDeliveryDate" type="java.lang.String" />
+		<property name="quantity" type="java.lang.String" />
+		<property name="scheduledLineNumber" type="java.lang.String" />
+	</bean>
+
+	<bean class="com.jnj.la.core.data.order.JnjLAEmailOrderEntryData">
+		<property name="productCode" type="java.lang.String" />
+		<property name="productName" type="java.lang.String" />
+		<property name="orderedQuantity" type="java.lang.String" />
+		<property name="invoicedQuantity" type="java.lang.String" />
+		<property name="openedQuantity" type="java.lang.String" />
+        <property name="price" type="java.lang.String" />
+        <property name="requestedDeliveryDate" type="java.lang.String" />
+		<property name="scheduleLines" type="java.util.List&lt;com.jnj.la.core.data.order.JnjLAEmailScheduleLineData>" />
+        <property name="status" type="java.lang.String" />
+	</bean>
+
+    <bean class="com.jnj.la.core.data.order.JnjLAEmailOrderData">
+		<property name="code" type="java.lang.String" />
+        <property name="sapOrderNumber" type="java.lang.String" />
+        <property name="customerOrderNumber" type="java.lang.String" />
+        <property name="shipToName" type="java.lang.String" />
+        <property name="shipToAddress" type="java.lang.String" />
+        <property name="orderTypeDescription" type="java.lang.String" />
+        <property name="orderEntries" type="java.util.List&lt;com.jnj.la.core.data.order.JnjLAEmailOrderEntryData>" />
+        <property name="status" type="java.lang.String" />
+		<property name="customer" type="java.lang.String" />
+		<property name="nextDeliveryDate" type="java.lang.String" />
+		<property name="deliveryDate" type="java.lang.String" />
+    </bean>
+
+	<bean class="com.jnj.facades.data.JnJInvoiceOrderData">
+		<property name="carrierEstimateDeliveryDate" type="java.util.Date" />
+		<property name="carrierConfirmedDeliveryDate" type="java.util.Date" />
+	</bean>
+
+    <bean class="com.jnj.la.core.data.order.JnjLAConsolidatedEmailRowData">
+        <property name="firstHierarchy" type="java.lang.String" />
+        <property name="openedSum" type="java.lang.String" />
+    </bean>
+
+	<bean class="com.jnj.la.core.data.order.JnjLAConsolidatedReportRowData">
+		<property name="sapOrderNumber" type="java.lang.String" />
+		<property name="customerOrderNumber" type="java.lang.String" />
+		<property name="orderType" type="java.lang.String" />
+		<property name="issuerCode" type="java.lang.String" />
+		<property name="issuerName" type="java.lang.String" />
+		<property name="deliveryAddress" type="java.lang.String" />
+		<property name="creationDate" type="java.util.Date" />
+		<property name="salesOrderChannel" type="java.lang.String" />
+		<property name="firstHierarchy" type="java.lang.String" />
+		<property name="productCode" type="java.lang.String" />
+		<property name="productName" type="java.lang.String" />
+		<property name="customerMaterialCode" type="java.lang.String" />
+		<property name="quantity" type="java.lang.String" />
+		<property name="invoicedQuantity" type="java.lang.String" />
+		<property name="openedQuantity" type="java.lang.String" />
+		<property name="salesUnit" type="java.lang.String" />
+        <property name="unitPrice" type="java.lang.Double" />
+		<property name="unitPriceString" type="java.lang.String" />
+		<property name="sapLineNumber" type="java.lang.String" />
+		<property name="status" type="java.lang.String" />
+		<property name="estimatedDeliveryDate" type="java.util.Date" />
+		<property name="orderStatus" type="java.lang.String" />
+		<property name="contractReference" type="java.lang.String" />
+		<property name="indirectCustomer" type="java.lang.String" />
+		<property name="lotNumber" type="java.lang.String" />
+		<property name="invoiceNumber" type="java.lang.String" />
+		<property name="createdBy" type="java.lang.String" />
+		<property name="requestedDeliveryDate" type="java.util.Date" />
+        <property name="hasChanged" type="java.lang.Boolean" />
+		<property name="eanNumber" type="java.lang.String"  />
+		<property name="currency" type="java.lang.String"  />
+	</bean>
+
+    <bean class="com.jnj.la.core.data.order.JnjLAConsolidatedEmailData">
+        <property name="customer" type="java.lang.String" />
+        <property name="reportRows" type="java.util.List&lt;com.jnj.la.core.data.order.JnjLAConsolidatedReportRowData>" />
+    </bean>
+
+	<bean class="com.jnj.la.core.dto.JnjLaCronJobMonitoringEmailDto">
+		<property name="jobCode" type="String" />
+		<property name="country" type="String" />
+		<property name="frequency" type="String" />
+		<property name="serviceLevelStartTime" type="String" />
+		<property name="serviceLevelEndTime" type="String" />
+		<property name="monitoringCode" type="String" />
+		<property name="monitored" type="boolean" />
+		<property name="lastStatus" type="String" />
+		<property name="currentStatus" type="String" />
+		<property name="actualStartTime" type="String" />
+		<property name="actualEndTime" type="String" />
+		<property name="averageRunningDuration" type="String" />
+		<property name="paused" type="boolean"/>
+		<property name="remarks" type="String" />
+		<property name="category" type="String" />
+		<property name="parentJobName" type="String" />
+		<property name="critical" type="String" />
+		<property name="deadLine" type="String" />
+	</bean>
+
+	<bean class="com.jnj.la.core.data.JnjArchiveOrderData">
+		<property name="orderCode" type="String" />
+		<property name="deletionStatus" type="Boolean"/>
+		<property name="recordsDeleted" type="Integer"/>
+		<property name="totalRecords" type="Integer"/>
+	</bean>
+
+	<bean class="com.jnj.la.core.data.ReplacementProductData">
+		<property name="entryNumber" type="Integer"/>
+		<property name="originalProductCode" type="java.lang.String"/>
+		<property name="quantity" type="java.lang.Long"/>
+		<property name="replacementProductCode" type="java.lang.String"/>
+	</bean>
+</beans>

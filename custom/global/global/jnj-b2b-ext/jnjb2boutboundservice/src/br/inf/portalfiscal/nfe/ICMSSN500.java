@@ -1,0 +1,146 @@
+
+package br.inf.portalfiscal.nfe;
+
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
+
+
+/**
+ * <p>Java class for ICMSSN500 complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
+ * <pre>
+ * &lt;complexType name="ICMSSN500">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="orig" type="{http://www.portalfiscal.inf.br/nfe}Torig" form="qualified"/>
+ *         &lt;element name="CSOSN" type="{http://www.portalfiscal.inf.br/nfe}CSOSN5" form="qualified"/>
+ *         &lt;element name="vBCSTRet" type="{http://www.portalfiscal.inf.br/nfe}TDec_1302" minOccurs="0" form="qualified"/>
+ *         &lt;element name="vICMSSTRet" type="{http://www.portalfiscal.inf.br/nfe}TDec_1302" minOccurs="0" form="qualified"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "ICMSSN500", propOrder = {
+    "orig",
+    "csosn",
+    "vbcstRet",
+    "vicmsstRet"
+})
+public class ICMSSN500 {
+
+    @XmlElement(required = true)
+    protected String orig;
+    @XmlElement(name = "CSOSN", required = true)
+    protected String csosn;
+    @XmlElement(name = "vBCSTRet")
+    protected String vbcstRet;
+    @XmlElement(name = "vICMSSTRet")
+    protected String vicmsstRet;
+
+    /**
+     * Gets the value of the orig property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getOrig() {
+        return orig;
+    }
+
+    /**
+     * Sets the value of the orig property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setOrig(String value) {
+        this.orig = value;
+    }
+
+    /**
+     * Gets the value of the csosn property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCSOSN() {
+        return csosn;
+    }
+
+    /**
+     * Sets the value of the csosn property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCSOSN(String value) {
+        this.csosn = value;
+    }
+
+    /**
+     * Gets the value of the vbcstRet property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getVBCSTRet() {
+        return vbcstRet;
+    }
+
+    /**
+     * Sets the value of the vbcstRet property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setVBCSTRet(String value) {
+        this.vbcstRet = value;
+    }
+
+    /**
+     * Gets the value of the vicmsstRet property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getVICMSSTRet() {
+        return vicmsstRet;
+    }
+
+    /**
+     * Sets the value of the vicmsstRet property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setVICMSSTRet(String value) {
+        this.vicmsstRet = value;
+    }
+
+}

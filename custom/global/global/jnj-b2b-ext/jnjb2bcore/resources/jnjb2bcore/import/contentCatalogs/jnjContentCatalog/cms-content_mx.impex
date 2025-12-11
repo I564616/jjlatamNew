@@ -1,0 +1,6 @@
+$contentCatalogMX=mxContentCatalog
+$contentCVMX=catalogVersion(catalog(id[default=$contentCatalogMX]),version[default='Staged'])
+
+# Component Added for the MX users on Invoice Details Page
+INSERT_UPDATE CMSParagraphComponent;$contentCVMX[unique=true];uid[unique=true];name;&componentRef(uid,contentCVMX);content[lang=en]
+;;InvoiceDocComponent;MX Invoice Doc Component;InvoiceDocComponent;"<div><a class=""tertiarybtn marginRight invoiceMXXMLButton"">XML</a><a class=""tertiarybtn invoicePDFButton"">PDF</a></div>"

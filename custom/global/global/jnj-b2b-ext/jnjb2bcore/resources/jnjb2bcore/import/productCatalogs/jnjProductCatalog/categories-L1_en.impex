@@ -1,0 +1,57 @@
+# ImpEx for Importing Categories into J&J Store
+
+# Macros / Replacement Parameter definitions
+$productCatalog=mddProductCatalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$supercategories=supercategories(code[unique=true], $catalogVersion)
+
+# Insert Categories at Level 1
+UPDATE Category;code[unique=true];name[lang=en];$catalogVersion
+;Categories;Categories;
+;MDD;MD&D;
+;Pharma;Pharma;
+;DefaultCategory;DefaultCategory;
+
+UPDATE Category;code[unique=true];name[lang=en];$catalogVersion
+;0001;Trauma and Others;
+;0002;Spine;
+;0003;CMF;
+;0004;PT;
+;0006;Prosthetics;
+;0007;Medivision;
+;0008;Biomaterial;
+;0010;Mitek;
+;0011;Joint Recon;
+;0012;Codman;
+;0013;Other products;
+;0550;Orthopaedics;;
+
+;0510;Surgical Care;
+;0520;Specialty Surgery;
+;0530;Infection Prevention/Other;
+;0585;Cardiovascular Care;
+;1236;Vision Care;
+;0670;Other Surgery;
+;0295;Diagnostics;
+;0630;Diabetes Care;
+
+;G034;Vaccines;
+;G001;Commodities;
+;G002;Anti-Allergy/Respiratory;
+;G003;Anti-Infective Products;
+;G004;Antifungal Products;
+;G005;Cardiological Prod - CNS / IM;
+;G006;CNS Products;
+;G007;Consumer Products;
+;G008;Dermatological Products;
+;G010;Gastro-Intestinals;
+;G014;Other Human;
+;G015;Reproductive Medicine;
+;G016;Urinary Products;
+;G017;Wound Healing;
+;G018;Other Non-Human;
+;G024;Pain Management;
+;G011;Hematology Products;
+;G012;Immunology Products;
+;G013;Oncology Products;
+;G033;Virology;

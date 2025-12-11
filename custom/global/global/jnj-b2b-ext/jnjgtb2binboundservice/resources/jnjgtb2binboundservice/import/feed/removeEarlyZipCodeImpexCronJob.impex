@@ -1,0 +1,9 @@
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+# Initialization
+REMOVE JnjGTEarlyZipCodes;areaName[unique=true];isUpdated;time;zipCode[unique=true,allownull=true];courier[unique=true,allownull=true];
+#% impex.initDatabase($config-inbound.quote$config-db.url$config-inbound.quote,$config-inbound.quote$config-db.username$config-inbound.quote,$config-inbound.quote$config-db.password$config-inbound.quote,$config-inbound.quote$config-db.driver$config-inbound.quote);
+"#% 
+impex.includeSQLData( 
+""SELECT  item_t0.p_areaname , item_t0.p_isupdated , item_t0.p_time , item_t0.p_zipcode , item_t0.p_courier  FROM jnjGTearlyzipcodes item_t0 WHERE ( item_t0.p_isupdated ='0')""
+);
+"

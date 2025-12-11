@@ -1,0 +1,19 @@
+$productCatalog=mddProdCatalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$supercategories=supercategories(code[unique=true], $catalogVersion)
+
+# Insert ROOT LEVEL Categories
+INSERT_UPDATE Category;code[unique=true];name;$supercategories;$catalogVersion;allowedPrincipals(uid);displayProducts[default='false']
+;Categories;Catalog;;;customergroup;
+;DepuyOrthopedics;DepuyOrthopedics;Categories;;customergroup;true
+;DefaultCategory;Default Category;Categories;;;
+
+
+
+$productCatalog=mddProdCatalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$supercategories=supercategories(code[unique=true], $catalogVersion)
+
+# Insert ROOT LEVEL Categories
+INSERT_UPDATE JnJProduct;code[unique=true];name;$supercategories;$catalogVersion;jnjPortalInd;availableInd;publishInd;modStatus(code)
+;dummyProduct;Dummy MDD Product;DefaultCategory;;0;0;0;NOTAPPLICABLE

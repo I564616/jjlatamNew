@@ -1,0 +1,1615 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
+<head>
+</head>   
+<body style="padding:10px; font-size: 9px;">
+		<table width="810" border="0" cellpadding="3" cellspacing="1" align="center">
+		<tr><td><br><br></td></tr>
+		<tr align="center"><td align="center"><img  src="${siteLogoPath}" /></td></tr>
+		</table>
+				
+	#if(${JnjGTOrderData.orderType} == "ZOR")
+		<table width="810" border="1" cellpadding="4" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" ><strong>Order Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Billing Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Shipping Information</strong></td>
+			</tr>
+			<tr>
+				<td>
+					<strong>J&J Order Number:</strong> ${JnjGTOrderData.orderNumber}<br>
+					<strong>Purchase Order:</strong> ${JnjGTOrderData.purchaseOrderNumber}<br>
+					<strong>Order Date:</strong>${date.format(${dateformat},$JnjGTOrderData.created)} <br>
+					<strong>Status:</strong> #if( ${JnjGTOrderData.statusDisplay}) ${JnjGTOrderData.statusDisplay} #end<br>
+					<strong>Order Type:</strong> Standard<br>
+					<strong>Ordered By:</strong>#if(${JnjGTOrderData.orderedBy}) ${JnjGTOrderData.orderedBy} #else Not Available #end<br>
+					<strong>Number of Lines:</strong> ${JnjGTOrderData.totalNumberOfEntries}<br>
+				</td>
+				<td>
+					<strong>Sold-To Account Number:</strong> ${JnjGTOrderData.soldToAccount}<br>
+					<strong>GLN:</strong>#if(${JnjGTOrderData.gln}) ${JnjGTOrderData.gln} #else Not Available #end<br><br>
+					
+					<strong>Billing Name and Address:</strong><br>
+					
+					#if(${JnjGTOrderData.b2bUnitName}) ${JnjGTOrderData.b2bUnitName}<br>
+					#else
+					#if(${JnjGTOrderData.billingAddress.firstName}) ${JnjGTOrderData.billingAddress.firstName} #if(${JnjGTOrderData.billingAddress.lastName}) ${JnjGTOrderData.billingAddress.lastName} #end<br> #end					
+					#end
+					#if(${JnjGTOrderData.billingAddress.line1})
+					 ${JnjGTOrderData.billingAddress.line1}
+					#end
+					#if(${JnjGTOrderData.billingAddress.line2})
+					 , ${JnjGTOrderData.billingAddress.line2}<br>
+					#end
+					#if(${JnjGTOrderData.billingAddress.town})
+					 ${JnjGTOrderData.billingAddress.town}
+					#end
+					#if(${JnjGTOrderData.billingAddress.region.name})
+					 , ${JnjGTOrderData.billingAddress.region.name}
+					#end
+					#if(${JnjGTOrderData.billingAddress.postalCode})
+					 , ${JnjGTOrderData.billingAddress.postalCode}
+					#end
+					<br><br>
+					#if(${JnjGTOrderData.paymentType})
+					<strong>Payment Method:</strong> ${JnjGTOrderData.paymentType.displayName}<br>
+					#if(${JnjGTOrderData.paymentInfo})
+					<strong>Credit Card Type:</strong>#if(${JnjGTOrderData.paymentInfo.cardType}) ${JnjGTOrderData.paymentInfo.cardType} #else Not Available #end<br>
+					<strong>Credit Card Number:</strong>#if(${JnjGTOrderData.paymentInfo.cardNumber}) ${JnjGTOrderData.paymentInfo.cardNumber} #else Not Available #end<br>
+					<strong>Credit Card Expiration:</strong>#if(${JnjGTOrderData.paymentInfo.expiryMonth}) ${JnjGTOrderData.paymentInfo.expiryMonth}/ ${JnjGTOrderData.paymentInfo.expiryYear} #else Not Available #end<br>
+					#else
+					<!-- 	<strong>Credit Card Type:</strong> Not Available<br>
+					<strong>Credit Card Number:</strong> Not Available<br>
+					<strong>Credit Card Expiration:</strong> Not Available<br> -->
+					#end
+					#end
+				</td>
+				<td>
+					<strong>Drop Ship Account #:</strong>#if(${JnjGTOrderData.dropShipAccount}) ${JnjGTOrderData.dropShipAccount} #else Not Available #end <br><br>
+					
+					<strong>Ship-To Address:</strong><br>
+					
+					#if(${JnjGTOrderData.deliveryAddress.firstName}) ${JnjGTOrderData.deliveryAddress.firstName} #if(${JnjGTOrderData.deliveryAddress.lastName}) ${JnjGTOrderData.deliveryAddress.lastName} #end<br> #end
+					
+					#if(${JnjGTOrderData.deliveryAddress.line1})
+					${JnjGTOrderData.deliveryAddress.line1}
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.line2})
+					, ${JnjGTOrderData.deliveryAddress.line2}<br>
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.town})
+					 ${JnjGTOrderData.deliveryAddress.town}
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.region.name})
+					 , ${JnjGTOrderData.deliveryAddress.region.name}
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.postalCode})
+					 , ${JnjGTOrderData.deliveryAddress.postalCode}
+					#end
+					<br><br>
+					
+					<strong>Attention:</strong>#if(${JnjGTOrderData.attention}) ${JnjGTOrderData.attention} #else Not Available #end
+				</td>
+			</tr>
+		</table>
+		<br> <br>
+		
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC">
+				<strong>Delivery Information</strong>
+				</td>
+			</tr>
+		</table>	
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Packing List</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Carrier</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Bill of Lading</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Tracking</strong></td>
+			</tr>
+		#if(${listOfNumbers.isEmpty()})
+			<tr>
+				<td align="center"> #if(!${packingdetailsKeyList.isEmpty()}) ${packingdetailsKeyList.get(0)} #end</td>
+				
+				<td align="center"> #if(!${JnjGTOrderData.carrier.isEmpty()}) ${JnjGTOrderData.carrier.get(0)} #end</td>
+				
+				<td align="center"> #if(!${JnjGTOrderData.billOfLading.isEmpty()}) ${JnjGTOrderData.billOfLading.get(0)} #end</td>
+				
+				<td align="center"> #if(!${trackingKeyList.isEmpty()}) ${trackingKeyList.get(0)} #end</td>
+			</tr>
+		#else
+		#set($end = ${listOfNumbers.size()})
+		
+		#set($index = 0)
+		#foreach($i in $listOfNumbers)
+			<tr>
+				<td align="center"> #if(!${packingdetailsKeyList.isEmpty()}) #if(${packingdetailsKeyList.size()} > $index) #if(${packingdetailsKeyList.get($index)}) ${packingdetailsKeyList.get($index)} #end #end #end</td>
+				
+				<td align="center"> #if(!${JnjGTOrderData.carrier.isEmpty()}) #if(${JnjGTOrderData.carrier.size()} > $index) #if(${JnjGTOrderData.carrier.get($index)}) ${JnjGTOrderData.carrier.get($index)}#end #end #end</td>
+				
+				<td align="center"> #if(!${JnjGTOrderData.billOfLading.isEmpty()}) #if(${JnjGTOrderData.billOfLading.size()} > $index) #if(${JnjGTOrderData.billOfLading.get($index)}) ${JnjGTOrderData.billOfLading.get($index)} #end #end #end</td>
+				
+				<td align="center"> #if(!${trackingKeyList.isEmpty()}) #if(${trackingKeyList.size()} > $index) #if(${trackingKeyList.get($index)}) ${trackingKeyList.get($index)} #end #end #end</td>
+				#set($index = $index+1)
+			</tr>
+		#end
+		#end
+		</table>
+		<br><br>
+		
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Line</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Name</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Code and<br>GTIN</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Contract</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Qty</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>UOM</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Shipping Information</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Status</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Item Price</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Total</strong></td>
+
+				
+			</tr>
+			#foreach($entry in $JnjGTOrderData.entries)
+			<tr>
+				<td align="center">#if(${entry.sapOrderlineNumber}) ${entry.sapOrderlineNumber} #end</td>
+				<td align="center">#if(${entry.product.name}) ${entry.product.name} #end</td>
+				
+				<td><strong>ID:</strong>${entry.product.baseMaterialNumber}<br><strong>GTIN:</strong>#if(${entry.product.gtin}) ${entry.product.gtin} #else Not Available #end</td>
+				
+				<td align="center">#if(${entry.contractNumber}) ${entry.contractNumber} #end</td>
+				<td align="center">${entry.quantity}</td>
+				
+				<td>#if(!${entry.materialNumber})  ${entry.product.deliveryUnit}
+								(${entry.product.numerator} &nbsp; ${entry.product.salesUnit}) #end</td>
+				
+				<td>
+				<strong>Shipping:</strong> #if(${entry.shippingMethod}) ${entry.shippingMethod} #end<br> 
+				<strong>Tracking:</strong> 
+				#if(${JnjGTOrderData.shippingTrackingInfo}) 
+					#if($JnjGTOrderData.shippingTrackingInfo[$entry.sapOrderlineNumber]) 
+						#foreach($data in $JnjGTOrderData.shippingTrackingInfo[$entry.sapOrderlineNumber])
+							#if(${data.trackingId})
+								${data.trackingId}
+							#end
+						#end
+					#end
+				#end<br> 
+				<strong>Ship Date:</strong> #if(${entry.expectedShipDate}) ${date.format(${dateformat},$entry.expectedShipDate)}  #end<br> 
+				<strong>Delivery Date:</strong> #if(${entry.expectedDeliveryDate}) ${date.format(${dateformat},$entry.expectedDeliveryDate)} #end<br> 
+				</td>
+				
+				<td align="center">#if(${entry.status}) ${entry.status} #end</td>
+				<td align="right">#if(${entry.basePrice.formattedValue}) ${entry.basePrice.formattedValue} #end</td>
+				<td align="right">#if(${entry.totalPrice.formattedValue}) ${entry.totalPrice.formattedValue} #end</td>
+
+			</tr>
+			#end
+		</table>
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+			<td align="right">Sub-Total: ${JnjGTOrderData.totalNetValue.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right">Fees/Freight: ${JnjGTOrderData.totalFees.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right">Taxes: ${JnjGTOrderData.totalTax.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right"><strong>Order Total: ${JnjGTOrderData.totalPrice.formattedValue}</strong></td>
+			</tr>
+		</table>
+		 
+    #elseif(${JnjGTOrderData.orderType} == "ZDEL")
+		<table width="810" border="1" cellpadding="4" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" ><strong>Order Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Billing Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Shipping Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Surgery Information</strong></td>
+			</tr>
+			<tr>
+				<td>
+					<strong>J&J Order Number:</strong> ${JnjGTOrderData.orderNumber}<br>
+					<strong>Purchase Order:</strong>#if(${JnjGTOrderData.purchaseOrderNumber}) ${JnjGTOrderData.purchaseOrderNumber} #else Not Available #end<br>
+					<strong>Order Date:</strong>${date.format(${dateformat},$JnjGTOrderData.created)} <br>
+					<strong>Status:</strong> #if( ${JnjGTOrderData.statusDisplay}) ${JnjGTOrderData.statusDisplay} #end<br>
+					<strong>Order Type:</strong> Delivered<br>
+					<strong>Ordered By:</strong>#if(${JnjGTOrderData.orderedBy}) ${JnjGTOrderData.orderedBy} #else Not Available #end<br>
+					<strong>Dealer PO:</strong>#if(${JnjGTOrderData.dealerPoNumber}) ${JnjGTOrderData.dealerPoNumber} #else Not Available #end<br>
+					<strong>Number of Lines:</strong> ${JnjGTOrderData.totalNumberOfEntries}<br>
+					<strong>Spine Sales Rep UCN</strong>#if(${JnjGTOrderData.spineSalesRepUCN}) ${JnjGTOrderData.spineSalesRepUCN} #else Not Available #end<br>
+				</td>
+				<td>
+					<strong>Account Number:</strong> ${JnjGTOrderData.soldToAccount}<br>
+					<strong>GLN:</strong>#if(${JnjGTOrderData.gln}) ${JnjGTOrderData.gln} #else Not Available #end<br><br>
+					
+					<strong>Billing Name and Address:</strong><br>
+					
+					#if(${JnjGTOrderData.b2bUnitName}) ${JnjGTOrderData.b2bUnitName}<br>
+					#else
+					#if(${JnjGTOrderData.billingAddress.firstName}) ${JnjGTOrderData.billingAddress.firstName} #if(${JnjGTOrderData.billingAddress.lastName}) ${JnjGTOrderData.billingAddress.lastName} #end<br> #end
+					#end
+					#if(${JnjGTOrderData.billingAddress.line1})
+					 ${JnjGTOrderData.billingAddress.line1}<br>
+					#end
+					#if(${JnjGTOrderData.billingAddress.line2})
+					 ${JnjGTOrderData.billingAddress.line2}<br>
+					#end
+					#if(${JnjGTOrderData.billingAddress.town})
+					 ${JnjGTOrderData.billingAddress.town}
+					#end
+					#if(${JnjGTOrderData.billingAddress.region.name})
+					 ${JnjGTOrderData.billingAddress.region.name}
+					#end
+					#if(${JnjGTOrderData.billingAddress.postalCode})
+					 ${JnjGTOrderData.billingAddress.postalCode}
+					#end
+					<br><br>
+					#if(${JnjGTOrderData.paymentType})
+					<strong>Payment Method:</strong> ${JnjGTOrderData.paymentType.displayName}<br>
+						#if(${JnjGTOrderData.paymentInfo})
+							<strong>Credit Card Type:</strong> ${JnjGTOrderData.paymentInfo.cardType}<br>
+							<strong>Credit Card Number:</strong> ${JnjGTOrderData.paymentInfo.cardNumber}<br>
+							<strong>Credit Card Expiration:</strong> ${JnjGTOrderData.paymentInfo.expiryMonth} / ${JnjGTOrderData.paymentInfo.expiryYear}<br>
+						#else
+							<strong>Credit Card Type:</strong> Not Available<br>
+							<strong>Credit Card Number:</strong> Not Available<br>
+							<strong>Credit Card Expiration:</strong> Not Available<br>
+						#end
+					#end
+				</td>
+				<td>
+					<strong>Drop Ship Account #:</strong>#if(${JnjGTOrderData.dropShipAccount}) ${JnjGTOrderData.dropShipAccount} #else Not Available #end <br><br>
+					
+					<strong>Ship-To Address:</strong><br>
+					
+					#if(${JnjGTOrderData.deliveryAddress.firstName}) ${JnjGTOrderData.deliveryAddress.firstName} #if(${JnjGTOrderData.deliveryAddress.lastName}) ${JnjGTOrderData.deliveryAddress.lastName} #end<br> #end
+					
+					#if(${JnjGTOrderData.deliveryAddress.line1})
+					${JnjGTOrderData.deliveryAddress.line1}<br>
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.line2})
+					${JnjGTOrderData.deliveryAddress.line2}<br>
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.town})
+					 ${JnjGTOrderData.deliveryAddress.town}
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.region.name})
+					 ${JnjGTOrderData.deliveryAddress.region.name}
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.postalCode})
+					 ${JnjGTOrderData.deliveryAddress.postalCode}
+					#end
+					<br><br>
+					
+					<strong>Attention:</strong>#if(${JnjGTOrderData.attention}) ${JnjGTOrderData.attention} #else Not Available#end
+				</td>
+				<td>
+					<strong>Surgeon:</strong>#if(${JnjGTOrderData.surgeonName}) ${JnjGTOrderData.surgeonName} #else Not Available #end<br>
+					<strong>Case Date:</strong>#if(${JnjGTOrderData.surgeryInfo})#if(${JnjGTOrderData.surgeryInfo.caseDate}) ${date.format(${dateformat},$JnjGTOrderData.surgeryInfo.caseDate)} #else Not Provided #end #else Not Available #end<br>
+					<strong>Surgery Speciality:</strong>#if(${surgeryInfoSurgerySpecialty})${surgeryInfoSurgerySpecialty} #else Not Available #end<br>
+					<strong># Levels Implemented:</strong>#if(${surgeryInfoLevelsInstrumented})${surgeryInfoLevelsInstrumented} #else Not Available #end<br>
+					<strong>Orthobiologics:</strong>#if(${surgeryInfoOrthobiologics})${surgeryInfoOrthobiologics} #else Not Available #end <br>
+					<strong>Pathology:</strong> #if(${surgeryInfoPathology})${surgeryInfoPathology} #else Not Available #end<br>
+					<strong>Surgical Approach:</strong> #if(${surgeryInfoSurgicalApproach})${surgeryInfoSurgicalApproach} #else Not Available #end <br>
+					<strong>Zone:</strong> #if(${surgeryInfoZone})${surgeryInfoZone} #else Not Available #end <br>
+					<strong>Interbody:</strong> #if(${surgeryInfoInterbody})${surgeryInfoInterbody} #else Not Available #end <br>
+					<strong>Interbody Fusion:</strong> #if(${surgeryInfoInterbodyFusion})${surgeryInfoInterbodyFusion} #else Not Available #end <br>
+					<strong>File/ case #:</strong>#if(${JnjGTOrderData.surgeryInfo})#if(${JnjGTOrderData.surgeryInfo.caseNumber}) ${JnjGTOrderData.surgeryInfo.caseNumber} #else Not Provided #end #else Not Available #end<br>
+				</td>
+			</tr>
+		</table>
+		<br> <br>
+		<br><br>
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Line</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Name</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Code and<br>GTIN</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Contract</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Lot Number</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>SSP</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Qty</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>UOM</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Status</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Item Price</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Total</strong></td>
+
+				  
+			</tr>
+			#foreach($entry in $JnjGTOrderData.entries)
+			<tr>
+				<td align="center">#if(${entry.sapOrderlineNumber}) ${entry.sapOrderlineNumber} #end</td>
+				<td align="center">#if(${entry.product.name}) ${entry.product.name} #end</td>
+				
+				<td><strong>ID:</strong>${entry.product.baseMaterialNumber}<br><strong>GTIN:</strong>#if(${entry.product.gtin}) ${entry.product.gtin} #else Not Available #end</td>
+				
+				<td align="center">#if(${entry.contractNumber}) ${entry.contractNumber} #end</td>
+				<td align="center">#if(${entry.lotNumber}) ${entry.lotNumber} #end </td>
+				<td align="center">#if(${entry.specialStockPartner}) ${entry.specialStockPartner} #end </td>
+				<td align="center">${entry.quantity}</td>
+				
+				<td>#if(!${entry.materialNumber})  ${entry.product.deliveryUnit}
+								(${entry.product.numerator} &nbsp; ${entry.product.salesUnit}) #end</td>
+					
+				<td align="center">#if(${entry.status}) ${entry.status} #end</td>
+				<td align="right">#if(${entry.basePrice.formattedValue}) ${entry.basePrice.formattedValue} #end</td>
+				<td align="right">#if(${entry.totalPrice.formattedValue}) ${entry.totalPrice.formattedValue} #end</td>
+
+			</tr>
+			#end
+		</table>
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+			<td align="right">Sub-Total: ${JnjGTOrderData.totalNetValue.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right">Fees/Freight: ${JnjGTOrderData.totalFees.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right">Taxes: ${JnjGTOrderData.totalTax.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right"><strong>Order Total: ${JnjGTOrderData.totalPrice.formattedValue}</strong></td>
+			</tr>
+		</table>
+	    
+	#elseif(${JnjGTOrderData.orderType} == "ZEX")
+		<table width="810" border="1" cellpadding="4" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" ><strong>Order Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Billing Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Shipping Information</strong></td>
+			</tr>
+			<tr>
+				<td>
+					<strong>J&J Order Number:</strong> ${JnjGTOrderData.orderNumber}<br>
+					<strong>Purchase Order:</strong> ${JnjGTOrderData.purchaseOrderNumber}<br>
+					<strong>Order Date:</strong>${date.format(${dateformat},$JnjGTOrderData.created)} <br>
+					<strong>Status:</strong> #if( ${JnjGTOrderData.statusDisplay}) ${JnjGTOrderData.statusDisplay} #else Not Available#end<br>
+					<strong>Order Type:</strong> International<br>
+					<strong>Ordered By:</strong>#if(${JnjGTOrderData.orderedBy}) ${JnjGTOrderData.orderedBy} #else Not Available #end<br>
+					<strong>Number of Lines:</strong> ${JnjGTOrderData.totalNumberOfEntries}<br>
+				</td>
+				<td>
+					<strong>Sold-To Account Number:</strong> ${JnjGTOrderData.soldToAccount}<br>
+					<strong>GLN:</strong>#if(${JnjGTOrderData.gln}) ${JnjGTOrderData.gln} #else Not Available #end<br><br>
+					
+					<strong>Billing Name and Address:</strong><br>
+					
+					#if(${JnjGTOrderData.b2bUnitName}) ${JnjGTOrderData.b2bUnitName}<br> 
+					#else
+					#if(${JnjGTOrderData.billingAddress.firstName}) ${JnjGTOrderData.billingAddress.firstName} #if(${JnjGTOrderData.billingAddress.lastName}) ${JnjGTOrderData.billingAddress.lastName} #end<br> #end
+					#end
+					#if(${JnjGTOrderData.billingAddress.line1})
+					 ${JnjGTOrderData.billingAddress.line1}<br>
+					#end
+					#if(${JnjGTOrderData.billingAddress.line2})
+					 ${JnjGTOrderData.billingAddress.line2}<br>
+					#end
+					#if(${JnjGTOrderData.billingAddress.town})
+					 ${JnjGTOrderData.billingAddress.town}
+					#end
+					#if(${JnjGTOrderData.billingAddress.region.name})
+					 ${JnjGTOrderData.billingAddress.region.name}
+					#end
+					#if(${JnjGTOrderData.billingAddress.postalCode})
+					 ${JnjGTOrderData.billingAddress.postalCode}
+					#end
+				</td>
+				<td>
+					<strong>Drop Ship Account #:</strong>#if(${JnjGTOrderData.dropShipAccount}) ${JnjGTOrderData.dropShipAccount} #else Not Available #end <br><br>
+					
+					<strong>Ship-To Address:</strong><br>
+					
+					#if(${JnjGTOrderData.deliveryAddress.firstName}) ${JnjGTOrderData.deliveryAddress.firstName} #if(${JnjGTOrderData.deliveryAddress.lastName}) ${JnjGTOrderData.deliveryAddress.lastName} #end<br> #end
+					
+					#if(${JnjGTOrderData.deliveryAddress.line1})
+					${JnjGTOrderData.deliveryAddress.line1}<br>
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.line2})
+					${JnjGTOrderData.deliveryAddress.line2}<br>
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.town})
+					 ${JnjGTOrderData.deliveryAddress.town}
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.region.name})
+					 ${JnjGTOrderData.deliveryAddress.region.name}
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.postalCode})
+					 ${JnjGTOrderData.deliveryAddress.postalCode}
+					#end
+					<br><br>
+					
+					<strong>Attention:</strong>#if(${JnjGTOrderData.attention}) ${JnjGTOrderData.attention}#else Not Available #end
+				</td>
+			</tr>
+		</table>
+		<br> <br>
+		
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC">
+				<strong>Delivery Information</strong>
+				</td>
+			</tr>
+		</table>	
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Packing List</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Carrier</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Bill of Lading</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Tracking</strong></td>
+			</tr>
+		#if(${listOfNumbers.isEmpty()})
+			<tr>
+				<td align="center"> #if(!${packingdetailsKeyList.isEmpty()}) ${packingdetailsKeyList.get(0)} #end</td>
+				
+				<td align="center"> #if(!${JnjGTOrderData.carrier.isEmpty()}) ${JnjGTOrderData.carrier.get(0)} #end</td>
+				
+				<td align="center"> #if(!${JnjGTOrderData.billOfLading.isEmpty()}) ${JnjGTOrderData.billOfLading.get(0)} #end</td>
+				
+				<td align="center"> #if(!${trackingKeyList.isEmpty()}) ${trackingKeyList.get(0)} #end</td>
+			</tr>
+		#else
+		#set($end = ${listOfNumbers.size()})
+		
+		#set($index = 0)
+		#foreach($i in $listOfNumbers)
+			<tr>
+				<td align="center"> #if(!${packingdetailsKeyList.isEmpty()}) #if(${packingdetailsKeyList.size()} > $index) #if(${packingdetailsKeyList.get($index)}) ${packingdetailsKeyList.get($index)} #end #end #end</td>
+				
+				<td align="center"> #if(!${JnjGTOrderData.carrier.isEmpty()}) #if(${JnjGTOrderData.carrier.size()} > $index) #if(${JnjGTOrderData.carrier.get($index)}) ${JnjGTOrderData.carrier.get($index)}#end #end #end</td>
+				
+				<td align="center"> #if(!${JnjGTOrderData.billOfLading.isEmpty()}) #if(${JnjGTOrderData.billOfLading.size()} > $index) #if(${JnjGTOrderData.billOfLading.get($index)}) ${JnjGTOrderData.billOfLading.get($index)} #end #end #end</td>
+				
+				<td align="center"> #if(!${trackingKeyList.isEmpty()}) #if(${trackingKeyList.size()} > $index) #if(${trackingKeyList.get($index)}) ${trackingKeyList.get($index)} #end #end #end</td>
+				#set($index = $index+1)
+			</tr>
+		#end
+		#end
+		</table>
+		<br><br>
+		
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Line</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Name</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Code<br>and GTIN</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Contract</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Qty</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>UOM</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Shipping Information</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Status</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Item Price</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Total</strong></td>
+
+				
+			</tr>
+			#foreach($entry in $JnjGTOrderData.entries)
+			<tr>
+				<td align="center">#if(${entry.sapOrderlineNumber}) ${entry.sapOrderlineNumber} #end</td>
+				<td align="center">#if(${entry.product.name}) ${entry.product.name} #end</td>
+				
+				<td><strong>ID:</strong>${entry.product.baseMaterialNumber}<br><strong>GTIN:</strong>#if(${entry.product.gtin}) ${entry.product.gtin} #else Not Available #end</td>
+				
+				<td align="center">#if(${entry.contractNumber}) ${entry.contractNumber} #end</td>
+				<td align="center">${entry.quantity}</td>
+				
+				<td>#if(!${entry.materialNumber})  ${entry.product.deliveryUnit}
+								(${entry.product.numerator} &nbsp; ${entry.product.salesUnit}) #end</td>
+				
+				<td>
+				<strong>Shipping:</strong> #if(${entry.shippingMethod}) ${entry.shippingMethod} #end<br> 
+				<strong>Tracking:</strong> 
+				#if(${JnjGTOrderData.shippingTrackingInfo}) 
+					#if($JnjGTOrderData.shippingTrackingInfo[$entry.sapOrderlineNumber]) 
+						#foreach($data in $JnjGTOrderData.shippingTrackingInfo[$entry.sapOrderlineNumber])
+							#if(${data.trackingId})
+								${data.trackingId}
+							#end
+						#end
+					#end
+				#end<br> 
+				<strong>Ship Date:</strong> #if(${entry.expectedShipDate}) ${date.format(${dateformat},$entry.expectedShipDate)}  #end<br> 
+				<strong>Delivery Date:</strong> #if(${entry.expectedDeliveryDate}) ${date.format(${dateformat},$entry.expectedDeliveryDate)} #end<br> 
+				</td>
+				
+				<td align="center">#if(${entry.status}) ${entry.status} #end</td>
+				<td align="right">#if(${entry.basePrice.formattedValue}) ${entry.basePrice.formattedValue} #end</td>
+				<td align="right">#if(${entry.totalPrice.formattedValue}) ${entry.totalPrice.formattedValue} #end</td>
+
+			</tr>
+			#end
+		</table>
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+			<td align="right">Sub-Total: ${JnjGTOrderData.totalNetValue.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right">Fees/Freight: ${JnjGTOrderData.totalFees.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right">Taxes: ${JnjGTOrderData.totalTax.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right"><strong>Order Total: ${JnjGTOrderData.totalPrice.formattedValue}</strong></td>
+			</tr>
+		</table>
+	
+	#elseif(${JnjGTOrderData.orderType} == "ZNC")
+		<table width="810" border="1" cellpadding="4" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" ><strong>Order Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Billing Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Shipping Information</strong></td>
+			</tr>
+			<tr>
+				<td>
+					<strong>J&J Order Number:</strong> ${JnjGTOrderData.orderNumber}<br>
+					<strong>Purchase Order:</strong> ${JnjGTOrderData.purchaseOrderNumber}<br>
+					<strong>Order Date:</strong>${date.format(${dateformat},$JnjGTOrderData.created)} <br>
+					<strong>Status:</strong> #if( ${JnjGTOrderData.statusDisplay}) ${JnjGTOrderData.statusDisplay} #end<br>
+					<strong>Order Type:</strong> No Charge<br>
+					<strong>Ordered By:</strong>#if(${JnjGTOrderData.orderedBy}) ${JnjGTOrderData.orderedBy} #else Not Available #end<br>
+					<strong>Number of Lines:</strong> ${JnjGTOrderData.totalNumberOfEntries}<br>
+					<strong>Reason Code:</strong>#if(${JnjGTOrderData.reasonCode}) ${JnjGTOrderData.reasonCode} : ${reasonCodeValue} #else Not Available #end<br>
+					<strong>Cordis House Account:</strong>#if(${JnjGTOrderData.cordisHouseAccount}) ${JnjGTOrderData.cordisHouseAccount} #else Not Available #end<br>
+				</td>
+				<td>
+					<strong>Sold-To Account Number:</strong> ${JnjGTOrderData.soldToAccount}<br>
+					<strong>GLN:</strong>#if(${JnjGTOrderData.gln}) ${JnjGTOrderData.gln} #else Not Available #end<br><br>
+					
+					<strong>Billing Name and Address:</strong><br>
+					
+					#if(${JnjGTOrderData.b2bUnitName}) ${JnjGTOrderData.b2bUnitName}<br> 
+					#else
+					#if(${JnjGTOrderData.billingAddress.firstName}) ${JnjGTOrderData.billingAddress.firstName} #if(${JnjGTOrderData.billingAddress.lastName}) ${JnjGTOrderData.billingAddress.lastName} #end<br> #end
+					#end
+					#if(${JnjGTOrderData.billingAddress.line1})
+					 ${JnjGTOrderData.billingAddress.line1}<br>
+					#end
+					#if(${JnjGTOrderData.billingAddress.line2})
+					 ${JnjGTOrderData.billingAddress.line2}<br>
+					#end
+					#if(${JnjGTOrderData.billingAddress.town})
+					 ${JnjGTOrderData.billingAddress.town}
+					#end
+					#if(${JnjGTOrderData.billingAddress.region.name})
+					 ${JnjGTOrderData.billingAddress.region.name}
+					#end
+					#if(${JnjGTOrderData.billingAddress.postalCode})
+					 ${JnjGTOrderData.billingAddress.postalCode}
+					#end
+				</td>
+				<td>
+					<strong>Drop Ship Account #:</strong>#if(${JnjGTOrderData.dropShipAccount}) ${JnjGTOrderData.dropShipAccount} #else Not Available #end <br><br>
+					
+					<strong>Ship-To Address:</strong><br>
+					
+					#if(${JnjGTOrderData.deliveryAddress.firstName}) ${JnjGTOrderData.deliveryAddress.firstName} #if(${JnjGTOrderData.deliveryAddress.lastName}) ${JnjGTOrderData.deliveryAddress.lastName} #end<br> #end
+					
+					#if(${JnjGTOrderData.deliveryAddress.line1})
+					${JnjGTOrderData.deliveryAddress.line1}<br>
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.line2})
+					${JnjGTOrderData.deliveryAddress.line2}<br>
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.town})
+					 ${JnjGTOrderData.deliveryAddress.town}
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.region.name})
+					 ${JnjGTOrderData.deliveryAddress.region.name}
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.postalCode})
+					 ${JnjGTOrderData.deliveryAddress.postalCode}
+					#end
+					<br><br>
+					
+					<strong>Attention:</strong>#if(${JnjGTOrderData.attention}) ${JnjGTOrderData.attention} #else Not Available #end
+				</td>
+			</tr>
+		</table>
+		<br> <br>
+		
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC">
+				<strong>Delivery Information</strong>
+				</td>
+			</tr>
+		</table>	
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Ship Date</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Delivery Date</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Packing List</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Carrier</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Bill of Lading</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Tracking</strong></td>
+			</tr>
+		#if(${listOfNumbers.isEmpty()})
+			<tr>
+				<td align="center"></td>
+				
+				<td align="center"></td>
+			
+				<td align="center"> #if(!${packingdetailsKeyList.isEmpty()}) ${packingdetailsKeyList.get(0)} #end</td>
+				
+				<td align="center"> #if(!${JnjGTOrderData.carrier.isEmpty()}) ${JnjGTOrderData.carrier.get(0)} #end</td>
+				
+				<td align="center"> #if(!${JnjGTOrderData.billOfLading.isEmpty()}) ${JnjGTOrderData.billOfLading.get(0)} #end</td>
+				
+				<td align="center"> #if(!${trackingKeyList.isEmpty()}) ${trackingKeyList.get(0)} #end</td>
+			</tr>
+		#else
+		#set($end = ${listOfNumbers.size()})
+		
+		#set($index = 0)
+		#foreach($i in $listOfNumbers)
+			<tr>
+				<td align="center"> #if(!${shipDateList.isEmpty()}) #if(${shipDateList.size()} > $index) #if(${shipDateList.get($index)}) ${shipDateList.get($index)} #end #end #end</td>
+				
+				<td align="center">#if(!${deliveryDateList.isEmpty()}) #if(${deliveryDateList.size()} > $index) #if(${deliveryDateList.get($index)}) ${deliveryDateList.get($index)} #end #end #end</td>
+				
+				<td align="center"> #if(!${packingdetailsKeyList.isEmpty()}) #if(${packingdetailsKeyList.size()} > $index) #if(${packingdetailsKeyList.get($index)}) ${packingdetailsKeyList.get($index)} #end #end #end</td>
+				
+				<td align="center"> #if(!${JnjGTOrderData.carrier.isEmpty()}) #if(${JnjGTOrderData.carrier.size()} > $index) #if(${JnjGTOrderData.carrier.get($index)}) ${JnjGTOrderData.carrier.get($index)}#end #end #end</td>
+				
+				<td align="center"> #if(!${JnjGTOrderData.billOfLading.isEmpty()}) #if(${JnjGTOrderData.billOfLading.size()} > $index) #if(${JnjGTOrderData.billOfLading.get($index)}) ${JnjGTOrderData.billOfLading.get($index)} #end #end #end</td>
+				
+				<td align="center"> #if(!${trackingKeyList.isEmpty()}) #if(${trackingKeyList.size()} > $index) #if(${trackingKeyList.get($index)}) ${trackingKeyList.get($index)} #end #end #end</td>
+				#set($index = $index+1)
+			</tr>
+		#end
+		#end
+		</table>
+		<br><br>
+		
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Line</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Name</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Code<br>and GTIN</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Qty</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>UOM</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Shipping Information</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Status</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Item Price</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Total</strong></td>
+
+				
+			</tr>
+			#foreach($entry in $JnjGTOrderData.entries)
+			<tr>
+				<td align="center">#if(${entry.sapOrderlineNumber}) ${entry.sapOrderlineNumber} #end</td>
+				<td align="center">#if(${entry.product.name}) ${entry.product.name} #end</td>
+				
+				<td><strong>ID:</strong>${entry.product.baseMaterialNumber}<br>
+				<strong>GTIN:</strong>#if(${entry.product.gtin}) ${entry.product.gtin} #else Not Available #end</td>
+				<td align="center">${entry.quantity}</td>
+				
+				<td>#if(!${entry.materialNumber})  ${entry.product.deliveryUnit}
+								(${entry.product.numerator} &nbsp; ${entry.product.salesUnit}) #end</td>
+				
+				<td>
+				<strong>Shipping:</strong> #if(${entry.shippingMethod}) ${entry.shippingMethod} #end<br> 
+				<strong>Tracking:</strong> 
+				#if(${JnjGTOrderData.shippingTrackingInfo}) 
+					#if($JnjGTOrderData.shippingTrackingInfo[$entry.sapOrderlineNumber]) 
+						#foreach($data in $JnjGTOrderData.shippingTrackingInfo[$entry.sapOrderlineNumber])
+							#if(${data.trackingId})
+								${data.trackingId}
+							#end
+						#end
+					#end
+				#end<br> 
+				<strong>Ship Date:</strong> #if(${entry.expectedShipDate}) ${date.format(${dateformat},$entry.expectedShipDate)}  #end<br> 
+				<strong>Delivery Date:</strong> #if(${entry.expectedDeliveryDate}) ${date.format(${dateformat},$entry.expectedDeliveryDate)} #end<br> 
+				</td>
+				
+				<td align="center">#if(${entry.status}) ${entry.status} #end</td>
+				<td align="right">#if(${entry.basePrice.formattedValue}) ${entry.basePrice.formattedValue} #end</td>
+				<td align="right">#if(${entry.totalPrice.formattedValue}) ${entry.totalPrice.formattedValue} #end</td>
+
+			</tr>
+			#end
+		</table>
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+			<td align="right">Sub-Total: ${JnjGTOrderData.totalNetValue.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right">Fees/Freight: ${JnjGTOrderData.totalFees.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right">Taxes: ${JnjGTOrderData.totalTax.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right"><strong>Order Total: ${JnjGTOrderData.totalPrice.formattedValue}</strong></td>
+			</tr>
+		</table>
+	
+	#elseif(${JnjGTOrderData.orderType} == "ZKB")
+		<table width="810" border="1" cellpadding="4" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" ><strong>Order Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Billing Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Shipping Information</strong></td>
+			</tr>
+			<tr>
+				<td>
+					<strong>J&J Order Number:</strong> ${JnjGTOrderData.orderNumber}<br>
+					<strong>Purchase Order:</strong> ${JnjGTOrderData.purchaseOrderNumber}<br>
+					<strong>Order Date:</strong>${date.format(${dateformat},$JnjGTOrderData.created)} <br>
+					<strong>Status:</strong> #if( ${JnjGTOrderData.statusDisplay}) ${JnjGTOrderData.statusDisplay} #end<br>
+					
+					<strong>Ordered By:</strong>#if(${JnjGTOrderData.orderedBy}) ${JnjGTOrderData.orderedBy} #else Not Available #end<br>
+					<strong>Number of Lines:</strong> ${JnjGTOrderData.totalNumberOfEntries}<br>
+					
+				</td>
+				<td>
+					<strong>Sold-To Account Number:</strong> ${JnjGTOrderData.soldToAccount}<br>
+					
+					<strong>Billing Name and Address:</strong><br>
+					
+					#if(${JnjGTOrderData.b2bUnitName}) ${JnjGTOrderData.b2bUnitName}<br> 
+					#else
+					#if(${JnjGTOrderData.billingAddress.firstName}) ${JnjGTOrderData.billingAddress.firstName} #if(${JnjGTOrderData.billingAddress.lastName}) ${JnjGTOrderData.billingAddress.lastName} #end<br> #end
+					#end
+					#if(${JnjGTOrderData.billingAddress.line1})
+					 ${JnjGTOrderData.billingAddress.line1}<br>
+					#end
+					#if(${JnjGTOrderData.billingAddress.line2})
+					 ${JnjGTOrderData.billingAddress.line2}<br>
+					#end
+					#if(${JnjGTOrderData.billingAddress.town})
+					 ${JnjGTOrderData.billingAddress.town}
+					#end
+					#if(${JnjGTOrderData.billingAddress.region.name})
+					 ${JnjGTOrderData.billingAddress.region.name}
+					#end
+					#if(${JnjGTOrderData.billingAddress.postalCode})
+					 ${JnjGTOrderData.billingAddress.postalCode}
+					#end
+				</td>
+				<td>
+					<strong>Drop Ship Account #:</strong>#if(${JnjGTOrderData.dropShipAccount}) ${JnjGTOrderData.dropShipAccount} #else Not Available #end <br><br>
+					
+					<strong>Ship-To Address:</strong><br>
+					
+					#if(${JnjGTOrderData.deliveryAddress.firstName}) ${JnjGTOrderData.deliveryAddress.firstName} #if(${JnjGTOrderData.deliveryAddress.lastName}) ${JnjGTOrderData.deliveryAddress.lastName} #end<br> #end
+					
+					#if(${JnjGTOrderData.deliveryAddress.line1})
+					${JnjGTOrderData.deliveryAddress.line1}<br>
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.line2})
+					${JnjGTOrderData.deliveryAddress.line2}<br>
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.town})
+					 ${JnjGTOrderData.deliveryAddress.town}
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.region.name})
+					 ${JnjGTOrderData.deliveryAddress.region.name}
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.postalCode})
+					 ${JnjGTOrderData.deliveryAddress.postalCode}
+					#end
+					<br><br>
+					
+					<strong>Attention:</strong>#if(${JnjGTOrderData.attention}) ${JnjGTOrderData.attention}#else Not Available #end
+				</td>
+			</tr>
+		</table>
+		<br> <br>
+		
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC">
+				<strong>Delivery Information</strong>
+				</td>
+			</tr>
+		</table>	
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Packing List</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Carrier</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Bill of Lading</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Tracking</strong></td>
+			</tr>
+		#if(${listOfNumbers.isEmpty()})
+			<tr>
+				<td align="center"> #if(!${packingdetailsKeyList.isEmpty()}) ${packingdetailsKeyList.get(0)} #end</td>
+				
+				<td align="center"> #if(!${JnjGTOrderData.carrier.isEmpty()}) ${JnjGTOrderData.carrier.get(0)} #end</td>
+				
+				<td align="center"> #if(!${JnjGTOrderData.billOfLading.isEmpty()}) ${JnjGTOrderData.billOfLading.get(0)} #end</td>
+				
+				<td align="center"> #if(!${trackingKeyList.isEmpty()}) ${trackingKeyList.get(0)} #end</td>
+			</tr>
+		#else
+		#set($end = ${listOfNumbers.size()})
+		
+		#set($index = 0)
+		#foreach($i in $listOfNumbers)
+			<tr>
+				<td align="center"> #if(!${packingdetailsKeyList.isEmpty()}) #if(${packingdetailsKeyList.size()} > $index) #if(${packingdetailsKeyList.get($index)}) ${packingdetailsKeyList.get($index)} #end #end #end</td>
+				
+				<td align="center"> #if(!${JnjGTOrderData.carrier.isEmpty()}) #if(${JnjGTOrderData.carrier.size()} > $index) #if(${JnjGTOrderData.carrier.get($index)}) ${JnjGTOrderData.carrier.get($index)}#end #end #end</td>
+				
+				<td align="center"> #if(!${JnjGTOrderData.billOfLading.isEmpty()}) #if(${JnjGTOrderData.billOfLading.size()} > $index) #if(${JnjGTOrderData.billOfLading.get($index)}) ${JnjGTOrderData.billOfLading.get($index)} #end #end #end</td>
+				
+				<td align="center"> #if(!${trackingKeyList.isEmpty()}) #if(${trackingKeyList.size()} > $index) #if(${trackingKeyList.get($index)}) ${trackingKeyList.get($index)} #end #end #end</td>
+				#set($index = $index+1)
+			</tr>
+		#end
+		#end
+		</table>
+		<br><br>
+		
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Line</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Name</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Code<br>and GTIN</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Qty</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>UOM</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Shipping Information</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Status</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Item Price</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Total</strong></td>
+
+				
+			</tr>
+			#foreach($entry in $JnjGTOrderData.entries)
+			<tr>
+				<td align="center">#if(${entry.sapOrderlineNumber}) ${entry.sapOrderlineNumber} #end</td>
+				<td align="center">#if(${entry.product.name}) ${entry.product.name} #end</td>
+				
+				<td><strong>ID:</strong>${entry.product.baseMaterialNumber}<br>
+				<strong>GTIN:</strong>#if(${entry.product.gtin}) ${entry.product.gtin} #end</td>
+				
+				<td align="center">${entry.quantity}</td>
+				
+				<td>#if(!${entry.materialNumber})  ${entry.product.deliveryUnit}
+								(${entry.product.numerator} &nbsp; ${entry.product.salesUnit}) #end</td>
+				
+				<td>
+				<strong>Shipping:</strong> #if(${entry.shippingMethod}) ${entry.shippingMethod} #end<br> 
+				<strong>Tracking:</strong> 
+				#if(${JnjGTOrderData.shippingTrackingInfo}) 
+					#if($JnjGTOrderData.shippingTrackingInfo[$entry.sapOrderlineNumber]) 
+						#foreach($data in $JnjGTOrderData.shippingTrackingInfo[$entry.sapOrderlineNumber])
+							#if(${data.trackingId})
+								${data.trackingId}
+							#end
+						#end
+					#end
+				#end<br> 
+				<strong>Ship Date:</strong> #if(${entry.expectedShipDate}) ${date.format(${dateformat},$entry.expectedShipDate)}  #end<br> 
+				<strong>Delivery Date:</strong> #if(${entry.expectedDeliveryDate}) ${date.format(${dateformat},$entry.expectedDeliveryDate)} #end<br> 
+				</td>
+				
+				<td align="center">#if(${entry.status}) ${entry.status} #end</td>
+				<td align="right">#if(${entry.basePrice.formattedValue}) ${entry.basePrice.formattedValue} #end</td>
+				<td align="right">#if(${entry.totalPrice.formattedValue}) ${entry.totalPrice.formattedValue} #end</td>
+
+			</tr>
+			#end
+		</table>
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+			<td align="right">Sub-Total: ${JnjGTOrderData.totalNetValue.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right">Fees/Freight: ${JnjGTOrderData.totalFees.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right">Taxes: ${JnjGTOrderData.totalTax.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right"><strong>Order Total: ${JnjGTOrderData.totalPrice.formattedValue}</strong></td>
+			</tr>
+		</table>
+		
+	#elseif(${JnjGTOrderData.orderType} == "ZRE")
+		<table width="810" border="1" cellpadding="4" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" ><strong>Order Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Billing Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Shipping Information</strong></td>
+			</tr>
+			<tr>
+				<td>
+					<strong>J&J Order Number:</strong> ${JnjGTOrderData.orderNumber}<br>
+					<strong>Purchase Order:</strong> ${JnjGTOrderData.purchaseOrderNumber}<br>
+					<strong>Order Date:</strong>${date.format(${dateformat},$JnjGTOrderData.created)} <br>
+					<strong>Status:</strong> #if( ${JnjGTOrderData.statusDisplay}) ${JnjGTOrderData.statusDisplay} #end<br>
+					<strong>OrderType:</strong> Return<br>
+					<strong>Ordered By:</strong>#if(${JnjGTOrderData.orderedBy}) ${JnjGTOrderData.orderedBy} #else Not Available #end<br>
+					<strong>Number of Lines:</strong> ${JnjGTOrderData.totalNumberOfEntries}<br>
+					<strong>Reason Code:</strong>#if(${JnjGTOrderData.reasonCode}) ${JnjGTOrderData.reasonCode} : ${reasonCodeValue} #else Not Available #end<br>
+					
+					
+				</td>
+				<td>
+					<strong>Sold-To Account Number:</strong> ${JnjGTOrderData.soldToAccount}<br>
+					<strong>GLN:</strong>#if(${JnjGTOrderData.gln}) ${JnjGTOrderData.gln} #else Not Available #end<br><br>
+					
+					<strong>Billing Name and Address:</strong><br>
+					
+					#if(${JnjGTOrderData.b2bUnitName}) ${JnjGTOrderData.b2bUnitName}<br> 
+					#else
+					#if(${JnjGTOrderData.billingAddress.firstName}) ${JnjGTOrderData.billingAddress.firstName} #if(${JnjGTOrderData.billingAddress.lastName}) ${JnjGTOrderData.billingAddress.lastName} #end<br> #end
+					#end
+					#if(${JnjGTOrderData.billingAddress.line1})
+					 ${JnjGTOrderData.billingAddress.line1}<br>
+					#end
+					#if(${JnjGTOrderData.billingAddress.line2})
+					 ${JnjGTOrderData.billingAddress.line2}<br>
+					#end
+					#if(${JnjGTOrderData.billingAddress.town})
+					 ${JnjGTOrderData.billingAddress.town}
+					#end
+					#if(${JnjGTOrderData.billingAddress.region.name})
+					 ${JnjGTOrderData.billingAddress.region.name}
+					#end
+					#if(${JnjGTOrderData.billingAddress.postalCode})
+					 ${JnjGTOrderData.billingAddress.postalCode}
+					#end
+				</td>
+				<td>
+					
+					<strong>Ship-To Address:</strong><br>
+					
+					#if(${JnjGTOrderData.deliveryAddress.firstName}) ${JnjGTOrderData.deliveryAddress.firstName} #if(${JnjGTOrderData.deliveryAddress.lastName}) ${JnjGTOrderData.deliveryAddress.lastName} #end<br> #end
+					
+					#if(${JnjGTOrderData.deliveryAddress.line1})
+					${JnjGTOrderData.deliveryAddress.line1}<br>
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.line2})
+					${JnjGTOrderData.deliveryAddress.line2}<br>
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.town})
+					 ${JnjGTOrderData.deliveryAddress.town}
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.region.name})
+					 ${JnjGTOrderData.deliveryAddress.region.name}
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.postalCode})
+					 ${JnjGTOrderData.deliveryAddress.postalCode}
+					#end
+					<br><br>
+					
+				</td>
+			</tr>
+		</table>
+		<br> <br>
+		
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Line</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Name</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Code<br>and GTIN</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Lot Number</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Qty</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>UOM</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Status</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Item Price</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Total</strong></td>
+
+				
+			</tr>
+			#foreach($entry in $JnjGTOrderData.entries)
+			<tr>
+				<td align="center">#if(${entry.sapOrderlineNumber}) ${entry.sapOrderlineNumber} #end</td>
+				<td align="center">#if(${entry.product.name}) ${entry.product.name} #end</td>
+				
+				<td><strong>ID:</strong>${entry.product.baseMaterialNumber}<br>
+				<strong>GTIN:</strong>#if(${entry.product.gtin}) ${entry.product.gtin} #end</td>
+				
+				<td align="center">#if(${entry.lotNumber}) ${entry.lotNumber} #end</td>
+				<td align="center">${entry.quantity}</td>
+				
+				<td>
+				#if(!${entry.materialNumber})  ${entry.product.deliveryUnit}
+								(${entry.product.numerator} &nbsp; ${entry.product.salesUnit}) #end
+				</td>
+						
+				<td align="center">#if(${entry.status}) ${entry.status} #end</td>
+				<td align="right">#if(${entry.basePrice.formattedValue}) ${entry.basePrice.formattedValue} #end</td>
+				<td align="right">#if(${entry.totalPrice.formattedValue}) ${entry.totalPrice.formattedValue} #end</td>
+
+			</tr>
+			#end
+		</table>
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+			<td align="right">Sub-Total: ${JnjGTOrderData.totalNetValue.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right">Fees/Freight: ${JnjGTOrderData.totalFees.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right">Taxes: ${JnjGTOrderData.totalTax.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right"><strong>Order Total: ${JnjGTOrderData.totalPrice.formattedValue}</strong></td>
+			</tr>
+		</table>
+		
+	#elseif(${JnjGTOrderData.orderType} == "ZHOR")
+		<table width="810" border="1" cellpadding="4" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" ><strong>Order Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Billing Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Shipping Information</strong></td>
+			</tr>
+			<tr>
+				<td>
+					<strong>J&J Order Number:</strong> ${JnjGTOrderData.orderNumber}<br>
+					<strong>Purchase Order:</strong> ${JnjGTOrderData.purchaseOrderNumber}<br>
+					<strong>Order Date:</strong>${date.format(${dateformat},$JnjGTOrderData.created)} <br>
+					<strong>Status:</strong> #if( ${JnjGTOrderData.statusDisplay}) ${JnjGTOrderData.statusDisplay} #end<br>
+					
+					<strong>Ordered By:</strong>#if(${JnjGTOrderData.orderedBy}) ${JnjGTOrderData.orderedBy} #else Not Available #end<br>
+					<strong>Number of Lines:</strong> ${JnjGTOrderData.totalNumberOfEntries}<br>
+					<strong>Reason Code:</strong>#if(${JnjGTOrderData.reasonCode}) ${JnjGTOrderData.reasonCode} :  ${reasonCodeValue} #else Not Available #end<br>
+					
+					
+				</td>
+				<td>
+					<strong>Sold-To Account Number:</strong> ${JnjGTOrderData.soldToAccount}<br><br>
+					
+					
+					<strong>Billing Name and Address:</strong><br>
+					
+					#if(${JnjGTOrderData.billingAddress.firstName}) ${JnjGTOrderData.billingAddress.firstName} #if(${JnjGTOrderData.billingAddress.lastName}) ${JnjGTOrderData.billingAddress.lastName} #end<br> #end
+					
+					#if(${JnjGTOrderData.billingAddress.line1})
+					 ${JnjGTOrderData.billingAddress.line1}<br>
+					#end
+					#if(${JnjGTOrderData.billingAddress.line2})
+					 ${JnjGTOrderData.billingAddress.line2}<br>
+					#end
+					#if(${JnjGTOrderData.billingAddress.town})
+					 ${JnjGTOrderData.billingAddress.town}
+					#end
+					#if(${JnjGTOrderData.billingAddress.region.name})
+					 ${JnjGTOrderData.billingAddress.region.name}
+					#end
+					#if(${JnjGTOrderData.billingAddress.postalCode})
+					 ${JnjGTOrderData.billingAddress.postalCode}
+					#end
+				</td>
+				<td>
+					<strong>Ship-To Address:</strong><br>
+					
+					#if(${JnjGTOrderData.deliveryAddress.companyName}) ${JnjGTOrderData.deliveryAddress.companyName} <br> #end
+					
+					#if(${JnjGTOrderData.deliveryAddress.line1})
+					${JnjGTOrderData.deliveryAddress.line1}<br>
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.line2})
+					${JnjGTOrderData.deliveryAddress.line2}<br>
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.town})
+					 ${JnjGTOrderData.deliveryAddress.town}
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.region.name})
+					 ${JnjGTOrderData.deliveryAddress.region.name}
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.postalCode})
+					 ${JnjGTOrderData.deliveryAddress.postalCode}
+					#end
+					<br><br>
+					
+					<strong>Total Weight:</strong> #if(${JnjGTOrderData.orderWeight}) ${JnjGTOrderData.orderWeight} lbs #else Not Available #end<br>
+					<strong>Total Cubic Volume:</strong>#if(${JnjGTOrderData.orderVolume}) ${JnjGTOrderData.orderVolume} ft<sup>3</sup> #else Not Available #end<br>
+				</td>
+			</tr>
+		</table>
+		<br> <br>
+		
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC">
+				<strong>Delivery Information</strong>
+				</td>
+			</tr>
+		</table>	
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Requested Delivery Date</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Actual Ship Date</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Expected Delivery Date</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Actual Delivery Date</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Shipment Location</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Carrier</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Bill of Lading</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Tracking</strong></td>
+			</tr>
+		#if(${listOfNumbers.isEmpty()})
+			<tr>
+				<td align="center"> #if(${JnjGTOrderData.requestedDeliveryDate}) ${date.format(${dateformat},$JnjGTOrderData.requestedDeliveryDate)} #end</td>
+				
+				<td align="center"> #if(${JnjGTOrderData.actualShipDate}) ${date.format(${dateformat},$JnjGTOrderData.actualShipDate)} #end</td>
+				
+				<td align="center"> #if(${JnjGTOrderData.expectedDeliveryDate}) ${date.format(${dateformat},$JnjGTOrderData.expectedDeliveryDate)} #end</td>
+				
+				<td align="center"> #if(${JnjGTOrderData.actualDeliveryDate}) ${date.format(${dateformat},$JnjGTOrderData.actualDeliveryDate)} #end</td>
+				
+				<td align="center"> #if(${JnjGTOrderData.shipmentLocation}) ${JnjGTOrderData.shipmentLocation} #end</td>
+				
+				<td align="center"> #if(!${JnjGTOrderData.carrier.isEmpty()}) ${JnjGTOrderData.carrier.get(0)} #end</td>
+				
+				<td align="center"> #if(!${JnjGTOrderData.billOfLading.isEmpty()}) ${JnjGTOrderData.billOfLading.get(0)} #end</td>
+				
+				<td align="center"> #if(!${trackingKeyList.isEmpty()}) ${trackingKeyList.get(0)} #end</td>
+			</tr>
+		#else
+		#set($end = ${listOfNumbers.size()})
+		
+		#set($index = 0)
+		#foreach($i in $listOfNumbers)
+			<tr>
+				<td align="center"> #if(${JnjGTOrderData.requestedDeliveryDate}) ${date.format(${dateformat},$JnjGTOrderData.requestedDeliveryDate)} #end</td>
+				
+				<td align="center"> #if(${JnjGTOrderData.actualShipDate}) ${date.format(${dateformat},$JnjGTOrderData.actualShipDate)} #end</td>
+				
+				<td align="center"> #if(${JnjGTOrderData.expectedDeliveryDate}) ${date.format(${dateformat},$JnjGTOrderData.expectedDeliveryDate)} #end</td>
+				
+				<td align="center"> #if(${JnjGTOrderData.actualDeliveryDate}) ${date.format(${dateformat},$JnjGTOrderData.actualDeliveryDate)} #end</td>
+				
+				<td align="center"> #if(${JnjGTOrderData.shipmentLocation}) ${JnjGTOrderData.shipmentLocation} #end</td>
+				
+				<td align="center"> #if(!${JnjGTOrderData.carrier.isEmpty()}) #if(${JnjGTOrderData.carrier.size()} > $index) #if(${JnjGTOrderData.carrier.get($index)}) ${JnjGTOrderData.carrier.get($index)}#end #end #end</td>
+				
+				<td align="center"> #if(!${JnjGTOrderData.billOfLading.isEmpty()}) #if(${JnjGTOrderData.billOfLading.size()} > $index) #if(${JnjGTOrderData.billOfLading.get($index)}) ${JnjGTOrderData.billOfLading.get($index)} #end #end #end</td>
+				 
+				<td align="center"> #if(!${trackingKeyList.isEmpty()}) #if(${trackingKeyList.size()} > $index) #if(${trackingKeyList.get($index)}) ${trackingKeyList.get($index)} #end #end #end</td>
+				#set($index = $index+1)
+			</tr>
+		#end
+		#end
+		</table>
+		<br><br>
+		
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Line</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Name</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Code<br>and UPC</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Qty</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>UOM</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Status</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Item Price</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Total</strong></td>
+
+				
+			</tr>
+			#foreach($entry in $JnjGTOrderData.entries)
+			<tr>
+				<td align="center">#if(${entry.sapOrderlineNumber}) ${entry.sapOrderlineNumber} #end</td>
+				<td align="center">#if(${entry.product.name}) ${entry.product.name} #end</td>
+				
+				<td><strong>ID:</strong>${entry.product.baseMaterialNumberWithoutLeadingZeros}<br>
+				<strong>UPC:</strong>#if(${entry.product.upc}) ${entry.product.upc} #end</td>
+				
+				<td align="center">${entry.quantity}</td>
+				
+				<td>
+				#if(!${entry.materialNumber})  ${entry.product.deliveryUnit}
+								(${entry.product.numerator} &nbsp; ${entry.product.salesUnit}) #end
+				</td>
+						
+				<td align="center">#if(${entry.status}) ${entry.status} <br>#end #if(${entry.rejectionReason})( ${entry.rejectionReason} ) #end</td>
+				<td align="right">#if(${entry.basePrice.formattedValue}) ${entry.basePrice.formattedValue} #end</td>
+				<td align="right">#if(${entry.totalPrice.formattedValue}) ${entry.totalPrice.formattedValue} #end</td>
+
+			</tr>
+			#end
+		</table>
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+			<td align="right">Sub-Total: ${JnjGTOrderData.totalNetValue.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right">Taxes: ${JnjGTOrderData.totalTax.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right"><strong>Order Total: ${JnjGTOrderData.totalPrice.formattedValue}</strong></td>
+			</tr>
+		</table>
+		
+	#elseif(${JnjGTOrderData.orderType} == "ZORD")
+		<table width="810" border="1" cellpadding="4" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" ><strong>Order Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Billing Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Shipping Information</strong></td>
+			</tr>
+			<tr>
+				<td>
+					<strong>J&J Order Number:</strong> ${JnjGTOrderData.orderNumber}<br>
+					<strong>Purchase Order:</strong> ${JnjGTOrderData.purchaseOrderNumber}<br>
+					<strong>Order Date:</strong>${date.format(${dateformat},$JnjGTOrderData.created)} <br>
+					<strong>Status:</strong> #if( ${JnjGTOrderData.statusDisplay}) ${JnjGTOrderData.statusDisplay} #end<br>
+					<strong>Order Type:</strong> Bill Only Order<br>
+					<strong>Ordered By:</strong>#if(${JnjGTOrderData.orderedBy}) ${JnjGTOrderData.orderedBy} #else Not Available #end<br>
+					<strong>Number of Lines:</strong> ${JnjGTOrderData.totalNumberOfEntries}<br>
+				</td>
+				<td>
+					<strong>Sold-To Account Number:</strong> ${JnjGTOrderData.soldToAccount}<br>
+					
+					<strong>Billing Name and Address:</strong><br>
+					
+					#if(${JnjGTOrderData.b2bUnitName}) ${JnjGTOrderData.b2bUnitName}<br>
+					#else
+					#if(${JnjGTOrderData.billingAddress.firstName}) ${JnjGTOrderData.billingAddress.firstName} #if(${JnjGTOrderData.billingAddress.lastName}) ${JnjGTOrderData.billingAddress.lastName} #end<br> #end					
+					#end
+					#if(${JnjGTOrderData.billingAddress.line1})
+					 ${JnjGTOrderData.billingAddress.line1}<br>
+					#end
+					#if(${JnjGTOrderData.billingAddress.line2})
+					 ${JnjGTOrderData.billingAddress.line2}<br>
+					#end
+					#if(${JnjGTOrderData.billingAddress.town})
+					 ${JnjGTOrderData.billingAddress.town}
+					#end
+					#if(${JnjGTOrderData.billingAddress.region.name})
+					 ${JnjGTOrderData.billingAddress.region.name}
+					#end
+					#if(${JnjGTOrderData.billingAddress.postalCode})
+					 ${JnjGTOrderData.billingAddress.postalCode}
+					#end
+					<br><br>
+					#if(${JnjGTOrderData.paymentType})
+					<strong>Payment Method:</strong> ${JnjGTOrderData.paymentType.displayName}<br>
+					#if(${JnjGTOrderData.paymentInfo})
+						<strong>Credit Card Type:</strong>#if(${JnjGTOrderData.paymentInfo.cardType}) ${JnjGTOrderData.paymentInfo.cardType} #else Not Available #end<br>
+						<strong>Credit Card Number:</strong>#if(${JnjGTOrderData.paymentInfo.cardNumber}) ${JnjGTOrderData.paymentInfo.cardNumber} #else Not Available #end<br>
+						<strong>Credit Card Expiration:</strong>#if(${JnjGTOrderData.paymentInfo.expiryMonth}) ${JnjGTOrderData.paymentInfo.expiryMonth}/ ${JnjGTOrderData.paymentInfo.expiryYear} #else Not Available #end<br>
+						#else
+						<!-- 	<strong>Credit Card Type:</strong> Not Available<br>
+						<strong>Credit Card Number:</strong> Not Available<br>
+						<strong>Credit Card Expiration:</strong> Not Available<br> -->
+						#end
+					#end
+				</td>
+				<td>
+					<strong>Drop Ship Account #:</strong>#if(${JnjGTOrderData.dropShipAccount}) ${JnjGTOrderData.dropShipAccount} #else Not Available #end <br><br>
+					
+					<strong>Ship-To Address:</strong><br>
+					
+					#if(${JnjGTOrderData.deliveryAddress.firstName}) ${JnjGTOrderData.deliveryAddress.firstName} #if(${JnjGTOrderData.deliveryAddress.lastName}) ${JnjGTOrderData.deliveryAddress.lastName} #end<br> #end
+					
+					#if(${JnjGTOrderData.deliveryAddress.line1})
+					${JnjGTOrderData.deliveryAddress.line1}<br>
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.line2})
+					${JnjGTOrderData.deliveryAddress.line2}<br>
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.town})
+					 ${JnjGTOrderData.deliveryAddress.town}
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.region.name})
+					 ${JnjGTOrderData.deliveryAddress.region.name}
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.postalCode})
+					 ${JnjGTOrderData.deliveryAddress.postalCode}
+					#end
+					<br><br>
+					
+				</td>
+			</tr>
+		</table>
+		<br> <br>
+		
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC">
+				<strong>Delivery Information</strong>
+				</td>
+			</tr>
+		</table>	
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Packing List</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Carrier</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Bill of Lading</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Tracking</strong></td>
+			</tr>
+		#if(${listOfNumbers.isEmpty()})
+			<tr>
+				<td align="center"> #if(!${packingdetailsKeyList.isEmpty()}) ${packingdetailsKeyList.get(0)} #end</td>
+				
+				<td align="center"> #if(!${JnjGTOrderData.carrier.isEmpty()}) ${JnjGTOrderData.carrier.get(0)} #end</td>
+				
+				<td align="center"> #if(!${JnjGTOrderData.billOfLading.isEmpty()}) ${JnjGTOrderData.billOfLading.get(0)} #end</td>
+				
+				<td align="center"> #if(!${trackingKeyList.isEmpty()}) ${trackingKeyList.get(0)} #end</td>
+			</tr>
+		#else
+		#set($end = ${listOfNumbers.size()})
+		
+		#set($index = 0)
+		#foreach($i in $listOfNumbers)
+			<tr>
+				<td align="center"> #if(!${packingdetailsKeyList.isEmpty()}) #if(${packingdetailsKeyList.size()} > $index) #if(${packingdetailsKeyList.get($index)}) ${packingdetailsKeyList.get($index)} #end #end #end</td>
+				
+				<td align="center"> #if(!${JnjGTOrderData.carrier.isEmpty()}) #if(${JnjGTOrderData.carrier.size()} > $index) #if(${JnjGTOrderData.carrier.get($index)}) ${JnjGTOrderData.carrier.get($index)}#end #end #end</td>
+				
+				<td align="center"> #if(!${JnjGTOrderData.billOfLading.isEmpty()}) #if(${JnjGTOrderData.billOfLading.size()} > $index) #if(${JnjGTOrderData.billOfLading.get($index)}) ${JnjGTOrderData.billOfLading.get($index)} #end #end #end</td>
+				
+				<td align="center"> #if(!${trackingKeyList.isEmpty()}) #if(${trackingKeyList.size()} > $index) #if(${trackingKeyList.get($index)}) ${trackingKeyList.get($index)} #end #end #end</td>
+				#set($index = $index+1)
+			</tr>
+		#end
+		#end
+		</table>
+		<br><br>
+		
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Line</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Name</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Code and<br>GTIN</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Contract</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Qty</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>UOM</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Shipping Information</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Status</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Item Price</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Total</strong></td>
+
+				
+			</tr>
+			#foreach($entry in $JnjGTOrderData.entries)
+			<tr>
+				<td align="center">#if(${entry.sapOrderlineNumber}) ${entry.sapOrderlineNumber} #end</td>
+				<td align="center">#if(${entry.product.name}) ${entry.product.name} #end</td>
+				
+				<td><strong>ID:</strong>${entry.product.baseMaterialNumber}<br><strong>GTIN:</strong>#if(${entry.product.gtin}) ${entry.product.gtin} #else Not Available #end</td>
+				
+				<td align="center">#if(${entry.contractNumber}) ${entry.contractNumber} #end</td>
+				<td align="center">${entry.quantity}</td>
+				
+				<td>#if(!${entry.materialNumber})  ${entry.product.deliveryUnit}
+								(${entry.product.numerator} &nbsp; ${entry.product.salesUnit}) #end</td>
+				
+				<td>
+				<strong>Shipping:</strong> #if(${entry.shippingMethod}) ${entry.shippingMethod} #end<br> 
+				<strong>Tracking:</strong> 
+				#if(${JnjGTOrderData.shippingTrackingInfo}) 
+					#if($JnjGTOrderData.shippingTrackingInfo[$entry.sapOrderlineNumber]) 
+						#foreach($data in $JnjGTOrderData.shippingTrackingInfo[$entry.sapOrderlineNumber])
+							#if(${data.trackingId})
+								${data.trackingId}
+							#end
+						#end
+					#end
+				#end<br> 
+				<strong>Ship Date:</strong> #if(${entry.expectedShipDate}) ${date.format(${dateformat},$entry.expectedShipDate)}  #end<br> 
+				<strong>Delivery Date:</strong> #if(${entry.expectedDeliveryDate}) ${date.format(${dateformat},$entry.expectedDeliveryDate)} #end<br> 
+				</td>
+				
+				<td align="center">#if(${entry.status}) ${entry.status} #end</td>
+				<td align="right">#if(${entry.basePrice.formattedValue}) ${entry.basePrice.formattedValue} #end</td>
+				<td align="right">#if(${entry.totalPrice.formattedValue}) ${entry.totalPrice.formattedValue} #end</td>
+
+			</tr>
+			#end
+		</table>
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+			<td align="right">Sub-Total: ${JnjGTOrderData.totalNetValue.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right">Fees/Freight: ${JnjGTOrderData.totalFees.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right">Taxes: ${JnjGTOrderData.totalTax.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right"><strong>Order Total: ${JnjGTOrderData.totalPrice.formattedValue}</strong></td>
+			</tr>
+		</table>
+	#else
+		<table width="810" border="1" cellpadding="4" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" ><strong>Order Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Billing Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Shipping Information</strong></td>
+			</tr>
+			<tr>
+				<td>
+					<strong>J&J Order Number:</strong> ${JnjGTOrderData.orderNumber}<br>
+					<strong>Purchase Order:</strong> ${JnjGTOrderData.purchaseOrderNumber}<br>
+					<strong>Order Date:</strong>${date.format(${dateformat},$JnjGTOrderData.created)} <br>
+					<strong>Status:</strong> #if( ${JnjGTOrderData.statusDisplay}) ${JnjGTOrderData.statusDisplay} #end<br>
+					
+					<strong>Ordered By:</strong>#if(${JnjGTOrderData.orderedBy}) ${JnjGTOrderData.orderedBy} #else Not Available #end<br>
+					<strong>Number of Lines:</strong> ${JnjGTOrderData.totalNumberOfEntries}<br>
+					<strong>Sales Territory:</strong>#if(${JnjGTOrderData.salesTerritory}) ${JnjGTOrderData.salesTerritory} #else Not Available #end<br>
+					
+					
+				</td>
+				<td>
+					<strong>Sold-To Account Number:</strong> ${JnjGTOrderData.soldToAccount}<br>
+					
+					
+					<strong>Billing Name and Address:</strong><br>
+					
+					
+					#if(${JnjGTOrderData.billingAddress.firstName}) ${JnjGTOrderData.billingAddress.firstName} #if(${JnjGTOrderData.billingAddress.lastName}) ${JnjGTOrderData.billingAddress.lastName} #end<br> #end
+					
+					#if(${JnjGTOrderData.billingAddress.line1})
+					 ${JnjGTOrderData.billingAddress.line1}<br>
+					#end
+					#if(${JnjGTOrderData.billingAddress.line2})
+					 ${JnjGTOrderData.billingAddress.line2}<br>
+					#end
+					#if(${JnjGTOrderData.billingAddress.town})
+					 ${JnjGTOrderData.billingAddress.town}
+					#end
+					#if(${JnjGTOrderData.billingAddress.region.name})
+					 ${JnjGTOrderData.billingAddress.region.name}
+					#end
+					#if(${JnjGTOrderData.billingAddress.postalCode})
+					 ${JnjGTOrderData.billingAddress.postalCode}
+					#end
+				</td>
+				<td>
+					<strong>Ship-To Address:</strong><br>
+					
+					#if(${JnjGTOrderData.deliveryAddress.companyName}) ${JnjGTOrderData.deliveryAddress.companyName}<br> #end
+					
+					#if(${JnjGTOrderData.deliveryAddress.line1})
+					${JnjGTOrderData.deliveryAddress.line1}<br>
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.line2})
+					${JnjGTOrderData.deliveryAddress.line2}<br>
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.town})
+					 ${JnjGTOrderData.deliveryAddress.town}
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.region.name})
+					 ${JnjGTOrderData.deliveryAddress.region.name}
+					#end
+					#if(${JnjGTOrderData.deliveryAddress.postalCode})
+					 ${JnjGTOrderData.deliveryAddress.postalCode}
+					#end
+					<br><br>
+					
+					<strong>Total Weight:</strong>#if(${JnjGTOrderData.orderWeight}) ${JnjGTOrderData.orderWeight} lbs #else Not Available #end<br>
+					<strong>Total Cubic Volume:</strong>#if(${JnjGTOrderData.orderVolume}) ${JnjGTOrderData.orderVolume} ft<sup>3</sup> #else Not Available #end<br>
+				</td>
+			</tr>
+		</table>
+		<br> <br>
+		
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC">
+				<strong>Delivery Information</strong>
+				</td>
+			</tr>
+		</table>	
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Requested Delivery Date</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Actual Ship Date</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Expected Delivery Date</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Actual Delivery Date</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Shipment Location</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Carrier</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Bill of Lading</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Tracking</strong></td>
+			</tr>
+		#if(${listOfNumbers.isEmpty()})
+			<tr>
+				<td align="center"> #if(${JnjGTOrderData.requestedDeliveryDate}) ${date.format(${dateformat},$JnjGTOrderData.requestedDeliveryDate)} #end</td>
+				
+				<td align="center"> #if(${JnjGTOrderData.actualShipDate}) ${date.format(${dateformat},$JnjGTOrderData.actualShipDate)} #end</td>
+				
+				<td align="center"> #if(${JnjGTOrderData.expectedDeliveryDate}) ${date.format(${dateformat},$JnjGTOrderData.expectedDeliveryDate)} #end</td>
+				
+				<td align="center"> #if(${JnjGTOrderData.actualDeliveryDate}) ${date.format(${dateformat},$JnjGTOrderData.actualDeliveryDate)} #end</td>
+				
+				<td align="center"> #if(${JnjGTOrderData.shipmentLocation}) ${JnjGTOrderData.shipmentLocation} #end</td>
+				
+				<td align="center"> #if(!${JnjGTOrderData.carrier.isEmpty()}) ${JnjGTOrderData.carrier.get(0)} #end</td>
+				
+				<td align="center"> #if(!${JnjGTOrderData.billOfLading.isEmpty()}) ${JnjGTOrderData.billOfLading.get(0)} #end</td>
+				
+				<td align="center"> #if(!${trackingKeyList.isEmpty()}) ${trackingKeyList.get(0)} #end</td>
+			</tr>
+		#else
+		#set($end = ${listOfNumbers.size()})
+		
+		#set($index = 0)
+		#foreach($i in $listOfNumbers)
+			<tr>
+				<td align="center"> #if(${JnjGTOrderData.requestedDeliveryDate}) ${date.format(${dateformat},$JnjGTOrderData.requestedDeliveryDate)} #end</td>
+				
+				<td align="center"> #if(${JnjGTOrderData.actualShipDate}) ${date.format(${dateformat},$JnjGTOrderData.actualShipDate)} #end</td>
+				
+				<td align="center"> #if(${JnjGTOrderData.expectedDeliveryDate}) ${date.format(${dateformat},$JnjGTOrderData.expectedDeliveryDate)} #end</td>
+				
+				<td align="center"> #if(${JnjGTOrderData.actualDeliveryDate}) ${date.format(${dateformat},$JnjGTOrderData.actualDeliveryDate)} #end</td>
+				
+				<td align="center"> #if(${JnjGTOrderData.shipmentLocation}) ${JnjGTOrderData.shipmentLocation} #end</td>
+				
+				<td align="center"> #if(!${JnjGTOrderData.carrier.isEmpty()}) #if(${JnjGTOrderData.carrier.size()} > $index) #if(${JnjGTOrderData.carrier.get($index)}) ${JnjGTOrderData.carrier.get($index)}#end #end #end</td>
+				
+				<td align="center"> #if(!${JnjGTOrderData.billOfLading.isEmpty()}) #if(${JnjGTOrderData.billOfLading.size()} > $index) #if(${JnjGTOrderData.billOfLading.get($index)}) ${JnjGTOrderData.billOfLading.get($index)} #end #end #end</td>
+				
+				<td align="center"> #if(!${trackingKeyList.isEmpty()}) #if(${trackingKeyList.size()} > $index) #if(${trackingKeyList.get($index)}) ${trackingKeyList.get($index)} #end #end #end</td>
+				#set($index = $index+1)
+			</tr>
+		#end
+		#end
+		</table>
+		<br><br>
+		
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Line</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Name</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Code<br>and UPC</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Qty</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>UOM</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Status</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Item Price</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Total</strong></td>
+
+				
+			</tr>
+			#set($index = 1)
+			#foreach($entry in $JnjGTOrderData.entries)
+			<tr>
+			
+				<td align="center">#if(${entry.sapOrderlineNumber}) ${index}  #end</td>
+				<td align="center">#if(${entry.product.name}) ${entry.product.name} #end</td>
+				
+				<td><strong>ID:</strong>${entry.product.baseMaterialNumber}<br>
+				<strong>UPC:</strong>#if(${entry.product.upc}) ${entry.product.upc} #end</td>
+				
+				<td align="center">${entry.quantity}</td>
+				
+				<td>
+				#if(!${entry.materialNumber})  ${entry.product.deliveryUnit}
+								(${entry.product.numerator} &nbsp; ${entry.product.salesUnit}) #end
+				</td>
+						
+				<td align="center">#if(${entry.status}) ${entry.status}<br> #end #if(${entry.rejectionReason})( ${entry.rejectionReason} ) #end </td>
+				<td align="right">#if(${entry.basePrice.formattedValue}) ${entry.basePrice.formattedValue} #end</td>
+				<td align="right">#if(${entry.totalPrice.formattedValue}) ${entry.totalPrice.formattedValue} #end</td>
+ 
+			</tr>
+			#set($index = $index+1)
+			#end
+		</table>
+		<table width="810" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+			<td align="right">Sub-Total: ${JnjGTOrderData.totalNetValue.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right">Taxes: ${JnjGTOrderData.totalTax.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right"><strong>Order Total: ${JnjGTOrderData.totalPrice.formattedValue}</strong></td>
+			</tr>
+		</table>
+	
+	
+	#end
+</body>
+</html>

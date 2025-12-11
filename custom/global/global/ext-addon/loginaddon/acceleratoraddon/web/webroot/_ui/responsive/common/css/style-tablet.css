@@ -1,0 +1,77 @@
+
+@media only screen and (max-width:1024px){
+	#content-area{
+        width:100%;
+       }
+    #jnj-usr-details-menu{
+                                width:31%;
+                }
+	.no-padding,.no-padding-menu{
+		padding:0px 15px 0px 15px;
+	}
+	
+	#logo{
+		height:40px;
+	}
+	#Menu{
+		padding:0px;
+	}
+	#usr-details-row{
+		padding:0px 15px 0px 15px;
+
+	}
+	#usr-details-menu-row{
+		position:absolute;
+		z-index:100;
+		width:100%;
+		//margin-top:85px;
+	}
+	.full-height{
+		height:auto;
+	}
+	#hamburg-btn {
+		margin-top: 25px !important;
+		width: 40px;
+		position: absolute;
+		z-index: 101;
+		margin-left: 15px;
+		display:block;
+	}
+	#jnj-menu{
+		display:none;
+		
+	}
+	#usr-details {
+		padding-left: 60px;
+
+	}
+	
+	#logo{
+		margin-left:50px;
+	}
+	#global-search-txt-holder{
+		display:none;
+	}
+	#menu-pointer{
+		display:block;
+	}
+	#global-search-mobile  .glyphicon-search{
+		//margin-left:-2px;margin-top:3px
+	}
+	#global-search-mobile{
+		display:block;
+	}
+	.usr-name-padding {
+		padding: 19px 35px 20px 35px;
+	}
+	#menu-list{
+		padding-left: 45px !important;
+	}
+	/* .usr-name-padding{
+		padding:5px 20px 20px 15px;
+	}
+	.usr-address-padding{
+		padding:20px 35px 35px 35px;
+	} */
+
+} 

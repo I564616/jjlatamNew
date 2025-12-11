@@ -1,0 +1,1 @@
+Account Approval For Customer : ${ctx.addAccountEmailMap['email']}

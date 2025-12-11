@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hybrisconfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="resources/schemas/extensions.xsd">
+	<extensions>
+		<!-- 
+				All extensions located in ${HYBRIS_BIN_DIR}/platform/ext are automatically loaded. 
+				More information about how to configure available extensions can be found here : https://wiki.hybris.com/x/nZVzC
+		-->
+				
+		<path dir="${HYBRIS_BIN_DIR}" />
+		<path dir="${HYBRIS_BIN_DIR}/custom/global" />
+		<!-- <path dir="${HYBRIS_BIN_DIR}/custom/regional/emea" /> -->
+										
+		<!-- ext-platform -->
+		<extension name="admincockpit" />
+		<extension name="backoffice" />
+		<extension name="cockpit" />
+		<extension name="hmc" />
+		<extension name="mcc" />
+		<extension name="platformhmc" />
+										
+		<!-- ext-commerce -->
+		<extension name="btg" />
+		<extension name="btgcockpit" />
+		<extension name="commercesearch" />
+		<extension name="commercesearchbackoffice" />
+		<extension name="commercesearchhmc" />
+		<extension name="commerceservices" />
+		<extension name="basecommerce" />
+		<extension name="payment" />
+		<extension name="promotions" />
+		<extension name="voucher" />
+		<extension name="customerreview" />
+		<extension name="ticketsystem" />
+		<extension name="solrfacetsearch" />
+		<extension name="solrfacetsearchhmc" />
+		<extension name="solrserver" />
+		<extension name="b2bcommerce" />
+		<extension name="b2bapprovalprocess" />
+		<extension name="b2badmincockpit" />
+		<extension name="commercefacades" />
+		<extension name="solrserver" />
+										
+		<!-- ext-data -->
+		<!-- 
+		<extension name="commercesearchsampledata" />
+		<extension name="b2bacceleratorsampledata" />
+		-->
+										
+		<!-- ext-content -->
+		<extension name="productcockpit" />
+		<extension name="cms2" />
+		<extension name="cms2lib" />
+
+										
+		<!-- ext-channel -->
+		<extension name="cscockpit" />
+
+										
+		<!-- ext-template -->
+										
+		<!-- ext-addon -->
+		<extension name="addonsupport" />
+         
+												
+		<!-- ext-accelerator -->
+	 
+		<extension name="acceleratorservices" />
+		<extension name="acceleratorfacades" />
+		<extension name="acceleratorcms" />
+		<extension name="acceleratorstorefrontcommons" />
+		<extension name="b2bacceleratorfacades" />
+		<extension name="b2bacceleratorservices" />
+		
+		<extension name="jnjb2bglobalcore"/>
+		<extension name="jnjb2bglobalstorefront"/>
+		<extension name="jnjb2bglobalcockpits"/>
+		<extension name="jnjb2bglobalfacades"/>
+		
+		<extension name="jnjb2bstore"/>
+		<extension name="loginaddon"/>
+		
+        <extension name="jnjcommon"/>
+		
+		<extension name="jnjb2bcore"/>
+		<extension name="jnjb2bfacades"/>
+		<extension name="jnjb2boutboundservice"/>
+		 
+		 <extension name="jnjgtb2boutboundservice"/>
+		<!--<extension name="jnjnab2binboundservice"/>
+		 <extension name="jnjnab2boutboundservice"/>
+		-->
+		
+		<!--<extension name="jnjnab2bcronjob"/>  -->
+		<extension name="jnjgtb2bcronjob"/>
+		<extension name="jnjgtb2binboundservice"/>
+		<extension name="jnjutil"/>
+		
+		<extension dir="${HYBRIS_BIN_DIR}/custom/global/ext-addon/jnjglobalreports"/>
+		<extension dir="${HYBRIS_BIN_DIR}/custom/global/ext-addon/jnjb2bbrowseandsearch"/>
+		<extension dir="${HYBRIS_BIN_DIR}/custom/global/ext-addon/jnjb2bglobalordertemplate"/>
+		<extension dir="${HYBRIS_BIN_DIR}/custom/global/ext-addon/jnjglobalresources"/>
+		<extension dir="${HYBRIS_BIN_DIR}/custom/global/ext-addon/jnjglobalprofile"/>
+		<extension dir="${HYBRIS_BIN_DIR}/custom/global/ext-addon/cartandcheckoutaddon"/>
+		<extension name="jnjglobalsinglesignon"/>
+		<extension name="samlsinglesignon"/>
+	 
+		
+	</extensions>
+</hybrisconfig>

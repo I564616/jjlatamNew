@@ -1,0 +1,59 @@
+# ImpEx for Importing Categories into J&J Store
+
+# Macros / Replacement Parameter definitions
+$productCatalog=mddProductCatalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$supercategories=supercategories(code[unique=true], $catalogVersion)
+
+
+# Insert Categories at Level 1
+INSERT_UPDATE Category;code[unique=true];$supercategories;$catalogVersion;allowedPrincipals(uid);displayProducts[default='false']
+;Categories;;;customergroup
+;MDD;Categories;;customergroup
+;Pharma;Categories;;customergroup
+;DefaultCategory;Categories;;;
+
+
+INSERT_UPDATE Category;code[unique=true];$supercategories;$catalogVersion;allowedPrincipals(uid)[default='customergroup'];displayProducts[default='false']
+;0001;MDD;;
+;0002;MDD;;
+;0003;MDD;;
+;0004;MDD;;
+;0006;MDD;;
+;0007;MDD;;
+;0008;MDD;;
+;0010;MDD;;
+;0011;MDD;;
+;0012;MDD;;
+;0013;MDD;;
+;0550;MDD;;
+
+;0510;MDD;;
+;0520;MDD;;
+;0530;MDD;;
+;0585;MDD;;
+;1236;MDD;;
+;0670;MDD;;
+;0295;MDD;;
+;0630;MDD;;
+
+;G034;Pharma;;
+;G001;Pharma;;
+;G002;Pharma;;
+;G003;Pharma;;
+;G004;Pharma;;
+;G005;Pharma;;
+;G006;Pharma;;
+;G007;Pharma;;
+;G008;Pharma;;
+;G010;Pharma;;
+;G014;Pharma;;
+;G015;Pharma;;
+;G016;Pharma;;
+;G017;Pharma;;
+;G018;Pharma;;
+;G024;Pharma;;
+;G011;Pharma;;
+;G012;Pharma;;
+;G013;Pharma;;
+;G033;Pharma;;

@@ -1,0 +1,383 @@
+$contentCatalog=mstrContCatalog
+$contentCV=catalogVersion(catalog(id[default=$contentCatalog]),version[default='Staged'])
+
+$jarResourceCms=jar:com.jnj.b2b.consumer.store.setup.JnjB2BConsStoreSystemSetup&/consumerstore/import/consumer/cockpits/cmscockpit
+$emailResource=jar:com.jnj.b2b.consumer.store.setup.JnjB2BConsStoreSystemSetup&/consumerstore/import/consumer/contentCatalogs/jnjContentCatalog/emails
+$mediaResource=jar:com.jnj.b2b.consumer.store.setup.JnjB2BConsStoreSystemSetup&/consumerstore/import/consumer/contentCatalogs/jnjContentCatalog
+
+
+# Media for NA
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];mime;realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];altText
+;;newSiteLogoImage1;text/jpeg;newSiteLogoImage1;$mediaResource/media/newlogo1.jpg;J&J Logo
+;;newSiteLogoImage2;text/jpeg;newSiteLogoImage2;$mediaResource/media/newlogo2.jpg;J&J Logo
+
+
+
+	INSERT_UPDATE EmailPageTemplate;$contentCV[unique=true];uid[unique=true];name;active;frontendTemplateName;subject(code);htmlTemplate(code);restrictedPageTypes(code)
+	;;RegisterUserEmailTemplate;Register User Email Template;true;RegisterUserEmailTemplate;email_Register_User_Subject;email_Register_User_Body;EmailPage
+	;;RegisterConfirmationEmailTemplate;Register Confirmation Email Template;true;RegisterConfirmationEmailTemplate;email_Register_Confirmation_Subject;email_Register_Confirmation_Body;EmailPage
+	;;AddAccountEmailTemplate;Add Account Email Template;true;addAccountEmailTemplate;email_Add_Account_Subject;email_Add_Account_Body;EmailPage
+	;;supervisorApprovalEmailTemplate;Supervisor Approval Email Template;true;supervisorApprovalEmailTemplate;email_Supervisor_Approval_Subject;email_Supervisor_Approval_Body;EmailPage
+	;;AddExisitingAccountCSREmailTemplate;Add Exisiting Account CSREmail Template;true;AddExisitingAccountCSREmailTemplate;email_Add_Existing_CSRAccount_Subject;email_Add_Existing_CSRAccount_Body;EmailPage
+	;;AddExisitingAccountUSEREmailTemplate;Add ExisitingAccount USEREmail Template;true;AddExisitingAccountUSEREmailTemplate;email_Add_Existing_USERAccount_Subject;email_Add_Existing_USERAccount_Body;EmailPage
+	;;ContactUsEmailTemplate;Contact Us Email Template;true;ContactUsEmailTemplate;email_ContactUs_Subject;email_ContactUs_Body;EmailPage
+	;;ApprovedCompleteProfileEmail;Approved Complete Profile Email Template;true;ApprovedCompleteProfileEmail;email_approvedCompleteProfile_Subject;email_approvedCompleteProfile_Body;EmailPage
+	;;ApprovedInCompleteProfileEmail;Approved In Complete Profile Email Template;true;ApprovedInCompleteProfileEmail;email_approvedInCompleteProfile_Subject;email_approvedInCompleteProfile_Body;EmailPage
+	;;RejectUserEmailTemplate;Reject User Email Template;true;RejectUserEmailTemplate;email_rejectUserEmail_Subject;email_rejectUserEmail_Body;EmailPage
+	;;DisablingUserLoginEmailTemplate;Disabling User Login Email Template;true;DisablingUserLoginEmailTemplate;email_Disabling_User_Login_Subject;email_Disabling_User_Login_Body;EmailPage	
+	;;ProfilePasswordExpiryEmailTemplate;ProfilePasswordExpiry Email Template;true;ProfilePasswordExpiryEmailTemplate;email_ProfilePasswordExpiry_Subject;email_ProfilePasswordExpiry_Body;EmailPage
+	;;JnjGTDisputeInquiryEmailTemplate;Dispute Inquiry Email Template;true;JnjGTDisputeInquiryEmailTemplate;email_Dispute_Inquiry_Subject;email_Dispute_Inquiry_Body;;EmailPage
+	;;CartOrderConfirmationUSEREmailTemplate;Cart Order Confirmation USEREmail Template;true;CartOrderConfirmationUSEREmailTemplate;email_Cart_Order_Confirmation_USER_Subject;email_Cart_Order_Confirmation_USER_Body;EmailPage
+	;;JnjGTOrderStatusValidationEmailTemplate;Order Status Validation Email Template;true;JnjGTOrderStatusValidationEmailTemplate;email_Order_Status_Validation_Subject;email_Order_Status_Validation_Body;;EmailPage
+	;;JnjOrderStatusNotificationEmailTemplate;Sync Order Notification Email Template;true;JnjOrderStatusNotificationEmailTemplate;email-orderStatusNotificationSubject;email-orderStatusNotificationBody;EmailPage
+	;;ExportCatalogEmailTemplate;Export Catalog Email Template;true;ExportCatalogEmailTemplate;email_Export_Catalog_Subject;email_Export_Catalog_Body;EmailPage
+	;;JnjGTOrderShipmentEmailTemplate;Order Shipment Email Template;true;JnjGTOrderShipmentEmailTemplate;email_orderShipmentEmail_Subject;email_orderShipmentEmail_Body;;EmailPage
+	;;JnjGTCutNotificationEmailTemplate;Cut Notification Email Template;true;JnjGTCutNotificationEmailTemplate;email_cutNotificationEmail_Subject;email_cutNotificationEmail_Body;;EmailPage
+	;;JnjGTBackorderEmailTemplate;Backorder Email Template;true;JnjGTBackorderEmailTemplate;email_backorderEmail_Subject;email_backorderEmail_Body;;EmailPage
+	
+	UPDATE EmailPageTemplate;$contentCV[unique=true];uid[unique=true];velocityTemplate[translator=de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]
+    ;;RegisterUserEmailTemplate;$jarResourceCms/structure-view/structure_RegisterUserEmailTemplate.vm
+    ;;RegisterConfirmationEmailTemplate;$jarResourceCms/structure-view/structure_RegisterUserEmailTemplate.vm
+    ;;AddAccountEmailTemplate;$jarResourceCms/structure-view/structure_addAccountEmailTemplate.vm
+	;;supervisorApprovalEmailTemplate;$jarResourceCms/structure-view/structure_RegisterUserEmailTemplate.vm
+	;;AddExisitingAccountCSREmailTemplate;$jarResourceCms/structure-view/structure_addExistingAccountCSREmailTemplate.vm
+	;;AddExisitingAccountUSEREmailTemplate;$jarResourceCms/structure-view/structure_addExistingAccountUSEREmailTemplate.vm
+	;;ContactUsEmailTemplate;$jarResourceCms/structure-view/structure_contactUsEmailTemplate.vm
+	;;ApprovedCompleteProfileEmail;$jarResourceCms/structure-view/structure_approvedCompleteProfileEmailTemplate.vm
+	;;ApprovedInCompleteProfileEmail;$jarResourceCms/structure-view/structure_approvedInCompleteProfileEmailTemplate.vm
+	;;RejectUserEmailTemplate;$jarResourceCms/structure-view/structure_rejectUserEmailTemplate.vm
+	;;DisablingUserLoginEmailTemplate;$jarResourceCms/structure-view/structure_disablingUserLoginEmailTemplate.vm
+	;;ProfilePasswordExpiryEmailTemplate;$jarResourceCms/structure-view/structure_profilePasswordExpiryEmailTemplate.vm
+	;;CartOrderConfirmationUSEREmailTemplate;$jarResourceCms/structure-view/structure_cartOrderConfirmationUSEREmailTemplate.vm
+	;;JnjOrderStatusNotificationEmailTemplate;$jarResourceCms/structure-view/structure_orderStatusNotificationEmailTemplate.vm
+	;;ExportCatalogEmailTemplate;$jarResourceCms/structure-view/structure_exportCatalogEmailTemplate.vm
+	
+	
+	INSERT_UPDATE EmailPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);defaultPage;approvalStatus(code)[default='approved'];fromEmail[lang=en];fromName[lang=en]
+	;;RegisterUserEmailPage;Register User Email Page;RegisterUserEmailTemplate;true;;;
+	;;RegisterConfirmationEmailPage;Register Confirmation Email Page;RegisterConfirmationEmailTemplate;true;;;
+	;;AddAccountEmailPage;Add Account Email Page;AddAccountEmailTemplate;true;;;
+	;;SupervisorApprovalEmailPage;Supervisor Approval Email Page;supervisorApprovalEmailTemplate;true;;;
+	;;AddExistngAccountCsrEmailPage;Add ExistingAccount Email Page;AddExisitingAccountCSREmailTemplate;true;;;
+	;;AddExistngAccountUserEmailPage;Add ExistingAccount Email Page;AddExisitingAccountUSEREmailTemplate;true;;;
+	;;ContactUsEmailPage;Contact Us Email Page;ContactUsEmailTemplate;true;;;
+	;;ApprovedCompleteProfileEmailEmailPage;Approved Complete Profile Email Page;ApprovedCompleteProfileEmail;true;;;
+	;;ApprovedInCompleteProfileEmailPage;Approved In Complete Profile Email Page;ApprovedInCompleteProfileEmail;true;;;
+	;;RejectUserEmailPage;Reject User Email Page;RejectUserEmailTemplate;true;;;
+	;;DisablingUserLoginEmailPage;Disabling User Login Email Page;DisablingUserLoginEmailTemplate;true;;;
+	;;ProfilePasswordExpiryEmailPage;ProfilePasswordExpiry Email Page;ProfilePasswordExpiryEmailTemplate;true;;;
+	;;DisputeInquiryEmailPagee;Dispute Inquiry Email Page;JnjGTDisputeInquiryEmailTemplate;true;;;
+	;;CartOrderConfirmationUserEmailPage;Cart Order Confirmation Email Page;CartOrderConfirmationUSEREmailTemplate;true;;;
+	;;OrderStatusValidationEmailPagee;Order Status Validation Email Page;JnjGTOrderStatusValidationEmailTemplate;true;;;
+	;;JnjOrderStatusNotificationEmailPage;Sync Order Notification Email Page;JnjOrderStatusNotificationEmailTemplate;true;;customerservices@jnj.com;Customer Services Team
+	;;ExportCatalogEmailPage;Export Catalog Email Page;ExportCatalogEmailTemplate;true;;;
+    #;;JnjGTOrderShipmentEmailPage;Order Shipment Email Page;JnjGTOrderShipmentEmailTemplate;true;;csr@jnj.com;Customer Support
+	#;;JnjGTCutNotificationEmailPage;Cut Notification Email Page;JnjGTCutNotificationEmailTemplate;true;;;
+	#;;JnjGTBackorderEmailPage;Backorder Email Page;JnjGTBackorderEmailTemplate;true;
+	;;JnjGTOrderShipmentEmailPage;Order Shipment Email Page;JnjGTOrderShipmentEmailTemplate;true;;csr@jnj.com;Customer Support
+	;;JnjGTCutNotificationEmailPage;Cut Notification Email Page;JnjGTCutNotificationEmailTemplate;true;;;
+	;;JnjGTBackorderEmailPage;Backorder Email Page;JnjGTBackorderEmailTemplate;true;
+	
+	INSERT_UPDATE RendererTemplate;code[unique=true];contextClass;rendererType(code)[default='velocity']
+	;email_Register_User_Body;com.jnj.facades.process.email.context.JnjGTSuccessfulRegistrationEmailContext
+	;email_Register_User_Subject;com.jnj.facades.process.email.context.JnjGTSuccessfulRegistrationEmailContext
+	;email_Register_Confirmation_Body;com.jnj.facades.process.email.context.JnjGTRegistrationConfirmationEmailContext
+	;email_Register_Confirmation_Subject;com.jnj.facades.process.email.context.JnjGTRegistrationConfirmationEmailContext
+	;email_Add_Account_Body;com.jnj.facades.process.email.context.JnjGTAddAccountEmailContext
+	;email_Add_Account_Subject;com.jnj.facades.process.email.context.JnjGTAddAccountEmailContext
+	;email_Supervisor_Approval_Body;com.jnj.facades.process.email.context.JnjGTSupervisorApprovalEmailContext
+	;email_Supervisor_Approval_Subject;com.jnj.facades.process.email.context.JnjGTSupervisorApprovalEmailContext
+	;email_Add_Existing_CSRAccount_Body;com.jnj.facades.process.email.context.JnjGTAddExistingAccountEmailContext
+	;email_Add_Existing_CSRAccount_Subject;com.jnj.facades.process.email.context.JnjGTAddExistingAccountEmailContext
+	;email_Add_Existing_USERAccount_Body;com.jnj.facades.process.email.context.JnjGTAddExistingAccountEmailContext
+	;email_Add_Existing_USERAccount_Subject;com.jnj.facades.process.email.context.JnjGTAddExistingAccountEmailContext
+	;email_ContactUs_Body;com.jnj.facades.process.email.context.JnjGTContactUsEmailContext
+	;email_ContactUs_Subject;com.jnj.facades.process.email.context.JnjGTContactUsEmailContext
+	;email_approvedCompleteProfile_Body;com.jnj.facades.process.email.context.JnjGTApprovedUserEmailContext
+	;email_approvedCompleteProfile_Subject;com.jnj.facades.process.email.context.JnjGTApprovedUserEmailContext
+	;email_approvedInCompleteProfile_Body;com.jnj.facades.process.email.context.JnjGTApprovedUserEmailContext
+	;email_approvedInCompleteProfile_Subject;com.jnj.facades.process.email.context.JnjGTApprovedUserEmailContext
+	;email_rejectUserEmail_Body;com.jnj.facades.process.email.context.JnjGTRejectUserEmailContext
+	;email_rejectUserEmail_Subject;com.jnj.facades.process.email.context.JnjGTRejectUserEmailContext
+	;email_Disabling_User_Login_Body;com.jnj.facades.process.email.context.JnjGTDisableUserLoginEmailContext
+	;email_Disabling_User_Login_Subject;com.jnj.facades.process.email.context.JnjGTDisableUserLoginEmailContext
+    ;email_ProfilePasswordExpiry_Subject;com.jnj.facades.process.email.context.JnjGTProfilePasswordExpiryEmailContext
+    ;email_ProfilePasswordExpiry_Body;com.jnj.facades.process.email.context.JnjGTProfilePasswordExpiryEmailContext
+    ;email_Dispute_Inquiry_Subject;com.jnj.facades.process.email.context.JnjGTDisputeInquiryEmailContext
+	;email_Dispute_Inquiry_Body;com.jnj.facades.process.email.context.JnjGTDisputeInquiryEmailContext
+    ;email_Cart_Order_Confirmation_USER_Body;com.jnj.facades.process.email.context.JnjGTCartOrderConfirmationEmailContext
+	;email_Cart_Order_Confirmation_USER_Subject;com.jnj.facades.process.email.context.JnjGTCartOrderConfirmationEmailContext
+	;email_Order_Status_Validation_Subject;com.jnj.facades.process.email.context.JnjGTOrderStatusValidationEmailcontext
+	;email_Order_Status_Validation_Body;com.jnj.facades.process.email.context.JnjGTOrderStatusValidationEmailcontext
+	;email-orderStatusNotificationSubject;com.jnj.facades.process.email.context.JnjOrderStatusNotificationEmailContext
+	;email-orderStatusNotificationBody;com.jnj.facades.process.email.context.JnjOrderStatusNotificationEmailContext
+	;email_Export_Catalog_Body;com.jnj.facades.process.email.context.JnjGTExportCatalogEmailContext
+	;email_Export_Catalog_Subject;com.jnj.facades.process.email.context.JnjGTExportCatalogEmailContext
+	;email_orderShipmentEmail_Subject;com.jnj.facades.process.email.context.JnjGTOrderShipmentEmailContext
+	;email_orderShipmentEmail_Body;com.jnj.facades.process.email.context.JnjGTOrderShipmentEmailContext
+	;email_backorderEmail_Subject;com.jnj.facades.process.email.context.JnjGTBackOrderEmailContext
+	;email_backorderEmail_Body;com.jnj.facades.process.email.context.JnjGTBackOrderEmailContext
+	;email_cutNotificationEmail_Subject;com.jnj.facades.process.email.context.JnjGTCutNotificationEmailContext
+	;email_cutNotificationEmail_Body;com.jnj.facades.process.email.context.JnjGTCutNotificationEmailContext
+
+	UPDATE RendererTemplate;code[unique=true];description[lang=en];templateScript[lang=en,translator=de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]
+	;email_Register_User_Subject;"Register User Email Subject";$emailResource/email-registerUserEmailSubject.vm
+	;email_Register_User_Body;"Register User Email Body";$emailResource/email-registerUserEmailBody.vm
+	;email_Export_Catalog_Subject;"Export Catalog Email Subject";$emailResource/email-exportCatalogEmailSubject.vm
+	;email_Export_Catalog_Body;"Export Catalog Email Body";$emailResource/email-exportCatalogEmailBody.vm
+	;email_Register_Confirmation_Subject;"Register Confirmation Email Subject";$emailResource/email-registerConfirmationEmailSubject.vm
+	;email_Register_Confirmation_Body;"Register Confirmation Email Body";$emailResource/email-registerConfirmationEmailBody.vm
+	;email_Add_Account_Body;"Add Account Email";$emailResource/email-addAccountEmailBody.vm
+	;email_Add_Account_Subject;"Add Account Email";$emailResource/email-addAccountEmailSubject.vm
+	;email_Supervisor_Approval_Subject;"Approval Subject Email Subject";$emailResource/email-supervisorApprovalEmailSubject.vm
+	;email_Supervisor_Approval_Body;"Approval Subject Email Body";$emailResource/email-supervisorApprovalEmailBody.vm
+	;email_Add_Existing_CSRAccount_Body;"Add ExistingAccount Email";$emailResource/email-addExistingAccountEmailCSRBody.vm
+	;email_Add_Existing_CSRAccount_Subject;"Add ExistingAccount Email";$emailResource/email-addExistingAccountEmailCSRSubject.vm
+	;email_Add_Existing_USERAccount_Body;"Add ExistingAccount Email";$emailResource/email-addExistingAccountEmailUSERBody.vm
+	;email_Add_Existing_USERAccount_Subject;"Add ExistingAccount Email";$emailResource/email-addExistingAccountEmailUSERSubject.vm
+	;email_ContactUs_Body;"Contact Us Email";$emailResource/email-contactUsEmailBody.vm
+	;email_ContactUs_Subject;"Contact Us Email";$emailResource/email-contactUsEmailSubject.vm
+	;email_approvedCompleteProfile_Body;"Approved Complete Profile Email";$emailResource/email-approvedCompleteProfileEmailBody.vm
+	;email_approvedCompleteProfile_Subject;"Approved Complete Profile Email";$emailResource/email-approvedCompleteProfileEmailSubject.vm
+	;email_approvedInCompleteProfile_Body;"Approved In Complete Profile Email";$emailResource/email-approvedInCompleteProfileEmailBody.vm
+	;email_approvedInCompleteProfile_Subject;"Approved  In Complete Profile Email";$emailResource/email-approvedInCompleteProfileEmailSubject.vm
+	;email_rejectUserEmail_Body;"Reject User Email";$emailResource/email-rejectUserEmailBody.vm
+	;email_rejectUserEmail_Subject;"Reject User Email";$emailResource/email-rejectUserEmailSubject.vm
+	;email_Disabling_User_Login_Body;"Disabling User Account Email";$emailResource/email-disableUserLoginEmailCSRBody.vm
+	;email_Disabling_User_Login_Subject;"Add ExistingAccount Email";$emailResource/email-disableUserLoginEmailCSRSubject.vm
+	;email_ProfilePasswordExpiry_Subject;" Password Expiration Email";$emailResource/email-ProfilePasswordExpiryEmailSubject.vm
+    ;email_ProfilePasswordExpiry_Body;"Password Expiration Email";$emailResource/email-ProfilePasswordExpiryEmailBody.vm
+    ;email_Dispute_Inquiry_Subject;"Dispute Inquiry Email Subject";$emailResource/email-disputeInquiryEmailSubject.vm
+	;email_Dispute_Inquiry_Body;"Dispute Inquiry Email Subject";$emailResource/email-disputeInquiryEmailBody.vm
+	;email_Cart_Order_Confirmation_USER_Body;"Cart Order Confirmation Email";$emailResource/email-cartOrderConfirmationEmailUSERBody.vm
+	;email_Cart_Order_Confirmation_USER_Subject;"Cart Order Confirmation Email";$emailResource/email-cartOrderConfirmationEmailUSERSubject.vm
+	;email_Order_Status_Validation_Subject;"Order Status Validation Email Subject";$emailResource/email-ordStatusValidationEmailSubject.vm
+	;email_Order_Status_Validation_Body;"Order Status Validation Email Subject";$emailResource/email-ordStatusValidationEmailBody.vm
+	;email-orderStatusNotificationSubject;"Order Status Notification Email Subject";$emailResource/email-orderStatusNotificationSubject.vm
+	;email-orderStatusNotificationBody;"Order Status Notification Email Body";$emailResource/email-orderStatusNotificationBody.vm
+	;email_orderShipmentEmail_Subject;"Order Shipment Email Subject";$emailResource/email-orderShipmentEmailSubject.vm
+	;email_orderShipmentEmail_Body;"Order Shipment Email Subject";$emailResource/email-orderShipmentEmailBody.vm
+	;email_cutNotificationEmail_Subject;"Cut Notification Email Subject";$emailResource/email-cutNotificationSubject.vm
+	;email_cutNotificationEmail_Body;"Cut Notification Email Subject";$emailResource/email-cutNotificationBody.vm
+	;email_backorderEmail_Subject;"Backorder Email Subject";$emailResource/email-backOrderEmailSubject.vm
+	;email_backorderEmail_Body;"Backorder Email Subject";$emailResource/email-backOrderEmailBody.vm
+	
+	
+	# Content Slot For Template for Email Templates for PCM
+	INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+	;;SiteLogo-ContactUsEmail;SiteLogo;ContactUsEmailTemplate;EmailSiteLogoSlot;true
+	#####DEFECT 34948 START##########
+	;;SiteLogo-RegisterUserEmail;SiteLogo;RegisterUserEmailTemplate;EmailSiteLogoSlot;true
+	;;SiteLogo-RegisterConfirmationEmail;SiteLogo;RegisterConfirmationEmailTemplate;EmailSiteLogoSlot;true
+	;;SiteLogo-AddAccountEmaill;SiteLogo;AddAccountEmailTemplate;EmailSiteLogoSlot;true
+	;;SiteLogo-supervisorApprovalEmail;SiteLogo;supervisorApprovalEmailTemplate;EmailSiteLogoSlot;true
+	;;SiteLogo-AddExisitingAccountCSREmail;SiteLogo;AddExisitingAccountCSREmailTemplate;EmailSiteLogoSlot;true
+	;;SiteLogo-AddExisitingAccountUSEREmail;SiteLogo;AddExisitingAccountUSEREmailTemplate;EmailSiteLogoSlot;true
+	;;SiteLogo-ApprovedCompleteProfileEmail;SiteLogo;ApprovedCompleteProfileEmail;EmailSiteLogoSlot;true
+	;;SiteLogo-RejectUserEmail;SiteLogo;RejectUserEmailTemplate;EmailSiteLogoSlot;true
+	;;EmailImageLogoOne-DisablingUserLoginEmail;EmailImageLogoOne;DisablingUserLoginEmailTemplate;EpicEmailSiteLogoSlotOne;true
+	;;EmailImageLogoTwo-DisablingUserLoginEmail;EmailImageLogoTwo;DisablingUserLoginEmailTemplate;EpicEmailSiteLogoSlotTwo;true
+	;;EmailFooter-DisablingUserLoginEmail;EpicEmailFooter;DisablingUserLoginEmailTemplate;EpicEmailFooterSlot;true
+	;;SiteLogo-ProfilePasswordExpiryEmail;SiteLogo;ProfilePasswordExpiryEmailTemplate;EmailSiteLogoSlot;true
+	;;SiteLogo-CartOrderConfirmationUSEREmail;SiteLogo;CartOrderConfirmationUSEREmailTemplate;EmailSiteLogoSlot;true
+	;;EmailImageLogoOne-JnjOrderStatusNotificationEmail;EmailImageLogoOne;JnjOrderStatusNotificationEmailTemplate;EpicEmailSiteLogoSlotOne;true
+	;;EmailImageLogoTwo-JnjOrderStatusNotificationEmail;EmailImageLogoTwo;JnjOrderStatusNotificationEmailTemplate;EpicEmailSiteLogoSlotTwo;true
+	;;EmailImageLogoOne-ExportCatalogEmail;EmailImageLogoOne;ExportCatalogEmailTemplate;EpicEmailSiteLogoSlotOne;true
+	;;EmailImageLogoTwo-ExportCatalogEmail;EmailImageLogoTwo;ExportCatalogEmailTemplate;EpicEmailSiteLogoSlotTwo;true
+	;;EmailFooter-ExportCatalogEmail;EpicEmailFooter;ExportCatalogEmailTemplate;EpicEmailFooterSlot;true
+	;;EmailImageLogoOne-OrderShipmentEmail;EmailImageLogoOne;JnjGTOrderShipmentEmailTemplate;EpicEmailSiteLogoSlotOne;true
+	;;EmailImageLogoTwo-OrderShipmentEmail;EmailImageLogoTwo;JnjGTOrderShipmentEmailTemplate;EpicEmailSiteLogoSlotTwo;true
+	;;EpicEmailFooter-OrderShipmentEmail;EpicEmailFooter;JnjGTOrderShipmentEmailTemplate;EpicEmailFooterSlot;true
+	;;EmailImageLogoOne-CutNotificationEmail;EmailImageLogoOne;JnjGTCutNotificationEmailTemplate;EpicEmailSiteLogoSlotOne;true
+	;;EmailImageLogoTwo-CutNotificationEmail;EmailImageLogoTwo;JnjGTCutNotificationEmailTemplate;EpicEmailSiteLogoSlotTwo;true
+	;;EmailFooter-CutNotificationEmail;EpicEmailFooter;JnjGTCutNotificationEmailTemplate;EpicEmailFooterSlot;true
+	;;EmailFooter-JnjOrderStatusNotificationEmail;EpicEmailFooter;JnjOrderStatusNotificationEmailTemplate;EpicEmailFooterSlot;true
+	;;EmailFooter-ContactUsEmailNotification;EpicEmailFooter;ContactUsEmailTemplate;EpicEmailFooterSlot;true
+	;;EmailFooter-AddAccountEmailNotification;EpicEmailFooter;AddAccountEmailTemplate;EpicEmailFooterSlot;true
+	;;EmailFooter-AddExisitingAccountCSREmail;EpicEmailFooter;AddExisitingAccountCSREmailTemplate;EpicEmailFooterSlot;true
+	
+	;;EmailImageLogoOne-ProfilePasswordExpiryEmail;EmailImageLogoOne;ProfilePasswordExpiryEmailTemplate;EpicEmailSiteLogoSlotOne;true
+	;;EmailImageLogoTwo-ProfilePasswordExpiryEmail;EmailImageLogoTwo;ProfilePasswordExpiryEmailTemplate;EpicEmailSiteLogoSlotTwo;true
+	;;EpicEmailFooter-ProfilePasswordExpiryEmail;EpicEmailFooter;ProfilePasswordExpiryEmailTemplate;EpicEmailFooterSlot;true
+
+	;;EmailImageLogoOne-ApprovedInCompleteProfileEmail;EmailImageLogoOne;ApprovedInCompleteProfileEmail;EpicEmailSiteLogoSlotOne;true
+	;;EmailImageLogoTwo-ApprovedInCompleteProfileEmail;EmailImageLogoTwo;ApprovedInCompleteProfileEmail;EpicEmailSiteLogoSlotTwo;true
+	;;EpicEmailFooter-ApprovedInCompleteProfileEmail;EpicEmailFooter;ApprovedInCompleteProfileEmail;EpicEmailFooterSlot;true
+	#####DEFECT 34948 END##########
+	
+	
+	
+	
+	# Banner Img Component for NA
+	INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;urlLink;media(code,$contentCV)[lang=en];
+	;;NewEmailSiteLogoComponent1;Email Site Logo Component;NewEmailSiteLogoComponent1;"/login";newSiteLogoImage1;
+	;;NewEmailSiteLogoComponent2;Email Site Logo Component;NewEmailSiteLogoComponent2;"/login";newSiteLogoImage2;
+		
+	
+	# Common Content Slots for NA
+	INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV);name;active[default=true]
+	;;EmailSiteLogoSlot;EmailSiteLogoComponent
+	;;NewEmailTopLogoSlot1;NewEmailSiteLogoComponent1
+	;;NewEmailTopLogoSlot2;NewEmailSiteLogoComponent2
+	;;EpicEmailSiteLogoSlotOne;EpicEmailSiteLogoComponentOne
+	;;EpicEmailSiteLogoSlotTwo;EpicEmailSiteLogoComponentTwo
+	;;EpicEmailFooterSlot;footerContentForEpicEmail
+	
+	# Backorder Email - Content Slots
+	INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+	;;EmailImageLogoOne-BackorderEmail;EmailImageLogoOne;JnjGTBackorderEmailTemplate;EpicEmailSiteLogoSlotOne;true
+	;;EmailImageLogoTwo-BackorderEmail;EmailImageLogoTwo;JnjGTBackorderEmailTemplate;EpicEmailSiteLogoSlotTwo;true
+	;;EpicEmailFooter-BackorderEmail;EpicEmailFooter;JnjGTBackorderEmailTemplate;EpicEmailFooterSlot;true
+	
+	# Image Component for NA
+	INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;urlLink;media(code,$contentCV)[lang=en];
+	;;EmailSiteLogoComponent;Email Site Logo Component;SiteLogoComponent;"/login";siteLogoImage;
+	;;EpicEmailSiteLogoComponentOne;Epic Email Site Logo Component One;EpicSiteLogoComponentOne;"/home";epicEmailLogoImageOne;
+	;;EpicEmailSiteLogoComponentTwo;Epic Email Site Logo Component Two;EpicSiteLogoComponentTwo;"/home";epicEmailLogoImageTwo;
+	
+	# CMS Link Components #
+	INSERT_UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];name;url;target(code)[default='newWindow'];linkName[lang=en];shiftRight[default='false']
+	;;UpdateNotificationLinkForEmail;Update Notification Preferences Link;"/my-account/emailPreferences";;Update Notification Preferences;
+	;;ContactUsLinkForEmail;Contact Us Link;"/login?contactUs=true";;Contact Us;
+	
+	
+	INSERT_UPDATE JnjEpicEmailFooterComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;content[lang=en];footerLinkComponentList(uid,$contentCV);footerParagraph
+	;;footerContentForEpicEmail;Epic Footer Content;;"<p>&nbsp;&nbsp;Johnson & Johnson Gateway, LLC | 425 Hoes Lane | Piscataway, NJ 008854<br> &nbsp;&nbsp;&nbsp;@Johnson & Johnson Gateway, LLC 2017 All Rights Reserved<br>Capitalized product names are trademarks of Johnson & Johnson or its affiliated companies.</P>";ContactUsLinkForEmail,UpdateNotificationLinkForEmail;;
+	
+	
+	INSERT_UPDATE RendererTemplate;code[unique=true];description[lang=en];templateScript[lang=en,translator=de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator];rendererType(code)[default='velocity'];contextClass
+	;mdd-deCMSsite-BannerComponent-template;CMSBannerComponent Template;$emailResource/email-bannerComponentTemplate.vm;;java.util.Map
+	;mdd-deCMSsite-CMSImageComponent-template;CMSImageComponent Template;$emailResource/email-cmsImageComponentTemplate.vm;;java.util.Map
+	;mdd-deCMSsite-CMSLinkComponent-template;CMSLinkComponent Template;$emailResource/email-cmsLinkComponentTemplate.vm;;java.util.Map
+	;mdd-deCMSsite-CMSParagraphComponent-template;CMSParagraphComponent Template;$emailResource/email-cmsParagraphComponentTemplate.vm;;java.util.Map
+	;mdd-deCMSsite-SimpleBannerComponent-template;CMSSimpleBannerComponent Template;$emailResource/email-bannerComponentTemplate.vm;;java.util.Map
+	;consEpicCMSsite-BannerComponent-template;CMSBannerComponent Template;$emailResource/email-bannerComponentTemplate.vm;;java.util.Map
+	;consEpicCMSsite-CMSImageComponent-template;CMSImageComponent Template;$emailResource/email-cmsImageComponentTemplate.vm;;java.util.Map
+	;consEpicCMSsite-CMSLinkComponent-template;CMSLinkComponent Template;$emailResource/email-cmsLinkComponentTemplate.vm;;java.util.Map
+	;consEpicCMSsite-CMSParagraphComponent-template;CMSParagraphComponent Template;$emailResource/email-cmsParagraphComponentTemplate.vm;;java.util.Map
+	;consEpicCMSsite-SimpleBannerComponent-template;CMSSimpleBannerComponent Template;$emailResource/email-bannerComponentTemplate.vm;;java.util.Map
+	;mdd-deCMSsite-JnjEpicEmailFooterComponent-template;JnjEpicEmailFooterComponent Template;$emailResource/email-jnjEpicEmailFooterComponentTemplate.vm;;java.util.Map
+	;consEpicCMSsite-JnjEpicEmailFooterComponent-template;JnjEpicEmailFooterComponent Template;$emailResource/email-jnjEpicEmailFooterComponentTemplate.vm;;java.util.Map
+	;mdd-deCMSsite-JnjEpicEmailFooterComponent-template;JnjEpicEmailFooterComponentTemplate;$emailResource/email-jnjEpicEmailFooterComponentTemplate.vm;;java.util.Map
+	;consEpicCMSsite-JnjEpicEmailFooterComponent-template;JnjEpicEmailFooterComponentTemplate;$emailResource/email-jnjEpicEmailFooterComponentTemplate.vm;;java.util.Map
+	
+	INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+	;;EmailImageLogoOne-ApprovedCompleteProfileEmail;EmailImageLogoOne;ApprovedCompleteProfileEmail;EpicEmailSiteLogoSlotOne;true
+	;;EmailImageLogoTwo-ApprovedCompleteProfileEmail;EmailImageLogoTwo;ApprovedCompleteProfileEmail;EpicEmailSiteLogoSlotTwo;true
+	;;EpicEmailFooter-ApprovedCompleteProfileEmail;EpicEmailFooter;ApprovedCompleteProfileEmail;EpicEmailFooterSlot;true
+
+
+	INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+	;;EmailImageLogoOne-supervisorApprovalEmailTemplate;EmailImageLogoOne;supervisorApprovalEmailTemplate;EpicEmailSiteLogoSlotOne;true
+	;;EmailImageLogoTwo-supervisorApprovalEmailTemplate;EmailImageLogoTwo;supervisorApprovalEmailTemplate;EpicEmailSiteLogoSlotTwo;true
+	;;EpicEmailFooter-supervisorApprovalEmailTemplate;EpicEmailFooter;supervisorApprovalEmailTemplate;EpicEmailFooterSlot;true
+	
+	
+	
+	# Bind Content Slots to Email Page Templates
+	
+	INSERT_UPDATE ContentSlotForTemplate;$contentCV;pageTemplate(uid,$contentCV)[unique=true];uid[unique=true];position[unique=true];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+	
+	;;RegisterUserEmailTemplate;NewEmailTopLogo1-RegisterUserEmailTemplate;TopContentLogo1;NewEmailTopLogoSlot1;true
+	;;RegisterUserEmailTemplate;NewEmailTopLogo2-RegisterUserEmailTemplate;TopContentLogo2;NewEmailTopLogoSlot2;true
+	;;RegisterUserEmailTemplate;EpicEmailFooter-RegisterUserEmailTemplate;EpicEmailFooter;EpicEmailFooterSlot;true
+	
+	;;RegisterConfirmationEmailTemplate;NewEmailTopLogo1-RegisterConfirmationEmailTemplate;TopContentLogo1;NewEmailTopLogoSlot1;true
+	;;RegisterConfirmationEmailTemplate;NewEmailTopLogo2-RegisterConfirmationEmailTemplate;TopContentLogo2;NewEmailTopLogoSlot2;true
+	;;RegisterConfirmationEmailTemplate;EpicEmailFooter-RegisterConfirmationEmailTemplate;EpicEmailFooter;EpicEmailFooterSlot;true
+	
+	;;AddAccountEmailTemplate;NewEmailTopLogo1-AddAccountEmailTemplate;TopContentLogo1;NewEmailTopLogoSlot1;true
+	;;AddAccountEmailTemplate;NewEmailTopLogo2-AddAccountEmailTemplate;TopContentLogo2;NewEmailTopLogoSlot2;true
+	
+	
+	;;supervisorApprovalEmailTemplate;NewEmailTopLogo1-supervisorApprovalEmailTemplate;TopContentLogo1;NewEmailTopLogoSlot1;true
+	;;supervisorApprovalEmailTemplate;NewEmailTopLogo2-supervisorApprovalEmailTemplate;TopContentLogo2;NewEmailTopLogoSlot2;true
+	;;supervisorApprovalEmailTemplate;EpicEmailFooter-supervisorApprovalEmailTemplate;EpicEmailFooter;EpicEmailFooterSlot;true
+	
+	
+	;;AddExisitingAccountCSREmailTemplate;NewEmailTopLogo1-AddExisitingAccountCSREmailTemplate;TopContentLogo1;NewEmailTopLogoSlot1;true
+	;;AddExisitingAccountCSREmailTemplate;NewEmailTopLogo2-AddExisitingAccountCSREmailTemplate;TopContentLogo2;NewEmailTopLogoSlot2;true
+
+
+	;;AddExisitingAccountUSEREmailTemplate;NewEmailTopLogo1-AddExisitingAccountUSEREmailTemplate;TopContentLogo1;NewEmailTopLogoSlot1;true
+	;;AddExisitingAccountUSEREmailTemplate;NewEmailTopLogo2-AddExisitingAccountUSEREmailTemplate;TopContentLogo2;NewEmailTopLogoSlot2;true
+	;;AddExisitingAccountUSEREmailTemplate;EpicEmailFooter-AddExisitingAccountUSEREmailTemplate;EpicEmailFooter;EpicEmailFooterSlot;true
+	
+	
+	
+	
+	;;ContactUsEmailTemplate;NewEmailTopLogo1-ContactUsEmailTemplate;TopContentLogo1;NewEmailTopLogoSlot1;true
+	;;ContactUsEmailTemplate;NewEmailTopLogo2-ContactUsEmailTemplate;TopContentLogo2;NewEmailTopLogoSlot2;true
+		
+	
+	;;ApprovedCompleteProfileEmail;NewEmailTopLogo1-ApprovedCompleteProfileEmail;TopContentLogo1;NewEmailTopLogoSlot1;true
+	;;ApprovedCompleteProfileEmail;NewEmailTopLogo2-ApprovedCompleteProfileEmail;TopContentLogo2;NewEmailTopLogoSlot2;true
+	;;ApprovedCompleteProfileEmail;EpicEmailFooter-ApprovedCompleteProfileEmail;EpicEmailFooter;EpicEmailFooterSlot;true
+	
+	
+	;;ApprovedInCompleteProfileEmail;NewEmailTopLogo1-ApprovedInCompleteProfileEmail;TopContentLogo1;NewEmailTopLogoSlot1;true
+	;;ApprovedInCompleteProfileEmail;NewEmailTopLogo2-ApprovedInCompleteProfileEmail;TopContentLogo2;NewEmailTopLogoSlot2;true
+	;;ApprovedInCompleteProfileEmail;EpicEmailFooter-ApprovedInCompleteProfileEmail;EpicEmailFooter;EpicEmailFooterSlot;true
+	
+	
+	
+	;;RejectUserEmailTemplate;NewEmailTopLogo1-RejectUserEmailTemplate;TopContentLogo1;NewEmailTopLogoSlot1;true
+	;;RejectUserEmailTemplate;NewEmailTopLogo2-RejectUserEmailTemplate;TopContentLogo2;NewEmailTopLogoSlot2;true
+	;;RejectUserEmailTemplate;EpicEmailFooter-RejectUserEmailTemplate;EpicEmailFooter;EpicEmailFooterSlot;true
+
+	;;DisablingUserLoginEmailTemplate;NewEmailTopLogo1-DisablingUserLoginEmailTemplate;TopContentLogo1;NewEmailTopLogoSlot1;true
+	;;DisablingUserLoginEmailTemplate;NewEmailTopLogo2-DisablingUserLoginEmailTemplate;TopContentLogo2;NewEmailTopLogoSlot2;true
+
+	
+	;;ProfilePasswordExpiryEmailTemplate;NewEmailTopLogo1-ProfilePasswordExpiryEmailTemplate;TopContentLogo1;NewEmailTopLogoSlot1;true
+	;;ProfilePasswordExpiryEmailTemplate;NewEmailTopLogo2-ProfilePasswordExpiryEmailTemplate;TopContentLogo2;NewEmailTopLogoSlot2;true
+
+	
+	#;;JnjNADisputeInquiryEmailTemplate;NewEmailTopLogo1-JnjNADisputeInquiryEmailTemplate;TopContentLogo1;NewEmailTopLogoSlot1;true
+	#;;JnjNADisputeInquiryEmailTemplate;NewEmailTopLogo2-JnjNADisputeInquiryEmailTemplate;TopContentLogo2;NewEmailTopLogoSlot2;true
+	#;;JnjNADisputeInquiryEmailTemplate;EpicEmailFooter-JnjNADisputeInquiryEmailTemplate;EpicEmailFooter;EpicEmailFooterSlot;true
+	;;JnjGTDisputeInquiryEmailTemplate;NewEmailTopLogo1-JnjGTDisputeInquiryEmailTemplate;TopContentLogo1;NewEmailTopLogoSlot1;true
+	;;JnjGTDisputeInquiryEmailTemplate;NewEmailTopLogo2-JnjGTDisputeInquiryEmailTemplate;TopContentLogo2;NewEmailTopLogoSlot2;true
+	;;JnjGTDisputeInquiryEmailTemplate;EpicEmailFooter-JnjGTDisputeInquiryEmailTemplate;EpicEmailFooter;EpicEmailFooterSlot;true
+	
+
+	;;CartOrderConfirmationUSEREmailTemplate;NewEmailTopLogo1-CartOrderConfirmationUSEREmailTemplate;TopContentLogo1;NewEmailTopLogoSlot1;true
+	;;CartOrderConfirmationUSEREmailTemplate;NewEmailTopLogo2-CartOrderConfirmationUSEREmailTemplate;TopContentLogo2;NewEmailTopLogoSlot2;true
+	;;CartOrderConfirmationUSEREmailTemplate;EpicEmailFooter-CartOrderConfirmationUSEREmailTemplate;EpicEmailFooter;EpicEmailFooterSlot;true
+
+
+	;;JnjGTOrderStatusValidationEmailTemplate;NewEmailTopLogo1-JnjGTOrderStatusValidationEmailTemplate;TopContentLogo1;NewEmailTopLogoSlot1;true
+	;;JnjGTOrderStatusValidationEmailTemplate;NewEmailTopLogo2-JnjGTOrderStatusValidationEmailTemplate;TopContentLogo2;NewEmailTopLogoSlot2;true
+	;;JnjGTOrderStatusValidationEmailTemplate;EpicEmailFooter-JnjGTOrderStatusValidationEmailTemplate;EpicEmailFooter;EpicEmailFooterSlot;true
+
+	#;;JnjNAOrderStatusValidationEmailTemplate;NewEmailTopLogo1-JnjNAOrderStatusValidationEmailTemplate;TopContentLogo1;NewEmailTopLogoSlot1;true
+	#;;JnjNAOrderStatusValidationEmailTemplate;NewEmailTopLogo2-JnjNAOrderStatusValidationEmailTemplate;TopContentLogo2;NewEmailTopLogoSlot2;true
+	#;;JnjNAOrderStatusValidationEmailTemplate;EpicEmailFooter-JnjNAOrderStatusValidationEmailTemplate;EpicEmailFooter;EpicEmailFooterSlot;true
+
+	
+	;;JnjOrderStatusNotificationEmailTemplate;NewEmailTopLogo1-JnjOrderStatusNotificationEmailTemplate;TopContentLogo1;NewEmailTopLogoSlot1;true
+	;;JnjOrderStatusNotificationEmailTemplate;NewEmailTopLogo2-JnjOrderStatusNotificationEmailTemplate;TopContentLogo2;NewEmailTopLogoSlot2;true
+
+
+	;;ExportCatalogEmailTemplate;NewEmailTopLogo1-ExportCatalogEmailTemplate;TopContentLogo1;NewEmailTopLogoSlot1;true
+	;;ExportCatalogEmailTemplate;NewEmailTopLogo2-ExportCatalogEmailTemplate;TopContentLogo2;NewEmailTopLogoSlot2;true
+	
+	
+	#;;JnjNAOrderShipmentEmailTemplate;NewEmailTopLogo1-JnjNAOrderShipmentEmailTemplate;TopContentLogo1;NewEmailTopLogoSlot1;true
+	#;;JnjNAOrderShipmentEmailTemplate;NewEmailTopLogo2-JnjNAOrderShipmentEmailTemplate;TopContentLogo2;NewEmailTopLogoSlot2;true
+	;;JnjGTOrderShipmentEmailTemplate;NewEmailTopLogo1-JnjGTOrderShipmentEmailTemplate;TopContentLogo1;NewEmailTopLogoSlot1;true
+	;;JnjGTOrderShipmentEmailTemplate;NewEmailTopLogo2-JnjGTOrderShipmentEmailTemplate;TopContentLogo2;NewEmailTopLogoSlot2;true
+
+	
+	#;;JnjNACutNotificationEmailTemplate;NewEmailTopLogo1-JnjNACutNotificationEmailTemplate;TopContentLogo1;NewEmailTopLogoSlot1;true
+	#;;JnjNACutNotificationEmailTemplate;NewEmailTopLogo2-JnjNACutNotificationEmailTemplate;TopContentLogo2;NewEmailTopLogoSlot2;true
+	
+	#;;JnjNABackorderEmailTemplate;NewEmailTopLogo1-JnjNABackorderEmailTemplate;TopContentLogo1;NewEmailTopLogoSlot1;true
+	#;;JnjNABackorderEmailTemplate;NewEmailTopLogo2-JnjNABackorderEmailTemplate;TopContentLogo2;NewEmailTopLogoSlot2;true
+	
+	;;JnjGTCutNotificationEmailTemplate;NewEmailTopLogo1-JnjGTCutNotificationEmailTemplate;TopContentLogo1;NewEmailTopLogoSlot1;true
+	;;JnjGTCutNotificationEmailTemplate;NewEmailTopLogo2-JnjGTCutNotificationEmailTemplate;TopContentLogo2;NewEmailTopLogoSlot2;true
+	
+	;;JnjGTBackorderEmailTemplate;NewEmailTopLogo1-JnjGTBackorderEmailTemplate;TopContentLogo1;NewEmailTopLogoSlot1;true
+	;;JnjGTBackorderEmailTemplate;NewEmailTopLogo2-JnjGTBackorderEmailTemplate;TopContentLogo2;NewEmailTopLogoSlot2;true
+	

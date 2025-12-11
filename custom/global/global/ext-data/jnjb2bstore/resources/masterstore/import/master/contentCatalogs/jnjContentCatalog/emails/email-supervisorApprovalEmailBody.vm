@@ -1,0 +1,343 @@
+## messageSource=classpath:/jnjb2bcore/messages/email-supervisorApproval_$lang.properties
+<style>
+input.span-18 {
+	border-left-width: 1px;
+    border-right-width: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+	width: 698px;
+}
+.blank_row
+{
+    height: 20px
+    background-color: #FFFFFF;
+}	
+.last {
+    margin-right: 0;
+    padding-right: 0;
+}
+.interfaceNotificationBody h2.arrowHeader span {
+    float: right;
+}
+.interfaceNotificationBody ul {
+    margin: 10px 0 20px;
+    padding-bottom: 10px;
+}
+.interfaceNotificationBody ul li {
+    clear: both;
+    margin-top: 10px;
+}
+.interfaceNotificationBody label {
+    display: block;
+}
+.interfaceNotificationBody label span {
+    color: #B41601;
+}
+.interfaceNotificationBody input[type="text"], .interfaceNotificationBody select {
+    color: #646464;
+    padding-left: 2px;
+    width: 420px;
+}
+.interfaceNotificationBody select {
+    color: #646464;
+    float: none;
+    margin-bottom: 0;
+    width: 230px;
+}
+.radioPanel label {
+    display: inline;
+}
+.radioPanel input[type="text"] {
+    display: block;
+    margin: 4px 0;
+}
+.radioPanel input[type="radio"] {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    margin-bottom: 0;
+}
+.interfaceNotificationBody input, .interfaceNotificationBody select {
+    padding: 0;
+}
+.interfaceNotificationBody select {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid #E5E5E5;
+    padding-bottom: 0;
+    padding-right: 0;
+    padding-top: 0;
+}
+.interfaceNotificationBody .buttonWrapper > input {
+    padding: 5px 15px;
+}
+h2.arrowHeader {
+    border-bottom: 1px solid #84C5D4;
+    color: #0A8CAA;
+    font-size: 16px;
+    line-height: 30px;
+    margin-bottom: 0;
+}
+.priceSmall {
+    color: #B41601;
+    font-size: 12px;
+}
+.instructiontxt {
+    color: #828282;
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+
+body {
+    line-height: 1.5;
+}
+body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section {
+    border: 0 none;
+    font-family: inherit;
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+body {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #222222;
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    font-size: 75%;
+}
+ul li {
+    color: #646464;
+    font-size: 12px;
+    list-style-type: none;
+}
+td {
+	color: #646464;
+}
+
+table.readDashboard
+{
+	background:#EEE;
+	color:#333;
+	font-size:12px;
+	font: 'Arial';
+	text-align:center;
+}
+
+table.readDashboard th
+{
+	background:#CCC;
+	font-weight:bold;
+}
+.inlineClass{display:inline;}
+.inlineClass div{display:inline;}
+</style>
+<html style="font-family: Helvetica Neue,Arial,Helvetica,sans-serif;font-size: 75%;">
+<head>
+	<title>Confirmation Email</title>
+</head>
+<body style="line-height: 1.5;font-size: 75%;font-family: Helvetica Neue,Arial,Helvetica,sans-serif;color: #222222;background: none repeat scroll 0 0 #FFFFFF;border: 0 none;font-family: inherit;font-size: 100%;font-style: inherit;font-weight: inherit;margin: 0;padding: 0;vertical-align: top;">
+	<table style="background-color:#ffffff" width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+		<tr>
+			<td style="color: #646464;vertical-align:top;">
+				<table bgcolor="#ffffff" width="900" border="0" cellspacing="0" cellpadding="0" align="center">
+					<tr>
+							<td style="color: red;" width="600" height="5" colspan="3" style="background-color:red;">
+								<div style="width:11;height:11" >&nbsp;
+							</td>
+						</tr>
+					
+						<tr bgcolor="#ffffff">
+						  <td style="color: #646464;" width="11" height="11">
+						  <div style="width:11;height:11" />
+						  </td>
+						  <td style="color: #646464;" height="11">
+								<table width="600">
+									<tr>
+										<td> ${ctx.cmsSlotContents.TopContentLogo1}</td>
+									 <td style="color: #646464;" width="290" height="11">
+										  <div style="width:290;height:11" >&nbsp;<div>
+									  </td>
+									<td> ${ctx.cmsSlotContents.TopContentLogo2}</td>
+									</tr>
+								</table>
+						  </td>
+		                  <td style="color: #646464;" width="1" height="11">
+		                         <div style="width:1;height:11" />
+		                   </td>
+		                 </tr>
+
+
+					<tr class="blank_row">	
+						<td colspan="3">&nbsp;</td>
+					</tr>
+						
+					<br>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td>
+							<h2 class="arrowHeader">
+								${ctx.messages.appReq}
+							</h2>
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td style="vertical-align:top;">
+							<br /><br />
+							<span>${ctx.messages.concern}</span>
+							<br /><br />
+							<span></span> 
+							<br /><br />
+							<span>${ctx.messages.supervisorApproval}</span>
+							<br /><br />
+							<span><b>${ctx.messages.name}</b> ${ctx.registrationDataMap['userFirstName']} #if(${ctx.registrationDataMap['userLastName']})${ctx.registrationDataMap['userLastName']}#end</span>
+							<br />
+							<span><b>${ctx.messages.busEmail}</b> ${ctx.registrationDataMap['userEmailAddress']}</span>
+							<br />
+							#if(${ctx.registrationDataMap['accountsList']})<span><b>${ctx.messages.reqAcc}</b> ${ctx.registrationDataMap['accountsList']}</span>#end
+							<br /><br/>
+							<span>${ctx.messages.thankyou}</span><br/>
+							<span>${ctx.messages.custService}</span><br/>
+							<span>${ctx.messages.jnjcust}</span>
+							<br /><br />
+								<p style="margin:5px 0; padding-left: 10px; font-size: 10px;"><font color="#666666" face="Arial, Helvetica, sans-serif">${ctx.messages.en_company}<br />
+			                     ${ctx.messages.en_addressLine1}<br />
+			                     ${ctx.messages.en_addressLine2}<br />
+			                      #if('ctx.messages.en_country'!="")
+			                    	${ctx.messages.en_country}<br />
+			                    #end
+			                    #if('ctx.messages.en_contact'!="")
+			                    	${ctx.messages.en_contact}<br />
+			                    #end</font>
+			                    </p><br />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr bgcolor="#fafafa">
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="5">
+							<div style="width:11;height:5" />
+						</td>
+						<td height="5">
+							<div style="width:578;height:5" />
+						</td>
+						<td width="11" height="5">
+							<div style="width:11;height:5" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td>
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td style="color: #646464;" width="900">
+							${ctx.cmsSlotContents.EpicEmailFooter}
+						</td>
+								</tr>
+							</table>
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

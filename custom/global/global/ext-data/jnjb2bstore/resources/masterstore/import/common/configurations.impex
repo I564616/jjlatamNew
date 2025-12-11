@@ -1,0 +1,650 @@
+INSERT_UPDATE JnjConfig;id[unique=true];description;value;key[unique=true]
+;"reportsOrderStatus";"This holds the order status enum keys for purchase analysis report query param";"CANCELLED,COMPLETED,IN_PICKING";"reportsOrderStatus"
+;"businessType";"keys for type of business dropdown";;"businessType1"
+;"businessType";"keys for type of business dropdown";;"businessType2"
+;"businessType";"keys for type of business dropdown";;"businessType3"
+;"businessType";"keys for type of business dropdown";;"businessType4"
+;"businessType";"keys for type of business dropdown";;"businessType5"
+;"businessType";"keys for type of business dropdown";;"businessType6"
+;"businessType";"keys for type of business dropdown";;"businessType7"
+;"estimatedAmount";"keys for estimatedAmount dropdown";;"estimatedAmount1"
+;"estimatedAmount";"keys for estimatedAmount dropdown";;"estimatedAmount2"
+;"estimatedAmount";"keys for estimatedAmount dropdown";;"estimatedAmount3"
+;"estimatedAmount";"keys for estimatedAmount dropdown";;"estimatedAmount4"
+;"estimatedAmount";"keys for estimatedAmount dropdown";;"estimatedAmount5"
+;"estimatedAmount";"keys for estimatedAmount dropdown";;"estimatedAmount6"
+;"purchaseProduct";"keys for purchaseProduct dropdown";;"PP1"
+;"purchaseProduct";"keys for purchaseProduct dropdown";;"PP2"
+;"purchaseProduct";"keys for purchaseProduct dropdown";;"PP3"
+;"purchaseProduct";"keys for purchaseProduct dropdown";;"PP4"
+;"purchaseProduct";"keys for purchaseProduct dropdown";;"PP5"
+;"purchaseProduct";"keys for purchaseProduct dropdown";;"PP6"
+;"purchaseProduct";"keys for purchaseProduct dropdown";;"PP7"
+;"purchaseProduct";"keys for purchaseProduct dropdown";;"PP8"
+;"purchaseProduct";"keys for purchaseProduct dropdown";;"PP9"
+;"purchaseProduct";"keys for purchaseProduct dropdown";;"PP10"
+;"purchaseProduct";"keys for purchaseProduct dropdown";;"PP11"
+;"purchaseProduct";"keys for purchaseProduct dropdown";;"PP12"
+;"divisions";"division codes";;"AS"
+;"divisions";"division codes";;"C4"
+;"divisions";"division codes";;"C1"
+;"divisions";"division codes";;"C2"
+;"divisions";"division codes";;"CO"
+;"divisions";"division codes";;"DM"
+;"divisions";"division codes";;"JT"
+;"divisions";"division codes";;"DS"
+;"divisions";"division codes";;"BA"
+;"divisions";"division codes";;"CS"
+;"divisions";"division codes";;"ED"
+;"divisions";"division codes";;"HS"
+;"divisions";"division codes";;"IN"
+;"divisions";"division codes";;"ME"
+;"divisions";"division codes";;"EH"
+;"divisions";"division codes";;"EJ"
+;"divisions";"division codes";;"ET"
+;"divisions";"division codes";;"EW"
+;"divisions";"division codes";;"WC"
+;"divisions";"division codes";;"HC"
+;"divisions";"division codes";;"Corporate"
+;"divisions";"division codes";;"Consumer"
+;"divisions";"division codes";;"CD"
+;"divisions";"division codes";;"Pharmaceutical Sector"
+;"divisions";"division codes";;"VX"
+;"consDivisions";"cons division codes";;"03,05"
+;"consDivisions";"cons division codes";;"68"
+;"consDivisions";"cons division codes";;"02,52"
+;"consDivisions";"cons division codes";;"01,07,51"
+;"consDivisions";"cons division codes";;"08"
+;"consDivisions";"cons division codes";;"04"
+;"consDivisions";"cons division codes";;"no restriction"
+;"consumerDivisons";"consumer division codes";;"Consumer Sector"
+;"consumerDivisons";"consumer division codes";;"Corporate"
+;"consumerDivisons";"consumer division codes";;"Pharmaceutical"
+;"departments";"keys for departments dropdown";;"department1"
+;"departments";"keys for departments dropdown";;"department2"
+;"departments";"keys for departments dropdown";;"department3"
+;"departments";"keys for departments dropdown";;"department4"
+;"departments";"keys for departments dropdown";;"department5"
+;"departments";"keys for departments dropdown";;"department6"
+
+#adding preferences specific to role
+#;"emailPreference";"keys for email preferences";;"emailPreference1"
+#;"emailPreference";"keys for email preferences";;"emailPreference2"
+#;"emailPreference";"keys for email preferences";;"emailPreference3"
+#;"emailPreference";"keys for email preferences";;"emailPreference4"
+#;"emailPreference";"keys for email preferences";;"emailPreference5"
+#;"emailPreference";"keys for email preferences";;"emailPreference6"
+#;"emailPreference";"keys for email preferences";;"emailPreference7"
+#;"emailPreference";"keys for email preferences";;"emailPreference8"
+#;"emailPreference";"keys for email preferences";;"emailPreference9"
+#;"emailPreference";"keys for email preferences";;"emailPreference10"
+#;"emailPreference";"keys for email preferences";;"emailPreference11"
+#;"emailPreference";"keys for email preferences";;"emailPreference12"
+#;"emailPreference";"keys for email preferences";;"emailPreference13"
+#;"emailPreference";"keys for email preferences";;"emailPreference14"
+#;"emailPreference";"keys for email preferences";;"emailPreference15"
+#;"emailPreference";"keys for email preferences";;"emailPreference16"
+
+#############
+;"viewOnlyemailPreference";"keys for email preferences";;"emailPreference1"
+;"viewOnlyemailPreference";"keys for email preferences";;"emailPreference2"
+
+;"placeOrderemailPreference";"keys for email preferences";;"emailPreference1"
+;"placeOrderemailPreference";"keys for email preferences";;"emailPreference2"
+;"placeOrderemailPreference";"keys for email preferences";;"emailPreference3"
+;"placeOrderemailPreference";"keys for email preferences";;"emailPreference4"
+;"placeOrderemailPreference";"keys for email preferences";;"emailPreference5"
+;"placeOrderemailPreference";"keys for email preferences";;"emailPreference6"
+;"placeOrderemailPreference";"keys for email preferences";;"emailPreference7"
+;"placeOrderemailPreference";"keys for email preferences";;"emailPreference8"
+;"placeOrderemailPreference";"keys for email preferences";;"emailPreference9"
+;"placeOrderemailPreference";"keys for email preferences";;"emailPreference10"
+;"placeOrderemailPreference";"keys for email preferences";;"emailPreference11"
+;"placeOrderemailPreference";"keys for email preferences";;"emailPreference12"
+;"placeOrderemailPreference";"keys for email preferences";;"emailPreference13"
+;"placeOrderemailPreference";"keys for email preferences";;"emailPreference15"
+;"placeOrderemailPreference";"keys for email preferences";;"emailPreference16"
+#5506
+;"placeOrderemailPreference";"keys for email preferences";;"emailPreference17"
+;"placeOrderemailPreference";"keys for email preferences";;"emailPreference18"
+
+
+;"noChargeemailPreference";"keys for email preferences";;"emailPreference1"
+;"noChargeemailPreference";"keys for email preferences";;"emailPreference2"
+;"noChargeemailPreference";"keys for email preferences";;"emailPreference3"
+;"noChargeemailPreference";"keys for email preferences";;"emailPreference4"
+;"noChargeemailPreference";"keys for email preferences";;"emailPreference8"
+;"noChargeemailPreference";"keys for email preferences";;"emailPreference6"
+;"noChargeemailPreference";"keys for email preferences";;"emailPreference10"
+;"noChargeemailPreference";"keys for email preferences";;"emailPreference14"
+;"noChargeemailPreference";"keys for email preferences";;"emailPreference15"
+;"noChargeemailPreference";"keys for email preferences";;"emailPreference16"
+
+
+;"securityQues";"keys for secrets questions";;"sQ1"
+;"securityQues";"keys for secrets questions";;"sQ2"
+;"securityQues";"keys for secrets questions";;"sQ3"
+;"securityQues";"keys for secrets questions";;"sQ4"
+;"securityQues";"keys for secrets questions";;"sQ5"
+;"securityQues";"keys for secrets questions";;"sQ6"
+;"securityQues";"keys for secrets questions";;"sQ7"
+;"securityQues";"keys for secrets questions";;"sQ8"
+;"securityQues";"keys for secrets questions";;"sQ9"
+;"securityQues";"keys for secrets questions";;"sQ10"
+;"securityQues";"keys for secrets questions";;"sQ11"
+;"securityQues";"keys for secrets questions";;"sQ12"
+;"securityQues";"keys for secrets questions";;"sQ13"
+;"securityQues";"keys for secrets questions";;"sQ14"
+;"securityQues";"keys for secrets questions";;"sQ15"
+;"securityQues";"keys for secrets questions";;"sQ16"
+;"securityQues";"keys for secrets questions";;"sQ17"
+;"securityQues";"keys for secrets questions";;"sQ18"
+;"securityQues";"keys for secrets questions";;"sQ19"
+;"securityQues";"keys for secrets questions";;"sQ20"
+;"securityQues";"keys for secrets questions";;"sQ21"
+;"securityQues";"keys for secrets questions";;"sQ22"
+;"securityQues";"keys for secrets questions";;"sQ23"
+;"securityQues";"keys for secrets questions";;"sQ24"
+;"securityQues";"keys for secrets questions";;"sQ25"
+;"securityQues";"keys for secrets questions";;"sQ26"
+;"securityQues";"keys for secrets questions";;"sQ27"
+
+;"orderChannel";"OrderChannel";"E002";"orderChannel";
+;"customerServicesNumber";;"customerServicesNumber";"258785412"
+;"holdCode";"HoldCode";"GW";"holdCode";
+;"holdCodeForGateWayOrder";"HoldCodeForGateWayOrder";"Electronic Hold";"holdCodeForGateWayOrder";
+;"orderSource";"OrderSource";"001";"orderSource";
+;"orderSourceForRest";"OrderSourceForRest";"Customer";"orderSourceForRest";
+;"orderChannelForCons";"OrderChannelForCons";"Z004";"orderChannelForCons";
+;"reqTypeForSimCons";"ReqTypeForSimCons";"X";"reqTypeForSimCons";
+;"success";"Success";"S";"success";
+;"consumerError";"ConsumerError";"E,A";"consumerError";
+
+;"GetContractPrice";"OrderChannel";"E002";"OrderChannel";
+;"GetContractPrice";"OrderSource";"001";"OrderSource";
+;"GetContractPrice";"SYNC";"X";"SYNC";
+;"GetContractPrice";"OrderType";"ZOR";"OrderType";
+;"GetContractPrice";"InterfaceID";"Gateway_ContractPrice_wM";"InterfaceID";
+;"GetContractPrice";"EChannelIndicator";"X";"EChannelIndicator";
+;"GetContractPrice";"UserName";"MU007_USROTC_GTWY";"UserName";
+;"GetContractPrice";"System";"WEBMETHODS";"System";
+# Commenting below items per NA request on 11/21
+#;"ShippingMethod";"NMEM";"NMEM";"MEMS";
+#;"ShippingMethod";"D010";"D010";"D10S";
+;"ShippingMethod";"NMOM";"NMOM";"NMOS";
+;"ShippingMethodReverse";"MEMS";"MEMS";"NMEM";
+;"ShippingMethodReverse";"D10S";"D10S";"D010";
+;"ShippingMethodReverse";"NMOS";"NMOS";"NMOM";
+;"OrderUnloadingPoint";"OrderUnloadingPoint";"BLANK";"unloadingPoint";
+;"holdCodeWithLotNo";"HoldCodeWithLotNo";"EH";"holdCodeWithLotNo";
+;"OrderReason";"OrderReasonForInternational";"M06";"orderReasonForInternational";
+;"OrderReason";"OrderReasonForStandard";"M05";"orderReasonForStandard";
+;"OrderReason";"OrderReasonForStandard";"M11";"orderReasonForDelivered";
+;"OrderReason";"OrderReasonForReplenishment";"C02";"orderReasonForReplenishment";
+;"CreditCardType";"CreditCardTypeForAmex";"CCAMEX";"3000";
+;"CreditCardType";"CreditCardTypeForVisa";"CCVISA";"4000";
+;"CreditCardType";"CreditCardTypeForMc";"CCMC";"5000";
+;"WmControlArea";"InterFaceNumber";"2903";"interFaceNumber";
+;"WmControlArea";"BusinessSector";"CONS_NA_US";"businessSector";
+;"WmControlArea";"SourceSysId";"CUSTOMERPORTAL";"sourceSysId";
+;"WmControlArea";"Zcode";"Z999044";"zcode";
+;"WmControlArea";"Region";"NA";"region";
+;"WmControlArea";"BusinessObjectName";"OrderCreate";"businessObjectName";
+;"WmControlArea";"SalesOrg";"US03";"salesOrg";
+;"WmControlArea";"ConsumerDateFormater";"MMddyyyyHHmmss";"consumerDateFormater";
+;"WmControlArea";"DeliveryBlock";"13";"deliveryBlock";
+;"WmControlArea";"OneTimeShippingValue";"H999999999";"oneTimeShippingValue";
+
+;"CoT Group";;"Trade";"Y01"
+;"CoT Group";;"Trade";"Y02"
+;"CoT Group";;"Trade";"Y03"
+;"CoT Group";;"Trade";"Y04"
+;"CoT Group";;"Trade";"Y05"
+;"CoT Group";;"Trade";"Y06"
+;"CoT Group";;"Trade";"Y07"
+;"CoT Group";;"Trade";"Y08"
+;"CoT Group";;"Trade";"Y09"
+;"CoT Group";;"Trade";"Y10"
+;"CoT Group";;"Trade";"Y11"
+;"CoT Group";;"Trade";"Y12"
+;"CoT Group";;"Trade";"Y13"
+;"CoT Group";;"Trade";"Y14"
+;"CoT Group";;"Trade";"Y15"
+;"CoT Group";;"Trade";"Y16"
+;"CoT Group";;"Trade";"Y17"
+;"CoT Group";;"Trade";"Y18"
+;"CoT Group";;"Trade";"Y19"
+;"CoT Group";;"Trade";"Y20"
+;"CoT Group";;"Trade";"Y21"
+;"CoT Group";;"Trade";"Y22"
+;"CoT Group";;"Trade";"Y23"
+;"CoT Group";;"Trade";"Y24"
+;"CoT Group";;"Trade";"Y25"
+;"CoT Group";;"Trade";"Y26"
+;"CoT Group";;"Trade";"Y27"
+;"CoT Group";;"Trade";"Y28"
+;"CoT Group";;"Trade";"Y29"
+;"CoT Group";;"Trade";"Y30"
+;"CoT Group";;"Trade";"Y31"
+;"CoT Group";;"Consumer_Affiliate";"Y32"
+;"CoT Group";;"Consumer_Affiliate";"Y33"
+;"CoT Group";;"Trade";"Y34"
+;"CoT Group";;"Trade";"Y35"
+;"CoT Group";;"Trade";"Y36"
+;"CoT Group";;"Trade";"Y37"
+;"CoT Group";;"Trade";"Y38"
+;"CoT Group";;"Trade";"Y39"
+;"CoT Group";;"Trade";"Y40"
+;"CoT Group";;"Trade";"Y41"
+;"CoT Group";;"Trade";"Y42"
+;"CoT Group";;"Trade";"Y43"
+;"CoT Group";;"Trade";"Y44"
+;"CoT Group";;"Trade";"Y45"
+;"CoT Group";;"Trade";"Y46"
+;"CoT Group";;"House";"Y47"
+;"CoT Group";;"Trade";"Y48"
+;"CoT Group";;"Trade";"Y49"
+;"CoT Group";;"Trade";"Y50"
+;"CoT Group";;"Trade";"Y51"
+;"CoT Group";;"Trade";"Y52"
+;"CoT Group";;"Trade";"Y53"
+;"CoT Group";;"Trade";"Y54"
+;"CoT Group";;"Trade";"Y55"
+;"CoT Group";;"Trade";"Y56"
+;"CoT Group";;"Trade";"Y57"
+;"CoT Group";;"Trade";"Y58"
+;"CoT Group";;"Trade";"Y59"
+;"CoT Group";;"Hospital";"0050"
+;"CoT Group";;"Hospital";"1000"
+;"CoT Group";;"Hospital";"1012"
+;"CoT Group";;"Hospital";"1013"
+;"CoT Group";;"Hospital";"1015"
+;"CoT Group";;"Hospital";"1017"
+;"CoT Group";;"Hospital";"1018"
+;"CoT Group";;"Hospital";"1019"
+;"CoT Group";;"Government";"1044"
+;"CoT Group";;"Government";"1045"
+;"CoT Group";;"Government";"1046"
+;"CoT Group";;"Government";"1047"
+;"CoT Group";;"Government";"1048"
+;"CoT Group";;"Government";"1050"
+;"CoT Group";;"Hospital";"1052"
+;"CoT Group";;"Hospital";"1054"
+;"CoT Group";;"Hospital";"1056"
+;"CoT Group";;"Hospital";"1058"
+;"CoT Group";;"Hospital";"1059"
+;"CoT Group";;"Hospital";"1060"
+;"CoT Group";;"Hospital";"1061"
+;"CoT Group";;"CSC";"1145"
+;"CoT Group";;"Hospital";"1146"
+;"CoT Group";;"Hospital";"1147"
+;"CoT Group";;"Hospital";"1148"
+;"CoT Group";;"Hospital";"1149"
+;"CoT Group";;"Distributor";"2000"
+;"CoT Group";;"Distributor";"2053"
+;"CoT Group";;"Distributor";"2054"
+;"CoT Group";;"Distributor";"2300"
+;"CoT Group";;"Distributor";"2301"
+;"CoT Group";;"Distributor";"2415"
+;"CoT Group";;"Distributor";"2416"
+;"CoT Group";;"Distributor";"2417"
+;"CoT Group";;"Distributor";"2500"
+;"CoT Group";;"Distributor";"2600"
+;"CoT Group";;"Distributor";"2800"
+;"CoT Group";;"Distributor";"2899"
+;"CoT Group";;"Sales_Rep_Account";"2925"
+;"CoT Group";;"Sales_Rep_Account";"2930"
+;"CoT Group";;"Distributor";"2999"
+;"CoT Group";;"Hospital";"3000"
+;"CoT Group";;"Hospital";"3001"
+;"CoT Group";;"Hospital";"3002"
+;"CoT Group";;"Hospital";"3005"
+;"CoT Group";;"Hospital";"3008"
+;"CoT Group";;"Hospital";"3009"
+;"CoT Group";;"Hospital";"3010"
+;"CoT Group";;"Hospital";"3015"
+;"CoT Group";;"Hospital";"3016"
+;"CoT Group";;"Hospital";"3020"
+;"CoT Group";;"Hospital";"3023"
+;"CoT Group";;"Hospital";"3024"
+;"CoT Group";;"Hospital";"3025"
+;"CoT Group";;"Hospital";"3026"
+;"CoT Group";;"Hospital";"3200"
+;"CoT Group";;"Hospital";"3700"
+;"CoT Group";;"Hospital";"3710"
+;"CoT Group";;"Hospital";"3740"
+;"CoT Group";;"Hospital";"3800"
+;"CoT Group";;"Hospital";"3801"
+;"CoT Group";;"Hospital";"3802"
+;"CoT Group";;"Hospital";"3803"
+;"CoT Group";;"Hospital";"3804"
+;"CoT Group";;"Hospital";"3806"
+;"CoT Group";;"Hospital";"3900"
+;"CoT Group";;"Hospital";"4000"
+;"CoT Group";;"Hospital";"4034"
+;"CoT Group";;"Hospital";"4035"
+;"CoT Group";;"Hospital";"4036"
+;"CoT Group";;"Hospital";"4100"
+;"CoT Group";;"Hospital";"4102"
+;"CoT Group";;"Hospital";"4134"
+;"CoT Group";;"Hospital";"4145"
+;"CoT Group";;"Hospital";"5100"
+;"CoT Group";;"Hospital";"5101"
+;"CoT Group";;"Hospital";"5102"
+;"CoT Group";;"Hospital";"5103"
+;"CoT Group";;"Hospital";"5104"
+;"CoT Group";;"Hospital";"5200"
+;"CoT Group";;"Hospital";"5201"
+;"CoT Group";;"Hospital";"5300"
+;"CoT Group";;"Government";"5900"
+;"CoT Group";;"Government";"5910"
+;"CoT Group";;"Hospital";"5931"
+;"CoT Group";;"Hospital";"5932"
+;"CoT Group";;"Hospital";"5933"
+;"CoT Group";;"Hospital";"5934"
+;"CoT Group";;"Hospital";"5935"
+;"CoT Group";;"Hospital";"5936"
+;"CoT Group";;"Hospital";"6100"
+;"CoT Group";;"Hospital";"6101"
+;"CoT Group";;"Hospital";"6102"
+;"CoT Group";;"Hospital";"6103"
+;"CoT Group";;"Hospital";"6105"
+;"CoT Group";;"Hospital";"6200"
+;"CoT Group";;"Hospital";"6300"
+;"CoT Group";;"Hospital";"6500"
+;"CoT Group";;"Hospital";"6600"
+;"CoT Group";;"Hospital";"6601"
+;"CoT Group";;"Sales_Rep_Account";"6700"
+;"CoT Group";;"Hospital";"6800"
+;"CoT Group";;"Hospital";"6900"
+;"CoT Group";;"Hospital";"6901"
+;"CoT Group";;"Hospital";"7200"
+;"CoT Group";;"Hospital";"7300"
+;"CoT Group";;"Hospital";"7500"
+;"CoT Group";;"Hospital";"7600"
+;"CoT Group";;"Hospital";"7950"
+;"CoT Group";;"Hospital";"7999"
+;"CoT Group";;"International_Affiliate";"8000"
+;"CoT Group";;"Sales_Rep_Account";"9000"
+;"CoT Group";;"Sales_Rep_Account";"9001"
+;"CoT Group";;"Hospital";"9002"
+;"CoT Group";;"Hospital";"9003"
+;"CoT Group";;"International_Affiliate";"9400"
+;"CoT Group";;"Hospital";"9500"
+;"CoT Group";;"Hospital";"9700"
+;"CoT Group";;"Hospital";"9800"
+;"CoT Group";;"Hospital";"UNSP"
+
+#For User Reports
+;"sortOptions";"keys for sort options";"orderDate";"sort1"
+;"sortOptions";"keys for sort options";"poNumber";"sort2"
+;"sortOptions";"keys for sort options";"orderId";"sort3"
+;"sortOptions";"keys for sort options";"shipToName";"sort4"
+;"sortOptions";"keys for sort options";"cutReason";"sort5"
+
+
+
+# MDD product Status Code-Value pairs
+;01;;
+;02;;
+;03;;
+;04;;
+;05;;
+;06;;
+;07;;
+;14;;
+;08;Dis Prod-Cancel;
+;09;Dis Prod-BackOrd;
+;10;Dis Prod-Can &No Ret;
+;11;Dis Prod-BO & No Ret;
+;12;Discontinued Sale;
+;16;Discontd sale&no ret;
+
+
+;"M";;"CCMC";"M"
+;"A";;"CCAMEX";"A"
+;"V";;"CCVISA";"V"
+
+;surgerySpecialty;options1;;X
+;surgerySpecialty;options1;;N
+;surgerySpecialty;options1;;O
+;surgerySpecialty;options1;;U
+
+;orthobiologics;options2;;X
+;orthobiologics;options2;;1
+;orthobiologics;options2;;2
+;orthobiologics;options2;;3
+;orthobiologics;options2;;4
+;orthobiologics;options2;;5
+;orthobiologics;options2;;6
+;orthobiologics;options2;;7
+;orthobiologics;options2;;8
+
+
+;surgicalApproach;options3;;X
+;surgicalApproach;options3;;A
+;surgicalApproach;options3;;C
+;surgicalApproach;options3;;L
+;surgicalApproach;options3;;P
+
+;interbody;options4;;X
+;interbody;options4;;0
+;interbody;options4;;1
+;interbody;options4;;2
+;interbody;options4;;3
+;interbody;options4;;4
+;interbody;options4;;5
+;interbody;options4;;6
+;interbody;options4;;7
+
+;levelsInstrumented;options5;;X
+;levelsInstrumented;options5;;0
+;levelsInstrumented;options5;;1
+;levelsInstrumented;options5;;2
+;levelsInstrumented;options5;;3
+
+;interbodyFusion;# Levels Interbody Fusion;;X
+;interbodyFusion;# Levels Interbody Fusion;;0
+;interbodyFusion;# Levels Interbody Fusion;;1
+;interbodyFusion;# Levels Interbody Fusion;;2
+;interbodyFusion;# Levels Interbody Fusion;;3
+;interbodyFusion;# Levels Interbody Fusion;;Medtronic
+;interbodyFusion;# Levels Interbody Fusion;;Stryker
+;interbodyFusion;# Levels Interbody Fusion;;None
+
+;pathology;options7;;X
+;pathology;options7;;1
+;pathology;options7;;2
+;pathology;options7;;3
+;pathology;options7;;4
+;pathology;options7;;5
+;pathology;options7;;6
+
+;zone;options8;;X
+;zone;options8;;1
+;zone;options8;;2
+;zone;options8;;3
+;zone;options8;;4
+;zone;options8;;5
+;zone;options8;;6
+;zone;options8;;7
+;zone;options8;;8
+
+
+;procedureType;options9;;X
+
+;cas;options10;;X
+
+
+#reports ## Kindly append to the existing list and not change the order without going through the code associated with it. 
+;"orderedFrom";"keys for type of orderedFrom dropdown for MDD";"M001";"orderedFrom1"
+;"orderedFrom";"keys for type of orderedFrom dropdown for MDD";"M005,M002,E005";"orderedFrom2"
+;"orderedFrom";"keys for type of orderedFrom dropdown for MDD";"M003,M006";"orderedFrom3"
+;"orderedFrom";"keys for type of orderedFrom dropdown for MDD";"E001,E006,E009,E01";"orderedFrom4"
+;"orderedFrom";"keys for type of orderedFrom dropdown for MDD";"E002";"orderedFrom5"
+;"orderedFrom";"keys for type of orderedFrom dropdown for MDD";"E007,E011";"orderedFrom6"
+;"orderedFrom";"keys for type of orderedFrom dropdown for MDD";"E003,E004,E008,M004,M007,M008";"orderedFrom7"
+;"orderedFrom";"keys for type of orderedFrom dropdown for MDD";"E001,E002,E003,E004,E005,E006,E007,E008,E009,E010,E011";"orderedFrom8"
+
+;"orderedFromCons";"keys for type of orderedFrom dropdown for CONS";"Z005";"consOrderedFrom1"
+;"orderedFromCons";"keys for type of orderedFrom dropdown for CONS";"Z004";"consOrderedFrom2"
+;"orderedFromCons";"keys for type of orderedFrom dropdown for CONS";"Z007";"consOrderedFrom3"
+;"orderedFromCons";"keys for type of orderedFrom dropdown for CONS";"Z001,Z002,Z006,Z008";"consOrderedFrom4"
+;"orderedFromCons";"keys for type of orderedFrom dropdown for CONS";"Z004,Z005,Z007";"consOrderedFrom5"
+
+;"productDropDown";"keys for type of orderedFrom dropdown";"5";"productDropDown1"
+;"productDropDown";"keys for type of orderedFrom dropdown";"10";"productDropDown2"
+;"productDropDown";"keys for type of orderedFrom dropdown";"20";"productDropDown3"
+
+;"analysisVariable";"keys for type of orderedFrom dropdown";;"analysisVariable1"
+;"analysisVariable";"keys for type of orderedFrom dropdown";;"analysisVariable2"
+;"analysisVariable";"keys for type of orderedFrom dropdown";;"analysisVariable3"
+
+
+#cart Reason Code
+
+;"reasonCode";"reason codes";;"H01"
+;"reasonCode";"reason codes";;"H02"
+;"reasonCode";"reason codes";;"H03"
+;"reasonCode";"reason codes";;"H04"
+;"reasonCode";"reason codes";;"H05"
+;"reasonCode";"reason codes";;"H06"
+;"reasonCode";"reason codes";;"H07"
+;"reasonCode";"reason codes";;"H08"
+;"reasonCode";"reason codes";;"H09"
+;"reasonCode";"reason codes";;"H10"
+;"reasonCode";"reason codes";;"H11"
+;"reasonCode";"reason codes";;"H12"
+;"reasonCode";"reason codes";;"H13"
+;"reasonCode";"reason codes";;"H14"
+;"reasonCode";"reason codes";;"H15"
+;"reasonCode";"reason codes";;"H16"
+;"reasonCode";"reason codes";;"H17"
+
+#cart Reason Code For Order Return
+
+;"reasonCodeReturnCSCnDIST";"reason codes for Order return";;"R07"
+;"reasonCodeReturnCSCnDIST";"reason codes for Order return";;"other"
+;"reasonCodeReturnExceptCSCnDIST";"reason codes for Order return";;"R09"
+;"reasonCodeReturnExceptCSCnDIST";"reason codes for Order return";;"R29"
+;"reasonCodeReturnExceptCSCnDIST";"reason codes for Order return";;"R11"
+;"reasonCodeReturnExceptCSCnDIST";"reason codes for Order return";;"R12"
+;"reasonCodeReturnExceptCSCnDIST";"reason codes for Order return";;"other"
+
+#template page search by drop down
+;"searchByTemplate";"template page search by drop down";;"SearchTemplateName"
+;"searchByTemplate";"template page search by drop down";;"SearchCode"
+
+#template page sort by drop down
+;"sortByTemplate";"template page sort by drop down";;"SortTemplateNameAsc"
+;"sortByTemplate";"template page sort by drop down";;"SortTemplateNumberAsc"
+;"sortByTemplate";"template page sort by drop down";;"SortCreationDateAsc"
+;"sortByTemplate";"template page sort by drop down";;"SortAuthorAsc"
+;"sortByTemplate";"template page sort by drop down";;"SortLinesAsc"
+;"sortByTemplate";"template page sort by drop down";;"SortShareStatusAsc"
+
+
+# Payment type for Order is fixed as per Gateway implementataion and thus value stored in config which can be configured/changed at run time.
+;"orderPaymentType";"Payment Type for an order";"Purchase Order";"orderPaymentType"
+
+# price override approvers
+;"approvers";"price override approvers";;"ZA"
+;"approvers";"price override approvers";;"ZB"
+;"approvers";"price override approvers";;"ZC"
+;"approvers";"price override approvers";;"ZD"
+;"approvers";"price override approvers";;"ZE"
+;"approvers";"price override approvers";;"M1"
+
+# price override reason codes
+;"priceOverCodes";"price override reason code";;"04"
+;"priceOverCodes";"price override reason code";;"19"
+;"priceOverCodes";"price override reason code";;"20"
+;"priceOverCodes";"price override reason code";;"21"
+;"priceOverCodes";"price override reason code";;"22"
+;"priceOverCodes";"price override reason code";;"15"
+;"priceOverCodes";"price override reason code";;"02"
+
+#cart Reason Code For No charge Order 
+;"reasonCodeNoCharge";"reason codes for No Charge Order";;"N01"
+;"reasonCodeNoCharge";"reason codes for No Charge Order";;"N02"
+;"reasonCodeNoCharge";"reason codes for No Charge Order";;"N03"
+;"reasonCodeNoCharge";"reason codes for No Charge Order";;"N04"
+;"reasonCodeNoCharge";"reason codes for No Charge Order";;"N05"
+;"reasonCodeNoCharge";"reason codes for No Charge Order";;"N06"
+;"reasonCodeNoCharge";"reason codes for No Charge Order";;"N07"
+;"reasonCodeNoCharge";"reason codes for No Charge Order";;"N08"
+;"reasonCodeNoCharge";"reason codes for No Charge Order";;"N09"
+;"reasonCodeNoCharge";"reason codes for No Charge Order";;"N10"
+;"reasonCodeNoCharge";"reason codes for No Charge Order";;"N11"
+;"reasonCodeNoCharge";"reason codes for No Charge Order";;"N12"
+;"reasonCodeNoCharge";"reason codes for No Charge Order";;"N13"
+;"reasonCodeNoCharge";"reason codes for No Charge Order";;"B16"
+
+# Invoice Status is fixed as per Gateway implementataion and thus value stored in config which can be configured/changed at run time.
+;"invoicestatus";"Invoiced";"Invoiced";"invoicestatus"
+
+;"surgeonCsvCounter";"CSV File Counter for Surgeon Inbound  Files for Surgeon Feed";"1"
+
+;"orderHeaderCsvCounter";"CSV File Counter for Order Header Inbound  Files for Order Status Feed";"1"
+;"orderLineCsvCounter";"CSV File Counter for Order Line Inbound  Files for Order Status Feed";"1"
+;"orderSchLineCsvCounter";"CSV File Counter for Order Schedule Line Inbound  Files for Order Status Feed";"1"
+
+
+;"shipmentHeaderCsvCounter";"CSV File Counter for Shipment Header Inbound  Files for Order Status Feed";"1"
+;"shipmentLineCsvCounter";"CSV File Counter for Shipment Line Inbound  Files for Order Status Feed";"1"
+;"validConsumerItemCategories";"Valid Consumer Item Categories";"TAPA,TAN,ZHOR"
+
+
+#Permission Code For No User Profile 
+;"0";"Permission Group For User Feed For User Feed";"placeOrderBuyerGroup";"0"
+;"1";"Permission Group For User Feed For User Feed";"viewOnlyBuyerGroup";"1"
+;"5";"Permission Group For User Feed";"jnjGTAdminGroup";"5"
+;"6";"Permission Group For User Feed";"jnjGTAdminGroup";"6"
+
+;"7";"Permission Group For User Feed";"jnjGTCsrGroup";"7"
+;"9";"Permission Group For User Feed";"jnjGTCsrGroup";"9"
+;"15";"Permission Group For User Feed";"jnjGTCsrGroup";"15"
+
+;"34";"Permission Group For User Feed";"placeOrderBuyerGroup";"34"
+;"35";"Permission Group For User Feed";"jnjGTCsrGroup";"35"
+;"39";"Permission Group For User Feed";"placeOrderBuyerGroup";"39"
+;"99";"Permission Group For User Feed";"jnjGTAdminGroup";"99"
+#AAOL-5669
+;"101";"Permission Group For User Feed";"jnjGTSerializationGroup";"101"
+
+
+## Configuration values used in PriceListMapper Feed ##
+;"LP";;"Hospital";"LP"
+;"DI";;"Distributor";"DI"
+
+#country dropdown values for PCM.
+;"countrySelectionValues";"country selection values for PCM";"CA";"consCAProdCatalog"
+;"countrySelectionValues";"country selection values for PCM";"US";"naProdCatalog"
+
+#Emails IDs for PCM New Product Workflow
+;"newProductWorkflowToEmail";"To Email for PCM New Product Workflow";"pcmWorkflowTo@jnj.com" 
+;"newProductWorkflowFromEmail";"From Email for PCM New Product Workflow";"pcmWorkflowFrom@jnj.com"
+
+#GHX-E static link to be displayed on Invoice Detail and Useful Links pages.
+;"ghxeInvoicingUrl";"Static URL for GHX-E link";"https://www.ghx-einvoicing.com/einv/?JJHCS"
+
+#Configurations for set SAP calling ON/OFF, if the value is 'Y' SAP call will be by passed.
+;jnj.webservice.stop.sap.calling;ON or OFF falog for SAP web services;N;jnj.webservice.stop.sap.calling
+
+#Configuration for define delivery cutt of hour <Used to show message on Checkout pages>
+;jnj.delivery.cutt.of.start.time;Define delivery start time w.r.t. server time[Format must be hh:mi ] ;13:00 ;jnj.delivery.cutt.of.start.time
+;jnj.delivery.cutt.of.end.time;Define delivery end time w.r.t. server time[Format must be hh:mi ] ;21:00 ;jnj.delivery.cutt.of.end.time
+
+#Configurations for set temp pricing info on order page, if the value is 'Y' show HSA Promotion.
+;mddTempOrderPriceFlag;MDD Temporary Price Info;N;mddTempOrderPriceFlag
+
+#Verbiage mapping for the REason of Rejection of Consumer Orders
+;order.entry.reasonOfRejection.Z0;;Credit Review
+;order.entry.reasonOfRejection.Z1;;Blocked
+;order.entry.reasonOfRejection.Z2;;Unsaleable
+;order.entry.reasonOfRejection.Z3;;Temporarily Unavailable
+;order.entry.reasonOfRejection.Z4;;Temporarily Unavailable
+;order.entry.reasonOfRejection.Z5;;Customer/JnJ Cancel
+;order.entry.reasonOfRejection.Z6;;Withdrawal/JnJ Recall
+;order.entry.reasonOfRejection.Z7;;Customer Not Eligible
+;order.entry.reasonOfRejection.Z8;;Customer Rejection

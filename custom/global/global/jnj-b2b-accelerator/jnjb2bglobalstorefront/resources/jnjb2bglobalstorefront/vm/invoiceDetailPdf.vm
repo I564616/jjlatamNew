@@ -1,0 +1,1109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
+<head>
+</head>
+<body style="padding:10px; font-size: 12px;">
+		<table width="1100" align="center">
+			<tr align="center"><td><img  src="${siteLogoPath}"/></td></tr>
+		</table>
+				
+	#if(${orderData.orderType} == "ZOR")
+		<table width="1100" border="1" cellpadding="4" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" ><strong>Invoice Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Billing Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Shipping Information</strong></td>
+			</tr>
+			<tr>
+				<td>
+				
+					<strong>Invoice Number:</strong> ${invoiceData.invoiceNumber}<br>
+					<strong>Billing Date:</strong>#if($invoiceData.billingdate)${date.format('MM/dd/yyyy',$invoiceData.billingdate)}#else Not Available #end <br><br>
+					<strong>J&J Order Number:</strong> ${orderData.orderNumber}<br>
+					<strong>Purchase Order:</strong>#if(${orderData.purchaseOrderNumber}) ${orderData.purchaseOrderNumber} #end<br>
+					<strong>Order Date:</strong>${date.format('MM/dd/yyyy',$orderData.created)} <br>
+					<strong>Status:</strong> #if(${orderData.statusDisplay}) ${orderData.statusDisplay} #end<br>
+					<strong>Order Type:</strong> Standard<br>
+					<strong>Ordered By:</strong>#if(${orderData.orderedBy}) ${orderData.orderedBy} #else Not Available #end<br>
+					
+				</td>
+				<td>
+					<strong>Sold-To Account Number:</strong>#if(${orderData.soldToAccount}) ${orderData.accountNumber} #end<br>
+					<strong>GLN:</strong>#if(${orderData.gln}) ${orderData.gln} #else Not Available #end<br><br>
+					
+					<strong>Billing Name and Address:</strong><br>
+					
+					#if(${orderData.billingAddress.firstName}) ${orderData.billingAddress.firstName} #if(${orderData.billingAddress.lastName}) ${orderData.billingAddress.lastName} #end<br> #end
+					
+					#if(${orderData.billingAddress.line1})
+					 ${orderData.billingAddress.line1},<br>
+					#end
+					#if(${orderData.billingAddress.line2})
+					 ${orderData.billingAddress.line2},<br>
+					#end
+					#if(${orderData.billingAddress.town})
+					 ${orderData.billingAddress.town},
+					#end
+					#if(${orderData.billingAddress.region.name})
+					 ${orderData.billingAddress.region.name},
+					#end
+					#if(${orderData.billingAddress.postalCode})
+					 ${orderData.billingAddress.postalCode}
+					#end
+					<br><br>
+					#if(${orderData.paymentType})
+					<strong>Payment Method:</strong> Purchase Order<br>
+					#end
+				</td>
+				<td>
+
+					<strong>Packing List:</strong>
+					#if(!${orderData.packingListDetails.isEmpty()}) 
+						#if(${orderData.packingListDetails.keySet()})
+							#foreach( $key in ${orderData.packingListDetails.keySet()})
+								$key
+							#end
+						#else
+							Not Available
+						#end
+					#else 
+						Not Available 
+					#end <br>
+					<strong>Bill of Lading:</strong>#if(${invoiceData.billOfLading}) ${invoiceData.billOfLading} #else Not Available #end <br>
+					<strong>Carrier:</strong>#if(${invoiceData.carrier}) ${invoiceData.carrier} #else Not Available #end <br>
+					<strong>Tracking:</strong>
+					#if(!${orderData.trackingIdList.isEmpty()}) 
+						#if(${orderData.trackingIdList.keySet()})
+							#foreach( $key in ${orderData.trackingIdList.keySet()})
+								$key
+							#end
+						#else
+							Not Available
+						#end
+					#else 
+						Not Available 
+					#end
+								
+					<br><br>
+					
+					<strong>Ship-To Address:</strong><br>
+					
+					#if(${orderData.deliveryAddress.firstName}) ${orderData.deliveryAddress.firstName} #if(${orderData.deliveryAddress.lastName}) ${orderData.deliveryAddress.lastName} #end<br> #end
+					
+					#if(${orderData.deliveryAddress.line1})
+					${orderData.deliveryAddress.line1}<br>
+					#end
+					#if(${orderData.deliveryAddress.line2})
+					${orderData.deliveryAddress.line2}<br>
+					#end
+					#if(${orderData.deliveryAddress.town})
+					 ${orderData.deliveryAddress.town}
+					#end
+					#if(${orderData.deliveryAddress.region.name})
+					 ${orderData.deliveryAddress.region.name}
+					#end
+					#if(${orderData.deliveryAddress.postalCode})
+					 ${orderData.deliveryAddress.postalCode}
+					#end
+					<br><br>
+									
+				</td>
+			</tr>
+		</table>
+		<br> <br>
+		
+		<table width="1100" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Line</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Name</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Code and<br>GTIN</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Contract</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Qty</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>UOM</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Shipping Information</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Tracking</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Item Price</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Total</strong></td>
+
+				
+			</tr>
+			#foreach($entry in $invoiceData.invoiceEntries)
+			<tr>
+				<td align="center">${velocityCount}-00</td>
+				<td align="left">#if(${entry.product.name}) ${entry.product.name} #end</td>
+				
+				<td><strong>ID:</strong>${entry.product.code}<br><strong>GTIN:</strong>#if(${entry.product.gtin}) ${entry.product.gtin} #else Not Available #end</td>
+				
+				<td align="center">#if(${entry.contractNum}) ${entry.contractNum} #end</td>
+				<td align="center">${entry.qty}</td>
+				
+				<td>#if(${entry.product.deliveryUnit})  ${entry.product.deliveryUnit}
+								(${entry.product.numerator} &nbsp; ${entry.product.salesUnit}) #end</td>
+				
+				<td> #if(${entry.shippingMethod}) ${entry.shippingMethod} #end<br></td>
+				
+				<td align="center">#if(${orderData.shippingTrackingInfo}) 
+								#if(${orderData.shippingTrackingInfo[$entry.lineNumber]})
+									#foreach ($data in ${orderData.shippingTrackingInfo[$entry.lineNumber]})
+										#if($data.trackingId)
+											$data.trackingId #if($foreach.hasNext), #end
+										#else
+											Not Available
+										#end
+									#end
+								#else
+									Not Available
+								#end
+							#else 
+								Not Available 
+							#end</td>
+				<td align="right">#if(${entry.basePrice.formattedValue}) ${entry.basePrice.formattedValue} #end</td>
+				<td align="right">#if(${entry.totalPrice.formattedValue}) ${entry.totalPrice.formattedValue} #end</td>
+
+			</tr>
+			#end
+		</table>
+		<table width="1100" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+			<td align="right">Sub-Total: ${invoiceData.subTotal.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right">Fees/Freight: ${invoiceData.tempFeeAndPromotion.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right">Taxes: ${invoiceData.taxAmt.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right"><strong>Invoice Total: ${invoiceData.netValue.formattedValue}</strong></td>
+			</tr>
+		</table>
+		
+    #elseif(${orderData.orderType} == "ZDEL")
+		<table width="1100" border="1" cellpadding="4" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" ><strong>Invoice Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Billing Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Shipping Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Surgery Information</strong></td>
+			</tr>
+			<tr>
+				<td>
+				
+					<strong>Invoice Number:</strong> ${invoiceData.invoiceNumber}<br>
+					<strong>Billing Date:</strong>#if($invoiceData.billingdate)${date.format('MM/dd/yyyy',$invoiceData.billingdate)}#else Not Available #end  <br><br>
+					<strong>J&J Order Number:</strong> ${orderData.orderNumber}<br>
+					<strong>Purchase Order:</strong>#if(${orderData.purchaseOrderNumber}) ${orderData.purchaseOrderNumber} #end<br>
+					<strong>Order Date:</strong>${date.format('MM/dd/yyyy',$orderData.created)} <br>
+					<strong>Status:</strong> #if(${orderData.statusDisplay}) ${orderData.statusDisplay} #end<br>
+					<strong>Order Type:</strong> Delivered<br>
+					<strong>Ordered By:</strong>#if(${orderData.orderedBy}) ${orderData.orderedBy} #else Not Available #end<br>
+					<strong>Dealer PO:</strong>#if(${orderData.dealerPoNumber}) ${orderData.dealerPoNumber} #else Not Available #end<br>
+				</td>
+				<td>
+					<strong>Sold-To Account Number:</strong>#if(${orderData.soldToAccount}) ${orderData.accountNumber} #end<br>
+					<strong>GLN:</strong>#if(${orderData.gln}) ${orderData.gln} #else Not Available #end<br><br>
+					
+					<strong>Billing Name and Address:</strong><br>
+					
+					#if(${orderData.billingAddress.firstName}) ${orderData.billingAddress.firstName} #if(${orderData.billingAddress.lastName}) ${orderData.billingAddress.lastName} #end<br> #end
+					
+					#if(${orderData.billingAddress.line1})
+					 ${orderData.billingAddress.line1},<br>
+					#end
+					#if(${orderData.billingAddress.line2})
+					 ${orderData.billingAddress.line2},<br>
+					#end
+					#if(${orderData.billingAddress.town})
+					 ${orderData.billingAddress.town},
+					#end
+					#if(${orderData.billingAddress.region.name})
+					 ${orderData.billingAddress.region.name},
+					#end
+					#if(${orderData.billingAddress.postalCode})
+					 ${orderData.billingAddress.postalCode}
+					#end
+					<br><br>
+					#if(${orderData.paymentType})
+					<strong>Payment Method:</strong> Purchase Order<br>
+					#end
+				</td>
+				<td>
+					
+					<strong>Ship-To Address:</strong><br>
+					
+					#if(${orderData.deliveryAddress.firstName}) ${orderData.deliveryAddress.firstName} #if(${orderData.deliveryAddress.lastName}) ${orderData.deliveryAddress.lastName} #end<br> #end
+					
+					#if(${orderData.deliveryAddress.line1})
+					${orderData.deliveryAddress.line1}<br>
+					#end
+					#if(${orderData.deliveryAddress.line2})
+					${orderData.deliveryAddress.line2}<br>
+					#end
+					#if(${orderData.deliveryAddress.town})
+					 ${orderData.deliveryAddress.town}
+					#end
+					#if(${orderData.deliveryAddress.region.name})
+					 ${orderData.deliveryAddress.region.name}
+					#end
+					#if(${orderData.deliveryAddress.postalCode})
+					 ${orderData.deliveryAddress.postalCode}
+					#end
+					<br><br>
+					
+				</td>
+				<td>
+					<strong>Surgeon:</strong>#if(${orderData.surgeonName}) ${orderData.surgeonName} #else Not Available #end<br>
+					<strong>Case Date:</strong>#if(${orderData.surgeryInfo}) #if(${orderData.surgeryInfo.caseDate}) ${date.format('MM/dd/yyyy',$orderData.surgeryInfo.caseDate)} #else Not Available #end #else Not Available #end<br>
+					<strong>Surgery Speciality:</strong>#if(${surgeryInfoSurgerySpecialty})${surgeryInfoSurgerySpecialty} #else Not Available #end<br>
+					<strong># Levels Implemented:</strong>#if( ${surgeryInfoLevelsInstrumented})${surgeryInfoLevelsInstrumented} #else Not Available #end<br>
+					<strong>Orthobiologics:</strong>#if(${surgeryInfoOrthobiologics})${surgeryInfoOrthobiologics} #else Not Available #end<br>
+					<strong>Pathology:</strong> #if(${surgeryInfoPathology})${surgeryInfoPathology} #else Not Available #end<br>
+					<strong>Surgical Approach:</strong>#if(${surgeryInfoSurgicalApproach})${surgeryInfoSurgicalApproach} #else Not Available #end<br>
+					<strong>Zone:</strong> #if(${surgeryInfoZone})${surgeryInfoZone} #else Not Available #end<br>
+					<strong>Interbody:</strong> #if(${surgeryInfoInterbody})${surgeryInfoInterbody} #else Not Available #end<br>
+					<strong>File/ case #:</strong>#if(${orderData.surgeryInfo}) #if(${orderData.surgeryInfo.caseNumber})${orderData.surgeryInfo.caseNumber} #else Not Available #end #else Not Available #end<br>
+				</td>
+			</tr>
+		</table>
+		<br> <br>
+		
+		<table width="1100" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Line</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Name</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Code and<br>GTIN</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Contract</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Lot Number</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>SSP</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Qty</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>UOM</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Item Price</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Total</strong></td>
+
+				
+			</tr>
+			#foreach($entry in $invoiceData.invoiceEntries)
+			<tr>
+				<td align="center">${velocityCount}-00</td>
+				<td align="left">#if(${entry.product.name}) ${entry.product.name} #end</td>
+				
+				<td><strong>ID:</strong>${entry.product.code}<br><strong>GTIN:</strong>#if(${entry.product.gtin}) ${entry.product.gtin} #else Not Available #end</td>
+				
+				<td align="center">#if(${entry.contractNum}) ${entry.contractNum} #end</td>
+				<td align="center">#if(${entry.lotNumber}) ${entry.lotNumber} #end </td>
+				<td align="center">#if(${entry.specialStockPartner}) ${entry.specialStockPartner} #end </td>
+				<td align="center">${entry.qty}</td>
+				
+				<td>#if(${entry.product.deliveryUnit})  ${entry.product.deliveryUnit}
+								(${entry.product.numerator} &nbsp; ${entry.product.salesUnit}) #end</td>
+				<td align="right">#if(${entry.basePrice.formattedValue}) ${entry.basePrice.formattedValue} #end</td>
+				<td align="right">#if(${entry.totalPrice.formattedValue}) ${entry.totalPrice.formattedValue} #end</td>
+
+			</tr>
+			#end
+		</table>
+		<table width="1100" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+			<td align="right">Sub-Total: ${invoiceData.subTotal.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right">Fees/Freight: ${invoiceData.tempFeeAndPromotion.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right">Taxes: ${invoiceData.taxAmt.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right"><strong>Invoice Total: ${invoiceData.netValue.formattedValue}</strong></td>
+			</tr>
+		</table>
+	    
+	#elseif(${orderData.orderType} == "ZEX")
+		<table width="1100" border="1" cellpadding="4" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" ><strong>Invoice Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Billing Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Shipping Information</strong></td>
+			</tr>
+			<tr>
+				<td>
+				
+					<strong>Invoice Number:</strong> ${invoiceData.invoiceNumber}<br>
+					<strong>Billing Date:</strong>#if($invoiceData.billingdate)${date.format('MM/dd/yyyy',$invoiceData.billingdate)}#else Not Available #end  <br><br>
+					<strong>J&J Order Number:</strong> ${orderData.orderNumber}<br>
+					<strong>Purchase Order:</strong>#if(${orderData.purchaseOrderNumber}) ${orderData.purchaseOrderNumber} #end<br>
+					<strong>Order Date:</strong>${date.format('MM/dd/yyyy',$orderData.created)} <br>
+					<strong>Status:</strong> #if(${orderData.statusDisplay}) ${orderData.statusDisplay} #end<br>
+					<strong>Order Type:</strong> International<br>
+					<strong>Ordered By:</strong>#if(${orderData.orderedBy}) ${orderData.orderedBy} #else Not Available #end<br>
+					
+				</td>
+				<td>
+					<strong>Sold-To Account Number:</strong> #if(${orderData.soldToAccount}) ${orderData.accountNumber} #end<br>
+										
+					<strong>Billing Name and Address:</strong><br>
+					
+					#if(${orderData.b2bUnitName}) (${orderData.b2bUnitName}<br> #end
+					#if(${orderData.billingAddress.firstName}) ${orderData.billingAddress.firstName} #if(${orderData.billingAddress.lastName}) ${orderData.billingAddress.lastName} #end<br> #end
+					
+					#if(${orderData.billingAddress.line1})
+					 ${orderData.billingAddress.line1},<br>
+					#end
+					#if(${orderData.billingAddress.line2})
+					 ${orderData.billingAddress.line2},<br>
+					#end
+					#if(${orderData.billingAddress.town})
+					 ${orderData.billingAddress.town},
+					#end
+					#if(${orderData.billingAddress.region.name})
+					 ${orderData.billingAddress.region.name},
+					#end
+					#if(${orderData.billingAddress.postalCode})
+					 ${orderData.billingAddress.postalCode}
+					#end
+				</td>
+				<td>
+					<strong>Packing List:</strong>
+					#if(!${orderData.packingListDetails.isEmpty()}) 
+						#if(${orderData.packingListDetails.keySet()})
+							#foreach( $key in ${orderData.packingListDetails.keySet()})
+								$key
+							#end
+						#else
+							Not Available
+						#end
+					#else 
+						Not Available 
+					#end <br>
+					<strong>Bill of Lading:</strong>#if(${invoiceData.billOfLading}) ${invoiceData.billOfLading} #else Not Available #end <br>
+					<strong>Carrier:</strong>#if(${invoiceData.carrier}) ${invoiceData.carrier} #else Not Available #end <br>
+					<strong>Tracking:</strong>
+					#if(!${orderData.trackingIdList.isEmpty()}) 
+						#if(${orderData.trackingIdList.keySet()})
+							#foreach( $key in ${orderData.trackingIdList.keySet()})
+								$key
+							#end
+						#else
+							Not Available
+						#end
+					#else 
+						Not Available 
+					#end
+								
+					<br><br>
+										
+					<strong>Ship-To Address:</strong><br>
+					
+					#if(${orderData.deliveryAddress.firstName}) ${orderData.deliveryAddress.firstName} #if(${orderData.deliveryAddress.lastName}) ${orderData.deliveryAddress.lastName} #end<br> #end
+					
+					#if(${orderData.deliveryAddress.line1})
+					${orderData.deliveryAddress.line1}<br>
+					#end
+					#if(${orderData.deliveryAddress.line2})
+					${orderData.deliveryAddress.line2}<br>
+					#end
+					#if(${orderData.deliveryAddress.town})
+					 ${orderData.deliveryAddress.town}
+					#end
+					#if(${orderData.deliveryAddress.region.name})
+					 ${orderData.deliveryAddress.region.name}
+					#end
+					#if(${orderData.deliveryAddress.postalCode})
+					 ${orderData.deliveryAddress.postalCode}
+					#end
+					<br><br>
+				</td>
+			</tr>
+		</table>
+		<br> <br>
+		
+		<table width="1100" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Line</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Name</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Code and<br>GTIN</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Contract</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Qty</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>UOM</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Shipping Information</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Tracking</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Item Price</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Total</strong></td>
+
+				
+			</tr>
+			#foreach($entry in $invoiceData.invoiceEntries)
+			<tr>
+				<td align="center">${velocityCount}-00</td>
+				<td align="left">#if(${entry.product.name}) ${entry.product.name} #end</td>
+				
+				<td><strong>ID:</strong>${entry.product.code}<br><strong>GTIN:</strong>#if(${entry.product.gtin}) ${entry.product.gtin} #else Not Available #end</td>
+				
+				<td align="center">#if(${entry.contractNum}) ${entry.contractNum} #end</td>
+				<td align="center">${entry.qty}</td>
+				
+				<td>#if(${entry.product.deliveryUnit})  ${entry.product.deliveryUnit}
+								(${entry.product.numerator} &nbsp; ${entry.product.salesUnit}) #end</td>
+				
+				<td> #if(${entry.shippingMethod}) ${entry.shippingMethod} #end<br></td>
+				
+				<td align="center">#if(${orderData.shippingTrackingInfo}) 
+								#if(${orderData.shippingTrackingInfo[$entry.lineNumber]})
+									#foreach ($data in ${orderData.shippingTrackingInfo[$entry.lineNumber]})
+										#if($data.trackingId)
+											$data.trackingId #if($foreach.hasNext), #end
+										#else
+											Not Available
+										#end
+									#end
+								#else
+									Not Available
+								#end
+							#else 
+								Not Available 
+							#end</td>
+				<td align="right">#if(${entry.basePrice.formattedValue}) ${entry.basePrice.formattedValue} #end</td>
+				<td align="right">#if(${entry.totalPrice.formattedValue}) ${entry.totalPrice.formattedValue} #end</td>
+
+			</tr>
+			#end
+		</table>
+		<table width="1100" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+			<td align="right">Sub-Total: ${invoiceData.subTotal.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right">Fees/Freight: ${invoiceData.tempFeeAndPromotion.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right">Taxes: ${invoiceData.taxAmt.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right"><strong>Invoice Total: ${invoiceData.netValue.formattedValue}</strong></td>
+			</tr>
+		</table>
+	
+	#elseif(${orderData.orderType} == "ZNC")
+		<table width="1100" border="1" cellpadding="4" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" ><strong>Invoice Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Billing Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Shipping Information</strong></td>
+			</tr>
+			<tr>
+				<td>
+				
+					<strong>Invoice Number:</strong> ${invoiceData.invoiceNumber}<br>
+					<strong>Billing Date:</strong>#if($invoiceData.billingdate)${date.format('MM/dd/yyyy',$invoiceData.billingdate)}#else Not Available #end  <br><br>
+					<strong>J&J Order Number:</strong> ${orderData.orderNumber}<br>
+					<strong>Purchase Order:</strong>#if(${orderData.purchaseOrderNumber}) ${orderData.purchaseOrderNumber} #end<br>
+					<strong>Order Date:</strong>${date.format('MM/dd/yyyy',$orderData.created)} <br>
+					<strong>Status:</strong> #if(${orderData.statusDisplay}) ${orderData.statusDisplay} #end<br>
+					<strong>Order Type:</strong> No Charge<br>
+					<strong>Ordered By:</strong>#if(${orderData.orderedBy}) ${orderData.orderedBy} #else Not Available #end<br>
+					
+				</td>
+				<td>
+					<strong>Sold-To Account Number:</strong>#if(${orderData.soldToAccount}) ${orderData.accountNumber} #end<br>
+					<strong>GLN:</strong>#if(${orderData.gln}) ${orderData.gln} #else Not Available #end<br><br>
+					
+					<strong>Billing Name and Address:</strong><br>
+					
+					#if(${orderData.billingAddress.firstName}) ${orderData.billingAddress.firstName} #if(${orderData.billingAddress.lastName}) ${orderData.billingAddress.lastName} #end<br> #end
+					
+					#if(${orderData.billingAddress.line1})
+					 ${orderData.billingAddress.line1},<br>
+					#end
+					#if(${orderData.billingAddress.line2})
+					 ${orderData.billingAddress.line2},<br>
+					#end
+					#if(${orderData.billingAddress.town})
+					 ${orderData.billingAddress.town},
+					#end
+					#if(${orderData.billingAddress.region.name})
+					 ${orderData.billingAddress.region.name},
+					#end
+					#if(${orderData.billingAddress.postalCode})
+					 ${orderData.billingAddress.postalCode}
+					#end
+					<br><br>
+					
+				</td>
+				<td>
+
+					<strong>Packing List:</strong>
+					#if(!${orderData.packingListDetails.isEmpty()}) 
+						#if(${orderData.packingListDetails.keySet()})
+							#foreach( $key in ${orderData.packingListDetails.keySet()})
+								$key
+							#end
+						#else
+							Not Available
+						#end
+					#else 
+						Not Available 
+					#end <br>
+					<strong>Bill of Lading:</strong>#if(${invoiceData.billOfLading}) ${invoiceData.billOfLading} #else Not Available #end <br>
+					<strong>Carrier:</strong>#if(${invoiceData.carrier}) ${invoiceData.carrier} #else Not Available #end <br>
+					<strong>Tracking:</strong>
+					#if(!${orderData.trackingIdList.isEmpty()}) 
+						#if(${orderData.trackingIdList.keySet()})
+							#foreach( $key in ${orderData.trackingIdList.keySet()})
+								$key
+							#end
+						#else
+							Not Available
+						#end
+					#else 
+						Not Available 
+					#end
+								
+					<br><br>
+					
+					<strong>Ship-To Address:</strong><br>
+					
+					#if(${orderData.deliveryAddress.firstName}) ${orderData.deliveryAddress.firstName} #if(${orderData.deliveryAddress.lastName}) ${orderData.deliveryAddress.lastName} #end<br> #end
+					
+					#if(${orderData.deliveryAddress.line1})
+					${orderData.deliveryAddress.line1}<br>
+					#end
+					#if(${orderData.deliveryAddress.line2})
+					${orderData.deliveryAddress.line2}<br>
+					#end
+					#if(${orderData.deliveryAddress.town})
+					 ${orderData.deliveryAddress.town}
+					#end
+					#if(${orderData.deliveryAddress.region.name})
+					 ${orderData.deliveryAddress.region.name}
+					#end
+					#if(${orderData.deliveryAddress.postalCode})
+					 ${orderData.deliveryAddress.postalCode}
+					#end
+					<br><br>
+									
+				</td>
+			</tr>
+		</table>
+		<br> <br>
+		
+		<table width="1100" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Line</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Name</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Code and<br>GTIN</strong></td>
+				
+				<td bgcolor="#CCCCCC" align="center" ><strong>Qty</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>UOM</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Shipping Information</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Tracking</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Item Price</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Total</strong></td>
+
+				
+			</tr>
+			#foreach($entry in $invoiceData.invoiceEntries)
+			<tr>
+				<td align="center">${velocityCount}-00</td>
+				<td align="left">#if(${entry.product.name}) ${entry.product.name} #end</td>
+				
+				<td><strong>ID:</strong>${entry.product.code}<br><strong>GTIN:</strong>#if(${entry.product.gtin}) ${entry.product.gtin} #else Not Available #end</td>
+				
+				
+				<td align="center">${entry.qty}</td>
+				
+				<td>#if(${entry.product.deliveryUnit})  ${entry.product.deliveryUnit}
+								(${entry.product.numerator} &nbsp; ${entry.product.salesUnit}) #end</td>
+				
+				<td> #if(${entry.shippingMethod}) ${entry.shippingMethod} #end<br></td>
+				
+				<td align="center">#if(${orderData.shippingTrackingInfo}) 
+								#if(${orderData.shippingTrackingInfo[$entry.lineNumber]})
+									#foreach ($data in ${orderData.shippingTrackingInfo[$entry.lineNumber]})
+										#if($data.trackingId)
+											$data.trackingId #if($foreach.hasNext), #end
+										#else
+											Not Available
+										#end
+									#end
+								#else
+									Not Available
+								#end
+							#else 
+								Not Available 
+							#end</td>
+				<td align="right">#if(${entry.basePrice.formattedValue}) ${entry.basePrice.formattedValue} #end</td>
+				<td align="right">#if(${entry.totalPrice.formattedValue}) ${entry.totalPrice.formattedValue} #end</td>
+
+			</tr>
+			#end
+		</table>
+		<table width="1100" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+			<td align="right">Sub-Total: ${invoiceData.subTotal.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right">Fees/Freight: ${invoiceData.tempFeeAndPromotion.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right">Taxes: ${invoiceData.taxAmt.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right"><strong>Invoice Total: ${invoiceData.netValue.formattedValue}</strong></td>
+			</tr>
+		</table>
+	
+	#elseif(${orderData.orderType} == "ZKB")
+		<table width="1100" border="1" cellpadding="4" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" ><strong>Invoice Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Billing Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Shipping Information</strong></td>
+			</tr>
+			<tr>
+				<td>
+				
+					<strong>Invoice Number:</strong> ${invoiceData.invoiceNumber}<br>
+					<strong>Billing Date:</strong>#if($invoiceData.billingdate)${date.format('MM/dd/yyyy',$invoiceData.billingdate)}#else Not Available #end  <br><br>
+					<strong>J&J Order Number:</strong> ${orderData.orderNumber}<br>
+					<strong>Purchase Order:</strong>#if(${orderData.purchaseOrderNumber}) ${orderData.purchaseOrderNumber} #end<br>
+					<strong>Order Date:</strong>${date.format('MM/dd/yyyy',$orderData.created)} <br>
+					<strong>Status:</strong> #if(${orderData.statusDisplay}) ${orderData.statusDisplay} #end<br>
+					
+					<strong>Ordered By:</strong>#if(${orderData.orderedBy}) ${orderData.orderedBy} #else Not Available #end<br>
+					
+				</td>
+				<td>
+					<strong>Sold-To Account Number:</strong>#if(${orderData.soldToAccount}) ${orderData.accountNumber} #end<br>
+					
+					
+					<strong>Billing Name and Address:</strong><br>
+					
+					#if(${orderData.billingAddress.firstName}) ${orderData.billingAddress.firstName} #if(${orderData.billingAddress.lastName}) ${orderData.billingAddress.lastName} #end<br> #end
+					
+					#if(${orderData.billingAddress.line1})
+					 ${orderData.billingAddress.line1},<br>
+					#end
+					#if(${orderData.billingAddress.line2})
+					 ${orderData.billingAddress.line2},<br>
+					#end
+					#if(${orderData.billingAddress.town})
+					 ${orderData.billingAddress.town},
+					#end
+					#if(${orderData.billingAddress.region.name})
+					 ${orderData.billingAddress.region.name},
+					#end
+					#if(${orderData.billingAddress.postalCode})
+					 ${orderData.billingAddress.postalCode}
+					#end
+					<br><br>
+					
+				</td>
+				<td>
+
+					<strong>Packing List:</strong>
+					#if(!${orderData.packingListDetails.isEmpty()}) 
+						#if(${orderData.packingListDetails.keySet()})
+							#foreach( $key in ${orderData.packingListDetails.keySet()})
+								$key
+							#end
+						#else
+							Not Available
+						#end
+					#else 
+						Not Available 
+					#end <br>
+					<strong>Bill of Lading:</strong>#if(${invoiceData.billOfLading}) ${invoiceData.billOfLading} #else Not Available #end <br>
+					<strong>Carrier:</strong>#if(${invoiceData.carrier}) ${invoiceData.carrier} #else Not Available #end <br>
+					<strong>Tracking:</strong>
+					#if(!${orderData.trackingIdList.isEmpty()}) 
+						#if(${orderData.trackingIdList.keySet()})
+							#foreach( $key in ${orderData.trackingIdList.keySet()})
+								$key
+							#end
+						#else
+							Not Available
+						#end
+					#else 
+						Not Available 
+					#end
+					<br><br>
+					
+					<strong>Ship-To Address:</strong><br>
+					
+					#if(${orderData.deliveryAddress.firstName}) ${orderData.deliveryAddress.firstName} #if(${orderData.deliveryAddress.lastName}) ${orderData.deliveryAddress.lastName} #end<br> #end
+					
+					#if(${orderData.deliveryAddress.line1})
+					${orderData.deliveryAddress.line1}<br>
+					#end
+					#if(${orderData.deliveryAddress.line2})
+					${orderData.deliveryAddress.line2}<br>
+					#end
+					#if(${orderData.deliveryAddress.town})
+					 ${orderData.deliveryAddress.town}
+					#end
+					#if(${orderData.deliveryAddress.region.name})
+					 ${orderData.deliveryAddress.region.name}
+					#end
+					#if(${orderData.deliveryAddress.postalCode})
+					 ${orderData.deliveryAddress.postalCode}
+					#end
+					<br><br>
+									
+				</td>
+			</tr>
+		</table>
+		<br> <br>
+		
+		<table width="1100" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Line</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Name</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Code and<br>GTIN</strong></td>
+				
+				<td bgcolor="#CCCCCC" align="center" ><strong>Qty</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>UOM</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Shipping</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Tracking</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Item Price</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Total</strong></td>
+
+				
+			</tr>
+			#foreach($entry in $invoiceData.invoiceEntries)
+			<tr>
+				<td align="center">${velocityCount}-00</td>
+				<td align="left">#if(${entry.product.name}) ${entry.product.name} #end</td>
+				
+				<td><strong>ID:</strong>${entry.product.code}<br><strong>GTIN:</strong>#if(${entry.product.gtin}) ${entry.product.gtin} #else Not Available #end</td>
+				
+				
+				<td align="center">${entry.qty}</td>
+				
+				<td>#if(${entry.product.deliveryUnit})  ${entry.product.deliveryUnit}
+								(${entry.product.numerator} &nbsp; ${entry.product.salesUnit}) #end</td>
+				
+				<td> #if(${entry.shippingMethod}) ${entry.shippingMethod} #end<br></td>
+				
+				<td align="center">#if(${orderData.shippingTrackingInfo}) 
+								#if(${orderData.shippingTrackingInfo[$entry.lineNumber]})
+									#foreach ($data in ${orderData.shippingTrackingInfo[$entry.lineNumber]})
+										#if($data.trackingId)
+											$data.trackingId #if($foreach.hasNext), #end
+										#else
+											Not Available
+										#end
+									#end
+								#else
+									Not Available
+								#end
+							#else 
+								Not Available 
+							#end</td>
+				<td align="right">#if(${entry.basePrice.formattedValue}) ${entry.basePrice.formattedValue} #end</td>
+				<td align="right">#if(${entry.totalPrice.formattedValue}) ${entry.totalPrice.formattedValue} #end</td>
+
+			</tr>
+			#end
+		</table>
+		<table width="1100" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+			<td align="right">Sub-Total: ${invoiceData.subTotal.formattedValue}</td>
+			</tr>
+			
+			<tr>
+			<td align="right">Taxes: ${invoiceData.taxAmt.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right"><strong>Invoice Total: ${invoiceData.netValue.formattedValue}</strong></td>
+			</tr>
+		</table>
+		
+	#elseif(${orderData.orderType} == "ZRE")
+		<table width="1100" border="1" cellpadding="4" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" ><strong>Invoice Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Billing Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Shipping Information</strong></td>
+			</tr>
+			<tr>
+				<td>
+				
+					<strong>Invoice Number:</strong> ${invoiceData.invoiceNumber}<br>
+					<strong>Billing Date:</strong>#if($invoiceData.billingdate)${date.format('MM/dd/yyyy',$invoiceData.billingdate)}#else Not Available #end  <br><br>
+					<strong>J&J Order Number:</strong> ${orderData.orderNumber}<br>
+					<strong>Purchase Order:</strong>#if(${orderData.purchaseOrderNumber}) ${orderData.purchaseOrderNumber} #end<br>
+					<strong>Order Date:</strong>${date.format('MM/dd/yyyy',$orderData.created)} <br>
+					<strong>Status:</strong> #if(${orderData.statusDisplay}) ${orderData.statusDisplay} #end<br>
+					<strong>Order Type:</strong> Return<br>
+					<strong>Ordered By:</strong>#if(${orderData.orderedBy}) ${orderData.orderedBy} #else Not Available #end<br>
+					
+				</td>
+				<td>
+					<strong>Sold-To Account Number:</strong>#if(${orderData.soldToAccount}) ${orderData.accountNumber} #end<br>
+					<strong>GLN:</strong>#if(${orderData.gln}) ${orderData.gln} #else Not Available #end<br><br>
+					
+					<strong>Billing Name and Address:</strong><br>
+					
+					#if(${orderData.billingAddress.firstName}) ${orderData.billingAddress.firstName} #if(${orderData.billingAddress.lastName}) ${orderData.billingAddress.lastName} #end<br> #end
+					
+					#if(${orderData.billingAddress.line1})
+					 ${orderData.billingAddress.line1},<br>
+					#end
+					#if(${orderData.billingAddress.line2})
+					 ${orderData.billingAddress.line2},<br>
+					#end
+					#if(${orderData.billingAddress.town})
+					 ${orderData.billingAddress.town},
+					#end
+					#if(${orderData.billingAddress.region.name})
+					 ${orderData.billingAddress.region.name},
+					#end
+					#if(${orderData.billingAddress.postalCode})
+					 ${orderData.billingAddress.postalCode}
+					#end
+					<br><br>
+					
+				</td>
+				<td>
+					<strong>Ship-To Address:</strong><br>
+					
+					#if(${orderData.deliveryAddress.firstName}) ${orderData.deliveryAddress.firstName} #if(${orderData.deliveryAddress.lastName}) ${orderData.deliveryAddress.lastName} #end<br> #end
+					
+					#if(${orderData.deliveryAddress.line1})
+					${orderData.deliveryAddress.line1}<br>
+					#end
+					#if(${orderData.deliveryAddress.line2})
+					${orderData.deliveryAddress.line2}<br>
+					#end
+					#if(${orderData.deliveryAddress.town})
+					 ${orderData.deliveryAddress.town}
+					#end
+					#if(${orderData.deliveryAddress.region.name})
+					 ${orderData.deliveryAddress.region.name}
+					#end
+					#if(${orderData.deliveryAddress.postalCode})
+					 ${orderData.deliveryAddress.postalCode}
+					#end
+					<br><br>
+									
+				</td>
+			</tr>
+		</table>
+		<br> <br>
+		
+		<table width="1100" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Line</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Name</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Code and<br>GTIN</strong></td>
+				
+				<td bgcolor="#CCCCCC" align="center" ><strong>Qty</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>UOM</strong></td>
+				
+				<td bgcolor="#CCCCCC" align="center" ><strong>Item Price</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Total</strong></td>
+
+				
+			</tr>
+			#foreach($entry in $invoiceData.invoiceEntries)
+			<tr>
+				<td align="center">${velocityCount}-00</td>
+				<td align="left">#if(${entry.product.name}) ${entry.product.name} #end</td>
+				
+				<td><strong>ID:</strong>${entry.product.code}<br><strong>GTIN:</strong>#if(${entry.product.gtin}) ${entry.product.gtin} #else Not Available #end</td>
+				
+				
+				<td align="center">${entry.qty}</td>
+				
+				<td>#if(${entry.product.deliveryUnit})  ${entry.product.deliveryUnit}
+								(${entry.product.numerator} &nbsp; ${entry.product.salesUnit}) #end</td>
+				
+				
+				<td align="right">#if(${entry.basePrice.formattedValue}) ${entry.basePrice.formattedValue} #end</td>
+				<td align="right">#if(${entry.totalPrice.formattedValue}) ${entry.totalPrice.formattedValue} #end</td>
+
+			</tr>
+			#end
+		</table>
+		<table width="1100" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+			<td align="right">Sub-Total: ${invoiceData.subTotal.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right">Fees/Freight: ${invoiceData.tempFeeAndPromotion.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right">Taxes: ${invoiceData.taxAmt.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right"><strong>Invoice Total: ${invoiceData.netValue.formattedValue}</strong></td>
+			</tr>
+		</table>
+
+	#else
+		<table width="1100" border="1" cellpadding="4" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" ><strong>Order Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Billing Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Shipping Information</strong></td>
+				<td bgcolor="#CCCCCC" ><strong>Invoice Information</strong></td>
+			</tr>
+			<tr>
+				<td>
+				
+					
+					<strong>J&J Order Number:</strong> ${orderData.orderNumber}<br>
+					<strong>Purchase Order:</strong>#if(${orderData.purchaseOrderNumber}) ${orderData.purchaseOrderNumber} #end<br>
+					<strong>Order Date:</strong>${date.format('MM/dd/yyyy',$orderData.created)} <br>
+					<strong>Status:</strong> #if(${orderData.statusDisplay}) ${orderData.statusDisplay} #end<br>
+					<strong>Ordered By:</strong>#if(${orderData.orderedBy}) ${orderData.orderedBy} #else Not Available #end<br>
+					<strong>Sales Territory:</strong>#if(${jnjNAOrderData.salesTerritory}) ${jnjNAOrderData.salesTerritory} #else Not Available #end<br>
+				</td>
+				<td>
+					<strong>Sold-To Account Number:</strong>#if(${orderData.soldToAccount}) ${orderData.accountNumber} #end<br>
+										
+					<strong>Billing Name and Address:</strong><br>
+					
+					#if(${orderData.billingAddress.firstName}) ${orderData.billingAddress.firstName} #if(${orderData.billingAddress.lastName}) ${orderData.billingAddress.lastName} #end<br> #end
+					
+					#if(${orderData.billingAddress.line1})
+					 ${orderData.billingAddress.line1},<br>
+					#end
+					#if(${orderData.billingAddress.line2})
+					 ${orderData.billingAddress.line2},<br>
+					#end
+					#if(${orderData.billingAddress.town})
+					 ${orderData.billingAddress.town},
+					#end
+					#if(${orderData.billingAddress.region.name})
+					 ${orderData.billingAddress.region.name},
+					#end
+					#if(${orderData.billingAddress.postalCode})
+					 ${orderData.billingAddress.postalCode}
+					#end
+					<br><br>
+					
+				</td>
+				<td>
+				
+					<strong>Packing List:</strong>
+					#if(!${orderData.packingListDetails.isEmpty()}) 
+						#if(${orderData.packingListDetails.keySet()})
+							#foreach( $key in ${orderData.packingListDetails.keySet()})
+								$key
+							#end
+						#else
+							Not Available
+						#end
+					#else 
+						Not Available 
+					#end <br>
+					<strong>Bill of Lading:</strong>#if(${invoiceData.billOfLading}) ${invoiceData.billOfLading} #else Not Available #end <br>
+					<strong>Carrier:</strong>#if(${invoiceData.carrier}) ${invoiceData.carrier} #else Not Available #end <br>
+					<strong>Tracking:</strong>
+					#if(!${orderData.trackingIdList.isEmpty()}) 
+						#if(${orderData.trackingIdList.keySet()})
+							#foreach( $key in ${orderData.trackingIdList.keySet()})
+								$key
+							#end
+						#else
+							Not Available
+						#end
+					#else 
+						Not Available 
+					#end
+								
+					<br><br>
+					
+					<strong>Ship-To Address:</strong><br>
+					
+					#if(${orderData.deliveryAddress.firstName}) ${orderData.deliveryAddress.firstName} #if(${orderData.deliveryAddress.lastName}) ${orderData.deliveryAddress.lastName} #end<br> #end
+					
+					#if(${orderData.deliveryAddress.line1})
+					${orderData.deliveryAddress.line1}<br>
+					#end
+					#if(${orderData.deliveryAddress.line2})
+					${orderData.deliveryAddress.line2}<br>
+					#end
+					#if(${orderData.deliveryAddress.town})
+					 ${orderData.deliveryAddress.town}
+					#end
+					#if(${orderData.deliveryAddress.region.name})
+					 ${orderData.deliveryAddress.region.name}
+					#end
+					#if(${orderData.deliveryAddress.postalCode})
+					 ${orderData.deliveryAddress.postalCode}
+					#end
+					<br><br>
+									
+				</td>
+				<td>
+					<strong>Invoice Number:</strong> ${invoiceData.invoiceNumber}<br>
+					<strong>Billing Date:</strong>#if($invoiceData.billingdate)${date.format('MM/dd/yyyy',$invoiceData.billingdate)}#else Not Available #end  <br><br>
+					
+					<strong>Total Weight:</strong> ${orderData.orderWeight} lbs <br>
+					<strong>Total Cubic Volume:</strong> ${orderData.orderVolume} ft<sup>3</sup> <br>
+				</td>
+			</tr>
+		</table>
+		<br> <br>
+		
+		<table width="1100" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Line</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Name</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Product Code and<br>UPC</strong></td>
+				
+				<td bgcolor="#CCCCCC" align="center" ><strong>Ordered <br>Qty</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Invoiced <br>Qty</strong></td>
+				
+				<td bgcolor="#CCCCCC" align="center" ><strong> UOM<br></strong></td>
+				
+				<td bgcolor="#CCCCCC" align="center" ><strong>Item Price</strong></td>
+				<td bgcolor="#CCCCCC" align="center" ><strong>Total</strong></td>
+
+				
+			</tr>
+			#foreach($entry in $invoiceData.invoiceEntries)
+			<tr>
+				<td align="center">${velocityCount}-00</td>
+				<td align="left">#if(${entry.product.name}) ${entry.product.name} #end</td>
+				
+				<td><strong>ID:</strong>${entry.product.codeWithoutLeadingZeros}<br><strong>UPC:</strong>#if(${entry.product.upc}) ${entry.product.upc} #else Not Available #end</td>
+				
+				
+				<td align="center">${entry.orderedQty}</td>
+				
+				<td align="center">${entry.qty}</td>
+				
+				<td>#if(${entry.product.deliveryUnit})  ${entry.product.deliveryUnit}
+								(${entry.product.numerator} &nbsp; ${entry.product.salesUnit}) #end</td>
+				
+				
+				<td align="right">#if(${entry.basePrice.formattedValue}) ${entry.basePrice.formattedValue} #end</td>
+				<td align="right">#if(${entry.totalPrice.formattedValue}) ${entry.totalPrice.formattedValue} #end</td>
+
+			</tr>
+			#end
+		</table>
+		<table width="1100" border="1" cellpadding="3" cellspacing="0">
+			<tr>
+			<td align="right">Sub-Total: ${invoiceData.subTotal.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right">Adj Rate Allowance: ${invoiceData.adjustedRateAllowance.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right">Invoice Net Amount: ${invoiceData.netValue.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right">Taxes: ${invoiceData.taxTotal.formattedValue}</td>
+			</tr>
+			<tr>
+			<td align="right"><strong>Invoice Total: ${invoiceData.invoiceTotal.formattedValue}</strong></td>
+			</tr>
+		</table>
+	
+	#end
+</body>
+</html>

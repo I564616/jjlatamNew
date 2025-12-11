@@ -1,0 +1,223 @@
+# ImpEx for Importing Categories into J&J Store
+
+# Macros / Replacement Parameter definitions
+$productCatalog=mstrProductCatalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$supercategories=supercategories(code[unique=true], $catalogVersion)
+
+
+# Insert Categories at Level 2
+Update Category;code[unique=true];name[lang=en];$catalogVersion
+#############################################################################MD&D#############################################################################################
+;00011010;Large Fragments;
+;00011020;DHS;
+;00011030;Small Fragments;
+;00011040;Cannulated Screws;
+;00011050;Intramedullary Nailing;
+;00011060;External Fixation;
+;00011070;Pelvic and Joint;
+;00011080;Orthopedics;
+;00011090;General Instruments;
+;00011100;HCS;
+;00011130;Hand;
+;00011140;Foot & Ankle;
+;00011150;Epoca Shoulder;
+;00011155;Radial Head Prosthesis;
+;00011160;Biomaterials;
+;00011170;Veterinary;
+;00018000;Interpore;
+;00019000;Services;
+;00019500;Custom-made device;
+;00019700;Supply management;
+;00019900;PreOPlan;
+;00019998;Old Products (GO);
+;00019999;Remaining stock;
+;00022010;Anterior Cervical Fusion;
+;00022015;Posterior Cervical;
+;00022017;Cervical TDR;
+;00022020;TL Fractures/Tumors/Infection;
+;00022025;TLS Deformities;
+;00022030;Posterior L Fixation;
+;00022035;Alternative Posterior Stabilization;
+;00022040;Posterior Instruments and Implants;
+;00022050;Lumbar IB Fusion;
+;00022060;Spine Augmentation;
+;00022070;Tissue Protection;
+;00023000;Bone Substitutes for Spine;
+;00023800;Hemostatic Bone Putty;
+;00025000;Total Disc Replacement;
+;00029000;Services;
+;00029500;Custom-made device;
+;00029700;Supply management;
+;00029998;Old Products (Spine);
+;00029999;Remaining stock;
+;00033010;Midface;
+;00033015;Customized Surgical Solutions;
+;00033020;Mandible;
+;00033030;Resorbable Fixation System;
+;00033035;RapidSorb Resorbables;
+;00033040;Neuro;
+;00033050;Thorax;
+;00033060;Distraction;
+;00033070;Porous Polyethylen;
+;00033080;Bone Graft Substitutes;
+;00033090;Dental;
+;00033100;Tissue Matrix;
+;00033200;General Instrument;
+;00034000;Screw Removal;
+;00039000;Services;
+;00039500;Custom-made device;
+;00039700;Supply management;
+;00039998;Old Products (CMF);
+;00039999;Remaining stock;
+;00044005;Old machines;
+;00044010;Power Line machines;
+;00044011;CAD & Power Drive;
+;00044012;Trauma Recon System;
+;00044015;COLIBRI;
+;00044020;Pen-shaped systems;
+;00044021;Anspach Systems;
+;00044022;Battery Extremity System;
+;00044025;Piezo Electric Systems;
+;00044030;Saws;
+;00044035;Impact machines;
+;00044040;Accessories;
+;00044050;Cutting Tools;
+;00044060;Cases;
+;00044070;Service;
+;00044100;Loan Sets;
+;00044500;Service Contracts;
+;00049000;Services;
+;00049500;Custom-made device;
+;00049700;Supply management;
+;00049999;Remaining stock;
+;00066010;Knee;
+;00066020;Hip;
+;00066025;Other suppliers;
+;00066030;Shoulder;
+;00066050;Hedrocel;
+;00066060;Orthopaedic PT;
+;00066900;Rest Prothetik;
+;00069000;Services;
+;00069500;Custom-made device;
+;00069999;Remaining stock;
+;00077010;Image Guided Surg.S.;
+;00077900;Rest Medivision;
+;00079000;Services;
+;00079500;Custom-made device;
+;00079998;Old Products (Medivision);
+;00079999;Remaining stock;
+;00088010;Bone Substitutes;
+;00089000;Services;
+;00089500;Custom-made device;
+;00089999;Remaining stock;
+;00101010;FMS;
+;00101030;Knee;
+;00101050;Mitek others;
+;00101060;Shoulder;
+;00101070;Small Joint;
+;00101090;Tissue Management;
+;00109000;Loan charge Mitek;
+;00111010;Knees;
+;00111030;Trauma;
+;00111050;Hips;
+;00111070;Extremities;
+;00111090;"Castings; Braces and Supports";
+;00111110;Cement;
+;00111130;Navigation;
+;00111150;Biomaterial - Joints Recon;
+;00111170;Other Products;
+;00119000;Loan charge joint reconstruction;
+;00129000;Loan charge Codman;
+;00129010;Drug delivery;
+;00129030;Hydrocephalus;
+;00129050;Instruments;
+;00129070;Neuro critical care;
+;00129090;Neuroradiology;
+;00129110;Other Codman;
+;00129130;Operative Neurosurgery;
+;00131010;Other Products;
+;05500504;MITEK;
+;05500566;Codman Neuro;
+;05500703;Joint Reconstruction;
+;05507823;DePuy Spine;
+;05507830;Synthes Other;
+;05507831;Synthes Spine;
+;05507833;Synthes CMF;
+;05507835;Synthes Power Tools;
+;05507837;Synthes Trauma;
+
+#############################################################################New MD&D#############################################################################################
+;05100324;Vascular Access;
+;05101278;Oncology;
+;05101279;Base/Bariatrics/Inscope;
+;05107973;Ethicon Prod Wound Care;
+;05107917;Womens Health & Urology;
+;05200323;Advanced Wound Care;
+;05200525;Wound Management - Other;
+;05207575;BioSurgicals - WM;
+;05200343;Energy;
+;05200470;Mentor Products;
+;05200489;Acclarent Products;
+;05201251;Sterilmed;
+;05300404;Sedasys;
+;05301266;Advanced Sterlization Prod;
+;05308780;Other Comprehensive Care;
+;05851232;Other Cardiology;
+;05851233;DES;
+;05851236;Endovascular;
+;05851322;Biosense Webster;
+;12360041;Total Spherical Lenses;
+;12360043;Astigmatism Lenses;
+;12360370;Other Lens Products;
+;12361472;Presbyopia Lenses;
+;12361531;Beauty / Eye Enhancement;
+;12360576;Neptune;
+;06700595;Health Care Systems;
+;06700670;All Oth Prof Prod Surgical Care;
+;06707789;Colbar Lifescience;
+;06707817;Independence Technology;
+;02950289;Immunohematology (IH);
+;02950675;Clinical Labs;
+;02950677;Other Revenue;
+;02958054;RhoGAM;
+;02958206;Donor Screening;
+;02950590;Therakos;
+;02958175;Veridex;
+;06300630;Lifescan;
+;06302400;Animas;
+
+#############################################################################Pharma#############################################################################################
+
+;G034T037;Vaccines
+;G001T001;Commodities
+;G002T002;Anti-Allergy/Respiratory
+;G003T003;Antibacterial Products
+;G004T004;Antifungal Products
+;G005T007;Cardiological Products
+;G006T008;Anaesthesia
+;G006T010;Neurology
+;G006T011;Psychotropics
+;G007T012;Consumer Products
+;G008T013;Dermatological Products
+;G008T014;Endocrinology
+;G010T015;Gastro-Intestinals
+;G014T019;Other Human
+;G015T020;Hormone Replacement Therapy
+;G015T021;Oral Contraceptives
+;G015T022;Other Contraceptives
+;G015T024;Vaginal Therapeutics
+;G016T023;Urology
+;G016T025;Urinary Products
+;G017T034;Wound Healing
+;G018T027;Plant Protection
+;G018T028;Companion Animals
+;G018T029;Large Animals
+;G018T030;Other Animal Health
+;G018T031;Pig & Poultry
+;G018T032;Ruminants
+;G024T009;Analgesia
+;G011T016;Hematology Products
+;G012T017;Immunology Products
+;G013T018;Oncology Products
+;G033T036;Virology

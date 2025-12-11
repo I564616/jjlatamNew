@@ -1,0 +1,12 @@
+### AFFG-27845 ###
+##### COMMERCIAL RESTRICTION GROUP #####
+INSERT_UPDATE UserGroup;uid[unique=true,allow null=true];description;locname[lang=en];locname[lang=pt];locname[lang=es];groups(uid)[mode=append];
+;placeOrderRestrictionCommercialUserGroup;Place Order Restriction Commercial User Group;Place Order Restriction Commercial User Group;Grupo de Usuários Comerciais Place Order Restriction;Grupo de usuarios comerciales de Place Order Restriction;placeOrderBuyerGroup
+
+####  MDD COMMERCIAL USER GROUP #####
+INSERT_UPDATE UserGroup;uid[unique=true,allow null=true];description;locname[lang=en];locname[lang=pt];locname[lang=es];groups(uid)[mode=append];
+;mddCommercialUserGroup;MDD Commercial User Group;MDD Commercial User Group;Grupo de Usuários Comerciais MDD;Grupo de usuarios comerciales de MDD;contractBalanceGroup,jnjGTAdminGroup,orderHistoryGroup,brUserGroup,b2bcustomergroup,chatGroup,selloutGroup,reportsGroup,uploadedFilesGroup,placeOrderRestrictionCommercialUserGroup,placeOrderBuyerGroup
+
+#### PHARMA COMMERCIAL USER GROUP ####
+INSERT_UPDATE UserGroup;uid[unique=true,allow null=true];description;locname[lang=en];locname[lang=pt];locname[lang=es];groups(uid)[mode=append];
+;pharmaCommercialUserGroup;PHARMA Commercial User Group;PHARMA Commercial User Group;Grupo de Usuários Comerciais PHARMA;Grupo de usuarios comerciales de PHARMA;contractBalanceGroup,jnjGTAdminGroup,orderHistoryGroup,brUserGroup,b2bcustomergroup,chatGroup,selloutGroup,reportsGroup,uploadedFilesGroup,placeOrderRestrictionCommercialUserGroup,placeOrderBuyerGroup

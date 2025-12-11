@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  ~ [y] hybris Platform
+  ~ 
+  ~ Copyright (c) 2000-2016 SAP SE
+  ~ All rights reserved.
+  ~ 
+  ~ This software is the confidential and proprietary information of SAP 
+  ~ Hybris ("Confidential Information"). You shall not disclose such 
+  ~ Confidential Information and shall use it only in accordance with the 
+  ~ terms of the license agreement you entered into with SAP Hybris.
+  --><extensioninfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extensioninfo.xsd">
+
+   <extension abstractclassprefix="Generated" classprefix="Jnjlab2bcronjob" managername="Jnjlab2bcronjobManager" managersuperclass="de.hybris.platform.jalo.extension.Extension" name="jnjlab2bcronjob" usemaven="false">
+      <!-- for more information on maven managed libraries please consult https://wiki.hybris.com/x/Nq8sDQ -->
+               
+      <!-- you should add all required extensions to this list, except platform extensions which are automatically required -->         
+      <!--  <requires-extension name="jnjb2bcore"/>  -->
+       <requires-extension name="jnjutil"/>     
+	  <requires-extension name="jnjlab2bfacades"/>
+
+       <requires-extension name="jnjlab2binboundservice"/>
+		<requires-extension name="jnjlab2bcore"/>
+        <requires-extension name="backoffice"/>
+
+      <coremodule generated="true" manager="com.jnj.la.jalo.Jnjlab2bcronjobManager" packageroot="com.jnj.la"/>
+
+      <webmodule jspcompile="false" webroot="/jnjlab2bcronjob"/>
+					
+	
+
+   </extension>
+      
+</extensioninfo>

@@ -1,0 +1,37 @@
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+# Initialization
+
+#STG_INVOICE_HEADER
+INSERT_UPDATE JnjGTIntInvoice;businessSector;sourceSysId[unique=true];invoiceDocNum[unique=true];salesOrg;salesOrgDistChannel;salesOrgDivCode;billingType;currency;netValue;billingDate[dateformat=yyyy-MM-dd];payerAccNum;soldToAccNum;poOrderNum;taxAmt;shipToAccNum;billToAccNum;shipToName1;shipToName2;shipToName3;shipToName4;shipToStreet1;shipToStreet2;shipToStreet3;shipToCity;shipToState;shipToPostal;shipToCountry;shipToPONum;payerAccGLN;soldToAccGLN;billToAccGLN;shipToAccGLN;recordStatus(code)[default='LOADING']
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT BUSINESS_SECTOR,SOURCE_SYS_ID,INVOICE_NUM,SALES_ORG,DIST_CHANNEL,DIVISION,BILLING_TYPE,CURRENCY,NET_VALUE,BILLING_DT,PAYER_CUST_NUM,SOLD_TO_CUST_NUM,PO_NUM,TAX_AMT,SHIP_TO_CUST_NUM,BILL_TO_CUST_NUM,SHIP_TO_NAME1,SHIP_TO_NAME2,SHIP_TO_NAME3,SHIP_TO_NAME4,SHIP_TO_STREET1,SHIP_TO_STREET2,SHIP_TO_STREET3,SHIP_TO_CITY,SHIP_TO_STATE,SHIP_TO_POSTAL_CD,SHIP_TO_COUNTRY,SHIP_TO_PO_NUM,PAYER_ACCT_GLN,SOLD_TO_ACCT_GLN,BILL_TO_ACCT_GLN,SHIP_TO_GLN from STG_INVOICE_HEADER WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP""
+);"
+
+
+#STG_INVOICE_HEADER_PRICE
+INSERT_UPDATE JnjGTIntInvoicePrice;headerPriceValue;conditionType[unique=true];invoiceNum[unique=true]
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT VALUE,CONDITION_TYPE,INVOICE_NUM FROM STG_INVOICE_HEADER_PRICE WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP""
+);"
+
+
+#STG_INVOICE_HEADER_LINE
+INSERT_UPDATE JnjGTIntInvoiceEntry;product;lineNum[unique=true];highLvlItemNum;qty;netTotalValue;productDivison;plant;subTotal1;subTotal2;subTotal3;subTotal4;orderNum;salesUOM;deliveryNum;originalInvoiceNum;netValuePerUnit;invoiceNum[unique=true];carrierCode;gtin;orderedGtin;shipDate[dateformat=yyyy-MM-dd];taxValue;sourceSysId[unique=true]
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT MATERIAL_NUM,LINE_ITEM_NUM,HIGH_LVL_ITEM_NUM,INVOICE_QTY,NET_TOTAL_VALUE,PRODUCT_DIVISION,PLANT,SUB_TOTAL_1,SUB_TOTAL_2,SUB_TOTAL_3,SUB_TOTAL_4,ORDER_NUM,SALES_UOM,DELIVERY_NUM,ORIGINAL_INVOICE_NUM,NET_VALUE_PER_UNIT,INVOICE_NUM,CARRIER_SCAC_CD,GTIN,ORDERED_GTIN,SHIP_DT,TAX_VALUE,SOURCE_SYS_ID FROM STG_INVOICE_LINE WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP""
+);"
+
+
+#STG_INVOICE_ENTRY_LOT
+INSERT_UPDATE JnjGTIntInvoiceEntryLot;lotNum[unique=true];lotQty;invoiceNum[unique=true];lineItemNum[unique=true];expiryDate[dateformat=yyyy-MM-dd];vendorBatch
+#% impex.initDatabase($config-inbound.feed.db.url,$config-inbound.feed.db.username,$config-inbound.feed.db.password,$config-inbound.feed.db.driver);
+"#% 
+impex.includeSQLData( 
+""SELECT LOT_NUM,LOT_QTY,INVOICE_NUM,LINE_ITEM_NUM,EXPIRY_DATE,VENDOR_BATCH FROM STG_INVOICE_LINE_LOT WHERE MigrationStatus=1 ORDER BY REC_TIMESTAMP""
+);"

@@ -1,0 +1,31 @@
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+$productCatalog=consCAProdCatalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+
+
+# Initialization
+UPDATE JnjGTProduct;code[unique=true];pcmModStatus(code)[default='NOTAPPLICABLE'];$catalogVersion
+#% impex.initDatabase($config-inbound.quote$config-db.url$config-inbound.quote,$config-inbound.quote$config-db.username$config-inbound.quote,$config-inbound.quote$config-db.password$config-inbound.quote,$config-inbound.quote$config-db.driver$config-inbound.quote);
+"#% 
+impex.includeSQLData( 
+""SELECT  item_t0.Code  FROM jnj_product item_t0 WHERE item_t0.p_pcmmodstatus  IN (SELECT  item_t1.PK  FROM enumerationvalues item_t1 WHERE ( item_t1.Code ='ACTIVE')) and (item_t0.p_firstshipeffectdate  is null or (item_t0.p_firstshipeffectdate > add_days(Current_Timestamp,30))) and item_t0.p_catalogversion = (SELECT  item_t2.PK  FROM catalogversions item_t2 JOIN catalogs item_t3 ON  item_t3.PK = item_t2.p_catalog  WHERE ( item_t3.p_id ='consCAProdCatalog' AND  item_t2.p_version ='Staged'))""
+);
+"
+
+UPDATE JnjGTProduct;code[unique=true];pcmModStatus(code)[default='ACTIVE'];$catalogVersion
+#% impex.initDatabase($config-inbound.quote$config-db.url$config-inbound.quote,$config-inbound.quote$config-db.username$config-inbound.quote,$config-inbound.quote$config-db.password$config-inbound.quote,$config-inbound.quote$config-db.driver$config-inbound.quote);
+"#% 
+impex.includeSQLData( 
+""SELECT  item_t0.Code  FROM jnj_product item_t0 WHERE item_t0.p_productstatus  IN (SELECT  item_t1.PK  FROM enumerationvalues item_t1 WHERE ( item_t1.Code ='ACTIVE')) and item_t0.p_pcmmodstatus  IN (SELECT  item_t1.PK  FROM enumerationvalues item_t1 WHERE ( item_t1.Code ='NOTAPPLICABLE')) and (item_t0.p_kitind = 0) and (item_t0.p_publishind = 1) and (item_t0.p_firstshipeffectdate < add_days(Current_Timestamp,30)) and item_t0.p_catalogversion = (SELECT  item_t2.PK  FROM catalogversions item_t2 JOIN catalogs item_t3 ON  item_t3.PK = item_t2.p_catalog  WHERE ( item_t3.p_id ='consCAProdCatalog' AND  item_t2.p_version ='Staged'))""
+);
+"
+
+# Initialization
+UPDATE JnjGTProduct;code[unique=true];pcmModStatus(code)[default='NOTAPPLICABLE'];$catalogVersion
+#% impex.initDatabase($config-inbound.quote$config-db.url$config-inbound.quote,$config-inbound.quote$config-db.username$config-inbound.quote,$config-inbound.quote$config-db.password$config-inbound.quote,$config-inbound.quote$config-db.driver$config-inbound.quote);
+"#% 
+impex.includeSQLData( 
+""SELECT  item_t0.Code  FROM jnj_product item_t0 WHERE item_t0.p_pcmmodstatus  IN (SELECT  item_t1.PK  FROM enumerationvalues item_t1 WHERE ( item_t1.Code ='DISCONTINUED')) and (item_t0.p_materialStatusEffectDate  is null or (item_t0.p_materialStatusEffectDate < add_days(Current_Timestamp,-365))) and item_t0.p_catalogversion = (SELECT  item_t2.PK  FROM catalogversions item_t2 JOIN catalogs item_t3 ON  item_t3.PK = item_t2.p_catalog  WHERE ( item_t3.p_id ='consCAProdCatalog' AND  item_t2.p_version ='Staged'))""
+);
+"
+

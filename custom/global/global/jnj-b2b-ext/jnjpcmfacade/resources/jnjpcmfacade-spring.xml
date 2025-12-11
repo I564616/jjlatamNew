@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company. All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<bean id="jnjPCMCommonFacadeUtil" class="com.jnj.gt.pcm.integration.util.impl.DefaultJnjPCMCommonFacadeUtil">
+			<property name="catalogVersionService" ref="catalogVersionService" />
+			<property name="configurationService" ref="configurationService"/>			
+	</bean>
+	
+	<bean id="jnjGTProductContentFacade" class="com.jnj.gt.pcm.integration.facade.impl.DefaultJnjGTProductContentFacade" >
+			<property name="jnjPCMCommonFacadeUtil" ref="jnjPCMCommonFacadeUtil"/>
+			<property name="configurationService" ref="configurationService"/>
+			<property name="jnjCCP360IntegrationFacade" ref="GTP360IntegrationFacade"/>
+			<property name="modelService" ref="modelService" />
+			
+	</bean>
+	
+	<alias name="jnjCCP360IntegrationFacade" alias="GTP360IntegrationFacade"/>
+	<bean id="jnjCCP360IntegrationFacade" class="com.jnj.gt.pcm.integration.facade.impl.DefaultJnjCCP360IntegrationFacade">
+			<property name="jnjCCP360IntegrationService" ref="jnjCCP360IntegrationService" />
+			<property name="jnjPCMCommonFacadeUtil" ref="jnjPCMCommonFacadeUtil"/>
+			<property name="configurationService" ref="configurationService"/>
+			<property name="modelService" ref="modelService" />
+			<property name="jnjGTProductFeedService" ref="jnjGTProductFeedService" />
+			<property name="classificationService" ref="classificationService" />	
+	</bean>
+	
+	<bean id="jnjGTFetchImageFacade" class="com.jnj.gt.pcm.integration.facade.impl.DefaultJnjGTFetchImageFacade">
+			<property name="modelService" ref="modelService" />
+			<property name="catalogVersionService" ref="catalogVersionService" />
+			<property name="jnjGTProductFeedService" ref="jnjGTProductFeedService" />
+			<property name="flexibleSearchService" ref="flexibleSearchService" />
+			<property name="jnjPCMCommonFacadeUtil" ref="jnjPCMCommonFacadeUtil"/>
+			<property name="configurationService" ref="configurationService"/>
+        	<property name="mediaService" ref="mediaService"/>		
+	</bean>
+	
+	<bean id="jnjGTPCMHierarchyUpdateFacade" class="com.jnj.gt.pcm.integration.facade.impl.DefaultJnjGTPCMHierarchyUpdateFacade" parent="jnjCCP360IntegrationFacade">
+			<property name="catalogVersionService" ref="catalogVersionService" />
+			<property name="modelService" ref="modelService" />
+			<property name="userService" ref="userService" />
+	</bean>
+	
+    
+			
+</beans>

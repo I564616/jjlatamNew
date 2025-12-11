@@ -1,0 +1,290 @@
+#consignmentOrderPage{
+	background: #fff;
+   // padding: 20px 0px 0px 0px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #f2f2f2;
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 3px 11px 0 rgba(0, 0, 0, 0.19);
+    webkit-box-shadow: 0 0 5px 2px #eee;
+    -moz-box-shadow: 0 0 5px 2px #eee;
+    box-shadow: 0 0 5px 2px #eee;
+}
+#consignmentOrderPage .order-table th,.order-table tr,.order-table thead {
+    border: none !important;
+	border-color:white !important;
+}
+.orderdetailscontainer{
+    background: #fff;
+    padding: 20px 25px 20px 40px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #f2f2f2;
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 3px 11px 0 rgba(0, 0, 0, 0.19);
+    webkit-box-shadow: 0 0 5px 2px #eee;
+    -moz-box-shadow: 0 0 5px 2px #eee;
+    box-shadow: 0 0 5px 2px #eee;
+}
+#consignmentOrderPage .order-table>thead:first-child>tr:first-child>th:last-child, 
+#consignmentOrderPage .order-table>thead:first-child>tr:first-child>th:first-child, 
+#consignmentOrderPage .order-table>thead:first-child>tr:first-child>th:nth-child(2), 
+#consignmentOrderPage .order-table>tbody>tr>td, 
+#consignmentOrderPage .order-table>tbody>tr>th, 
+#consignmentOrderPage .order-table>tfoot>tr>td, 
+#consignmentOrderPage .order-table>tfoot>tr>th, 
+#consignmentOrderPage .order-table>thead>tr>td, 
+#consignmentOrderPage .order-table>thead>tr>th {
+    text-align: left;
+    padding-left: 8px;
+    padding-bottom: 0;
+    vertical-align: middle;
+}
+
+#consignmentOrderPage .type{
+	padding-left:0px !important;
+}
+#consignmentOrderPage  .form-consignment-label-select{
+	width:45%;
+}
+#consignmentOrderPage  .form-consignment-input-select{
+	width:55%;
+}
+#consignmentOrderPage   .form-consignment-select-large {
+    width: 55%;
+}
+#consignmentOrderPage  .label-lineHeight{
+	line-height:30px;
+}
+.clearBoth{
+	clear:both;
+}
+#consignmentOrderPage  .margintop20px{
+	margin-top:20px;
+}
+#consignmentOrderPage .jnjPanelbg{
+	margin-left: 0px;
+    padding: 20px 15px 20px 15px;
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid #f2f2f2;
+}
+#consignmentOrderPage .price-txt-width {
+    width: 75%;
+    padding-right: 20px;
+    float: left;
+}
+#consignmentOrderPage .price-quantity {
+    width: 24%;
+    float: left;
+}
+.error{
+	/*AAOL-6475*/
+	/* margin-top:5px;*/
+	color:#b41601;
+	font-size:12px;
+	font-weight:bold;
+}
+/* add for error alignment by lokesh 09/08/2017*/
+.form-control.error{
+	/*AAOL-6475*/
+	/* margin-top:0px !important;*/
+	font-size:14px;
+}
+
+#consignmentOrderPage .est-dateCol{
+	padding-left:8px;
+}
+#consignmentOrderPage .btnclsactive {
+    padding: 10px 25px;
+}
+#consignmentOrderPage .subhead {
+    color: rgb(120,120,120);
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+#consignmentOrderPage table.table-bordered.dataTable tbody td:last-child {
+    padding-right: 8px !important;
+	padding-left:8px;
+}
+#dispute-order  .yesbtn,#dispute-order  .nobtn{
+	padding:10px 25px;
+}
+#dispute-order  .yesNo{
+	margin:0px auto;
+}
+#consignmentOrderPage .table>thead:first-child>tr:first-child>th:last-child{
+	text-align:center !important;
+	padding-left:8px  !important;
+}
+#consignmentOrderPage  table.table-bordered.dataTable tbody td:last-child{
+	text-align:center !important;
+	padding-left:8px  !important;
+	padding-right:8px  !important;
+}
+#consignmentOrderPage  .serialNumber{
+	width:96px !important;
+	vertical-align: middle;
+}
+#consignmentOrderPage  .batchNumber{
+	width:96px !important;
+	vertical-align: middle;
+}
+#consignmentOrderPage .borderTop{
+	border-top:1px solid #eee;
+}
+#consignmentOrderPage .quantityBox{
+	text-align:center;
+	width:50px !important;
+}
+#consignmentOrderPage .batch-text{
+	text-align: center;
+    margin-top: 5px;
+    font-size: x-small;
+}
+#consignmentOrderPage .totPrice{
+	width:95px;
+}
+.consignment-label-select{
+	width: 35%;
+    word-wrap: break-word;
+}
+.consignment-element-select{
+	width: 65%;
+}
+.marginBottom20px{
+	margin-bottom:20px;
+}
+.warningMsg{
+	padding-left:10px;
+	white-space:nowrap;
+	font-size:14px;
+}
+.ChargeBatchNo{
+	width:200px !important;
+}
+.catalogLanding .imgprop{
+	width: 100%;
+    height: auto;
+    vertical-align: top;
+}
+@media screen and (max-width: 767px) {
+	#consignmentOrderPage .stockUserIphone{
+		margin-top:20px;
+	}
+	#consignmentOrderPage .label-lineHeight{
+		line-height:18px;
+	}
+	#consignmentOrderPage .input-group {
+		width: 55% !important;
+	}
+	#consignmentOrderPage .price-quantity {
+		margin-top:0px;
+	}
+	#consignmentOrderPage .table>thead:first-child>tr:first-child>th:last-child,#consignmentOrderPage  table.table-bordered.dataTable tbody td:last-child{
+		text-align:left !important;
+		padding-left:20px !important;
+	}
+	.consignmentOrderBtnIphone .btnclsnormal,.consignmentOrderBtnIphone .btnclsactive,.ConsignmentValidateBtn{
+		width: 100% !important;
+		margin-bottom:10px;
+	}
+	#ordercompletePage .ConsignmentRHSIphone{
+			margin-top:15px !important;
+		}
+		#ordercompletePage .ConsignmentDownload{
+			text-align:center;
+		}
+}
+#ConsignmentOrderEntryChkbox{
+	display:none;
+}
+
+
+/* Added for sub Reports */
+	#Reportspage .ReportLabel{
+		float:left;
+		display: inline-block;
+		padding-right: 10px;
+		line-height:17px !important;
+	}
+	#Reportspage .inventory-form-label-select{
+		width:38%;	
+		word-wrap: break-word;
+		margin-bottom: 0px !important;
+	}
+	#Reportspage .product-label{
+		width:25%;
+	}
+	#Reportspage .inventory-form-element-select{
+		width:54%;
+	}
+	.orderAnalysisTable th,.orderAnalysisTable td{
+		text-align:center !important;
+	}
+
+	#Reportspage .consignmentReport-Label{
+	width:36%; 
+	 }
+	 #Reportspage .consignmentReport-select{
+		width:64%; 
+	 }
+/* Ends */
+
+/* Added for Financial Summary */
+#Reportspage .subFinancialHead{
+	padding: 15px 30px;
+	border-bottom:1px solid #f2f2f2;
+	font-weight:bold;
+	background-color: rgb(229,243,246);
+}
+#Reportspage .subFinancialText{
+	padding: 15px 30px;
+}
+#Reportspage .borderTop{
+	border-top:1px solid #f2f2f2;
+}
+#Reportspage .padding0px{
+	padding:0px;
+}
+#Reportspage .marginTop15px{
+	margin-top:15px;
+}
+#Reportspage .currency-label-select-large{
+	width:25%;
+}
+#Reportspage .currencyCode{
+	width:22%;
+}
+#Reportspage .currencyRegion{
+	width:50%;
+}
+#Reportspage .scrollLabel{
+	width:36.5%;
+}
+#Reportspage .scrollTextBox{
+	width:63.5%;
+}
+#Reportspage .paymentSection{
+	height: 360px;
+    overflow-y: auto;
+	overflow-x: hidden;
+}
+#Reportspage  .dlink-holder{
+	padding: 20px 10px 20px 10px;
+}
+#Reportspage .BalanceSummarysection{
+	height: 142px;
+    overflow-y: auto;
+	overflow-x: hidden;
+}
+#Reportspage .CreditSection{
+	height: 360px;
+    overflow-y: auto;
+	overflow-x: hidden;
+}
+#Reportspage .financialSections{
+	border-bottom:1px solid #f2f2f2;
+}
+.currencyVal{line-height:34px}
+.currencyVal .curCode{margin-right:5px}
+/* Ends */
+.standardOrderPopup2 .checkbox+.checkbox, .radio+.radio {
+   /* margin-top: 10px !important;*/
+}

@@ -1,0 +1,398 @@
+<style>
+input.span-18 {
+	border-left-width: 1px;
+    border-right-width: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+	width: 698px;
+}
+.blank_row
+{
+    height: 20px
+    background-color: #FFFFFF;
+}	
+.last {
+    margin-right: 0;
+    padding-right: 0;
+}
+.ordStatusValidationBody h2.arrowHeader span {
+    float: right;
+}
+.ordStatusValidationBody ul {
+    margin: 10px 0 20px;
+    padding-bottom: 10px;
+}
+.ordStatusValidationBody ul li {
+    clear: both;
+    margin-top: 10px;
+    min-height: 58px;
+}
+.ordStatusValidationBody label {
+    display: block;
+}
+.ordStatusValidationBody label span {
+    color: #B41601;
+}
+.ordStatusValidationBody input[type="text"], .ordStatusValidationBody select {
+    color: #646464;
+    padding-left: 2px;
+    width: 420px;
+}
+.ordStatusValidationBody select {
+    color: #646464;
+    float: none;
+    margin-bottom: 0;
+    width: 230px;
+}
+.radioPanel label {
+    display: inline;
+}
+.radioPanel input[type="text"] {
+    display: block;
+    margin: 4px 0;
+}
+.radioPanel input[type="radio"] {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    margin-bottom: 0;
+}
+.ordStatusValidationBody input, .ordStatusValidationBody select {
+    padding: 0;
+}
+.ordStatusValidationBody select {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid #E5E5E5;
+    padding-bottom: 0;
+    padding-right: 0;
+    padding-top: 0;
+}
+.ordStatusValidationBody .buttonWrapper > input {
+    padding: 5px 15px;
+}
+h2.arrowHeader {
+    border-bottom: 1px solid #84C5D4;
+    color: #0A8CAA;
+    font-size: 16px;
+    line-height: 30px;
+    margin-bottom: 0;
+}
+.priceSmall {
+    color: #B41601;
+    font-size: 12px;
+}
+.instructiontxt {
+    color: #828282;
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+
+body {
+    line-height: 1.5;
+}
+body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section {
+    border: 0 none;
+    font-family: inherit;
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+body {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #222222;
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    font-size: 75%;
+}
+ul li {
+    color: #646464;
+    font-size: 12px;
+    list-style-type: none;
+}
+td {
+	color: #646464;
+}
+
+table.orderStatus
+{
+	background:#EEE;
+	color:#333;
+	font-size:12px;
+	font: 'Calibri';
+	text-align:center;
+}
+
+table.orderStatus th
+{
+	background:#CCC;
+	font-weight:bold;
+	padding: 5px ;
+}
+
+<html>
+<head>
+	<title>Order Status Inbound - Line Validation Email</title>
+</head>
+<body id="containerBody">
+	<table style="background-color:#ffffff" width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+		<tr>
+			<td align="center">
+				<table bgcolor="#ffffff" width="1200" border="0" cellspacing="0" cellpadding="0" align="center">
+					<tr>
+							<td style="color: red;" width="600" height="5" colspan="3" style="background-color:red;">
+								<div style="width:11;height:11" >&nbsp;
+							</td>
+						</tr>
+					
+						<tr bgcolor="#ffffff">
+						  <td style="color: #646464;" width="11" height="11">
+						  <div style="width:11;height:11" />
+						  </td>
+						  <td style="color: #646464;" height="11">
+								<table width="600">
+									<tr>
+										<td> ${ctx.cmsSlotContents.TopContentLogo1}</td>
+									 <td style="color: #646464;" width="290" height="11">
+										  <div style="width:290;height:11" >&nbsp;<div>
+									  </td>
+									<td> ${ctx.cmsSlotContents.TopContentLogo2}</td>
+									</tr>
+								</table>
+						  </td>
+		                  <td style="color: #646464;" width="1" height="11">
+		                         <div style="width:1;height:11" />
+		                   </td>
+		                 </tr>
+
+
+					<tr class="blank_row">	
+						<td colspan="3"> &nbsp</td>
+					</tr>
+						
+					<br>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td>
+							<h2 class="arrowHeader">
+							ORDER STATUS INBOUND FILE - LINE VALIDATION
+							</h2>
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+							<div class="span-18 last" id="addindirectcustomer" style="display:block">
+								<div class="ordStatusValidationBody ">
+									<table width="100%" cellspacing="0" cellpadding="0">
+										<tr>
+											<td align="left">Dear CSR,</td>
+										</tr>
+										<tr><td></td></tr>
+										<tr>
+											<td align="left">Order Status inbound feed files have mismatch on lines count, summary is as below:</td>
+										</tr>
+										<tr></tr>
+										<tr>
+											<table class="orderStatus" cellpadding="10">										
+												<th>FILE NAME</th>
+												<th>Records Mentioned</th>
+												<th>Records Available</th>
+												
+												#foreach($fileName in $ctx.fileNames)
+													<tr>
+														<td>${fileName}</td>
+														<td valign="top">
+															$ctx.fileNameAndMentionedCount.get(${fileName})
+														</td>
+														<td valign="top">
+															$ctx.fileNameAndAvailableCount.get(${fileName})
+														</td>
+													</tr>	
+												#end
+											</table>
+										</tr>
+									</table>
+									<br>
+								</div>
+							</div>
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr bgcolor="#fafafa">
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr bgcolor="#fafafa">
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">You are about to enter a Private Web Site that is restricted to authorized use by Johnson &amp; Johnson Medical Devices and Diagnostics for Latin America and their authorized agents for business purposes only. The actual or attempted unauthorized
+							access, use or modification of the web site and its contents is strictly prohibited by the Company. Unauthorized users and/or unauthorized use are subject to criminal and/or civil penalties in accordance with applicable domestic and foreign laws.
+							<br
+							/>
+							<br />The use of this web site may be monitored and recorded for administrative and security reasons. If such monitoring and/or recording reveals possible evidence of criminal activity, the Company may provide the monitored evidence of such activity
+							to law enforcement officials. Access to this application from an untrusted workstation, including, but not limited to, cyber cafes and public kiosks, is prohibited.
+							<br />&nbsp;
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td align="left" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">Please read our <a href="#" style="color:#12C2E9"><font color="#12C2E9">Privacy Policy</font></a>. The use of information on this site is under the terms of our <a href="#" style="color:#12C2E9"><font color="#12C2E9">Legal Notice</font></a>
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td align="left" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">Last Update: November 2013</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr bgcolor="#0A8CAA">
+						<td width="11" height="5">
+							<div style="width:11;height:5" />
+						</td>
+						<td height="5">
+							<div style="width:578;height:5" />
+						</td>
+						<td width="11" height="5">
+							<div style="width:11;height:5" />
+						</td>
+					</tr>
+					<tr bgcolor="#e5e5e5">
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr bgcolor="#e5e5e5">
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td>
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td align="left" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">This site is published by Johnson and Johnson Medical Devices and Diagnostics - Latin America, L.L.C. which is solely responsible for its contents and is destined for the use of the Johnson &amp; Johnson family of companies employees and customers
+										in Latin America.
+										<br />
+										<br />All Contents &copy;Johnson and Johnson Medical Devices and Diagnostics - Latin America, L.L.C. 2009 - 2013. All Rights Reserved.
+										</div>
+									</td>
+								</tr>
+							</table>
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr bgcolor="#e5e5e5">
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,55 @@
+INSERT_UPDATE Script;code[unique=true]	        ;scriptType(code)	;content
+					;updateProductSalesOrg  	;GROOVY			    ;"import de.hybris.platform.servicelayer.search.*;
+import com.jnj.la.core.jalo.JnJProductSalesOrg;
+import com.jnj.la.core.model.JnJProductSalesOrgModel;
+import de.hybris.platform.servicelayer.model.ModelService;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
+
+final Logger LOG = Logger.getLogger("Update sales orgs");
+
+flexibleSearchService = spring.getBean("flexibleSearchService");
+
+modelService = spring.getBean("modelService");
+
+query = "select {pk} from {JnJProductSalesOrg} where {creationtime} >= '2023-01-01' and {creationtime}  < '2023-01-01'";
+
+result = flexibleSearchService.search(query);
+
+LOG.info("Result: " + result.count);
+
+if (CollectionUtils.isNotEmpty(result.getResult())) {
+int count = 0;
+  for (item in result.getResult()) {    
+  try {
+  if (StringUtils.isNotEmpty(item.getSalesOrg()) && item.getSalesOrg().contains("Master")) {
+  item.setActive(false);
+  } else {
+  item.setActive(true);
+  }
+  modelService.save(item);  
+} 
+catch(Exception exe) {
+count++;
+		
+LOG.error("Error processing record = "+item.getPk(), exe);
+
+}
+
+}
+
+LOG.info("No of failed records ="+count);
+
+}
+
+return "Groovy Rocks Active flag updated in JnjProductSalesOrg"
+"
+
+INSERT_UPDATE ScriptingJob	;code[unique=true]		    ;scriptURI
+							;updateProductSalesOrgScriptingJob	;model://updateProductSalesOrg
+							
+							
+INSERT_UPDATE CronJob	;code[unique=true]		              	;job(code)		            		;sessionLanguage(isocode)	;sessionUser(uid)
+						;updateProductSalesOrgScriptingCronJob	;updateProductSalesOrgScriptingJob	;en							;admin							
+							

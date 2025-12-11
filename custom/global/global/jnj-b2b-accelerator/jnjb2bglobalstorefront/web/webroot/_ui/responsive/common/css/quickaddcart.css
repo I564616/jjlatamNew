@@ -1,0 +1,106 @@
+.error-msg-red{
+ width:210px;
+ word-break:break-word;
+}
+#quickaddcart-popup{
+    padding: 0px;
+    width: 100%;
+    z-index:9999;
+}
+#quickaddcart-popup .quicart-row-gap{
+	margin-bottom:10px !important;
+}
+#quickaddcart-popup .modalcls{
+	top: 80px;
+	width: 500px;
+}
+#quickaddcart-popup .modal-body{
+	padding: 15px 25px 15px 25px;
+}
+#quickaddcart-popup .modal-header{
+	padding: 15px 25px 15px 25px;
+}
+#quickaddcart-popup .popup{
+	margin: 0 auto;	
+	border-radius: 0px;
+	box-shadow: 0 0px 0px; 
+}
+#quickaddcart-popup .clsBtn{
+	margin-top: 15px !important;
+	font-size: 14px;
+	color: #0a8caa;
+	opacity:1;
+}
+#quickaddcart-popup .selectTitle{
+	font-size: 30px;
+}
+#quickaddcart-popup .ftrcls{
+	padding: 25px;
+}
+#quickaddcart-popup .margintop10px{
+	margin-top:10px;
+}
+#quickaddcart-popup .margintop12px{
+	margin-top:12px;
+}
+#quickaddcart-popup  .paddingright8px{
+	padding-right: 8px;
+}
+#quickaddcart-popup  #add-cart-btn{
+	padding: 10px 25px;
+}
+#quickaddcart-popup .panel-heading{
+	padding: 5px 15px;
+}
+#quickaddcart-popup .panel-group{
+	margin-bottom:0px;
+}
+#quickaddcart-popup .quick-msg{
+	margin-right:10px;
+}
+#quickaddcart-popup .prod-number{
+	width: 75%;
+    display: inline-block;	
+	float:left;
+}
+#quickaddcart-popup .prod-quanity{
+	width: 20%;
+    display: inline-block;
+	margin-left: 2%;
+	float:left;
+}
+#quickaddcart-popup .first-col{
+	padding: 0px 20px 0px 20px;
+	width:500px;
+}
+@media screen and (max-width: 767px){
+	#quickaddcart-popup .popup,#quickaddcart-popup #add-cart-btn{
+		width: 100%;
+	}
+	#quickaddcart-popup .modalcls{
+		width:auto;
+	}
+	#quickaddcart-popup .first-col{
+		width:auto;
+		padding: 0px 0px 0px 20px;
+	}
+	#quickaddcart-popup .errMsgHolder{
+		margin: 5px 0px 5px 0px;
+    padding-left: 20px;
+    padding-right: 13px;
+    width: 100%;
+	}
+	#quickaddcart-popup .error-msg-red{
+		width:100%;
+	}
+	#quickaddcart-popup .error-msg-red .panel-title span{
+    	word-break: break-word;
+		
+	}
+	#quickaddcart-popup .prod-number{
+		width: 63%;
+	}
+	#quickaddcart-popup .prod-quanity{
+		width: 31%;
+	}
+}

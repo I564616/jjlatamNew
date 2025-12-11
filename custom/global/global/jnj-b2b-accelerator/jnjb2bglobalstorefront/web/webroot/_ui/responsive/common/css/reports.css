@@ -1,0 +1,603 @@
+
+.report-label{
+	width:40%;display:inline-block;float:left;line-height:30px;font-weight:bold;padding-right:5px;
+}
+.report-form-field{
+	width:60%;display:inline-block;float:left;
+}
+/* Changes for AAOL-4937 */
+ .reason-code-label{
+   width:27%;display:inline-block;float:left;line-height:30px;font-weight:bold;padding-right:5px;
+ }
+ .reason-code-field{
+	width:68%;display:inline-block;float:left;
+}
+/* Start - Cut report */
+.poNumber{width:15%;display:inline-block}
+.po-Txt{width:85%;display:inline-block}
+.cut-report-label{width:35%;display:inline-block}
+.cut-report-field{width:65%;display:inline-block}
+.Sorting-by{margin-top: 20px;position: absolute;margin-left: 250px;z-index:1;}
+.margin-desktop{margin-bottom:20px}
+/* End - Cut report */
+
+.Sorting-by button.btn.dropdown-toggle.btn-default {
+    height: 40px;
+    background-position: 92% 12px !important;
+    margin-left: 10px;
+	width:130px;
+}	
+.cut-report th,.cut-report td{
+	word-break;break-word;
+	text-align:left !important
+}
+.sorting-table th{
+	text-transform:uppercase;
+}
+.cut-report.table-bordered.dataTable tbody td:last-child{padding-left:8px;padding-right:8px;}
+
+/* start select all account report popup */
+/* selectall account popup css */
+.text-left-cl{
+	text-align:left !important;
+}
+#report-selectall-popup .searchBox{
+	display: inline-block;
+	width:73%;
+	border-radius:15px;
+}
+#report-selectall-popup .searchBtn {
+    top: 4px;
+    right: 43px;
+    color: #0a8caa;
+}
+#report-selectall-popup .clearbtn{
+	width:20%;
+}
+#report-selectall-popup  .accountsMargin{
+	    margin: 15px 0 15px 0;
+		}
+#report-selectall-popup hr{
+	margin:0;
+}
+#report-selectall-popup .checkbox label::before {
+    top: 1px;
+}
+#report-selectall-popup .selectAllHeader{
+	padding: 10px 0 15px 45px !important;
+    border-bottom: 1px solid #f2f2f2;
+}
+#report-selectall-popup .modalbody{
+    padding: 5px 25px 15px 25px;
+	height:250px;
+}
+#report-selectall-popup .report-margin-gap{
+	margin-bottom:10px;
+}
+#report-selectall-popup .load-more-link{
+	border-top:1px solid #f2f2f2;padding:10px 0px
+}
+/* end select all account report popup */
+/* added by lokesh on 3rd feb 2017 */
+#Reportspage .no-pad-right-cl{
+	padding-right:0px;
+}
+#Reportspage .prd-code-label-cl{
+	width:36%;
+	float: left;
+	line-height: 30px;
+    display: inline-block;
+    padding-right: 10px;
+}
+#Reportspage .prd-code-txt{
+	width:64%;
+}
+#Reportspage .show-all-chckbox{
+	margin-top:8px;
+}
+#Reportspage .margintop20px{
+	margin-top:20px;
+}
+#Reportspage .change{
+	margin-left: 8px;
+	font-size: 14px;
+}
+#Reportspage .amazon{
+	margin-top: 10px;
+	font-size: 17px;
+}
+#Reportspage .territory{
+	//padding-left: 24px;
+}
+#Reportspage .reset{
+    padding: 10px 40px;
+    margin-right: 8px;	
+}
+#Reportspage .report{
+	margin-right: 18px;
+}
+#Reportspage .jnj-panel-footer{
+	margin-top: 0px;
+	padding-top: 30px;
+	padding-bottom: 15px;
+}
+#Reportspage .jnj-panel-header{
+	padding: 0px 15px 15px 15px;
+}
+#Reportspage .jnj-panel-body{
+	padding: 25px 16px 10px 16px;
+}
+#Reportspage .btnclsnormal{
+	padding: 10px 40px;
+}
+#Reportspage .btnclsactive{
+    padding: 10px 30px;
+	margin-left: 10px;
+    margin-right: 15px;
+}
+#Reportspage .modal .btnclsactive{
+    padding: 10px 30px;
+	margin-left: 0px;
+    margin-right: 0px;
+}
+#Reportspage .mainbody-container{
+	//box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 0px 1px 0 rgba(0, 0, 0, 0.19);
+	webkit-box-shadow: 0 0 5px 2px #eee;
+	-moz-box-shadow: 0 0 5px 2px #eee;
+	box-shadow: 0 0 5px 2px #eee;
+}
+#Reportspage .checkbox label::before{
+	top: 1px;
+}
+#Reportspage  table.table-bordered.dataTable tbody th,#Reportspage  table.table-bordered.dataTable tbody td:first-child,#Reportspage  .table>thead:first-child>tr:first-child>th:first-child{
+	/*padding-left: 30px;*/
+}
+#Reportspage table.dataTable thead .sorting:after{
+	opacity: 1;
+	margin-left: -5px;
+}
+#Reportspage .account-head{
+	width:auto !important;	
+}
+#Reportspage .link-holder{
+	margin-top:10px;
+}
+#Reportspage .link-txt{
+	margin-right: 10px;
+    padding-left: 20px;
+}
+#Reportspage .table>thead:first-child>tr:first-child>th:first-child{
+	//text-align:center;
+}
+#Reportspage .periodth{
+	width:225px !important;
+}
+#Reportspage .searchBox {
+   
+    width: 91%;
+    border-radius: 15px;
+    margin-left: 10px;
+}
+#Reportspage .toggle-plus-minus{
+	margin-right:10px;
+}
+#Reportspage .sub-details-row{
+	margin-bottom:15px  !important;
+}
+#Reportspage .sub-details-row p{
+	margin-bottom:5px !important;
+}
+#Reportspage .no-data-report{
+	padding:15px 30px;background-color:white;
+}
+#Reportspage .form-label{
+	float:left;
+	line-height:30px;
+	display: inline-block;
+	padding-right:10px;
+ }
+ /* 4982 */
+  #Reportspage .salesreport-form-label{
+	float:left;
+	line-height:16px;
+	display: inline-block;
+	padding-right:10px;
+ }
+#Reportspage .form-label-date,#Reportspage .form-inventory-label-date{
+	width: 35%;	
+ }
+#Reportspage .form-label-select{
+	width:46%;	
+	word-wrap: break-word;
+ 	margin-bottom:0px !important;
+ }
+#Reportspage .form-label-select-large{
+	width:30%;
+ }
+#Reportspage .form-element{
+	float:left;
+	margin:0px !important;
+ }
+#Reportspage .form-element-select{
+	width:54%;
+ }
+#Reportspage .form-element-date{
+	width: 65%;
+ }
+#Reportspage .form-element-select-large{
+	width:70%;
+}
+#Reportspage .rounded-textbox{
+	display:inline-block;
+	float:left;
+	border-radius:20px;
+}
+#Reportspage .float-right-desktop{
+	float:right;
+}
+#Reportspage .checkboxmargin-selectall{
+	margin:0px !important;
+}
+#Reportspage .tabdata1{
+	padding-right: 30px;
+}
+#Reportspage table>thead>tr>th:nth-child(2){
+	//text-align: left;
+}
+#Reportspage table>tbody>tr>td:nth-child(2){
+	text-align: left;
+}
+#Reportspage table>tbody>tr>td:nth-child(3){
+	text-align: left;
+}
+#Reportspage table>thead>tr>th:last-child{
+	padding-left: 10px;
+	width: 80px;
+}
+#Reportspage table>tbody>tr>td{
+	padding-top: 25px;
+	padding-bottom: 25px;
+	vertical-align: top !important;
+}
+#Reportspage .productcode{
+	width: 135px;
+}
+#Reportspage .unitqty{
+	width: 60px;
+}
+#Reportspage .link-holder{
+	margin-top:10px;
+}
+#Reportspage .link-txt{
+	margin-right: 10px;
+    padding-left: 20px;
+}
+
+/* Added for Inventory report page */
+
+#Reportspage  .lineHeight35px{
+	line-height: 35px;
+}
+#Reportspage  .textCenter{
+	text-align:center !important;
+}
+#Reportspage .margintop0px{
+	margin-top:0px !important;
+}
+#Reportspage .form-inventory-label-select {
+    width: 41%;
+    word-wrap: break-word;
+}
+#Reportspage .form-inventory-input-select {
+    width: 58%;
+}
+
+/*  */
+@media only screen and (max-width:1024px){
+	#Reportspage .marginTop20pxIpad{
+		margin-top:20px;
+	}
+	#Reportspage .endDateHolder{
+		margin-top:0px !important;
+	}
+	#Reportspage .form-inventory-label-select {
+	    width: 30%;
+	    word-wrap: break-word;
+	}
+	#Reportspage .form-inventory-input-select {
+	    width: 70%;
+	}
+	#Reportspage table>thead>tr>th:last-child{
+		text-align: center;
+		width:89px;
+	}
+	#Reportspage table>tbody>tr>td:last-child{
+		padding-left: 15px;
+	}
+	#Reportspage table>thead>tr>th:nth-child(3){
+		text-align: left;
+	}
+	#Reportspage .margintop20px{
+		margin-top: 0px;
+	}
+	#Reportspage .margintopipad20px{
+		margin-top: 15px;
+	}
+	#Reportspage .marginbottomipad25px{
+		margin-bottom: 5px;
+	}
+	#Reportspage .textheightipad{
+		line-height: 18px;
+	}
+	#Reportspage .form-label-date{
+		width:30%;
+	}
+	#Reportspage .form-element-date{
+		width:70%;
+	}
+	#Reportspage .form-label-select{
+		width: 30%;
+	}
+	#Reportspage .form-element-select{
+		width:70%;
+	}
+	#Reportspage .form-label-select-large{
+		width:30%;
+	}
+	#Reportspage .ipadterritory{
+		//padding-left: 24px;
+	}
+	#Reportspage .details{
+		margin-top: 10px;
+		margin-left: 25px;
+		padding: 0px !important;
+	}
+	#Reportspage .ipadacctoggle{
+		width: 140px;
+		display: block;
+	}
+	#Reportspage .ipadacctoggle .toggle-plus-minus{
+		margin-right: 10px;
+	}
+	#Reportspage .account-headipad{
+		width: 140px !important;
+	}
+	#Reportspage .float-right-desktop{
+		float:left;
+	}
+	#Reportspage .jnj-panel-footer{
+		padding-bottom:20px;	
+	}
+	#Reportspage .prd-code-label-cl{
+		width:30%;
+		float: left;
+		display: inline-block;
+		padding-right: 10px;
+		margin-bottom:10px;
+	}
+	#Reportspage .prd-code-txt {
+		width: 70%;
+	}
+	
+	/* Added for Inventory report page */
+	
+	#Reportspage .form-inventory-label-date{
+		width: 41%;	
+	 }
+	#Reportspage .form-inventory-element-date{
+		width: 58%;
+	 }
+	 
+	 /* ends */
+}
+@media screen and (max-width: 767px) {
+	#Reportspage .endDateHolder{
+		margin-top:20px !important;
+	}
+	#Reportspage .form-inventory-label-select {
+	    width: 30%;
+	    word-wrap: break-word;
+	}
+	#Reportspage .form-inventory-input-select {
+	    width: 70%;
+	}
+	#Reportspage .marginTop20pxIphone{
+		margin-top:20px;
+	}
+	#Reportspage .jnj-panel{
+		padding: 15px 0px 40px 0px;
+	}
+	#Reportspage .link-holder{
+		text-align:center;
+		position:absolute;
+		margin-top: 111px;
+	}
+	#Reportspage .link-txt{
+		margin-right: 20px;
+		padding-left: 0px;
+	}
+	#Reportspage div.dataTables_wrapper div.dataTables_info{
+		float: left;
+		margin: 20px 0px 0 30px;
+	}
+	#Reportspage table>tbody>tr>td{
+		padding-bottom: 0px;
+	}
+	#Reportspage .selectchkbox{
+		/*float:left !important; -- Mobile Tablet Fix 22 */
+	}
+	#Reportspage .change{
+		margin-left: 0px;
+	}
+	#Reportspage .form-label-select-large{
+		width:31%;
+	}
+	#Reportspage .form-element-select-large{
+		width:69%;
+	}
+	#Reportspage .territory{
+		padding-left: 2px;
+	}
+	#Reportspage .ipadterritory{
+		padding-left: 0px;
+	}
+	#Reportspage .generatereport{
+		width: 100%;
+		margin: 0px 0px 20px 0px;
+	}
+	#Reportspage .reset{
+		width: 100%;
+		margin-right: 0px;
+	}
+	#Reportspage .marginbottomipad25px{
+		margin-bottom: 0px;
+	}
+	#Reportspage .margintop20px{
+		margin-top: 15px;
+	}
+	#Reportspage .analysisvariable{
+		margin-top: 10px;
+		margin-bottom: -5px;
+	}
+	#Reportspage .btn-mobile{
+		float: none !important;
+	}
+}
+#Reportspage  .sorting-table-scroll-x th{
+	vertical-align:middle !important;text-align:left !important;
+	white-space:nowrap;
+	padding-right:10px;
+	 text-transform:uppercase;
+  }
+  #Reportspage .sorting-table-scroll-xp td{
+	vertical-align:top !important;text-align:left !important;
+  }
+	
+/* Reportspage - single product */
+.product-code-element{
+	width: 64%;float:left;
+}
+.orderedfromdropdown .btn-group.bootstrap-select {
+    width: 64% !important;
+}
+.reportslabelwidth{
+	width:36% !important;
+}
+ .amountAlign{
+	  margin-bottom:5px;
+	  border-bottom:1px solid #ccc;
+	  padding:5px 0 5px 0
+  }
+  .amountsubdata{
+	width:50%;padding-bottom: 5px;
+	text-align:center;
+  }
+  .quantitysubdata{
+	width:33%;padding-bottom: 5px;
+	text-align:center;
+  }
+  #Reportspage  .reportsSingle .table>thead:first-child>tr:first-child>th:first-child , #Reportspage  .reportsSingle table.table-bordered.dataTable tbody td:last-child, #Reportspage  .reportsSingle table.table-bordered.dataTable tbody td:first-child {
+    padding-left: 10px;
+  }
+ #Reportspage .start .form-element, #Reportspage .end .form-element {
+    //padding-left: 4px;
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+	#Reportspage .start .form-element, #Reportspage .end .form-element {
+		padding-left: 0px;
+	}
+	.single-prodcode,.single-orderedfromdropdown .btn-group.bootstrap-select,.single-lotnumber{
+		width:70% !important;
+	}
+	.reportslabelwidth{
+		width:30% !important;
+	}
+	.ipadpaddingright12px{
+		padding-right:12px !important;
+	}
+	.report-label{
+		width:55%;
+	}
+	.report-form-field{
+		width:45%;
+	}
+	.reason-code-label{
+	  width:55%;
+	 }
+	 .reason-code-field{
+		width:45%;
+	}
+	#Reportspage .form-label{
+		line-height:18px;
+ 	}
+}
+@media screen and (max-width: 767px) {
+	
+	/* Start - Cut report */
+	.cut-report-label{width:100%;display:block}
+	.cut-report-field{width:100%;display:block}
+	 .margin-bottom-mobi{margin-bottom:15px;}
+	 .margin-desktop{margin-bottom:0px}
+	 .Sorting-by{margin-top: 0px;position: relative;margin-left: 0px;z-index:1;padding:15px 10px 10px 20px;background-color:#fff;    
+				webkit-box-shadow: 0 0 5px 2px #eee;-moz-box-shadow: 0 0 5px 2px #eee;box-shadow: 0 0 5px 2px #eee;}
+	 .Sorting-by button.btn.dropdown-toggle.btn-default {
+		width:220px;
+	}
+	.poNumber,.po-Txt {width:100%}
+	.change-link{display:inline-block;margin-left:10px !important}
+	/* End - Cut report */
+	
+	#Reportspage div#datatab-mobile_paginate{
+		padding: 17px 15px 0px 0px !important;
+	}	
+	#Reportspage .prd-code-label-cl{
+		width:30%;
+		float: left;
+		line-height: 20px;
+		display: inline-block;
+		padding-right: 10px;
+		margin-bottom:10px;
+	}
+	#Reportspage .prd-code-txt {
+		width: 70%;
+	}
+	
+	/* Added for Inventory report page */
+	#Reportspage .floatLeftiPh{
+		float:left;
+	}
+	/* ends */
+}
+#Reportspage .marginTop20px{
+	margin-top:20px;
+}
+#Reportspage .endDateHolder{
+	margin-top:20px;
+}
+.jnj-panel-report {
+    border-top: 1px solid #f2f2f2;
+    border-left: 1px solid #f2f2f2;
+    border-top: 1px solid #f2f2f2;
+    background-color: #fff; 
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 0px 1px 0 rgba(0, 0, 0, 0.19);   
+    margin: 0px 0px 0px 0px;
+    padding: 15px 0px 0px 0px;
+}
+
+/*START This is scroll bar implimentation 6337*/
+/* For report screen scrolling */
+.add-scroll {
+	overflow: auto;padding:0px;
+}
+
+.reports-table-desktop>thead th,.reports-table-desktop>tbody td{
+	white-space:nowrap;padding-right:15px !important;
+}
+.reports-table-tablet>thead th,.reports-table-mobile>thead th {
+	z-index: 10;
+}
+
+.no-margin-right {
+	margin: 0px;
+}
+/*END This is scroll bar implimentation 6337*/

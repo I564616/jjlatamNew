@@ -1,0 +1,336 @@
+## messageSource=classpath:/jnjcore/messages/email-orderApprovalRejection_$lang.properties
+#macro( genHtmlBoldFont $text )
+<font color="#414a4f" size="2" face="Arial, Helvetica, sans-serif"><b>$text</b></font>
+#end
+#macro(genHtmlLinkStartTag $url)
+<a href="$url"><font color="#666666">
+#end
+#macro(genHtmlLinkEndTag)
+</font></a>
+#end
+#macro(genHtmlLink $url $textColor $bodyContent)
+<a href="$url"><font color="$textColor">$bodyContent</font></a>
+#end
+
+<style>
+input.span-18 {
+	border-left-width: 1px;
+    border-right-width: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+	width: 698px;
+}
+.blank_row
+{
+    height: 20px
+    background-color: #FFFFFF;
+}	
+.last {
+    margin-right: 0;
+    padding-right: 0;
+}
+.interfaceNotificationBody h2.arrowHeader span {
+    float: right;
+}
+.interfaceNotificationBody ul {
+    margin: 10px 0 20px;
+    padding-bottom: 10px;
+}
+.interfaceNotificationBody ul li {
+    clear: both;
+    margin-top: 10px;
+    min-height: 58px;
+}
+.interfaceNotificationBody label {
+    display: block;
+}
+.interfaceNotificationBody label span {
+    color: #B41601;
+}
+.interfaceNotificationBody input[type="text"], .interfaceNotificationBody select {
+    color: #646464;
+    padding-left: 2px;
+    width: 420px;
+}
+.interfaceNotificationBody select {
+    color: #646464;
+    float: none;
+    margin-bottom: 0;
+    width: 230px;
+}
+.radioPanel label {
+    display: inline;
+}
+.radioPanel input[type="text"] {
+    display: block;
+    margin: 4px 0;
+}
+.radioPanel input[type="radio"] {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    margin-bottom: 0;
+}
+.interfaceNotificationBody input, .interfaceNotificationBody select {
+    padding: 0;
+}
+.interfaceNotificationBody select {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid #E5E5E5;
+    padding-bottom: 0;
+    padding-right: 0;
+    padding-top: 0;
+}
+.interfaceNotificationBody .buttonWrapper > input {
+    padding: 5px 15px;
+}
+h2.arrowHeader {
+    border-bottom: 1px solid #84C5D4;
+    color: #0A8CAA;
+    font-size: 16px;
+    line-height: 30px;
+    margin-bottom: 0;
+}
+.priceSmall {
+    color: #B41601;
+    font-size: 12px;
+}
+.instructiontxt {
+    color: #828282;
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+
+body {
+    line-height: 1.5;
+}
+body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section {
+    border: 0 none;
+    font-family: inherit;
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+body {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #222222;
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    font-size: 75%;
+}
+ul li {
+    color: #646464;
+    font-size: 12px;
+    list-style-type: none;
+}
+td {
+	color: #646464;
+}
+
+table.readDashboard
+{
+	background:#EEE;
+	color:#333;
+	font-size:12px;
+	font: 'Arial';
+	text-align:center;
+}
+
+table.readDashboard th
+{
+	background:#CCC;
+	font-weight:bold;
+}
+
+
+
+
+
+</style>
+<html>
+<head>
+	<title>Confirmation Email</title>
+</head>
+<body id="containerBody">
+	<table style="background-color:#ffffff" width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+		<tr>
+			<td align="center">
+				<table bgcolor="#ffffff" width="1200" border="0" cellspacing="0" cellpadding="0" align="center">
+					<tr bgcolor="#ffffff">
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr bgcolor="#ffffff">
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td>
+							<a href="#logo">
+								<img src="${ctx.logoURL}" width="333" height="84" border="0" />
+							</a>
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+
+					<tr class="blank_row">	
+						<td colspan="3"> &nbsp</td>
+					</tr>
+						
+					<br>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td>
+							<h2 class="arrowHeader">INTERFACE DATA LOAD EMAIL NOTIFICATION</h2>
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<td height="11">
+							<div style="width:578;height:11" />
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+					<tr>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+						<!-- INSERT HERE -->
+						<td style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#828282;">
+							<div class="span-18 last" id="addindirectcustomer" style="display:block">
+								
+								<div class="interfaceNotificationBody ">
+									<ul>
+											<li>
+												<h3>READ DASHBOARD STATUS</h3>
+												<br>
+												<table width="900" border="1" align="center" cellpadding="2" cellspacing="2" class="readDashboard">
+													<tr>
+														<th>
+															INTERFACE NAME
+														</th>
+														<th>
+															FILE NAME
+														</th>
+														<th>
+															STATUS	
+														</th>
+														<th>
+															ERROR MESSAGE
+														</th>
+														<th>
+															DATE
+														</th>
+														
+													</tr>
+													
+													#foreach($data in ${ctx.readDashboardData})
+														<tr>
+															<td>${data.interfaceName}</td>
+															<td>${data.fileName}</td>
+															<td>${data.status}</td>
+															<td>${data.errorMessage}</td>
+															<td>${data.date}</td>
+														</tr>
+													#end
+												</table>
+											</li>
+											<br><br>
+											<li>
+												<h3>WRITE DASHBOARD STATUS</h3>
+												<br>
+												<table width="900" border="1" align="center" cellpadding="2" cellspacing="2" class="readDashboard">
+														<tr>
+															<th>
+																INTERFACE NAME
+															</th>
+															<th>
+																FILE NAME1234
+															</th>
+															<th>
+																IDOC NUMBER
+															</th>
+															<th>
+																ERROR MESSAGE
+															</th>
+															<th>
+																DATE
+															</th>
+															
+														</tr>
+														#foreach($data in ${ctx.writeDashboardData})
+															<tr>
+																<td>${data.interfaceName}</td>
+																<td>${data.fileName}</td>
+																<td>${data.idocNumber}</td>
+																<td>${data.errorMessage}</td>
+																<td>${data.date}</td>
+															</tr>
+														#end
+													</table>
+											</li>
+											<li>
+												<h3>ORDER HEADER STATUS</h3>
+												<br>
+												<table width="900" border="1" align="center" cellpadding="2" cellspacing="2" class="readDashboard">
+														<tr>
+															<th>
+																ORDER NUMBER
+															</th>
+															<th>
+																ERROR MESSAGE
+															</th>
+															<th>
+																USER
+															</th>
+															<th>
+																DATE
+															</th>
+															<th>
+																STATUS
+															</th>
+														</tr>
+														#foreach($data in ${ctx.jnjEmailSentData})
+															<tr>
+																<td>${data.orderNumber}</td>
+																<td>${data.errorMessage}</td>
+																<td>${data.user}</td>
+																<td>${data.date}</td>
+																<td>${data.status}</td>
+															</tr>
+														#end
+													</table>
+											</li>												
+									</ul>
+								</div>
+							</div>
+							<!-- Content Ends -->
+						</td>
+						<td width="11" height="11">
+							<div style="width:11;height:11" />
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

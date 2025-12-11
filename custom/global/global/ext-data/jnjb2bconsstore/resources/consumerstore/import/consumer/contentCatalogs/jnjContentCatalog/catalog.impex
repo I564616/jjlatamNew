@@ -1,0 +1,20 @@
+#
+# Import the JNJ Content Catalog
+#
+
+$CONSContentCatalog=consContCatalog
+$MstrContentCatalog=mstrContCatalog
+$languages=en
+
+
+# Content catalog for CMS contents
+INSERT_UPDATE ContentCatalog;id[unique=true];defaultCatalog[default=false]
+;$MstrContentCatalog
+;$CONSContentCatalog;true
+
+
+# Catalog versions for content catalogs
+INSERT_UPDATE CatalogVersion;catalog(id)[unique=true];version[unique=true];active;languages(isoCode)
+;$MstrContentCatalog;Staged;false;$languages
+;$CONSContentCatalog;Online;true;$languages
+;$CONSContentCatalog;Staged;true;$languages

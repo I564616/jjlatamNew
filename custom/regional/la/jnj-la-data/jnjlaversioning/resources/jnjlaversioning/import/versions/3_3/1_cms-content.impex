@@ -1,0 +1,56 @@
+$contentCatalog=mstrContentCatalog
+$contentCV=catalogVersion(catalog(id[default=$contentCatalog]),version[default='Staged'])
+$jarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/cockpits/cmscockpit
+$jarLatamResourceCms=jar:com.jnj.la.masterstore.setup.JnjlamasterstoreSystemSetup&/jnjlamasterstore/import/contentCatalogs/jnjContentCatalog
+$jnjJarResourceCms=jar:com.jnj.b2b.store.setup.JnjB2BStoreSystemSetup&/masterstore/import/master/contentCatalogs/jnjContentCatalog
+
+
+INSERT_UPDATE PageTemplate; $contentCV[unique = true]; uid[unique = true] ; name              ; frontendTemplateName; restrictedPageTypes(code); active[default = true]
+                          ;                          ; JnjCLSPageTemplate ; CLS Page Template ; cls/clsPage         ;                          ;
+
+INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $contentCV)[unique = true][default = JnjCLSPageTemplate]; validComponentTypes(code); compTypeGroup(code)
+                             ; SiteLogo           ;                                                                       ;                          ; logo
+                             ; MiniCart           ;                                                                       ;                          ; minicart
+                             ; TopNavigation      ;                                                                       ;                          ; navigation
+                             ; Footer             ;                                                                       ;                          ; footer
+
+INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]    ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true]; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
+                                    ;                          ; SiteLogo-CLSPage      ; SiteLogo               ; JnjCLSPageTemplate                          ; SiteLogoSlot                               ; true
+                                    ;                          ; MiniCart-CLSPage      ; MiniCart               ; JnjCLSPageTemplate                          ; MiniCartSlot                               ; true
+                                    ;                          ; TopNavigation-CLSPage ; TopNavigation          ; JnjCLSPageTemplate                          ; topNavigationSlot                          ; true
+                                    ;                          ; Footer-CLSPage        ; Footer                 ; JnjCLSPageTemplate                          ; footerContentSlot                          ; true
+
+INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]           ; mime              ; realfilename                 ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite = true]; altText
+                   ;                          ; instructionsDeliveryDateMedia ; application/excel ; instructionsDeliveryDate.xls ; $jarLatamResourceCms/media/template/instructionsDeliveryDate.xls                               ; instructionsDeliveryDate
+
+INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]; cmsComponents(uid, $contentCV); name; active[default = true]
+                         ;                          ; topNavigationSlot ; HomeBarComponent,OrderHistoryBarComponent,InvoiceHistoryBarComponent,CatalogBarComponent,ReportBarComponent,TemplatesBarComponent,ContractsBarComponent,UserManagementBarComponent,BIDsBarComponent,ServicesBarComponent,SelloutBarComponent,UploadedFilesBarComponent,CLSBarComponent,ChatBarComponent,HelpBarComponent
+
+INSERT_UPDATE ContentPage; $contentCV[unique = true]; uid[unique = true]; name     ; masterTemplate(uid, $contentCV); label; defaultPage[default = 'true']; approvalStatus(code)[default = 'approved']; homepage[default = 'false']
+                         ;                          ; jnjCLSPage        ; CLS Page ; JnjCLSPageTemplate             ; cls
+
+INSERT_UPDATE JnjLinkComponent; $contentCV[unique = true]; uid[unique = true]                     ; name                                       ; url              ; &componentRef                           ; target(code)[default = 'sameWindow']; linkName[lang = en]      ; shiftRight[default = 'false']; details(code, $contentCV)     ; linkName[lang = es]    ; linkName[lang = pt]
+                              ;                          ; instructionsTemplatesLinkDeliveryDates ; Instructions Templates Link Delivery Dates ;                  ; Instructions & Templates Delivery Dates ;                                     ; Instructions & Templates ;                              ; instructionsDeliveryDateMedia ; Instrucciones y Modelo ; Instruções e Modelos
+                              ;                          ; ChatLinkComponent                      ; Chat Link                                  ; /                ; ChatLinkComponent                       ;                                     ; Chat                     ;                              ;                               ; Chat                   ; Chat
+                              ;                          ; ChatMedicalLinkComponent               ; Chat Medical Link                          ; /chat?sector=MDD ; ChatMedicalLinkComponent                ;                                     ; Medical                  ;                              ;                               ; Medical                ; Medical
+                              ;                          ; ChatPharmaLinkComponent                ; Chat Pharma Link                           ; /chat?sector=PHR ; ChatPharmaLinkComponent                 ;                                     ; Pharma                   ;                              ;                               ; Pharma                 ; Pharma
+                              ;                          ; CLSLinkComponent                       ; CLS Link                                   ; /cls             ; CLSLinkComponent                        ;                                     ; CLS Management           ;                              ;                               ; Gestión CLS            ; Gestão CLS
+
+INSERT_UPDATE JnjLinkComponent; $contentCV[unique = true]; uid[unique = true]    ; name               ; url                                      ; &componentRef         ; target(code)[default = 'sameWindow']; linkName[lang = en]; shiftRight[default = 'false']; details(code, $contentCV)
+                              ;                          ; InventoryAnalysisLink ; Inventory Analysis ; /reports/inventoryAnalysis/backorder     ; InventoryAnalysisLink ;                                     ; Inventory Analysis ;
+                              ;                          ; OrderAnalysisLink     ; Order Analysis     ; /reports/orderAnalysis/salesreport       ; OrderAnalysisLink     ;                                     ; Order Analysis     ;
+                              ;                          ; FinancialAnalysisLink ; Financial Analysis ; /reports/financialAnalysis/invoiceReport ; FinancialAnalysisLink ;                                     ; Financial Analysis ;
+
+INSERT_UPDATE CMSNavigationNode; uid[unique = true]; $contentCV[unique = true]; name                 ; parent(uid, $contentCV); links(&componentRef)                                          ; &nodeRef          ; title[lang = en]
+                               ; ReportNavLinkNode ;                          ; Report Nav Link Node ; ReportNavNode          ; InventoryAnalysisLink,OrderAnalysisLink,FinancialAnalysisLink ; ReportNavLinkNode ;
+                               ; ChatNavLinkNode   ;                          ; Chat Nav Link Node   ; ChatNavNode            ; ChatMedicalLinkComponent,ChatPharmaLinkComponent              ; ChatNavLinkNode   ;
+
+INSERT_UPDATE NavigationBarComponent; $contentCV[unique = true]; uid[unique = true]; name                    ; wrapAfter; link(uid, $contentCV); styleClass  ; navigationNode(uid, $contentCV); dropDownLayout(code)[default = AUTO]; &componentRef
+                                    ;                          ; CLSBarComponent   ; CLS Bar Component       ; 10       ; CLSLinkComponent     ; menu-item   ; CLSNavNode                     ;                                     ; CLSBarComponent
+                                    ;                          ; ChatBarComponent  ; Contracts Bar Component ; 10       ; ChatLinkComponent    ; reportsMenu ; ChatNavNode                    ;                                     ; ChatBarComponent
+
+INSERT_UPDATE CMSNavigationNode; uid[unique = true]; $contentCV[unique = true]; name; parent(uid, $contentCV); links(uid, $contentCV); &nodeRef   ; title[lang = en]
+                               ; CLSNavNode        ;                          ; CLS ; JnjNavNode             ;                       ; CLSNavNode ; CLS
+
+INSERT_UPDATE CMSUserGroupRestriction; $contentCV[unique = true]; uid[unique = true]; name            ; components(uid, $contentCV); userGroups(uid)    ; includeSubgroups[default = true]
+                                     ;                          ; CLSRestriction    ; CLS Restriction ; CLSLinkComponent           ; clsManagementGroup ; true

@@ -1,0 +1,392 @@
+#selectAllProductCheckboxRow{display:none;margin:0px;height:30px;border-top:1px solid #f2f2f2}
+#selectAllProductCheckboxCol{padding:15px 30px}
+
+.filterDivider{ 
+        margin-bottom:20px; 
+}
+.catalog-datas{
+width:50%;
+padding-right:0px !important;
+}
+.no-search-result-msg{
+ font-size:30px !important;
+ padding:20px !important;
+ text-align:center;
+}
+
+.catalogLanding input.tertiarybtn.pdfdownloadlinks{
+	-webkit-appearance:none;
+	background:none;
+	border:none;
+	color:#08a;
+}
+.catalogLanding input[type=button]{
+	-webkit-appearance:none;
+	background:#08a;
+	 border:none;
+	 color:#fff;
+	 border-radius:20px;
+	 padding:10px 15px;
+ }
+.catalogLanding .imgprop {
+   width: 100%;
+    height: 85px;
+    vertical-align: top;
+}
+
+.marginleft30px{
+	margin-left:18px;
+}
+.catalogLanding .txtWidth{	
+    width: 55px !important;
+	margin-top: 0px;
+	margin-left: 20px;
+}
+/* Added by siva */
+.catalogLanding h6 {
+    font-size: 14px;
+    line-height: 1.4;
+}
+.cataloglabel{
+    float: right;
+    padding-top: 5px;
+}
+.imgtdwidth{
+	width:14%;
+}
+.resultsTxt{
+	font-size: 25px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+#searchResults .catalogLanding .col-xs-12.headingTxt.content {
+    margin-bottom: 0px !important;
+}
+/*end*/
+.catalogLanding td.paddingforText{
+	padding-left: 10px !important;
+}
+.catalogLanding .Subcontainer{
+	webkit-box-shadow: 0 0 5px 2px #eee;
+	-moz-box-shadow: 0 0 5px 2px #eee;
+	box-shadow: 0 0 5px 2px #eee;
+}
+.fontsize12px{
+	font-size:12px;
+}
+.paddingright40px{
+	padding:20px 40px  18px 30px !important;
+}
+.catalogLanding .thirdline{
+	font-size:14px;/* added by siva */
+}
+.catalogLanding .table-padding{
+	padding-top: 0px !important;
+}
+.margintop15px{
+	margin-top:5px;
+	margin-left:10px;
+}
+.catalogLanding .shipping-address-padding {
+    padding: 30px 0 10px 20px !important;
+}
+.verticalmiddle{
+	vertical-align:middle !important;
+}
+.catalogLanding #ordersTable thead {
+    display: none;
+}
+.paddingforcollapse{
+	//padding: 25px 0 15px 10px;
+    background-color: rgba(0, 136, 170,0.1);
+	//outline: 1px solid #ccc;
+	padding-left: 18px;
+}
+.catalogLanding .padding0>span {
+    position: relative;
+    top: 2px;/* added by siva */
+	padding-left: 30px;
+}
+
+.catalogLanding .checkbox label::before{
+	top:2px;
+}
+.catalogLanding  span.pipesymbol {
+    top: -2px;
+    padding-left: 5px;
+	position:relative;
+}
+.catalogLanding .checkbox {    
+     padding-left: 4px;
+    display: block !important;
+}
+.catalogLanding .checkboxmargin {
+    margin-top: 10px !important;
+}
+.catalogLanding .borderrightgrey:nth-child(3) {
+    border-right: none;
+}
+.catalogLanding .table-striped>tbody>tr:first-child{
+	background-color: #fff !important;
+}
+.catalogLanding .table-striped>tbody>tr:nth-of-type(odd){
+	background-color: #f9f9f9;
+}
+.catalogLanding .table-striped>tbody>tr:nth-of-type(even){
+	background-color: #fff;
+}
+.catalogLanding table.table-bordered.dataTable tbody th,.catalogLanding table.table-bordered.dataTable tbody td{
+	border-right: none;
+}
+.paddingleft30px{
+	padding-left: 30px;
+}
+.borderrightgrey{
+	border-right: 1px solid #ccc;
+}
+.downloadlinks {
+    margin: -20px 30px 0px 0;
+}
+.viewprice{
+	background: none !important;
+    padding: 10px 0 0 0 !important;
+    width: auto !important;
+}
+div.SortingTable {
+    margin-top: 20px;
+    position: absolute;
+    margin-left: 250px;
+
+}
+.SortingTable .form-control {
+    background-position: 95% 12px !important;
+    margin: -2px 6px 0 6px !important;
+    width:150px;
+    color: #828282;
+
+}
+.SortingTable select.input-sm {
+    height: 38px;
+    line-height: 30px;
+}
+div.SortingTable label {
+    //font-weight: normal;
+    margin-right:5px;
+}
+.catalogLanding .btn-group.bootstrap-select {
+    text-align: left !important;
+    width: 190px;
+     float: none !important; 
+}
+.catalogLanding .SortingTable button.btn.dropdown-toggle.btn-default {    
+    //width: 160px !Important;
+    height: 40px;    
+    background-position: 92% 12px !important;
+}
+.catalogLanding .form-control {
+		display: inline-block !important;
+	}
+@media (max-width: 1200px){
+	.catalogLanding .paddingleft30px {
+		padding-left: 10px !important;	
+	}	
+	.catalogLanding #ordersTable_length .form-control {
+    background: url('../images/downarrow.png') no-repeat;
+    background-position: 95% 12px;
+    -webkit-appearance: none;
+    background-size: 15px 15px;
+    margin: -2px 6px 0 6px;
+    width: 91px;
+	}
+	.catalogLanding div.SortingTable {
+		width:33%;
+		margin-left: 230px;
+	}   
+	.catalogLanding .unitcase{
+		margin-left:0px;
+		margin-top: -12px;
+	}
+	div.SortingTable {
+	    margin-left: 230px;
+	
+	}
+}
+/* added by siva */
+@media (max-width: 768px){
+	.catalogLanding div.SortingTable {
+		width: 34%;
+		margin-left: 230px;
+	}
+	.catalogLanding .btn-group.bootstrap-select {		
+		width: 160px;		
+	}
+}
+	@media (max-width: 767px){
+	.catalogLanding .table-bordered{
+		border: none;
+	}
+	.catalogLanding .imgprop {
+		width: 28%;		    
+		float: left;
+	}
+	.catalogLanding .table>tbody>tr>td, .catalogLanding  .table>tbody>tr>th, .catalogLanding  .table>tfoot>tr>td, .catalogLanding .table>tfoot>tr>th, .catalogLanding .table>thead>tr>td, .catalogLanding .table>thead>tr>th {
+		padding:0px !important;   
+	}
+	.catalogLanding .firstline, .catalogLanding .secondline {    
+		float: right;
+		width: 60%;
+		text-align: left;
+	}
+	.catalogLanding  .Tabsubtxt{
+		margin-left:0px;
+	}
+	.catalogLanding .thirdline {		
+		//float: left;
+	}
+	.catalogLanding .marginleft30px {
+		margin-left: 10px;
+	}
+	.catalogLanding .unitcase{
+		margin-left: 0px;
+	}
+	.marginleft0px {
+		margin-left:0px;
+	}
+	.catalogLanding .viewprice {   
+		/* width: 29% !important; */
+		padding: 0px !important;
+	}
+	.margin-bottom-10{margin-bottom:10px}
+	.txt-fied-unit{margin-bottom:10px;}
+	.margin-10-left{margin-left:10px !important;}
+	/* .catalogLanding .tabsize {
+		margin-left: 2px;
+	} */
+	.catalogLanding .mobilebtnalign{
+		width:auto !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+	.downloadlinks {
+		margin: -20px 20px 0px 0px;
+	}
+	.catalogLanding div .SortingTable {
+		width: 100%;
+		text-align: left;
+		margin-bottom:10px;
+		margin-left: 15px;
+	}
+	.catalogLanding .dataTables_length {
+		text-align: left !important;
+	}
+	
+	.catalogLanding  #ordersTable_length .form-control {
+		background: url('../images/downarrow.png') no-repeat;
+		background-position: 95% 12px;
+		-webkit-appearance: none;
+		background-size: 15px 15px;
+		margin: -2px 6px 0 6px;
+		width: 91px;
+	}
+	.SortingTable .form-control {
+		width:217px;
+		background-position: 95% 13px !important;
+	}
+	.catalogLanding div.dataTables_wrapper div.dataTables_length select {
+		width: 217px ;		
+	}
+	.catalogLanding #ordersTablemobile_length .form-control {	   		
+		background-position: 95% 12px !important;	
+	}
+	.catalogLanding .dataTables_length select {
+		margin-left: 17px !important;
+	}
+	.catalogLanding div#ordersTablemobile_length {
+		margin-bottom: 89px;
+		position: relative;
+		top: 30px;
+		left: -15px;
+	}
+	.catalogLanding div#ordersTablemobile_info {
+		position: relative;
+		top: 130px;
+		float: left;
+		left: 15px;
+	}
+	.catalogLanding  div#ordersTablemobile_paginate {
+		position: relative;
+		top: 130px;
+		float: right;
+		right: 15px;
+	}
+	.catalogLanding .margintop15px {
+		margin-top: 10px;
+		float: right;
+		//margin-right: 15px;
+	}
+	.margintop5px{
+		margin-top: 5px;
+		width:130px;
+	}
+	.inputAddCartRow{margin-top:10px}
+	.catalogLanding .txtWidth {margin-left: 10px; margin-bottom: 10px;}
+	.catalogLanding .addToCartStyle {float:right;margin-right: 0px !important}
+	
+}
+@media screen and (max-width: 480px) {
+	.catalog-datas{
+			width:100%;
+			padding-right:0px !important;
+		}
+	.catalogLanding div#ordersTablemobile_length{
+		position: absolute;
+		top: 0px;
+		left: 12px;
+	}
+	.catalogLanding div.dataTables_wrapper div.dataTables_length select{
+		//width: 275px  !important;
+	}
+	.catalogLanding div.SortingTable{
+		position: absolute;
+		margin-top: 76px;
+		margin-left: 27px;
+	}
+	.catalogLanding #ordersTablemobile_length .form-control{
+		background-position: 95% 12px !important;
+	}
+	.catalogLanding .SortingTable .form-control {
+		//width: 275px;
+		background-position: 95% 13px !important;
+	}
+
+	.catalogLanding div#ordersTablemobile_info {
+		top: 136px;
+		left: 28px;
+	}
+	 /* added by siva */
+	 .catalogLanding .dataTables_length label strong{
+		    margin-right: 38px;
+	}
+	//Added on OCT-20 for mobile
+	 .catalogLanding .dataTables_length .btn-group.bootstrap-select:nth-of-type(1) {
+		margin-bottom: 0px !important;
+		width: 220px !important;
+	}
+	.catalogLanding .btn-group.bootstrap-select {
+		width: 136px !important;
+	}
+	
+	.catalogLanding .padding0>span {
+   	position: relative;
+    	top: 2px;
+    	padding-left: 13px !important;
+	} 
+	
+	.downloadPlaceHolder{
+		position: relative;
+		width: 159px !important;
+	}
+}
+.catalogLanding .viewprice{
+	box-shadow:0 0 0 0 #fff !important;
+}

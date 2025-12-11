@@ -1,0 +1,181 @@
+# Simple Roles #
+
+insert_update UserGroup;uid[unique=true,allow null=true];description;locname[lang=en];locname[lang=pt];locname[lang=es]
+;bidGroup;Simple Role BID Group;Access to BIDs;Acesso as Licitações;Licitaciones
+;contractBalanceGroup;Simple Role Contract Balance;Access to Contract Balance;Acessar o Balanço dos Contratos;Accesar el Balance de los Contratos
+;selloutGroup;Simple Role Sellout;Access to the Sellout functionality;Acesso ao Relatório de Vendas;Acceso a Informe de Ventas
+;reportsGroup;Simple Role Reports;Access to Reports Page;Acesso à página de relatórios;Acceso a la página de informes
+;uploadedFilesGroup;Simple Role Check Uploaded Files;Access to Uploaded Files page;Acesso à página de Arquivos Enviados;Acceso a la página de Archivos Subidos
+;catalogGroup;Simple Role Catalog;Access to Product Catalog;Acesso ao Catalogo de Produtos;Acceso al catálogo de productos
+;orderHistoryGroup;Simple Role Order History;Access to Order History;Acesso ao Histórico de Pedidos;Acceso al historial de pedidos
+;servicesGroup;Simple Role Services;Access to Service List;Acesso à Lista de Serviços;Acceso a la Lista de Servicios
+;orderFileUploadGroup;Simple Role File Upload Group;Access to File Upload;;
+;indirectCustomerGroup;Simple Role Order Placement "On Behalf" for Indirect Customer;Add Indirect Customer to an Order;Adicionar Cliente Indireto a um pedido;Añadir Cliente Indirecto a un Pedido
+;laudoUserGroup;Simple Role Laudo Download;Access to the Download Laudo page;Acesso a página de Baixar Laudo;Acceso a la pagina de Descargar Prospecto
+;JnjGTInternalNoChargeUser;JnjGTInternalNoChargeUser;JnjGTInternalNoChargeUser;JnjGTInternalNoChargeUser;JnjGTInternalNoChargeUser
+;jnjGTAdminGroup;Access to User Management;Access to User Management;Acesso a Gestão de Usuários;Acceso a Gestión de Usuarios
+;placeOrderBuyerGroup;Place Order Role;Place Order Role;Função de Criar Pedidos;Función para Crear Pedidos
+;chatGroup;Simple Chat Group;Access to Chat;Acesso ao Chat;Accessar el Chat
+;clsManagementGroup;Access to CLS page;Access to CLS page;Acesso a página de CLS;Acceso a la pagina de CLS
+;invoiceHistoryGroup;Simple Role Invoice History;Access to invoice history;Acesso ao histórico de faturas;Acceso al historial de facturas
+
+#Groups to provide access to login on each site
+;brUserGroup;Role to access Brazil Site;Role to access Brazil Site;Permissão para acessar o site do Brasil;El permiso para acceder al sitio de Brasil
+;mxUserGroup;Role to access Mexico Site;Role to access Mexico Site;Permissão para acessar o site do México;El permiso para acceder al sitio de Mexico
+;arUserGroup;Role to access Argentina Site;Role to access Argentina Site;Permissão para acessar o site da Argentina;El permiso para acceder al sitio de Argentina
+;uyUserGroup;Role to access Uruguay Site;Role to access Uruguay Site;Permissão para acessar o site do Uruguai;El permiso para acceder al sitio de Uruguay
+;clUserGroup;Role to access Chile Site;Role to access Chile Site;Permissão para acessar o site do Chile;El permiso para acceder al sitio de Chile
+;coUserGroup;Role to access Colombia Site;Role to access Colombia Site;Permissão para acessar o site da Colombia Site;El permiso para acceder al sitio de Colombia
+;peUserGroup;Role to access Peru Site;Role to access Peru Site;Permissão para acessar o site do Peru;El permiso para acceder al sitio de Peru
+;ecUserGroup;Role to access Ecuador Site;Role to access Ecuador Site;Permissão para acessar o site do Ecuador;El permiso para acceder al sitio de Ecuador
+;cencaUserGroup;Role to access CENCA Site;Role to access CENCA Site;Permissão para acessar o site de CENCA;El permiso para acceder al sitio de CENCA
+;prUserGroup;Role to access Puerto Rico Site;Role to access Puerto Rico Site;Permissão para acessar o site do Porto Rico;El permiso para acceder al sitio de Puerto Rico
+
+# Composite Roles #
+insert_update UserGroup;uid[unique=true,allow null=true];description;locname[lang=en];locname[lang=pt];locname[lang=es];groups(uid)[mode=append];
+
+#Services
+;indirectCustomerFormGroup;Simple Role Indirect Customer Form;Access to the Insert Indirect Customer form;Acesso ao formulário de adição de Cliente Indireto;Formulario de Creación de Cliente Indirecto;servicesGroup
+;addIndirectPayer;Simple Role Indirect Payer Form;Access to the Insert Indirect Payer form;Acesso ao formulário de adição de Pagadir Indireto;Formulario de Creación de Pagador Indirecto;servicesGroup
+;consingmentGroup;Simple Role Consignment Form;Access to the Consignment Issue Form;Acesso ao formulário de Consumo Consignado;Formulario de Consumo Consignado;servicesGroup
+;synthesGroup;Simple Role Synthes Form;Access to the Orthopedics form;Acesso ao formulário de Ortopedia;Formulario de Ortopedia;servicesGroup
+;ocdGroup;Simple Role OCD Form;Access to the OCD form;Acesso ao formulário de Serviço;Formulario de Servicio Tecnico;servicesGroup
+;pharmaPriceListGroup;Simple Role Download Pharma Price List;Pharma Price List Group;Baixar a lista de preços da Farma;Descarga lista de Precios de Farma;servicesGroup
+;integralServicesGroup;Simple Role Integral Services;Access to the Integral Services form;Acesso ao formulário de Serviços Integrais;Formulario de Servicios Integrales;servicesGroup
+;crossReferenceTable;Simple Role Cross Reference Table;Access to Cross Reference Table;Acesso ao formulário de Referência Cruzadas;Formulario de Referencias Cruzadas;servicesGroup
+;manageLaudo;General Laudo Managers Group;Laudo Management Group;Acesso ao Gerenciamento de Laudo;Acceso a la Gestión de prospectos;laudoUserGroup,pharmaPriceListGroup
+
+;pharmaDistributorBIDGroup;Brazil Pharma Distributor BID Group;PHR Brazil Distributor BID Group;Grupo Distribuidor com Licitação PHR do Brasil;Grupo Distribuidor con Licitación PHR de Brasil;selfOrderGroup,reportsGroup,otherOrderGroup,indirectCustomerGroup,laudoUserGroup,useradminGroup,bidGroup,productsGroup,contractBalanceGroup,indirectCustomerFormGroup,pharmaPriceListGroup
+;pharmaDistributorGroup;Brazil Pharma Distributor Group;PHR Brazil Distributor Group;Grupo Distribuidor PHR do Brasil;Grupo Distribuidor PHR de Brasil;selfOrderGroup,reportsGroup,otherOrderGroup,laudoUserGroup,useradminGroup,productsGroup,contractBalanceGroup,pharmaPriceListGroup
+;pharmaHospitalGroup;Brazil Pharma Hospital Group;PHR Brazil Hospital Group;Grupo Hospital PHR do Brasil;Grupo Hospital PHR de Brasil;selfOrderGroup,reportsGroup,otherOrderGroup,laudoUserGroup,useradminGroup,productsGroup,contractBalanceGroup,pharmaPriceListGroup
+;pharmaPharmacyGroup;Brazil Pharma Pharmacy Group;PHR Brazil Pharmacy Group;Grupo Farmácia PHR do Brasil;Grupo Farmacia PHR de Brasil;selfOrderGroup,reportsGroup,otherOrderGroup,laudoUserGroup,useradminGroup,productsGroup,contractBalanceGroup,pharmaPriceListGroup
+
+;brGeneralGroup;Brazil General Group;Brazil General Group;Grupo Geral do Brasil;Grupo Geral de Brazil;bidGroup,contractBalanceGroup,indirectCustomerGroup,selloutGroup,orderHistoryGroup,invoiceHistoryGroup,catalogGroup,placeOrderBuyerGroup,indirectCustomerFormGroup,addIndirectPayer,brUserGroup,b2bcustomergroup
+;brDistributorGroup;Brazil Distributor Group;Brazil Distributor Group;Grupo Distribuidor do Brazil;Grupo Distribuidor de Brasil;bidGroup,contractBalanceGroup,indirectCustomerGroup,selloutGroup,orderHistoryGroup,invoiceHistoryGroup,catalogGroup,placeOrderBuyerGroup,indirectCustomerFormGroup,addIndirectPayer,brUserGroup,b2bcustomergroup
+;brHospitalGroup;Brazil Hospital Group;Brazil Hospital Group;Grupo Hospital do Brasil;Grupo Hospital de Brasil;bidGroup,contractBalanceGroup,orderHistoryGroup,invoiceHistoryGroup,catalogGroup,placeOrderBuyerGroup,brUserGroup,b2bcustomergroup
+
+;mxGeneralGroup;Mexico General Group;Mexico General Group;Grupo Geral do México;Grupo Geral de México;bidGroup,contractBalanceGroup,indirectCustomerGroup,selloutGroup,orderHistoryGroup,invoiceHistoryGroup,catalogGroup,placeOrderBuyerGroup,indirectCustomerFormGroup,addIndirectPayer,mxUserGroup,b2bcustomergroup
+;mxDistributorGroup;Mexico Distributor Group;Mexico Distributor Group;Grupo Distribuidor do México;Grupo Distribuidor de México;bidGroup,contractBalanceGroup,indirectCustomerGroup,selloutGroup,orderHistoryGroup,invoiceHistoryGroup,catalogGroup,placeOrderBuyerGroup,indirectCustomerFormGroup,addIndirectPayer,mxUserGroup,b2bcustomergroup
+;mxHospitalGroup;Mexico Hospital Group;Mexico Hospital Group;Grupo Hospital do México;Grupo Hospital de México;bidGroup,contractBalanceGroup,orderHistoryGroup,invoiceHistoryGroup,catalogGroup,placeOrderBuyerGroup,mxUserGroup,b2bcustomergroup
+
+;cencaGeneralGroup;Cenca General Group;Cenca General Group;Grupo Geral de Cenca;Grupo Geral de Cenca;bidGroup,contractBalanceGroup,indirectCustomerGroup,selloutGroup,orderHistoryGroup,invoiceHistoryGroup,catalogGroup,placeOrderBuyerGroup,indirectCustomerFormGroup,addIndirectPayer,cencaUserGroup,b2bcustomergroup
+;cencaDistributorGroup;Cenca Distributor Group;Cenca Distributor Group;Grupo Distribuidor de Cenca;Grupo Distribuidor de Cenca;bidGroup,contractBalanceGroup,indirectCustomerGroup,selloutGroup,orderHistoryGroup,invoiceHistoryGroup,catalogGroup,placeOrderBuyerGroup,indirectCustomerFormGroup,addIndirectPayer,cencaUserGroup,b2bcustomergroup
+;cencaHospitalGroup;Cenca Hospital Group;Cenca Hospital Group;Grupo Hospital de Cenca;Grupo Hospital de Cenca;bidGroup,contractBalanceGroup,orderHistoryGroup,invoiceHistoryGroup,catalogGroup,placeOrderBuyerGroup,cencaUserGroup,b2bcustomergroup
+
+;ecGeneralGroup;Ecuador General Group;Ecuador General Group;Grupo Geral do Equador;Grupo Geral de Ecuador;bidGroup,contractBalanceGroup,indirectCustomerGroup,selloutGroup,orderHistoryGroup,invoiceHistoryGroup,catalogGroup,placeOrderBuyerGroup,indirectCustomerFormGroup,addIndirectPayer,ecUserGroup,b2bcustomergroup
+;ecDistributorGroup;Ecuador Distributor Group;Ecuador Distributor Group;Grupo Distribuidor do Equador;Grupo Distribuidor de Ecuador;bidGroup,contractBalanceGroup,indirectCustomerGroup,selloutGroup,orderHistoryGroup,invoiceHistoryGroup,catalogGroup,placeOrderBuyerGroup,indirectCustomerFormGroup,addIndirectPayer,ecUserGroup,b2bcustomergroup
+;ecHospitalGroup;Ecuador Hospital Group;Ecuador Hospital Group;Grupo Hospital do Equador;Grupo Hospital de Ecuador;bidGroup,contractBalanceGroup,orderHistoryGroup,invoiceHistoryGroup,catalogGroup,placeOrderBuyerGroup,ecUserGroup,b2bcustomergroup
+
+;coGeneralGroup;Colombia General Group;Colombia General Group;Grupo Geral do Colombia;Grupo Geral de Colombia;bidGroup,contractBalanceGroup,indirectCustomerGroup,selloutGroup,orderHistoryGroup,invoiceHistoryGroup,catalogGroup,placeOrderBuyerGroup,indirectCustomerFormGroup,addIndirectPayer,coUserGroup,b2bcustomergroup
+;coDistributorGroup;Colombia Distributor Group;Colombia Distributor Group;Grupo Distribuidor do Colombia;Grupo Distribuidor de Colombia;bidGroup,contractBalanceGroup,indirectCustomerGroup,selloutGroup,orderHistoryGroup,invoiceHistoryGroup,catalogGroup,placeOrderBuyerGroup,indirectCustomerFormGroup,addIndirectPayer,coUserGroup,b2bcustomergroup
+;coHospitalGroup;Colombia Hospital Group;Colombia Hospital Group;Grupo Hospital do Colombia;Grupo Hospital de Colombia;bidGroup,contractBalanceGroup,orderHistoryGroup,invoiceHistoryGroup,catalogGroup,placeOrderBuyerGroup,coUserGroup,b2bcustomergroup
+
+;peGeneralGroup;Peru General Group;Peru General Group;Grupo Geral do Peru;Grupo Geral de Peru;bidGroup,contractBalanceGroup,indirectCustomerGroup,selloutGroup,orderHistoryGroup,invoiceHistoryGroup,catalogGroup,placeOrderBuyerGroup,indirectCustomerFormGroup,addIndirectPayer,peUserGroup,b2bcustomergroup
+;peDistributorGroup;Peru Distributor Group;Peru Distributor Group;Grupo Distribuidor do Peru;Grupo Distribuidor de Peru;bidGroup,contractBalanceGroup,indirectCustomerGroup,selloutGroup,orderHistoryGroup,invoiceHistoryGroup,catalogGroup,placeOrderBuyerGroup,indirectCustomerFormGroup,addIndirectPayer,peUserGroup,b2bcustomergroup
+;peHospitalGroup;Peru Hospital Group;Peru Hospital Group;Grupo Hospital do Peru;Grupo Hospital de Peru;bidGroup,contractBalanceGroup,orderHistoryGroup,invoiceHistoryGroup,catalogGroup,placeOrderBuyerGroup,peUserGroup,b2bcustomergroup
+
+;arGeneralGroup;Argentina General Group;Argentina General Group;Grupo Geral da Argentina;Grupo Geral de Argentina;bidGroup,contractBalanceGroup,indirectCustomerGroup,selloutGroup,orderHistoryGroup,invoiceHistoryGroup,catalogGroup,placeOrderBuyerGroup,indirectCustomerFormGroup,addIndirectPayer,arUserGroup,b2bcustomergroup
+;arDistributorGroup;Argentina Distributor Group;Argentina Distributor Group;Grupo Distribuidor do Argentina;Grupo Distribuidor de Argentina;bidGroup,contractBalanceGroup,indirectCustomerGroup,selloutGroup,orderHistoryGroup,invoiceHistoryGroup,catalogGroup,placeOrderBuyerGroup,indirectCustomerFormGroup,addIndirectPayer,arUserGroup,b2bcustomergroup
+;arHospitalGroup;Argentina Hospital Group;Argentina Hospital Group;Grupo Hospital do Argentina;Grupo Hospital de Argentina;bidGroup,contractBalanceGroup,orderHistoryGroup,invoiceHistoryGroup,catalogGroup,placeOrderBuyerGroup,arUserGroup,b2bcustomergroup
+
+;clGeneralGroup;Chile General Group;Chile General Group;Grupo Geral do Chile;Grupo Geral de Chile;bidGroup,contractBalanceGroup,indirectCustomerGroup,selloutGroup,orderHistoryGroup,invoiceHistoryGroup,catalogGroup,placeOrderBuyerGroup,indirectCustomerFormGroup,addIndirectPayer,clUserGroup,b2bcustomergroup
+;clDistributorGroup;Chile Distributor Group;Chile Distributor Group;Grupo Distribuidor do Chile;Grupo Distribuidor de Chile;bidGroup,contractBalanceGroup,indirectCustomerGroup,selloutGroup,orderHistoryGroup,invoiceHistoryGroup,catalogGroup,placeOrderBuyerGroup,indirectCustomerFormGroup,addIndirectPayer,clUserGroup,b2bcustomergroup
+;clHospitalGroup;Chile Hospital Group;Chile Hospital Group;Grupo Hospital do Chile;Grupo Hospital de Chile;bidGroup,contractBalanceGroup,orderHistoryGroup,invoiceHistoryGroup,catalogGroup,placeOrderBuyerGroup,clUserGroup,b2bcustomergroup
+
+;uyGeneralGroup;Uruguay General Group;Uruguay General Group;Grupo Geral do Uruguai;Grupo Geral de Uruguay;bidGroup,contractBalanceGroup,indirectCustomerGroup,selloutGroup,orderHistoryGroup,invoiceHistoryGroup,catalogGroup,placeOrderBuyerGroup,indirectCustomerFormGroup,addIndirectPayer,uyUserGroup,b2bcustomergroup
+;uyDistributorGroup;Uruguay Distributor Group;Uruguay Distributor Group;Grupo Distribuidor do Uruguai;Grupo Distribuidor de Uruguay;bidGroup,contractBalanceGroup,indirectCustomerGroup,selloutGroup,orderHistoryGroup,invoiceHistoryGroup,catalogGroup,placeOrderBuyerGroup,indirectCustomerFormGroup,addIndirectPayer,uyUserGroup,b2bcustomergroup
+;uyHospitalGroup;Uruguay Hospital Group;Uruguay Hospital Group;Grupo Hospital do Uruguai;Grupo Hospital de Uruguay;bidGroup,contractBalanceGroup,orderHistoryGroup,invoiceHistoryGroup,catalogGroup,placeOrderBuyerGroup,uyUserGroup,b2bcustomergroup
+
+;prGeneralGroup;Puerto Rico General Group;Puerto Rico General Group;Grupo Geral do Porto Rico;Grupo Geral de Puerto Rico;bidGroup,contractBalanceGroup,indirectCustomerGroup,selloutGroup,orderHistoryGroup,invoiceHistoryGroup,catalogGroup,placeOrderBuyerGroup,indirectCustomerFormGroup,addIndirectPayer,prUserGroup,b2bcustomergroup
+;prDistributorGroup;Puerto Rico Distributor Group;Puerto Rico Distributor Group;Grupo Distribuidor do Porto Rico;Grupo Distribuidor de Puerto Rico;bidGroup,contractBalanceGroup,indirectCustomerGroup,selloutGroup,orderHistoryGroup,invoiceHistoryGroup,catalogGroup,placeOrderBuyerGroup,indirectCustomerFormGroup,addIndirectPayer,prUserGroup,b2bcustomergroup
+;prHospitalGroup;Puerto Rico Hospital Group;Puerto Rico Hospital Group;Grupo Hospital do Puerto Rico;Grupo Hospital de Puerto Rico;bidGroup,contractBalanceGroup,orderHistoryGroup,invoiceHistoryGroup,catalogGroup,placeOrderBuyerGroup,prUserGroup,b2bcustomergroup
+
+;jnjGTSerializationGroup;This is used for Serialization;Serialization Group;Serialization Group;Serialization Group;resetPasswordGroup,viewSecurityQAGroup
+
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+UserGroup;b2bcustomergroup;;;;;;;;
+;;;;B2BCustomer;+;+;+;-;-
+$END_USERRIGHTS;;;;;
+
+#update SearchRestriction;code[unique=true];active
+#;employee_restriction;false
+
+####View only backoffice group
+insert_update UserGroup;description;locname[lang=en];uid[unique=true,allow null=true];groups(uid);
+;This is used for View Only options for backoffice;View only Backoffice;jnjbackofficeviewonlygroup;backofficeworkflowusergroup,hac_platform_logging,hac_console_flexiblesearch,hac_monitoring_cronjobs,hac_console_impexexport
+
+
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+UserGroup;jnjbackofficeviewonlygroup;;;;;;;;
+;;;;Item;+;-;-;-;-;
+;;;;Employee;+;-;-;-;-;
+
+$END_USERRIGHTS;;;;;
+
+
+
+####CSR backoffice group , Modify JNJ B2B customer type and all other types are view only
+insert_update UserGroup;description;locname[lang=en];uid[unique=true,allow null=true];groups(uid);
+;This is used for View Only and Modify B2B customer type;View and Modify Backoffice;jnjcsrgroup;backofficeworkflowusergroup,hac_platform_logging,hac_console_flexiblesearch,hac_console_impeximport,hac_monitoring_cronjobs,hac_console_impexexport
+
+
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+UserGroup;jnjcsrgroup;;;;;;;;
+;;;;Customer;+;+;-;-;-
+;;;;Item;+;-;-;-;-
+;;;;Employee;+;-;-;-;-;
+;;;;Cronjob;+;-;-;-;-
+$END_USERRIGHTS;;;;;
+
+
+##CSR admin backoffice group for create and modify customer and all other type view only 
+INSERT_UPDATE UserGroup;description;locname[lang=en];uid[unique=true,allow null=true];groups(uid);
+;This is used for View and Modify and create B2B customer type;View and Modify Backoffice and create customer;jnjcsradmingroup;employeegroup,hac_platform_logging,hac_console_flexiblesearch,hac_console_impeximport,hac_monitoring_cronjobs,hac_console_impexexport,productsGroup
+
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+UserGroup;jnjcsradmingroup;;;;;;;;
+;;;;Customer;+;+;+;-;-
+;;;;Employee;+;+;-;-;-;
+;;;;Order;+;-;-;-;-
+;;;;OrderEntry;+;-;-;-;-
+;;;;Cronjob;+;-;-;-;-
+;;;;B2BUnit;+;+;-;-;-
+;;;;Product;+;+;+;-;-
+;;;;Item;+;-;-;-;-
+$END_USERRIGHTS;;;;;
+
+
+##View and Modify for Support Group User 
+INSERT_UPDATE UserGroup;description;locname[lang=en];uid[unique=true,allow null=true];groups(uid);
+;This is used for View,Modify and run cronjob for Support Group ;View and modify Backoffice ;jnjsupportgroup;backofficeworkflowusergroup,hac_platform_logging,hac_console_flexiblesearch,hac_console_impeximport,hac_monitoring_cronjobs,hac_console_impexexport
+
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+UserGroup;jnjsupportgroup;;;;;;;;
+;;;;Customer;+;+;+;-;-
+;;;;Item;+;-;-;-;-
+;;;;Employee;+;+;-;-;-;
+;;;;Order;+;-;-;-;-
+;;;;OrderEntry;+;-;-;-;-
+;;;;Cronjob;+;+;-;-;-
+;;;;B2BUnit;+;+;-;-;-
+$END_USERRIGHTS;;;;;
+
+
+##L1.5 backoffice group , Modify JNJ B2B customer type and all other types are view only
+insert_update UserGroup;description;locname[lang=en];uid[unique=true,allow null=true];groups(uid);
+;This is used for View Only and Modify B2B customer type;View and Modify Backoffice;jnjItL1usergroup;employeegroup,backofficeworkflowusergroup
+ 
+ 
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+UserGroup;jnjItL1usergroup;;;;;;;;
+;;;;Customer;+;+;-;-;-
+;;;;Item;+;-;-;-;-
+;;;;Employee;+;-;-;-;-;
+$END_USERRIGHTS;;;;;
+ 

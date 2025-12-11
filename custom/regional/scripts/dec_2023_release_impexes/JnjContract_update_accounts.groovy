@@ -1,0 +1,46 @@
+import de.hybris.platform.servicelayer.search.*;
+import com.jnj.core.jalo.JnjContract;
+import com.jnj.la.core.model.JnJLaB2BUnitModel;
+import de.hybris.platform.servicelayer.model.ModelService;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.log4j.Logger;
+
+final Logger LOG = Logger.getLogger("Migrate contract account");
+
+
+flexibleSearchService = spring.getBean("flexibleSearchService");
+
+modelService = spring.getBean("modelService");
+
+query = "select {pk} from {JnjContract} where {unit} is not null and  {creationtime} >= '2023-08-01' and {creationtime}  < '2023-10-14'";
+
+result = flexibleSearchService.search(query);
+
+LOG.info("Result: " + result.count);
+
+if (CollectionUtils.isNotEmpty(result.getResult())) {
+
+int count = 0;
+  for (item in result.getResult()) {    
+  try {
+  Set<JnJLaB2BUnitModel> list = new HashSet<JnJLaB2BUnitModel>();      
+  if (null !=item.getUnit()) {
+  list.add(item.getUnit());
+  item.setAccounts(list);
+  modelService.save(item);
+  
+} }
+catch(Exception exe) {
+count++;
+		
+LOG.error("Error processing record = "+item.getECCContractNum(), exe);
+
+}
+
+}
+
+LOG.info("No of failed records ="+count);
+
+}
+
+return "Groovy Rocks for Update accounts in JnjContract"

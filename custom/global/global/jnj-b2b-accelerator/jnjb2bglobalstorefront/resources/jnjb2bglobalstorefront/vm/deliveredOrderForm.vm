@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<body style="font-family: helvetica;font-size:18px;">
+		<table width="1300" cellpadding="10">
+			<tr id="bannerRow">
+				<td>
+					<table width="1100">
+						<tr>
+							<td id="bannerLogo"><img src="$siteLogoURL" style="width:50px;"></td>
+							<td id="bannerText" style="text-align:right;"><h1><strong>Delivered Order Form</strong></h1></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr id="headerRow">
+				<td>
+					<table id="headerTable" width="1100" border="1" style="border-collapse:collapse;" cellpadding="10">
+						<tr id="headerTableHeaderRow">
+							<th bgcolor="#CCCCCC">
+								<strong>Shipping Information</strong>
+							</th>
+							<th bgcolor="#CCCCCC">
+								<strong>Surgery Information</strong>
+							</th>
+							<th bgcolor="#CCCCCC">
+								<strong>Order Information</strong>
+							</th>
+						</tr>
+						<tr id="headerTableBodyRow">
+							<td>
+								<p><strong>Ship To UCN:</strong> #if(${order.deliveryAddress.jnjAddressId}) ${order.deliveryAddress.jnjAddressId} #end</p>
+								#if(${order.deliveryAddress})
+									<p>
+										<strong>Ship To Address:</strong><br />
+										#if(${order.deliveryAddress.line1})${order.deliveryAddress.line1}<br />#end
+								      	#if(${order.deliveryAddress.line2})${order.deliveryAddress.line2}<br />#end
+								      	#if(${order.deliveryAddress.town})${order.deliveryAddress.town},#end 
+								      	#if(${order.deliveryAddress.region} && ${order.deliveryAddress.region.name})${order.deliveryAddress.region.name},#end 
+								      	#if(${order.deliveryAddress.postalCode})${order.deliveryAddress.postalCode}<br />#end
+									</p>
+								#end
+							</td>
+							<td>
+								<p><strong>Surgeon Name:</strong>#if(${order.surgeonName}) ${order.surgeonName} #else N/A #end</p>
+								#if(${order.surgeryInfo})
+									<p><strong>Surgery Date:</strong>#if(${order.surgeryInfo.caseDate}) $date.format('yyyy-MM-dd', $order.surgeryInfo.caseDate) #else N/A #end</p>
+									<p><strong>Case/File ID:</strong>#if(${order.surgeryInfo.caseNumber}) ${order.surgeryInfo.caseNumber} #else N/A #end</p>
+								#end
+							</td>
+							<td>
+								<p><strong>Order Number:</strong> #if(${order.orderNumber}) ${order.orderNumber} #end</p>
+								<p><strong>Order Submitted By:</strong> #if(${order.orderedBy}) ${order.orderedBy} #end</p>
+								<p><strong>Customer PO:</strong> #if(${order.purchaseOrderNumber}) ${order.purchaseOrderNumber} #else N/A #end</p>
+								<p>
+									<strong>Credit Card:</strong> 
+									#if(${order.paymentInfo}) 
+										<br />
+										<span>${order.paymentInfo.cardType}</span><br />
+										<span>${order.paymentInfo.cardNumber}</span><br />
+										<span>${order.paymentInfo.expiryMonth}/${order.paymentInfo.expiryYear}</span>
+									#else N/A #end
+								</p>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		#if(${order.surgeryInfo})
+		<table width="1100" cellpadding="10">
+			<tr>
+				<td>
+					<table border="1" width="1100" cellpadding="10" style="vertical-align:bottom;font-size: 15px;">
+						<tr style="vertical-bottom;">
+							<td style="vertical-align:top;" bgcolor="#CCCCCC"><strong>Surgeon Speciality:</strong></td>
+							<td style="vertical-align:top;" bgcolor="#CCCCCC"><strong>Pathology:</strong></td>
+							<td style="vertical-align:top;" bgcolor="#CCCCCC"><strong>Surgical Approach:</strong></td>
+							<td style="vertical-align:top;" bgcolor="#CCCCCC"><strong>Zone:</strong></td>
+							<td style="vertical-align:top;" bgcolor="#CCCCCC"><strong># of Levels<br />Instrumented:</strong></td>
+							<td style="vertical-align:top;" bgcolor="#CCCCCC"><strong># of Levels Interbody:</strong></td>
+							<td style="vertical-align:top;" bgcolor="#CCCCCC"><strong>Interbody:</strong></td>
+							<td style="vertical-align:top;" bgcolor="#CCCCCC"><strong>Osteobiologics:</strong></td>
+						</tr>
+						<tr style="vertical-align:top;">
+							<td style="vertical-align:top;">#if(${surgerySpecialty}) ${surgerySpecialty} #end</td>
+							<td style="vertical-align:top;">#if(${pathology}) ${pathology} #end</td>
+							<td style="vertical-align:top;">#if(${surgicalApproach}) ${surgicalApproach} #end</td>
+							<td style="vertical-align:top;">#if(${zone}) ${zone} #end</td>
+							<td style="vertical-align:top;">#if(${levelsInstrumented}) ${levelsInstrumented} #end</td>
+							<td style="vertical-align:top;">#if(${interbodyFusion}) ${interbodyFusion} #end</td>
+							<td style="vertical-align:top;">#if(${interbody}) ${interbody} #end</td>
+							<td style="vertical-align:top;">#if(${orthobiologics}) ${orthobiologics} #end</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		#end
+		<table width="1100" cellpadding="10" align="right">
+			<tr id="lineRow">
+				<td>
+					<table id="lineTable" border="1" width="1100" style="border-collapse:collapse;font-size: 15px;">
+						<tr>
+							<th bgcolor="#CCCCCC"><strong>Line No.</strong></th>
+							<th bgcolor="#CCCCCC"><strong>Material</strong></th>
+							<th bgcolor="#CCCCCC"><strong>Material Description</strong></th>
+							<th bgcolor="#CCCCCC"><strong>Comp Code</strong></th>
+							<th bgcolor="#CCCCCC"><strong>Quantity</strong></th>
+							<th bgcolor="#CCCCCC"><strong>Lot</strong></th>
+							<th bgcolor="#CCCCCC"><strong>Unit Price</strong></th>
+							<th bgcolor="#CCCCCC"><strong>Extended Price</strong></th>
+						</tr>
+						#foreach($entry in ${order.entries})
+							<tr>
+								<td>#if(${entry.sapOrderlineNumber}) ${entry.sapOrderlineNumber} #end </td>
+								<td>#if(${entry.product} && ${entry.product.code}) ${entry.product.code} #end</td>
+								<td>#if(${entry.product} && ${entry.product.name}) ${entry.product.name} #end</td>
+								<td>#if(${entry.product} && ${entry.product.salesOrgCode}) $entry.product.salesOrgCode #end</td>
+								<td>#if(${entry.quantity}) $entry.quantity #end</td>
+								<td>#if(${entry.lotNumber}) $entry.lotNumber #end</td>
+								<td>#if(${entry.basePrice} && ${entry.basePrice.formattedValue}) $entry.basePrice.formattedValue #end</td>
+								<td>#if(${entry.extendedPrice} && ${entry.extendedPrice.formattedValue}) $entry.extendedPrice.formattedValue #end</td>
+							</tr>
+						#end
+						<tr>
+							<td colspan="8" style="text-align:right;">Tax :#if(${order.totalTax} && ${order.totalTax.formattedValue})  $order.totalTax.formattedValue #end</td>
+						</tr>
+						<tr>
+							<td colspan="8" style="text-align:right;">Total :#if(${order.totalPriceWithTax} && ${order.totalPriceWithTax.formattedValue})  $order.totalPriceWithTax.formattedValue #end</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr id="signatureRow">
+				<td>
+					#if(${signatureImageURI})
+					<table id="signatureTable" width="1100" border="1" style="float: right;border-collapse:collapse;vertical-align:top;margin-top:20px;" cellpadding="10">
+						<tr style="height:160px">
+							<td id="signedBy" style="vertical-align:top;text-align:left;">
+								#if(${signedBy})
+									<strong>Signed By:</strong> $signedBy
+								#end
+							</td>
+							<td id="signatureHolder">
+								<img style="max-width:250px;" src="$signatureImageURI" />
+							</td>
+						</tr>
+					</table>
+					#end
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

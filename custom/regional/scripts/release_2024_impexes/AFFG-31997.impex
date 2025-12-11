@@ -1,0 +1,10 @@
+INSERT_UPDATE ServicelayerJob; code[unique=true];springId[unique=true];active[default='true'];
+                             ;jnjCDLHybrisExportJob;jnjCDLHybrisExportJob;false;
+
+INSERT_UPDATE JnjCDLExportJob; code[unique=true];job(code);sessionLanguage(isocode);active[default='true'];dataForLastNoOfDays;isFetchFromDateRange;
+                             ;exportHybrisCDLCronJob;jnjCDLHybrisExportJob;en;;30;false
+                             
+INSERT_UPDATE Trigger;cronjob(code)[unique=true];cronExpression;active;
+                     ;exportHybrisCDLCronJob;0 0 23 * * ?;false;
+                
+                             

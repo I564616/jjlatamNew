@@ -1,0 +1,16 @@
+
+
+# 
+# Import the JNJ Product
+#
+
+
+$MDDproductCatalog=mddProdCatalog
+
+
+$languages=en
+$defaultLanguage=en
+
+# Product catalog
+INSERT_UPDATE Catalog;id[unique=true];name[lang=$defaultLanguage]
+;$MDDproductCatalog;"MDD Product Catalog"

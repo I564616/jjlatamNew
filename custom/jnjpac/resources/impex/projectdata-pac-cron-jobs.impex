@@ -1,0 +1,23 @@
+#
+# This file creates Cron Jobs for AERA PAC HIVE integration.
+#
+
+INSERT_UPDATE ServicelayerJob; code[unique = true]; springId; active[default = 'true']
+; JnJGTPACDateDailyUpdateJob ; JnJGTPACDateDailyUpdateJob ; false
+
+INSERT_UPDATE CronJob; code[unique = true]; job(code); singleExecutable; sessionLanguage(isocode)
+; JnJGTPACDateDailyUpdateJob ; JnJGTPACDateDailyUpdateJob ; false ; en
+
+INSERT_UPDATE ServicelayerJob; code[unique = true]; springId; active[default = 'true']
+; JnJGTPACDateRealTimeUpdateJob ; JnJGTPACDateRealTimeUpdateJob ; false
+
+INSERT_UPDATE CronJob; code[unique = true]; job(code); singleExecutable; sessionLanguage(isocode)
+; JnJGTPACDateRealTimeUpdateJob ; JnJGTPACDateRealTimeUpdateJob ; false ; en
+
+INSERT_UPDATE Trigger; cronjob(code)[unique = true]; cronExpression
+# Real-time job is disabled for now because AERA API is not ready.
+# will run everyday after every 15 mins
+#; JnJGTPACDateRealTimeUpdateJob ; 0 0/15 * * * ?
+
+# will run everyday at morning 5am
+; JnJGTPACDateDailyUpdateJob    ; 0 0 5 1/1 * ?

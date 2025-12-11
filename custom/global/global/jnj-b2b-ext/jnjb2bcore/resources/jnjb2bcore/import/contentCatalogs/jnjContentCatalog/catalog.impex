@@ -1,0 +1,32 @@
+#
+# Import the JNJ Content Catalog
+#
+
+
+$MstrContentCatalog=mstrContentCatalog
+$BRContentCatalog=brContentCatalog
+$MXContentCatalog=mxContentCatalog
+$languages=en,pt,es
+
+
+# Content catalog for CMS contents
+INSERT_UPDATE ContentCatalog;id[unique=true]
+;$MstrContentCatalog
+;$BRContentCatalog
+;$MXContentCatalog
+
+# Catalog versions for content catalogs
+INSERT_UPDATE CatalogVersion;catalog(id)[unique=true];version[unique=true];active;languages(isoCode)
+;$MstrContentCatalog;Staged;false;$languages
+;$BRContentCatalog;Staged;false;$languages
+;$BRContentCatalog;Online;true;$languages
+;$MXContentCatalog;Staged;false;$languages
+;$MXContentCatalog;Online;true;$languages
+
+
+###Default price Row for all products
+INSERT PriceRow;minqtd;price;unitFactor;unit(code);currency(isoCode)
+;1;0;1;pieces;MXN
+;1;0;1;pieces;BRL
+
+

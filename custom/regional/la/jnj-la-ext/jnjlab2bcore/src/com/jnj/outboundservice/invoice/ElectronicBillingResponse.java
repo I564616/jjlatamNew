@@ -1,0 +1,91 @@
+
+package com.jnj.outboundservice.invoice;
+
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
+
+
+/**
+ * <p>
+ * Java class for ElectronicBillingResponse complex type.
+ *
+ * <p>
+ * The following schema fragment specifies the expected content contained within this class.
+ *
+ * <pre>
+ * &lt;complexType name="ElectronicBillingResponse">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="ElectronicBillingRequest_Out" type="{http://itsusmpl00082.jnj.com/SG910_BtB_IN0504_ElectronicBilling_Hybris_Source_v1.webservices:receiveElectronicBillingWS}ElectronicBillingRequest_Out"/>
+ *         &lt;element name="Response" type="{http://itsusmpl00082.jnj.com/SG910_BtB_IN0504_ElectronicBilling_Hybris_Source_v1.webservices:receiveElectronicBillingWS}Response"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
+ *
+ *
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "ElectronicBillingResponse", propOrder =
+{ "electronicBillingRequestOut", "response" })
+@XmlRootElement(name = "ElectronicBillingResponse")
+public class ElectronicBillingResponse
+{
+
+	@XmlElement(name = "ElectronicBillingRequest_Out", required = true, nillable = true)
+	protected ElectronicBillingRequestOut electronicBillingRequestOut;
+	@XmlElement(name = "Response", required = true, nillable = true)
+	protected Response response;
+
+	/**
+	 * Gets the value of the electronicBillingRequestOut property.
+	 *
+	 * @return possible object is {@link ElectronicBillingRequestOut }
+	 *
+	 */
+	public ElectronicBillingRequestOut getElectronicBillingRequestOut()
+	{
+		return electronicBillingRequestOut;
+	}
+
+	/**
+	 * Sets the value of the electronicBillingRequestOut property.
+	 *
+	 * @param value
+	 *           allowed object is {@link ElectronicBillingRequestOut }
+	 *
+	 */
+	public void setElectronicBillingRequestOut(final ElectronicBillingRequestOut value)
+	{
+		this.electronicBillingRequestOut = value;
+	}
+
+	/**
+	 * Gets the value of the response property.
+	 *
+	 * @return possible object is {@link Response }
+	 *
+	 */
+	public Response getResponse()
+	{
+		return response;
+	}
+
+	/**
+	 * Sets the value of the response property.
+	 *
+	 * @param value
+	 *           allowed object is {@link Response }
+	 *
+	 */
+	public void setResponse(final Response value)
+	{
+		this.response = value;
+	}
+
+}

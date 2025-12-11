@@ -1,0 +1,3 @@
+INSERT_UPDATE Trigger;cronjob(code)[unique=true];cronExpression
+# Run the cleanUpFraudOrderCronJob at 0:00 on Sunday
+;jnjLoadDropShipmentJob; 0 0 * * * ? * 

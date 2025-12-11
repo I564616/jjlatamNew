@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+  ~ [y] hybris Platform
+  ~ 
+  ~ Copyright (c) 2000-2016 SAP SE
+  ~ All rights reserved.
+  ~ 
+  ~ This software is the confidential and proprietary information of SAP 
+  ~ Hybris ("Confidential Information"). You shall not disclose such 
+  ~ Confidential Information and shall use it only in accordance with the 
+  ~ terms of the license agreement you entered into with SAP Hybris.
+  -->
+
+<!--
+	ATTENTION: This is just an example file. You have to edit it according to your needs.
+-->
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="beans.xsd">
+
+    <bean class="com.jnj.facades.data.JnjOutOrderLine">
+        <property name="lineNumber" type="String"/>
+        <property name="materialNumber" type="String"/>
+        <property name="materialQuantity" type="String"/>
+        <property name="salesUOM" type="String"/>
+        <property name="itemCategory" type="String"/>
+        <property name="materialEntered" type="String"/>
+        <property name="higherLevelItemNumber" type="String"/>
+        <property name="reasonForRejection" type="String"/>
+        <property name="lineOverallStatus" type="String"/>
+        <property name="freightFees" type="String"/>
+        <property name="taxes" type="String"/>
+        <property name="unitValue" type="String"/>
+        <property name="grossPrice" type="String"/>
+        <property name="netValue" type="String"/>
+        <property name="discounts" type="String"/>
+        <property name="expeditedFees" type="String"/>
+        <property name="insurance" type="String"/>
+        <property name="internaitonalFreight" type="String"/>
+        <property name="handlingFee" type="String"/>
+        <property name="dropshipFee" type="String"/>
+        <property name="minimumOrderFee" type="String"/>
+        <property name="taxesLocal" type="String"/>
+        <property name="schedLinesLineNumber" type="String"/>
+        <property name="schedLinesDeliveryDate" type="String"/>
+        <property name="schedLinesRoundedQuantity" type="String"/>
+        <property name="schedLinesConfirmedQuantity" type="String"/>
+        <property name="scheduleLines" type="java.util.List&lt;com.jnj.facades.data.JnjDeliveryScheduleData>"/>
+        <property name="quantity" type="Long"/>
+        <property name="confirmedQty" type="Long"/>
+        <property name="availabilityStatus" type="String"/>
+        <property name="orderedQuantity" type="String"/>
+    </bean>
+
+    <bean class="com.jnj.facades.data.JnjSAPErrorMessageData">
+        <property name="errorMessageType" type="String"/>
+        <property name="id" type="String"/>
+        <property name="number" type="String"/>
+        <property name="errorMessage" type="String"/>
+        <property name="productCode" type="String"/>
+    </bean>
+
+    <bean class="com.jnj.facades.data.JnjLaCartData"
+          extends="com.jnj.facades.data.JnjGTCartData">
+        <property name="totalExpeditedFees" type="de.hybris.platform.commercefacades.product.data.PriceData"/>
+        <property name="totalHandlingFee" type="de.hybris.platform.commercefacades.product.data.PriceData"/>
+        <property name="taxTotal" type="de.hybris.platform.commercefacades.product.data.PriceData"/>
+        <property name="totalInsurance" type="de.hybris.platform.commercefacades.product.data.PriceData"/>
+        <property name="partialDelivFlag" type="Boolean"/>
+        <property name="holdCreditCardFlag" type="Boolean"/>
+        <property name="complementaryInfo" type="String" />
+        <property name="shipToAccount" type="String"/>
+        <property name="soldToAccount" type="String"/>
+        <property name="hasSapErrors" type="boolean"/>
+        <property name="cartReferenceNumber" type="String"/>
+        <property name="sapErrorMessages" type="com.jnj.facades.data.SapErrorMessagesData"/>
+    </bean>
+    
+    <bean class="com.jnj.facades.data.SapErrorMessagesData">
+		<property name="errorMessages" type="java.util.List&lt;com.jnj.facades.data.SapErrorMessageData>"/>
+	</bean>
+    
+    <bean class="com.jnj.facades.data.SapErrorMessageData" >
+        <property name="message" type="String"/>
+    </bean>
+
+    <bean class="com.jnj.facades.data.JnjLaOrderEntryData"
+          extends="com.jnj.facades.data.JnjGTOrderEntryData">
+        <property name="indirectCustomerName" type="String"/>
+        <property name="indirectCustomerError" type="String"/>
+        <property name="indirectPayer" type="String"/>
+        <property name="indirectPayerName" type="String"/>
+        <property name="indirectPayerError" type="String"/>
+        <property name="priceOverride" type="String"/>
+        <property name="expectedPrice" type="String"/>
+        <property name="reasonForRejection" type="String"/>
+        <property name="salesOrg" type="String"/>
+        <property name="splProdType" type="String"/>
+        <property name="newPrice" type="String"/>
+        <property name="defaultPrice" type="String"/>
+        <property name="salesUomCalculated" type="Boolean"/>
+        <property name="gtsHold" type="String"/>
+        <property name="catalogId" type="String"/>
+        <property name="itemCategory" type="String"/>
+        <property name="partialDelivFlag" type="Boolean"/>
+        <property name="holdCreditCardFlag" type="Boolean"/>
+        <property name="freeItem" type="String"/>
+        <property name="freeItemUnit" type="String"/>
+        <property name="freeItemsQuanity" type="String"/>
+        <property name="freeItemsAvailabilityStatus" type="String"/>
+        <property name="freeGoodScheduleLines" type="java.util.List&lt;com.jnj.facades.data.JnjDeliveryScheduleData>"/>
+        <property name="carrierEstDeliveryDateStatus" type="com.jnj.la.core.enums.JnJOrderColumnStatus"/>
+        <property name="carrierActualDeliveryDateStatus" type="com.jnj.la.core.enums.JnJOrderColumnStatus"/>
+        <property name="backorderStatus" type="com.jnj.la.core.enums.JnJOrderColumnStatus"/>
+    </bean>
+
+    <bean class="com.jnj.facades.data.JnjLaProductData"
+          extends="com.jnj.facades.data.JnjGTProductData">
+        <property name="baseUnit" type="String"/>
+        <property name="quantity" type="Integer"/>
+        <property name="ean" type="String"/>
+        <property name="shipWeight" type="String"/>
+        <property name="stockingtype" type="String"/>
+        <property name="originCountry" type="String"/>
+        <property name="medicalSpeciality" type="java.util.List&lt;String>"/>
+        <property name="discontinue" type="Boolean"/>
+        <property name="displayPrice" type="Boolean"/>
+        <property name="numeratorSUOM" type="String"/>
+        <property name="numeratorDUOM" type="String"/>
+        <property name="dataSheets" type="java.util.Map&lt;String,String>"/>
+        <property name="sector" type="String"/>
+        <property name="salesUnitCode" type="String"/>
+        <property name="deliveryUnitCode" type="String"/>
+        <property name="height" type="String"/>
+        <property name="width" type="String"/>
+        <property name="length" type="String"/>
+        <property name="unitOfDimension" type="String"/>
+        <property name="shippingUnit" type="String"/>
+        <property name="volume" type="String" />
+        <property name="volumeUnit" type="String"/>
+        <property name="multiplicity" type="Integer"/>
+        <property name="catalogId" type="String"/>
+        <property name="ecommerceFlag" type="Boolean"/>
+        <property name="baseUnitCode" type="String"/>
+        <property name="documentsList" type="java.util.List&lt;ProductDocumentsData>"/>
+        <property name="mainProductImgUrl" type="String"/>
+        <property name="productStatusCode" type="String"/>
+    </bean>
+
+    <bean class="com.jnj.facades.data.JnjLaOrderData"
+          extends="com.jnj.facades.data.JnjGTOrderData">
+        <property name="partialDelivFlag" type="Boolean"/>
+        <property name="holdCreditCardFlag" type="Boolean"/>
+        <property name="contractNumber" type="String"/>
+        <property name="shipToNumber" type="String"/>
+        <property name="shipToName" type="String"/>
+        <property name="channel" type="String"/>
+        <property name="hasError" type="Boolean"/>
+        <property name="complementaryInfo" type="String" />
+    </bean>
+
+    <bean class="com.jnj.facades.data.JnjLaOrderHistoryData"
+          extends="com.jnj.facades.data.JnjGTOrderHistoryData">
+        <property name="contractNumber" type="String"/>
+    </bean>
+
+
+    <bean class="com.jnj.facades.data.JnJLaInvoiceEntryData" extends="com.jnj.facades.data.JnJInvoiceEntryData">
+        <property name="lamaterial" type="com.jnj.facades.data.JnjLaProductData"/>
+    </bean>
+
+    <bean class="com.jnj.facades.data.JnJLaUserAccountPreferenceData">
+        <property name="periodicity" type="com.jnj.la.core.enums.JnJEmailPeriodicity"/>
+        <property name="orderTypes" type="java.util.List&lt;com.jnj.core.enums.JnjOrderTypesEnum>"/>
+        <property name="consolidatedEmailFrequency" type="com.jnj.la.core.enums.JnJEmailFrequency"/>
+        <property name="dayOfTheWeek" type="com.jnj.la.core.enums.JnJDayOfTheWeek"/>
+        <property name="daysOfTheMonth" type="java.util.List&lt;String>"/>
+    </bean>
+
+    <bean class="com.jnj.facades.data.JnjLaCustomerData" extends="com.jnj.facades.data.JnjGTCustomerData">
+        <property name="customerCode" type="String"/>
+        <property name="soldTo" type="String"/>
+        <property name="jnjAccountManager" type="String"/>
+        <property name="currentAccountPreference" type="JnJLaUserAccountPreferenceData"/>
+        <property name="commercialUserFlag" type="Boolean"/>
+        <property name="commercialUserSector" type="String"/>
+    </bean>
+
+
+    <bean class="com.jnj.facades.data.OrderConfirmationMessageData">
+        <property name="orderQuantity" type="String"/>
+        <property name="orderTotal" type="String"/>
+        <property name="deliveryMethod" type="String"/>
+        <property name="deliveryAddress" type="String"/>
+        <property name="freeDelivery" type="String"/>
+        <property name="paymentDetails" type="String"/>
+        <property name="receivedPromotions" type="String"/>
+        <property name="orderTotals" type="String"/>
+        <property name="subtotal" type="String"/>
+        <property name="savings" type="String"/>
+        <property name="delivery" type="String"/>
+        <property name="totalPrice" type="String"/>
+        <property name="paragraphContactUs" type="String"/>
+        <property name="paragraphBody" type="String"/>
+        <property name="purchaseOrderNumber" type="String"/>
+        <property name="total" type="String"/>
+        <property name="itemPrice" type="String"/>
+        <property name="quantity" type="String"/>
+        <property name="dear" type="String"/>
+        <property name="signature" type="String"/>
+        <property name="free" type="String"/>
+        <property name="myAccount" type="String"/>
+        <property name="mediaLogoURL" type="String"/>
+        <property name="baseUrl" type="String"/>
+    </bean>
+
+    <bean class="com.jnj.facades.data.OrderAndMessageData">
+        <property name="messages" type="OrderConfirmationMessageData"/>
+        <property name="orderData" type="de.hybris.platform.commercefacades.order.data.OrderData"/>
+    </bean>
+
+    <bean class="com.jnj.facades.data.JnjLaOrderTemplateEntryData"
+          extends="com.jnj.facades.data.JnjGTOrderTemplateEntryData">
+        <property name="catalogId" type="String"/>
+    </bean>
+
+    <bean class="com.jnj.facades.data.JnjDeliveryScheduleData">
+        <property name="roundedQuantity" type="String"/>
+        <property name="proofOfDeliveryDate" type="String"/>
+        <property name="carrierExpectedDeliveryDate" type="String"/>
+        <property name="subFranchise" type="String"/>
+        <property name="requestedUnitsTotalQuantity" type="String"/>
+        <property name="amountPendingDelivery" type="String"/>
+        <property name="quantityPendingStock" type="String"/>
+    </bean>
+
+    <!-- laudo changes -->
+    <bean class="com.jnj.facades.data.JnjLaudoData">
+        <property name="productCode" type="String"/>
+        <property name="laudoNumber" type="String"/>
+        <property name="pdfFileName" type="String"/>
+        <property name="expirationDate" type="java.util.Date"/>
+        <property name="pdfFile" type="java.io.File"/>
+        <property name="country" type="String"/>
+        <property name="writeStatus" type="Boolean"/>
+        <property name="readStatus" type="Boolean"/>
+        <property name="active" type="Boolean"/>
+		<property name="batchRequired" type="Boolean"/>
+    </bean>
+    <bean class="com.jnj.facades.data.JnjLaudoFileStatusData">
+        <property name="fileName" type="String"/>
+        <property name="processed" type="Boolean"/>
+        <property name="statusMessage" type="String"/>
+    </bean>
+
+    <bean class="com.jnj.facades.data.JnJLaInvoiceHistoryData">
+        <property name="invDocNo" type="String"/>
+        <property name="invoiceNumber" type="String"/>
+        <property name="orderNumber" type="String"/>
+        <property name="sapOrderNumber" type="String"/>
+        <property name="creationDate" type="java.util.Date"/>
+        <property name="netValue" type="de.hybris.platform.commercefacades.product.data.PriceData"/>
+        <property name="orderLoaded" type="Boolean"/>
+        <property name="carrierEstimateDeliveryDate" type="java.util.Date"/>
+        <property name="carrierConfirmedDeliveryDate" type="java.util.Date"/>
+
+    </bean>
+
+    <bean class="com.jnj.la.core.data.JnJUploadedInvoiceDateData">
+        <property name="id" type="java.lang.String" />
+        <property name="user" type="de.hybris.platform.commercefacades.user.data.CustomerData" />
+        <property name="filename" type="java.lang.String" />
+        <property name="creationDate" type="java.util.Date" />
+        <property name="currentStatus" type="com.jnj.la.core.enums.JnJUploadedFileStatus" />
+        <property name="errorMessage" type="com.jnj.la.core.enums.JnJFileError" />
+        <property name="erased" type="java.lang.Boolean" />
+    </bean>
+    
+    <bean class="com.jnj.facades.data.JnjGTBackorderReportResponseData">
+		<property name="scheduleLines"
+				type="java.util.List&lt;com.jnj.facades.data.JnjDeliveryScheduleData>" />
+		<property name="sapOrderNum" type="String"/>
+	</bean>
+
+    <bean class="com.jnj.facades.data.JnjLaCronJobMonitoringReportData">
+        <property name="jobCode" type="String"/>
+        <property name="jobName" type="String"/>
+        <property name="status" type="String"/>
+        <property name="running" type="boolean"/>
+        <property name="passing" type="boolean"/>
+        <property name="paused" type="boolean"/>
+        <property name="disabled" type="boolean"/>
+        <property name="initialized" type="boolean"/>
+    </bean>
+
+    <bean class="com.jnj.facades.data.ProductDocumentsData">
+        <property name="name" type="String"/>
+        <property name="urlLink" type="String"/>
+    </bean>
+
+    <bean class="com.jnj.facades.data.JnjLaOpenOrdersReportReponseData"
+          extends="com.jnj.facades.data.JnjGTBackorderReportResponseData">
+        <property name="accountName" type="java.lang.String"/>   
+        <property name="productEAN" type="java.lang.String"/>
+        <property name="orderType" type="java.lang.String"/>        
+        <property name="lineNumber" type="java.lang.String"/>
+        <property name="requestedDeliveryDate" type="java.lang.String"/>        
+    </bean>
+    
+    <bean class="com.jnj.la.core.data.JnjLaOpenOrdersReportTemplateData">
+        <property name="templateName" type="String"/>
+        <property name="accountIds" type="java.util.List&lt;String>"/>
+        <property name="quickSelection" type="String"/>
+        <property name="fromDate" type="String"/>
+        <property name="toDate" type="String"/>
+        <property name="orderType" type="String"/>
+        <property name="orderNumber" type="String"/>
+        <property name="productCode" type="String"/>
+        <property name="shipTo" type="String"/>
+        <property name="reportColumns" type="String"/>
+    </bean>
+
+    <bean class="com.jnj.facades.data.JnjLatamOrderRequestData">
+        <property name="cartReferenceNumber" type="String"/>
+        <property name="orderType" type="String"/>
+        <property name="purchaseOrderNumber" type="String"/>
+        <property name="soldToAccount" type="String"/>
+        <property name="shipToAccount" type="String"/>
+        <property name="entries" type="java.util.List&lt;com.jnj.facades.data.JnjLatamOrderEntriesRequestData>" />
+        <property name="orderChannel" type="String"/>
+        <property name="paymentToken" type="String"/>
+    </bean>
+    <bean class="com.jnj.facades.data.JnjLatamOrderEntriesRequestData">
+        <property name="materialNumber" type="String"/>
+        <property name="quantity" type="Long"/>
+        <property name="indirectCustomerAccount" type="String"/>
+    </bean>
+
+    <bean class="com.jnj.facades.data.JnjGTOrderData"
+          extends="de.hybris.platform.commercefacades.order.data.OrderData">
+        <property name="cartReferenceNumber" type="String"/>
+    </bean>
+
+    <bean class="com.jnj.facades.data.JnjLatamOrdersListData">
+        <property name="ordersList" type="java.util.List&lt;com.jnj.facades.data.JnjLatamOrdersData>" />
+    </bean>
+    <bean class="com.jnj.facades.data.JnjLatamOrdersData">
+        <property name="code" type="String"/>
+    </bean>
+
+    <bean class="de.hybris.platform.commercefacades.order.data.OrderHistoryData">
+        <property name="sapOrderNumber" type="String"/>
+        <property name="cartReferenceNumber" type="String"/>
+        <property name="shipToAccount" type="String" />
+        <property name="soldToAccount" type="String" />
+    </bean>
+    
+    <bean class="de.hybris.platform.commercefacades.order.data.OrderEntryData">
+      <property name="scheduledLines" type="java.util.List&lt;com.jnj.facades.data.JnjScheduledLineData>"/>
+    </bean>
+   
+    <bean class="com.jnj.facades.data.JnjScheduledLineData" >
+        <property name="lineNumber" type="java.lang.String"/>
+        <property name="deliveryDate" type="java.lang.String"/>
+        <property name="confirmedQuantity" type="java.lang.String"/>
+    </bean>
+
+</beans>
