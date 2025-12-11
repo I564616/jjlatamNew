@@ -9,7 +9,7 @@ package com.jnj.core.dto;
 
 import java.util.Date;
 
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 
 
 /**
@@ -22,7 +22,7 @@ public class FileUploadDTO
 {
 
 	protected String name = null;
-	protected CommonsMultipartFile file = null;
+	protected MultipartFile file = null;
 	protected Date date;
 	protected String hour;
 	protected String renameFileTo;
@@ -52,12 +52,12 @@ public class FileUploadDTO
 		return this.name = name;
 	}
 
-	public CommonsMultipartFile getFile()
+	public MultipartFile getFile()
 	{
 		return file;
 	}
 
-	public void setFile(final CommonsMultipartFile file)
+	public void setFile(final MultipartFile file)
 	{
 		this.file = file;
 	}

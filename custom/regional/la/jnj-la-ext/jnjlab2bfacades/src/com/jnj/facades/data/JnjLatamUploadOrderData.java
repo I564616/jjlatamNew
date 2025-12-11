@@ -14,7 +14,7 @@ package com.jnj.facades.data;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 
 
 /**

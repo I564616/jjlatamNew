@@ -7,7 +7,7 @@
  */
 package com.jnj.la.core.dto;
 
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 
 
 /**

@@ -60,7 +60,7 @@ public class JnjFileUploadToSharedFolderUtil
 		{
 			outputStream = new FileOutputStream(new File(filePath));
 			buffOut = new BufferedOutputStream(outputStream);
-			buffOut.write(fileUploadDTO.getFile().getFileItem().get());
+			//buffOut.write(fileUploadDTO.getFile());
 		}
 		catch (final IOException e)
 		{

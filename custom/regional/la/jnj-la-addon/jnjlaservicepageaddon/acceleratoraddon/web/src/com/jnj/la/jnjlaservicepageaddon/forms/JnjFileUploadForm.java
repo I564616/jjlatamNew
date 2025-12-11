@@ -1,6 +1,6 @@
 package com.jnj.la.jnjlaservicepageaddon.forms;
 
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 
 public class JnjFileUploadForm {
 	private CommonsMultipartFile[] files;

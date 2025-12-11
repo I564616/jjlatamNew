@@ -3,7 +3,7 @@
  */
 package com.jnj.la.b2b.cartandcheckoutaddon.forms;
 
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 
 
 /**

@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at Nov 28, 2025, 5:16:52 PM                    ---
+ * --- Generated at Dec 11, 2025, 2:39:23 PM                    ---
  * ----------------------------------------------------------------
  */
 package com.jnj.la.b2b.webservicescommons.dto.jalo;
