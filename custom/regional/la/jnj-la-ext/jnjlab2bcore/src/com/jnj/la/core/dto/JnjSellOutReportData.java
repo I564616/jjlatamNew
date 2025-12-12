@@ -7,7 +7,7 @@
  */
 package com.jnj.la.core.dto;
 
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 
 
 /**
@@ -25,12 +25,12 @@ public class JnjSellOutReportData
 	private String user;
 	private String hour;
 
-	private CommonsMultipartFile file = null;
+	private MultipartFile file = null;
 
 	/**
 	 * @return the file
 	 */
-	public CommonsMultipartFile getFile()
+	public MultipartFile getFile()
 	{
 		return file;
 	}
@@ -39,7 +39,7 @@ public class JnjSellOutReportData
 	 * @param file
 	 *           the file to set
 	 */
-	public void setFile(final CommonsMultipartFile file)
+	public void setFile(final MultipartFile file)
 	{
 		this.file = file;
 	}

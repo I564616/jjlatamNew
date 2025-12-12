@@ -31,7 +31,7 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.jnj.commons.MessageCode;
 import com.jnj.commons.Severity;
@@ -214,7 +214,7 @@ public class JnjLatamInvoiceFacadeImpl implements JnjLatamInvoiceFacade
 	}
 
 	@Override
-	public Map<String, List<String>> uploadInvoiceFile(final CommonsMultipartFile[] submitOrderFileArray,
+	public Map<String, List<String>> uploadInvoiceFile(final MultipartFile[] submitOrderFileArray,
 			final Map<String, String> fileStatusMap, final String salesOrder, final String poNum,
 			final List<JnJInvoiceOrderData> invoiceList) throws BusinessException
 	{

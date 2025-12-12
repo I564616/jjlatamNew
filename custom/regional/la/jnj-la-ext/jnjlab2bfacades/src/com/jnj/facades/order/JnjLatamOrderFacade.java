@@ -27,7 +27,7 @@ import java.util.Set;
 import java.util.concurrent.TimeoutException;
 
 import org.springframework.ui.Model;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.jnj.core.dto.JnjOrderHistoryDTO;
 import com.jnj.core.dto.OrderHistoryDTO;
@@ -325,7 +325,7 @@ public interface JnjLatamOrderFacade
 
 	public OrderData getOrderDetailsForCode(String orderCode, boolean ignoreRestriction);
 
-	public void saveEdiFilesToFtp(CommonsMultipartFile[] submitOrderFileArray, Map<String, String> fileStatusMap);
+	public void saveEdiFilesToFtp(MultipartFile[] submitOrderFileArray, Map<String, String> fileStatusMap);
 	
 	public String getCustomerFreightType(final String orderCode);
 	

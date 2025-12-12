@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 import com.jnj.core.dto.JnjPageableData;
 import com.jnj.core.model.JnjLaudoModel;
 import com.jnj.exceptions.BusinessException;
@@ -51,7 +51,7 @@ public interface JnjLaudoFacade
 
 	void deleteLaudoTempFile(File file);
 
-	List<JnjLaudoFileStatusData> processUploadedFiles(CommonsMultipartFile[] files);
+	List<JnjLaudoFileStatusData> processUploadedFiles(MultipartFile[] files);
 	
 	/**
 	  * call the service method to get laudo to delete after expiration.

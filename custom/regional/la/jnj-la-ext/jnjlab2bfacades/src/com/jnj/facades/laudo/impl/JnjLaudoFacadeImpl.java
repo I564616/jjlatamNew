@@ -36,7 +36,7 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.jnj.commons.Severity;
 import com.jnj.core.constants.Jnjb2bCoreConstants;
@@ -661,7 +661,7 @@ public class JnjLaudoFacadeImpl implements JnjLaudoFacade
 	}
 
 	@Override
-	public List<JnjLaudoFileStatusData> processUploadedFiles(final CommonsMultipartFile[] files)
+	public List<JnjLaudoFileStatusData> processUploadedFiles(final MultipartFile[] files)
 	{
 		final String METHOD_PRCOESS_LAUDO_UPLOADED_FILE = "processUploadedFiles()";
 		JnjGTCoreUtil.logDebugMessage(Jnjlab2bcoreConstants.LAUDO, METHOD_PRCOESS_LAUDO_UPLOADED_FILE, Logging.BEGIN_OF_METHOD,

@@ -50,7 +50,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -628,7 +628,7 @@ public class JnjLatamHomePageController extends JnJGTHomePageController {
 
     @RequestMapping(value = "/webEdiOrder")
     @ResponseBody
-    public Map<String, String> saveWebEdiOrderFile(final Model model, @RequestParam(value = "submitEdiOrderFile") final CommonsMultipartFile[] submitOrderArrayFile) {
+    public Map<String, String> saveWebEdiOrderFile(final Model model, @RequestParam(value = "submitEdiOrderFile") final MultipartFile[] submitOrderArrayFile) {
         final String methodName = "saveWebEdiOrderFile()";
         JnjGTCoreUtil.logDebugMessage(LoginaddonConstants.Logging.HOME_PAGE, methodName, Logging.BEGIN_OF_METHOD, THIS_CLASS);
         final Map<String, String> fileStatusMap = new LinkedHashMap<>();

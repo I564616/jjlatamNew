@@ -25,7 +25,7 @@ import de.hybris.platform.core.enums.OrderStatus;
 import de.hybris.platform.core.model.c2l.CurrencyModel;
 import de.hybris.platform.core.model.order.AbstractOrderEntryModel;
 import de.hybris.platform.core.model.order.OrderModel;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
@@ -46,7 +46,7 @@ public interface JnjLAOrderService extends JnjGTOrderService {
 
 	void sendOrderShipEmailNotification(final String invoiceNumber);
 
-	boolean saveUploadEdiOrderFileToFTP(CommonsMultipartFile submitOrderFile);
+	boolean saveUploadEdiOrderFileToFTP(MultipartFile submitOrderFile);
 
 	void createUploadOrderStatus(Map<String, String> fileStatusMap);
 

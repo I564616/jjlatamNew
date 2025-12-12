@@ -1,14 +1,14 @@
 package com.jnj.la.jnjlaservicepageaddon.forms;
 
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 
 public class JnjFileUploadForm {
-	private CommonsMultipartFile[] files;
+	private MultipartFile[] files;
 
 	/**
 	 * @return the files
 	 */
-	public CommonsMultipartFile[] getFiles() {
+	public MultipartFile[] getFiles() {
 		return files;
 	}
 
@@ -16,7 +16,7 @@ public class JnjFileUploadForm {
 	 * @param files
 	 *            the files to set
 	 */
-	public void setFiles(final CommonsMultipartFile[] files) {
+	public void setFiles(final MultipartFile[] files) {
 		this.files = files;
 	}
 

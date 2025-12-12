@@ -65,7 +65,7 @@ import de.hybris.platform.site.BaseSiteService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
@@ -389,7 +389,7 @@ public class JnjLAOrderServiceImpl extends DefaultJnjGTOrderService implements J
 
 
 	@Override
-	public boolean saveUploadEdiOrderFileToFTP(final CommonsMultipartFile submitOrderFile)
+	public boolean saveUploadEdiOrderFileToFTP(final MultipartFile submitOrderFile)
 	{
 		final String methodName = "saveUploadEdiOrderFileToFTP()";
 		JnjGTCoreUtil.logDebugMessage(Logging.SUBMIT_ORDER_EDI, methodName, Logging.BEGIN_OF_METHOD, CURRENT_CLASS);

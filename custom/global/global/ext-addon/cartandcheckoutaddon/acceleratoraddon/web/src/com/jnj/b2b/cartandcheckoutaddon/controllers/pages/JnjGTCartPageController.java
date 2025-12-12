@@ -87,7 +87,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -2792,7 +2792,7 @@ public class JnjGTCartPageController extends AbstractPageController
 
 	@PostMapping("/deliveredOrderFileUpload")
 	public String deliveredOrderFileUpload(
-			@RequestParam(value = "deliveredOrderDoc", required = false) final CommonsMultipartFile deliveredOrderDoc,
+			@RequestParam(value = "deliveredOrderDoc", required = false) final MultipartFile deliveredOrderDoc,
 			final RedirectAttributes redirectModel)
 			throws CMSItemNotFoundException
 	{
@@ -3246,7 +3246,7 @@ public class JnjGTCartPageController extends AbstractPageController
 
 	@PostMapping("/addToCartReturn")
 	public String returnOrderFileUpload(
-			@RequestParam(value = "returnOrderDoc", required = false) final CommonsMultipartFile returnOrderDoc,
+			@RequestParam(value = "returnOrderDoc", required = false) final MultipartFile returnOrderDoc,
 			final RedirectAttributes redirectModel) throws CMSItemNotFoundException
 	{
 		String statusKey = "uploadReturnOrder.file.success";

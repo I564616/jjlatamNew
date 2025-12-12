@@ -45,7 +45,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jnj.b2b.loginaddon.constants.LoginaddonConstants;
@@ -1191,7 +1191,7 @@ public class JnjServicesPageController extends AbstractSearchPageController
                     currentClass);
         }
         jnjLatamCommonFacadeUtil.checkShowChangeAccountLink(model);
-        final CommonsMultipartFile[] files = jnjLaudoFileUploadForm.getFiles();
+        final MultipartFile[] files = jnjLaudoFileUploadForm.getFiles();
         if (files != null && files.length != 0)
         {
             if (checkFileSize(files[0]))// Checking File Size of 1st File.

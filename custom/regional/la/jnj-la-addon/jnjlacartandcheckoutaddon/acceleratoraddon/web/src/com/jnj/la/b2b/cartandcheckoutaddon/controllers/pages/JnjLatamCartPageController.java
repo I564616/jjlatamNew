@@ -37,7 +37,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jnj.b2b.cartandcheckoutaddon.controllers.CartandcheckoutaddonControllerConstants;
@@ -944,7 +944,7 @@ public class JnjLatamCartPageController extends JnjGTCartPageController
 	}
 
 	@PostMapping("/reviewOrder")
-	public String reviewOrder(@RequestParam(value = "deliveredOrderDoc", required = false) final CommonsMultipartFile[] files,
+	public String reviewOrder(@RequestParam(value = "deliveredOrderDoc", required = false) final MultipartFile[] files,
 			final Model model, final JnjGTSapWsData wsData, final RedirectAttributes redirectModel) throws CMSItemNotFoundException
 	{
 		final String methodName = "reviewOrder()";
@@ -956,7 +956,7 @@ public class JnjLatamCartPageController extends JnjGTCartPageController
 			if (null != files && files.length > 0 && StringUtils.isNotEmpty(files[0].getFileItem().getName()))
 			{
 				final List<String> empenhoFilesFullPathList = new ArrayList<>();
-				for (final CommonsMultipartFile file : files)
+				for (final MultipartFile file : files)
 				{
 					final FileUploadDTO fileUploadDTO = new FileUploadDTO();
 					fileUploadDTO.setFile(file);

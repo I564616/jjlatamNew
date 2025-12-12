@@ -59,7 +59,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -295,7 +295,7 @@ public class JnjLatamOrderFacadeImpl implements JnjLatamOrderFacade
 	}
 
 	@Override
-	public void saveEdiFilesToFtp(final CommonsMultipartFile[] submitOrderFileArray, final Map<String, String> fileStatusMap)
+	public void saveEdiFilesToFtp(final MultipartFile[] submitOrderFileArray, final Map<String, String> fileStatusMap)
 	{
 		final String methodName = "saveEdiFilesToFtp()";
 		JnjGTCoreUtil.logDebugMessage(Logging.SUBMIT_ORDER_EDI, methodName, Logging.BEGIN_OF_METHOD, currentClass);
@@ -304,7 +304,7 @@ public class JnjLatamOrderFacadeImpl implements JnjLatamOrderFacade
 		try
 		{
 			final JnJB2bCustomerModel currentUser = (JnJB2bCustomerModel) userService.getCurrentUser();
-			for (final CommonsMultipartFile submitOrderFile : submitOrderFileArray)
+			for (final MultipartFile submitOrderFile : submitOrderFileArray)
 			{
 				fileName = submitOrderFile.getOriginalFilename();
 				final String fileHash = JnjlatamOrderUtil.getFileSha512(submitOrderFile.getInputStream(), fileName);

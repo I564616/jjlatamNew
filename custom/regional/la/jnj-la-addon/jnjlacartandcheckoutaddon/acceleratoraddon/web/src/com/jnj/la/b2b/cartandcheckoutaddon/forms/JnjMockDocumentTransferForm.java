@@ -3,7 +3,7 @@
  */
 package com.jnj.la.b2b.cartandcheckoutaddon.forms;
 
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 
 
 /**
@@ -12,13 +12,13 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
  */
 public class JnjMockDocumentTransferForm
 {
-	private CommonsMultipartFile fileToUpload;
+	private MultipartFile fileToUpload;
 	private String Company;
 
 	/**
 	 * @return the fileToUpload
 	 */
-	public CommonsMultipartFile getFileToUpload()
+	public MultipartFile getFileToUpload()
 	{
 		return fileToUpload;
 	}
@@ -27,7 +27,7 @@ public class JnjMockDocumentTransferForm
 	 * @param fileToUpload
 	 *           the fileToUpload to set
 	 */
-	public void setFileToUpload(final CommonsMultipartFile fileToUpload)
+	public void setFileToUpload(final MultipartFile fileToUpload)
 	{
 		this.fileToUpload = fileToUpload;
 	}

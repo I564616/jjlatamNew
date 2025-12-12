@@ -38,7 +38,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.jnj.b2b.jnjselloutaddon.form.JnjSellOutReportsForm;
 import com.jnj.b2b.storefront.breadcrumb.Breadcrumb;
@@ -236,8 +236,8 @@ public class JnjSellOutReportController extends AbstractSearchPageController {
 		final String remoteFilePath;
 		final FileUploadDTO fileUploadDTO = new FileUploadDTO();
 		final JnjSellOutReportData sellOutReportData = new JnjSellOutReportData();
-		fileUploadDTO.setFile((CommonsMultipartFile) file);
-		sellOutReportData.setFile((CommonsMultipartFile) file);
+		fileUploadDTO.setFile((MultipartFile) file);
+		sellOutReportData.setFile((MultipartFile) file);
 		sellOutReportData.setCompany(form.getCompany());
 		final JnJB2BUnitModel jnjB2BUnitModel = jnjGetDefaultB2BUnitUtil.getDefaultB2BUnit();
 		final String customerId = jnjB2BUnitModel.getUid();

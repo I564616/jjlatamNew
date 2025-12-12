@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.jnj.core.dto.OrderHistoryDTO;
 import com.jnj.exceptions.IntegrationException;
@@ -92,7 +92,7 @@ public interface JnjOrderFacade extends B2BOrderFacade
 	 *           the submit order file array
 	 * @return true, if successful
 	 */
-	public Map<String, List<String>> createOrderFromInterface(CommonsMultipartFile[] submitOrderFileArray);
+	public Map<String, List<String>> createOrderFromInterface(MultipartFile[] submitOrderFileArray);
 
 
 	public OrderData getLatestOrder(final int numberOfEntries);

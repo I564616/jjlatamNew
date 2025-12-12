@@ -36,7 +36,7 @@ import java.util.Set;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.jnj.core.constants.Jnjb2bCoreConstants;
 import com.jnj.core.dto.OrderHistoryDTO;
@@ -276,7 +276,7 @@ public class DefaultJnjOrderFacade extends DefaultB2BOrderFacade implements JnjO
 	 * 
 	 */
 	@Override
-	public Map<String, List<String>> createOrderFromInterface(final CommonsMultipartFile[] submitOrderFileArray)
+	public Map<String, List<String>> createOrderFromInterface(final MultipartFile[] submitOrderFileArray)
 
 	{
 
@@ -295,7 +295,7 @@ public class DefaultJnjOrderFacade extends DefaultB2BOrderFacade implements JnjO
 		final Map<String, List<String>> fileNameWithErrorDetailsMap = new HashMap<String, List<String>>();
 		try
 		{
-			for (final CommonsMultipartFile submitOrderFile : submitOrderFileArray)
+			for (final MultipartFile submitOrderFile : submitOrderFileArray)
 			{
 				inputStream = submitOrderFile.getInputStream();
 				fileName = submitOrderFile.getOriginalFilename();

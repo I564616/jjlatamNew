@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.jnj.b2b.storefront.controllers.pages.AbstractPageController;
 import com.jnj.core.constants.Jnjb2bCoreConstants;
@@ -77,8 +77,8 @@ public class JnjMockDocumentTransferController extends AbstractPageController
 		final FileUploadDTO fileUploadDTO = new FileUploadDTO();
 		final JnjSellOutReportData sellOutReportData = new JnjSellOutReportData();
 
-		fileUploadDTO.setFile((CommonsMultipartFile) file);
-		sellOutReportData.setFile((CommonsMultipartFile) file);
+		fileUploadDTO.setFile((MultipartFile) file);
+		sellOutReportData.setFile((MultipartFile) file);
 
 		sellOutReportData.setCompany(mockForm.getCompany());
 

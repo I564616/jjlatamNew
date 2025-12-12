@@ -14,7 +14,7 @@ package com.jnj.facades.data;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 
 
 /**
@@ -125,12 +125,12 @@ public class JnjLatamUploadOrderData
 		this.status = status;
 	}
 
-	private CommonsMultipartFile file = null;
+	private MultipartFile file = null;
 
 	/**
 	 * @return the file
 	 */
-	public CommonsMultipartFile getFile()
+	public MultipartFile getFile()
 	{
 		return file;
 	}
@@ -139,7 +139,7 @@ public class JnjLatamUploadOrderData
 	 * @param file
 	 *           the file to set
 	 */
-	public void setFile(final CommonsMultipartFile file)
+	public void setFile(final MultipartFile file)
 	{
 		this.file = file;
 	}
