@@ -105,7 +105,7 @@
 	 <oxm:jaxb2-marshaller id="lamarshaller"
 		context-path="com.jnj.itsusmpl00082.sg910_btb_in0498_salesorder_global_source_v1_webservice.salesorderws" />
 
-	<bean id="lamessageSender" class="org.springframework.ws.transport.http.HttpComponentsMessageSender">
+	<bean id="lamessageSender" class="org.springframework.ws.transport.http.HttpComponents5MessageSender">
 		<constructor-arg ref="httpClient"/>
 		<property name="credentials" ref="lacredentials"/>		
 	</bean>
@@ -136,7 +136,7 @@
 		<property name="arguments">
 			<list>
 				<bean
-					class="org.springframework.ws.transport.http.HttpComponentsMessageSender.RemoveSoapHeadersInterceptor" />
+					class="org.springframework.ws.transport.http.HttpComponents5MessageSender.RemoveSoapHeadersInterceptor" />
 			</list>
 		</property>
 	</bean>

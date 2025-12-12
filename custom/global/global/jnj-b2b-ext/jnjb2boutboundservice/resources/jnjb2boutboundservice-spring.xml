@@ -80,7 +80,7 @@
 		<constructor-arg ref="httpClientParams"/>
 	</bean>
 
-	<bean id="messageSender" class="org.springframework.ws.transport.http.HttpComponentsMessageSender">
+	<bean id="messageSender" class="org.springframework.ws.transport.http.HttpComponents5MessageSender">
 		<constructor-arg ref="httpClient"/>
 		<property name="credentials" ref="credentials"/>
 	</bean>
@@ -106,7 +106,7 @@
 		<property name="arguments">
 			<list>
 				<bean
-					class="org.springframework.ws.transport.http.HttpComponentsMessageSender.RemoveSoapHeadersInterceptor" />
+					class="org.springframework.ws.transport.http.HttpComponents5MessageSender.RemoveSoapHeadersInterceptor" />
 			</list>
 		</property>
 	</bean>
