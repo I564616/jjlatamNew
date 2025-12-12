@@ -141,6 +141,9 @@
           class="com.jnj.gt.outbound.services.impl.DefaultJnjGTCreateDeliveredOrderService"/>
     <bean id="jnjGTReqOrderChangeMapper"
           class="com.jnj.gt.outbound.mapper.impl.DefaultJnjGTReqOrderChangeMapper"/>
+    <bean id="jnjGTReqOrderChangeService"
+          class="com.jnj.gt.outbound.services.impl.DefaultJnjGTReqOrderChangeService"/>
+
 
 
 </beans>
