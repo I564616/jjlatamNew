@@ -111,7 +111,7 @@
 		 <property name="credentials" ref="credentials"/>	
 	</bean>
 	
-	<bean id="credentials" class="org.apache.http.auth.UsernamePasswordCredentials">
+	<bean id="credentials" class="org.apache.hc.client5.http.auth.Credentials">
 		<constructor-arg index="0" value="#{configurationService.configuration.getProperty('jnj.webservice.order.user')}"/>
 		<constructor-arg index="1" value="#{configurationService.configuration.getProperty('jnj.webservice.order.password')}"/>
 	</bean>	

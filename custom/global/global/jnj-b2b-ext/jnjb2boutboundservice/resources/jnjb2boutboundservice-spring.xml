@@ -85,7 +85,7 @@
 		<property name="credentials" ref="credentials"/>
 	</bean>
 	
-	<bean id="credentials" class="org.apache.http.auth.UsernamePasswordCredentials">
+	<bean id="credentials" class="org.apache.hc.client5.http.auth.Credentials">
 		<constructor-arg value="btbuser"/>
 		<constructor-arg value="btbuser"/>
 	</bean>
