@@ -396,7 +396,7 @@ public class JnjLAOrderServiceImpl extends DefaultJnjGTOrderService implements J
 		boolean isUploadSuccess;
 		final FileUploadDTO fileUploadDTO = new FileUploadDTO();
 		fileUploadDTO.setFile(submitOrderFile);
-		fileUploadDTO.setRenameFileTo(submitOrderFile.getFileItem().getName());
+		fileUploadDTO.setRenameFileTo(submitOrderFile.getOriginalFilename());
 
 		final String destainationDir = Config.getParameter(Jnjlab2bcoreConstants.FEED_FILEPATH_ROOT)
 				+ Config.getParameter(Jnjlab2bcoreConstants.FEED_FILEPATH_OUTGOING)

@@ -27,7 +27,7 @@ import de.hybris.platform.promotions.model.PromotionGroupModel;
 import de.hybris.platform.servicelayer.config.ConfigurationService;
 import de.hybris.platform.servicelayer.time.TimeService;
 import de.hybris.platform.site.BaseSiteService;
-import org.apache.commons.lang.exception.ExceptionUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -84,7 +84,7 @@ public class JnjLatamCommerceCartCalculationStrategy extends DefaultCommerceCart
 			catch (final CalculationException calculationException)
 			{
 				JnjGTCoreUtil.logDebugMessage(Logging.CART_CALCULATE, methodName,
-						"Cart model " + cartModel.getCode() + " was not calculated due to: " + ExceptionUtils.getFullStackTrace(calculationException),
+						"Cart model " + cartModel.getCode() + " was not calculated due to: " + ExceptionUtils.getStackTrace(calculationException),
 						JnjLatamCommerceCartCalculationStrategy.class);
 			}
 			catch (final Exception exception)
@@ -135,7 +135,7 @@ public class JnjLatamCommerceCartCalculationStrategy extends DefaultCommerceCart
 		catch (final CalculationException calculationException)
 		{
 			JnjGTCoreUtil.logDebugMessage(Logging.CART_RECALCULATE, methodName,
-					"Cart model " + cartModel.getCode() + " was not calculated due to: " + ExceptionUtils.getFullStackTrace(calculationException),
+					"Cart model " + cartModel.getCode() + " was not calculated due to: " + ExceptionUtils.getStackTrace(calculationException),
 					JnjLatamCommerceCartCalculationStrategy.class);
 		}
 		catch (final Exception exception)

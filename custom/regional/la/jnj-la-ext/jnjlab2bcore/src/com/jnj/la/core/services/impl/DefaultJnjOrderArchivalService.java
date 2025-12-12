@@ -47,6 +47,7 @@ import java.util.stream.Collectors;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.Collections;
 
 /**
  * Service Class responsible for handling archival orders fetching and deletion.
@@ -338,7 +339,7 @@ public class DefaultJnjOrderArchivalService implements JnjOrderArchivalService {
                         .collect(Collectors.toList());
             }
         }
-        return ListUtils.EMPTY_LIST;
+        return Collections.emptyList();
     }
 
     protected static <T> Predicate<T> distinctByKey(

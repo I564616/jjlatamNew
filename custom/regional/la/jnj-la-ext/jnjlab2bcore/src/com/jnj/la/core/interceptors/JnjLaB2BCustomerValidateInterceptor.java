@@ -36,7 +36,7 @@ import com.jnj.core.interceptor.JnjGTB2BCustomerValidateInterceptor;
 import com.jnj.core.model.JnJB2bCustomerModel;
 import com.jnj.core.util.JnjGTCoreUtil;
 import com.jnj.la.core.constants.Jnjlab2bcoreConstants.Logging;
-
+import java.util.function.Predicate;
 
 /**
  *
