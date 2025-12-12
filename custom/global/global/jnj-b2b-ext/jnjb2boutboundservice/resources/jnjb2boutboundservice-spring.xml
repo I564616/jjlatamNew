@@ -149,8 +149,8 @@
     </bean>
 
     <!-- Remove SOAP Headers Interceptor (HTTP5) -->
-    <bean id="removeSoapHeadersInterceptor"
-          class="org.springframework.ws.transport.http.HttpComponents5MessageSender$RemoveSoapHeadersInterceptor" />
+<!--    <bean id="removeSoapHeadersInterceptor"-->
+<!--          class="org.springframework.ws.transport.http.HttpComponents5MessageSender$RemoveSoapHeadersInterceptor" />-->
 
     <!-- Build final HttpClient -->
     <bean id="httpClient5"
