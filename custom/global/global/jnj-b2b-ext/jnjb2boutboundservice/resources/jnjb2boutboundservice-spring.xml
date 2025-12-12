@@ -71,32 +71,32 @@
 		<property name="messageSender" ref="messageSender"/>
 	</bean>
 	
-	<bean id="httpClientParams" class="org.apache.commons.httpclient.params.HttpClientParams">
-		<property name="authenticationPreemptive" value="true"/>
-		<property name="connectionManagerClass" value="org.apache.commons.httpclient.MultiThreadedHttpConnectionManager"/>
-	</bean>
+<!--	<bean id="httpClientParams" class="org.apache.commons.httpclient.params.HttpClientParams">-->
+<!--		<property name="authenticationPreemptive" value="true"/>-->
+<!--		<property name="connectionManagerClass" value="org.apache.commons.httpclient.MultiThreadedHttpConnectionManager"/>-->
+<!--	</bean>-->
 	
-	<bean id="httpClient" class="org.apache.commons.httpclient.HttpClient">
-		<constructor-arg ref="httpClientParams"/>
-	</bean>
+<!--	<bean id="httpClient" class="org.apache.commons.httpclient.HttpClient">-->
+<!--		<constructor-arg ref="httpClientParams"/>-->
+<!--	</bean>-->
 
-	<bean id="messageSender" class="org.springframework.ws.transport.http.HttpComponents5MessageSender">
-		<constructor-arg ref="httpClient"/>
-		<property name="credentials" ref="credentials"/>
-	</bean>
+<!--	<bean id="messageSender" class="org.springframework.ws.transport.http.HttpComponents5MessageSender">-->
+<!--		<constructor-arg ref="httpClient"/>-->
+<!--		<property name="credentials" ref="credentials"/>-->
+<!--	</bean>-->
 	
-	<bean id="credentials" class="org.apache.hc.client5.http.auth.Credentials">
-		<constructor-arg value="btbuser"/>
-		<constructor-arg value="btbuser"/>
-	</bean>
-	<bean id="requestConfigBuilder" class="org.apache.http.client.config.RequestConfig"
-	factory-method="custom">
-	<property name="readTimeout" value="60000" />
-	<property name="connectTimeout" value="60000" />
-</bean>
+<!--	<bean id="credentials" class="org.apache.hc.client5.http.auth.Credentials">-->
+<!--		<constructor-arg value="btbuser"/>-->
+<!--		<constructor-arg value="btbuser"/>-->
+<!--	</bean>-->
+<!--	<bean id="requestConfigBuilder" class="org.apache.http.client.config.RequestConfig"-->
+<!--	factory-method="custom">-->
+<!--	<property name="readTimeout" value="60000" />-->
+<!--	<property name="connectTimeout" value="60000" />-->
+<!--</bean>-->
 
-	<bean id="requestConfig" factory-bean="requestConfigBuilder"
-		factory-method="build" />
+<!--	<bean id="requestConfig" factory-bean="requestConfigBuilder"-->
+<!--		factory-method="build" />-->
 
 	<bean id="interceptedHttpClientBuilder"
 		class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
@@ -105,19 +105,69 @@
 		</property>
 		<property name="arguments">
 			<list>
-				<bean
-					class="org.springframework.ws.transport.http.HttpComponents5MessageSender.RemoveSoapHeadersInterceptor" />
+<!--				<bean-->
+<!--					class="org.springframework.ws.transport.http.HttpComponents5MessageSender.RemoveSoapHeadersInterceptor" />-->
 			</list>
 		</property>
 	</bean>
 
 	<!-- FRAMEWORK_UPDATE - TODO - The builder of the http client has changed and may fail in the runtime. Adjust existing configuration to the new API -->
-	<bean id="httpClientBuilder" class="org.apache.http.impl.client.HttpClientBuilder"
-		factory-method="create">
-		<property name="defaultRequestConfig" ref="requestConfig" />
-	</bean>
-		
-	<oxm:jaxb2-marshaller id="marshaller"
+<!--	<bean id="httpClientBuilder" class="org.apache.http.impl.client.HttpClientBuilder"-->
+<!--		factory-method="create">-->
+<!--		<property name="defaultRequestConfig" ref="requestConfig" />-->
+<!--	</bean>-->
+
+    <!-- ================== HTTP CLIENT 5 CONFIGURATION ================== -->
+
+    <!-- Credentials -->
+    <bean id="credentialsProvider"
+          class="org.apache.hc.client5.http.impl.auth.BasicCredentialsProvider">
+        <property name="credentials">
+            <bean class="org.apache.hc.client5.http.auth.UsernamePasswordCredentials">
+                <constructor-arg index="0"
+                                 value="#{configurationService.configuration.getProperty('jnj.webservice.order.user')}" />
+                <constructor-arg index="1"
+                                 value="#{configurationService.configuration.getProperty('jnj.webservice.order.password')}" />
+            </bean>
+        </property>
+    </bean>
+
+    <!-- Timeout RequestConfig (HTTP5 uses Timeout objects) -->
+    <bean id="requestConfig" class="org.apache.hc.client5.http.config.RequestConfig">
+        <property name="connectTimeout"
+                  value="#{T(org.apache.hc.core5.util.Timeout).ofMilliseconds(configurationService.configuration.getInt('jnj.webservice.connectionTimeOut'))}" />
+        <property name="responseTimeout"
+                  value="#{T(org.apache.hc.core5.util.Timeout).ofMilliseconds(configurationService.configuration.getInt('jnj.webservice.readTimeOut'))}" />
+    </bean>
+
+    <!-- HttpClient 5 Builder -->
+    <bean id="httpClient5Builder"
+          class="org.apache.hc.client5.http.impl.classic.HttpClients"
+          factory-method="custom">
+        <property name="defaultCredentialsProvider" ref="credentialsProvider" />
+        <property name="defaultRequestConfig" ref="requestConfig" />
+    </bean>
+
+    <!-- Remove SOAP Headers Interceptor (HTTP5) -->
+    <bean id="removeSoapHeadersInterceptor"
+          class="org.springframework.ws.transport.http.HttpComponents5MessageSender$RemoveSoapHeadersInterceptor" />
+
+    <!-- Build final HttpClient -->
+    <bean id="httpClient5"
+          factory-bean="httpClient5Builder"
+          factory-method="build">
+    </bean>
+
+    <!-- Correct MessageSender for HTTP5 -->
+    <bean id="messageSender"
+          class="org.springframework.ws.transport.http.HttpComponents5MessageSender">
+        <constructor-arg ref="httpClient5"/>
+    </bean>
+
+    <!-- ================== END HTTP CLIENT 5 CONFIG ================== -->
+
+
+    <oxm:jaxb2-marshaller id="marshaller"
 		context-path="com.jnj.itsusmpl00082.sg910_btb_in0498_salesorder_global_source_v1_webservice.salesorderws" />
 	<oxm:jaxb2-marshaller id="unmarshaller"
 		context-path="com.jnj.itsusmpl00082.sg910_btb_in0498_salesorder_global_source_v1_webservice.salesorderws" />
