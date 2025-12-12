@@ -86,6 +86,8 @@
     ============================== -->
 
     <!-- Simulate Order -->
+    <alias name="webserviceTemplateForSimulate" alias="webserviceTemplateForSimulateDelivered"/>
+
     <bean id="webserviceTemplateForSimulate"
           class="org.springframework.ws.client.core.WebServiceTemplate">
         <property name="marshaller" ref="marshallerForSimulate"/>
@@ -117,5 +119,7 @@
     <bean id="jnjGTSimulateOrderService"
           class="com.jnj.gt.outbound.services.impl.DefaultJnjGTSimulateOrderService"/>
     <!-- etc — all business beans remain unchanged -->
+    <bean id="jnjGTSimulateDeliveredOrderService"
+          class="com.jnj.gt.outbound.services.impl.DefaultJnjGTSimulateDeliveredOrderService"/>
 
 </beans>

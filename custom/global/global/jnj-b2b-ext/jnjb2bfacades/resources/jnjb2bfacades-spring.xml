@@ -1528,5 +1528,13 @@
 		<property name="jnjGTB2BUnitFacade" ref="GTB2BUnitFacade" />
 		<property name="productPricePopulator" ref="productPricePopulator" />
 	</bean>
+
+    <!-- create the mapper bean with the exact id expected by @Resource -->
+    <bean id="GTSimulateDeliveredOrderMapper"
+          class="com.jnj.gt.outbound.mapper.impl.DefaultJnjGTSimulateDeliveredOrderMapper"/>
+
+    <alias name="GTSimulateDeliveredOrderMapper" alias="jnjGTSimulateDeliveredOrderMapper"/>
+
+
 </beans>
 	
