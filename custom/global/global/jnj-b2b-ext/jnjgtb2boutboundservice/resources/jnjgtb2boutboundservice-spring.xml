@@ -232,4 +232,14 @@
 
     <bean class="com.jnj.gt.outbound.services.impl.DefaultJnjGTSerializationService" id="jnjGTSerializationService"/>
 
+    <bean id="webserviceTemplateForSerialization"
+          class="org.springframework.ws.client.core.WebServiceTemplate">
+    </bean>
+    <bean id="serializationMsgIdGenerator"  class="de.hybris.platform.servicelayer.keygenerator.impl.PersistentKeyGenerator" init-method="init" scope="tenant">
+        <property name="key" value="ordertemplatenumberseries"/>
+        <property name="digits" value="5"/>
+        <property name="start" value="00000"/>
+        <property name="numeric" value="true"/>
+    </bean>
+
 </beans>
