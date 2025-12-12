@@ -30,7 +30,7 @@ public class DefaultVariantComparator implements Comparator<Object>
 		{
 			final double number1 = ((Number) variant1).doubleValue();
 			final double number2 = ((Number) variant2).doubleValue();
-			return NumberUtils.compare(number1, number2);
+			return Double.compare(number1, number2);
 		}
 		else if (variant1 instanceof String)
 		{

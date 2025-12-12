@@ -13,7 +13,7 @@ package com.jnj.gt.core.v1.controller;
 import de.hybris.platform.jalo.JaloSession;
 import com.jnj.gt.core.auth.data.LogoutResponse;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -25,9 +25,10 @@ import com.granule.CompressTag;
 import com.granule.CompressTagHandler;
 import com.granule.CompressorSettings;
 import com.granule.RealRequestProxy;
+import jakarta.servlet.jsp.tagext.BodyTagSupport;
 
 
-public class AcceleratorCompressTag extends CompressTag
+public class AcceleratorCompressTag extends BodyTagSupport
 {
 	public static final String COMPREST_TAG_CONTENT = CompressTag.class.getName() + "Content";
 	public static final String COMPREST_TAG_JS = CompressTag.class.getName() + "js";
@@ -74,10 +75,10 @@ public class AcceleratorCompressTag extends CompressTag
 		}
 		try
 		{
-			final CompressTagHandler compressor = new CompressTagHandler(id, method, options, basepath);
-			final RealRequestProxy runtimeRequest = new RealRequestProxy(httpRequest);
-			final String newBody = compressor.handleTag(runtimeRequest, runtimeRequest, oldBody);
-			getPreviousOut().print(newBody);
+//			final CompressTagHandler compressor = new CompressTagHandler(id, method, options, basepath);
+//			final RealRequestProxy runtimeRequest = new RealRequestProxy(httpRequest);
+//			final String newBody = compressor.handleTag(runtimeRequest, runtimeRequest, oldBody);
+//			getPreviousOut().print(newBody);
 		}
 		catch (final Exception e)
 		{

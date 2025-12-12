@@ -953,14 +953,14 @@ public class JnjLatamCartPageController extends JnjGTCartPageController
 		boolean isUploadSuccess = false;
 		try
 		{
-			if (null != files && files.length > 0 && StringUtils.isNotEmpty(files[0].getFileItem().getName()))
+			if (null != files && files.length > 0 && StringUtils.isNotEmpty(files[0].getName()))
 			{
 				final List<String> empenhoFilesFullPathList = new ArrayList<>();
 				for (final MultipartFile file : files)
 				{
 					final FileUploadDTO fileUploadDTO = new FileUploadDTO();
 					fileUploadDTO.setFile(file);
-					fileUploadDTO.setRenameFileTo(file.getFileItem().getName());
+					fileUploadDTO.setRenameFileTo(file.getName());
 
 					final String destainationDir = Config.getParameter(Jnjb2bCoreConstants.FEED_FILEPATH_ROOT)
 							+ Config.getParameter(Jnjb2bCoreConstants.FEED_FILEPATH_OUTGOING)

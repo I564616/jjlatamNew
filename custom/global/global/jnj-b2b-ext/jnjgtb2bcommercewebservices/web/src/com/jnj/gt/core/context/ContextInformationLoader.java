@@ -18,7 +18,7 @@ import com.jnj.gt.core.exceptions.RecalculationException;
 import com.jnj.gt.core.exceptions.UnsupportedCurrencyException;
 import com.jnj.gt.core.exceptions.UnsupportedLanguageException;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 
 /**

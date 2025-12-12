@@ -172,27 +172,27 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	
-	<servlet>
-        <servlet-name>CompressServlet</servlet-name>
-        <servlet-class>com.granule.CompressServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
+<!--	<servlet>-->
+<!--        <servlet-name>CompressServlet</servlet-name>-->
+<!--        <servlet-class>com.granule.CompressServlet</servlet-class>-->
+<!--        <load-on-startup>1</load-on-startup>-->
+<!--    </servlet>-->
 
 
-    <servlet-mapping>
-        <servlet-name>CompressServlet</servlet-name>
-        <url-pattern>/combined.js</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CompressServlet</servlet-name>
-        <url-pattern>/combined.css</url-pattern>
-    </servlet-mapping>
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>CompressServlet</servlet-name>-->
+<!--        <url-pattern>/combined.js</url-pattern>-->
+<!--    </servlet-mapping>-->
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>CompressServlet</servlet-name>-->
+<!--        <url-pattern>/combined.css</url-pattern>-->
+<!--    </servlet-mapping>-->
 
-	<servlet-mapping>
-		<servlet-name>DispatcherServlet</servlet-name>
-		<!-- Map all requests to the DispatcherServlet -->
-		<url-pattern>/</url-pattern>
-	</servlet-mapping>
+<!--	<servlet-mapping>-->
+<!--		<servlet-name>DispatcherServlet</servlet-name>-->
+<!--		&lt;!&ndash; Map all requests to the DispatcherServlet &ndash;&gt;-->
+<!--		<url-pattern>/</url-pattern>-->
+<!--	</servlet-mapping>-->
 
 
     <!-- Uncomment in to enable handling of 500 server errors  -->

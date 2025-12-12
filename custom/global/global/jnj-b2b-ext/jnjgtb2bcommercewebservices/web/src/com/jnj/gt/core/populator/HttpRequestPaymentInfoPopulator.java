@@ -19,7 +19,7 @@ import com.jnj.gt.core.populator.options.PaymentInfoOption;
 import java.util.Collection;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Component;
 

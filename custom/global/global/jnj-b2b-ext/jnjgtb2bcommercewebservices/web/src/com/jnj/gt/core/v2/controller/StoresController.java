@@ -22,7 +22,7 @@ import de.hybris.platform.webservicescommons.swagger.ApiBaseSiteIdParam;
 import com.jnj.gt.core.v2.helper.StoresHelper;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
