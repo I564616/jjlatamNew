@@ -230,4 +230,6 @@
         <property name="jnjGTConsignmentStockService" ref="jnjGTConsignmentStockService"/>
     </bean>
 
+    <bean class="com.jnj.gt.outbound.services.impl.DefaultJnjGTSerializationService" id="jnjGTSerializationService"/>
+
 </beans>
