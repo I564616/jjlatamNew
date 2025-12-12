@@ -1558,7 +1558,38 @@
     <bean id="jnjGTOrderReturnMapper"
           class="com.jnj.gt.outbound.mapper.impl.DefaultJnjGTOrderReturnMapper"/>
 
+    <bean id="jnjGTProofOfDeliveryMapper"
+          class="com.jnj.gt.outbound.mapper.impl.DefaultJnjGTProofOfDeliveryMapper"/>
+    <!-- Proof of Delivery Service -->
+    <bean id="jnjGTProofOfDeliveryService"
+          class="com.jnj.gt.outbound.services.impl.DefaultJnjGTProofOfDeliveryService" />
+    <bean id="jnjGTCmodRgaMapper"
+          class="com.jnj.gt.outbound.mapper.impl.DefaultJnjGTCmodRgaMapper"/>
+    <bean id="jnjGTCmodRgaService"
+          class="com.jnj.gt.outbound.services.impl.DefaultJnjGTCmodRgaService"/>
 
+    <bean id="webserviceTemplateForCmodRga"
+          class="org.springframework.ws.client.core.WebServiceTemplate">
+<!--        <property name="marshaller" ref="marshallerForCmodRga"/>-->
+<!--        <property name="unmarshaller" ref="unmarshallerForCmodRga"/>-->
+<!--        <property name="messageSender" ref="messageSender"/>-->
+    </bean>
+    <bean id="jnjGTConsignmentStockMapper"
+          class="com.jnj.gt.outbound.mapper.impl.DefaultJnjGTConsignmentStockMapper"/>
+    <!-- Inventory Report Mapper -->
+    <bean id="jnjGTInventoryMapper"
+          class="com.jnj.gt.outbound.mapper.impl.DefaultJnjGTInventoryReportMapper" />
+
+    <bean id="jnjGTAccountAgingReportMapper"
+          class="com.jnj.gt.outbound.mapper.impl.DefaultJnjGTAccountAgingReportMapper" />
+    <bean id="jnjGTBalanceSummaryReportMapper"
+          class="com.jnj.gt.outbound.mapper.impl.DefaultJnjGTBalanceSummaryReportMapper" />
+    <bean id="jnjGTPaymentSummaryReportMapper"
+          class="com.jnj.gt.outbound.mapper.impl.DefaultJnjGTPaymentSummaryReportMapper" />
+    <bean id="jnjGTCreditSummaryReportMapper"
+          class="com.jnj.gt.outbound.mapper.impl.DefaultJnjGTCreditSummaryReportMapper" />
+    <bean id="jnjGTInvoiceClearingReportMapper"
+          class="com.jnj.gt.outbound.mapper.impl.DefaultJnjGTInvoiceClearingReportMapper" />
 
 </beans>
 	
