@@ -2028,15 +2028,15 @@
 	</bean>
 	<!-- Cart Order Confirmation Email Process End -->
 
+    <bean id="webserviceTemplateForContractPrice" name="webserviceTemplateForContractPrice"
+          class="org.springframework.ws.client.core.WebServiceTemplate">
+        <property name="marshaller" ref="marshallerForContractPrice" />
+        <property name="unmarshaller" ref="unmarshallerForContractPrice" />
+        <!--<property name="messageSender" ref="messageSender"/>-->
+    </bean>
+
 	<bean id="jnjGTGetContractPriceMapper" class="com.jnj.core.outbound.mapper.impl.DefaultJnjGTGetContractPriceMapper" />
 	<bean id="jnjGTGetContractPriceService" class="com.jnj.core.outbound.services.impl.DefaultJnjGTGetContractPriceService" />
-	
-	<bean id="webserviceTemplateForContractPrice" name="webserviceTemplateForContractPrice"
-		class="org.springframework.ws.client.core.WebServiceTemplate">
-		<property name="marshaller" ref="marshallerForContractPrice" />
-		<property name="unmarshaller" ref="unmarshallerForContractPrice" />
-		<!--<property name="messageSender" ref="messageSender"/>-->
-	</bean>
 	
 	<oxm:jaxb2-marshaller id="marshallerForContractPrice"
 		context-path="com.jnj.hcswmd01.mu007_epic_contractprice_v1.getcontractpricewrapperwebservice" />
