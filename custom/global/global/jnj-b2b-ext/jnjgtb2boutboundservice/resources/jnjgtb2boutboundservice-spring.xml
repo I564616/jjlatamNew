@@ -146,6 +146,10 @@
 
     <bean id="webserviceTemplateForOrderChange" class="org.springframework.ws.client.core.WebServiceTemplate">
     </bean>
+    <!-- service implementation bean -->
+    <bean id="jnjGTGetPriceQuoteService"
+          class="com.jnj.gt.outbound.services.impl.DefaultJnjGTGetPriceQuoteService"/>
 
-
+    <bean id="webserviceTemplateForPriceQuote"
+          class="org.springframework.ws.client.core.WebServiceTemplate"></bean>
 </beans>
