@@ -12,15 +12,16 @@
            http://www.springframework.org/schema/oxm
            http://www.springframework.org/schema/oxm/spring-oxm-3.1.xsd">
 
-    <!-- =============================
+    <!-- =====================================================
          PROOF OF DELIVERY TEMPLATE
-    ============================== -->
+    ====================================================== -->
     <bean id="webserviceTemplateForProofOfDelivery"
           class="org.springframework.ws.client.core.WebServiceTemplate">
         <property name="defaultUri"
                   value="#{configurationService.configuration.getProperty('jnj.webservice.proof.delivery.endpoint.url')}" />
         <property name="marshaller" ref="marshallerForProofOfDelivery"/>
         <property name="unmarshaller" ref="unmarshallerForProofOfDelivery"/>
+        <property name="messageSender" ref="messageSender"/>
     </bean>
 
     <oxm:jaxb2-marshaller id="marshallerForProofOfDelivery"
@@ -29,41 +30,35 @@
                           context-path="com.fedex.ws.track.v8"/>
 
 
-    <!-- =============================
+    <!-- =====================================================
          CREATE DELIVERED ORDER TEMPLATE
-    ============================== -->
+    ====================================================== -->
     <bean id="webserviceTemplateForCreateDelivered"
           class="org.springframework.ws.client.core.WebServiceTemplate">
-        <!-- leave empty, mapper/service will set values -->
+        <property name="messageSender" ref="messageSender"/>
     </bean>
 
 
-    <!-- =============================
-         HTTP CLIENT 5 CONFIGURATION
-    ============================== -->
+    <!-- =====================================================
+         CREDENTIALS CONFIG (HttpClient 5)
+    ====================================================== -->
 
-    <!-- Timeouts (Hybris + Spring-WS compatible) -->
-    <bean id="messageSender"
-          class="org.springframework.ws.transport.http.HttpComponents5MessageSender">
-        <constructor-arg ref="httpClient5"/>
-        <property name="connectTimeout"
-                  value="#{configurationService.configuration.getLong('jnj.webservice.connectionTimeOut')}" />
-        <property name="readTimeout"
-                  value="#{configurationService.configuration.getLong('jnj.webservice.readTimeOut')}" />
-    </bean>
-
-    <!-- =============================
-         CREDENTIALS CONFIG
-    ============================== -->
-
-    <bean id="lacredentials" class="org.apache.hc.client5.http.auth.UsernamePasswordCredentials">
+    <bean id="lacredentials"
+          class="org.apache.hc.client5.http.auth.UsernamePasswordCredentials">
         <constructor-arg index="0"
                          value="#{configurationService.configuration.getProperty('jnj.webservice.order.user')}"/>
         <constructor-arg index="1"
                          value="#{configurationService.configuration.getProperty('jnj.webservice.order.password')}"/>
     </bean>
 
-    <bean id="laAuthScope" class="org.apache.hc.client5.http.auth.AuthScope"/>
+    <bean id="laAuthScope" class="org.apache.hc.client5.http.auth.AuthScope">
+        <constructor-arg>
+            <bean class="org.apache.hc.core5.http.HttpHost">
+                <constructor-arg index="0"><null/></constructor-arg>
+                <constructor-arg index="1" value="-1"/>
+            </bean>
+        </constructor-arg>
+    </bean>
 
     <bean id="credentialsProvider"
           class="org.apache.hc.client5.http.impl.auth.BasicCredentialsProvider"/>
@@ -80,23 +75,77 @@
         </property>
     </bean>
 
-    <!-- =============================
-         HTTPCLIENT 5 BUILDER
-    ============================== -->
+
+    <!-- =====================================================
+         HTTPCLIENT 5 — CORRECT TIMEOUT CONFIGURATION
+    ====================================================== -->
+
+    <!-- Create Timeout objects explicitly -->
+    <bean id="connectTimeout"
+          class="org.apache.hc.core5.util.Timeout"
+          factory-method="ofMilliseconds">
+        <constructor-arg value="#{configurationService.configuration.getLong('jnj.webservice.connectionTimeOut')}"/>
+    </bean>
+
+    <bean id="responseTimeout"
+          class="org.apache.hc.core5.util.Timeout"
+          factory-method="ofMilliseconds">
+        <constructor-arg value="#{configurationService.configuration.getLong('jnj.webservice.readTimeOut')}"/>
+    </bean>
+
+    <!-- Create RequestConfig builder -->
+    <bean id="requestConfigBuilder"
+          class="org.apache.hc.client5.http.config.RequestConfig"
+          factory-method="custom"/>
+
+    <!-- Apply connect timeout -->
+    <bean id="setConnectTimeout"
+          class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetObject" ref="requestConfigBuilder"/>
+        <property name="targetMethod" value="setConnectTimeout"/>
+        <property name="arguments">
+            <list><ref bean="connectTimeout"/></list>
+        </property>
+    </bean>
+
+    <!-- Apply response timeout -->
+    <bean id="setResponseTimeout"
+          class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetObject" ref="requestConfigBuilder"/>
+        <property name="targetMethod" value="setResponseTimeout"/>
+        <property name="arguments">
+            <list><ref bean="responseTimeout"/></list>
+        </property>
+    </bean>
+
+    <!-- Build final RequestConfig -->
+    <bean id="requestConfig"
+          factory-bean="requestConfigBuilder"
+          factory-method="build"/>
+
+    <!-- Build HttpClient5 -->
     <bean id="httpClient5Builder"
           class="org.apache.hc.client5.http.impl.classic.HttpClients"
           factory-method="custom">
         <property name="defaultCredentialsProvider" ref="credentialsProvider"/>
+        <property name="defaultRequestConfig" ref="requestConfig"/>
     </bean>
 
+    <!-- Final HttpClient -->
     <bean id="httpClient5"
           factory-bean="httpClient5Builder"
           factory-method="build"/>
 
+    <!-- MessageSender for all WS templates -->
+    <bean id="messageSender"
+          class="org.springframework.ws.transport.http.HttpComponents5MessageSender">
+        <constructor-arg ref="httpClient5"/>
+    </bean>
 
-    <!-- =============================
-         ALL OTHER WEB SERVICE TEMPLATES
-    ============================== -->
+
+    <!-- =====================================================
+         OTHER WEB SERVICE TEMPLATES
+    ====================================================== -->
 
     <alias name="webserviceTemplateForSimulate" alias="webserviceTemplateForSimulateDelivered"/>
 
@@ -104,6 +153,7 @@
           class="org.springframework.ws.client.core.WebServiceTemplate">
         <property name="marshaller" ref="marshallerForSimulate"/>
         <property name="unmarshaller" ref="unmarshallerForSimulate"/>
+        <property name="messageSender" ref="messageSender"/>
     </bean>
 
     <oxm:jaxb2-marshaller id="marshallerForSimulate"
@@ -116,6 +166,7 @@
           class="org.springframework.ws.client.core.WebServiceTemplate">
         <property name="marshaller" ref="marshallerForCreate"/>
         <property name="unmarshaller" ref="unmarshallerForCreate"/>
+        <property name="messageSender" ref="messageSender"/>
     </bean>
 
     <oxm:jaxb2-marshaller id="marshallerForCreate"
@@ -124,9 +175,9 @@
                           context-path="com.jnj.hcswmd01.mu007_epic_ordercreate_v1.ordercreationinsapwebservice"/>
 
 
-    <!-- =============================
+    <!-- =====================================================
          SERVICES / MAPPERS
-    ============================== -->
+    ====================================================== -->
 
     <bean id="jnjGTSimulateOrderMapper"
           class="com.jnj.gt.outbound.mapper.impl.DefaultJnjGTSimulateOrderMapper"/>
@@ -146,25 +197,33 @@
           class="com.jnj.gt.outbound.services.impl.DefaultJnjGTReqOrderChangeService"/>
 
     <bean id="webserviceTemplateForOrderChange"
-          class="org.springframework.ws.client.core.WebServiceTemplate"/>
+          class="org.springframework.ws.client.core.WebServiceTemplate">
+        <property name="messageSender" ref="messageSender"/>
+    </bean>
 
     <bean id="jnjGTGetPriceQuoteService"
           class="com.jnj.gt.outbound.services.impl.DefaultJnjGTGetPriceQuoteService"/>
 
     <bean id="webserviceTemplateForPriceQuote"
-          class="org.springframework.ws.client.core.WebServiceTemplate"/>
+          class="org.springframework.ws.client.core.WebServiceTemplate">
+        <property name="messageSender" ref="messageSender"/>
+    </bean>
 
     <bean id="jnjGTOrderReturnService"
           class="com.jnj.gt.outbound.services.impl.DefaultJnjGTOrderReturnService"/>
 
     <bean id="webserviceTemplateForOrderReturn"
-          class="org.springframework.ws.client.core.WebServiceTemplate"/>
+          class="org.springframework.ws.client.core.WebServiceTemplate">
+        <property name="messageSender" ref="messageSender"/>
+    </bean>
 
     <bean id="jnjGTConsignmentStockService"
           class="com.jnj.gt.outbound.services.impl.DefaultJnjGTConsignmentStockService"/>
 
     <bean id="webserviceTemplateForConsignmentStock"
-          class="org.springframework.ws.client.core.WebServiceTemplate"/>
+          class="org.springframework.ws.client.core.WebServiceTemplate">
+        <property name="messageSender" ref="messageSender"/>
+    </bean>
 
     <bean id="jnjGTConsInventoryReportMapper"
           class="com.jnj.gt.outbound.mapper.impl.DefaultJnjGTConsInventoryReportMapper">
