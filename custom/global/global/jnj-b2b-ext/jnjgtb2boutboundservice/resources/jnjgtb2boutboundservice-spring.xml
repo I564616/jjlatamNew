@@ -30,6 +30,22 @@
                           context-path="com.fedex.ws.track.v8"/>
 
     <!-- =============================
+     CREATE DELIVERED ORDER TEMPLATE
+============================== -->
+    <bean id="webserviceTemplateForCreateDelivered"
+          class="org.springframework.ws.client.core.WebServiceTemplate">
+<!--        <property name="defaultUri"-->
+<!--                  value="#{configurationService.configuration.getProperty('jnj.webservice.createdelivered.endpoint.url')}" />-->
+<!--        <property name="marshaller" ref="marshallerForCreateDelivered"/>-->
+<!--        <property name="unmarshaller" ref="marshallerForCreateDelivered"/>-->
+<!--        <property name="messageSender" ref="messageSender"/> &lt;!&ndash; HttpClient5 &ndash;&gt;-->
+    </bean>
+
+<!--    <oxm:jaxb2-marshaller id="marshallerForCreateDelivered"-->
+<!--                          context-path="com.jnj.gt.outbound.createdelivered"/>-->
+
+
+    <!-- =============================
          HTTP CLIENT 5 CONFIGURATION
     ============================== -->
 
@@ -123,5 +139,8 @@
           class="com.jnj.gt.outbound.services.impl.DefaultJnjGTSimulateDeliveredOrderService"/>
     <bean id="jnjGTCreateDeliveredOrderService"
           class="com.jnj.gt.outbound.services.impl.DefaultJnjGTCreateDeliveredOrderService"/>
+    <bean id="jnjGTReqOrderChangeMapper"
+          class="com.jnj.gt.outbound.mapper.impl.DefaultJnjGTReqOrderChangeMapper"/>
+
 
 </beans>
