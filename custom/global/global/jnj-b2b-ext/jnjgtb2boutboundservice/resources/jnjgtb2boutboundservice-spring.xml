@@ -152,4 +152,12 @@
 
     <bean id="webserviceTemplateForPriceQuote"
           class="org.springframework.ws.client.core.WebServiceTemplate"></bean>
+
+    <bean id="jnjGTOrderReturnService"
+          class="com.jnj.gt.outbound.services.impl.DefaultJnjGTOrderReturnService">
+    </bean>
+
+    <bean id="webserviceTemplateForOrderReturn"
+          class="org.springframework.ws.client.core.WebServiceTemplate"></bean>
+
 </beans>
