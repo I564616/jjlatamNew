@@ -225,8 +225,13 @@ public class JnjGTCustomerReversePopulator implements Populator<JnjGTCustomerDat
 		if (!CollectionUtils.isEmpty(source.getGroups()))
 		{
 			final Set<PrincipalGroupModel> userGroups = new HashSet(target.getGroups());
-			final Collection<B2BUnitModel> b2bUnits = CollectionUtils.select(target.getGroups(),
-					PredicateUtils.instanceofPredicate(B2BUnitModel.class));
+//			final Collection<B2BUnitModel> b2bUnits = CollectionUtils.select(target.getGroups(),
+//					PredicateUtils.instanceofPredicate(B2BUnitModel.class));
+
+            Collection<B2BUnitModel> b2bUnits = target.getGroups().stream()
+                    .filter(g -> g instanceof B2BUnitModel)
+                    .map(g -> (B2BUnitModel) g)
+                    .toList();
 			userGroups.removeAll(b2bUnits);
 			for (final String account : source.getGroups())
 			{
