@@ -3,10 +3,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:oxm="http://www.springframework.org/schema/oxm"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans.xsd
            http://www.springframework.org/schema/context
-		   http://www.springframework.org/schema/context/spring-context.xsd">
+		   http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/oxm
+http://www.springframework.org/schema/oxm/spring-oxm.xsd">
 
     <context:component-scan base-package="com.jnj.la.core"/>
 
@@ -678,4 +681,48 @@
           class="de.hybris.platform.commercefacades.order.converters.populator.OrderGenericPaymentInfoPopulator" parent="baseOrderPopulator">
         <constructor-arg name="genericPaymentInfoConverter" ref="sapGenericPaymentInfoConverter"/>
     </bean>
+
+    <!-- ======================================================
+     GT OUTBOUND MAPPER + TEMPLATE FIXES (ALL MISSING BEANS)
+     ====================================================== -->
+
+    <!-- 1. Outbound Order Line Mapper (required by Delivered Mapper) -->
+    <bean id="jnjGTOutOrderLineMapper"
+          class="com.jnj.gt.outbound.mapper.impl.DefaultJnjGTOutOrderLineMapper"/>
+
+
+    <!-- 2. Simulate Delivered Order Mapper -->
+    <bean id="GTSimulateDeliveredOrderMapper"
+          class="com.jnj.gt.outbound.mapper.impl.DefaultJnjGTSimulateDeliveredOrderMapper">
+        <property name="jnjGTOutOrderLineMapper" ref="jnjGTOutOrderLineMapper"/>
+    </bean>
+
+
+    <!-- 3. Simulate Consignment Order Mapper -->
+    <bean id="GTSimulateConsignmentOrderMapper"
+          class="com.jnj.gt.outbound.mapper.impl.DefaultJnjGTSimulateConsignmentOrderMapper"/>
+
+
+    <!-- 4. Create Delivered Order Mapper -->
+    <bean id="GTCreateDeliveredOrderMapper"
+          class="com.jnj.gt.outbound.mapper.impl.DefaultJnjGTCreateDeliveredOrderMapper"/>
+
+
+    <!-- 5. WebService Template for Simulate Delivered (missing) -->
+    <bean id="webserviceTemplateForSimulateDelivered"
+          class="org.springframework.ws.client.core.WebServiceTemplate">
+        <property name="defaultUri"
+                  value="#{configurationService.configuration.getProperty('jnj.webservice.simulate.delivered.endpoint.url')}"/>
+        <property name="marshaller" ref="marshallerForSimulateDelivered"/>
+        <property name="unmarshaller" ref="unmarshallerForSimulateDelivered"/>
+        <property name="messageSender" ref="messageSender"/>
+    </bean>
+
+    <oxm:jaxb2-marshaller id="marshallerForSimulateDelivered"
+                          context-path="com.jnj.gt.outbound.simulatedelivered"/>
+
+    <oxm:jaxb2-marshaller id="unmarshallerForSimulateDelivered"
+                          context-path="com.jnj.gt.outbound.simulatedelivered"/>
+
+
 </beans>
