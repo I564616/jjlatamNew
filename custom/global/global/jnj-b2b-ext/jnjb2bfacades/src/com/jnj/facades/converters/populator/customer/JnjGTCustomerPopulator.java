@@ -230,8 +230,13 @@ public class JnjGTCustomerPopulator extends CustomerPopulator
 
 	protected void populateB2BUnits(final B2BCustomerModel source, final JnjGTCustomerData target)
 	{
-		final Collection<B2BUnitModel> b2bUnits = CollectionUtils.select(source.getGroups(),
-				PredicateUtils.instanceofPredicate(B2BUnitModel.class));
+//		final Collection<B2BUnitModel> b2bUnits = CollectionUtils.select(source.getGroups(),
+//				PredicateUtils.instanceofPredicate(B2BUnitModel.class));
+
+        Collection<B2BUnitModel> b2bUnits = source.getGroups().stream()
+                .filter(g -> g instanceof B2BUnitModel)
+                .map(g -> (B2BUnitModel) g)
+                .toList();
 		final List<B2BUnitData> unitDataList = new ArrayList<B2BUnitData>(b2bUnits.size());
 
 		for (final B2BUnitModel unit : b2bUnits)
