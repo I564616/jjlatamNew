@@ -1552,7 +1552,12 @@
     <bean id="jnjCommonUtil"
           class="com.jnj.common.util.JnJCommonUtil" />
 
-    <bean id="jnjGTGetPriceQuoteMapper" class="com.jnj.gt.outbound.mapper.JnjGTGetPriceQuoteMapper"/>
+    <bean id="jnjGTGetPriceQuoteMapper"
+          class="com.jnj.gt.outbound.mapper.impl.DefaultJnjGTGetPriceQuoteMapper"/>
+
+    <bean id="jnjGTOrderReturnMapper"
+          class="com.jnj.gt.outbound.mapper.impl.DefaultJnjGTOrderReturnMapper"/>
+
 
 
 </beans>
