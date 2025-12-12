@@ -711,18 +711,18 @@ http://www.springframework.org/schema/oxm/spring-oxm.xsd">
     <!-- 5. WebService Template for Simulate Delivered (missing) -->
     <bean id="webserviceTemplateForSimulateDelivered"
           class="org.springframework.ws.client.core.WebServiceTemplate">
-        <property name="defaultUri"
-                  value="#{configurationService.configuration.getProperty('jnj.webservice.simulate.delivered.endpoint.url')}"/>
-        <property name="marshaller" ref="marshallerForSimulateDelivered"/>
-        <property name="unmarshaller" ref="unmarshallerForSimulateDelivered"/>
-        <property name="messageSender" ref="messageSender"/>
+<!--        <property name="defaultUri"-->
+<!--                  value="#{configurationService.configuration.getProperty('jnj.webservice.simulate.delivered.endpoint.url')}"/>-->
+<!--        <property name="marshaller" ref="marshallerForSimulateDelivered"/>-->
+<!--        <property name="unmarshaller" ref="unmarshallerForSimulateDelivered"/>-->
+<!--        <property name="messageSender" ref="messageSender"/>-->
     </bean>
 
-    <oxm:jaxb2-marshaller id="marshallerForSimulateDelivered"
-                          context-path="com.jnj.gt.outbound.simulatedelivered"/>
+<!--    <oxm:jaxb2-marshaller id="marshallerForSimulateDelivered"-->
+<!--                          context-path="com.jnj.gt.outbound.simulatedelivered"/>-->
 
-    <oxm:jaxb2-marshaller id="unmarshallerForSimulateDelivered"
-                          context-path="com.jnj.gt.outbound.simulatedelivered"/>
+<!--    <oxm:jaxb2-marshaller id="unmarshallerForSimulateDelivered"-->
+<!--                          context-path="com.jnj.gt.outbound.simulatedelivered"/>-->
 
 
 </beans>

@@ -782,4 +782,9 @@ public class DefaultJnjGTSimulateDeliveredOrderMapper implements JnjGTSimulateDe
 		return formattedDate;
 	}
 
+    public void setJnjGTOutOrderLineMapper(JnjGTOutOrderLineMapper jnjGTOutOrderLineMapper) {
+        this.jnjGTOutOrderLineMapper = jnjGTOutOrderLineMapper;
+    }
+
+
 }
