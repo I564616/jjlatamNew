@@ -13,7 +13,7 @@
 			base-package="com.jnj.la.browseandsearch.controllers.pages"
 			scope-resolver="de.hybris.platform.spring.IgnoreTenantScopeMetadataResolver" />
 
-	<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+	<!-- <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/> -->
 
 	<!-- Expose /acceleratoraddon/web/webroot/WEB-INF/messages/base.js.properties  resource bundle as javascript variables -->
 	<bean id="defaultJnjlabrowseandsearchaddonJavaScriptMessageResourceAccessor" parent="abstractJavaScriptMessageResourceAccessor">

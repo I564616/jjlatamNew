@@ -10,7 +10,7 @@
 
     <context:component-scan base-package="com.jnj.la.core"/>
 
-    <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+    <!-- <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/> -->
 
     <!-- <alias name="jnJLatamCartFacade" alias="defaultCartFacade" /> -->
     <bean name="jnJLatamCartFacade" class="com.jnj.facades.cart.impl.JnjLatamCartFacadeImpl" parent="defaultCartFacade">
