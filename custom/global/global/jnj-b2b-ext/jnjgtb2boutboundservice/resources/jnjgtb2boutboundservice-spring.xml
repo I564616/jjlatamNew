@@ -144,6 +144,8 @@
     <bean id="jnjGTReqOrderChangeService"
           class="com.jnj.gt.outbound.services.impl.DefaultJnjGTReqOrderChangeService"/>
 
+    <bean id="webserviceTemplateForOrderChange" class="org.springframework.ws.client.core.WebServiceTemplate">
+    </bean>
 
 
 </beans>

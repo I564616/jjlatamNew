@@ -1528,5 +1528,32 @@
 		<property name="jnjGTB2BUnitFacade" ref="GTB2BUnitFacade" />
 		<property name="productPricePopulator" ref="productPricePopulator" />
 	</bean>
+    <bean id="jnjGTCreateConsOrdMapper"
+          class="com.jnj.gt.outbound.mapper.impl.DefaultJnjGTCreateConsOrdMapper">
+    </bean>
+    <bean id="jnjGTCreateConsOrdService"
+          class="com.jnj.gt.outbound.services.impl.DefaultJnjGTCreateConsOrdService"
+          autowire="byType" />
+    <bean id="webserviceTemplateForConsumerCreate"
+          class="org.springframework.ws.client.core.WebServiceTemplate">
+    </bean>
+
+    <bean id="jnjGTProposedOrderItemMapper"
+          class="com.jnj.gt.outbound.mapper.impl.DefaultJnjGTProposedOrderItemMapper" />
+    <bean id="jnjGTSimulateConsignmentOrderMapper"
+          class="com.jnj.gt.outbound.mapper.impl.DefaultJnjGTSimulateConsignmentOrderMapper" />
+    <bean id="jnjGTSimulateDeliveredOrderMapper"
+          class="com.jnj.gt.outbound.mapper.impl.DefaultJnjGTSimulateDeliveredOrderMapper" />
+    <bean id="jnjGTSimulateOrderMapper"
+          class="com.jnj.gt.outbound.mapper.impl.DefaultJnjGTSimulateOrderMapper" />
+
+    <bean id="jnjGTConsInventoryReportMapper"
+          class="com.jnj.gt.outbound.mapper.impl.DefaultJnjGTConsInventoryReportMapper" />
+    <bean id="jnjCommonUtil"
+          class="com.jnj.common.util.JnJCommonUtil" />
+
+    <bean id="jnjGTGetPriceQuoteMapper" class="com.jnj.gt.outbound.mapper.JnjGTGetPriceQuoteMapper"/>
+
+
 </beans>
 	
