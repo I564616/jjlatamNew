@@ -121,5 +121,7 @@
     <!-- etc — all business beans remain unchanged -->
     <bean id="jnjGTSimulateDeliveredOrderService"
           class="com.jnj.gt.outbound.services.impl.DefaultJnjGTSimulateDeliveredOrderService"/>
+    <bean id="jnjGTCreateDeliveredOrderService"
+          class="com.jnj.gt.outbound.services.impl.DefaultJnjGTCreateDeliveredOrderService"/>
 
 </beans>
