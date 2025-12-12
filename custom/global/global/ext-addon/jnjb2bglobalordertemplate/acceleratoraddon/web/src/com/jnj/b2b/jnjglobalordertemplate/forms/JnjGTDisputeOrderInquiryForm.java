@@ -5,7 +5,7 @@ package com.jnj.b2b.jnjglobalordertemplate.forms;
 
 import de.hybris.platform.commercefacades.user.data.AddressData;
 
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 
 /**

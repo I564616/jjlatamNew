@@ -19,7 +19,7 @@ import com.jnj.core.model.JnJInvoiceOrderModel;
 import com.jnj.facades.data.JnJLaInvoiceHistoryData;
 import de.hybris.platform.commerceservices.search.pagedata.SearchPageData;
 import de.hybris.platform.core.model.order.OrderModel;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.jnj.exceptions.BusinessException;
 import com.jnj.exceptions.IntegrationException;

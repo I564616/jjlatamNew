@@ -7,7 +7,7 @@
  */
 package com.jnj.storefront.forms;
 
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 
 /**

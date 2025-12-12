@@ -9,7 +9,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.mock.web.MockMultipartHttpServletRequest;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.jnj.core.dto.FileUploadDTO;
 
@@ -53,7 +53,7 @@ public class JnjSftpFileTransferUtilTest
 
 		final MockMultipartHttpServletRequest mockMultipartHttpServletRequest = request;
 
-		final MultipartFile commonsMultipartFile = (MultipartFile) mockMultipartHttpServletRequest.getFile(testFile);
+		final CommonsMultipartFile commonsMultipartFile = (CommonsMultipartFile) mockMultipartHttpServletRequest.getFile(testFile);
 
 		final FileUploadDTO fileUploadDTO = new FileUploadDTO();
 

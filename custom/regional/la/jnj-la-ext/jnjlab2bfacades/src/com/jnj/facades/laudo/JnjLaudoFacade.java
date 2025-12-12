@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import com.jnj.core.dto.JnjPageableData;
 import com.jnj.core.model.JnjLaudoModel;
 import com.jnj.exceptions.BusinessException;

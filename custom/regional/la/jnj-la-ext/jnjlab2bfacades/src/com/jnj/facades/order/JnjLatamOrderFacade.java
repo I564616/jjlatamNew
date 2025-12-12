@@ -27,7 +27,7 @@ import java.util.Set;
 import java.util.concurrent.TimeoutException;
 
 import org.springframework.ui.Model;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.jnj.core.dto.JnjOrderHistoryDTO;
 import com.jnj.core.dto.OrderHistoryDTO;

@@ -21,7 +21,7 @@ import java.util.Set;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.PredicateUtils;
 import org.apache.log4j.Logger;
-import java.util.function.Predicate;
+
 
 /**
  * @author komal.sehgal
