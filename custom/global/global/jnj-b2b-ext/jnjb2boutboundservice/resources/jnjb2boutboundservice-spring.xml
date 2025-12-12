@@ -1,217 +1,153 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- [y] hybris Platform Copyright (c) 2000-2013 hybris AG All rights reserved. 
-	This software is the confidential and proprietary information of hybris ("Confidential 
-	Information"). You shall not disclose such Confidential Information and shall 
-	use it only in accordance with the terms of the license agreement you entered 
-	into with hybris. -->
+<!-- [y] hybris Platform -->
 
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:oxm="http://www.springframework.org/schema/oxm"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:oxm="http://www.springframework.org/schema/oxm"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
            http://www.springframework.org/schema/aop
            http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
-           http://www.springframework.org/schema/oxm 
-		   http://www.springframework.org/schema/oxm/spring-oxm-3.1.xsd">
+           http://www.springframework.org/schema/oxm
+           http://www.springframework.org/schema/oxm/spring-oxm-3.1.xsd">
 
-	<!-- The hybris platform provides one single Spring application context 
-		for beans located at the jalo layer. Each extension can add beans to this 
-		context by specifying them at this configuration file. You can use and/or 
-		redefine beans defined at configuration files of other extensions as well 
-		as adding new one. If you want to locate this file at a different location 
-		or want to use several files for better, structuring, please use the '<yourextension>.application-context' 
-		property at your project.properties file. There you can specify a comma separated 
-		list of files where first is tried to find a file per classpath and then 
-		per file system. If you want to configure beans for your web module please 
-		have a look at your web/webroot/WEB-INF/<extname>-web-spring.xml. -->
+    <!-- ======================================================
+         MAIN WEBSERVICE TEMPLATE (NO MESSAGE SENDER HERE)
+    ======================================================= -->
+    <bean id="webserviceTemplate"
+          class="org.springframework.ws.client.core.WebServiceTemplate">
+        <property name="defaultUri"
+                  value="http://itsusmpl00082.jnj.com:7996/ws/SG910_BtB_IN0498_SalesOrder_Global_Source_v1.webService.salesOrderWS"/>
+        <property name="marshaller" ref="marshaller"/>
+        <property name="unmarshaller" ref="unmarshaller"/>
+    </bean>
 
-	<!-- Example how to override a manager -->
-	<!-- <bean id="core.productManager" class="de.hybris.platform.jnjb2boutboundservice.jalo.Jnjb2boutboundserviceProductManager" 
-		init-method="init" destroy-method="destroy" /> -->
+    <!-- ======================================================
+         NFE TEMPLATE (USES MESSAGE SENDER)
+    ======================================================= -->
+    <bean id="webserviceTemplateForNfe"
+          class="org.springframework.ws.client.core.WebServiceTemplate">
+        <property name="defaultUri"
+                  value="http://itsusmpl00082.jnj.com:7996/ws/SG910_BtB_IN0501_ElectronicNotaFiscal_Hybris_Source_v1.webservices.receiveElectronicNotaFiscalWS"/>
+        <property name="marshaller" ref="marshallerNFe"/>
+        <property name="unmarshaller" ref="unmarshallerNFe"/>
+        <property name="messageSender" ref="messageSender"/>
+    </bean>
 
+    <!-- ======================================================
+         FIX: REMOVE BROKEN HTTPCLIENT4 BUILDER + INTERCEPTOR
+         (This bean was causing addInterceptorFirst() error)
+    ======================================================= -->
 
-	<!-- Example how to configure the class to use for jalo session creation -->
-	<!-- <bean id="jalosession" class="de.hybris.platform.jalo.JaloSessionFactory"> 
-		<property name="targetClassName" value="de.hybris.platform.jnjb2boutboundservice.jalo.Jnjb2boutboundserviceJaloSession"/> 
-		</bean> -->
+    <!-- REMOVED:
+         interceptedHttpClientBuilder
+         httpClientBuilder (HttpClient4)
+         method invoking factory calling addInterceptorFirst()
+    -->
 
+    <!-- ======================================================
+         CORRECT HTTPCLIENT 5 CONFIGURATION
+    ======================================================= -->
 
-	<!-- Example how to override an item -->
-	<!-- <bean id="de.hybris.platform.jalo.product.Product" class="de.hybris.platform.jnjb2boutboundservice.jalo.Jnjb2boutboundserviceProduct" 
-		scope="prototype" /> -->
-
-	<!-- Example how to register and use an AOP aspect Also see http://static.springframework.org/spring/docs/2.5.x/reference/aop.html -->
-
-	<!-- <bean id="jnjb2boutboundserviceProfBean" class="de.hybris.platform.jnjb2boutboundservice.aop.Jnjb2boutboundserviceProfilingAspect"/> 
-		<aop:config proxy-target-class="true"> <aop:aspect id="jnjb2boutboundserviceProfAspect" 
-		ref="jnjb2boutboundserviceProfBean" > <aop:pointcut id="profiledMethods" 
-		expression="execution(* getModificationTime(..))" /> <aop:around pointcut-ref="profiledMethods" 
-		method="profile" /> </aop:aspect> </aop:config> -->
-
-
-	<!-- some other examples of a pointcut that matches everything: <aop:pointcut 
-		id="profiledMethods" expression="bean(de.hybris.platform.jalo.user.Customer) 
-		&amp;&amp; !execution(* getPK(..))" /> <aop:pointcut id="profiledMethods" 
-		expression="execution(* *(..))" /> -->
-	<bean id="webserviceTemplate" name="webserviceTemplate"
-		class="org.springframework.ws.client.core.WebServiceTemplate">
-		<property name="defaultUri"
-			value="http://itsusmpl00082.jnj.com:7996/ws/SG910_BtB_IN0498_SalesOrder_Global_Source_v1.webService.salesOrderWS" />
-		<property name="marshaller" ref="marshaller" />
-		<property name="unmarshaller" ref="unmarshaller" />
-		<!--<property name="messageSender" ref="messageSender"/>-->
-	</bean>
-	
-	<bean id="webserviceTemplateForNfe" name="webserviceTemplateForNfe" class="org.springframework.ws.client.core.WebServiceTemplate">
-		<property name="defaultUri"
-			value="http://itsusmpl00082.jnj.com:7996/ws/SG910_BtB_IN0501_ElectronicNotaFiscal_Hybris_Source_v1.webservices.receiveElectronicNotaFiscalWS" />
-		<property name="marshaller" ref="marshallerNFe" />
-		<property name="unmarshaller" ref="unmarshallerNFe" />
-		<property name="messageSender" ref="messageSender"/>
-	</bean>
-	
-<!--	<bean id="httpClientParams" class="org.apache.commons.httpclient.params.HttpClientParams">-->
-<!--		<property name="authenticationPreemptive" value="true"/>-->
-<!--		<property name="connectionManagerClass" value="org.apache.commons.httpclient.MultiThreadedHttpConnectionManager"/>-->
-<!--	</bean>-->
-	
-<!--	<bean id="httpClient" class="org.apache.commons.httpclient.HttpClient">-->
-<!--		<constructor-arg ref="httpClientParams"/>-->
-<!--	</bean>-->
-
-<!--	<bean id="messageSender" class="org.springframework.ws.transport.http.HttpComponents5MessageSender">-->
-<!--		<constructor-arg ref="httpClient"/>-->
-<!--		<property name="credentials" ref="credentials"/>-->
-<!--	</bean>-->
-	
-<!--	<bean id="credentials" class="org.apache.hc.client5.http.auth.Credentials">-->
-<!--		<constructor-arg value="btbuser"/>-->
-<!--		<constructor-arg value="btbuser"/>-->
-<!--	</bean>-->
-<!--	<bean id="requestConfigBuilder" class="org.apache.http.client.config.RequestConfig"-->
-<!--	factory-method="custom">-->
-<!--	<property name="readTimeout" value="60000" />-->
-<!--	<property name="connectTimeout" value="60000" />-->
-<!--</bean>-->
-
-<!--	<bean id="requestConfig" factory-bean="requestConfigBuilder"-->
-<!--		factory-method="build" />-->
-
-	<bean id="interceptedHttpClientBuilder"
-		class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
-		<property name="targetObject" ref="httpClientBuilder" />
-		<property name="targetMethod" value="addInterceptorFirst">
-		</property>
-		<property name="arguments">
-			<list>
-<!--				<bean-->
-<!--					class="org.springframework.ws.transport.http.HttpComponents5MessageSender.RemoveSoapHeadersInterceptor" />-->
-			</list>
-		</property>
-	</bean>
-
-	<!-- FRAMEWORK_UPDATE - TODO - The builder of the http client has changed and may fail in the runtime. Adjust existing configuration to the new API -->
-<!--	<bean id="httpClientBuilder" class="org.apache.http.impl.client.HttpClientBuilder"-->
-<!--		factory-method="create">-->
-<!--		<property name="defaultRequestConfig" ref="requestConfig" />-->
-<!--	</bean>-->
-
-    <!-- ================== HTTP CLIENT 5 CONFIGURATION ================== -->
-
-    <!-- Credentials -->
     <bean id="credentialsProvider"
           class="org.apache.hc.client5.http.impl.auth.BasicCredentialsProvider">
         <property name="credentials">
             <bean class="org.apache.hc.client5.http.auth.UsernamePasswordCredentials">
                 <constructor-arg index="0"
-                                 value="#{configurationService.configuration.getProperty('jnj.webservice.order.user')}" />
+                                 value="#{configurationService.configuration.getProperty('jnj.webservice.order.user')}"/>
                 <constructor-arg index="1"
-                                 value="#{configurationService.configuration.getProperty('jnj.webservice.order.password')}" />
+                                 value="#{configurationService.configuration.getProperty('jnj.webservice.order.password')}"/>
             </bean>
         </property>
     </bean>
 
-    <!-- Timeout RequestConfig (HTTP5 uses Timeout objects) -->
-    <bean id="requestConfig" class="org.apache.hc.client5.http.config.RequestConfig">
+    <bean id="requestConfig"
+          class="org.apache.hc.client5.http.config.RequestConfig">
         <property name="connectTimeout"
-                  value="#{T(org.apache.hc.core5.util.Timeout).ofMilliseconds(configurationService.configuration.getInt('jnj.webservice.connectionTimeOut'))}" />
+                  value="#{T(org.apache.hc.core5.util.Timeout).ofMilliseconds(configurationService.configuration.getInt('jnj.webservice.connectionTimeOut'))}"/>
         <property name="responseTimeout"
-                  value="#{T(org.apache.hc.core5.util.Timeout).ofMilliseconds(configurationService.configuration.getInt('jnj.webservice.readTimeOut'))}" />
+                  value="#{T(org.apache.hc.core5.util.Timeout).ofMilliseconds(configurationService.configuration.getInt('jnj.webservice.readTimeOut'))}"/>
     </bean>
 
-    <!-- HttpClient 5 Builder -->
     <bean id="httpClient5Builder"
           class="org.apache.hc.client5.http.impl.classic.HttpClients"
           factory-method="custom">
-        <property name="defaultCredentialsProvider" ref="credentialsProvider" />
-        <property name="defaultRequestConfig" ref="requestConfig" />
+        <property name="defaultCredentialsProvider" ref="credentialsProvider"/>
+        <property name="defaultRequestConfig" ref="requestConfig"/>
     </bean>
 
-    <!-- Remove SOAP Headers Interceptor (HTTP5) -->
-<!--    <bean id="removeSoapHeadersInterceptor"-->
-<!--          class="org.springframework.ws.transport.http.HttpComponents5MessageSender$RemoveSoapHeadersInterceptor" />-->
-
-    <!-- Build final HttpClient -->
     <bean id="httpClient5"
           factory-bean="httpClient5Builder"
-          factory-method="build">
-    </bean>
+          factory-method="build"/>
 
-    <!-- Correct MessageSender for HTTP5 -->
     <bean id="messageSender"
           class="org.springframework.ws.transport.http.HttpComponents5MessageSender">
         <constructor-arg ref="httpClient5"/>
     </bean>
 
-    <!-- ================== END HTTP CLIENT 5 CONFIG ================== -->
-
+    <!-- ======================================================
+         JAXB MARSHALLERS
+    ======================================================= -->
 
     <oxm:jaxb2-marshaller id="marshaller"
-		context-path="com.jnj.itsusmpl00082.sg910_btb_in0498_salesorder_global_source_v1_webservice.salesorderws" />
-	<oxm:jaxb2-marshaller id="unmarshaller"
-		context-path="com.jnj.itsusmpl00082.sg910_btb_in0498_salesorder_global_source_v1_webservice.salesorderws" />
-		
-		<oxm:jaxb2-marshaller id="marshallerNFe"
-		context-path="com.jnj.itsusmpl00082.sg910_btb_in0501_electronicnotafiscal_hybris_source_v1_webservices.receiveelectronicnotafiscalws" />
-	<oxm:jaxb2-marshaller id="unmarshallerNFe"
-		context-path="com.jnj.itsusmpl00082.sg910_btb_in0501_electronicnotafiscal_hybris_source_v1_webservices.receiveelectronicnotafiscalws" />
+                          context-path="com.jnj.itsusmpl00082.sg910_btb_in0498_salesorder_global_source_v1_webservice.salesorderws"/>
 
-	<bean id="jnjSalesOrder"
-		class="com.jnj.outboundservice.services.order.impl.DefaultJnjSalesOrder"/>		
+    <oxm:jaxb2-marshaller id="unmarshaller"
+                          context-path="com.jnj.itsusmpl00082.sg910_btb_in0498_salesorder_global_source_v1_webservice.salesorderws"/>
 
-	<bean id="salesOrderCreationResponse"
-		class="com.jnj.itsusmpl00082.sg910_btb_in0498_salesorder_global_source_v1_webservice.salesorderws.SalesOrderCreationResponse" />
-	<bean id="salesOrderSimulationResponse"
-		class="com.jnj.itsusmpl00082.sg910_btb_in0498_salesorder_global_source_v1_webservice.salesorderws.SalesOrderSimulationResponse" />
-	<bean id="salesOrderPricingResponse"
-		class="com.jnj.itsusmpl00082.sg910_btb_in0498_salesorder_global_source_v1_webservice.salesorderws.SalesOrderPricingResponse" />
-	
-	<bean id="electronicNotaFiscalResponse"
-		class="com.jnj.itsusmpl00082.sg910_btb_in0501_electronicnotafiscal_hybris_source_v1_webservices.receiveelectronicnotafiscalws.ElectronicNotaFiscalResponse" />
-	
-	<bean id="jnjNfeService"
-		class="com.jnj.outboundservice.services.nfe.impl.DefaultJnjNfeService"/>
+    <oxm:jaxb2-marshaller id="marshallerNFe"
+                          context-path="com.jnj.itsusmpl00082.sg910_btb_in0501_electronicnotafiscal_hybris_source_v1_webservices.receiveelectronicnotafiscalws"/>
 
-	<bean id="electronicNotaFiscalResponseMock"
-		class="com.jnj.outboundservice.services.nfe.impl.ElectronicNotaFiscalResponseMock"/>
-	<!-- End of Beans Form NFE -->
-	
-	<!-- Start of Invoice Document Beans-->
-	<bean id = "jnjInvoiceDoc" class= "com.jnj.outboundservice.services.invoice.impl.DefaultJnjInvoiceDoc"/>
-	
-	<bean id="webserviceTemplateForInvoice" name="webserviceTemplateForInvoice" class="org.springframework.ws.client.core.WebServiceTemplate">
-		<property name="defaultUri"
-			value="http://itsusmpl00082.jnj.com:7996/ws/SG910_BtB_IN0504_ElectronicBilling_Hybris_Source_v1.webservices.receiveElectronicBillingWS" />
-		<property name="marshaller" ref="marshallerInvoice" />
-		<property name="unmarshaller" ref="unmarshallerInvoice" />
-		<property name="messageSender" ref="messageSender"/>
-	</bean>
-	
-	<oxm:jaxb2-marshaller id="marshallerInvoice"
-		context-path="com.jnj.itsusmpl00082.sg910_btb_in0504_electronicbilling_hybris_source_v1_webservices.receiveelectronicbillingws" />
-	<oxm:jaxb2-marshaller id="unmarshallerInvoice"
-		context-path="com.jnj.itsusmpl00082.sg910_btb_in0504_electronicbilling_hybris_source_v1_webservices.receiveelectronicbillingws" />
-		
-	<!-- End of Invoice Document Beans -->
+    <oxm:jaxb2-marshaller id="unmarshallerNFe"
+                          context-path="com.jnj.itsusmpl00082.sg910_btb_in0501_electronicnotafiscal_hybris_source_v1_webservices.receiveelectronicnotafiscalws"/>
+
+    <!-- ======================================================
+         SERVICES & RESPONSE BEANS
+    ======================================================= -->
+
+    <bean id="jnjSalesOrder"
+          class="com.jnj.outboundservice.services.order.impl.DefaultJnjSalesOrder"/>
+
+    <bean id="salesOrderCreationResponse"
+          class="com.jnj.itsusmpl00082.sg910_btb_in0498_salesorder_global_source_v1_webservice.salesorderws.SalesOrderCreationResponse"/>
+
+    <bean id="salesOrderSimulationResponse"
+          class="com.jnj.itsusmpl00082.sg910_btb_in0498_salesorder_global_source_v1_webservice.salesorderws.SalesOrderSimulationResponse"/>
+
+    <bean id="salesOrderPricingResponse"
+          class="com.jnj.itsusmpl00082.sg910_btb_in0498_salesorder_global_source_v1_webservice.salesorderws.SalesOrderPricingResponse"/>
+
+    <bean id="electronicNotaFiscalResponse"
+          class="com.jnj.itsusmpl00082.sg910_btb_in0501_electronicnotafiscal_hybris_source_v1_webservices.receiveelectronicnotafiscalws.ElectronicNotaFiscalResponse"/>
+
+    <bean id="jnjNfeService"
+          class="com.jnj.outboundservice.services.nfe.impl.DefaultJnjNfeService"/>
+
+    <bean id="electronicNotaFiscalResponseMock"
+          class="com.jnj.outboundservice.services.nfe.impl.ElectronicNotaFiscalResponseMock"/>
+
+    <!-- ======================================================
+         INVOICE CONFIG
+    ======================================================= -->
+
+    <bean id="jnjInvoiceDoc"
+          class="com.jnj.outboundservice.services.invoice.impl.DefaultJnjInvoiceDoc"/>
+
+    <bean id="webserviceTemplateForInvoice"
+          class="org.springframework.ws.client.core.WebServiceTemplate">
+        <property name="defaultUri"
+                  value="http://itsusmpl00082.jnj.com:7996/ws/SG910_BtB_IN0504_ElectronicBilling_Hybris_Source_v1.webservices.receiveElectronicBillingWS"/>
+        <property name="marshaller" ref="marshallerInvoice"/>
+        <property name="unmarshaller" ref="unmarshallerInvoice"/>
+        <property name="messageSender" ref="messageSender"/>
+    </bean>
+
+    <oxm:jaxb2-marshaller id="marshallerInvoice"
+                          context-path="com.jnj.itsusmpl00082.sg910_btb_in0504_electronicbilling_hybris_source_v1_webservices.receiveelectronicbillingws"/>
+
+    <oxm:jaxb2-marshaller id="unmarshallerInvoice"
+                          context-path="com.jnj.itsusmpl00082.sg910_btb_in0504_electronicbilling_hybris_source_v1_webservices.receiveelectronicbillingws"/>
+
 </beans>
