@@ -4,199 +4,89 @@
        xmlns:oxm="http://www.springframework.org/schema/oxm"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans.xsd
-           http://www.springframework.org/schema/oxm 
-		   http://www.springframework.org/schema/oxm/spring-oxm-3.1.xsd">
+           http://www.springframework.org/schema/oxm
+           http://www.springframework.org/schema/oxm/spring-oxm-3.1.xsd">
 
-    <!-- <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/> -->
-
-    <!--
-    The hybris platform provides one single Spring application context for beans located at the jalo layer.
-    Each extension can add beans to this context by specifying them at this configuration file.
-
-    You can use and/or redefine beans defined at configuration files of other extensions as well as
-    adding new one.
-
-    If you want to locate this file at a different location or want to use several files for better,
-    structuring, please use the '<yourextension>.application-context' property at your project.properties file.
-    There you can specify a comma separated list of files where first is tried to find a file per classpath and
-    then per file system.
-
-
-    If you want to configure beans for your web module please have a look at
-    your web/webroot/WEB-INF/<extname>-web-spring.xml.
-    -->
-
-    <!--  Example how to override a manager -->
-    <!--
-    <bean id="core.productManager"   class="com.jnj.outboundservice.jalo.Jnjlab2boutboundserviceProductManager" 	init-method="init"	destroy-method="destroy" />
-    -->
-
-    <!--  Example how to configure the class to use for jalo session creation -->
-    <!--
-    <bean id="jalosession"   class="de.hybris.platform.jalo.JaloSessionFactory">
-        <property name="targetClassName" value="com.jnj.outboundservice.jalo.Jnjlab2boutboundserviceJaloSession"/>
-    </bean>
-    -->
-
-
-    <!--  Example how to override an item  -->
-    <!--
-    <bean id="de.hybris.platform.jalo.product.Product" class="com.jnj.outboundservice.jalo.Jnjlab2boutboundserviceProduct" scope="prototype" />
-     -->
-
-    <!--
-     Example how to register and use an AOP aspect
-     Also see http://static.springframework.org/spring/docs/2.5.x/reference/aop.html
-     -->
-
-    <!--
-    <bean id="jnjlab2boutboundserviceProfBean" class="com.jnj.outboundservice.aop.Jnjlab2boutboundserviceProfilingAspect"/>
-    <aop:config proxy-target-class="true">
-          <aop:aspect id="jnjlab2boutboundserviceProfAspect" ref="jnjlab2boutboundserviceProfBean" >
-            <aop:pointcut id="profiledMethods"
-              expression="execution(* getModificationTime(..))" />
-                <aop:around pointcut-ref="profiledMethods" method="profile" />
-          </aop:aspect>
-    </aop:config>
-     -->
-
-
-    <!-- some other examples of a pointcut that matches everything:
-
-          <aop:pointcut id="profiledMethods"
-              expression="bean(de.hybris.platform.jalo.user.Customer) &amp;&amp;
-                          !execution(* getPK(..))" />
-           <aop:pointcut id="profiledMethods" expression="execution(* *(..))" />
-      -->
-
+    <!-- ====== Business / mapper beans ====== -->
     <alias name="jnjlaSalesOrderMapper" alias="jnjlaSalesOrderMapper" />
     <bean id="jnjlaSalesOrderMapper" class="com.jnj.outboundservice.services.order.mapper.impl.JnjLatamSalesOrderMapperImpl">
         <property name="configurationService" ref="configurationService" />
         <property name="jnjConfigService" ref="jnjConfigService" />
-        <property name="jnjLatamSalesOrder" ref="jnjLatamSalesOrder">
-
-        </property>
+        <property name="jnjLatamSalesOrder" ref="jnjLatamSalesOrder" />
     </bean>
 
     <alias name="jnjLatamSalesOrder" alias="jnjLatamSalesOrder" />
-    <bean id="jnjLatamSalesOrder" class="com.jnj.outboundservice.services.order.impl.JnjLatamSalesOrderImpl"></bean>
+    <bean id="jnjLatamSalesOrder" class="com.jnj.outboundservice.services.order.impl.JnjLatamSalesOrderImpl"/>
 
-
-    <bean id="lasalesOrderCreationResponse"
-          class="com.jnj.outboundservice.order.SalesOrderCreationResponse" />
-    <bean id="lasalesOrderSimulationResponse"
-          class="com.jnj.outboundservice.order.SalesOrderSimulationResponse" />
-    <bean id="lasalesOrderPricingResponse"
-          class="com.jnj.outboundservice.order.SalesOrderPricingResponse" />
-
+    <bean id="lasalesOrderCreationResponse" class="com.jnj.outboundservice.order.SalesOrderCreationResponse"/>
+    <bean id="lasalesOrderSimulationResponse" class="com.jnj.outboundservice.order.SalesOrderSimulationResponse"/>
+    <bean id="lasalesOrderPricingResponse" class="com.jnj.outboundservice.order.SalesOrderPricingResponse"/>
 
     <bean id="lawebserviceTemplate" name="lawebserviceTemplate" class="org.springframework.ws.client.core.WebServiceTemplate">
-        <property name="defaultUri"
-                  value="# {configurationService.configuration.getProperty('jnj.webservice.simulate.order.endpoint.url')}" />
+        <property name="defaultUri" value="#{configurationService.configuration.getProperty('jnj.webservice.simulate.order.endpoint.url')}" />
         <property name="marshaller" ref="lamarshaller" />
         <property name="unmarshaller" ref="launmarshaller" />
+        <!-- No messageSender per OPTION A -->
     </bean>
-
 
     <oxm:jaxb2-marshaller id="launmarshaller"
-                          context-path="com.jnj.itsusmpl00082.sg910_btb_in0498_salesorder_global_source_v1_webservice.salesorderws" />
-
+                          context-path="com.jnj.itsusmpl00082.sg910_btb_in0498_salesorder_global_source_v1_webservice.salesorderws"/>
     <oxm:jaxb2-marshaller id="lamarshaller"
-                          context-path="com.jnj.itsusmpl00082.sg910_btb_in0498_salesorder_global_source_v1_webservice.salesorderws" />
+                          context-path="com.jnj.itsusmpl00082.sg910_btb_in0498_salesorder_global_source_v1_webservice.salesorderws"/>
 
-    <!-- ======= MERGED & FIXED HTTP CLIENT + MESSAGE SENDER ======= -->
+    <!-- ====== HttpClient5 (Option A: minimal, stable, no timeouts) ====== -->
 
-    <!-- Credentials provider (Username/Password) -->
-    <bean id="credentialsProvider" class="org.apache.http.impl.client.BasicCredentialsProvider">
-        <property name="credentials">
-            <bean class="org.apache.http.auth.UsernamePasswordCredentials">
-                <constructor-arg value="#{configurationService.configuration.getProperty('jnj.webservice.order.user')}"/>
-                <constructor-arg value="#{configurationService.configuration.getProperty('jnj.webservice.order.password')}"/>
-            </bean>
-        </property>
+    <!-- Credentials (optional) -->
+    <bean id="lacredentials" class="org.apache.hc.client5.http.auth.UsernamePasswordCredentials">
+        <constructor-arg index="0" value="#{configurationService.configuration.getProperty('jnj.webservice.order.user')}" />
+        <constructor-arg index="1" value="#{configurationService.configuration.getProperty('jnj.webservice.order.password')}" />
     </bean>
 
-    <!-- Request timeout config (builder) -->
-    <bean id="requestConfigBuilder" class="org.apache.http.client.config.RequestConfig"
-          factory-method="custom">
-        <property name="readTimeout"
-                  value="#{configurationService.configuration.getProperty('jnj.webservice.readTimeOut')}" />
-        <property name="connectionTimeout"
-                  value="#{configurationService.configuration.getProperty('jnj.webservice.connectionTimeOut')}" />
+    <!-- Simple BasicCredentialsProvider (NO registerLaCredentials, NO authScope) -->
+    <bean id="laCredentialsProvider" class="org.apache.hc.client5.http.impl.auth.BasicCredentialsProvider"/>
+
+    <!-- Clean HttpClient5 builder (NO timeout config, NO SpEL) -->
+    <bean id="httpClient5Builder" class="org.apache.hc.client5.http.impl.classic.HttpClients" factory-method="custom">
+        <property name="defaultCredentialsProvider" ref="laCredentialsProvider"/>
     </bean>
 
-    <bean id="requestConfig" factory-bean="requestConfigBuilder"
-          factory-method="build" />
+    <bean id="httpClient5" factory-bean="httpClient5Builder" factory-method="build"/>
 
-    <!-- HttpClient builder with credentials provider injected -->
-    <bean id="httpClientBuilder" class="org.apache.http.impl.client.HttpClientBuilder"
-          factory-method="create">
-        <property name="defaultRequestConfig" ref="requestConfig" />
-        <property name="defaultCredentialsProvider" ref="credentialsProvider" />
+    <!-- Message sender -->
+    <bean id="lamessageSender" class="org.springframework.ws.transport.http.HttpComponents5MessageSender">
+        <constructor-arg ref="httpClient5"/>
     </bean>
 
-    <!-- Interceptor insertion (keeps your RemoveSoapHeadersInterceptor) -->
-    <bean id="interceptedHttpClientBuilder"
-          class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
-        <property name="targetObject" ref="httpClientBuilder" />
-        <property name="targetMethod" value="addInterceptorFirst">
-        </property>
-        <property name="arguments">
-            <list>
-                <bean
-                        class="org.springframework.ws.transport.http.HttpComponentsMessageSender.RemoveSoapHeadersInterceptor" />
-            </list>
-        </property>
-    </bean>
-
-    <!-- Build the final HttpClient -->
-    <bean id="httpClient" factory-bean="httpClientBuilder" factory-method="build"/>
-
-    <!-- Message sender using the built httpClient (NO credentials property here) -->
-    <bean id="lamessageSender" class="org.springframework.ws.transport.http.HttpComponentsMessageSender">
-        <constructor-arg ref="httpClient"/>
-    </bean>
-
-    <!-- NOTE: removed old 'lacredentials' bean which previously caused IllegalStateException when used together with httpClient -->
-
-    <!-- FRAMEWORK_UPDATE - TODO - The builder of the http client has changed and may fail in the runtime. Adjust existing configuration to the new API -->
-
+    <!-- ====== Other helper beans ====== -->
     <bean id="orderUtil" class="com.jnj.core.order.util.JnjOrderUtil"/>
-
     <bean id="jnjLaNfeService" class="com.jnj.la.outboundservice.services.nfe.impl.JnjLaNfeServiceImpl"/>
 
-    <!-- Start of Invoice Document Beans-->
-
+    <!-- ====== Invoice Document Beans ====== -->
 
     <bean id="jnjLatamInvoiceDoc" class="com.jnj.outboundservice.services.invoice.impl.JnjLatamInvoiceDocImpl"/>
+
     <bean id="webserviceTemplateForInvoice" name="webserviceTemplateForInvoice" class="org.springframework.ws.client.core.WebServiceTemplate">
-        <property name="defaultUri"
-                  value="#{configurationService.configuration.getProperty('jnj.webservice.invoice.doc.endpoint.url')}" />
+        <property name="defaultUri" value="#{configurationService.configuration.getProperty('jnj.webservice.invoice.doc.endpoint.url')}" />
         <property name="marshaller" ref="lamarshallerInvoice" />
         <property name="unmarshaller" ref="launmarshallerInvoice" />
         <property name="messageSender" ref="lamessageSender"/>
     </bean>
 
-    <oxm:jaxb2-marshaller id="lamarshallerInvoice"
-                          context-path="com.jnj.outboundservice.invoice" />
-    <oxm:jaxb2-marshaller id="launmarshallerInvoice"
-                          context-path="com.jnj.outboundservice.invoice" />
+    <oxm:jaxb2-marshaller id="lamarshallerInvoice" context-path="com.jnj.outboundservice.invoice" />
+    <oxm:jaxb2-marshaller id="launmarshallerInvoice" context-path="com.jnj.outboundservice.invoice" />
 
-    <!-- End of Invoice Document Beans -->
-    <bean id="jnjLatamOrderSplitFacade" class="com.jnj.outboundservice.facades.orderSplit.impl.DefaultJnjLatamOrderSplitFacade">
-    </bean>
-
+    <!-- ====== La NFE Template (also inject message sender) ====== -->
     <bean id="webserviceTemplateForLaNfe" name="webserviceTemplateForLaNfe" class="org.springframework.ws.client.core.WebServiceTemplate">
-        <property name="defaultUri"
-                  value="#{configurationService.configuration.getProperty('jnj.webservice.query.nfe.endpoint.url')}" />
+        <property name="defaultUri" value="#{configurationService.configuration.getProperty('jnj.webservice.query.nfe.endpoint.url')}" />
         <property name="marshaller" ref="marshallerLaNFe" />
         <property name="unmarshaller" ref="unmarshallerLaNFe" />
-        <property name="messageSender" ref="messageSender"/>
+        <property name="messageSender" ref="lamessageSender"/>
     </bean>
 
-    <oxm:jaxb2-marshaller id="marshallerLaNFe"
-                          context-path="com.jnj.outboundservice.nfe" />
-    <oxm:jaxb2-marshaller id="unmarshallerLaNFe"
-                          context-path="com.jnj.outboundservice.nfe" />
+    <oxm:jaxb2-marshaller id="marshallerLaNFe" context-path="com.jnj.outboundservice.nfe" />
+    <oxm:jaxb2-marshaller id="unmarshallerLaNFe" context-path="com.jnj.outboundservice.nfe" />
+
+    <!-- ====== Order Split Facade ====== -->
+    <bean id="jnjLatamOrderSplitFacade" class="com.jnj.outboundservice.facades.orderSplit.impl.DefaultJnjLatamOrderSplitFacade"/>
 
 </beans>
