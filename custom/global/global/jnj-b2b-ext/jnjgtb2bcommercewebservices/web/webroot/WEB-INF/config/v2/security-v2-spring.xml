@@ -22,7 +22,7 @@
 	<security:http pattern="/v2/*swagger*/**" security="none"/>
 
 	<!-- Commerce Webservices V2-->
-	<http pattern="/v2/**" entry-point-ref="oauthAuthenticationEntryPointV2"
+	<http pattern="/**" entry-point-ref="oauthAuthenticationEntryPointV2"
           use-authorization-manager="true"
 	      xmlns="http://www.springframework.org/schema/security" create-session="stateless">
 

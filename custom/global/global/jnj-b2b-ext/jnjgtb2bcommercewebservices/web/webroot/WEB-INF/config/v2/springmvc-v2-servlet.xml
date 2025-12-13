@@ -40,6 +40,7 @@
 	<security:global-method-security order="-2147483648" secured-annotations="enabled" pre-post-annotations="enabled" proxy-target-class="true"/>
 	<mvc:resources mapping="**/swagger-ui.html" location="classpath:/META-INF/resources/"/>	
 	<mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
+    <mvc:default-servlet-handler />
 
 	<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
@@ -59,4 +60,6 @@
 			</map>
 		</constructor-arg>
 	</bean>
+    <alias name="defaultWsDateFormatter" alias="wsDateFormatter" />
+    <bean id="defaultWsDateFormatter" class="de.hybris.platform.ycommercewebservices.formatters.impl.DefaultWsDateFormatter" />
 </beans>

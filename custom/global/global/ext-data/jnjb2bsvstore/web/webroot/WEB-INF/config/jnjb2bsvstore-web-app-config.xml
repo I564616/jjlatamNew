@@ -24,6 +24,7 @@
            http://www.springframework.org/schema/context/spring-context.xsd">
 
     <import resource="jnjb2bsvstore-spring-security-config.xml"/>
+    <import resource="jnjb2bsvstore-spring-mvc-config.xml"/>
 
     <context:annotation-config/>
 

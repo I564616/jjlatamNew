@@ -18,8 +18,8 @@
 	<import resource="common/xstream-converters-spring.xml"/>
 	<import resource="common/cache-config-spring.xml"/>
 	<import resource="common/error-config-spring.xml"/>
-	<import resource="common/filter-config-spring.xml"/>
-	<import resource="common/security-spring.xml"/>
+<!--	<import resource="common/filter-config-spring.xml"/>-->
+<!--	<import resource="common/security-spring.xml"/>-->
 
 	<context:annotation-config/>
 	<context:component-scan

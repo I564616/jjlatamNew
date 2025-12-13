@@ -47,8 +47,6 @@ import org.springframework.web.servlet.resource.ResourceUrlProvider;
  *
  */
 @Configuration
-@ImportResource(
-{ "WEB-INF/config/v2/springmvc-v2-servlet.xml" })
 public class WebConfig extends WebMvcConfigurationSupport
 {
 	private static final String PASSWORD_AUTHORIZATION_SCOPE = "jnjgtb2bcommercewebservices.oauth2.password.scope";
