@@ -51,7 +51,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Controller
 @Scope("tenant")
 // FRAMEWORK_UPDATE - TODO - AntPathMatcher was replaced with PathPatternParser as the new default path parser in Spring 6. Adjust this path to the new matching rules or re-enable deprecated AntPathMatcher. Consult "Adapting to PathPatternParser new default URL Matcher" JDK21 Upgrade Step in SAP Help documentation.
-@RequestMapping(value = "/**/store")
+@RequestMapping(value = "/*/store")
 public class StorePageController extends AbstractPageController
 {
 	protected static final Logger LOG = Logger.getLogger(StorePageController.class);

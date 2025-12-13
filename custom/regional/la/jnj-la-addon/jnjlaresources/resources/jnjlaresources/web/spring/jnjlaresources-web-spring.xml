@@ -22,7 +22,10 @@
 		<property name="messageSource" ref="defaultJnjlaresourcesJavaScriptMessageResourceAccessor"/>
 	</bean>
 
-	<bean id="getJnjlaresourcesBeforeViewHandler" parent="beforeViewHandlerAdapter">
+    <bean id="beforeViewHandlerAdapter"
+          class="de.hybris.platform.cms2.interceptors.BeforeViewHandlerAdapter"/>
+
+    <bean id="getJnjlaresourcesBeforeViewHandler" parent="beforeViewHandlerAdapter">
 		<property name="adaptee">
 			<ref bean="defaultJnjlaresourcesBeforeViewJsPropsHandlerAdaptee"/>
 		</property>

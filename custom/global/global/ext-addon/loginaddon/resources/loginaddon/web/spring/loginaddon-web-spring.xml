@@ -30,7 +30,10 @@
 			ref="defaultLoginaddonJavaScriptMessageResourceAccessor" />
 	</bean>
 
-	<bean id="getLoginaddonBeforeViewHandler" parent="beforeViewHandlerAdapter"> 
+    <bean id="beforeViewHandlerAdapter"
+          class="de.hybris.platform.cms2.interceptors.BeforeViewHandlerAdapter"/>
+
+    <bean id="getLoginaddonBeforeViewHandler" parent="beforeViewHandlerAdapter">
 		<property name="adaptee"> <ref bean="defaultLoginaddonBeforeViewJsPropsHandlerAdaptee"/> 
 		</property>
 	</bean>

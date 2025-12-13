@@ -21,7 +21,10 @@
 		<property name="messageSource" ref="defaultJnjlaprofileaddonJavaScriptMessageResourceAccessor"/>
 	</bean>
 
-	<bean id="getJnjlaprofileaddonBeforeViewHandler" parent="beforeViewHandlerAdapter">
+    <bean id="beforeViewHandlerAdapter"
+          class="de.hybris.platform.cms2.interceptors.BeforeViewHandlerAdapter"/>
+
+    <bean id="getJnjlaprofileaddonBeforeViewHandler" parent="beforeViewHandlerAdapter">
 		<property name="adaptee">
 			<ref bean="defaultJnjlaprofileaddonBeforeViewJsPropsHandlerAdaptee"/>
 		</property>

@@ -39,7 +39,10 @@
 		<property name="messageSource" ref="defaultCartandcheckoutaddonJavaScriptMessageResourceAccessor"/>
 	</bean>
 
-	<bean id="getCartandcheckoutaddonBeforeViewHandler" parent="beforeViewHandlerAdapter">
+    <bean id="beforeViewHandlerAdapter"
+          class="de.hybris.platform.cms2.interceptors.BeforeViewHandlerAdapter"/>
+
+    <bean id="getCartandcheckoutaddonBeforeViewHandler" parent="beforeViewHandlerAdapter">
 		<property name="adaptee">
 			<ref bean="defaultCartandcheckoutaddonBeforeViewJsPropsHandlerAdaptee"/>
 		</property>

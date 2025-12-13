@@ -26,7 +26,10 @@
 
 	<bean id="clsPageController" class="com.jnj.la.jnjlaservicepageaddon.controllers.pages.JnjLaClsPageController" />
 
-	<bean id="getJnjlaservicepageaddonBeforeViewHandler" parent="beforeViewHandlerAdapter">
+    <bean id="beforeViewHandlerAdapter"
+          class="de.hybris.platform.cms2.interceptors.BeforeViewHandlerAdapter"/>
+
+    <bean id="getJnjlaservicepageaddonBeforeViewHandler" parent="beforeViewHandlerAdapter">
 		<property name="adaptee">
 			<ref bean="defaultJnjlaservicepageaddonBeforeViewJsPropsHandlerAdaptee"/>
 		</property>

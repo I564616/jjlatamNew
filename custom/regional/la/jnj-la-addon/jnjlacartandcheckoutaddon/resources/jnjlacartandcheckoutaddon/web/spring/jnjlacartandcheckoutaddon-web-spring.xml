@@ -22,7 +22,10 @@
 		<property name="messageSource" ref="defaultJnjlacartandcheckoutaddonJavaScriptMessageResourceAccessor"/>
 	</bean>
 
-	<bean id="getJnjlacartandcheckoutaddonBeforeViewHandler" parent="beforeViewHandlerAdapter">
+    <bean id="beforeViewHandlerAdapter"
+          class="de.hybris.platform.cms2.interceptors.BeforeViewHandlerAdapter"/>
+
+    <bean id="getJnjlacartandcheckoutaddonBeforeViewHandler" parent="beforeViewHandlerAdapter">
 		<property name="adaptee">
 			<ref bean="defaultJnjlacartandcheckoutaddonBeforeViewJsPropsHandlerAdaptee"/>
 		</property>

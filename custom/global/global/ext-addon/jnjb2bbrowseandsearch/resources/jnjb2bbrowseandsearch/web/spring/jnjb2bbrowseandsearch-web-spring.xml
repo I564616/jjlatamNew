@@ -32,7 +32,10 @@
 		<property name="messageSource" ref="defaultJnjb2bbrowseandsearchJavaScriptMessageResourceAccessor"/>
 	</bean>
 
-	<bean id="getJnjb2bbrowseandsearchBeforeViewHandler" parent="beforeViewHandlerAdapter">
+    <bean id="beforeViewHandlerAdapter"
+          class="de.hybris.platform.cms2.interceptors.BeforeViewHandlerAdapter"/>
+
+    <bean id="getJnjb2bbrowseandsearchBeforeViewHandler" parent="beforeViewHandlerAdapter">
 		<property name="adaptee">
 			<ref bean="defaultJnjb2bbrowseandsearchBeforeViewJsPropsHandlerAdaptee"/>
 		</property>

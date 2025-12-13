@@ -23,6 +23,9 @@
         <property name="messageSource" ref="defaultJnjlaordertemplateaddonJavaScriptMessageResourceAccessor"/>
     </bean>
 
+    <bean id="beforeViewHandlerAdapter"
+          class="de.hybris.platform.cms2.interceptors.BeforeViewHandlerAdapter"/>
+
     <bean id="getJnjlaordertemplateaddonBeforeViewHandler" parent="beforeViewHandlerAdapter">
         <property name="adaptee">
             <ref bean="defaultJnjlaordertemplateaddonBeforeViewJsPropsHandlerAdaptee"/>
