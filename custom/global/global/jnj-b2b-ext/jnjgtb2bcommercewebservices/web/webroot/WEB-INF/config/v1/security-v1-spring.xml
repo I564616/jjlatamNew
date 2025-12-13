@@ -21,7 +21,7 @@
 	<security:http pattern="/v1/*swagger*/**" security="none"/>
 
 	<!-- Commerce Webservices V1-->
-	<http pattern="/v1/**" entry-point-ref="oauthAuthenticationEntryPointV1" access-decision-manager-ref="webSecurityAccessDecisionManager"
+	<http pattern="/v1/**" entry-point-ref="oauthAuthenticationEntryPointV1" use-authorization-manager="true"
 		xmlns="http://www.springframework.org/schema/security" use-expressions="false">
 
 		<anonymous username="anonymous" granted-authority="ROLE_ANONYMOUS" />
@@ -37,7 +37,7 @@
 						  https="#{configurationService.configuration.getProperty('embeddedserver.ssl.port')}" />			
 		</port-mappings>
 
-		<custom-filter ref="resourceServerFilter" before="PRE_AUTH_FILTER" />
+<!--		<custom-filter ref="resourceServerFilter" before="PRE_AUTH_FILTER" />-->
 		<custom-filter ref="hybrisUserFilter" after="LAST" />
 		<access-denied-handler ref="oauthAccessDeniedHandlerV1" />
 		

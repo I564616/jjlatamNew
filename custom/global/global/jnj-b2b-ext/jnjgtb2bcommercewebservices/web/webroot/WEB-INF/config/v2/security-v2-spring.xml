@@ -23,7 +23,7 @@
 
 	<!-- Commerce Webservices V2-->
 	<http pattern="/v2/**" entry-point-ref="oauthAuthenticationEntryPointV2"
-	      access-decision-manager-ref="webSecurityAccessDecisionManager"
+          use-authorization-manager="true"
 	      xmlns="http://www.springframework.org/schema/security" create-session="stateless">
 
 		<anonymous username="anonymous" granted-authority="ROLE_ANONYMOUS"/>
@@ -38,7 +38,7 @@
 						  https="#{configurationService.configuration.getProperty('embeddedserver.ssl.port')}" />
 		</port-mappings>
 
-		<custom-filter ref="resourceServerFilter" before="PRE_AUTH_FILTER"/>
+<!--		<custom-filter ref="resourceServerFilter" before="PRE_AUTH_FILTER"/>-->
 		<access-denied-handler ref="oauthAccessDeniedHandlerV2"/>
 		
 		<headers >
