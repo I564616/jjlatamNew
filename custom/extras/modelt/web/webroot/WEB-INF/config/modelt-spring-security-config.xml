@@ -18,7 +18,7 @@
     <http use-authorization-manager="true" use-expressions="true">
         <session-management session-authentication-strategy-ref="fixation"/>
         <intercept-url pattern="/login.jsp" access="PERMIT_ALL"/>
-        <intercept-url pattern="/**" access="HYBRIS_NOT_INITIALIZED,ROLE_CUSTOMERGROUP"/>
+        <intercept-url pattern="/**" access="hasRole('ROLE_CUSTOMERGROUP') or hasRole('HYBRIS_NOT_INITIALIZED')"/>
         <http-basic />
         <form-login 
         	always-use-default-target="false" 
