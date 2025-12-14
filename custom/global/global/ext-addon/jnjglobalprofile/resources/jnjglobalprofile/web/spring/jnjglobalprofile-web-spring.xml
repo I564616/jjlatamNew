@@ -39,9 +39,11 @@
 	<bean id="defaultJnjglobalprofileBeforeViewJsPropsHandlerAdaptee" parent="abstractBeforeViewJsPropsHandlerAdaptee" class="de.hybris.platform.addonsupport.interceptors.ExportJsPropertiesBeforeViewHandler">
 		<property name="messageSource" ref="defaultJnjglobalprofileJavaScriptMessageResourceAccessor"/>
 	</bean>
+    <alias name="jnjBeforeViewHandlerAdapter" alias="beforeViewHandlerAdapter" />
+    <bean id="jnjBeforeViewHandlerAdapter" abstract="true" class="de.hybris.platform.addonsupport.interceptors.BeforeViewHandlerAdapter" >
+        <property name="proxyInterfaceName" value="com.jnj.b2b.storefront.interceptors.BeforeViewHandler" />
+    </bean>
 
-    <bean id="beforeViewHandlerAdapter"
-          class="de.hybris.platform.cms2.interceptors.BeforeViewHandlerAdapter"/>
 
     <bean id="getJnjglobalprofileBeforeViewHandler" parent="beforeViewHandlerAdapter">
 		<property name="adaptee">

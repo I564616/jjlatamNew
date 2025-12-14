@@ -27,8 +27,10 @@
 
 	<bean id="uploadPageController" class="com.jnj.la.b2b.jnjlaselloutaddon.controllers.pages.JnjLatamUploadOrderPageController"/>
 
-    <bean id="beforeViewHandlerAdapter"
-          class="de.hybris.platform.cms2.interceptors.BeforeViewHandlerAdapter"/>
+    <alias name="jnjBeforeViewHandlerAdapter" alias="beforeViewHandlerAdapter" />
+    <bean id="jnjBeforeViewHandlerAdapter" abstract="true" class="de.hybris.platform.addonsupport.interceptors.BeforeViewHandlerAdapter" >
+        <property name="proxyInterfaceName" value="com.jnj.b2b.storefront.interceptors.BeforeViewHandler" />
+    </bean>
 
 	<bean id="getJnjlaselloutaddonBeforeViewHandler" parent="beforeViewHandlerAdapter">
 		<property name="adaptee">

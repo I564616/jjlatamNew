@@ -20,8 +20,10 @@
 		<property name="messageSource" ref="defaultJnjlaglobalreportsaddonJavaScriptMessageResourceAccessor"/>
 	</bean>
 
-    <bean id="beforeViewHandlerAdapter"
-          class="de.hybris.platform.cms2.interceptors.BeforeViewHandlerAdapter"/>
+    <alias name="jnjBeforeViewHandlerAdapter" alias="beforeViewHandlerAdapter" />
+    <bean id="jnjBeforeViewHandlerAdapter" abstract="true" class="de.hybris.platform.addonsupport.interceptors.BeforeViewHandlerAdapter" >
+        <property name="proxyInterfaceName" value="com.jnj.b2b.storefront.interceptors.BeforeViewHandler" />
+    </bean>
 
     <bean id="getJnjlaglobalreportsaddonBeforeViewHandler" parent="beforeViewHandlerAdapter">
 		<property name="adaptee">
