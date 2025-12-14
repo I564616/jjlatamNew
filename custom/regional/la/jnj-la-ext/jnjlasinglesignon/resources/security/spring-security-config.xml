@@ -1,99 +1,72 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+ Copyright (c) 2024 SAP SE or an SAP affiliate company. All rights reserved.
+-->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:security="http://www.springframework.org/schema/security"
        xmlns:util="http://www.springframework.org/schema/util"
-       xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="
-           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-           http://www.springframework.org/schema/security https://www.springframework.org/schema/security/spring-security.xsd
-           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
-           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+              http://www.springframework.org/schema/security https://www.springframework.org/schema/security/spring-security.xsd
+              http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+			  http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!-- Enable auto-wiring -->
     <context:annotation-config/>
+    <context:component-scan base-package="de.hybris.platform.samlsinglesignon.security"/>
 
-    <!-- ================================================= -->
-    <!-- SAML SIGNING / DECRYPTION CREDENTIALS (MANDATORY) -->
-    <!-- ================================================= -->
-
-    <bean id="saml2SigningAndDecryptionCredentials"
-          class="de.hybris.platform.samlsinglesignon.security.SamlObjectsFactory"
-          factory-method="getSigningAndDecryptionCredentials">
-        <constructor-arg value="${sso.keystore.location:./WEB-INF/security/samlKeystore.jks}"/>
-        <constructor-arg value="${sso.keystore.password:changeit}"/>
-        <constructor-arg value="${sso.key.alias:saml}"/>
-        <constructor-arg value="${sso.key.password:changeit}"/>
+    <!-- Security Filter Chain Bean (replaces security:http) -->
+    <bean id="samlSecurityFilterChain"
+          class="de.hybris.platform.samlsinglesignon.security.SamlSecurityFilterChainFactory"
+          factory-method="create">
+        <constructor-arg ref="samlAuthenticationProvider"/>
+        <constructor-arg ref="saml2Filter"/>
+        <constructor-arg ref="saml2RequestFilter"/>
+        <constructor-arg ref="saml2LogoutRequestFilter"/>
+        <constructor-arg ref="saml2LogoutResponseFilter"/>
+        <constructor-arg ref="samlMetadataFilter"/>
+        <constructor-arg ref="samlEntryPoint"/>
+        <constructor-arg ref="samlAccessDeniedHandler"/>
+        <constructor-arg ref="signatureValidatorFilter"/>
     </bean>
 
 
-    <!-- ===================== UNSECURED ===================== -->
-    <security:http security="none" pattern="/logout.jsp"/>
-    <security:http security="none" pattern="/misconfiguration.jsp"/>
-    <security:http security="none" pattern="/favicon.ico"/>
-
-    <!-- ===================== SECURED ===================== -->
-    <security:http entry-point-ref="samlEntryPoint"
-                   authentication-manager-ref="samlAuthenticationManager"
-                   use-authorization-manager="true">
-
-        <security:intercept-url pattern="/**" access="isAuthenticated()"/>
-
-        <security:custom-filter before="FIRST" ref="samlMetadataFilter"/>
-        <security:custom-filter after="CORS_FILTER" ref="saml2LogoutResponseFilter"/>
-        <security:custom-filter before="CSRF_FILTER" ref="saml2LogoutRequestFilter"/>
-        <security:custom-filter after="CSRF_FILTER" ref="samlLogoutFilter"/>
-        <security:custom-filter position="FORM_LOGIN_FILTER"
-                                ref="samlLoginFormGenerationFilter"/>
-
-        <security:csrf disabled="true"/>
-        <security:access-denied-handler ref="samlAccessDeniedHandler"/>
-    </security:http>
-
-    <!-- ===================== LOGIN ===================== -->
-    <bean id="samlLoginFormGenerationFilter"
-          class="de.hybris.platform.samlsinglesignon.security.SAMLLoginPageGeneratingFilter">
-        <constructor-arg ref="relyingPartyRegistrationRepository"/>
-    </bean>
-
-    <bean id="samlEntryPoint"
-          class="de.hybris.platform.samlsinglesignon.security.SAMLEntryPoint">
-        <constructor-arg ref="relyingPartyRegistrationRepository"/>
-    </bean>
-
-    <!-- ===================== LOGOUT ===================== -->
-    <bean id="saml2LogoutResponseFilter"
-          class="org.springframework.security.saml2.provider.service.web.authentication.logout.Saml2LogoutResponseFilter">
-        <constructor-arg ref="defaultRelyingPartyRegistrationResolver"/>
-        <constructor-arg ref="openSamlLogoutResponseValidator"/>
-        <constructor-arg ref="successLogoutHandler"/>
-        <property name="logoutRequestMatcher" ref="singleLogoutRequestMatcher"/>
-    </bean>
-
-    <bean id="saml2LogoutRequestFilter"
-          class="org.springframework.security.saml2.provider.service.web.authentication.logout.Saml2LogoutRequestFilter">
-        <constructor-arg ref="defaultRelyingPartyRegistrationResolver"/>
-        <constructor-arg ref="openSamlLogoutRequestValidator"/>
-        <constructor-arg ref="openSaml4LogoutResponseResolver"/>
+    <!-- Authentication Manager -->
+    <bean id="samlAuthenticationManager" class="org.springframework.security.authentication.ProviderManager">
         <constructor-arg>
             <list>
-                <ref bean="logoutHandler"/>
-                <ref bean="singleLogOutSuccessLogoutHandler"/>
+                <ref bean="samlAuthenticationProvider"/>
             </list>
         </constructor-arg>
-        <property name="logoutRequestMatcher" ref="singleLogoutRequestMatcher"/>
     </bean>
 
+    <!-- SAML Login Form Generation Filter -->
+    <bean id="samlLoginFormGenerationFilter"
+          class="de.hybris.platform.samlsinglesignon.security.SAMLLoginPageGeneratingFilter">
+        <constructor-arg name="repository" ref="relyingPartyRegistrationRepository"/>
+    </bean>
+
+    <!-- SAML2 Logout Response Filter -->
+    <bean id="saml2LogoutResponseFilter"
+          class="org.springframework.security.saml2.provider.service.web.authentication.logout.Saml2LogoutResponseFilter">
+        <constructor-arg name="relyingPartyRegistrationResolver" ref="defaultRelyingPartyRegistrationResolver"/>
+        <constructor-arg name="logoutResponseValidator" ref="openSamlLogoutResponseValidator"/>
+        <constructor-arg name="logoutSuccessHandler" ref="successLogoutHandler"/>
+    </bean>
+
+    <!-- SAML Logout Filter -->
     <bean id="samlLogoutFilter"
           class="de.hybris.platform.samlsinglesignon.security.SAMLLogoutFilter">
-        <constructor-arg ref="saml2RelyingPartyInitiatedLogoutSuccessHandler"/>
-        <constructor-arg ref="successLogoutHandler"/>
-        <constructor-arg>
+        <constructor-arg name="singleLogoutSuccessHandler" ref="saml2RelyingPartyInitiatedLogoutSuccessHandler"/>
+        <constructor-arg name="localLogoutSuccessHandler" ref="successLogoutHandler"/>
+        <constructor-arg name="localLogoutHandlers">
             <list>
                 <ref bean="logoutHandler"/>
                 <ref bean="logoutSuccessEventPublishingLogoutHandler"/>
             </list>
         </constructor-arg>
-        <constructor-arg>
+        <constructor-arg name="singleLogoutHandlers">
             <list>
                 <ref bean="logoutHandler"/>
             </list>
@@ -101,72 +74,91 @@
         <property name="filterProcessesUrl" value="/saml/logout/**"/>
     </bean>
 
+    <!-- SAML2 Relying Party Initiated Logout Success Handler -->
     <bean id="saml2RelyingPartyInitiatedLogoutSuccessHandler"
           class="org.springframework.security.saml2.provider.service.web.authentication.logout.Saml2RelyingPartyInitiatedLogoutSuccessHandler">
         <constructor-arg ref="openSaml4LogoutRequestResolver"/>
     </bean>
 
-    <bean id="openSaml4LogoutRequestResolver"
-          class="de.hybris.platform.samlsinglesignon.security.SamlObjectsFactory"
-          factory-method="openSaml4LogoutRequestResolver">
-        <constructor-arg ref="defaultRelyingPartyRegistrationResolver"/>
+    <!-- Logout Success Event Publishing Handler -->
+    <bean id="logoutSuccessEventPublishingLogoutHandler"
+          class="org.springframework.security.web.authentication.logout.LogoutSuccessEventPublishingLogoutHandler"/>
+
+    <!-- SAML2 Logout Request Filter -->
+    <bean id="saml2LogoutRequestFilter"
+          class="org.springframework.security.saml2.provider.service.web.authentication.logout.Saml2LogoutRequestFilter">
+        <constructor-arg name="relyingPartyRegistrationResolver" ref="defaultRelyingPartyRegistrationResolver"/>
+        <constructor-arg name="logoutRequestValidator" ref="openSamlLogoutRequestValidator"/>
+        <constructor-arg name="logoutResponseResolver" ref="openSaml4LogoutResponseResolver"/>
+        <constructor-arg name="handlers">
+            <list>
+                <ref bean="logoutHandler"/>
+                <ref bean="singleLogOutSuccessLogoutHandler"/>
+            </list>
+        </constructor-arg>
     </bean>
 
+    <!-- OpenSAML Logout Validators -->
+    <bean id="openSamlLogoutRequestValidator"
+          class="org.springframework.security.saml2.provider.service.authentication.logout.OpenSaml4LogoutRequestValidator"/>
+
+    <bean id="openSamlLogoutResponseValidator"
+          class="org.springframework.security.saml2.provider.service.authentication.logout.OpenSaml4LogoutResponseValidator"/>
+
+    <!-- OpenSAML4 Logout Response Resolver -->
     <bean id="openSaml4LogoutResponseResolver"
           class="org.springframework.security.saml2.provider.service.web.authentication.logout.OpenSaml4LogoutResponseResolver">
         <constructor-arg ref="defaultRelyingPartyRegistrationResolver"/>
     </bean>
 
-    <bean id="openSamlLogoutRequestValidator"
-          class="org.springframework.security.saml2.provider.service.authentication.logout.OpenSamlLogoutRequestValidator"/>
+    <!-- SAML Entry Point -->
+    <bean id="samlEntryPoint" class="de.hybris.platform.samlsinglesignon.security.SAMLEntryPoint">
+        <constructor-arg name="repository" ref="relyingPartyRegistrationRepository"/>
+    </bean>
 
-    <bean id="openSamlLogoutResponseValidator"
-          class="org.springframework.security.saml2.provider.service.authentication.logout.OpenSamlLogoutResponseValidator"/>
+    <!-- SAML2 Web SSO Authentication Filter -->
+    <util:constant id="DEFAULT_FILTER_PROCESSES_URI"
+                   static-field="org.springframework.security.saml2.provider.service.web.Saml2WebSsoAuthenticationFilter.DEFAULT_FILTER_PROCESSES_URI"/>
 
-    <!-- ===================== AUTH ===================== -->
-    <security:authentication-manager alias="samlAuthenticationManager">
-        <security:authentication-provider ref="samlAuthenticationProvider"/>
-    </security:authentication-manager>
+    <bean id="saml2Filter"
+          class="org.springframework.security.saml2.provider.service.web.Saml2WebSsoAuthenticationFilter">
+        <constructor-arg name="authenticationConverter" ref="authenticationConverter"/>
+        <constructor-arg name="filterProcessesUrl" ref="DEFAULT_FILTER_PROCESSES_URI"/>
+        <property name="authenticationManager" ref="samlAuthenticationManager"/>
+        <property name="authenticationSuccessHandler" ref="successRedirectHandler"/>
+    </bean>
 
+    <!-- SAML2 Authentication Request Filter -->
+    <bean id="saml2RequestFilter"
+          class="org.springframework.security.saml2.provider.service.web.Saml2WebSsoAuthenticationRequestFilter">
+        <constructor-arg name="relyingPartyRegistrationResolver" ref="authenticationRequestContextResolver"/>
+    </bean>
+
+    <!-- Authentication Request Context Resolver -->
+    <bean id="authenticationRequestContextResolver"
+          class="de.hybris.platform.samlsinglesignon.security.SamlObjectsFactory"
+          factory-method="getAuthenticationRequestResolver">
+        <constructor-arg ref="defaultRelyingPartyRegistrationResolverIdAware"/>
+    </bean>
+
+
+    <!-- SAML Authentication Provider -->
     <bean id="samlAuthenticationProvider"
           class="de.hybris.platform.samlsinglesignon.security.SamlObjectsFactory"
           factory-method="getAuthenticationProvider"/>
 
-    <!-- ===================== METADATA ===================== -->
-    <bean id="samlMetadataFilter"
-          class="org.springframework.security.saml2.provider.service.web.Saml2MetadataFilter">
+    <!-- SAML Metadata Filter -->
+    <bean id="samlMetadataFilter" class="org.springframework.security.saml2.provider.service.web.Saml2MetadataFilter">
         <constructor-arg ref="defaultRelyingPartyRegistrationResolverIdAware"/>
         <constructor-arg ref="openSamlMetadataResolver"/>
-        <property name="requestMatcher" ref="metadataRequestMatcher"/>
     </bean>
 
-    <bean id="openSamlMetadataResolver"
-          class="org.springframework.security.saml2.provider.service.metadata.OpenSamlMetadataResolver"/>
-
-    <!-- ===================== RESOLVERS ===================== -->
-    <bean id="relyingPartyRegistrationRepository"
-          class="de.hybris.platform.samlsinglesignon.security.SamlObjectsFactory"
-          factory-method="getRelyingPartyRegistrationRepository">
-        <constructor-arg value="${sso.metadata.location:./WEB-INF/security/metadata.xml}"/>
-        <constructor-arg value="${sso.entity.id:urn:ssoextension:hybris:de}"/>
-        <constructor-arg ref="saml2SigningAndDecryptionCredentials"/>
-        <constructor-arg ref="signatureValidatorFilter"/>
+    <bean id="saml2MetadataAfterBeanCreationInterceptor" lazy-init="false"
+          class="de.hybris.platform.samlsinglesignon.security.Saml2MetadataFilterAfterBeanCreationInterceptor">
+        <constructor-arg name="saml2MetadataFilter" ref="samlMetadataFilter"/>
     </bean>
 
-    <bean id="defaultRelyingPartyRegistrationResolver"
-          class="org.springframework.security.saml2.provider.service.web.DefaultRelyingPartyRegistrationResolver">
-        <constructor-arg ref="relyingPartyRegistrationRepository"/>
-    </bean>
-
-    <alias name="defaultRelyingPartyRegistrationResolver"
-           alias="relyingPartyRegistrationResolver"/>
-
-    <bean id="defaultRelyingPartyRegistrationResolverIdAware"
-          class="de.hybris.platform.samlsinglesignon.security.DefaultRelayingPartyRegistrationResolverIdAware">
-        <constructor-arg ref="defaultRelyingPartyRegistrationResolver"/>
-    </bean>
-
-    <!-- ===================== UTIL ===================== -->
+    <!-- Request Matchers -->
     <bean id="metadataRequestMatcher"
           class="de.hybris.platform.samlsinglesignon.security.SamlObjectsFactory"
           factory-method="getMetadataRequestMatcher"/>
@@ -175,37 +167,119 @@
           class="de.hybris.platform.samlsinglesignon.security.SamlObjectsFactory"
           factory-method="getSingleLogoutRequestMatcher"/>
 
-    <!-- ===================== LOGOUT HELPERS ===================== -->
-    <bean id="logoutHandler"
-          class="org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler">
-        <property name="invalidateHttpSession" value="false"/>
+    <bean id="filterProcessesUrl"
+          class="de.hybris.platform.samlsinglesignon.security.SamlObjectsFactory"
+          factory-method="getFilterProcessesUrl"/>
+
+    <!-- OpenSAML Metadata Resolver -->
+    <bean id="openSamlMetadataResolver"
+          class="de.hybris.platform.samlsinglesignon.security.SamlObjectsFactory"
+          factory-method="getOpenSamlMetadataResolver"/>
+
+    <!-- Relying Party Registration Resolver -->
+    <bean id="defaultRelyingPartyRegistrationResolver"
+          class="org.springframework.security.saml2.provider.service.web.DefaultRelyingPartyRegistrationResolver">
+        <constructor-arg ref="relyingPartyRegistrationRepository"/>
     </bean>
 
-    <bean id="logoutSuccessEventPublishingLogoutHandler"
-          class="org.springframework.security.web.authentication.logout.LogoutSuccessEventPublishingLogoutHandler"/>
+    <!-- Authentication Token Converter -->
+    <bean id="authenticationConverter"
+          class="org.springframework.security.saml2.provider.service.web.Saml2AuthenticationTokenConverter">
+        <constructor-arg name="relyingPartyRegistrationResolver" ref="defaultRelyingPartyRegistrationResolverIdAware"/>
+    </bean>
 
+    <!-- ID-Aware Relying Party Registration Resolver -->
+    <bean id="defaultRelyingPartyRegistrationResolverIdAware"
+          class="de.hybris.platform.samlsinglesignon.security.DefaultRelayingPartyRegistrationResolverIdAware">
+        <constructor-arg ref="defaultRelyingPartyRegistrationResolver"/>
+    </bean>
+
+    <bean id="relyingPartyRegistrationRepository"
+          class="de.hybris.platform.samlsinglesignon.security.SamlObjectsFactory"
+          factory-method="getRelyingPartyRegistrationRepository">
+
+
+    <!-- SAML2 Signing and Decryption Credentials -->
+    <bean id="saml2SigningAndDecryptionCredentials" class="de.hybris.platform.samlsinglesignon.utils.JKSUtil"
+          factory-method="getSigningAndDecryptionSaml2Credentials">
+        <constructor-arg value="${sso.keystore.location:/WEB-INF/security/samlKeystore.jks}"/>
+        <constructor-arg type="java.lang.String" value="${sso.keystore.password:changeit}"/>
+        <constructor-arg>
+            <map>
+                <entry key="${sso.keystore.privatekey.alias:hybris}"
+                       value="${sso.keystore.privatekey.password:changeit}"/>
+            </map>
+        </constructor-arg>
+        <constructor-arg type="java.lang.String" value="${sso.keystore.default.certificate.alias:hybris}"/>
+    </bean>
+
+    <!-- Signature Validator Filter -->
+    <!-- Factory bean -->
+    <bean id="signatureValidationFilterFactory"
+          class="de.hybris.platform.samlsinglesignon.security.SignatureValidationFilterFactory">
+        <constructor-arg ref="x509Certificates"/>
+    </bean>
+
+    <!-- Actual filter -->
+    <alias name="signatureValidatorFilter" alias="signatureValidatorFilter"/>
+
+    <bean id="signatureValidatorFilter"
+          factory-bean="signatureValidationFilterFactory"
+          factory-method="getSignatureValidationFilter"/>
+
+
+
+    <!-- X509 Certificates -->
+    <bean id="x509Certificates" class="de.hybris.platform.samlsinglesignon.utils.JKSUtil"
+          factory-method="getAllCertificates">
+        <constructor-arg value="${sso.keystore.location:/WEB-INF/security/samlKeystore.jks}"/>
+        <constructor-arg type="java.lang.String" value="${sso.keystore.password:changeit}"/>
+    </bean>
+
+    <!-- HTTP Firewall -->
+    <bean id="allowSemicolonHttpFirewall" class="org.springframework.security.web.firewall.StrictHttpFirewall">
+        <property name="allowSemicolon" value="true"/>
+        <property name="allowUrlEncodedSlash" value="true"/>
+        <property name="allowUrlEncodedPercent" value="true"/>
+        <property name="allowUrlEncodedPeriod" value="true"/>
+        <property name="allowBackSlash" value="false"/>
+        <property name="allowNull" value="false"/>
+    </bean>
+
+    <!-- Success Redirect Handler -->
+    <bean id="successRedirectHandler"
+          class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+        <property name="defaultTargetUrl" value="/"/>
+    </bean>
+
+    <!-- Success Logout Handler -->
+    <bean id="successLogoutHandler"
+          class="org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler">
+        <property name="defaultTargetUrl" value="${samlsinglesignon.logout.redirect.url:/}"/>
+    </bean>
+
+    <!-- OpenSAML4 Logout Request Resolver -->
+    <bean id="openSaml4LogoutRequestResolver"
+          class="de.hybris.platform.samlsinglesignon.security.SamlObjectsFactory"
+          factory-method="getOpenSaml4LogoutRequestResolver">
+        <constructor-arg ref="defaultRelyingPartyRegistrationResolver"/>
+    </bean>
+
+    <!-- Logout Handler -->
+    <bean id="logoutHandler"
+          class="org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler">
+        <property name="invalidateHttpSession" value="true"/>
+        <property name="clearAuthentication" value="true"/>
+    </bean>
+
+    <!-- Single Logout Success Handler -->
     <bean id="singleLogOutSuccessLogoutHandler"
           class="de.hybris.platform.samlsinglesignon.security.SingleLogOutSuccessLogoutHandler">
         <property name="tokenService" ref="tokenService"/>
     </bean>
 
-    <bean id="successLogoutHandler"
-          class="org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler">
-        <property name="defaultTargetUrl"
-                  value="${samlsinglesignon.logout.redirect.url}"/>
-    </bean>
-
-    <!-- ===================== FIREWALL ===================== -->
-    <bean id="allowSemicolonHttpFirewall"
-          class="org.springframework.security.web.firewall.StrictHttpFirewall">
-        <property name="allowSemicolon" value="true"/>
-    </bean>
-
-    <security:http-firewall ref="allowSemicolonHttpFirewall"/>
-
-    <!-- ===================== ACCESS DENIED ===================== -->
-    <bean id="samlAccessDeniedHandler"
-          class="de.hybris.platform.samlsinglesignon.security.SAMLAccessDeniedHandler">
+    <!-- Access Denied Handler -->
+    <bean id="samlAccessDeniedHandler" class="de.hybris.platform.samlsinglesignon.security.SAMLAccessDeniedHandler">
         <constructor-arg ref="redirectionControllerBase"/>
     </bean>
 

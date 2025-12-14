@@ -29,7 +29,7 @@
 		<anonymous username="anonymous" granted-authority="ROLE_ANONYMOUS"/>
 		<!--<session-management session-authentication-strategy-ref="fixation"/>-->
 
-		<intercept-url pattern="/**" requires-channel="https"/>
+		<intercept-url pattern="/**" requires-channel="https" access="PERMIT_ALL"/>
 
 		<port-mappings>
 			<port-mapping http="#{configurationService.configuration.getProperty('tomcat.http.port')}"
